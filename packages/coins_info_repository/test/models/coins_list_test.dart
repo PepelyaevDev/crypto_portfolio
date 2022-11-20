@@ -9,7 +9,7 @@ void main() {
       test('return correct model after conversion', () {
         expect(
           CoinsList.fromApi(coinsList),
-          tryRepositoryCoinsList,
+          trueRepositoryCoinsList,
         );
       });
     });

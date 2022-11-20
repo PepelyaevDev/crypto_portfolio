@@ -37,7 +37,7 @@ dynamic Function() setUpApiResponse = () {
   when(() => coin2.currentPrice).thenReturn(currentPrice2);
 };
 
-const CoinsList tryRepositoryCoinsList = CoinsList(
+const CoinsList trueRepositoryCoinsList = CoinsList(
   coins: [
     Coin(
       id: id1,
