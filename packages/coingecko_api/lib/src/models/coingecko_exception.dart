@@ -16,7 +16,8 @@ class CoingeckoException implements Exception {
 @JsonSerializable(explicitToJson: true)
 class Status {
   Status({
-    required this.errorCode, required this.errorMessage,
+    required this.errorCode,
+    required this.errorMessage,
   });
 
   factory Status.fromJson(Map<String, dynamic> json) => _$StatusFromJson(json);

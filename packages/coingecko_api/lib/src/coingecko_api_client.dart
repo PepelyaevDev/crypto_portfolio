@@ -8,7 +8,7 @@ class CoinGeckoApiClient {
   static const _baseUrl = 'api.coingecko.com';
   final http.Client _httpClient;
 
-  Future<List> _coingeckoGetRequest(String unencodedPath, Map<String, dynamic>? queryParameters) async {
+  Future<List> _getRequest(String unencodedPath, Map<String, dynamic>? queryParameters) async {
     final request = Uri.https(
       _baseUrl,
       unencodedPath,
@@ -27,11 +27,11 @@ class CoinGeckoApiClient {
 
   Future<CoinsList> getCoins() async {
     try {
-      final List response = await _coingeckoGetRequest(
+      final List response = await _getRequest(
         '/api/v3/coins/markets',
         {'vs_currency': 'usd'},
       );
-      return CoinsList.fromJson({'coins': response});
+      return CoinsList.fromJson(response);
     } catch (e) {
       if (e is CoingeckoException) {
         rethrow;

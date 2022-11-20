@@ -6,9 +6,9 @@ part 'coins_list.g.dart';
 class CoinsList {
   const CoinsList({required this.coins});
 
-  factory CoinsList.fromJson(Map<String, dynamic> json) => _$CoinsListFromJson(json);
+  factory CoinsList.fromJson(List<dynamic> json) => _$CoinsListFromJson(<String, dynamic>{'coins': json});
 
-  Map<String, dynamic> toJson() => _$CoinsListToJson(this);
+  List<dynamic> toJson() => _$CoinsListToJson(this)['coins'];
 
   final List<Coin> coins;
 }
