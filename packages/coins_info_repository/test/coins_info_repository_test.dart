@@ -2,7 +2,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:coingecko_api/coingecko_api.dart' as coingecko_api;
 import 'package:test/test.dart';
 import 'package:coins_info_repository/coins_info_repository.dart';
-import 'resources/api_response.dart';
+import 'resources/api_resources.dart';
 
 class MockCoingeckoApiClient extends Mock implements coingecko_api.CoinGeckoApiClient {}
 
@@ -45,7 +45,7 @@ void main() {
       test('returns correct coinsList', () async {
         when(() => coingeckoApiClient.getCoins()).thenAnswer((_) async => coinsList);
         final actual = await coinsInfoRepository.getCoins();
-        expect(actual, tryRepositoryCoinsList);
+        expect(actual, isA<CoinsList>());
       });
     });
   });

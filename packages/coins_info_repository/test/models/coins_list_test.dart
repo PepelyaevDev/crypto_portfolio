@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 import 'package:coins_info_repository/coins_info_repository.dart';
-import '../resources/api_response.dart';
+import '../resources/api_resources.dart';
 
 void main() {
   group('CoinsList model test', () {
