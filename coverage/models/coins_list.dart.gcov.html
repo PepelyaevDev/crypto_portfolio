@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">23</td>
             <td class="headerCovTableEntry">24</td>
-            <td class="headerCovTableEntryHi">95.8 %</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-11-13 12:10:51</td>
+            <td class="headerValue">2022-11-13 17:53:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -105,7 +105,7 @@
 <a name="43"><span class="lineNum">      43 </span>            : </a>
 <a name="44"><span class="lineNum">      44 </span>            : @JsonSerializable(explicitToJson: true)</a>
 <a name="45"><span class="lineNum">      45 </span>            : class Coin extends Equatable {</a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          1 :   const Coin({</span></a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          2 :   const Coin({</span></a>
 <a name="47"><span class="lineNum">      47 </span>            :     required this.id,</a>
 <a name="48"><span class="lineNum">      48 </span>            :     required this.symbol,</a>
 <a name="49"><span class="lineNum">      49 </span>            :     required this.name,</a>
@@ -119,7 +119,7 @@
 <a name="57"><span class="lineNum">      57 </span>            :   final String image;</a>
 <a name="58"><span class="lineNum">      58 </span>            :   final double currentPrice;</a>
 <a name="59"><span class="lineNum">      59 </span>            : </a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineNoCov">          0 :   factory Coin.fromJson(Map&lt;String, dynamic&gt; json) =&gt; _$CoinFromJson(json);</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">          2 :   factory Coin.fromJson(Map&lt;String, dynamic&gt; json) =&gt; _$CoinFromJson(json);</span></a>
 <a name="61"><span class="lineNum">      61 </span>            : </a>
 <a name="62"><span class="lineNum">      62 </span><span class="lineCov">          2 :   Map&lt;String, dynamic&gt; toJson() =&gt; _$CoinToJson(this);</span></a>
 <a name="63"><span class="lineNum">      63 </span>            : </a>
