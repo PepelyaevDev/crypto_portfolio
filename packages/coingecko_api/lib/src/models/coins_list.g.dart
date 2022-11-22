@@ -12,10 +12,6 @@ CoinsList _$CoinsListFromJson(Map<String, dynamic> json) => CoinsList(
           .toList(),
     );
 
-Map<String, dynamic> _$CoinsListToJson(CoinsList instance) => <String, dynamic>{
-      'coins': instance.coins.map((e) => e.toJson()).toList(),
-    };
-
 Coin _$CoinFromJson(Map<String, dynamic> json) => Coin(
       id: json['id'] as String,
       symbol: json['symbol'] as String,
@@ -50,44 +46,8 @@ Coin _$CoinFromJson(Map<String, dynamic> json) => Coin(
       lastUpdated: json['last_updated'] as String,
     );
 
-Map<String, dynamic> _$CoinToJson(Coin instance) => <String, dynamic>{
-      'id': instance.id,
-      'symbol': instance.symbol,
-      'name': instance.name,
-      'image': instance.image,
-      'current_price': instance.currentPrice,
-      'market_cap': instance.marketCap,
-      'market_cap_rank': instance.marketCapRank,
-      'fully_diluted_valuation': instance.fullyDilutedValuation,
-      'total_volume': instance.totalVolume,
-      'high_24h': instance.high_24h,
-      'low_24h': instance.low_24h,
-      'price_change_24h': instance.priceChange_24h,
-      'price_change_percentage_24h': instance.priceChangePercentage_24h,
-      'market_cap_change_24h': instance.marketCapChange_24h,
-      'market_cap_change_percentage_24h':
-          instance.marketCapChangePercentage_24h,
-      'circulating_supply': instance.circulatingSupply,
-      'total_supply': instance.totalSupply,
-      'max_supply': instance.maxSupply,
-      'ath': instance.ath,
-      'ath_change_percentage': instance.athChangePercentage,
-      'ath_date': instance.athDate,
-      'atl': instance.atl,
-      'atl_change_percentage': instance.atlChangePercentage,
-      'atl_date': instance.atlDate,
-      'roi': instance.roi?.toJson(),
-      'last_updated': instance.lastUpdated,
-    };
-
 Roi _$RoiFromJson(Map<String, dynamic> json) => Roi(
       times: (json['times'] as num).toDouble(),
       currency: json['currency'] as String,
       percentage: (json['percentage'] as num).toDouble(),
     );
-
-Map<String, dynamic> _$RoiToJson(Roi instance) => <String, dynamic>{
-      'times': instance.times,
-      'currency': instance.currency,
-      'percentage': instance.percentage,
-    };

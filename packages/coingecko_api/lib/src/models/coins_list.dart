@@ -2,18 +2,16 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'coins_list.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(createToJson: false)
 class CoinsList {
   const CoinsList({required this.coins});
 
   factory CoinsList.fromJson(List<dynamic> json) => _$CoinsListFromJson(<String, dynamic>{'coins': json});
 
-  List<dynamic> toJson() => _$CoinsListToJson(this)['coins'];
-
   final List<Coin> coins;
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(createToJson: false)
 class Coin {
   const Coin({
     required this.id,
@@ -45,8 +43,6 @@ class Coin {
   });
 
   factory Coin.fromJson(Map<String, dynamic> json) => _$CoinFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CoinToJson(this);
 
   final String id;
   final String symbol;
@@ -93,7 +89,7 @@ class Coin {
   final String lastUpdated;
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(createToJson: false)
 class Roi {
   const Roi({
     required this.times,
@@ -102,8 +98,6 @@ class Roi {
   });
 
   factory Roi.fromJson(Map<String, dynamic> json) => _$RoiFromJson(json);
-
-  Map<String, dynamic> toJson() => _$RoiToJson(this);
 
   final double times;
   final String currency;
