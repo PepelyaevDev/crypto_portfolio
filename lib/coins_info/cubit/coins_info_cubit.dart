@@ -15,7 +15,7 @@ class CoinsInfoCubit extends HydratedCubit<CoinsInfoState> {
   Future<void> getCoins() async {
     emit(state.copyWith(status: CoinsInfoStatus.loading));
     try {
-      final coinsList = CoinsList.fromRepository(
+      final CoinsList coinsList = CoinsList.fromRepository(
         await _coinsInfoRepository.getCoins(),
       );
       emit(

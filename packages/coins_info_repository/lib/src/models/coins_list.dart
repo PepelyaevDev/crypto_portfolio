@@ -1,7 +1,6 @@
-import 'package:equatable/equatable.dart';
 import 'package:coingecko_api/coingecko_api.dart' as coingecko_api;
 
-class CoinsList extends Equatable {
+class CoinsList {
   const CoinsList({required this.coins});
 
   factory CoinsList.fromApi(coingecko_api.CoinsList coinsList) {
@@ -21,12 +20,9 @@ class CoinsList extends Equatable {
   }
 
   final List<Coin> coins;
-
-  @override
-  List<Object> get props => [coins];
 }
 
-class Coin extends Equatable {
+class Coin {
   const Coin({
     required this.id,
     required this.symbol,
@@ -40,7 +36,4 @@ class Coin extends Equatable {
   final String name;
   final String image;
   final double currentPrice;
-
-  @override
-  List<Object> get props => [id, symbol, name, image, currentPrice];
 }
