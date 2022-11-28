@@ -8,25 +8,15 @@ environment:
   sdk: '>=2.18.4 <3.0.0'
 
 dependencies:
-  equatable: ^2.0.5
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.1
-  hydrated_bloc: ^9.0.0
-  json_annotation: ^4.4.0
-  path_provider: ^2.0.8
   coins_info_repository:
     path: packages/coins_info_repository
-  cupertino_icons: ^1.0.2
+  flutter_bloc: ^8.1.1
+  equatable: ^2.0.5
   bloc_concurrency: ^0.2.0
 
 dev_dependencies:
-  bloc_test: ^9.1.0
-  build_runner: ^2.0.0
-  flutter_test:
-    sdk: flutter
-  json_serializable: ^6.0.0
-  mocktail: ^0.3.0
 
 flutter:
   uses-material-design: true

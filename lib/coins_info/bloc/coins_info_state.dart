@@ -1,8 +1,7 @@
-part of 'coins_info_cubit.dart';
+part of 'coins_info_bloc.dart';
 
 enum CoinsInfoStatus { initial, loading, success, failure }
 
-@JsonSerializable(explicitToJson: true)
 class CoinsInfoState extends Equatable {
   CoinsInfoState({
     this.status = CoinsInfoStatus.initial,
@@ -21,10 +20,6 @@ class CoinsInfoState extends Equatable {
       coinsList: coinsList ?? this.coinsList,
     );
   }
-
-  factory CoinsInfoState.fromJson(Map<String, dynamic> json) => _$CoinsInfoStateFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CoinsInfoStateToJson(this);
 
   @override
   List<Object?> get props => [status, coinsList];
