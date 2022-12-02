@@ -8,10 +8,13 @@ part of 'coingecko_exception.dart';
 
 CoingeckoException _$CoingeckoExceptionFromJson(Map<String, dynamic> json) =>
     CoingeckoException(
-      status: Status.fromJson(json['status'] as Map<String, dynamic>),
+      status: CoingeckoExceptionStatus.fromJson(
+          json['status'] as Map<String, dynamic>),
     );
 
-Status _$StatusFromJson(Map<String, dynamic> json) => Status(
+CoingeckoExceptionStatus _$CoingeckoExceptionStatusFromJson(
+        Map<String, dynamic> json) =>
+    CoingeckoExceptionStatus(
       errorCode: json['error_code'] as int,
       errorMessage: json['error_message'] as String,
     );

@@ -20,18 +20,18 @@ class _CoinsListScreenState extends State<CoinsListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder (
+      body: BlocBuilder(
         bloc: _coinsInfoBloc,
         builder: (_, CoinsInfoState state) {
           switch (state.status) {
-            case CoinsInfoStatus.initial : return SizedBox();
-            case CoinsInfoStatus.loading : return SizedBox();
-            case CoinsInfoStatus.success : return ListView(
-              children:
-                state.coinsList.coins.map((e) => Text(e.name)).toList()
-              ,
-            );
-            case CoinsInfoStatus.failure : return SizedBox();
+            case CoinsInfoStatus.initial:
+              return SizedBox();
+            case CoinsInfoStatus.loading:
+              return SizedBox();
+            case CoinsInfoStatus.success:
+              return ListView(children: state.coinsList.coins.map((e) => Text(e.symbol)).toList());
+            case CoinsInfoStatus.failure:
+              return SizedBox();
           }
         },
       ),

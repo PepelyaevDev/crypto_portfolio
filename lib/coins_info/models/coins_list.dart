@@ -4,12 +4,11 @@ import 'package:coins_info_repository/coins_info_repository.dart' as coins_info_
 class CoinsList extends Equatable {
   const CoinsList({required this.coins});
 
-  factory CoinsList.fromRepository(coins_info_repository.CoinsList coinsList) {
+  factory CoinsList.fromRepository(coins_info_repository.RepositoryMarketCoinsList coinsList) {
     return CoinsList(
       coins: coinsList.coins
           .map(
             (e) => Coin(
-              id: e.id,
               symbol: e.symbol,
               name: e.name,
               image: e.image,
@@ -20,7 +19,9 @@ class CoinsList extends Equatable {
     );
   }
 
-  static final empty = CoinsList(coins: const []);
+  factory CoinsList.empty() {
+    return CoinsList(coins: []);
+  }
 
   final List<Coin> coins;
 
@@ -30,19 +31,17 @@ class CoinsList extends Equatable {
 
 class Coin extends Equatable {
   const Coin({
-    required this.id,
     required this.symbol,
     required this.name,
     required this.image,
     required this.currentPrice,
   });
 
-  final String id;
   final String symbol;
   final String name;
   final String image;
   final double currentPrice;
 
   @override
-  List<Object> get props => [id, symbol, name, image, currentPrice];
+  List<Object> get props => [symbol, name, image, currentPrice];
 }

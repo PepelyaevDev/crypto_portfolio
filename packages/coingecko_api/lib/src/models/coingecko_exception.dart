@@ -8,17 +8,17 @@ class CoingeckoException implements Exception {
 
   factory CoingeckoException.fromJson(Map<String, dynamic> json) => _$CoingeckoExceptionFromJson(json);
 
-  final Status status;
+  final CoingeckoExceptionStatus status;
 }
 
 @JsonSerializable(createToJson: false)
-class Status {
-  const Status({
+class CoingeckoExceptionStatus {
+  const CoingeckoExceptionStatus({
     required this.errorCode,
     required this.errorMessage,
   });
 
-  factory Status.fromJson(Map<String, dynamic> json) => _$StatusFromJson(json);
+  factory CoingeckoExceptionStatus.fromJson(Map<String, dynamic> json) => _$CoingeckoExceptionStatusFromJson(json);
 
   @JsonKey(name: 'error_code')
   final int errorCode;

@@ -1,14 +1,13 @@
-import 'package:coingecko_api/coingecko_api.dart' as coingecko_api;
+import 'package:hive_api/hive_api.dart';
 
-class CoinsList {
-  const CoinsList({required this.coins});
+class RepositoryMarketCoinsList {
+  const RepositoryMarketCoinsList({required this.coins});
 
-  factory CoinsList.fromApi(coingecko_api.CoinsList coinsList) {
-    return CoinsList(
+  factory RepositoryMarketCoinsList.fromHiveApi(HiveMarketCoinsList coinsList) {
+    return RepositoryMarketCoinsList(
       coins: coinsList.coins
           .map(
-            (e) => Coin(
-              id: e.id,
+            (e) => RepositoryMarketCoin(
               symbol: e.symbol,
               name: e.name,
               image: e.image,
@@ -19,19 +18,17 @@ class CoinsList {
     );
   }
 
-  final List<Coin> coins;
+  final List<RepositoryMarketCoin> coins;
 }
 
-class Coin {
-  const Coin({
-    required this.id,
+class RepositoryMarketCoin {
+  const RepositoryMarketCoin({
     required this.symbol,
     required this.name,
     required this.image,
     required this.currentPrice,
   });
 
-  final String id;
   final String symbol;
   final String name;
   final String image;

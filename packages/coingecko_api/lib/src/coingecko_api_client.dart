@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import 'package:coingecko_api/coingecko_api.dart';
 
 class CoinGeckoApiClient {
-  CoinGeckoApiClient({http.Client? httpClient}) : _httpClient = httpClient ?? http.Client();
   static const _baseUrl = 'api.coingecko.com';
-  final http.Client _httpClient;
+  final Client _httpClient = Client();
 
   Future<List> _getRequest(String unencodedPath, Map<String, dynamic>? queryParameters) async {
     final request = Uri.https(
@@ -25,13 +24,13 @@ class CoinGeckoApiClient {
     return result;
   }
 
-  Future<CoinsList> getCoins() async {
+  Future<CoingeckoMarketCoinsList> getCoins() async {
     try {
       final List response = await _getRequest(
         '/api/v3/coins/markets',
         {'vs_currency': 'usd'},
       );
-      return CoinsList.fromJson(response);
+      return CoingeckoMarketCoinsList.fromJson(response);
     } catch (e) {
       if (e is CoingeckoException) {
         rethrow;

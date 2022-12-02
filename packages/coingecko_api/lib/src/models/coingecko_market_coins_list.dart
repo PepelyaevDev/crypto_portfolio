@@ -1,19 +1,19 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'coins_list.g.dart';
+part 'coingecko_market_coins_list.g.dart';
 
 @JsonSerializable(createToJson: false)
-class CoinsList {
-  const CoinsList({required this.coins});
+class CoingeckoMarketCoinsList {
+  const CoingeckoMarketCoinsList({required this.coins});
 
-  factory CoinsList.fromJson(List<dynamic> json) => _$CoinsListFromJson(<String, dynamic>{'coins': json});
+  factory CoingeckoMarketCoinsList.fromJson(List<dynamic> json) => _$CoingeckoMarketCoinsListFromJson(<String, dynamic>{'coins': json});
 
-  final List<Coin> coins;
+  final List<CoingeckoMarketCoin> coins;
 }
 
 @JsonSerializable(createToJson: false)
-class Coin {
-  const Coin({
+class CoingeckoMarketCoin {
+  const CoingeckoMarketCoin({
     required this.id,
     required this.symbol,
     required this.name,
@@ -42,7 +42,7 @@ class Coin {
     required this.lastUpdated,
   });
 
-  factory Coin.fromJson(Map<String, dynamic> json) => _$CoinFromJson(json);
+  factory CoingeckoMarketCoin.fromJson(Map<String, dynamic> json) => _$CoingeckoMarketCoinFromJson(json);
 
   final String id;
   final String symbol;
@@ -84,20 +84,20 @@ class Coin {
   final double atlChangePercentage;
   @JsonKey(name: 'atl_date')
   final String atlDate;
-  final Roi? roi;
+  final CoingeckoRoi? roi;
   @JsonKey(name: 'last_updated')
   final String lastUpdated;
 }
 
 @JsonSerializable(createToJson: false)
-class Roi {
-  const Roi({
+class CoingeckoRoi {
+  const CoingeckoRoi({
     required this.times,
     required this.currency,
     required this.percentage,
   });
 
-  factory Roi.fromJson(Map<String, dynamic> json) => _$RoiFromJson(json);
+  factory CoingeckoRoi.fromJson(Map<String, dynamic> json) => _$CoingeckoRoiFromJson(json);
 
   final double times;
   final String currency;

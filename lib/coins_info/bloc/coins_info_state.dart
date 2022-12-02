@@ -6,7 +6,7 @@ class CoinsInfoState extends Equatable {
   CoinsInfoState({
     this.status = CoinsInfoStatus.initial,
     CoinsList? coinsList,
-  }) : coinsList = coinsList ?? CoinsList.empty;
+  }) : coinsList = coinsList ?? CoinsList.empty();
 
   final CoinsInfoStatus status;
   final CoinsList coinsList;

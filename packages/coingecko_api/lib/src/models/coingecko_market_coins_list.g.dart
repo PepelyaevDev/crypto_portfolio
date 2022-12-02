@@ -1,18 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'coins_list.dart';
+part of 'coingecko_market_coins_list.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CoinsList _$CoinsListFromJson(Map<String, dynamic> json) => CoinsList(
+CoingeckoMarketCoinsList _$CoingeckoMarketCoinsListFromJson(
+        Map<String, dynamic> json) =>
+    CoingeckoMarketCoinsList(
       coins: (json['coins'] as List<dynamic>)
-          .map((e) => Coin.fromJson(e as Map<String, dynamic>))
+          .map((e) => CoingeckoMarketCoin.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Coin _$CoinFromJson(Map<String, dynamic> json) => Coin(
+CoingeckoMarketCoin _$CoingeckoMarketCoinFromJson(Map<String, dynamic> json) =>
+    CoingeckoMarketCoin(
       id: json['id'] as String,
       symbol: json['symbol'] as String,
       name: json['name'] as String,
@@ -42,11 +45,11 @@ Coin _$CoinFromJson(Map<String, dynamic> json) => Coin(
       atlDate: json['atl_date'] as String,
       roi: json['roi'] == null
           ? null
-          : Roi.fromJson(json['roi'] as Map<String, dynamic>),
+          : CoingeckoRoi.fromJson(json['roi'] as Map<String, dynamic>),
       lastUpdated: json['last_updated'] as String,
     );
 
-Roi _$RoiFromJson(Map<String, dynamic> json) => Roi(
+CoingeckoRoi _$CoingeckoRoiFromJson(Map<String, dynamic> json) => CoingeckoRoi(
       times: (json['times'] as num).toDouble(),
       currency: json['currency'] as String,
       percentage: (json['percentage'] as num).toDouble(),

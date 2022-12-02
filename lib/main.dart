@@ -10,7 +10,7 @@ void main() {
 class CryptoPortfolioApp extends StatelessWidget {
   CryptoPortfolioApp({super.key});
 
-  final CoinsInfoRepository _coinsInfoRepository = CoinsInfoRepository();
+  final CoinsInfoRepositoryClient _coinsInfoRepository = CoinsInfoRepositoryClient();
 
   @override
   Widget build(BuildContext context) {
