@@ -6,41 +6,33 @@ import '../coins_info_repository.dart';
 class CoinsInfoRepositoryClient {
   final CoinGeckoApiClient _coinGeckoApiClient = CoinGeckoApiClient();
   final HiveApiClient _hiveApiClient = HiveApiClient();
+  final RepositoryConverter _converter = RepositoryConverter();
 
   RepositoryMarketCoinsList getMarketCoinsList() {
-    final HiveMarketCoinsList hiveMarketCoinsList = _hiveApiClient.getMarketCoins();
+    final List<HiveMarketCoin> hiveMarketCoinsList = _hiveApiClient.getMarketCoins();
     final RepositoryMarketCoinsList repositoryMarketCoinsList =
-        RepositoryMarketCoinsList.fromHiveApi(hiveMarketCoinsList);
+        _converter.hiveToRepositoryMarketCoinsList(hiveMarketCoinsList);
     return repositoryMarketCoinsList;
   }
 
   Future<RepositoryPortfolioCoinsList> getPortfolioCoinsList() async {
     await _updateHiveMarketCoinsList();
-    final RepositoryPortfolioCoinsList repositoryPortfolioCoinsList = RepositoryPortfolioCoinsList.fromHiveApi(
+    final RepositoryPortfolioCoinsList repositoryPortfolioCoinsList = _converter.createRepositoryPortfolioCoinsList(
       hiveMarketCoinsList: _hiveApiClient.getMarketCoins(),
       hivePortfolioCoinsList: _hiveApiClient.getPortfolioCoins(),
     );
     return repositoryPortfolioCoinsList;
   }
 
-  Future<void> _updateHiveMarketCoinsList() async {
-    final CoingeckoMarketCoinsList coingeckoMarketCoinsList = await _coinGeckoApiClient.getCoins();
-    final HiveMarketCoinsList hiveMarketCoinsList = _coingeckoToHiveMarketCoinsList(coingeckoMarketCoinsList);
-    await _hiveApiClient.updateMarketCoins(hiveMarketCoinsList);
+  Future<RepositoryPortfolioCoinsList> addPayment(String symbol, RepositoryPayment payment) async {
+    await _hiveApiClient.addPayment(symbol, _converter.repositoryToHivePayment(payment));
+    return await getPortfolioCoinsList();
   }
 
-  HiveMarketCoinsList _coingeckoToHiveMarketCoinsList(CoingeckoMarketCoinsList coinsList) {
-    return HiveMarketCoinsList(
-      coins: coinsList.coins
-          .map(
-            (e) => HiveMarketCoin(
-              symbol: e.symbol,
-              name: e.name,
-              image: e.image,
-              currentPrice: e.currentPrice,
-            ),
-          )
-          .toList(),
-    );
+  Future<void> _updateHiveMarketCoinsList() async {
+    final CoingeckoMarketCoinsList coingeckoMarketCoinsList = await _coinGeckoApiClient.getCoins();
+    final List<HiveMarketCoin> hiveMarketCoinsList =
+        _converter.coingeckoToHiveMarketCoinsList(coingeckoMarketCoinsList);
+    await _hiveApiClient.updateMarketCoins(hiveMarketCoinsList);
   }
 }

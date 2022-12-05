@@ -1,22 +1,5 @@
-import 'package:hive_api/hive_api.dart';
-
 class RepositoryMarketCoinsList {
   const RepositoryMarketCoinsList({required this.coins});
-
-  factory RepositoryMarketCoinsList.fromHiveApi(HiveMarketCoinsList coinsList) {
-    return RepositoryMarketCoinsList(
-      coins: coinsList.coins
-          .map(
-            (e) => RepositoryMarketCoin(
-              symbol: e.symbol,
-              name: e.name,
-              image: e.image,
-              currentPrice: e.currentPrice,
-            ),
-          )
-          .toList(),
-    );
-  }
 
   final List<RepositoryMarketCoin> coins;
 }

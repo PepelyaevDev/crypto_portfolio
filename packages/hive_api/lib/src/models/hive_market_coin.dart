@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import '../hive_constants.dart';
+import 'hive_constants.dart';
 
 part 'hive_market_coin.g.dart';
 

@@ -16,18 +16,18 @@ class HiveApiClient {
     await Hive.openBox<HiveMarketCoin>(hiveMarketCoinBoxName);
   }
 
-  HivePortfolioCoinsList getPortfolioCoins() {
-    return HivePortfolioCoinsList.fromHive(_hivePaymentHistoryBox.toMap());
+  Map<dynamic, HivePaymentHistory> getPortfolioCoins() {
+    return _hivePaymentHistoryBox.toMap();
   }
 
-  HiveMarketCoinsList getMarketCoins() {
-    return HiveMarketCoinsList.fromHive(_hiveMarketCoinBox.toMap());
+  List<HiveMarketCoin> getMarketCoins() {
+    return _hiveMarketCoinBox.values.toList();
   }
 
-  Future<void> updateMarketCoins(HiveMarketCoinsList data) async {
+  Future<void> updateMarketCoins(List<HiveMarketCoin> data) async {
     await _hiveMarketCoinBox.clear();
     Map<String, HiveMarketCoin> coins = {};
-    data.coins.forEach((value) {
+    data.forEach((value) {
       coins[value.symbol] = value;
     });
     await _hiveMarketCoinBox.putAll(coins);
