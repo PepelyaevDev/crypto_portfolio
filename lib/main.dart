@@ -1,5 +1,3 @@
-import 'package:coins_info_repository/coins_info_repository.dart';
-import 'package:crypto_portfolio/coins_info/coins_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
