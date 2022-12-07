@@ -1,6 +1,8 @@
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:crypto_portfolio/domain/entity/payment.dart';
 import 'package:crypto_portfolio/domain/entity/portfolio_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/screen_status.dart';
+import 'package:crypto_portfolio/domain/usecase/get_portfolio_coins_list.dart';
+import 'package:crypto_portfolio/domain/usecase/update_market_coins_list.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,27 +10,30 @@ part 'portfolio_state.dart';
 
 part 'portfolio_event.dart';
 
-class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
-  PortfolioBloc(this._coinsInfoRepository) : super(PortfolioState()) {
-    on<UpdateCoinsInfo>(_updateCoinsInfo, transformer: droppable());
+class PortfolioBloc extends Bloc<PortfolioBlocEvent, PortfolioBlocState> {
+  PortfolioBloc({
+    required this.updateMarketCoinsListUC,
+    required this.getPortfolioCoinsListUC,
+  }) : super(PortfolioBlocState()) {
+    on<UpdatePortfolioCoinsListEvent>(_updateCoinsInfo, transformer: droppable());
   }
 
-  final CoinsInfoRepositoryClient _coinsInfoRepository;
+  final UpdateMarketCoinsListUC updateMarketCoinsListUC;
+  final GetPortfolioCoinsListUC getPortfolioCoinsListUC;
 
-  Future<void> _updateCoinsInfo(_, Emitter<PortfolioState> emit) async {
-    emit(state.copyWith(status: CoinsInfoStatus.loading));
+  Future<void> _updateCoinsInfo(_, Emitter<PortfolioBlocState> emit) async {
+    emit(state.copyWith(status: ScreenStatus.loading));
     try {
-      final CoinsList coinsList = CoinsList.fromRepository(
-        await _coinsInfoRepository.getMarketCoinsList(),
-      );
+      await updateMarketCoinsListUC.call();
+      final PortfolioCoinsList portfolioCoinsList = getPortfolioCoinsListUC.call();
       emit(
         state.copyWith(
-          status: CoinsInfoStatus.success,
-          coinsList: coinsList,
+          status: ScreenStatus.success,
+          portfolioCoinsList: portfolioCoinsList,
         ),
       );
     } catch (e) {
-      emit(state.copyWith(status: CoinsInfoStatus.failure));
+      emit(state.copyWith(status: ScreenStatus.failure));
     }
   }
 }

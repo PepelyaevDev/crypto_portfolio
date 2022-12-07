@@ -1,26 +1,24 @@
 part of 'portfolio_bloc.dart';
 
-enum PortfolioScreenStatus { initial, loading, success, failure }
-
-class PortfolioState extends Equatable {
-  PortfolioState({
-    this.status = PortfolioScreenStatus.initial,
+class PortfolioBlocState extends Equatable {
+  PortfolioBlocState({
+    this.status = ScreenStatus.initial,
     PortfolioCoinsList? coinsList,
-  }) : coinsList = coinsList ?? PortfolioCoinsList(coins: []);
+  }) : portfolioCoinsList = coinsList ?? PortfolioCoinsList(coins: []);
 
-  final PortfolioScreenStatus status;
-  final PortfolioCoinsList coinsList;
+  final ScreenStatus status;
+  final PortfolioCoinsList portfolioCoinsList;
 
-  PortfolioState copyWith({
-    PortfolioScreenStatus? status,
-    PortfolioCoinsList? coinsList,
+  PortfolioBlocState copyWith({
+    ScreenStatus? status,
+    PortfolioCoinsList? portfolioCoinsList,
   }) {
-    return PortfolioState(
+    return PortfolioBlocState(
       status: status ?? this.status,
-      coinsList: coinsList ?? this.coinsList,
+      coinsList: portfolioCoinsList ?? this.portfolioCoinsList,
     );
   }
 
   @override
-  List<Object?> get props => [status, coinsList];
+  List<Object?> get props => [status, portfolioCoinsList];
 }
