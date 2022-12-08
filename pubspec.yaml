@@ -11,6 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  get_it: ^7.2.0
+  equatable: ^2.0.5
+
   http: ^0.13.5
 
   json_annotation: ^4.7.0
@@ -19,8 +22,6 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   hive_generator: ^2.0.0
-
-  equatable: ^2.0.5
 
   flutter_bloc: ^8.1.1
   bloc_concurrency: ^0.2.0

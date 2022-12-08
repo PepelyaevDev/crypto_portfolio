@@ -1,8 +1,8 @@
 part of 'add_payment_bloc.dart';
 
-abstract class AddPaymentBloEvent {}
+abstract class AddPaymentBlocEvent {}
 
-class AddPaymentEvent extends AddPaymentBloEvent {
+class AddPaymentEvent extends AddPaymentBlocEvent {
   final Payment payment;
 
   AddPaymentEvent({required this.payment});
