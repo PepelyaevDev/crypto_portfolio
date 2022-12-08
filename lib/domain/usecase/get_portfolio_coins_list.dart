@@ -13,9 +13,8 @@ class GetPortfolioCoinsListUC {
     final List<Payment> paymentList = coinsRepository.getPaymentsList();
 
     List<PortfolioCoin> list = [];
-
     marketCoinsList.coins.forEach((marketCoin) {
-      final List<Payment> payments = paymentList.where((element) => element.symbol == marketCoin.symbol).toList();
+      List<Payment> payments = paymentList.where((element) => element.symbol == marketCoin.symbol).toList();
       if (payments.isNotEmpty) {
         late final double buyPrice;
         late final double allCoinsCurrentPrice;

@@ -51,3 +51,42 @@ class HivePaymentAdapter extends TypeAdapter<HivePayment> {
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
+
+class HivePaymentTypeAdapter extends TypeAdapter<HivePaymentType> {
+  @override
+  final int typeId = 1;
+
+  @override
+  HivePaymentType read(BinaryReader reader) {
+    switch (reader.readByte()) {
+      case 0:
+        return HivePaymentType.Withdraw;
+      case 1:
+        return HivePaymentType.Deposit;
+      default:
+        return HivePaymentType.Withdraw;
+    }
+  }
+
+  @override
+  void write(BinaryWriter writer, HivePaymentType obj) {
+    switch (obj) {
+      case HivePaymentType.Withdraw:
+        writer.writeByte(0);
+        break;
+      case HivePaymentType.Deposit:
+        writer.writeByte(1);
+        break;
+    }
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is HivePaymentTypeAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}

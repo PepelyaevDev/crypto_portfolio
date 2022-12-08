@@ -25,7 +25,10 @@ class HivePayment {
   final double numberOfCoins;
 }
 
+@HiveType(typeId: hivePaymentTypeTypeId)
 enum HivePaymentType {
+  @HiveField(0)
   Withdraw,
+  @HiveField(1)
   Deposit,
 }

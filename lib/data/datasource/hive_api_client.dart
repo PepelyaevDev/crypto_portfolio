@@ -4,17 +4,20 @@ import 'package:crypto_portfolio/data/dto/hive/hive_payment.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class HiveApiClient {
-  final _hivePaymentBox = Hive.box<HivePayment>(hivePaymentBoxName);
-  final _hiveMarketCoinBox = Hive.box<HiveMarketCoin>(hiveMarketCoinBoxName);
+  late final _hivePaymentBox;
+  late final _hiveMarketCoinBox;
 
   Future<void> initHiveApiClient() async {
     await Hive.initFlutter();
 
+    Hive.registerAdapter<HivePaymentType>(HivePaymentTypeAdapter());
     Hive.registerAdapter<HivePayment>(HivePaymentAdapter());
     await Hive.openBox<HivePayment>(hivePaymentBoxName);
+    _hivePaymentBox = Hive.box<HivePayment>(hivePaymentBoxName);
 
     Hive.registerAdapter<HiveMarketCoin>(HiveMarketCoinAdapter());
     await Hive.openBox<HiveMarketCoin>(hiveMarketCoinBoxName);
+    _hiveMarketCoinBox = Hive.box<HiveMarketCoin>(hiveMarketCoinBoxName);
   }
 
   List<HivePayment> getPaymentsList() {
@@ -22,11 +25,11 @@ class HiveApiClient {
   }
 
   Future<void> addPayment(HivePayment payment) async {
-    await _hivePaymentBox.put(payment.dateTime, payment);
+    await _hivePaymentBox.put(payment.dateTime.toString(), payment);
   }
 
   Future<void> deletePayment(HivePayment payment) async {
-    await _hivePaymentBox.delete(payment.dateTime);
+    await _hivePaymentBox.delete(payment.dateTime.toString());
   }
 
   List<HiveMarketCoin> getMarketCoins() {

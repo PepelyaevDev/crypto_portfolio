@@ -8,7 +8,7 @@ part of 'hive_market_coin.dart';
 
 class HiveMarketCoinAdapter extends TypeAdapter<HiveMarketCoin> {
   @override
-  final int typeId = 1;
+  final int typeId = 2;
 
   @override
   HiveMarketCoin read(BinaryReader reader) {
