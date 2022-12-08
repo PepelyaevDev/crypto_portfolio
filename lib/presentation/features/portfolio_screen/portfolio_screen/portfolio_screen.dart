@@ -11,6 +11,12 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   final PortfolioBloc _portfolioBloc = getIt.get<PortfolioBloc>();
 
   @override
+  void initState() {
+    _portfolioBloc.add(UpdatePortfolioCoinsListEvent());
+    super.initState();
+  }
+
+  @override
   void dispose() {
     _portfolioBloc.close();
     super.dispose();
