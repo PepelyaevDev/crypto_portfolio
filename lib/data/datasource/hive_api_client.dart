@@ -20,16 +20,25 @@ class HiveApiClient {
     _hiveMarketCoinBox = Hive.box<HiveMarketCoin>(hiveMarketCoinBoxName);
   }
 
+  String getPaymentKey(DateTime date) {
+    return (date.year.toString() +
+        date.month.toString() +
+        date.day.toString() +
+        date.hour.toString() +
+        date.minute.toString() +
+        date.second.toString());
+  }
+
   List<HivePayment> getPaymentsList() {
     return _hivePaymentBox.values.toList();
   }
 
   Future<void> addPayment(HivePayment payment) async {
-    await _hivePaymentBox.put(payment.dateTime.toString(), payment);
+    await _hivePaymentBox.put(getPaymentKey(payment.dateTime), payment);
   }
 
   Future<void> deletePayment(HivePayment payment) async {
-    await _hivePaymentBox.delete(payment.dateTime.toString());
+    await _hivePaymentBox.delete(getPaymentKey(payment.dateTime));
   }
 
   List<HiveMarketCoin> getMarketCoins() {

@@ -1,6 +1,7 @@
 import 'package:crypto_portfolio/domain/entity/screen_status.dart';
 import 'package:crypto_portfolio/main.dart';
 import 'package:crypto_portfolio/presentation/features/add_payment_screen/add_payment_screen/add_payment_screen.dart';
+import 'package:crypto_portfolio/presentation/features/delete_payment_view/delete_payment_view/delete_payment_view.dart';
 import 'package:crypto_portfolio/presentation/features/portfolio_screen/portfolio_bloc/portfolio_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,8 +46,24 @@ class _PortfolioViewState extends State<PortfolioView> {
                             children: [
                               Text(coin.name),
                               ...coin.history
-                                  .map((payment) =>
-                                      Text(payment.amount.toString() + '  ' + payment.numberOfCoins.toString()))
+                                  .map((payment) => Row(
+                                        children: [
+                                          Text(payment.amount.toString() + '  ' + payment.numberOfCoins.toString()),
+                                          IconButton(
+                                            onPressed: () {
+                                              showDialog(
+                                                  context: context,
+                                                  builder: (_) {
+                                                    return DeletePaymentView(
+                                                      payment: payment,
+                                                      portfolioBloc: context.read<PortfolioBloc>(),
+                                                    );
+                                                  });
+                                            },
+                                            icon: Icon(Icons.delete),
+                                          ),
+                                        ],
+                                      ))
                                   .toList(),
                             ],
                           ))

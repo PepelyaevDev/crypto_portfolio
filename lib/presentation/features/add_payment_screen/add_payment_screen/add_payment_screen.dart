@@ -80,16 +80,16 @@ class _AddPaymentViewState extends State<AddPaymentView> {
           ElevatedButton(
             onPressed: () {
               context.read<AddPaymentBloc>().add(
-                AddPaymentEvent(
-                  payment: Payment(
-                    symbol: context.read<AddPaymentBloc>().state.marketCoinsList.coins[24].symbol,
-                    dateTime: DateTime.now(),
-                    type: PaymentType.Deposit,
-                    amount: double.parse(_amountController.text),
-                    numberOfCoins: double.parse(_numberOfCoinsController.text),
-                  ),
-                ),
-              );
+                    AddPaymentEvent(
+                      payment: Payment(
+                        symbol: context.read<AddPaymentBloc>().state.marketCoinsList.coins[24].symbol,
+                        dateTime: DateTime.now(),
+                        type: PaymentType.Deposit,
+                        amount: double.parse(_amountController.text),
+                        numberOfCoins: double.parse(_numberOfCoinsController.text),
+                      ),
+                    ),
+                  );
             },
             child: Text('Add payment'),
           ),
