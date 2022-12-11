@@ -5,6 +5,7 @@ import 'package:crypto_portfolio/presentation/di/setup_di_presentation_layer.dar
 import 'package:crypto_portfolio/presentation/features/portfolio_screen/portfolio_screen/portfolio_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 final getIt = GetIt.instance;
 
@@ -22,6 +23,8 @@ class CryptoPortfolioApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       home: PortfolioScreen(),
     );
   }
