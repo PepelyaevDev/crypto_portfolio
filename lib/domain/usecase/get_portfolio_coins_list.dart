@@ -16,8 +16,6 @@ class GetPortfolioCoinsListUC {
     marketCoinsList.coins.forEach((marketCoin) {
       List<Payment> payments = paymentList.where((element) => element.symbol == marketCoin.symbol).toList();
       if (payments.isNotEmpty) {
-        late final double buyPrice;
-        late final double allCoinsCurrentPrice;
         double totalAmount = 0;
         double moneyInvested = 0;
         payments.forEach((element) {
@@ -32,18 +30,16 @@ class GetPortfolioCoinsListUC {
               break;
           }
         });
-        buyPrice = moneyInvested / totalAmount;
-        allCoinsCurrentPrice = totalAmount * marketCoin.currentPrice;
         list.add(
           PortfolioCoin(
             symbol: marketCoin.symbol,
             name: marketCoin.name,
             image: marketCoin.image,
             currentPrice: marketCoin.currentPrice,
-            buyPrice: buyPrice,
+            buyPrice: moneyInvested / totalAmount,
             totalAmount: totalAmount,
             moneyInvested: moneyInvested,
-            allCoinsCurrentPrice: allCoinsCurrentPrice,
+            allCoinsCurrentPrice: totalAmount * marketCoin.currentPrice,
             history: payments,
           ),
         );
