@@ -1,8 +1,9 @@
 import 'package:crypto_portfolio/domain/entity/screen_status.dart';
 import 'package:crypto_portfolio/main.dart';
+import 'package:crypto_portfolio/presentation/design_system/widgets/custom_snack_bar.dart';
 import 'package:crypto_portfolio/presentation/features/add_payment_screen/add_payment_screen/add_payment_screen.dart';
-import 'package:crypto_portfolio/presentation/features/delete_payment_view/delete_payment_view/delete_payment_view.dart';
 import 'package:crypto_portfolio/presentation/features/portfolio_screen/portfolio_bloc/portfolio_bloc.dart';
+import 'package:crypto_portfolio/presentation/features/portfolio_screen/portfolio_screen/widgets/portfolio_coin_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -47,33 +48,7 @@ class _PortfolioViewState extends State<PortfolioView> {
                 return Column(
                   children: [
                     if (state.status == ScreenStatus.loading) CircularProgressIndicator(),
-                    ...state.portfolioCoinsList.coins
-                        .map((coin) => Column(
-                              children: [
-                                Text(coin.name),
-                                ...coin.history
-                                    .map((payment) => Row(
-                                          children: [
-                                            Text(payment.amount.toString() + '  ' + payment.numberOfCoins.toString()),
-                                            IconButton(
-                                              onPressed: () {
-                                                showDialog(
-                                                    context: context,
-                                                    builder: (_) {
-                                                      return DeletePaymentView(
-                                                        payment: payment,
-                                                        portfolioBloc: context.read<PortfolioBloc>(),
-                                                      );
-                                                    });
-                                              },
-                                              icon: Icon(Icons.delete),
-                                            ),
-                                          ],
-                                        ))
-                                    .toList(),
-                              ],
-                            ))
-                        .toList(),
+                    ...state.portfolioCoinsList.coins.map((coin) => PortfolioCoinWidget(coin: coin)).toList(),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push<void>(
@@ -87,15 +62,14 @@ class _PortfolioViewState extends State<PortfolioView> {
               },
               listener: (_, PortfolioBlocState state) {
                 if (state.status == ScreenStatus.success) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    duration: const Duration(milliseconds: 800),
-                    content: Text('Data updated'),
-                  ));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    CustomSnackBar('Data updated'),
+                  );
                 }
                 if (state.status == ScreenStatus.failure) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Data not updated'),
-                  ));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    CustomSnackBar('Data not updated'),
+                  );
                 }
               },
             ),
