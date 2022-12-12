@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'hive_constants.dart';
+import '../../datasource/hive_api_client/core/hive_constants.dart';
 
 part 'hive_payment.g.dart';
 

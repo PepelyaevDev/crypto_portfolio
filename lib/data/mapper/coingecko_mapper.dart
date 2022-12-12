@@ -1,5 +1,5 @@
 import 'package:crypto_portfolio/data/dto/coingecko/coingecko_market_coins_list.dart';
-import 'package:crypto_portfolio/domain/entity/market_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/feature/market_coins/market_coins_list.dart';
 
 class CoingeckoMapper {
   MarketCoinsList marketCoinsListDtoToUi(CoingeckoMarketCoinsList data) {

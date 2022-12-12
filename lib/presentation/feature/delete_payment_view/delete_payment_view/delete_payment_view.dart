@@ -1,9 +1,9 @@
-import 'package:crypto_portfolio/domain/entity/payment.dart';
-import 'package:crypto_portfolio/domain/entity/screen_status.dart';
+import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
+import 'package:crypto_portfolio/domain/entity/core/screen_status.dart';
 import 'package:crypto_portfolio/main.dart';
 import 'package:crypto_portfolio/presentation/design_system/core/border_radius.dart';
-import 'package:crypto_portfolio/presentation/features/delete_payment_view/delete_payment_bloc/delete_payment_bloc.dart';
-import 'package:crypto_portfolio/presentation/features/portfolio_screen/portfolio_bloc/portfolio_bloc.dart';
+import 'package:crypto_portfolio/presentation/feature/delete_payment_view/delete_payment_bloc/delete_payment_bloc.dart';
+import 'package:crypto_portfolio/presentation/feature/portfolio_screen/portfolio_bloc/portfolio_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,9 +1,9 @@
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:crypto_portfolio/domain/entity/market_coins_list.dart';
-import 'package:crypto_portfolio/domain/entity/payment.dart';
-import 'package:crypto_portfolio/domain/entity/screen_status.dart';
-import 'package:crypto_portfolio/domain/usecase/add_payment.dart';
-import 'package:crypto_portfolio/domain/usecase/get_market_coins_list_local.dart';
+import 'package:crypto_portfolio/domain/entity/feature/market_coins/market_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
+import 'package:crypto_portfolio/domain/entity/core/screen_status.dart';
+import 'package:crypto_portfolio/domain/usecase/portfolio_coins/add_payment.dart';
+import 'package:crypto_portfolio/domain/usecase/market_coins/get_market_coins_list_local.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

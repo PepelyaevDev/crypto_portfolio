@@ -1,7 +1,7 @@
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:crypto_portfolio/domain/entity/payment.dart';
-import 'package:crypto_portfolio/domain/entity/screen_status.dart';
-import 'package:crypto_portfolio/domain/usecase/delete_payment.dart';
+import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
+import 'package:crypto_portfolio/domain/entity/core/screen_status.dart';
+import 'package:crypto_portfolio/domain/usecase/portfolio_coins/delete_payment.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

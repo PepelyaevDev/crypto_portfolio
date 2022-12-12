@@ -1,7 +1,7 @@
 import 'package:crypto_portfolio/data/dto/hive/hive_market_coin.dart';
 import 'package:crypto_portfolio/data/dto/hive/hive_payment.dart';
-import 'package:crypto_portfolio/domain/entity/market_coins_list.dart';
-import 'package:crypto_portfolio/domain/entity/payment.dart';
+import 'package:crypto_portfolio/domain/entity/feature/market_coins/market_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
 
 class HiveMapper {
   MarketCoinsList marketCoinsListDtoToUi(List<HiveMarketCoin> data) {

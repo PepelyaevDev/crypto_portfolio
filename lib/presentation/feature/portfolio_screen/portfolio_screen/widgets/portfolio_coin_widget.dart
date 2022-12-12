@@ -1,6 +1,6 @@
-import 'package:crypto_portfolio/domain/entity/portfolio_coins_list.dart';
-import 'package:crypto_portfolio/presentation/features/delete_payment_view/delete_payment_view/delete_payment_view.dart';
-import 'package:crypto_portfolio/presentation/features/portfolio_screen/portfolio_bloc/portfolio_bloc.dart';
+import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/portfolio_coins_list.dart';
+import 'package:crypto_portfolio/presentation/feature/delete_payment_view/delete_payment_view/delete_payment_view.dart';
+import 'package:crypto_portfolio/presentation/feature/portfolio_screen/portfolio_bloc/portfolio_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

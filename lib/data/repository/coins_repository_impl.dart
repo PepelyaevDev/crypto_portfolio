@@ -1,9 +1,9 @@
-import 'package:crypto_portfolio/data/datasource/coingecko_api_client.dart';
-import 'package:crypto_portfolio/data/datasource/hive_api_client.dart';
+import 'package:crypto_portfolio/data/datasource/coingecko_api_client/coingecko_api_client.dart';
+import 'package:crypto_portfolio/data/datasource/hive_api_client/hive_api_client.dart';
 import 'package:crypto_portfolio/data/mapper/coingecko_mapper.dart';
 import 'package:crypto_portfolio/data/mapper/hive_mapper.dart';
-import 'package:crypto_portfolio/domain/entity/market_coins_list.dart';
-import 'package:crypto_portfolio/domain/entity/payment.dart';
+import 'package:crypto_portfolio/domain/entity/feature/market_coins/market_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
 import 'package:crypto_portfolio/domain/repository/coins_repository.dart';
 
 class CoinsRepositoryImpl implements CoinsRepository {

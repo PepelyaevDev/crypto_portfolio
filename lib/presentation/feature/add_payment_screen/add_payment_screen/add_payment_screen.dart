@@ -1,8 +1,8 @@
-import 'package:crypto_portfolio/domain/entity/payment.dart';
-import 'package:crypto_portfolio/domain/entity/screen_status.dart';
+import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
+import 'package:crypto_portfolio/domain/entity/core/screen_status.dart';
 import 'package:crypto_portfolio/main.dart';
-import 'package:crypto_portfolio/presentation/features/add_payment_screen/add_payment_bloc/add_payment_bloc.dart';
-import 'package:crypto_portfolio/presentation/features/portfolio_screen/portfolio_bloc/portfolio_bloc.dart';
+import 'package:crypto_portfolio/presentation/feature/add_payment_screen/add_payment_bloc/add_payment_bloc.dart';
+import 'package:crypto_portfolio/presentation/feature/portfolio_screen/portfolio_bloc/portfolio_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,4 +1,4 @@
-import 'package:crypto_portfolio/domain/entity/payment.dart';
+import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
 import 'package:crypto_portfolio/domain/repository/coins_repository.dart';
 
 class DeletePaymentUC {

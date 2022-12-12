@@ -1,9 +1,9 @@
-import 'package:crypto_portfolio/domain/entity/screen_status.dart';
+import 'package:crypto_portfolio/domain/entity/core/screen_status.dart';
 import 'package:crypto_portfolio/main.dart';
 import 'package:crypto_portfolio/presentation/design_system/widgets/custom_snack_bar.dart';
-import 'package:crypto_portfolio/presentation/features/add_payment_screen/add_payment_screen/add_payment_screen.dart';
-import 'package:crypto_portfolio/presentation/features/portfolio_screen/portfolio_bloc/portfolio_bloc.dart';
-import 'package:crypto_portfolio/presentation/features/portfolio_screen/portfolio_screen/widgets/portfolio_coin_widget.dart';
+import 'package:crypto_portfolio/presentation/feature/add_payment_screen/add_payment_screen/add_payment_screen.dart';
+import 'package:crypto_portfolio/presentation/feature/portfolio_screen/portfolio_bloc/portfolio_bloc.dart';
+import 'package:crypto_portfolio/presentation/feature/portfolio_screen/portfolio_screen/widgets/portfolio_coin_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

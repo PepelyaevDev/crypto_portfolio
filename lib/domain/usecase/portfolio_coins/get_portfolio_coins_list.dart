@@ -1,6 +1,6 @@
-import 'package:crypto_portfolio/domain/entity/market_coins_list.dart';
-import 'package:crypto_portfolio/domain/entity/payment.dart';
-import 'package:crypto_portfolio/domain/entity/portfolio_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/feature/market_coins/market_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
+import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/portfolio_coins_list.dart';
 import 'package:crypto_portfolio/domain/repository/coins_repository.dart';
 
 class GetPortfolioCoinsListUC {

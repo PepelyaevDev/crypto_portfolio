@@ -1,8 +1,8 @@
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:crypto_portfolio/domain/entity/portfolio_coins_list.dart';
-import 'package:crypto_portfolio/domain/entity/screen_status.dart';
-import 'package:crypto_portfolio/domain/usecase/get_portfolio_coins_list.dart';
-import 'package:crypto_portfolio/domain/usecase/update_market_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/portfolio_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/core/screen_status.dart';
+import 'package:crypto_portfolio/domain/usecase/portfolio_coins/get_portfolio_coins_list.dart';
+import 'package:crypto_portfolio/domain/usecase/market_coins/update_market_coins_list.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
