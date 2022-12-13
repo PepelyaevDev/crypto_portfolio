@@ -1,12 +1,12 @@
 import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
-import 'package:crypto_portfolio/domain/repository/coins_repository.dart';
+import 'package:crypto_portfolio/domain/repository/payments_repository.dart';
 
 class AddPaymentUC {
-  AddPaymentUC({required this.coinsRepository});
+  AddPaymentUC({required this.paymentsRepository});
 
-  final CoinsRepository coinsRepository;
+  final PaymentsRepository paymentsRepository;
 
   Future<void> call(Payment payment) async {
-    return await coinsRepository.addPayment(payment);
+    return await paymentsRepository.addPayment(payment);
   }
 }

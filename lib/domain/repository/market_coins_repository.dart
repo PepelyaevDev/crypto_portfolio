@@ -1,11 +1,7 @@
 import 'package:crypto_portfolio/domain/entity/feature/market_coins/market_coins_list.dart';
-import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
 
-abstract class CoinsRepository {
+abstract class MarketCoinsRepository {
   Future<MarketCoinsList> getMarketCoinsListRemote ();
   MarketCoinsList getMarketCoinsListLocal ();
   Future<void> updateMarketCoinsListLocal (MarketCoinsList marketCoinsList);
-  List<Payment> getPaymentsList ();
-  Future<void> addPayment (Payment payment);
-  Future<void> deletePayment (Payment payment);
 }

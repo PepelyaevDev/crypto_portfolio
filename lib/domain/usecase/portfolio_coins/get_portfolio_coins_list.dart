@@ -1,16 +1,18 @@
 import 'package:crypto_portfolio/domain/entity/feature/market_coins/market_coins_list.dart';
 import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
 import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/portfolio_coins_list.dart';
-import 'package:crypto_portfolio/domain/repository/coins_repository.dart';
+import 'package:crypto_portfolio/domain/repository/market_coins_repository.dart';
+import 'package:crypto_portfolio/domain/repository/payments_repository.dart';
 
 class GetPortfolioCoinsListUC {
-  GetPortfolioCoinsListUC({required this.coinsRepository});
+  GetPortfolioCoinsListUC({required this.paymentsRepository, required this.marketCoinsRepository});
 
-  final CoinsRepository coinsRepository;
+  final PaymentsRepository paymentsRepository;
+  final MarketCoinsRepository marketCoinsRepository;
 
   PortfolioCoinsList call() {
-    final MarketCoinsList marketCoinsList = coinsRepository.getMarketCoinsListLocal();
-    final List<Payment> paymentList = coinsRepository.getPaymentsList();
+    final MarketCoinsList marketCoinsList = marketCoinsRepository.getMarketCoinsListLocal();
+    final List<Payment> paymentList = paymentsRepository.getPaymentsList();
 
     List<PortfolioCoin> list = [];
     marketCoinsList.coins.forEach((marketCoin) {
