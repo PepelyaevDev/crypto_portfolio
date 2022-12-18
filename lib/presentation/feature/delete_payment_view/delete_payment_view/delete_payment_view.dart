@@ -1,7 +1,6 @@
 import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
 import 'package:crypto_portfolio/domain/entity/core/screen_status.dart';
 import 'package:crypto_portfolio/main.dart';
-import 'package:crypto_portfolio/presentation/design_system/core/border_radius.dart';
 import 'package:crypto_portfolio/presentation/feature/delete_payment_view/delete_payment_bloc/delete_payment_bloc.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_screen/portfolio_bloc/portfolio_bloc.dart';
 import 'package:flutter/material.dart';
@@ -39,10 +38,10 @@ class _DeletePaymentDialogState extends State<DeletePaymentDialog> {
   Widget build(BuildContext context) {
     return Center(
       child: Material(
-        borderRadius: borderRadius15,
+        borderRadius: BorderRadius.circular(15),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: borderRadius15,
+            borderRadius: BorderRadius.circular(15),
             border: Border.all(color: Colors.black),
             color: Colors.white,
           ),

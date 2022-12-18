@@ -1,6 +1,6 @@
 import 'package:crypto_portfolio/domain/entity/core/screen_status.dart';
 import 'package:crypto_portfolio/main.dart';
-import 'package:crypto_portfolio/presentation/design_system/widgets/custom_snack_bar.dart';
+import 'package:crypto_portfolio/presentation/design_system/custom_snack_bar.dart';
 import 'package:crypto_portfolio/presentation/feature/add_payment_screen/add_payment_screen/add_payment_screen.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_screen/portfolio_bloc/portfolio_bloc.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_screen/portfolio_screen/widgets/portfolio_coin_widget.dart';
@@ -42,20 +42,21 @@ class _PortfolioViewState extends State<PortfolioView> {
         },
         child: ListView(
           children: [
-            Text(AppLocalizations.of(context)!.helloWorld),
             BlocConsumer<PortfolioBloc, PortfolioBlocState>(
               builder: (_, PortfolioBlocState state) {
                 return Column(
                   children: [
                     if (state.status == ScreenStatus.loading) CircularProgressIndicator(),
-                    ...state.portfolioCoinsList.coins.map((coin) => PortfolioCoinWidget(coin: coin)).toList(),
+                    ...state.portfolioCoinsList.coins
+                        .map((coin) => PortfolioCoinWidget(coin: coin))
+                        .toList(),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push<void>(
                           AddPaymentScreen.route(context.read<PortfolioBloc>()),
                         );
                       },
-                      child: Text('Add Payment'),
+                      child: Text(AppLocalizations.of(context)!.addPayment),
                     ),
                   ],
                 );
@@ -63,12 +64,12 @@ class _PortfolioViewState extends State<PortfolioView> {
               listener: (_, PortfolioBlocState state) {
                 if (state.status == ScreenStatus.success) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    CustomSnackBar('Data updated'),
+                    CustomSnackBar(AppLocalizations.of(context)!.dataUpdated),
                   );
                 }
                 if (state.status == ScreenStatus.failure) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    CustomSnackBar('Data not updated'),
+                    CustomSnackBar(AppLocalizations.of(context)!.dataNotUpdated),
                   );
                 }
               },

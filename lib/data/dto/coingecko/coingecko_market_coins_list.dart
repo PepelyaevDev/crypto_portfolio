@@ -6,7 +6,8 @@ part 'coingecko_market_coins_list.g.dart';
 class CoingeckoMarketCoinsList {
   const CoingeckoMarketCoinsList({required this.coins});
 
-  factory CoingeckoMarketCoinsList.fromJson(List<dynamic> json) => _$CoingeckoMarketCoinsListFromJson(<String, dynamic>{'coins': json});
+  factory CoingeckoMarketCoinsList.fromJson(List<dynamic> json) =>
+      _$CoingeckoMarketCoinsListFromJson(<String, dynamic>{'coins': json});
 
   final List<CoingeckoMarketCoin> coins;
 }
@@ -42,7 +43,8 @@ class CoingeckoMarketCoin {
     required this.lastUpdated,
   });
 
-  factory CoingeckoMarketCoin.fromJson(Map<String, dynamic> json) => _$CoingeckoMarketCoinFromJson(json);
+  factory CoingeckoMarketCoin.fromJson(Map<String, dynamic> json) =>
+      _$CoingeckoMarketCoinFromJson(json);
 
   final String id;
   final String symbol;

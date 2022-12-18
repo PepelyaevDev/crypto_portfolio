@@ -1,3 +1,5 @@
 {
-    "helloWorld": "Hello World!"
+    "addPayment": "Add payment",
+    "dataUpdated": "Data updated",
+    "dataNotUpdated": "Data not updated"
 }

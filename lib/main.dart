@@ -1,4 +1,5 @@
-import 'package:crypto_portfolio/data/datasource/hive_api_client/core/hive_init.dart';
+import 'package:crypto_portfolio/data/datasource/local_data_source/hive_api_client/core/hive_init'
+    '.dart';
 import 'package:crypto_portfolio/data/di/setup_di_data_layer.dart';
 import 'package:crypto_portfolio/domain/di/setup_di_domain_layer.dart';
 import 'package:crypto_portfolio/presentation/di/setup_di_presentation_layer.dart';

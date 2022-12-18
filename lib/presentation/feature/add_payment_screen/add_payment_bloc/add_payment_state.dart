@@ -7,7 +7,8 @@ class AddPaymentBlocState extends Equatable {
   final MarketCoinsList marketCoinsList;
 
   AddPaymentBlocState copyWith({ScreenStatus? status}) {
-    return AddPaymentBlocState(status: status ?? this.status, marketCoinsList: this.marketCoinsList);
+    return AddPaymentBlocState(
+        status: status ?? this.status, marketCoinsList: this.marketCoinsList);
   }
 
   @override

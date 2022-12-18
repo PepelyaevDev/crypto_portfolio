@@ -16,7 +16,8 @@ class DeletePaymentBloc extends Bloc<DeletePaymentBlocEvent, DeletePaymentBlocSt
 
   final DeletePaymentUC deletePaymentUC;
 
-  Future<void> _deletePayment(DeletePaymentEvent event, Emitter<DeletePaymentBlocState> emit) async {
+  Future<void> _deletePayment(
+      DeletePaymentEvent event, Emitter<DeletePaymentBlocState> emit) async {
     emit(state.copyWith(status: ScreenStatus.loading));
     try {
       await deletePaymentUC.call(event.payment);

@@ -6,7 +6,8 @@ part 'coingecko_exception.g.dart';
 class CoingeckoException implements Exception {
   const CoingeckoException({required this.status});
 
-  factory CoingeckoException.fromJson(Map<String, dynamic> json) => _$CoingeckoExceptionFromJson(json);
+  factory CoingeckoException.fromJson(Map<String, dynamic> json) =>
+      _$CoingeckoExceptionFromJson(json);
 
   final CoingeckoExceptionStatus status;
 }
@@ -18,7 +19,8 @@ class CoingeckoExceptionStatus {
     required this.errorMessage,
   });
 
-  factory CoingeckoExceptionStatus.fromJson(Map<String, dynamic> json) => _$CoingeckoExceptionStatusFromJson(json);
+  factory CoingeckoExceptionStatus.fromJson(Map<String, dynamic> json) =>
+      _$CoingeckoExceptionStatusFromJson(json);
 
   @JsonKey(name: 'error_code')
   final int errorCode;

@@ -1,9 +1,9 @@
 import 'package:hive/hive.dart';
-import '../../datasource/hive_api_client/core/hive_constants.dart';
+import '../../datasource/local_data_source/hive_api_client/core/hive_constants.dart';
 
 part 'hive_payment.g.dart';
 
-@HiveType(typeId: hivePaymentTypeId)
+@HiveType(typeId: HiveConstants.hivePaymentTypeId)
 class HivePayment {
   const HivePayment({
     required this.symbol,
@@ -25,7 +25,7 @@ class HivePayment {
   final double numberOfCoins;
 }
 
-@HiveType(typeId: hivePaymentTypeTypeId)
+@HiveType(typeId: HiveConstants.hivePaymentTypeTypeId)
 enum HivePaymentType {
   @HiveField(0)
   Withdraw,

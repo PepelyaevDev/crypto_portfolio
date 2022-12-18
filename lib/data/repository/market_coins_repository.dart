@@ -1,35 +1,35 @@
-import 'package:crypto_portfolio/data/datasource/coingecko_api_client/coingecko_api_client.dart';
-import 'package:crypto_portfolio/data/datasource/hive_api_client/feature/hive_market_coins_client.dart';
-import 'package:crypto_portfolio/data/mapper/coingecko_mapper.dart';
-import 'package:crypto_portfolio/data/mapper/hive_mapper.dart';
+import 'package:crypto_portfolio/data/datasource/local_data_source/hive_api_client/feature'
+    '/hive_market_coins_client.dart';
+import 'package:crypto_portfolio/data/datasource/remote_data_source/coingecko_source/market_coins/market_coins_remote_source.dart';
+import 'package:crypto_portfolio/data/mapper/market_coins_mapper.dart';
 import 'package:crypto_portfolio/domain/entity/feature/market_coins/market_coins_list.dart';
 import 'package:crypto_portfolio/domain/repository/market_coins_repository.dart';
 
 class MarketCoinsRepositoryImpl implements MarketCoinsRepository {
   MarketCoinsRepositoryImpl({
-    required this.coinGeckoApiClient,
+    required this.marketCoinsRemoteSource,
     required this.hiveMarketCoinsClient,
-    required this.coingeckoMapper,
-    required this.hiveMapper,
+    required this.marketCoinsMapper,
   });
 
-  final CoinGeckoApiClient coinGeckoApiClient;
+  final MarketCoinsRemoteSource marketCoinsRemoteSource;
   final HiveMarketCoinsClient hiveMarketCoinsClient;
-  final CoingeckoMapper coingeckoMapper;
-  final HiveMapper hiveMapper;
+  final MarketCoinsMapper marketCoinsMapper;
 
   @override
   Future<MarketCoinsList> getMarketCoinsListRemote() async {
-    return coingeckoMapper.marketCoinsListDtoToUi(await coinGeckoApiClient.getCoins());
+    return marketCoinsMapper.marketCoinsListCoingeckoToUi(
+        await marketCoinsRemoteSource.getMarketCoinsList());
   }
 
   @override
   MarketCoinsList getMarketCoinsListLocal() {
-    return hiveMapper.marketCoinsListDtoToUi(hiveMarketCoinsClient.getMarketCoins());
+    return marketCoinsMapper.marketCoinsListHiveToUi(hiveMarketCoinsClient.getMarketCoins());
   }
 
   @override
   Future<void> updateMarketCoinsListLocal(MarketCoinsList marketCoinsList) async {
-    await hiveMarketCoinsClient.updateMarketCoins(hiveMapper.marketCoinsListUiToDto(marketCoinsList));
+    await hiveMarketCoinsClient
+        .updateMarketCoins(marketCoinsMapper.marketCoinsListUiToHive(marketCoinsList));
   }
 }

@@ -1,9 +1,9 @@
 import 'package:hive/hive.dart';
-import '../../datasource/hive_api_client/core/hive_constants.dart';
+import '../../datasource/local_data_source/hive_api_client/core/hive_constants.dart';
 
 part 'hive_market_coin.g.dart';
 
-@HiveType(typeId: hiveMarketCoinTypeId)
+@HiveType(typeId: HiveConstants.hiveMarketCoinTypeId)
 class HiveMarketCoin {
   const HiveMarketCoin({
     required this.symbol,

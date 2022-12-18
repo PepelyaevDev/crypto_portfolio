@@ -1,3 +1,5 @@
 {
-    "helloWorld": "Привет Мир!"
+    "addPayment": "Добавить платеж",
+    "dataUpdated": "Данные обновлены",
+    "dataNotUpdated": "Данные не обновлены"
 }

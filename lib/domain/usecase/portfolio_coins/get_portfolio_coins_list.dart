@@ -16,7 +16,8 @@ class GetPortfolioCoinsListUC {
 
     List<PortfolioCoin> list = [];
     marketCoinsList.coins.forEach((marketCoin) {
-      List<Payment> payments = paymentList.where((element) => element.symbol == marketCoin.symbol).toList();
+      List<Payment> payments =
+          paymentList.where((element) => element.symbol == marketCoin.symbol).toList();
       if (payments.isNotEmpty) {
         double totalAmount = 0;
         double moneyInvested = 0;

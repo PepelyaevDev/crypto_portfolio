@@ -82,7 +82,8 @@ class _AddPaymentViewState extends State<AddPaymentView> {
               context.read<AddPaymentBloc>().add(
                     AddPaymentEvent(
                       payment: Payment(
-                        symbol: context.read<AddPaymentBloc>().state.marketCoinsList.coins[24].symbol,
+                        symbol:
+                            context.read<AddPaymentBloc>().state.marketCoinsList.coins[24].symbol,
                         dateTime: DateTime.now(),
                         type: PaymentType.Deposit,
                         amount: double.parse(_amountController.text),
