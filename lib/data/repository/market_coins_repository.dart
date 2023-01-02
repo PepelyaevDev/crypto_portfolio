@@ -18,8 +18,8 @@ class MarketCoinsRepositoryImpl implements MarketCoinsRepository {
 
   @override
   Future<MarketCoinsList> getMarketCoinsListRemote() async {
-    return marketCoinsMapper.marketCoinsListCoingeckoToUi(
-        await marketCoinsRemoteSource.getMarketCoinsList());
+    return marketCoinsMapper
+        .marketCoinsListCoingeckoToUi(await marketCoinsRemoteSource.getMarketCoinsList());
   }
 
   @override

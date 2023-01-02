@@ -1,6 +1,6 @@
 import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
-import 'package:crypto_portfolio/presentation/feature/delete_payment_view/delete_payment_view/delete_payment_view.dart';
-import 'package:crypto_portfolio/presentation/feature/portfolio_screen/portfolio_bloc/portfolio_bloc.dart';
+import 'package:crypto_portfolio/presentation/feature/portfolio_page/bloc/portfolio_bloc/portfolio_bloc.dart';
+import 'package:crypto_portfolio/presentation/feature/portfolio_page/ui/widgets/delete_payment_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,7 +19,7 @@ class PaymentWidget extends StatelessWidget {
             showDialog(
                 context: context,
                 builder: (_) {
-                  return DeletePaymentView(
+                  return DeletePaymentWindow(
                     payment: payment,
                     portfolioBloc: context.read<PortfolioBloc>(),
                   );

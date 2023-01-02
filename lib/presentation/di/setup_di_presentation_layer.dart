@@ -4,9 +4,9 @@ import 'package:crypto_portfolio/domain/usecase/market_coins/get_market_coins_li
 import 'package:crypto_portfolio/domain/usecase/portfolio_coins/get_portfolio_coins_list.dart';
 import 'package:crypto_portfolio/domain/usecase/market_coins/update_market_coins_list.dart';
 import 'package:crypto_portfolio/main.dart';
-import 'package:crypto_portfolio/presentation/feature/add_payment_screen/add_payment_bloc/add_payment_bloc.dart';
-import 'package:crypto_portfolio/presentation/feature/delete_payment_view/delete_payment_bloc/delete_payment_bloc.dart';
-import 'package:crypto_portfolio/presentation/feature/portfolio_screen/portfolio_bloc/portfolio_bloc.dart';
+import 'package:crypto_portfolio/presentation/feature/portfolio_page/bloc/add_payment_bloc/add_payment_bloc.dart';
+import 'package:crypto_portfolio/presentation/feature/portfolio_page/bloc/delete_payment_bloc/delete_payment_bloc.dart';
+import 'package:crypto_portfolio/presentation/feature/portfolio_page/bloc/portfolio_bloc/portfolio_bloc.dart';
 
 void setupDiPresentationLayer() {
   //Bloc

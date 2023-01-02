@@ -44,7 +44,5 @@ class HiveMarketCoinAdapter extends TypeAdapter<HiveMarketCoin> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is HiveMarketCoinAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is HiveMarketCoinAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }

@@ -47,9 +47,7 @@ class HivePaymentAdapter extends TypeAdapter<HivePayment> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is HivePaymentAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is HivePaymentAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 class HivePaymentTypeAdapter extends TypeAdapter<HivePaymentType> {
@@ -86,7 +84,5 @@ class HivePaymentTypeAdapter extends TypeAdapter<HivePaymentType> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is HivePaymentTypeAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is HivePaymentTypeAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
