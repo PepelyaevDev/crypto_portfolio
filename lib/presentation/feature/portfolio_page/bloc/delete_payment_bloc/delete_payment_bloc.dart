@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment.dart';
 import 'package:crypto_portfolio/domain/usecase/portfolio_coins/delete_payment.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

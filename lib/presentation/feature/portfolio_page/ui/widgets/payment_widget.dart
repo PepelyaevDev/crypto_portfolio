@@ -1,4 +1,4 @@
-import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_page/bloc/portfolio_bloc/portfolio_bloc.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_page/ui/widgets/delete_payment_window.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,7 @@ class PaymentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(payment.amount.toString() + '  ' + payment.numberOfCoins.toString()),
+        Text('${payment.amount}  ${payment.numberOfCoins}'),
         IconButton(
           onPressed: () {
             showDialog(

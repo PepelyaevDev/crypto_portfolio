@@ -1,6 +1,7 @@
-import 'package:crypto_portfolio/domain/entity/feature/market_coins/market_coins_list.dart';
-import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
-import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/portfolio_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/market_coins/market_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment_type.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/portfolio_coins_list.dart';
 import 'package:crypto_portfolio/domain/repository/market_coins_repository.dart';
 import 'package:crypto_portfolio/domain/repository/payments_repository.dart';
 
@@ -11,28 +12,28 @@ class GetPortfolioCoinsListUC {
   final MarketCoinsRepository marketCoinsRepository;
 
   PortfolioCoinsList call() {
-    final MarketCoinsList marketCoinsList = marketCoinsRepository.getMarketCoinsListLocal();
-    final List<Payment> paymentList = paymentsRepository.getPaymentsList();
+    final List<MarketCoin> marketCoinsList = marketCoinsRepository.getMarketCoinsLocal();
+    final List<Payment> paymentList = paymentsRepository.getPayments();
 
     List<PortfolioCoin> list = [];
-    marketCoinsList.coins.forEach((marketCoin) {
+    for (var marketCoin in marketCoinsList) {
       List<Payment> payments =
           paymentList.where((element) => element.symbol == marketCoin.symbol).toList();
       if (payments.isNotEmpty) {
         double totalAmount = 0;
         double moneyInvested = 0;
-        payments.forEach((element) {
-          switch (element.type) {
-            case PaymentType.Withdraw:
+        for (var element in payments) {
+          switch (element.type.name) {
+            case Withdraw.title:
               totalAmount = totalAmount - element.numberOfCoins;
               moneyInvested = moneyInvested - element.amount;
               break;
-            case PaymentType.Deposit:
+            case Deposit.title:
               totalAmount = totalAmount + element.numberOfCoins;
               moneyInvested = moneyInvested - element.amount;
               break;
           }
-        });
+        }
         list.add(
           PortfolioCoin(
             symbol: marketCoin.symbol,
@@ -47,7 +48,7 @@ class GetPortfolioCoinsListUC {
           ),
         );
       }
-    });
+    }
     return PortfolioCoinsList(coins: list);
   }
 }

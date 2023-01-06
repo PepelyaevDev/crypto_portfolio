@@ -108,7 +108,7 @@ class __$$_DeleteCopyWithImpl<$Res> extends _$DeletePaymentEventCopyWithImpl<$Re
     Object? payment = null,
   }) {
     return _then(_$_Delete(
-      null == payment
+      payment: null == payment
           ? _value.payment
           : payment // ignore: cast_nullable_to_non_nullable
               as Payment,
@@ -119,7 +119,7 @@ class __$$_DeleteCopyWithImpl<$Res> extends _$DeletePaymentEventCopyWithImpl<$Re
 /// @nodoc
 
 class _$_Delete implements _Delete {
-  const _$_Delete(this.payment);
+  const _$_Delete({required this.payment});
 
   @override
   final Payment payment;
@@ -204,7 +204,7 @@ class _$_Delete implements _Delete {
 }
 
 abstract class _Delete implements DeletePaymentEvent {
-  const factory _Delete(final Payment payment) = _$_Delete;
+  const factory _Delete({required final Payment payment}) = _$_Delete;
 
   @override
   Payment get payment;

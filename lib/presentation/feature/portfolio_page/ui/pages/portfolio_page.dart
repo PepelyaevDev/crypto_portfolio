@@ -34,7 +34,8 @@ class PortfolioPage extends StatelessWidget {
                             .map((coin) => PortfolioCoinWidget(coin: coin))
                             .toList(),
                       ),
-                      orElse: () => CircularProgressIndicator(),
+                      loading: () => CircularProgressIndicator(),
+                      orElse: () => SizedBox(),
                     );
                   },
                   listener: (_, PortfolioState state) {

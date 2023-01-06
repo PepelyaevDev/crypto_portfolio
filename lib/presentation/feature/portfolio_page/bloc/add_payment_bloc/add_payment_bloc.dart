@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:crypto_portfolio/domain/entity/feature/market_coins/market_coins_list.dart';
-import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
+import 'package:crypto_portfolio/domain/entity/market_coins/market_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment.dart';
 import 'package:crypto_portfolio/domain/usecase/market_coins/get_market_coins_list_local.dart';
 import 'package:crypto_portfolio/domain/usecase/portfolio_coins/add_payment.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -19,7 +19,7 @@ class AddPaymentBloc extends Bloc<AddPaymentEvent, AddPaymentState> {
   AddPaymentBloc({
     required this.getMarketCoinsListLocalUC,
     required this.addPaymentUC,
-  }) : super(AddPaymentState.initial(getMarketCoinsListLocalUC.call())) {
+  }) : super(AddPaymentState.initial(marketCoinsList: getMarketCoinsListLocalUC.call())) {
     on<AddPaymentEvent>(
       (event, emit) => event.map(
         add: (event) => _addPayment(event, emit),

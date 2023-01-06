@@ -1,5 +1,6 @@
-import 'package:crypto_portfolio/domain/entity/feature/market_coins/market_coins_list.dart';
-import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
+import 'package:crypto_portfolio/domain/entity/market_coins/market_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment_type.dart';
 import 'package:crypto_portfolio/main.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_page/bloc/add_payment_bloc/add_payment_bloc.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_page/bloc/portfolio_bloc/portfolio_bloc.dart';
@@ -16,7 +17,7 @@ class AddPaymentPage extends StatefulWidget {
 }
 
 class _AddPaymentPageState extends State<AddPaymentPage> {
-  late final MarketCoinsList marketCoinsList;
+  late final List<MarketCoin> marketCoinsList;
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _numberOfCoinsController = TextEditingController();
 
@@ -79,10 +80,10 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                   onPressed: () {
                     context.read<AddPaymentBloc>().add(
                           AddPaymentEvent.add(
-                            Payment(
-                              symbol: marketCoinsList.coins[24].symbol,
+                            payment: Payment(
+                              symbol: marketCoinsList[24].symbol,
                               dateTime: DateTime.now(),
-                              type: PaymentType.Deposit,
+                              type: Deposit(),
                               amount: double.parse(_amountController.text),
                               numberOfCoins: double.parse(_numberOfCoinsController.text),
                             ),

@@ -105,7 +105,7 @@ class __$$_AddCopyWithImpl<$Res> extends _$AddPaymentEventCopyWithImpl<$Res, _$_
     Object? payment = null,
   }) {
     return _then(_$_Add(
-      null == payment
+      payment: null == payment
           ? _value.payment
           : payment // ignore: cast_nullable_to_non_nullable
               as Payment,
@@ -116,7 +116,7 @@ class __$$_AddCopyWithImpl<$Res> extends _$AddPaymentEventCopyWithImpl<$Res, _$_
 /// @nodoc
 
 class _$_Add implements _Add {
-  const _$_Add(this.payment);
+  const _$_Add({required this.payment});
 
   @override
   final Payment payment;
@@ -200,7 +200,7 @@ class _$_Add implements _Add {
 }
 
 abstract class _Add implements AddPaymentEvent {
-  const factory _Add(final Payment payment) = _$_Add;
+  const factory _Add({required final Payment payment}) = _$_Add;
 
   @override
   Payment get payment;
@@ -213,7 +213,7 @@ abstract class _Add implements AddPaymentEvent {
 mixin _$AddPaymentState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(MarketCoinsList marketCoinsList) initial,
+    required TResult Function(List<MarketCoin> marketCoinsList) initial,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function() failure,
@@ -221,7 +221,7 @@ mixin _$AddPaymentState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(MarketCoinsList marketCoinsList)? initial,
+    TResult? Function(List<MarketCoin> marketCoinsList)? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function()? failure,
@@ -229,7 +229,7 @@ mixin _$AddPaymentState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(MarketCoinsList marketCoinsList)? initial,
+    TResult Function(List<MarketCoin> marketCoinsList)? initial,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function()? failure,
@@ -285,7 +285,7 @@ abstract class _$$_InitialCopyWith<$Res> {
   factory _$$_InitialCopyWith(_$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
   @useResult
-  $Res call({MarketCoinsList marketCoinsList});
+  $Res call({List<MarketCoin> marketCoinsList});
 }
 
 /// @nodoc
@@ -300,10 +300,10 @@ class __$$_InitialCopyWithImpl<$Res> extends _$AddPaymentStateCopyWithImpl<$Res,
     Object? marketCoinsList = null,
   }) {
     return _then(_$_Initial(
-      null == marketCoinsList
-          ? _value.marketCoinsList
+      marketCoinsList: null == marketCoinsList
+          ? _value._marketCoinsList
           : marketCoinsList // ignore: cast_nullable_to_non_nullable
-              as MarketCoinsList,
+              as List<MarketCoin>,
     ));
   }
 }
@@ -311,10 +311,16 @@ class __$$_InitialCopyWithImpl<$Res> extends _$AddPaymentStateCopyWithImpl<$Res,
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial(this.marketCoinsList);
+  const _$_Initial({required final List<MarketCoin> marketCoinsList})
+      : _marketCoinsList = marketCoinsList;
 
+  final List<MarketCoin> _marketCoinsList;
   @override
-  final MarketCoinsList marketCoinsList;
+  List<MarketCoin> get marketCoinsList {
+    if (_marketCoinsList is EqualUnmodifiableListView) return _marketCoinsList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_marketCoinsList);
+  }
 
   @override
   String toString() {
@@ -326,12 +332,12 @@ class _$_Initial implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Initial &&
-            (identical(other.marketCoinsList, marketCoinsList) ||
-                other.marketCoinsList == marketCoinsList));
+            const DeepCollectionEquality().equals(other._marketCoinsList, _marketCoinsList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, marketCoinsList);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_marketCoinsList));
 
   @JsonKey(ignore: true)
   @override
@@ -342,7 +348,7 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(MarketCoinsList marketCoinsList) initial,
+    required TResult Function(List<MarketCoin> marketCoinsList) initial,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function() failure,
@@ -353,7 +359,7 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(MarketCoinsList marketCoinsList)? initial,
+    TResult? Function(List<MarketCoin> marketCoinsList)? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function()? failure,
@@ -364,7 +370,7 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(MarketCoinsList marketCoinsList)? initial,
+    TResult Function(List<MarketCoin> marketCoinsList)? initial,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function()? failure,
@@ -415,9 +421,9 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements AddPaymentState {
-  const factory _Initial(final MarketCoinsList marketCoinsList) = _$_Initial;
+  const factory _Initial({required final List<MarketCoin> marketCoinsList}) = _$_Initial;
 
-  MarketCoinsList get marketCoinsList;
+  List<MarketCoin> get marketCoinsList;
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith => throw _privateConstructorUsedError;
 }
@@ -456,7 +462,7 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(MarketCoinsList marketCoinsList) initial,
+    required TResult Function(List<MarketCoin> marketCoinsList) initial,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function() failure,
@@ -467,7 +473,7 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(MarketCoinsList marketCoinsList)? initial,
+    TResult? Function(List<MarketCoin> marketCoinsList)? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function()? failure,
@@ -478,7 +484,7 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(MarketCoinsList marketCoinsList)? initial,
+    TResult Function(List<MarketCoin> marketCoinsList)? initial,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function()? failure,
@@ -566,7 +572,7 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(MarketCoinsList marketCoinsList) initial,
+    required TResult Function(List<MarketCoin> marketCoinsList) initial,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function() failure,
@@ -577,7 +583,7 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(MarketCoinsList marketCoinsList)? initial,
+    TResult? Function(List<MarketCoin> marketCoinsList)? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function()? failure,
@@ -588,7 +594,7 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(MarketCoinsList marketCoinsList)? initial,
+    TResult Function(List<MarketCoin> marketCoinsList)? initial,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function()? failure,
@@ -676,7 +682,7 @@ class _$_Failure implements _Failure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(MarketCoinsList marketCoinsList) initial,
+    required TResult Function(List<MarketCoin> marketCoinsList) initial,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function() failure,
@@ -687,7 +693,7 @@ class _$_Failure implements _Failure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(MarketCoinsList marketCoinsList)? initial,
+    TResult? Function(List<MarketCoin> marketCoinsList)? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function()? failure,
@@ -698,7 +704,7 @@ class _$_Failure implements _Failure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(MarketCoinsList marketCoinsList)? initial,
+    TResult Function(List<MarketCoin> marketCoinsList)? initial,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function()? failure,

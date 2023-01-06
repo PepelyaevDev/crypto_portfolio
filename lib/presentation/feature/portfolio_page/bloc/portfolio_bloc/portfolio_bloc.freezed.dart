@@ -469,7 +469,7 @@ class __$$_SuccessCopyWithImpl<$Res> extends _$PortfolioStateCopyWithImpl<$Res, 
     Object? portfolioCoinsList = null,
   }) {
     return _then(_$_Success(
-      null == portfolioCoinsList
+      portfolioCoinsList: null == portfolioCoinsList
           ? _value.portfolioCoinsList
           : portfolioCoinsList // ignore: cast_nullable_to_non_nullable
               as PortfolioCoinsList,
@@ -480,7 +480,7 @@ class __$$_SuccessCopyWithImpl<$Res> extends _$PortfolioStateCopyWithImpl<$Res, 
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success(this.portfolioCoinsList);
+  const _$_Success({required this.portfolioCoinsList});
 
   @override
   final PortfolioCoinsList portfolioCoinsList;
@@ -584,7 +584,7 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements PortfolioState {
-  const factory _Success(final PortfolioCoinsList portfolioCoinsList) = _$_Success;
+  const factory _Success({required final PortfolioCoinsList portfolioCoinsList}) = _$_Success;
 
   PortfolioCoinsList get portfolioCoinsList;
   @JsonKey(ignore: true)

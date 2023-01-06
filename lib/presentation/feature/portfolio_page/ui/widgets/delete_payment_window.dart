@@ -1,4 +1,4 @@
-import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/payment.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment.dart';
 import 'package:crypto_portfolio/main.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_page/bloc/delete_payment_bloc/delete_payment_bloc.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_page/bloc/portfolio_bloc/portfolio_bloc.dart';
@@ -66,7 +66,9 @@ class DeletePaymentWindow extends StatelessWidget {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          context.read<DeletePaymentBloc>().add(DeletePaymentEvent.delete(payment));
+                          context
+                              .read<DeletePaymentBloc>()
+                              .add(DeletePaymentEvent.delete(payment: payment));
                         },
                         child: Text('Delete payment'),
                       ),

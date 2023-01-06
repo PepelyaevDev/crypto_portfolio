@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:crypto_portfolio/domain/entity/feature/portfolio_coins/portfolio_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/portfolio_coins_list.dart';
 import 'package:crypto_portfolio/domain/usecase/market_coins/update_market_coins_list.dart';
 import 'package:crypto_portfolio/domain/usecase/portfolio_coins/get_portfolio_coins_list.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -32,7 +32,7 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     try {
       await updateMarketCoinsListUC.call();
       final PortfolioCoinsList portfolioCoinsList = getPortfolioCoinsListUC.call();
-      emit(PortfolioState.success(portfolioCoinsList));
+      emit(PortfolioState.success(portfolioCoinsList: portfolioCoinsList));
     } catch (e) {
       emit(const PortfolioState.failure());
     }

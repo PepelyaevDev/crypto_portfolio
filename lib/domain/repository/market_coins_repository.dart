@@ -1,7 +1,7 @@
-import 'package:crypto_portfolio/domain/entity/feature/market_coins/market_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/market_coins/market_coins_list.dart';
 
 abstract class MarketCoinsRepository {
-  Future<MarketCoinsList> getMarketCoinsListRemote();
-  MarketCoinsList getMarketCoinsListLocal();
-  Future<void> updateMarketCoinsListLocal(MarketCoinsList marketCoinsList);
+  Future<List<MarketCoin>> getMarketCoinsRemote();
+  List<MarketCoin> getMarketCoinsLocal();
+  Future<void> updateMarketCoinsLocal(List<MarketCoin> marketCoinsList);
 }

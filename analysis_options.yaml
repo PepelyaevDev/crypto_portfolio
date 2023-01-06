@@ -1,0 +1,63 @@
+include: package:lints/recommended.yaml
+
+analyzer:
+  plugins:
+    - import_lint
+
+import_lint:
+  rules:
+    data_di_rule:
+      target_file_path: "data/di/data_di.dart"
+      not_allow_imports:
+        [
+            "presentation/**/*.dart",
+            "domain/**/*.dart",
+            "data/**/*.dart",
+        ]
+      exclude_imports:
+        [
+            "data/source/**/*.dart",
+            "data/repo_impl/*.dart",
+            "domain/repository/*.dart",
+        ]
+    dto_rule:
+      target_file_path: "data/dto/**/*.dart"
+      not_allow_imports:
+        [
+            "presentation/**/*.dart",
+            "domain/**/*.dart",
+            "data/**/*.dart",
+        ]
+      exclude_imports:
+        [
+            "data/source/**/*.dart",
+            "domain/entity/**/*.dart",
+        ]
+    repo_impl_rule:
+      target_file_path: "data/repo_impl/*.dart"
+      not_allow_imports:
+        [
+            "presentation/**/*.dart",
+            "domain/**/*.dart",
+            "data/**/*.dart",
+        ]
+      exclude_imports:
+        [
+            "data/source/**/*.dart",
+            "data/dto/**/*.dart",
+            "domain/entity/**/*.dart",
+            "domain/repository/*.dart",
+        ]
+    source_rule:
+      target_file_path: "data/source/**/*.dart"
+      not_allow_imports:
+        [
+            "presentation/**/*.dart",
+            "domain/**/*.dart",
+            "data/**/*.dart",
+        ]
+      exclude_imports:
+        [
+            "data/source/**/*.dart",
+            "data/dto/**/*.dart",
+        ]
