@@ -7,7 +7,7 @@ class PortfolioState with _$PortfolioState {
   const factory PortfolioState.loading() = _Loading;
 
   const factory PortfolioState.success({
-    required PortfolioCoinsList portfolioCoinsList,
+    required List<PortfolioCoinEntity> portfolioCoinsList,
   }) = _Success;
 
   const factory PortfolioState.failure() = _Failure;

@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class MarketCoin extends Equatable {
-  const MarketCoin({
+class MarketCoinEntity extends Equatable {
+  const MarketCoinEntity({
     required this.symbol,
     required this.name,
     required this.image,

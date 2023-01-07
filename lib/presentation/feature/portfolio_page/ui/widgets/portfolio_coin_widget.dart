@@ -1,11 +1,11 @@
-import 'package:crypto_portfolio/domain/entity/portfolio_coins/portfolio_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/portfolio_coin_entity.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_page/ui/widgets/payment_widget.dart';
 import 'package:flutter/material.dart';
 
 class PortfolioCoinWidget extends StatelessWidget {
   const PortfolioCoinWidget({required this.coin});
 
-  final PortfolioCoin coin;
+  final PortfolioCoinEntity coin;
 
   @override
   Widget build(BuildContext context) {

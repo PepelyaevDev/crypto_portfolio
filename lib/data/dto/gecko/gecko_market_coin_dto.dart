@@ -1,4 +1,4 @@
-import 'package:crypto_portfolio/domain/entity/market_coins/market_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/market_coins/market_coin_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'gecko_market_coin_dto.g.dart';
@@ -37,8 +37,8 @@ class GeckoMarketCoinDTO {
   factory GeckoMarketCoinDTO.fromJson(Map<String, dynamic> json) =>
       _$GeckoMarketCoinDTOFromJson(json);
 
-  MarketCoin toEntity() =>
-      MarketCoin(symbol: symbol, name: name, image: image, currentPrice: currentPrice);
+  MarketCoinEntity toEntity() =>
+      MarketCoinEntity(symbol: symbol, name: name, image: image, currentPrice: currentPrice);
 
   final String id;
   final String symbol;

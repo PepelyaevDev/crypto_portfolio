@@ -1,17 +1,8 @@
 import 'package:equatable/equatable.dart';
-import 'payment.dart';
+import 'payment_entity.dart';
 
-class PortfolioCoinsList extends Equatable {
-  const PortfolioCoinsList({required this.coins});
-
-  final List<PortfolioCoin> coins;
-
-  @override
-  List<Object?> get props => [coins];
-}
-
-class PortfolioCoin extends Equatable {
-  const PortfolioCoin({
+class PortfolioCoinEntity extends Equatable {
+  const PortfolioCoinEntity({
     required this.symbol,
     required this.name,
     required this.image,
@@ -31,7 +22,7 @@ class PortfolioCoin extends Equatable {
   final double totalAmount;
   final double moneyInvested;
   final double allCoinsCurrentPrice;
-  final List<Payment> history;
+  final List<PaymentEntity> history;
 
   @override
   List<Object?> get props => [

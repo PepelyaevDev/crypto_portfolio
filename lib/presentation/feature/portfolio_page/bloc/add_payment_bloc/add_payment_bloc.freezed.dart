@@ -16,20 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AddPaymentEvent {
-  Payment get payment => throw _privateConstructorUsedError;
+  PaymentEntity get payment => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Payment payment) add,
+    required TResult Function(PaymentEntity payment) add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Payment payment)? add,
+    TResult? Function(PaymentEntity payment)? add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Payment payment)? add,
+    TResult Function(PaymentEntity payment)? add,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,7 +59,7 @@ abstract class $AddPaymentEventCopyWith<$Res> {
   factory $AddPaymentEventCopyWith(AddPaymentEvent value, $Res Function(AddPaymentEvent) then) =
       _$AddPaymentEventCopyWithImpl<$Res, AddPaymentEvent>;
   @useResult
-  $Res call({Payment payment});
+  $Res call({PaymentEntity payment});
 }
 
 /// @nodoc
@@ -81,7 +81,7 @@ class _$AddPaymentEventCopyWithImpl<$Res, $Val extends AddPaymentEvent>
       payment: null == payment
           ? _value.payment
           : payment // ignore: cast_nullable_to_non_nullable
-              as Payment,
+              as PaymentEntity,
     ) as $Val);
   }
 }
@@ -91,7 +91,7 @@ abstract class _$$_AddCopyWith<$Res> implements $AddPaymentEventCopyWith<$Res> {
   factory _$$_AddCopyWith(_$_Add value, $Res Function(_$_Add) then) = __$$_AddCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Payment payment});
+  $Res call({PaymentEntity payment});
 }
 
 /// @nodoc
@@ -108,7 +108,7 @@ class __$$_AddCopyWithImpl<$Res> extends _$AddPaymentEventCopyWithImpl<$Res, _$_
       payment: null == payment
           ? _value.payment
           : payment // ignore: cast_nullable_to_non_nullable
-              as Payment,
+              as PaymentEntity,
     ));
   }
 }
@@ -119,7 +119,7 @@ class _$_Add implements _Add {
   const _$_Add({required this.payment});
 
   @override
-  final Payment payment;
+  final PaymentEntity payment;
 
   @override
   String toString() {
@@ -145,7 +145,7 @@ class _$_Add implements _Add {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Payment payment) add,
+    required TResult Function(PaymentEntity payment) add,
   }) {
     return add(payment);
   }
@@ -153,7 +153,7 @@ class _$_Add implements _Add {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Payment payment)? add,
+    TResult? Function(PaymentEntity payment)? add,
   }) {
     return add?.call(payment);
   }
@@ -161,7 +161,7 @@ class _$_Add implements _Add {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Payment payment)? add,
+    TResult Function(PaymentEntity payment)? add,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -200,10 +200,10 @@ class _$_Add implements _Add {
 }
 
 abstract class _Add implements AddPaymentEvent {
-  const factory _Add({required final Payment payment}) = _$_Add;
+  const factory _Add({required final PaymentEntity payment}) = _$_Add;
 
   @override
-  Payment get payment;
+  PaymentEntity get payment;
   @override
   @JsonKey(ignore: true)
   _$$_AddCopyWith<_$_Add> get copyWith => throw _privateConstructorUsedError;
@@ -213,7 +213,7 @@ abstract class _Add implements AddPaymentEvent {
 mixin _$AddPaymentState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<MarketCoin> marketCoinsList) initial,
+    required TResult Function(List<MarketCoinEntity> marketCoinsList) initial,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function() failure,
@@ -221,7 +221,7 @@ mixin _$AddPaymentState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<MarketCoin> marketCoinsList)? initial,
+    TResult? Function(List<MarketCoinEntity> marketCoinsList)? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function()? failure,
@@ -229,7 +229,7 @@ mixin _$AddPaymentState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<MarketCoin> marketCoinsList)? initial,
+    TResult Function(List<MarketCoinEntity> marketCoinsList)? initial,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function()? failure,
@@ -285,7 +285,7 @@ abstract class _$$_InitialCopyWith<$Res> {
   factory _$$_InitialCopyWith(_$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<MarketCoin> marketCoinsList});
+  $Res call({List<MarketCoinEntity> marketCoinsList});
 }
 
 /// @nodoc
@@ -303,7 +303,7 @@ class __$$_InitialCopyWithImpl<$Res> extends _$AddPaymentStateCopyWithImpl<$Res,
       marketCoinsList: null == marketCoinsList
           ? _value._marketCoinsList
           : marketCoinsList // ignore: cast_nullable_to_non_nullable
-              as List<MarketCoin>,
+              as List<MarketCoinEntity>,
     ));
   }
 }
@@ -311,12 +311,12 @@ class __$$_InitialCopyWithImpl<$Res> extends _$AddPaymentStateCopyWithImpl<$Res,
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial({required final List<MarketCoin> marketCoinsList})
+  const _$_Initial({required final List<MarketCoinEntity> marketCoinsList})
       : _marketCoinsList = marketCoinsList;
 
-  final List<MarketCoin> _marketCoinsList;
+  final List<MarketCoinEntity> _marketCoinsList;
   @override
-  List<MarketCoin> get marketCoinsList {
+  List<MarketCoinEntity> get marketCoinsList {
     if (_marketCoinsList is EqualUnmodifiableListView) return _marketCoinsList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_marketCoinsList);
@@ -348,7 +348,7 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<MarketCoin> marketCoinsList) initial,
+    required TResult Function(List<MarketCoinEntity> marketCoinsList) initial,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function() failure,
@@ -359,7 +359,7 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<MarketCoin> marketCoinsList)? initial,
+    TResult? Function(List<MarketCoinEntity> marketCoinsList)? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function()? failure,
@@ -370,7 +370,7 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<MarketCoin> marketCoinsList)? initial,
+    TResult Function(List<MarketCoinEntity> marketCoinsList)? initial,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function()? failure,
@@ -421,9 +421,9 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements AddPaymentState {
-  const factory _Initial({required final List<MarketCoin> marketCoinsList}) = _$_Initial;
+  const factory _Initial({required final List<MarketCoinEntity> marketCoinsList}) = _$_Initial;
 
-  List<MarketCoin> get marketCoinsList;
+  List<MarketCoinEntity> get marketCoinsList;
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith => throw _privateConstructorUsedError;
 }
@@ -462,7 +462,7 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<MarketCoin> marketCoinsList) initial,
+    required TResult Function(List<MarketCoinEntity> marketCoinsList) initial,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function() failure,
@@ -473,7 +473,7 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<MarketCoin> marketCoinsList)? initial,
+    TResult? Function(List<MarketCoinEntity> marketCoinsList)? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function()? failure,
@@ -484,7 +484,7 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<MarketCoin> marketCoinsList)? initial,
+    TResult Function(List<MarketCoinEntity> marketCoinsList)? initial,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function()? failure,
@@ -572,7 +572,7 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<MarketCoin> marketCoinsList) initial,
+    required TResult Function(List<MarketCoinEntity> marketCoinsList) initial,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function() failure,
@@ -583,7 +583,7 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<MarketCoin> marketCoinsList)? initial,
+    TResult? Function(List<MarketCoinEntity> marketCoinsList)? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function()? failure,
@@ -594,7 +594,7 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<MarketCoin> marketCoinsList)? initial,
+    TResult Function(List<MarketCoinEntity> marketCoinsList)? initial,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function()? failure,
@@ -682,7 +682,7 @@ class _$_Failure implements _Failure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<MarketCoin> marketCoinsList) initial,
+    required TResult Function(List<MarketCoinEntity> marketCoinsList) initial,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function() failure,
@@ -693,7 +693,7 @@ class _$_Failure implements _Failure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<MarketCoin> marketCoinsList)? initial,
+    TResult? Function(List<MarketCoinEntity> marketCoinsList)? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function()? failure,
@@ -704,7 +704,7 @@ class _$_Failure implements _Failure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<MarketCoin> marketCoinsList)? initial,
+    TResult Function(List<MarketCoinEntity> marketCoinsList)? initial,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function()? failure,

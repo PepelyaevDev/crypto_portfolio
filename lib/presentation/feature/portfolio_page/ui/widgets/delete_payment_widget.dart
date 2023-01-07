@@ -1,15 +1,15 @@
-import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment_entity.dart';
 import 'package:crypto_portfolio/main.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_page/bloc/delete_payment_bloc/delete_payment_bloc.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_page/bloc/portfolio_bloc/portfolio_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class DeletePaymentWindow extends StatelessWidget {
-  final Payment payment;
+class DeletePaymentWidget extends StatelessWidget {
+  final PaymentEntity payment;
   final PortfolioBloc portfolioBloc;
 
-  DeletePaymentWindow({required this.payment, required this.portfolioBloc});
+  DeletePaymentWidget({required this.payment, required this.portfolioBloc});
 
   @override
   Widget build(BuildContext context) {

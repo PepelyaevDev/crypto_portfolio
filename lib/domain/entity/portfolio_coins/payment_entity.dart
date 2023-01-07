@@ -1,8 +1,8 @@
-import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment_type.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment_type_entity.dart';
 import 'package:equatable/equatable.dart';
 
-class Payment extends Equatable {
-  const Payment({
+class PaymentEntity extends Equatable {
+  const PaymentEntity({
     required this.symbol,
     required this.dateTime,
     required this.type,
@@ -12,7 +12,7 @@ class Payment extends Equatable {
 
   final String symbol;
   final DateTime dateTime;
-  final PaymentType type;
+  final PaymentTypeEntity type;
   final double amount;
   final double numberOfCoins;
 

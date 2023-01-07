@@ -164,7 +164,7 @@ mixin _$PortfolioState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PortfolioCoinsList portfolioCoinsList) success,
+    required TResult Function(List<PortfolioCoinEntity> portfolioCoinsList) success,
     required TResult Function() failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -172,7 +172,7 @@ mixin _$PortfolioState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PortfolioCoinsList portfolioCoinsList)? success,
+    TResult? Function(List<PortfolioCoinEntity> portfolioCoinsList)? success,
     TResult? Function()? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -180,7 +180,7 @@ mixin _$PortfolioState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PortfolioCoinsList portfolioCoinsList)? success,
+    TResult Function(List<PortfolioCoinEntity> portfolioCoinsList)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) =>
@@ -265,7 +265,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PortfolioCoinsList portfolioCoinsList) success,
+    required TResult Function(List<PortfolioCoinEntity> portfolioCoinsList) success,
     required TResult Function() failure,
   }) {
     return initial();
@@ -276,7 +276,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PortfolioCoinsList portfolioCoinsList)? success,
+    TResult? Function(List<PortfolioCoinEntity> portfolioCoinsList)? success,
     TResult? Function()? failure,
   }) {
     return initial?.call();
@@ -287,7 +287,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PortfolioCoinsList portfolioCoinsList)? success,
+    TResult Function(List<PortfolioCoinEntity> portfolioCoinsList)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -375,7 +375,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PortfolioCoinsList portfolioCoinsList) success,
+    required TResult Function(List<PortfolioCoinEntity> portfolioCoinsList) success,
     required TResult Function() failure,
   }) {
     return loading();
@@ -386,7 +386,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PortfolioCoinsList portfolioCoinsList)? success,
+    TResult? Function(List<PortfolioCoinEntity> portfolioCoinsList)? success,
     TResult? Function()? failure,
   }) {
     return loading?.call();
@@ -397,7 +397,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PortfolioCoinsList portfolioCoinsList)? success,
+    TResult Function(List<PortfolioCoinEntity> portfolioCoinsList)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -454,7 +454,7 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(_$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({PortfolioCoinsList portfolioCoinsList});
+  $Res call({List<PortfolioCoinEntity> portfolioCoinsList});
 }
 
 /// @nodoc
@@ -470,9 +470,9 @@ class __$$_SuccessCopyWithImpl<$Res> extends _$PortfolioStateCopyWithImpl<$Res, 
   }) {
     return _then(_$_Success(
       portfolioCoinsList: null == portfolioCoinsList
-          ? _value.portfolioCoinsList
+          ? _value._portfolioCoinsList
           : portfolioCoinsList // ignore: cast_nullable_to_non_nullable
-              as PortfolioCoinsList,
+              as List<PortfolioCoinEntity>,
     ));
   }
 }
@@ -480,10 +480,16 @@ class __$$_SuccessCopyWithImpl<$Res> extends _$PortfolioStateCopyWithImpl<$Res, 
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success({required this.portfolioCoinsList});
+  const _$_Success({required final List<PortfolioCoinEntity> portfolioCoinsList})
+      : _portfolioCoinsList = portfolioCoinsList;
 
+  final List<PortfolioCoinEntity> _portfolioCoinsList;
   @override
-  final PortfolioCoinsList portfolioCoinsList;
+  List<PortfolioCoinEntity> get portfolioCoinsList {
+    if (_portfolioCoinsList is EqualUnmodifiableListView) return _portfolioCoinsList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_portfolioCoinsList);
+  }
 
   @override
   String toString() {
@@ -495,12 +501,12 @@ class _$_Success implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Success &&
-            (identical(other.portfolioCoinsList, portfolioCoinsList) ||
-                other.portfolioCoinsList == portfolioCoinsList));
+            const DeepCollectionEquality().equals(other._portfolioCoinsList, _portfolioCoinsList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, portfolioCoinsList);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_portfolioCoinsList));
 
   @JsonKey(ignore: true)
   @override
@@ -513,7 +519,7 @@ class _$_Success implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PortfolioCoinsList portfolioCoinsList) success,
+    required TResult Function(List<PortfolioCoinEntity> portfolioCoinsList) success,
     required TResult Function() failure,
   }) {
     return success(portfolioCoinsList);
@@ -524,7 +530,7 @@ class _$_Success implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PortfolioCoinsList portfolioCoinsList)? success,
+    TResult? Function(List<PortfolioCoinEntity> portfolioCoinsList)? success,
     TResult? Function()? failure,
   }) {
     return success?.call(portfolioCoinsList);
@@ -535,7 +541,7 @@ class _$_Success implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PortfolioCoinsList portfolioCoinsList)? success,
+    TResult Function(List<PortfolioCoinEntity> portfolioCoinsList)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -584,9 +590,10 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements PortfolioState {
-  const factory _Success({required final PortfolioCoinsList portfolioCoinsList}) = _$_Success;
+  const factory _Success({required final List<PortfolioCoinEntity> portfolioCoinsList}) =
+      _$_Success;
 
-  PortfolioCoinsList get portfolioCoinsList;
+  List<PortfolioCoinEntity> get portfolioCoinsList;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith => throw _privateConstructorUsedError;
 }
@@ -627,7 +634,7 @@ class _$_Failure implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PortfolioCoinsList portfolioCoinsList) success,
+    required TResult Function(List<PortfolioCoinEntity> portfolioCoinsList) success,
     required TResult Function() failure,
   }) {
     return failure();
@@ -638,7 +645,7 @@ class _$_Failure implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PortfolioCoinsList portfolioCoinsList)? success,
+    TResult? Function(List<PortfolioCoinEntity> portfolioCoinsList)? success,
     TResult? Function()? failure,
   }) {
     return failure?.call();
@@ -649,7 +656,7 @@ class _$_Failure implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PortfolioCoinsList portfolioCoinsList)? success,
+    TResult Function(List<PortfolioCoinEntity> portfolioCoinsList)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {

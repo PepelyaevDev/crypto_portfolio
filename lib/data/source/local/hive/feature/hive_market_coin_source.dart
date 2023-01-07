@@ -1,5 +1,4 @@
-import 'package:crypto_portfolio/data/source/local/hive/core'
-    '/hive_constants.dart';
+import 'package:crypto_portfolio/data/source/local/hive/core/hive_constants.dart';
 import 'package:crypto_portfolio/data/dto/hive/hive_market_coin_dto.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 

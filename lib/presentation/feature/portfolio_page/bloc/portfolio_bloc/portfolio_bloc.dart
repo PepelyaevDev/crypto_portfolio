@@ -1,8 +1,8 @@
-import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:crypto_portfolio/domain/entity/portfolio_coins/portfolio_coins_list.dart';
-import 'package:crypto_portfolio/domain/usecase/market_coins/update_market_coins_list.dart';
-import 'package:crypto_portfolio/domain/usecase/portfolio_coins/get_portfolio_coins_list.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/portfolio_coin_entity.dart';
+import 'package:crypto_portfolio/domain/usecase/market_coins/update_market_coins_usecase.dart';
+import 'package:crypto_portfolio/domain/usecase/portfolio_coins/get_portfolio_coins_usecase.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'portfolio_event.dart';
@@ -12,8 +12,8 @@ part 'portfolio_state.dart';
 part 'portfolio_bloc.freezed.dart';
 
 class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
-  final UpdateMarketCoinsListUC updateMarketCoinsListUC;
-  final GetPortfolioCoinsListUC getPortfolioCoinsListUC;
+  final UpdateMarketCoinsUsecase updateMarketCoinsListUC;
+  final GetPortfolioCoinsUsecase getPortfolioCoinsListUC;
 
   PortfolioBloc({
     required this.updateMarketCoinsListUC,
@@ -31,7 +31,7 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     emit(const PortfolioState.loading());
     try {
       await updateMarketCoinsListUC.call();
-      final PortfolioCoinsList portfolioCoinsList = getPortfolioCoinsListUC.call();
+      final List<PortfolioCoinEntity> portfolioCoinsList = getPortfolioCoinsListUC.call();
       emit(PortfolioState.success(portfolioCoinsList: portfolioCoinsList));
     } catch (e) {
       emit(const PortfolioState.failure());

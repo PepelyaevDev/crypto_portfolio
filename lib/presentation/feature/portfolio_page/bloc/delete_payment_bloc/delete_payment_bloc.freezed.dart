@@ -16,20 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DeletePaymentEvent {
-  Payment get payment => throw _privateConstructorUsedError;
+  PaymentEntity get payment => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Payment payment) delete,
+    required TResult Function(PaymentEntity payment) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Payment payment)? delete,
+    TResult? Function(PaymentEntity payment)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Payment payment)? delete,
+    TResult Function(PaymentEntity payment)? delete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +61,7 @@ abstract class $DeletePaymentEventCopyWith<$Res> {
           DeletePaymentEvent value, $Res Function(DeletePaymentEvent) then) =
       _$DeletePaymentEventCopyWithImpl<$Res, DeletePaymentEvent>;
   @useResult
-  $Res call({Payment payment});
+  $Res call({PaymentEntity payment});
 }
 
 /// @nodoc
@@ -83,7 +83,7 @@ class _$DeletePaymentEventCopyWithImpl<$Res, $Val extends DeletePaymentEvent>
       payment: null == payment
           ? _value.payment
           : payment // ignore: cast_nullable_to_non_nullable
-              as Payment,
+              as PaymentEntity,
     ) as $Val);
   }
 }
@@ -94,7 +94,7 @@ abstract class _$$_DeleteCopyWith<$Res> implements $DeletePaymentEventCopyWith<$
       __$$_DeleteCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Payment payment});
+  $Res call({PaymentEntity payment});
 }
 
 /// @nodoc
@@ -111,7 +111,7 @@ class __$$_DeleteCopyWithImpl<$Res> extends _$DeletePaymentEventCopyWithImpl<$Re
       payment: null == payment
           ? _value.payment
           : payment // ignore: cast_nullable_to_non_nullable
-              as Payment,
+              as PaymentEntity,
     ));
   }
 }
@@ -122,7 +122,7 @@ class _$_Delete implements _Delete {
   const _$_Delete({required this.payment});
 
   @override
-  final Payment payment;
+  final PaymentEntity payment;
 
   @override
   String toString() {
@@ -149,7 +149,7 @@ class _$_Delete implements _Delete {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Payment payment) delete,
+    required TResult Function(PaymentEntity payment) delete,
   }) {
     return delete(payment);
   }
@@ -157,7 +157,7 @@ class _$_Delete implements _Delete {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Payment payment)? delete,
+    TResult? Function(PaymentEntity payment)? delete,
   }) {
     return delete?.call(payment);
   }
@@ -165,7 +165,7 @@ class _$_Delete implements _Delete {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Payment payment)? delete,
+    TResult Function(PaymentEntity payment)? delete,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -204,10 +204,10 @@ class _$_Delete implements _Delete {
 }
 
 abstract class _Delete implements DeletePaymentEvent {
-  const factory _Delete({required final Payment payment}) = _$_Delete;
+  const factory _Delete({required final PaymentEntity payment}) = _$_Delete;
 
   @override
-  Payment get payment;
+  PaymentEntity get payment;
   @override
   @JsonKey(ignore: true)
   _$$_DeleteCopyWith<_$_Delete> get copyWith => throw _privateConstructorUsedError;

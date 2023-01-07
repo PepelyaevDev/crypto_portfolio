@@ -1,9 +1,9 @@
-import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:crypto_portfolio/domain/entity/market_coins/market_coins_list.dart';
-import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment.dart';
-import 'package:crypto_portfolio/domain/usecase/market_coins/get_market_coins_list_local.dart';
-import 'package:crypto_portfolio/domain/usecase/portfolio_coins/add_payment.dart';
+import 'package:crypto_portfolio/domain/entity/market_coins/market_coin_entity.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment_entity.dart';
+import 'package:crypto_portfolio/domain/usecase/market_coins/get_market_coins_local_usecase.dart';
+import 'package:crypto_portfolio/domain/usecase/portfolio_coins/add_payment_usecase.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'add_payment_event.dart';
@@ -13,8 +13,8 @@ part 'add_payment_state.dart';
 part 'add_payment_bloc.freezed.dart';
 
 class AddPaymentBloc extends Bloc<AddPaymentEvent, AddPaymentState> {
-  final GetMarketCoinsListLocalUC getMarketCoinsListLocalUC;
-  final AddPaymentUC addPaymentUC;
+  final GetMarketCoinsLocalUsecase getMarketCoinsListLocalUC;
+  final AddPaymentUsecase addPaymentUC;
 
   AddPaymentBloc({
     required this.getMarketCoinsListLocalUC,

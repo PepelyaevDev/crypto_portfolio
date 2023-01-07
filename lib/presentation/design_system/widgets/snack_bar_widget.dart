@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomSnackBar extends SnackBar {
-  CustomSnackBar(this.text)
+class SnackBarWidget extends SnackBar {
+  SnackBarWidget(this.text)
       : super(
           duration: Duration(milliseconds: 800),
           content: Text(text),

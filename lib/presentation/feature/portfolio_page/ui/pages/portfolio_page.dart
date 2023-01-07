@@ -1,5 +1,5 @@
 import 'package:crypto_portfolio/main.dart';
-import 'package:crypto_portfolio/presentation/design_system/custom_snack_bar.dart';
+import 'package:crypto_portfolio/presentation/design_system/widgets/snack_bar_widget.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_page/bloc/portfolio_bloc/portfolio_bloc.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_page/ui/pages/add_payment_page.dart';
 import 'package:crypto_portfolio/presentation/feature/portfolio_page/ui/widgets/portfolio_coin_widget.dart';
@@ -13,10 +13,7 @@ class PortfolioPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => getIt.get<PortfolioBloc>()
-        ..add(
-          PortfolioEvent.update(),
-        ),
+      create: (BuildContext context) => getIt.get<PortfolioBloc>()..add(PortfolioEvent.update()),
       child: Builder(builder: (context) {
         return Scaffold(
           appBar: AppBar(),
@@ -29,10 +26,9 @@ class PortfolioPage extends StatelessWidget {
                 BlocConsumer<PortfolioBloc, PortfolioState>(
                   builder: (_, PortfolioState state) {
                     return state.maybeWhen(
-                      success: (portfolioCoinsList) => Column(
-                        children: portfolioCoinsList.coins
-                            .map((coin) => PortfolioCoinWidget(coin: coin))
-                            .toList(),
+                      success: (portfolioCoins) => Column(
+                        children:
+                            portfolioCoins.map((coin) => PortfolioCoinWidget(coin: coin)).toList(),
                       ),
                       loading: () => CircularProgressIndicator(),
                       orElse: () => SizedBox(),
@@ -42,12 +38,12 @@ class PortfolioPage extends StatelessWidget {
                     state.maybeWhen(
                       success: (_) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          CustomSnackBar(AppLocalizations.of(context)!.dataUpdated),
+                          SnackBarWidget(AppLocalizations.of(context)!.dataUpdated),
                         );
                       },
                       failure: () {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          CustomSnackBar(AppLocalizations.of(context)!.dataNotUpdated),
+                          SnackBarWidget(AppLocalizations.of(context)!.dataNotUpdated),
                         );
                       },
                       orElse: () => null,

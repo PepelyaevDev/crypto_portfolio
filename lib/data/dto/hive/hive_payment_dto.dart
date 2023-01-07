@@ -1,6 +1,6 @@
 import 'package:crypto_portfolio/data/source/local/hive/core/hive_constants.dart';
-import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment.dart';
-import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment_type.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment_entity.dart';
+import 'package:crypto_portfolio/domain/entity/portfolio_coins/payment_type_entity.dart';
 import 'package:hive/hive.dart';
 
 part 'hive_payment_dto.g.dart';
@@ -15,7 +15,7 @@ class HivePaymentDTO {
     required this.numberOfCoins,
   });
 
-  factory HivePaymentDTO.fromEntity(Payment data) => HivePaymentDTO(
+  factory HivePaymentDTO.fromEntity(PaymentEntity data) => HivePaymentDTO(
         symbol: data.symbol,
         dateTime: data.dateTime,
         type: data.type.name,
@@ -23,7 +23,7 @@ class HivePaymentDTO {
         numberOfCoins: data.numberOfCoins,
       );
 
-  Payment toEntity() => Payment(
+  PaymentEntity toEntity() => PaymentEntity(
         symbol: symbol,
         dateTime: dateTime,
         type: type.getPaymentType(),

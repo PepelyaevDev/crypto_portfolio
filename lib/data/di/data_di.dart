@@ -5,8 +5,8 @@ import 'package:crypto_portfolio/data/source/remote/dio/dio_client.dart';
 import 'package:crypto_portfolio/data/source/remote/dio/dio_constants.dart';
 import 'package:crypto_portfolio/data/repo_impl/market_coin_repo_impl.dart';
 import 'package:crypto_portfolio/data/repo_impl/payment_repo_impl.dart';
-import 'package:crypto_portfolio/domain/repository/market_coins_repository.dart';
-import 'package:crypto_portfolio/domain/repository/payments_repository.dart';
+import 'package:crypto_portfolio/domain/repo/market_coin_repo.dart';
+import 'package:crypto_portfolio/domain/repo/payment_repo.dart';
 import 'package:crypto_portfolio/main.dart';
 import 'package:dio/dio.dart';
 
@@ -30,10 +30,10 @@ class DataDi {
     getIt.registerSingleton<HivePaymentSource>(HivePaymentSource());
 
     //Repository
-    getIt.registerSingleton<PaymentsRepository>(
+    getIt.registerSingleton<PaymentRepo>(
       PaymentRepoImpl(hivePaymentsClient: getIt.get<HivePaymentSource>()),
     );
-    getIt.registerSingleton<MarketCoinsRepository>(
+    getIt.registerSingleton<MarketCoinRepo>(
       MarketCoinRepoImpl(
         geckoMarketCoinSource: getIt.get<GeckoMarketCoinSource>(),
         hiveMarketCoinSource: getIt.get<HiveMarketCoinSource>(),

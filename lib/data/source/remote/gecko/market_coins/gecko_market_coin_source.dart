@@ -9,7 +9,7 @@ class GeckoMarketCoinSource {
 
   GeckoMarketCoinSource(this._dioClient);
 
-  Future<List<GeckoMarketCoinDTO>> getMarketCoinsList() async {
+  Future<List<GeckoMarketCoinDTO>> getMarketCoins() async {
     final response = await _dioClient.get<dynamic>(
       DioConstants.marketCoinsEndpoints.list,
       queryParameters: {'vs_currency': 'usd'},
