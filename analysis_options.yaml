@@ -1,153 +1,159 @@
 include: package:lints/recommended.yaml
 
 analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  errors:
+    invalid_annotation_target: ignore
   plugins:
     - import_lint
 
-import_lint:
-  rules:
-    data_di_rule:
-      target_file_path: "data/di/data_di.dart"
-      not_allow_imports:
-        [
-            "presentation/**/*.dart",
-            "domain/**/*.dart",
-            "data/**/*.dart",
-        ]
-      exclude_imports:
-        [
-            "data/source/**/*.dart",
-            "data/repo_impl/*.dart",
-            "domain/repo/*.dart",
-        ]
-    dto_rule:
-      target_file_path: "data/dto/**/*.dart"
-      not_allow_imports:
-        [
-            "presentation/**/*.dart",
-            "domain/**/*.dart",
-            "data/**/*.dart",
-        ]
-      exclude_imports:
-        [
-            "data/source/**/*.dart",
-            "domain/entity/**/*.dart",
-        ]
-    repo_impl_rule:
-      target_file_path: "data/repo_impl/*.dart"
-      not_allow_imports:
-        [
-            "presentation/**/*.dart",
-            "domain/**/*.dart",
-            "data/**/*.dart",
-        ]
-      exclude_imports:
-        [
-            "data/source/**/*.dart",
-            "data/dto/**/*.dart",
-            "domain/entity/**/*.dart",
-            "domain/repo/*.dart",
-        ]
-    source_rule:
-      target_file_path: "data/source/**/*.dart"
-      not_allow_imports:
-        [
-            "presentation/**/*.dart",
-            "domain/**/*.dart",
-            "data/**/*.dart",
-        ]
-      exclude_imports:
-        [
-            "data/source/**/*.dart",
-            "data/dto/**/*.dart",
-        ]
-    domain_di_rule:
-      target_file_path: "domain/di/domain_di.dart"
-      not_allow_imports:
-        [
-            "presentation/**/*.dart",
-            "domain/**/*.dart",
-            "data/**/*.dart",
-        ]
-      exclude_imports:
-        [
-            "domain/usecase/**/*.dart",
-            "domain/repo/*.dart",
-        ]
-    entity_rule:
-      target_file_path: "domain/entity/**/*.dart"
-      not_allow_imports:
-        [
-            "presentation/**/*.dart",
-            "domain/**/*.dart",
-            "data/**/*.dart",
-        ]
-      exclude_imports:
-        [
-            "domain/entity/**/*.dart",
-        ]
-    repo_rule:
-      target_file_path: "domain/repo/*.dart"
-      not_allow_imports:
-        [
-            "presentation/**/*.dart",
-            "domain/**/*.dart",
-            "data/**/*.dart",
-        ]
-      exclude_imports:
-        [
-            "domain/entity/**/*.dart",
-        ]
-    usecase_rule:
-      target_file_path: "domain/usecase/**/*.dart"
-      not_allow_imports:
-        [
-            "presentation/**/*.dart",
-            "domain/**/*.dart",
-            "data/**/*.dart",
-        ]
-      exclude_imports:
-        [
-            "domain/entity/**/*.dart",
-            "domain/repo/*.dart",
-        ]
-    design_system_rule:
-      target_file_path: "presentation/design_system/**/*.dart"
-      not_allow_imports:
-        [
-            "presentation/**/*.dart",
-            "domain/**/*.dart",
-            "data/**/*.dart",
-        ]
-      exclude_imports:
-        [
-            "presentation/design_system/**/*.dart",
-        ]
-    presentation_di_rule:
-      target_file_path: "presentation/di/*.dart"
-      not_allow_imports:
-        [
-            "presentation/**/*.dart",
-            "domain/**/*.dart",
-            "data/**/*.dart",
-        ]
-      exclude_imports:
-        [
-            "domain/usecase/**/*.dart",
-            "presentation/feature/**/*.dart",
-        ]
-    feature_rule:
-      target_file_path: "presentation/feature/**/*.dart"
-      not_allow_imports:
-        [
-            "presentation/**/*.dart",
-            "domain/**/*.dart",
-            "data/**/*.dart",
-        ]
-      exclude_imports:
-        [
-            "presentation/feature/**/*.dart",
-            "presentation/design_system/**/*.dart",
-            "domain/entity/**/*.dart",
-            "domain/usecase/**/*.dart",
-        ]
+
+#import_lint:
+#  rules:
+#    data_di_rule:
+#      target_file_path: "data/di/data_di.dart"
+#      not_allow_imports:
+#        [
+#            "application/**/*.dart",
+#            "domain/**/*.dart",
+#            "data/**/*.dart",
+#        ]
+#      exclude_imports:
+#        [
+#            "data/source/**/*.dart",
+#            "data/repo_impl/*.dart",
+#            "domain/repo/*.dart",
+#        ]
+#    dto_rule:
+#      target_file_path: "data/dto/**/*.dart"
+#      not_allow_imports:
+#        [
+#            "application/**/*.dart",
+#            "domain/**/*.dart",
+#            "data/**/*.dart",
+#        ]
+#      exclude_imports:
+#        [
+#            "data/source/**/*.dart",
+#            "domain/entity/**/*.dart",
+#        ]
+#    repo_impl_rule:
+#      target_file_path: "data/repo_impl/*.dart"
+#      not_allow_imports:
+#        [
+#            "application/**/*.dart",
+#            "domain/**/*.dart",
+#            "data/**/*.dart",
+#        ]
+#      exclude_imports:
+#        [
+#            "data/source/**/*.dart",
+#            "data/dto/**/*.dart",
+#            "domain/entity/**/*.dart",
+#            "domain/repo/*.dart",
+#        ]
+#    source_rule:
+#      target_file_path: "data/source/**/*.dart"
+#      not_allow_imports:
+#        [
+#            "application/**/*.dart",
+#            "domain/**/*.dart",
+#            "data/**/*.dart",
+#        ]
+#      exclude_imports:
+#        [
+#            "data/source/**/*.dart",
+#            "data/dto/**/*.dart",
+#        ]
+#    domain_di_rule:
+#      target_file_path: "domain/di/domain_di.dart"
+#      not_allow_imports:
+#        [
+#            "application/**/*.dart",
+#            "domain/**/*.dart",
+#            "data/**/*.dart",
+#        ]
+#      exclude_imports:
+#        [
+#            "domain/usecase/**/*.dart",
+#            "domain/repo/*.dart",
+#        ]
+#    entity_rule:
+#      target_file_path: "domain/entity/**/*.dart"
+#      not_allow_imports:
+#        [
+#            "application/**/*.dart",
+#            "domain/**/*.dart",
+#            "data/**/*.dart",
+#        ]
+#      exclude_imports:
+#        [
+#            "domain/entity/**/*.dart",
+#        ]
+#    repo_rule:
+#      target_file_path: "domain/repo/*.dart"
+#      not_allow_imports:
+#        [
+#            "application/**/*.dart",
+#            "domain/**/*.dart",
+#            "data/**/*.dart",
+#        ]
+#      exclude_imports:
+#        [
+#            "domain/entity/**/*.dart",
+#        ]
+#    usecase_rule:
+#      target_file_path: "domain/usecase/**/*.dart"
+#      not_allow_imports:
+#        [
+#            "application/**/*.dart",
+#            "domain/**/*.dart",
+#            "data/**/*.dart",
+#        ]
+#      exclude_imports:
+#        [
+#            "domain/entity/**/*.dart",
+#            "domain/repo/*.dart",
+#        ]
+#    design_system_rule:
+#      target_file_path: "application/design_system/**/*.dart"
+#      not_allow_imports:
+#        [
+#            "application/**/*.dart",
+#            "domain/**/*.dart",
+#            "data/**/*.dart",
+#        ]
+#      exclude_imports:
+#        [
+#            "application/design_system/**/*.dart",
+#        ]
+#    presentation_di_rule:
+#      target_file_path: "application/di/*.dart"
+#      not_allow_imports:
+#        [
+#            "application/**/*.dart",
+#            "domain/**/*.dart",
+#            "data/**/*.dart",
+#        ]
+#      exclude_imports:
+#        [
+#            "domain/usecase/**/*.dart",
+#            "application/feature/**/*.dart",
+#        ]
+#    feature_rule:
+#      target_file_path: "application/feature/**/*.dart"
+#      not_allow_imports:
+#        [
+#            "application/**/*.dart",
+#            "domain/**/*.dart",
+#            "data/**/*.dart",
+#        ]
+#      exclude_imports:
+#        [
+#            "application/feature/**/*.dart",
+#            "application/design_system/**/*.dart",
+#            "domain/entity/**/*.dart",
+#            "domain/usecase/**/*.dart",
+#        ]
