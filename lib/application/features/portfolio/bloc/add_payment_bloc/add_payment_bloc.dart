@@ -15,7 +15,7 @@ class AddPaymentBloc extends Bloc<AddPaymentEvent, AddPaymentState> {
 
   AddPaymentBloc(this._coinsRepo)
       : super(
-          AddPaymentState.initial(coinsEntity: _coinsRepo.getLastCoins()),
+          AddPaymentState.initial(coinsEntity: CoinsEntity(coins: [], updateTime: DateTime.now())),
         ) {
     on<AddPaymentEvent>(
       (event, emit) => event.map(
@@ -28,7 +28,7 @@ class AddPaymentBloc extends Bloc<AddPaymentEvent, AddPaymentState> {
   Future<void> _addPayment(AddPaymentEvent event, Emitter<AddPaymentState> emit) async {
     emit(const AddPaymentState.loading());
     try {
-      await _coinsRepo.addPayment(event.payment);
+      await _coinsRepo.updateHistory(event.payment);
       emit(const AddPaymentState.success());
     } catch (e) {
       emit(const AddPaymentState.failure());

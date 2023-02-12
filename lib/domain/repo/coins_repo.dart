@@ -1,29 +1,21 @@
-import 'dart:convert';
+import 'package:crypto_portfolio/data/gecko_api/api/error_interceptor.dart';
 import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/dto/coin/gecko_coin_dto.dart';
+import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_mapper.dart';
-import 'package:hive/hive.dart';
-
-const coinsBoxKey = 'COINS';
 
 class CoinsRepo {
   const CoinsRepo({
-    required this.box,
+    required this.hiveApiClient,
     required this.geckoApiClient,
   });
 
-  final Box box;
+  final HiveApiClient hiveApiClient;
   final GeckoApiClient geckoApiClient;
 
   Future<CoinsEntity> getCoins() async {
-    ///TODO: вернуть сначала локально а потом добавить обновленное
-    final jsonCoins = box.get(coinsBoxKey);
-    final CoinsEntity? coinsEntity = jsonCoins == null
-        ? null
-        : CoinsEntity.fromJson(
-            json.decode(jsonCoins),
-          );
+    final CoinsEntity? coinsEntity = CoinsMapper.convertFromJson(hiveApiClient.coins.getCoins());
     try {
       final List<GeckoCoinDTO> geckoCoins = await geckoApiClient.coins.getAllCoins();
       final CoinsEntity updatedCoinsEntity;
@@ -35,32 +27,22 @@ class CoinsRepo {
       } else {
         updatedCoinsEntity = CoinsMapper.firstInit(geckoCoins: geckoCoins);
       }
-      await box.put(coinsBoxKey, updatedCoinsEntity.toJson());
+      await hiveApiClient.coins.updateCoins(CoinsMapper.convertToJson(updatedCoinsEntity));
       return updatedCoinsEntity;
     } catch (e) {
-      if (coinsEntity != null) {
-        return coinsEntity;
-      }
-
-      ///TODO: доделать работу с ошибками
-      throw Exception();
+      if (coinsEntity != null) return coinsEntity;
+      if (e is GeckoException) rethrow;
+      throw GeckoException();
     }
   }
 
-  CoinsEntity getLastCoins() {
-    return CoinsEntity.fromJson(json.decode(box.get(coinsBoxKey)));
-  }
-
-  Future<void> addPayment(PaymentEntity payment) async {
-    // final CoinsEntity coinsEntity = CoinsEntity.fromJson(
-    //   json.decode(box.get(coinsBoxKey)),
-    // );
-    //final
-  }
-
-  Future<void> deletePayment(PaymentEntity payment) async {
-    // final CoinsEntity coinsEntity = CoinsEntity.fromJson(
-    //   json.decode(box.get(coinsBoxKey)),
-    // );
+  Future<CoinsEntity> updateHistory(PaymentEntity paymentEntity) async {
+    final CoinsEntity oldCoinsEntity = await getCoins();
+    final CoinsEntity newCoinsEntity = CoinsMapper.updateHistory(
+      coinsEntity: oldCoinsEntity,
+      paymentEntity: paymentEntity,
+    );
+    await hiveApiClient.coins.updateCoins(CoinsMapper.convertToJson(newCoinsEntity));
+    return newCoinsEntity;
   }
 }

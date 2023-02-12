@@ -13,7 +13,7 @@ part 'portfolio_bloc.freezed.dart';
 class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
   final CoinsRepo _coinsRepo;
 
-  PortfolioBloc(this._coinsRepo): super(const PortfolioState.initial()) {
+  PortfolioBloc(this._coinsRepo) : super(const PortfolioState.initial()) {
     on<PortfolioEvent>(
       (event, emit) => event.map(
         update: (_) => _updateCoinsInfo(emit),

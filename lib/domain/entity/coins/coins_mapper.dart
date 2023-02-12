@@ -1,24 +1,21 @@
+import 'dart:convert';
 import 'package:crypto_portfolio/data/gecko_api/dto/coin/gecko_coin_dto.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 
 class CoinsMapper {
+  static CoinsEntity? convertFromJson(String? json) {
+    if (json == null) return null;
+    return CoinsEntity.fromJson(jsonDecode(json));
+  }
+
+  static String convertToJson(CoinsEntity coinsEntity) {
+    return jsonEncode(coinsEntity.toJson());
+  }
+
   static CoinsEntity firstInit({required List<GeckoCoinDTO> geckoCoins}) {
     List<CoinEntity> coinsList = [];
     for (var coin in geckoCoins) {
-      coinsList.add(
-        CoinEntity(
-          symbol: coin.symbol,
-          name: coin.name,
-          image: coin.image,
-          currentPrice: coin.currentPrice,
-          marketCap: coin.marketCap,
-          buyPrice: 0,
-          totalAmount: 0,
-          moneyInvested: 0,
-          allCoinsCurrentPrice: 0,
-          history: [],
-        ),
-      );
+      coinsList.add(_getEmptyCoin(geckoCoinDTO: coin));
     }
     return CoinsEntity(coins: coinsList, updateTime: DateTime.now());
   }
@@ -28,49 +25,83 @@ class CoinsMapper {
     required CoinsEntity coinsEntity,
   }) {
     List<CoinEntity> coinsList = [];
-    for (var coin in coinsEntity.coins) {
-      ///TODO: алгорит может ломаться если одни монеты ушли а другие пришли из топ 100
-      coinsList.add(
-        coin.copyWith(
-          currentPrice: geckoCoins.firstWhere((e) => e.symbol == coin.symbol).currentPrice,
-        ),
-      );
+    for (var geckoCoin in geckoCoins) {
+      CoinEntity? oldCoin = _getOldCoin(coinsEntity, geckoCoin);
+      late final CoinEntity newCoin;
+      if (oldCoin != null) {
+        newCoin = oldCoin.copyWith(
+          currentPrice: geckoCoin.currentPrice,
+          marketCap: geckoCoin.marketCap,
+        );
+      } else {
+        newCoin = _getEmptyCoin(geckoCoinDTO: geckoCoin);
+      }
+      coinsList.add(newCoin);
     }
     return CoinsEntity(coins: coinsList, updateTime: DateTime.now());
-    // List<PortfolioCoinEntity> allPortfolioCoins = [];
-    // for (var marketCoin in allMarketCoins) {
-    //   List<HivePaymentDTO> selectedCoinPayments =
-    //       allPayments.where((payment) => payment.symbol == marketCoin.symbol).toList();
-    //   if (selectedCoinPayments.isNotEmpty) {
-    //     double totalAmount = 0;
-    //     double moneyInvested = 0;
-    //     for (var payment in selectedCoinPayments) {
-    //       switch (payment.type.getPaymentType()) {
-    //         case PaymentTypeEntity.withdraw:
-    //           totalAmount = totalAmount - payment.numberOfCoins;
-    //           moneyInvested = moneyInvested - payment.amount;
-    //           break;
-    //         case PaymentTypeEntity.deposit:
-    //           totalAmount = totalAmount + payment.numberOfCoins;
-    //           moneyInvested = moneyInvested + payment.amount;
-    //           break;
-    //       }
-    //     }
-    //     allPortfolioCoins.add(
-    //       PortfolioCoinEntity(
-    //         symbol: marketCoin.symbol,
-    //         name: marketCoin.name,
-    //         image: marketCoin.image,
-    //         currentPrice: marketCoin.currentPrice,
-    //         buyPrice: moneyInvested / totalAmount,
-    //         totalAmount: totalAmount,
-    //         moneyInvested: moneyInvested,
-    //         allCoinsCurrentPrice: totalAmount * marketCoin.currentPrice,
-    //         history: selectedCoinPayments.map((e) => e.toEntity()).toList(),
-    //       ),
-    //     );
-    //   }
-    // }
-    // return PortfolioCoinsEntity(coins: allPortfolioCoins, updateTime: updateTime);
+  }
+
+  static CoinsEntity updateHistory({
+    required CoinsEntity coinsEntity,
+    required PaymentEntity paymentEntity,
+  }) {
+    final index = coinsEntity.coins.indexOf(
+      coinsEntity.coins.firstWhere((e) => e.symbol == paymentEntity.symbol),
+    );
+    final List<PaymentEntity> newHistory = [];
+    newHistory.addAll(coinsEntity.coins[index].history);
+    final List<CoinEntity> newCoins = [];
+    newCoins.addAll(coinsEntity.coins);
+    late final double newTotalAmount;
+    late final double newMoneyInvested;
+
+    switch (paymentEntity.type) {
+      case PaymentType.withdraw:
+        newTotalAmount = coinsEntity.coins[index].totalAmount - paymentEntity.numberOfCoins;
+        newMoneyInvested = coinsEntity.coins[index].moneyInvested - paymentEntity.amount;
+        newHistory.removeWhere((e) => e.dateTime == paymentEntity.dateTime);
+        break;
+      case PaymentType.deposit:
+        newTotalAmount = coinsEntity.coins[index].totalAmount + paymentEntity.numberOfCoins;
+        newHistory.add(paymentEntity);
+        break;
+    }
+
+    newCoins[index] = coinsEntity.coins[index].copyWith(
+      buyPrice: newMoneyInvested / newTotalAmount,
+      totalAmount: newTotalAmount,
+      moneyInvested: newMoneyInvested,
+      allCoinsCurrentPrice: coinsEntity.coins[index].currentPrice * newTotalAmount,
+      history: newHistory,
+    );
+
+    return coinsEntity.copyWith(coins: newCoins);
+  }
+
+  static CoinEntity _getEmptyCoin({
+    required GeckoCoinDTO geckoCoinDTO,
+  }) {
+    return CoinEntity(
+      symbol: geckoCoinDTO.symbol,
+      name: geckoCoinDTO.name,
+      image: geckoCoinDTO.image,
+      currentPrice: geckoCoinDTO.currentPrice,
+      marketCap: geckoCoinDTO.marketCap,
+      buyPrice: 0,
+      totalAmount: 0,
+      moneyInvested: 0,
+      allCoinsCurrentPrice: 0,
+      history: [],
+    );
+  }
+
+  static CoinEntity? _getOldCoin(
+    CoinsEntity coinsEntity,
+    GeckoCoinDTO geckoCoinDTO,
+  ) {
+    for (var coin in coinsEntity.coins) {
+      if (coin.symbol == geckoCoinDTO.symbol) return coin;
+    }
+    return null;
   }
 }

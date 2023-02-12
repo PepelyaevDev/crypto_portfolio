@@ -1,30 +1,39 @@
-import 'package:crypto_portfolio/data/gecko_api/api/gecko_coins_api_client.dart';
-import 'package:crypto_portfolio/data/gecko_api/dio/dio_client.dart';
-import 'package:crypto_portfolio/data/gecko_api/dio/dio_constants.dart';
-import 'package:crypto_portfolio/data/gecko_api/dio/dio_error_interceptor.dart';
+import 'package:crypto_portfolio/data/gecko_api/api/dio_client.dart';
+import 'package:crypto_portfolio/data/gecko_api/api/error_interceptor.dart';
+import 'package:crypto_portfolio/data/gecko_api/sources/gecko_coins_source.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class GeckoApiClient {
-  GeckoApiClient({required this.coins});
-  final GeckoCoinsApiClient coins;
+  final GeckoCoinsSource coins;
 
-  static GeckoApiClient getClient({DioClient? mockDioClient}) {
-    final dioClient = mockDioClient ??
-        DioClient(Dio(
-          BaseOptions(
-            baseUrl: DioConstants.geckoBaseUrl,
-            connectTimeout: DioConstants.connectionTimeout,
-            receiveTimeout: DioConstants.receiveTimeout,
-            responseType: ResponseType.json,
-            validateStatus: (status) => (status ?? 500) < 500,
-          ),
-        )..interceptors.addAll([
-            DioErrorInterceptor(),
-            PrettyDioLogger(requestHeader: true, requestBody: true),
-          ]));
+  const GeckoApiClient({
+    required this.coins,
+  });
+
+  static GeckoApiClient get getClient {
+    final dioClient = DioClient(Dio(
+      BaseOptions(
+        baseUrl: 'https://api.coingecko.com',
+        connectTimeout: 15000,
+        receiveTimeout: 15000,
+        responseType: ResponseType.json,
+        validateStatus: (status) {
+          final int code = status ?? 500;
+          switch (code) {
+            case 200:
+              return true;
+            default:
+              return false;
+          }
+        },
+      ),
+    )..interceptors.addAll([
+        ErrorInterceptor(),
+        PrettyDioLogger(requestHeader: true, requestBody: true),
+      ]));
     return GeckoApiClient(
-      coins: GeckoCoinsApiClient(dioClient),
+      coins: GeckoCoinsSource(dioClient),
     );
   }
 }

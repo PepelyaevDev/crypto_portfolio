@@ -52,8 +52,7 @@ mixin _$PortfolioEvent {
 
 /// @nodoc
 abstract class $PortfolioEventCopyWith<$Res> {
-  factory $PortfolioEventCopyWith(
-          PortfolioEvent value, $Res Function(PortfolioEvent) then) =
+  factory $PortfolioEventCopyWith(PortfolioEvent value, $Res Function(PortfolioEvent) then) =
       _$PortfolioEventCopyWithImpl<$Res, PortfolioEvent>;
 }
 
@@ -75,11 +74,9 @@ abstract class _$$_UpdateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UpdateCopyWithImpl<$Res>
-    extends _$PortfolioEventCopyWithImpl<$Res, _$_Update>
+class __$$_UpdateCopyWithImpl<$Res> extends _$PortfolioEventCopyWithImpl<$Res, _$_Update>
     implements _$$_UpdateCopyWith<$Res> {
-  __$$_UpdateCopyWithImpl(_$_Update _value, $Res Function(_$_Update) _then)
-      : super(_value, _then);
+  __$$_UpdateCopyWithImpl(_$_Update _value, $Res Function(_$_Update) _then) : super(_value, _then);
 }
 
 /// @nodoc
@@ -94,8 +91,7 @@ class _$_Update implements _Update {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Update);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Update);
   }
 
   @override
@@ -218,8 +214,7 @@ mixin _$PortfolioState {
 
 /// @nodoc
 abstract class $PortfolioStateCopyWith<$Res> {
-  factory $PortfolioStateCopyWith(
-          PortfolioState value, $Res Function(PortfolioState) then) =
+  factory $PortfolioStateCopyWith(PortfolioState value, $Res Function(PortfolioState) then) =
       _$PortfolioStateCopyWithImpl<$Res, PortfolioState>;
 }
 
@@ -236,14 +231,12 @@ class _$PortfolioStateCopyWithImpl<$Res, $Val extends PortfolioState>
 
 /// @nodoc
 abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
+  factory _$$_InitialCopyWith(_$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$PortfolioStateCopyWithImpl<$Res, _$_Initial>
+class __$$_InitialCopyWithImpl<$Res> extends _$PortfolioStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -261,8 +254,7 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -349,14 +341,12 @@ abstract class _Initial implements PortfolioState {
 
 /// @nodoc
 abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
+  factory _$$_LoadingCopyWith(_$_Loading value, $Res Function(_$_Loading) then) =
       __$$_LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$PortfolioStateCopyWithImpl<$Res, _$_Loading>
+class __$$_LoadingCopyWithImpl<$Res> extends _$PortfolioStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -374,8 +364,7 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
   @override
@@ -462,8 +451,7 @@ abstract class _Loading implements PortfolioState {
 
 /// @nodoc
 abstract class _$$_SuccessCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(
-          _$_Success value, $Res Function(_$_Success) then) =
+  factory _$$_SuccessCopyWith(_$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @useResult
   $Res call({CoinsEntity coinsEntity});
@@ -472,8 +460,7 @@ abstract class _$$_SuccessCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res>
-    extends _$PortfolioStateCopyWithImpl<$Res, _$_Success>
+class __$$_SuccessCopyWithImpl<$Res> extends _$PortfolioStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
       : super(_value, _then);
@@ -518,8 +505,7 @@ class _$_Success implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Success &&
-            (identical(other.coinsEntity, coinsEntity) ||
-                other.coinsEntity == coinsEntity));
+            (identical(other.coinsEntity, coinsEntity) || other.coinsEntity == coinsEntity));
   }
 
   @override
@@ -611,20 +597,17 @@ abstract class _Success implements PortfolioState {
 
   CoinsEntity get coinsEntity;
   @JsonKey(ignore: true)
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SuccessCopyWith<_$_Success> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_FailureCopyWith<$Res> {
-  factory _$$_FailureCopyWith(
-          _$_Failure value, $Res Function(_$_Failure) then) =
+  factory _$$_FailureCopyWith(_$_Failure value, $Res Function(_$_Failure) then) =
       __$$_FailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FailureCopyWithImpl<$Res>
-    extends _$PortfolioStateCopyWithImpl<$Res, _$_Failure>
+class __$$_FailureCopyWithImpl<$Res> extends _$PortfolioStateCopyWithImpl<$Res, _$_Failure>
     implements _$$_FailureCopyWith<$Res> {
   __$$_FailureCopyWithImpl(_$_Failure _value, $Res Function(_$_Failure) _then)
       : super(_value, _then);
@@ -642,8 +625,7 @@ class _$_Failure implements _Failure {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Failure);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Failure);
   }
 
   @override

@@ -25,7 +25,7 @@ class DeletePaymentBloc extends Bloc<DeletePaymentEvent, DeletePaymentState> {
   Future<void> _deletePayment(DeletePaymentEvent event, Emitter<DeletePaymentState> emit) async {
     emit(const DeletePaymentState.loading());
     try {
-      await _coinsRepo.deletePayment(event.payment);
+      await _coinsRepo.updateHistory(event.payment);
       emit(const DeletePaymentState.success());
     } catch (e) {
       emit(const DeletePaymentState.failure());
