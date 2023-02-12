@@ -29,10 +29,17 @@ class CoinsMapper {
       CoinEntity? oldCoin = _getOldCoin(coinsEntity, geckoCoin);
       late final CoinEntity newCoin;
       if (oldCoin != null) {
-        ///TODO: не использовать copyWith чтобы не сломать после изменения модели
-        newCoin = oldCoin.copyWith(
+        newCoin = CoinEntity(
           currentPrice: geckoCoin.currentPrice,
           marketCap: geckoCoin.marketCap,
+          symbol: oldCoin.symbol,
+          name: oldCoin.name,
+          image: oldCoin.image,
+          buyPrice: oldCoin.buyPrice,
+          totalAmount: oldCoin.totalAmount,
+          moneyInvested: oldCoin.moneyInvested,
+          allCoinsCurrentPrice: oldCoin.allCoinsCurrentPrice,
+          history: oldCoin.history,
         );
       } else {
         newCoin = _getEmptyCoin(geckoCoinDTO: geckoCoin);
@@ -46,11 +53,11 @@ class CoinsMapper {
     required CoinsEntity coinsEntity,
     required PaymentEntity paymentEntity,
   }) {
-    final index = coinsEntity.coins.indexOf(
-      coinsEntity.coins.firstWhere((e) => e.symbol == paymentEntity.symbol),
+    late final CoinEntity coinEntity = coinsEntity.coins.firstWhere(
+      (e) => e.symbol == paymentEntity.symbol,
     );
     final List<PaymentEntity> newHistory = [];
-    newHistory.addAll(coinsEntity.coins[index].history);
+    newHistory.addAll(coinEntity.history);
     final List<CoinEntity> newCoins = [];
     newCoins.addAll(coinsEntity.coins);
     late final double newTotalAmount;
@@ -58,25 +65,30 @@ class CoinsMapper {
 
     switch (paymentEntity.type) {
       case PaymentType.withdraw:
-        newTotalAmount = coinsEntity.coins[index].totalAmount - paymentEntity.numberOfCoins;
-        newMoneyInvested = coinsEntity.coins[index].moneyInvested - paymentEntity.amount;
+        newTotalAmount = coinEntity.totalAmount - paymentEntity.numberOfCoins;
+        newMoneyInvested = coinEntity.moneyInvested - paymentEntity.amount;
         newHistory.removeWhere((e) => e.dateTime == paymentEntity.dateTime);
         break;
       case PaymentType.deposit:
-        newTotalAmount = coinsEntity.coins[index].totalAmount + paymentEntity.numberOfCoins;
+        newTotalAmount = coinEntity.totalAmount + paymentEntity.numberOfCoins;
         newHistory.add(paymentEntity);
         break;
     }
 
-    newCoins[index] = coinsEntity.coins[index].copyWith(
+    newCoins[newCoins.indexOf(coinEntity)] = CoinEntity(
       buyPrice: newMoneyInvested / newTotalAmount,
       totalAmount: newTotalAmount,
       moneyInvested: newMoneyInvested,
-      allCoinsCurrentPrice: coinsEntity.coins[index].currentPrice * newTotalAmount,
+      allCoinsCurrentPrice: coinEntity.currentPrice * newTotalAmount,
       history: newHistory,
+      symbol: coinEntity.symbol,
+      name: coinEntity.name,
+      image: coinEntity.image,
+      currentPrice: coinEntity.currentPrice,
+      marketCap: coinEntity.marketCap,
     );
 
-    return coinsEntity.copyWith(coins: newCoins);
+    return CoinsEntity(coins: newCoins, updateTime: coinsEntity.updateTime);
   }
 
   static CoinEntity _getEmptyCoin({
@@ -96,10 +108,7 @@ class CoinsMapper {
     );
   }
 
-  static CoinEntity? _getOldCoin(
-    CoinsEntity coinsEntity,
-    GeckoCoinDTO geckoCoinDTO,
-  ) {
+  static CoinEntity? _getOldCoin(CoinsEntity coinsEntity, GeckoCoinDTO geckoCoinDTO) {
     for (var coin in coinsEntity.coins) {
       if (coin.symbol == geckoCoinDTO.symbol) return coin;
     }

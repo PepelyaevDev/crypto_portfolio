@@ -1,14 +1,24 @@
-import 'package:crypto_portfolio/application/design_system/widgets/snack_bar_widget.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/portfolio_bloc/portfolio_bloc.dart';
-import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
-import 'package:crypto_portfolio/application/features/portfolio/widgets/portfolio_coin_widget.dart';
+import 'package:crypto_portfolio/application/features/portfolio/widgets/portfolio_coins_widget.dart';
 import 'package:crypto_portfolio/domain/repo/coins_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class PortfolioPage extends StatelessWidget {
+class PortfolioPage extends StatefulWidget {
   const PortfolioPage({super.key});
+
+  @override
+  State<PortfolioPage> createState() => _PortfolioPageState();
+}
+
+class _PortfolioPageState extends State<PortfolioPage> {
+  TextEditingController searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,54 +27,38 @@ class PortfolioPage extends StatelessWidget {
           PortfolioBloc(context.read<CoinsRepo>())..add(PortfolioEvent.update()),
       child: Builder(builder: (context) {
         return Scaffold(
-          appBar: AppBar(),
-          body: RefreshIndicator(
-            onRefresh: () async {
-              context.read<PortfolioBloc>().add(PortfolioEvent.update());
-            },
-            child: ListView(
-              children: [
-                BlocConsumer<PortfolioBloc, PortfolioState>(
-                  builder: (_, PortfolioState state) {
-                    return state.maybeWhen(
-                      success: (coinsEntity) => Column(
-                        children: coinsEntity.coins
-                            .map((coin) => PortfolioCoinWidget(coinEntity: coin))
-                            .toList(),
-                      ),
-                      loading: () => CircularProgressIndicator(),
-                      orElse: () => SizedBox(),
-                    );
-                  },
-                  listener: (_, PortfolioState state) {
-                    state.maybeWhen(
-                      success: (_) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBarWidget(AppLocalizations.of(context)!.dataUpdated),
+          body: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: SafeArea(
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  context.read<PortfolioBloc>().add(PortfolioEvent.update());
+                },
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: searchController,
+                      onChanged: (_) {
+                        setState(() {});
+                      },
+                    ),
+                    SizedBox(height: 10),
+                    BlocBuilder<PortfolioBloc, PortfolioState>(
+                      builder: (_, PortfolioState state) {
+                        return state.maybeWhen(
+                          success: (coinsEntity) => PortfolioCoinsWidget(
+                            searchValue: searchController.text,
+                            coinsEntity: coinsEntity,
+                          ),
+                          loading: () => CircularProgressIndicator(),
+                          orElse: () => SizedBox(),
                         );
                       },
-                      failure: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBarWidget(AppLocalizations.of(context)!.dataNotUpdated),
-                        );
-                      },
-                      orElse: () => null,
-                    );
-                  },
+                    ),
+                    SizedBox(height: 15),
+                  ],
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push<void>(
-                      MaterialPageRoute(
-                        builder: (_) => AddPaymentPage(
-                          context.read<PortfolioBloc>(),
-                        ),
-                      ),
-                    );
-                  },
-                  child: Text(AppLocalizations.of(context)!.addPayment),
-                ),
-              ],
+              ),
             ),
           ),
         );
