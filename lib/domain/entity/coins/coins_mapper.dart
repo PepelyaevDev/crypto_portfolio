@@ -29,6 +29,7 @@ class CoinsMapper {
       CoinEntity? oldCoin = _getOldCoin(coinsEntity, geckoCoin);
       late final CoinEntity newCoin;
       if (oldCoin != null) {
+        ///TODO: не использовать copyWith чтобы не сломать после изменения модели
         newCoin = oldCoin.copyWith(
           currentPrice: geckoCoin.currentPrice,
           marketCap: geckoCoin.marketCap,
