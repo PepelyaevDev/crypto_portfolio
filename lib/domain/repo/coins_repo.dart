@@ -1,9 +1,10 @@
-import 'package:crypto_portfolio/data/gecko_api/api/error_interceptor.dart';
 import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/dto/coin/gecko_coin_dto.dart';
 import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_mapper.dart';
+import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
+import 'package:dartz/dartz.dart';
 
 class CoinsRepo {
   const CoinsRepo({
@@ -14,7 +15,7 @@ class CoinsRepo {
   final HiveApiClient hiveApiClient;
   final GeckoApiClient geckoApiClient;
 
-  Future<CoinsEntity> getCoins() async {
+  Future<Either<Failure, CoinsEntity>> getCoins() async {
     final CoinsEntity? coinsEntity = CoinsMapper.convertFromJson(hiveApiClient.coins.getCoins());
     try {
       final List<GeckoCoinDTO> geckoCoins = await geckoApiClient.coins.getAllCoins();
@@ -28,21 +29,25 @@ class CoinsRepo {
         updatedCoinsEntity = CoinsMapper.firstInit(geckoCoins: geckoCoins);
       }
       await hiveApiClient.coins.updateCoins(CoinsMapper.convertToJson(updatedCoinsEntity));
-      return updatedCoinsEntity;
+      return right(updatedCoinsEntity);
     } catch (e) {
-      if (coinsEntity != null) return coinsEntity;
-      if (e is GeckoException) rethrow;
-      throw GeckoException();
+      if (coinsEntity != null) return right(coinsEntity);
+      return left(Failure.from(e));
     }
   }
 
-  Future<CoinsEntity> updateHistory(PaymentEntity paymentEntity) async {
-    final CoinsEntity oldCoinsEntity = await getCoins();
-    final CoinsEntity newCoinsEntity = CoinsMapper.updateHistory(
-      coinsEntity: oldCoinsEntity,
-      paymentEntity: paymentEntity,
+  Future<Either<Failure, CoinsEntity>> updateHistory(PaymentEntity paymentEntity) async {
+    final getCoinsResponse = await getCoins();
+    return getCoinsResponse.fold(
+      (l) => left(l),
+      (r) async {
+        final CoinsEntity newCoinsEntity = CoinsMapper.updateHistory(
+          coinsEntity: r,
+          paymentEntity: paymentEntity,
+        );
+        await hiveApiClient.coins.updateCoins(CoinsMapper.convertToJson(newCoinsEntity));
+        return right(newCoinsEntity);
+      },
     );
-    await hiveApiClient.coins.updateCoins(CoinsMapper.convertToJson(newCoinsEntity));
-    return newCoinsEntity;
   }
 }

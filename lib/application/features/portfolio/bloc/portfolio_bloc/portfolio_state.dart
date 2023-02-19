@@ -8,5 +8,5 @@ class PortfolioState with _$PortfolioState {
 
   const factory PortfolioState.success({required CoinsEntity coinsEntity}) = _Success;
 
-  const factory PortfolioState.failure() = _Failure;
+  const factory PortfolioState.failure({required String message}) = _Failure;
 }

@@ -9,7 +9,7 @@ analyzer:
   plugins:
     - import_lint
 
-
+#линтер
 #import_lint:
 #  rules:
 #    data_di_rule:

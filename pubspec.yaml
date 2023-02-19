@@ -6,6 +6,7 @@ environment:
   sdk: '>=2.18.4 <3.0.0'
 dependencies: 
   bloc_concurrency: ^0.2.0
+  dartz: ^0.10.1
   dio: ^4.0.6
   flutter_bloc: ^8.1.1
   freezed: ^2.3.2

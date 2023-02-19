@@ -24,11 +24,10 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
 
   Future<void> _updateCoinsInfo(Emitter<PortfolioState> emit) async {
     emit(const PortfolioState.loading());
-    try {
-      final CoinsEntity coinsEntity = await _coinsRepo.getCoins();
-      emit(PortfolioState.success(coinsEntity: coinsEntity));
-    } catch (e) {
-      emit(const PortfolioState.failure());
-    }
+    final result = await _coinsRepo.getCoins();
+    result.fold(
+      (l) => emit(PortfolioState.failure(message: l.errorMessage)),
+      (r) => emit(PortfolioState.success(coinsEntity: r)),
+    );
   }
 }
