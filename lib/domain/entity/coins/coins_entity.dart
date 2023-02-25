@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'coins_entity.freezed.dart';
 part 'coins_entity.g.dart';
 
