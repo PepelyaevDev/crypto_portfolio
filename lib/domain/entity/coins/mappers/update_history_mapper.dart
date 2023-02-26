@@ -19,6 +19,8 @@ class UpdateHistoryMapper {
       case PaymentType.withdraw:
         newTotalAmount = coinEntity.totalAmount - paymentEntity.numberOfCoins;
         newMoneyInvested = coinEntity.moneyInvested - paymentEntity.amount;
+        ///TODO: перепутаны удаление и продажа, если дата старая удалить платеж, если дата новая
+        ///добавить платеж
         newHistory.removeWhere((e) => e.dateTime == paymentEntity.dateTime);
         break;
       case PaymentType.deposit:
