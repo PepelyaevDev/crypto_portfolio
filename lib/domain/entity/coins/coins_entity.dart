@@ -15,11 +15,13 @@ class CoinsEntity with _$CoinsEntity {
 @freezed
 class CoinEntity with _$CoinEntity {
   const factory CoinEntity({
+    //market data
     required String symbol,
     required String name,
     required String image,
     required double currentPrice,
     required double marketCap,
+    //user data
     required double buyPrice,
     required double totalAmount,
     required double moneyInvested,

@@ -51,12 +51,14 @@ mixin _$AddPaymentEvent {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AddPaymentEventCopyWith<AddPaymentEvent> get copyWith => throw _privateConstructorUsedError;
+  $AddPaymentEventCopyWith<AddPaymentEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AddPaymentEventCopyWith<$Res> {
-  factory $AddPaymentEventCopyWith(AddPaymentEvent value, $Res Function(AddPaymentEvent) then) =
+  factory $AddPaymentEventCopyWith(
+          AddPaymentEvent value, $Res Function(AddPaymentEvent) then) =
       _$AddPaymentEventCopyWithImpl<$Res, AddPaymentEvent>;
   @useResult
   $Res call({PaymentEntity payment});
@@ -98,7 +100,8 @@ class _$AddPaymentEventCopyWithImpl<$Res, $Val extends AddPaymentEvent>
 
 /// @nodoc
 abstract class _$$_AddCopyWith<$Res> implements $AddPaymentEventCopyWith<$Res> {
-  factory _$$_AddCopyWith(_$_Add value, $Res Function(_$_Add) then) = __$$_AddCopyWithImpl<$Res>;
+  factory _$$_AddCopyWith(_$_Add value, $Res Function(_$_Add) then) =
+      __$$_AddCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({PaymentEntity payment});
@@ -108,9 +111,11 @@ abstract class _$$_AddCopyWith<$Res> implements $AddPaymentEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AddCopyWithImpl<$Res> extends _$AddPaymentEventCopyWithImpl<$Res, _$_Add>
+class __$$_AddCopyWithImpl<$Res>
+    extends _$AddPaymentEventCopyWithImpl<$Res, _$_Add>
     implements _$$_AddCopyWith<$Res> {
-  __$$_AddCopyWithImpl(_$_Add _value, $Res Function(_$_Add) _then) : super(_value, _then);
+  __$$_AddCopyWithImpl(_$_Add _value, $Res Function(_$_Add) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -153,7 +158,8 @@ class _$_Add implements _Add {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddCopyWith<_$_Add> get copyWith => __$$_AddCopyWithImpl<_$_Add>(this, _$identity);
+  _$$_AddCopyWith<_$_Add> get copyWith =>
+      __$$_AddCopyWithImpl<_$_Add>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -278,7 +284,8 @@ mixin _$AddPaymentState {
 
 /// @nodoc
 abstract class $AddPaymentStateCopyWith<$Res> {
-  factory $AddPaymentStateCopyWith(AddPaymentState value, $Res Function(AddPaymentState) then) =
+  factory $AddPaymentStateCopyWith(
+          AddPaymentState value, $Res Function(AddPaymentState) then) =
       _$AddPaymentStateCopyWithImpl<$Res, AddPaymentState>;
 }
 
@@ -295,7 +302,8 @@ class _$AddPaymentStateCopyWithImpl<$Res, $Val extends AddPaymentState>
 
 /// @nodoc
 abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(_$_Initial value, $Res Function(_$_Initial) then) =
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
   @useResult
   $Res call({CoinsEntity coinsEntity});
@@ -304,7 +312,8 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$AddPaymentStateCopyWithImpl<$Res, _$_Initial>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$AddPaymentStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -349,7 +358,8 @@ class _$_Initial implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Initial &&
-            (identical(other.coinsEntity, coinsEntity) || other.coinsEntity == coinsEntity));
+            (identical(other.coinsEntity, coinsEntity) ||
+                other.coinsEntity == coinsEntity));
   }
 
   @override
@@ -441,17 +451,20 @@ abstract class _Initial implements AddPaymentState {
 
   CoinsEntity get coinsEntity;
   @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith => throw _privateConstructorUsedError;
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(_$_Loading value, $Res Function(_$_Loading) then) =
+  factory _$$_LoadingCopyWith(
+          _$_Loading value, $Res Function(_$_Loading) then) =
       __$$_LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$AddPaymentStateCopyWithImpl<$Res, _$_Loading>
+class __$$_LoadingCopyWithImpl<$Res>
+    extends _$AddPaymentStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -469,7 +482,8 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Loading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
   @override
@@ -556,12 +570,14 @@ abstract class _Loading implements AddPaymentState {
 
 /// @nodoc
 abstract class _$$_SuccessCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(_$_Success value, $Res Function(_$_Success) then) =
+  factory _$$_SuccessCopyWith(
+          _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res> extends _$AddPaymentStateCopyWithImpl<$Res, _$_Success>
+class __$$_SuccessCopyWithImpl<$Res>
+    extends _$AddPaymentStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
       : super(_value, _then);
@@ -579,7 +595,8 @@ class _$_Success implements _Success {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Success);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Success);
   }
 
   @override
@@ -666,12 +683,14 @@ abstract class _Success implements AddPaymentState {
 
 /// @nodoc
 abstract class _$$_FailureCopyWith<$Res> {
-  factory _$$_FailureCopyWith(_$_Failure value, $Res Function(_$_Failure) then) =
+  factory _$$_FailureCopyWith(
+          _$_Failure value, $Res Function(_$_Failure) then) =
       __$$_FailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FailureCopyWithImpl<$Res> extends _$AddPaymentStateCopyWithImpl<$Res, _$_Failure>
+class __$$_FailureCopyWithImpl<$Res>
+    extends _$AddPaymentStateCopyWithImpl<$Res, _$_Failure>
     implements _$$_FailureCopyWith<$Res> {
   __$$_FailureCopyWithImpl(_$_Failure _value, $Res Function(_$_Failure) _then)
       : super(_value, _then);
@@ -689,7 +708,8 @@ class _$_Failure implements _Failure {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Failure);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Failure);
   }
 
   @override

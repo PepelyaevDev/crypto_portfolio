@@ -22,8 +22,8 @@ class BottomNavigationPage extends StatelessWidget {
               );
               late final String label;
               switch (key) {
-                case BottomNavigationKey.statistics:
-                  label = AppLocalizations.of(context)!.statistics;
+                case BottomNavigationKey.market:
+                  label = AppLocalizations.of(context)!.market;
                   break;
                 case BottomNavigationKey.portfolio:
                   label = AppLocalizations.of(context)!.portfolio;

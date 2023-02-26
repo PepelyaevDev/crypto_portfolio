@@ -7,6 +7,10 @@ extension CoinsToJsonConverter on CoinsEntity {
 }
 
 extension CoinsFromJsonConverter on String? {
-  CoinsEntity? get convertToCoinsEntity =>
-      this == null ? null : CoinsEntity.fromJson(jsonDecode(this!));
+  CoinsEntity get convertToCoinsEntity => this == null
+      ? CoinsEntity(
+          coins: [],
+          updateTime: DateTime.now(),
+        )
+      : CoinsEntity.fromJson(jsonDecode(this!));
 }

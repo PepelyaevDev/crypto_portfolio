@@ -9,7 +9,7 @@ part 'bottom_navigation_bloc.freezed.dart';
 class BottomNavigationBloc extends Bloc<BottomNavigationEvent, BottomNavigationState> {
   BottomNavigationBloc()
       : super(BottomNavigationState(
-          BottomNavigationTabs.data[BottomNavigationKey.portfolio]!,
+          BottomNavigationTabs.data[BottomNavigationKey.market]!,
         )) {
     on<BottomNavigationEvent>((event, emit) {
       emit(BottomNavigationState(BottomNavigationTabs.data[event.key]!));

@@ -1,11 +1,12 @@
+import 'package:crypto_portfolio/application/features/market/page/market_coins_page.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/portfolio_page.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationTabs {
   static Map<BottomNavigationKey, BottomNavigationTab> data = {
-    BottomNavigationKey.statistics: BottomNavigationTab(
+    BottomNavigationKey.market: BottomNavigationTab(
       index: 0,
-      screen: SizedBox(),
+      screen: MarketCoinsPage(),
       icon: Icon(Icons.query_stats),
     ),
     BottomNavigationKey.portfolio: BottomNavigationTab(
@@ -21,7 +22,7 @@ class BottomNavigationTabs {
   };
 }
 
-enum BottomNavigationKey { statistics, portfolio, news }
+enum BottomNavigationKey { market, portfolio, news }
 
 class BottomNavigationTab {
   final int index;
