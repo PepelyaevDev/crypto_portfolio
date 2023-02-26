@@ -2,6 +2,7 @@ import 'package:crypto_portfolio/application/app/bottom_navigation/bloc/bottom_n
 import 'package:crypto_portfolio/application/app/bottom_navigation/page/bottom_navigation_tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BottomNavigationPage extends StatelessWidget {
   const BottomNavigationPage({super.key});
@@ -15,9 +16,27 @@ class BottomNavigationPage extends StatelessWidget {
             child: state.tab.screen,
           ),
           bottomNavigationBar: BottomNavigationBar(
-            items: BottomNavigationTabs.data.values
-                .map((e) => BottomNavigationBarItem(icon: e.icon, label: e.label))
-                .toList(),
+            items: BottomNavigationTabs.data.values.map((value) {
+              final BottomNavigationKey key = BottomNavigationTabs.data.keys.firstWhere(
+                (key) => BottomNavigationTabs.data[key] == value,
+              );
+              late final String label;
+              switch (key) {
+                case BottomNavigationKey.statistics:
+                  label = AppLocalizations.of(context)!.statistics;
+                  break;
+                case BottomNavigationKey.portfolio:
+                  label = AppLocalizations.of(context)!.portfolio;
+                  break;
+                case BottomNavigationKey.news:
+                  label = AppLocalizations.of(context)!.news;
+                  break;
+              }
+              return BottomNavigationBarItem(
+                icon: value.icon,
+                label: label,
+              );
+            }).toList(),
             currentIndex: state.tab.index,
             onTap: (int i) {
               context.read<BottomNavigationBloc>().add(

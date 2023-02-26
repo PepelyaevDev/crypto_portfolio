@@ -1,5 +1,5 @@
 {
-    "addPayment": "Add payment",
-    "dataUpdated": "Data updated",
-    "dataNotUpdated": "Data not updated"
+    "statistics": "Statistics",
+    "portfolio": "Portfolio",
+    "news": "News"
 }

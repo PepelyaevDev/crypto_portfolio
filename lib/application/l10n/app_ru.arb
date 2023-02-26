@@ -1,5 +1,5 @@
 {
-    "addPayment": "Добавить платеж",
-    "dataUpdated": "Данные обновлены",
-    "dataNotUpdated": "Данные не обновлены"
+    "statistics": "Статистика",
+    "portfolio": "Портфель",
+    "news": "Новости"
 }
