@@ -24,18 +24,6 @@ import_lint:
         [
             "application/**/*.dart",
         ]
-    design_system_rule:
-      target_file_path: "application/design_system/**/*.dart"
-      not_allow_imports:
-        [
-            "application/**/*.dart",
-            "domain/**/*.dart",
-            "data/**/*.dart",
-        ]
-      exclude_imports:
-        [
-            "application/design_system/**/*.dart",
-        ]
     features_rule:
       target_file_path: "application/features/**/*.dart"
       not_allow_imports:

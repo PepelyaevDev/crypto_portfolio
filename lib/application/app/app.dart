@@ -1,4 +1,5 @@
-import 'package:crypto_portfolio/application/features/portfolio/pages/portfolio_page.dart';
+import 'package:crypto_portfolio/application/app/bottom_navigation/bloc/bottom_navigation_bloc.dart';
+import 'package:crypto_portfolio/application/app/bottom_navigation/page/bottom_navigation_page.dart';
 import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/repo/coins_repo.dart';
@@ -24,12 +25,19 @@ class CryptoPortfolioApp extends StatelessWidget {
           create: (_) => CoinsRepo(hiveApiClient: hiveApiClient, geckoApiClient: geckoApiClient),
         ),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        home: const PortfolioPage(),
-      ),
+      child: Builder(builder: (context) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (context) => BottomNavigationBloc()),
+          ],
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            home: const BottomNavigationPage(),
+          ),
+        );
+      }),
     );
   }
 }
