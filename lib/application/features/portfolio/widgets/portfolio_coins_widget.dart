@@ -1,5 +1,6 @@
 import 'package:crypto_portfolio/application/features/portfolio/widgets/payment_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
+import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:flutter/material.dart';
 
 class PortfolioCoinsWidget extends StatelessWidget {
@@ -17,7 +18,7 @@ class PortfolioCoinsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<CoinEntity> coinsList = coinsEntity.coins.where((e) => showCoin(e)).toList();
+    final List<CoinEntity> coinsList = coinsEntity.list.where((e) => showCoin(e)).toList();
     return Expanded(
       child: ListView.separated(
         itemBuilder: (_, i) => _PortfolioCoinWidget(
@@ -58,7 +59,7 @@ class _PortfolioCoinWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text('current price - ${coinEntity.currentPrice}'),
-                        Text('average purchase price - ${coinEntity.buyPrice}'),
+                        Text('average purchase price - ${coinEntity.averagePrice}'),
                       ],
                     ),
                   ),
@@ -66,7 +67,7 @@ class _PortfolioCoinWidget extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text('holdings - ${coinEntity.allCoinsCurrentPrice}'),
+                        Text('holdings - ${coinEntity.priceAllCoins}'),
                         Text('invested - ${coinEntity.moneyInvested}'),
                       ],
                     ),

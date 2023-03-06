@@ -1,5 +1,6 @@
-import 'package:crypto_portfolio/application/app/bottom_navigation/bloc/bottom_navigation_bloc.dart';
-import 'package:crypto_portfolio/application/app/bottom_navigation/page/bottom_navigation_page.dart';
+import 'package:crypto_portfolio/application/app/bloc/bottom_navigation_bloc/bottom_navigation_bloc.dart';
+import 'package:crypto_portfolio/application/app/bloc/coins_bloc/coins_bloc.dart';
+import 'package:crypto_portfolio/application/app/bottom_navigation/bottom_navigation_page.dart';
 import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/repo/coins_repo.dart';
@@ -29,6 +30,9 @@ class CryptoPortfolioApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) => BottomNavigationBloc()),
+            BlocProvider(
+                create: (context) =>
+                    CoinsBloc(context.read<CoinsRepo>())..add(CoinsEvent.refreshData())),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

@@ -15,7 +15,7 @@ class AddPaymentBloc extends Bloc<AddPaymentEvent, AddPaymentState> {
 
   AddPaymentBloc(this._coinsRepo)
       : super(
-          AddPaymentState.initial(coinsEntity: CoinsEntity(coins: [], updateTime: DateTime.now())),
+          AddPaymentState.initial(coinsEntity: CoinsEntity(list: [], updateTime: DateTime.now())),
         ) {
     on<AddPaymentEvent>(
       (event, emit) => event.map(

@@ -8,7 +8,7 @@ part of 'coins_entity.dart';
 
 _$_CoinsEntity _$$_CoinsEntityFromJson(Map<String, dynamic> json) =>
     _$_CoinsEntity(
-      coins: (json['coins'] as List<dynamic>)
+      list: (json['list'] as List<dynamic>)
           .map((e) => CoinEntity.fromJson(e as Map<String, dynamic>))
           .toList(),
       updateTime: DateTime.parse(json['updateTime'] as String),
@@ -16,7 +16,7 @@ _$_CoinsEntity _$$_CoinsEntityFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_CoinsEntityToJson(_$_CoinsEntity instance) =>
     <String, dynamic>{
-      'coins': instance.coins.map((e) => e.toJson()).toList(),
+      'list': instance.list.map((e) => e.toJson()).toList(),
       'updateTime': instance.updateTime.toIso8601String(),
     };
 
@@ -27,10 +27,8 @@ _$_CoinEntity _$$_CoinEntityFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String,
       currentPrice: (json['currentPrice'] as num).toDouble(),
       marketCap: (json['marketCap'] as num).toDouble(),
-      buyPrice: (json['buyPrice'] as num).toDouble(),
       totalAmount: (json['totalAmount'] as num).toDouble(),
       moneyInvested: (json['moneyInvested'] as num).toDouble(),
-      allCoinsCurrentPrice: (json['allCoinsCurrentPrice'] as num).toDouble(),
       history: (json['history'] as List<dynamic>)
           .map((e) => PaymentEntity.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -43,10 +41,8 @@ Map<String, dynamic> _$$_CoinEntityToJson(_$_CoinEntity instance) =>
       'image': instance.image,
       'currentPrice': instance.currentPrice,
       'marketCap': instance.marketCap,
-      'buyPrice': instance.buyPrice,
       'totalAmount': instance.totalAmount,
       'moneyInvested': instance.moneyInvested,
-      'allCoinsCurrentPrice': instance.allCoinsCurrentPrice,
       'history': instance.history.map((e) => e.toJson()).toList(),
     };
 

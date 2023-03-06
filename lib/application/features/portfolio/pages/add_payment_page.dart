@@ -79,7 +79,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                     context.read<AddPaymentBloc>().add(
                           AddPaymentEvent.add(
                             payment: PaymentEntity(
-                              symbol: coinsEntity.coins[24].symbol,
+                              symbol: coinsEntity.list[24].symbol,
                               dateTime: DateTime.now(),
                               type: PaymentType.deposit,
                               amount: double.parse(_amountController.text),

@@ -8,10 +8,8 @@ extension CreateEmptyCoin on GeckoCoinDTO {
         image: image,
         currentPrice: currentPrice,
         marketCap: marketCap,
-        buyPrice: 0,
         totalAmount: 0,
         moneyInvested: 0,
-        allCoinsCurrentPrice: 0,
         history: [],
       );
 }

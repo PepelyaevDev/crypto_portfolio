@@ -8,6 +8,6 @@ class CreateEmptyCoinsMapper {
     for (var coin in geckoCoins) {
       coinsList.add(coin.createEmptyCoin);
     }
-    return CoinsEntity(coins: coinsList, updateTime: DateTime.now());
+    return CoinsEntity(list: coinsList, updateTime: DateTime.now());
   }
 }

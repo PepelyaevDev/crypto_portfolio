@@ -5,7 +5,7 @@ part 'coins_entity.g.dart';
 @freezed
 class CoinsEntity with _$CoinsEntity {
   const factory CoinsEntity({
-    required List<CoinEntity> coins,
+    required List<CoinEntity> list,
     required DateTime updateTime,
   }) = _CoinsEntity;
 
@@ -22,10 +22,8 @@ class CoinEntity with _$CoinEntity {
     required double currentPrice,
     required double marketCap,
     //user data
-    required double buyPrice,
     required double totalAmount,
     required double moneyInvested,
-    required double allCoinsCurrentPrice,
     required List<PaymentEntity> history,
   }) = _CoinEntity;
 

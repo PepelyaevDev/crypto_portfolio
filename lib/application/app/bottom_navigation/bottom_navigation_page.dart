@@ -1,5 +1,5 @@
-import 'package:crypto_portfolio/application/app/bottom_navigation/bloc/bottom_navigation_bloc.dart';
-import 'package:crypto_portfolio/application/app/bottom_navigation/page/bottom_navigation_tabs.dart';
+import 'package:crypto_portfolio/application/app/bloc/bottom_navigation_bloc/bottom_navigation_bloc.dart';
+import 'package:crypto_portfolio/application/app/bottom_navigation/bottom_navigation_tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

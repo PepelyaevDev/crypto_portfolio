@@ -13,8 +13,8 @@ class CoinsRepo {
   const CoinsRepo({
     required HiveApiClient hiveApiClient,
     required GeckoApiClient geckoApiClient,
-  })  : _geckoApiClient = geckoApiClient,
-        _hiveApiClient = hiveApiClient;
+  })  : _hiveApiClient = hiveApiClient,
+        _geckoApiClient = geckoApiClient;
 
   final HiveApiClient _hiveApiClient;
   final GeckoApiClient _geckoApiClient;
@@ -28,7 +28,7 @@ class CoinsRepo {
       final CoinsEntity coinsEntity = getCoinsLocal();
       final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getAllCoins();
       final CoinsEntity updatedCoinsEntity;
-      if (coinsEntity.coins.isNotEmpty) {
+      if (coinsEntity.list.isNotEmpty) {
         updatedCoinsEntity = UpdateMarketDataMapper.call(
           geckoCoins: geckoCoins,
           coinsEntity: coinsEntity,

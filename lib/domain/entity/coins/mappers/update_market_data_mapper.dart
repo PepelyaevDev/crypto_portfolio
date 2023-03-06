@@ -9,19 +9,17 @@ class UpdateMarketDataMapper {
   }) {
     List<CoinEntity> coinsList = [];
     for (var geckoCoin in geckoCoins) {
-      final oldCoin = coinsEntity.coins.where((e) => e.symbol == geckoCoin.symbol);
+      final oldCoin = coinsEntity.list.where((e) => e.symbol == geckoCoin.symbol);
       late final CoinEntity newCoin;
       if (oldCoin.isNotEmpty) {
         newCoin = CoinEntity(
           currentPrice: geckoCoin.currentPrice,
           marketCap: geckoCoin.marketCap,
-          symbol: oldCoin.first.symbol,
-          name: oldCoin.first.name,
-          image: oldCoin.first.image,
-          buyPrice: oldCoin.first.buyPrice,
+          symbol: geckoCoin.symbol,
+          name: geckoCoin.name,
+          image: geckoCoin.image,
           totalAmount: oldCoin.first.totalAmount,
           moneyInvested: oldCoin.first.moneyInvested,
-          allCoinsCurrentPrice: oldCoin.first.allCoinsCurrentPrice,
           history: oldCoin.first.history,
         );
       } else {
@@ -29,6 +27,6 @@ class UpdateMarketDataMapper {
       }
       coinsList.add(newCoin);
     }
-    return CoinsEntity(coins: coinsList, updateTime: DateTime.now());
+    return CoinsEntity(list: coinsList, updateTime: DateTime.now());
   }
 }
