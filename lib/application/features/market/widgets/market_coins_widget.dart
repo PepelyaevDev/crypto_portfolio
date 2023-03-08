@@ -1,5 +1,6 @@
 import 'package:crypto_portfolio/application/app/utils/context_extension.dart';
 import 'package:crypto_portfolio/application/app/utils/double_extension.dart';
+import 'package:crypto_portfolio/application/app/widgets/coingecko_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:flutter/material.dart';
 
@@ -50,6 +51,15 @@ class MarketCoinsWidget extends StatelessWidget {
               itemCount: coins.list.length,
             ),
           ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(color: Colors.blue, blurRadius: 5.0),
+            ],
+          ),
+          child: CoinGeckoWidget(),
         ),
       ],
     );

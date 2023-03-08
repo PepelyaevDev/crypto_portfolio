@@ -19,6 +19,7 @@ dependencies:
   json_serializable: ^6.5.4
   money_formatter: ^0.0.3
   pretty_dio_logger: ^1.2.0-beta-1
+  url_launcher: ^6.1.10
   flutter: 
     sdk: flutter
   flutter_localizations: 

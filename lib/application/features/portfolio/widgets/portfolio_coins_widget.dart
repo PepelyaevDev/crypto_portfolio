@@ -4,28 +4,18 @@ import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:flutter/material.dart';
 
 class PortfolioCoinsWidget extends StatelessWidget {
-  final String searchValue;
   final CoinsEntity coinsEntity;
-  const PortfolioCoinsWidget({
-    required this.searchValue,
-    required this.coinsEntity,
-  });
-
-  bool showCoin(CoinEntity coinEntity) {
-    return coinEntity.name.toLowerCase().contains(searchValue.toLowerCase()) ||
-        coinEntity.symbol.toLowerCase().contains(searchValue.toLowerCase());
-  }
+  const PortfolioCoinsWidget({required this.coinsEntity});
 
   @override
   Widget build(BuildContext context) {
-    final List<CoinEntity> coinsList = coinsEntity.list.where((e) => showCoin(e)).toList();
     return Expanded(
       child: ListView.separated(
         itemBuilder: (_, i) => _PortfolioCoinWidget(
-          coinEntity: coinsList[i],
+          coinEntity: coinsEntity.list[i],
         ),
         separatorBuilder: (_, __) => SizedBox(height: 10),
-        itemCount: coinsList.length,
+        itemCount: coinsEntity.list.length,
       ),
     );
   }
@@ -74,7 +64,7 @@ class _PortfolioCoinWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              ...coinEntity.history.map((payment) => PaymentWidget(payment: payment)).toList(),
+              //...coinEntity.history.map((payment) => PaymentWidget(payment: payment)).toList(),
             ],
           ),
         ),

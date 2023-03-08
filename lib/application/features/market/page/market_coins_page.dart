@@ -1,6 +1,5 @@
 import 'package:crypto_portfolio/application/app/bloc/coins_bloc/coins_bloc.dart';
-import 'package:crypto_portfolio/application/app/utils/context_extension.dart';
-import 'package:crypto_portfolio/application/app/utils/date_time_extension.dart';
+import 'package:crypto_portfolio/application/app/widgets/update_data_appbar.dart';
 import 'package:crypto_portfolio/application/features/market/widgets/market_coins_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,31 +20,12 @@ class MarketCoinsPage extends StatelessWidget {
       },
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text('${context.localization.updated}: ${state.coins.updateTime.time}'),
-            actions: [
-              if (state.loading)
-                Padding(
-                  padding: const EdgeInsets.only(right: 15.0),
-                  child: Center(
-                    child: SizedBox(
-                      height: 15,
-                      width: 15,
-                      child: CircularProgressIndicator(
-                        color: Colors.white,
-                        strokeWidth: 2,
-                      ),
-                    ),
-                  ),
-                )
-              else
-                IconButton(
-                  onPressed: () {
-                    context.read<CoinsBloc>().add(CoinsEvent.refreshData());
-                  },
-                  icon: Icon(Icons.refresh),
-                )
-            ],
+          appBar: UpdateDataAppBar(
+            loading: state.loading,
+            updateTime: state.coins.updateTime,
+            onTapUpdate: () {
+              context.read<CoinsBloc>().add(CoinsEvent.refreshData());
+            },
           ),
           body: MarketCoinsWidget(
             coins: state.coins,
