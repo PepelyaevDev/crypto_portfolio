@@ -1,8 +1,9 @@
 import 'package:crypto_portfolio/application/app/bloc/coins_bloc/coins_bloc.dart';
+import 'package:crypto_portfolio/application/app/utils/context_extension.dart';
+import 'package:crypto_portfolio/application/app/utils/date_time_extension.dart';
 import 'package:crypto_portfolio/application/features/market/widgets/market_coins_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MarketCoinsPage extends StatelessWidget {
   @override
@@ -21,8 +22,7 @@ class MarketCoinsPage extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            ///TODO: add localization
-            title: Text('Updated: ${state.coins.updateTime.hour}:${state.coins.updateTime.minute}'),
+            title: Text('${context.localization.updated}: ${state.coins.updateTime.time}'),
             actions: [
               if (state.loading)
                 Padding(

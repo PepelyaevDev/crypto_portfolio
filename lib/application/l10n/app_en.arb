@@ -1,5 +1,9 @@
 {
     "market": "Market",
     "portfolio": "Portfolio",
-    "news": "News"
+    "news": "News",
+    "updated" : "Updated",
+    "coin" : "COIN",
+    "price" : "PRICE",
+    "marketCap" : "MARKET CAP"
 }

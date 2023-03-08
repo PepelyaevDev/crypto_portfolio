@@ -31,8 +31,11 @@ class CryptoPortfolioApp extends StatelessWidget {
           providers: [
             BlocProvider(create: (context) => BottomNavigationBloc()),
             BlocProvider(
-                create: (context) =>
-                    CoinsBloc(context.read<CoinsRepo>())..add(CoinsEvent.refreshData())),
+              create: (context) => CoinsBloc(context.read<CoinsRepo>())
+                ..add(
+                  CoinsEvent.refreshData(),
+                ),
+            ),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

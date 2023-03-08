@@ -1,8 +1,8 @@
 import 'package:crypto_portfolio/application/app/bloc/bottom_navigation_bloc/bottom_navigation_bloc.dart';
 import 'package:crypto_portfolio/application/app/bottom_navigation/bottom_navigation_tabs.dart';
+import 'package:crypto_portfolio/application/app/utils/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BottomNavigationPage extends StatelessWidget {
   const BottomNavigationPage({super.key});
@@ -23,13 +23,13 @@ class BottomNavigationPage extends StatelessWidget {
               late final String label;
               switch (key) {
                 case BottomNavigationKey.market:
-                  label = AppLocalizations.of(context)!.market;
+                  label = context.localization.market;
                   break;
                 case BottomNavigationKey.portfolio:
-                  label = AppLocalizations.of(context)!.portfolio;
+                  label = context.localization.portfolio;
                   break;
                 case BottomNavigationKey.news:
-                  label = AppLocalizations.of(context)!.news;
+                  label = context.localization.news;
                   break;
               }
               return BottomNavigationBarItem(

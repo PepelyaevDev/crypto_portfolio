@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/utils/context_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:flutter/material.dart';
 
@@ -7,99 +8,60 @@ class MarketCoinsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    ///TODO: add localization + разделить виджет на 3 колонки
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      padding: const EdgeInsets.all(15),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 40.0, top: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Expanded(
-                    flex: 2,
-                    child: Text(
-                      'coin',
-                      textAlign: TextAlign.center,
-                    )),
-                Expanded(
-                    flex: 3,
-                    child: Text(
-                      'price',
-                      textAlign: TextAlign.right,
-                    )),
-                Expanded(
-                    flex: 5,
-                    child: Text(
-                      'marketCap',
-                      textAlign: TextAlign.right,
-                    )),
-              ],
-            ),
+          _MarketPageRow(
+            coinWidget: Text(context.localization.coin),
+            price: context.localization.price,
+            marketCap: context.localization.marketCap,
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 15),
           Expanded(
             child: ListView.separated(
-              itemBuilder: (BuildContext context, int index) {
-                return _MarketCoinWidget(coin: coins.list[index], index: index + 1);
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return Divider(height: 15);
-              },
+              itemBuilder: (_, i) => _MarketPageRow(
+                index: i + 1,
+                coinWidget: Column(
+                  children: [
+                    Image.network(coins.list[i].image, width: 20, height: 20),
+                    Text(coins.list[i].symbol.toString()),
+                  ],
+                ),
+                price: coins.list[i].currentPrice.toString(),
+                marketCap: coins.list[i].marketCap.toString(),
+              ),
+              separatorBuilder: (_, __) => Divider(height: 20),
               itemCount: coins.list.length,
             ),
-          )
+          ),
         ],
       ),
     );
   }
 }
 
-class _MarketCoinWidget extends StatelessWidget {
-  final CoinEntity coin;
-  final int index;
-  const _MarketCoinWidget({required this.coin, required this.index});
+class _MarketPageRow extends StatelessWidget {
+  final int? index;
+  final Widget coinWidget;
+  final String price;
+  final String marketCap;
+
+  const _MarketPageRow({
+    this.index,
+    required this.coinWidget,
+    required this.price,
+    required this.marketCap,
+  });
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
-      child: Row(
-        children: [
-          SizedBox(width: 40, child: Text(index.toString())),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Expanded(
-                    flex: 2,
-                    child: Column(
-                      children: [
-                        Image.network(coin.image, width: 30, height: 30),
-                        Text(
-                          coin.symbol,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    )),
-                Expanded(
-                    flex: 3,
-                    child: Text(
-                      coin.currentPrice.toString(),
-                      textAlign: TextAlign.right,
-                    )),
-                Expanded(
-                    flex: 5,
-                    child: Text(
-                      coin.marketCap.toString(),
-                      textAlign: TextAlign.right,
-                    )),
-              ],
-            ),
-          ),
-        ],
-      ),
+    return Row(
+      children: [
+        Expanded(flex: 1, child: Center(child: index == null ? null : Text(index.toString()))),
+        Expanded(flex: 2, child: Center(child: coinWidget)),
+        Expanded(flex: 3, child: Text(price, textAlign: TextAlign.right)),
+        Expanded(flex: 4, child: Text(marketCap, textAlign: TextAlign.right)),
+      ],
     );
   }
 }
