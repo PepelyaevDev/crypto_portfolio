@@ -58,14 +58,12 @@ mixin _$CoinsEvent {
 
 /// @nodoc
 abstract class $CoinsEventCopyWith<$Res> {
-  factory $CoinsEventCopyWith(
-          CoinsEvent value, $Res Function(CoinsEvent) then) =
+  factory $CoinsEventCopyWith(CoinsEvent value, $Res Function(CoinsEvent) then) =
       _$CoinsEventCopyWithImpl<$Res, CoinsEvent>;
 }
 
 /// @nodoc
-class _$CoinsEventCopyWithImpl<$Res, $Val extends CoinsEvent>
-    implements $CoinsEventCopyWith<$Res> {
+class _$CoinsEventCopyWithImpl<$Res, $Val extends CoinsEvent> implements $CoinsEventCopyWith<$Res> {
   _$CoinsEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -76,17 +74,14 @@ class _$CoinsEventCopyWithImpl<$Res, $Val extends CoinsEvent>
 
 /// @nodoc
 abstract class _$$_RefreshDataCopyWith<$Res> {
-  factory _$$_RefreshDataCopyWith(
-          _$_RefreshData value, $Res Function(_$_RefreshData) then) =
+  factory _$$_RefreshDataCopyWith(_$_RefreshData value, $Res Function(_$_RefreshData) then) =
       __$$_RefreshDataCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_RefreshDataCopyWithImpl<$Res>
-    extends _$CoinsEventCopyWithImpl<$Res, _$_RefreshData>
+class __$$_RefreshDataCopyWithImpl<$Res> extends _$CoinsEventCopyWithImpl<$Res, _$_RefreshData>
     implements _$$_RefreshDataCopyWith<$Res> {
-  __$$_RefreshDataCopyWithImpl(
-      _$_RefreshData _value, $Res Function(_$_RefreshData) _then)
+  __$$_RefreshDataCopyWithImpl(_$_RefreshData _value, $Res Function(_$_RefreshData) _then)
       : super(_value, _then);
 }
 
@@ -102,8 +97,7 @@ class _$_RefreshData implements _RefreshData {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_RefreshData);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_RefreshData);
   }
 
   @override
@@ -178,8 +172,7 @@ abstract class _RefreshData implements CoinsEvent {
 
 /// @nodoc
 abstract class _$$_UpdateHistoryCopyWith<$Res> {
-  factory _$$_UpdateHistoryCopyWith(
-          _$_UpdateHistory value, $Res Function(_$_UpdateHistory) then) =
+  factory _$$_UpdateHistoryCopyWith(_$_UpdateHistory value, $Res Function(_$_UpdateHistory) then) =
       __$$_UpdateHistoryCopyWithImpl<$Res>;
   @useResult
   $Res call({PaymentEntity paymentEntity});
@@ -188,11 +181,9 @@ abstract class _$$_UpdateHistoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UpdateHistoryCopyWithImpl<$Res>
-    extends _$CoinsEventCopyWithImpl<$Res, _$_UpdateHistory>
+class __$$_UpdateHistoryCopyWithImpl<$Res> extends _$CoinsEventCopyWithImpl<$Res, _$_UpdateHistory>
     implements _$$_UpdateHistoryCopyWith<$Res> {
-  __$$_UpdateHistoryCopyWithImpl(
-      _$_UpdateHistory _value, $Res Function(_$_UpdateHistory) _then)
+  __$$_UpdateHistoryCopyWithImpl(_$_UpdateHistory _value, $Res Function(_$_UpdateHistory) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -312,13 +303,11 @@ class _$_UpdateHistory implements _UpdateHistory {
 }
 
 abstract class _UpdateHistory implements CoinsEvent {
-  const factory _UpdateHistory(final PaymentEntity paymentEntity) =
-      _$_UpdateHistory;
+  const factory _UpdateHistory(final PaymentEntity paymentEntity) = _$_UpdateHistory;
 
   PaymentEntity get paymentEntity;
   @JsonKey(ignore: true)
-  _$$_UpdateHistoryCopyWith<_$_UpdateHistory> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_UpdateHistoryCopyWith<_$_UpdateHistory> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -328,14 +317,12 @@ mixin _$CoinsState {
   String? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CoinsStateCopyWith<CoinsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CoinsStateCopyWith<CoinsState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CoinsStateCopyWith<$Res> {
-  factory $CoinsStateCopyWith(
-          CoinsState value, $Res Function(CoinsState) then) =
+  factory $CoinsStateCopyWith(CoinsState value, $Res Function(CoinsState) then) =
       _$CoinsStateCopyWithImpl<$Res, CoinsState>;
   @useResult
   $Res call({CoinsEntity coins, bool loading, String? error});
@@ -344,8 +331,7 @@ abstract class $CoinsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CoinsStateCopyWithImpl<$Res, $Val extends CoinsState>
-    implements $CoinsStateCopyWith<$Res> {
+class _$CoinsStateCopyWithImpl<$Res, $Val extends CoinsState> implements $CoinsStateCopyWith<$Res> {
   _$CoinsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -387,8 +373,7 @@ class _$CoinsStateCopyWithImpl<$Res, $Val extends CoinsState>
 
 /// @nodoc
 abstract class _$$_SuccessCopyWith<$Res> implements $CoinsStateCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(
-          _$_Success value, $Res Function(_$_Success) then) =
+  factory _$$_SuccessCopyWith(_$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @override
   @useResult
@@ -399,8 +384,7 @@ abstract class _$$_SuccessCopyWith<$Res> implements $CoinsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res>
-    extends _$CoinsStateCopyWithImpl<$Res, _$_Success>
+class __$$_SuccessCopyWithImpl<$Res> extends _$CoinsStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
       : super(_value, _then);
@@ -469,9 +453,7 @@ class _$_Success implements _Success {
 
 abstract class _Success implements CoinsState {
   const factory _Success(
-      {required final CoinsEntity coins,
-      final bool loading,
-      final String? error}) = _$_Success;
+      {required final CoinsEntity coins, final bool loading, final String? error}) = _$_Success;
 
   @override
   CoinsEntity get coins;
@@ -481,6 +463,5 @@ abstract class _Success implements CoinsState {
   String? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SuccessCopyWith<_$_Success> get copyWith => throw _privateConstructorUsedError;
 }

@@ -31,8 +31,7 @@ abstract class $FailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FailureCopyWithImpl<$Res, $Val extends Failure>
-    implements $FailureCopyWith<$Res> {
+class _$FailureCopyWithImpl<$Res, $Val extends Failure> implements $FailureCopyWith<$Res> {
   _$FailureCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -56,8 +55,7 @@ class _$FailureCopyWithImpl<$Res, $Val extends Failure>
 
 /// @nodoc
 abstract class _$$_FailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
-  factory _$$_FailureCopyWith(
-          _$_Failure value, $Res Function(_$_Failure) then) =
+  factory _$$_FailureCopyWith(_$_Failure value, $Res Function(_$_Failure) then) =
       __$$_FailureCopyWithImpl<$Res>;
   @override
   @useResult
@@ -65,8 +63,7 @@ abstract class _$$_FailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_FailureCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$_Failure>
+class __$$_FailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res, _$_Failure>
     implements _$$_FailureCopyWith<$Res> {
   __$$_FailureCopyWithImpl(_$_Failure _value, $Res Function(_$_Failure) _then)
       : super(_value, _then);
@@ -104,8 +101,7 @@ class _$_Failure implements _Failure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Failure &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
   }
 
   @override
@@ -125,6 +121,5 @@ abstract class _Failure implements Failure {
   String get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_FailureCopyWith<_$_Failure> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_FailureCopyWith<_$_Failure> get copyWith => throw _privateConstructorUsedError;
 }

@@ -99,8 +99,7 @@ class _$DeletePaymentEventCopyWithImpl<$Res, $Val extends DeletePaymentEvent>
 }
 
 /// @nodoc
-abstract class _$$_DeleteCopyWith<$Res>
-    implements $DeletePaymentEventCopyWith<$Res> {
+abstract class _$$_DeleteCopyWith<$Res> implements $DeletePaymentEventCopyWith<$Res> {
   factory _$$_DeleteCopyWith(_$_Delete value, $Res Function(_$_Delete) then) =
       __$$_DeleteCopyWithImpl<$Res>;
   @override
@@ -112,11 +111,9 @@ abstract class _$$_DeleteCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DeleteCopyWithImpl<$Res>
-    extends _$DeletePaymentEventCopyWithImpl<$Res, _$_Delete>
+class __$$_DeleteCopyWithImpl<$Res> extends _$DeletePaymentEventCopyWithImpl<$Res, _$_Delete>
     implements _$$_DeleteCopyWith<$Res> {
-  __$$_DeleteCopyWithImpl(_$_Delete _value, $Res Function(_$_Delete) _then)
-      : super(_value, _then);
+  __$$_DeleteCopyWithImpl(_$_Delete _value, $Res Function(_$_Delete) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -226,8 +223,7 @@ abstract class _Delete implements DeletePaymentEvent {
   PaymentEntity get payment;
   @override
   @JsonKey(ignore: true)
-  _$$_DeleteCopyWith<_$_Delete> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_DeleteCopyWith<_$_Delete> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -304,14 +300,12 @@ class _$DeletePaymentStateCopyWithImpl<$Res, $Val extends DeletePaymentState>
 
 /// @nodoc
 abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
+  factory _$$_InitialCopyWith(_$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$DeletePaymentStateCopyWithImpl<$Res, _$_Initial>
+class __$$_InitialCopyWithImpl<$Res> extends _$DeletePaymentStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -329,8 +323,7 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -417,14 +410,12 @@ abstract class _Initial implements DeletePaymentState {
 
 /// @nodoc
 abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
+  factory _$$_LoadingCopyWith(_$_Loading value, $Res Function(_$_Loading) then) =
       __$$_LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$DeletePaymentStateCopyWithImpl<$Res, _$_Loading>
+class __$$_LoadingCopyWithImpl<$Res> extends _$DeletePaymentStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -442,8 +433,7 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
   @override
@@ -530,14 +520,12 @@ abstract class _Loading implements DeletePaymentState {
 
 /// @nodoc
 abstract class _$$_SuccessCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(
-          _$_Success value, $Res Function(_$_Success) then) =
+  factory _$$_SuccessCopyWith(_$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res>
-    extends _$DeletePaymentStateCopyWithImpl<$Res, _$_Success>
+class __$$_SuccessCopyWithImpl<$Res> extends _$DeletePaymentStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
       : super(_value, _then);
@@ -555,8 +543,7 @@ class _$_Success implements _Success {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Success);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Success);
   }
 
   @override
@@ -643,14 +630,12 @@ abstract class _Success implements DeletePaymentState {
 
 /// @nodoc
 abstract class _$$_FailureCopyWith<$Res> {
-  factory _$$_FailureCopyWith(
-          _$_Failure value, $Res Function(_$_Failure) then) =
+  factory _$$_FailureCopyWith(_$_Failure value, $Res Function(_$_Failure) then) =
       __$$_FailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FailureCopyWithImpl<$Res>
-    extends _$DeletePaymentStateCopyWithImpl<$Res, _$_Failure>
+class __$$_FailureCopyWithImpl<$Res> extends _$DeletePaymentStateCopyWithImpl<$Res, _$_Failure>
     implements _$$_FailureCopyWith<$Res> {
   __$$_FailureCopyWithImpl(_$_Failure _value, $Res Function(_$_Failure) _then)
       : super(_value, _then);
@@ -668,8 +653,7 @@ class _$_Failure implements _Failure {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Failure);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Failure);
   }
 
   @override
