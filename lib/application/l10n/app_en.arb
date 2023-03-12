@@ -3,7 +3,11 @@
     "portfolio": "Portfolio",
     "news": "News",
     "updated" : "Updated",
-    "coin" : "COIN",
-    "price" : "PRICE",
-    "marketCap" : "MARKET CAP"
+    "coin" : "Coin",
+    "price" : "Price",
+    "marketCap" : "Market сap",
+    "currentPrice" : "Current price",
+    "averagePrice" : "Average price",
+    "priceOfAllCoins" : "Price of all coins",
+    "invested" : "Invested"
 }

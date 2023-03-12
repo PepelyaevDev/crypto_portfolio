@@ -29,17 +29,8 @@ class PortfolioPage extends StatelessWidget {
               context.read<CoinsBloc>().add(CoinsEvent.refreshData());
             },
           ),
-          body: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: SafeArea(
-              child: Column(
-                children: [
-                  SizedBox(height: 10),
-                  PortfolioCoinsWidget(coinsEntity: state.coins),
-                  SizedBox(height: 15),
-                ],
-              ),
-            ),
+          body: PortfolioCoinsWidget(
+            coins: state.coins,
           ),
         );
       },

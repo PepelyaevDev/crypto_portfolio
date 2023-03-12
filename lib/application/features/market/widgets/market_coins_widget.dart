@@ -56,7 +56,7 @@ class MarketCoinsWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             boxShadow: [
-              BoxShadow(color: Colors.blue, blurRadius: 5.0),
+              BoxShadow(color: Colors.grey, blurRadius: 1.0),
             ],
           ),
           child: CoinGeckoWidget(),

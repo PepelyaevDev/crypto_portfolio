@@ -3,7 +3,11 @@
     "portfolio": "Портфель",
     "news": "Новости",
     "updated" : "Обновлено",
-    "coin" : "МОНЕТА",
-    "price" : "ЦЕНА",
-    "marketCap" : "КАПИТАЛИЗАЦИЯ"
+    "coin" : "Монета",
+    "price" : "Цена",
+    "marketCap" : "Капитализация",
+    "currentPrice" : "Рыночная цена",
+    "averagePrice" : "Средняя цена",
+    "priceOfAllCoins" : "Стоимость монет",
+    "invested" : "Вложено"
 }
