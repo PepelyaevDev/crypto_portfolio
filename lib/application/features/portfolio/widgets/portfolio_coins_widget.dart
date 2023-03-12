@@ -50,6 +50,7 @@ class PortfolioCoinsWidget extends StatelessWidget {
                 averagePrice: coins.list[i].averagePrice.moneyFull,
                 moneyInvested: coins.list[i].moneyInvested.moneyFull,
                 priceAllCoins: coins.list[i].priceAllCoins.moneyFull,
+                history: coins.list[i].history,
               ),
               separatorBuilder: (_, __) => Divider(height: 10),
               itemCount: coins.list.length,
@@ -70,12 +71,13 @@ class PortfolioCoinsWidget extends StatelessWidget {
   }
 }
 
-class _PortfolioPageRow extends StatelessWidget {
+class _PortfolioPageRow extends StatefulWidget {
   final Widget coinWidget;
   final String currentPrice;
   final String averagePrice;
   final String moneyInvested;
   final String priceAllCoins;
+  final List<PaymentEntity>? history;
 
   const _PortfolioPageRow({
     required this.coinWidget,
@@ -83,19 +85,43 @@ class _PortfolioPageRow extends StatelessWidget {
     required this.averagePrice,
     required this.moneyInvested,
     required this.priceAllCoins,
+    this.history,
   });
+
+  @override
+  State<_PortfolioPageRow> createState() => _PortfolioPageRowState();
+}
+
+class _PortfolioPageRowState extends State<_PortfolioPageRow> {
+  bool closeHistory = true;
+
+  onTap() {
+    setState(() {
+      closeHistory = !closeHistory;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
-      child: Row(
-        children: [
-          _RowElement(child: coinWidget, flex: 1),
-          _RowElement(child: Text(currentPrice, textAlign: TextAlign.center)),
-          _RowElement(child: Text(averagePrice, textAlign: TextAlign.center)),
-          _RowElement(child: Text(moneyInvested, textAlign: TextAlign.center)),
-          _RowElement(child: Text(priceAllCoins, textAlign: TextAlign.center)),
-        ],
+    return InkWell(
+      onTap: widget.history == null ? null : onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                _RowElement(child: widget.coinWidget, flex: 1),
+                _RowElement(child: Text(widget.currentPrice, textAlign: TextAlign.center)),
+                _RowElement(child: Text(widget.averagePrice, textAlign: TextAlign.center)),
+                _RowElement(child: Text(widget.moneyInvested, textAlign: TextAlign.center)),
+                _RowElement(child: Text(widget.priceAllCoins, textAlign: TextAlign.center)),
+              ],
+            ),
+            closeHistory ? SizedBox(height: 0, width: 0) : Container(height: 100),
+          ],
+        ),
       ),
     );
   }
