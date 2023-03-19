@@ -3,13 +3,12 @@ import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 
 extension CreateEmptyCoin on GeckoCoinDTO {
   CoinEntity get createEmptyCoin => CoinEntity(
+        id: id,
         symbol: symbol,
         name: name,
         image: image,
         currentPrice: currentPrice,
         marketCap: marketCap,
-        totalAmount: 0,
-        moneyInvested: 0,
         history: [],
       );
 }

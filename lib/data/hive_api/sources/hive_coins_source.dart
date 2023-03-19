@@ -4,13 +4,22 @@ class HiveCoinsSource {
   final Box _appBox;
   const HiveCoinsSource(this._appBox);
 
-  static const String _coinsBoxKey = 'COINS';
+  static const String _marketCoinsBoxKey = 'marketCoinsBoxKey';
+  static const String _portfolioCoinsBoxKey = 'portfolioCoinsBoxKey';
 
-  String? getCoins() {
-    return _appBox.get(_coinsBoxKey);
+  String? getMarketCoins() {
+    return _appBox.get(_marketCoinsBoxKey);
   }
 
-  Future<void> updateCoins(String json) async {
-    await _appBox.put(_coinsBoxKey, json);
+  Future<void> updateMarketCoins(String json) async {
+    await _appBox.put(_marketCoinsBoxKey, json);
+  }
+
+  String? getPortfolioCoins() {
+    return _appBox.get(_portfolioCoinsBoxKey);
+  }
+
+  Future<void> updatePortfolioCoins(String json) async {
+    await _appBox.put(_portfolioCoinsBoxKey, json);
   }
 }

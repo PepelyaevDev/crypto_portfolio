@@ -1,5 +1,5 @@
-import 'package:crypto_portfolio/application/app/utils/context_extension.dart';
-import 'package:crypto_portfolio/application/app/utils/date_time_extension.dart';
+import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
+import 'package:crypto_portfolio/application/app/extension/date_time_extension.dart';
 import 'package:flutter/material.dart';
 
 class UpdateDataAppBar extends StatelessWidget implements PreferredSizeWidget {

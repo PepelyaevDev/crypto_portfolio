@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'coins_bloc.dart';
+part of 'portfolio_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$CoinsEvent {
+mixin _$PortfolioEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() refreshData,
@@ -57,14 +57,15 @@ mixin _$CoinsEvent {
 }
 
 /// @nodoc
-abstract class $CoinsEventCopyWith<$Res> {
-  factory $CoinsEventCopyWith(CoinsEvent value, $Res Function(CoinsEvent) then) =
-      _$CoinsEventCopyWithImpl<$Res, CoinsEvent>;
+abstract class $PortfolioEventCopyWith<$Res> {
+  factory $PortfolioEventCopyWith(PortfolioEvent value, $Res Function(PortfolioEvent) then) =
+      _$PortfolioEventCopyWithImpl<$Res, PortfolioEvent>;
 }
 
 /// @nodoc
-class _$CoinsEventCopyWithImpl<$Res, $Val extends CoinsEvent> implements $CoinsEventCopyWith<$Res> {
-  _$CoinsEventCopyWithImpl(this._value, this._then);
+class _$PortfolioEventCopyWithImpl<$Res, $Val extends PortfolioEvent>
+    implements $PortfolioEventCopyWith<$Res> {
+  _$PortfolioEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -79,7 +80,7 @@ abstract class _$$_RefreshDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_RefreshDataCopyWithImpl<$Res> extends _$CoinsEventCopyWithImpl<$Res, _$_RefreshData>
+class __$$_RefreshDataCopyWithImpl<$Res> extends _$PortfolioEventCopyWithImpl<$Res, _$_RefreshData>
     implements _$$_RefreshDataCopyWith<$Res> {
   __$$_RefreshDataCopyWithImpl(_$_RefreshData _value, $Res Function(_$_RefreshData) _then)
       : super(_value, _then);
@@ -92,7 +93,7 @@ class _$_RefreshData implements _RefreshData {
 
   @override
   String toString() {
-    return 'CoinsEvent.refreshData()';
+    return 'PortfolioEvent.refreshData()';
   }
 
   @override
@@ -166,7 +167,7 @@ class _$_RefreshData implements _RefreshData {
   }
 }
 
-abstract class _RefreshData implements CoinsEvent {
+abstract class _RefreshData implements PortfolioEvent {
   const factory _RefreshData() = _$_RefreshData;
 }
 
@@ -181,7 +182,8 @@ abstract class _$$_UpdateHistoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UpdateHistoryCopyWithImpl<$Res> extends _$CoinsEventCopyWithImpl<$Res, _$_UpdateHistory>
+class __$$_UpdateHistoryCopyWithImpl<$Res>
+    extends _$PortfolioEventCopyWithImpl<$Res, _$_UpdateHistory>
     implements _$$_UpdateHistoryCopyWith<$Res> {
   __$$_UpdateHistoryCopyWithImpl(_$_UpdateHistory _value, $Res Function(_$_UpdateHistory) _then)
       : super(_value, _then);
@@ -218,7 +220,7 @@ class _$_UpdateHistory implements _UpdateHistory {
 
   @override
   String toString() {
-    return 'CoinsEvent.updateHistory(paymentEntity: $paymentEntity)';
+    return 'PortfolioEvent.updateHistory(paymentEntity: $paymentEntity)';
   }
 
   @override
@@ -302,7 +304,7 @@ class _$_UpdateHistory implements _UpdateHistory {
   }
 }
 
-abstract class _UpdateHistory implements CoinsEvent {
+abstract class _UpdateHistory implements PortfolioEvent {
   const factory _UpdateHistory(final PaymentEntity paymentEntity) = _$_UpdateHistory;
 
   PaymentEntity get paymentEntity;
@@ -311,19 +313,19 @@ abstract class _UpdateHistory implements CoinsEvent {
 }
 
 /// @nodoc
-mixin _$CoinsState {
+mixin _$PortfolioState {
   CoinsEntity get coins => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CoinsStateCopyWith<CoinsState> get copyWith => throw _privateConstructorUsedError;
+  $PortfolioStateCopyWith<PortfolioState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CoinsStateCopyWith<$Res> {
-  factory $CoinsStateCopyWith(CoinsState value, $Res Function(CoinsState) then) =
-      _$CoinsStateCopyWithImpl<$Res, CoinsState>;
+abstract class $PortfolioStateCopyWith<$Res> {
+  factory $PortfolioStateCopyWith(PortfolioState value, $Res Function(PortfolioState) then) =
+      _$PortfolioStateCopyWithImpl<$Res, PortfolioState>;
   @useResult
   $Res call({CoinsEntity coins, bool loading, String? error});
 
@@ -331,8 +333,9 @@ abstract class $CoinsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CoinsStateCopyWithImpl<$Res, $Val extends CoinsState> implements $CoinsStateCopyWith<$Res> {
-  _$CoinsStateCopyWithImpl(this._value, this._then);
+class _$PortfolioStateCopyWithImpl<$Res, $Val extends PortfolioState>
+    implements $PortfolioStateCopyWith<$Res> {
+  _$PortfolioStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -372,9 +375,10 @@ class _$CoinsStateCopyWithImpl<$Res, $Val extends CoinsState> implements $CoinsS
 }
 
 /// @nodoc
-abstract class _$$_SuccessCopyWith<$Res> implements $CoinsStateCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(_$_Success value, $Res Function(_$_Success) then) =
-      __$$_SuccessCopyWithImpl<$Res>;
+abstract class _$$_PortfolioStateCopyWith<$Res> implements $PortfolioStateCopyWith<$Res> {
+  factory _$$_PortfolioStateCopyWith(
+          _$_PortfolioState value, $Res Function(_$_PortfolioState) then) =
+      __$$_PortfolioStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({CoinsEntity coins, bool loading, String? error});
@@ -384,9 +388,10 @@ abstract class _$$_SuccessCopyWith<$Res> implements $CoinsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res> extends _$CoinsStateCopyWithImpl<$Res, _$_Success>
-    implements _$$_SuccessCopyWith<$Res> {
-  __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
+class __$$_PortfolioStateCopyWithImpl<$Res>
+    extends _$PortfolioStateCopyWithImpl<$Res, _$_PortfolioState>
+    implements _$$_PortfolioStateCopyWith<$Res> {
+  __$$_PortfolioStateCopyWithImpl(_$_PortfolioState _value, $Res Function(_$_PortfolioState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -396,7 +401,7 @@ class __$$_SuccessCopyWithImpl<$Res> extends _$CoinsStateCopyWithImpl<$Res, _$_S
     Object? loading = null,
     Object? error = freezed,
   }) {
-    return _then(_$_Success(
+    return _then(_$_PortfolioState(
       coins: null == coins
           ? _value.coins
           : coins // ignore: cast_nullable_to_non_nullable
@@ -415,8 +420,8 @@ class __$$_SuccessCopyWithImpl<$Res> extends _$CoinsStateCopyWithImpl<$Res, _$_S
 
 /// @nodoc
 
-class _$_Success implements _Success {
-  const _$_Success({required this.coins, this.loading = false, this.error});
+class _$_PortfolioState implements _PortfolioState {
+  const _$_PortfolioState({required this.coins, this.loading = false, this.error});
 
   @override
   final CoinsEntity coins;
@@ -428,14 +433,14 @@ class _$_Success implements _Success {
 
   @override
   String toString() {
-    return 'CoinsState(coins: $coins, loading: $loading, error: $error)';
+    return 'PortfolioState(coins: $coins, loading: $loading, error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Success &&
+            other is _$_PortfolioState &&
             (identical(other.coins, coins) || other.coins == coins) &&
             (identical(other.loading, loading) || other.loading == loading) &&
             (identical(other.error, error) || other.error == error));
@@ -447,13 +452,15 @@ class _$_Success implements _Success {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
+  _$$_PortfolioStateCopyWith<_$_PortfolioState> get copyWith =>
+      __$$_PortfolioStateCopyWithImpl<_$_PortfolioState>(this, _$identity);
 }
 
-abstract class _Success implements CoinsState {
-  const factory _Success(
-      {required final CoinsEntity coins, final bool loading, final String? error}) = _$_Success;
+abstract class _PortfolioState implements PortfolioState {
+  const factory _PortfolioState(
+      {required final CoinsEntity coins,
+      final bool loading,
+      final String? error}) = _$_PortfolioState;
 
   @override
   CoinsEntity get coins;
@@ -463,5 +470,5 @@ abstract class _Success implements CoinsState {
   String? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_SuccessCopyWith<_$_Success> get copyWith => throw _privateConstructorUsedError;
+  _$$_PortfolioStateCopyWith<_$_PortfolioState> get copyWith => throw _privateConstructorUsedError;
 }

@@ -173,13 +173,12 @@ CoinEntity _$CoinEntityFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CoinEntity {
 //market data
+  String get id => throw _privateConstructorUsedError;
   String get symbol => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   double get currentPrice => throw _privateConstructorUsedError;
   double get marketCap => throw _privateConstructorUsedError; //user data
-  double get totalAmount => throw _privateConstructorUsedError;
-  double get moneyInvested => throw _privateConstructorUsedError;
   List<PaymentEntity> get history => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -193,13 +192,12 @@ abstract class $CoinEntityCopyWith<$Res> {
       _$CoinEntityCopyWithImpl<$Res, CoinEntity>;
   @useResult
   $Res call(
-      {String symbol,
+      {String id,
+      String symbol,
       String name,
       String image,
       double currentPrice,
       double marketCap,
-      double totalAmount,
-      double moneyInvested,
       List<PaymentEntity> history});
 }
 
@@ -215,16 +213,19 @@ class _$CoinEntityCopyWithImpl<$Res, $Val extends CoinEntity> implements $CoinEn
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? symbol = null,
     Object? name = null,
     Object? image = null,
     Object? currentPrice = null,
     Object? marketCap = null,
-    Object? totalAmount = null,
-    Object? moneyInvested = null,
     Object? history = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       symbol: null == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
@@ -244,14 +245,6 @@ class _$CoinEntityCopyWithImpl<$Res, $Val extends CoinEntity> implements $CoinEn
       marketCap: null == marketCap
           ? _value.marketCap
           : marketCap // ignore: cast_nullable_to_non_nullable
-              as double,
-      totalAmount: null == totalAmount
-          ? _value.totalAmount
-          : totalAmount // ignore: cast_nullable_to_non_nullable
-              as double,
-      moneyInvested: null == moneyInvested
-          ? _value.moneyInvested
-          : moneyInvested // ignore: cast_nullable_to_non_nullable
               as double,
       history: null == history
           ? _value.history
@@ -268,13 +261,12 @@ abstract class _$$_CoinEntityCopyWith<$Res> implements $CoinEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String symbol,
+      {String id,
+      String symbol,
       String name,
       String image,
       double currentPrice,
       double marketCap,
-      double totalAmount,
-      double moneyInvested,
       List<PaymentEntity> history});
 }
 
@@ -287,16 +279,19 @@ class __$$_CoinEntityCopyWithImpl<$Res> extends _$CoinEntityCopyWithImpl<$Res, _
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? symbol = null,
     Object? name = null,
     Object? image = null,
     Object? currentPrice = null,
     Object? marketCap = null,
-    Object? totalAmount = null,
-    Object? moneyInvested = null,
     Object? history = null,
   }) {
     return _then(_$_CoinEntity(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       symbol: null == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
@@ -317,14 +312,6 @@ class __$$_CoinEntityCopyWithImpl<$Res> extends _$CoinEntityCopyWithImpl<$Res, _
           ? _value.marketCap
           : marketCap // ignore: cast_nullable_to_non_nullable
               as double,
-      totalAmount: null == totalAmount
-          ? _value.totalAmount
-          : totalAmount // ignore: cast_nullable_to_non_nullable
-              as double,
-      moneyInvested: null == moneyInvested
-          ? _value.moneyInvested
-          : moneyInvested // ignore: cast_nullable_to_non_nullable
-              as double,
       history: null == history
           ? _value._history
           : history // ignore: cast_nullable_to_non_nullable
@@ -337,19 +324,20 @@ class __$$_CoinEntityCopyWithImpl<$Res> extends _$CoinEntityCopyWithImpl<$Res, _
 @JsonSerializable()
 class _$_CoinEntity implements _CoinEntity {
   const _$_CoinEntity(
-      {required this.symbol,
+      {required this.id,
+      required this.symbol,
       required this.name,
       required this.image,
       required this.currentPrice,
       required this.marketCap,
-      required this.totalAmount,
-      required this.moneyInvested,
       required final List<PaymentEntity> history})
       : _history = history;
 
   factory _$_CoinEntity.fromJson(Map<String, dynamic> json) => _$$_CoinEntityFromJson(json);
 
 //market data
+  @override
+  final String id;
   @override
   final String symbol;
   @override
@@ -361,11 +349,8 @@ class _$_CoinEntity implements _CoinEntity {
   @override
   final double marketCap;
 //user data
-  @override
-  final double totalAmount;
-  @override
-  final double moneyInvested;
   final List<PaymentEntity> _history;
+//user data
   @override
   List<PaymentEntity> get history {
     if (_history is EqualUnmodifiableListView) return _history;
@@ -375,7 +360,7 @@ class _$_CoinEntity implements _CoinEntity {
 
   @override
   String toString() {
-    return 'CoinEntity(symbol: $symbol, name: $name, image: $image, currentPrice: $currentPrice, marketCap: $marketCap, totalAmount: $totalAmount, moneyInvested: $moneyInvested, history: $history)';
+    return 'CoinEntity(id: $id, symbol: $symbol, name: $name, image: $image, currentPrice: $currentPrice, marketCap: $marketCap, history: $history)';
   }
 
   @override
@@ -383,21 +368,19 @@ class _$_CoinEntity implements _CoinEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CoinEntity &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.symbol, symbol) || other.symbol == symbol) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.currentPrice, currentPrice) || other.currentPrice == currentPrice) &&
             (identical(other.marketCap, marketCap) || other.marketCap == marketCap) &&
-            (identical(other.totalAmount, totalAmount) || other.totalAmount == totalAmount) &&
-            (identical(other.moneyInvested, moneyInvested) ||
-                other.moneyInvested == moneyInvested) &&
             const DeepCollectionEquality().equals(other._history, _history));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, symbol, name, image, currentPrice, marketCap,
-      totalAmount, moneyInvested, const DeepCollectionEquality().hash(_history));
+  int get hashCode => Object.hash(runtimeType, id, symbol, name, image, currentPrice, marketCap,
+      const DeepCollectionEquality().hash(_history));
 
   @JsonKey(ignore: true)
   @override
@@ -415,18 +398,19 @@ class _$_CoinEntity implements _CoinEntity {
 
 abstract class _CoinEntity implements CoinEntity {
   const factory _CoinEntity(
-      {required final String symbol,
+      {required final String id,
+      required final String symbol,
       required final String name,
       required final String image,
       required final double currentPrice,
       required final double marketCap,
-      required final double totalAmount,
-      required final double moneyInvested,
       required final List<PaymentEntity> history}) = _$_CoinEntity;
 
   factory _CoinEntity.fromJson(Map<String, dynamic> json) = _$_CoinEntity.fromJson;
 
   @override //market data
+  String get id;
+  @override
   String get symbol;
   @override
   String get name;
@@ -437,10 +421,6 @@ abstract class _CoinEntity implements CoinEntity {
   @override
   double get marketCap;
   @override //user data
-  double get totalAmount;
-  @override
-  double get moneyInvested;
-  @override
   List<PaymentEntity> get history;
   @override
   @JsonKey(ignore: true)

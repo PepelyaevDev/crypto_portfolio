@@ -16,14 +16,13 @@ class CoinsEntity with _$CoinsEntity {
 class CoinEntity with _$CoinEntity {
   const factory CoinEntity({
     //market data
+    required String id,
     required String symbol,
     required String name,
     required String image,
     required double currentPrice,
     required double marketCap,
     //user data
-    required double totalAmount,
-    required double moneyInvested,
     required List<PaymentEntity> history,
   }) = _CoinEntity;
 

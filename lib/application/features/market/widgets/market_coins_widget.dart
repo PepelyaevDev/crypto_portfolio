@@ -1,5 +1,5 @@
-import 'package:crypto_portfolio/application/app/utils/context_extension.dart';
-import 'package:crypto_portfolio/application/app/utils/double_extension.dart';
+import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
+import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
 import 'package:crypto_portfolio/application/app/widgets/coingecko_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:flutter/material.dart';
