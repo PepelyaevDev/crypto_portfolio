@@ -32,7 +32,7 @@ class CoinEntity with _$CoinEntity {
 @freezed
 class PaymentEntity with _$PaymentEntity {
   const factory PaymentEntity({
-    required String symbol,
+    required String id,
     required DateTime dateTime,
     required String type,
     required double amount,

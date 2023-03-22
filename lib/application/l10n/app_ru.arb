@@ -10,5 +10,6 @@
     "currentPrice" : "Рыночная цена",
     "averagePrice" : "Средняя цена",
     "priceOfAllCoins" : "Стоимость монет",
-    "invested" : "Вложено"
+    "invested" : "Вложено",
+    "coinSearch": "Поиск монеты"
 }

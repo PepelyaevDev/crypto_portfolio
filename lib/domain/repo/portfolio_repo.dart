@@ -5,18 +5,23 @@ import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/coins_json_converter.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:dartz/dartz.dart';
+import 'package:rxdart/rxdart.dart';
 
 class PortfolioRepo {
   final HiveApiClient _hiveApiClient;
   final GeckoApiClient _geckoApiClient;
   PortfolioRepo(this._hiveApiClient, this._geckoApiClient);
 
+  final BehaviorSubject<Either<Failure, CoinsEntity>> coinsSubject = BehaviorSubject();
+  final BehaviorSubject<bool> updateCoinsLoadingSubject = BehaviorSubject();
+
   CoinsEntity getCoinsLocal() {
     final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
     return coinsEntity;
   }
 
-  Future<Either<Failure, CoinsEntity>> getCoinsRemote() async {
+  Future<void> updateCoinsPrice() async {
+    updateCoinsLoadingSubject.add(true);
     try {
       final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
       final PricesDTO pricesDTO = await _geckoApiClient.simple.getPrice(
@@ -32,17 +37,18 @@ class PortfolioRepo {
         list: updatedCoinsList,
         updateTime: DateTime.now(),
       );
+      coinsSubject.add(right(updatedCoinsEntity));
       await _hiveApiClient.coins.updatePortfolioCoins(updatedCoinsEntity.convertToJson);
-      return right(updatedCoinsEntity);
     } catch (e) {
-      return left(Failure.from(e));
+      coinsSubject.add(left(Failure.from(e)));
     }
+    updateCoinsLoadingSubject.add(false);
   }
 
-  Future<CoinsEntity> updateHistory(PaymentEntity paymentEntity) async {
+  Future<void> updateHistory(PaymentEntity paymentEntity) async {
     final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
     final CoinEntity coinEntity = coinsEntity.list.firstWhere(
-      (e) => e.symbol == paymentEntity.symbol,
+      (e) => e.id == paymentEntity.id,
     );
     final List<CoinEntity> newCoins = [];
     newCoins.addAll(coinsEntity.list);
@@ -58,7 +64,7 @@ class PortfolioRepo {
       list: newCoins,
       updateTime: coinsEntity.updateTime,
     );
+    coinsSubject.add(right(newCoinsEntity));
     await _hiveApiClient.coins.updatePortfolioCoins(newCoinsEntity.convertToJson);
-    return newCoinsEntity;
   }
 }

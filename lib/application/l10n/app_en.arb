@@ -10,5 +10,6 @@
     "currentPrice" : "Current price",
     "averagePrice" : "Average price",
     "priceOfAllCoins" : "Price of all coins",
-    "invested" : "Invested"
+    "invested" : "Invested",
+    "coinSearch": "Coin search"
 }

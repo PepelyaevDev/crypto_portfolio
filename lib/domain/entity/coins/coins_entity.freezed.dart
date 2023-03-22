@@ -433,7 +433,7 @@ PaymentEntity _$PaymentEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PaymentEntity {
-  String get symbol => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   DateTime get dateTime => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
@@ -449,7 +449,7 @@ abstract class $PaymentEntityCopyWith<$Res> {
   factory $PaymentEntityCopyWith(PaymentEntity value, $Res Function(PaymentEntity) then) =
       _$PaymentEntityCopyWithImpl<$Res, PaymentEntity>;
   @useResult
-  $Res call({String symbol, DateTime dateTime, String type, double amount, double numberOfCoins});
+  $Res call({String id, DateTime dateTime, String type, double amount, double numberOfCoins});
 }
 
 /// @nodoc
@@ -465,16 +465,16 @@ class _$PaymentEntityCopyWithImpl<$Res, $Val extends PaymentEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? symbol = null,
+    Object? id = null,
     Object? dateTime = null,
     Object? type = null,
     Object? amount = null,
     Object? numberOfCoins = null,
   }) {
     return _then(_value.copyWith(
-      symbol: null == symbol
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       dateTime: null == dateTime
           ? _value.dateTime
@@ -502,7 +502,7 @@ abstract class _$$_PaymentEntityCopyWith<$Res> implements $PaymentEntityCopyWith
       __$$_PaymentEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String symbol, DateTime dateTime, String type, double amount, double numberOfCoins});
+  $Res call({String id, DateTime dateTime, String type, double amount, double numberOfCoins});
 }
 
 /// @nodoc
@@ -515,16 +515,16 @@ class __$$_PaymentEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? symbol = null,
+    Object? id = null,
     Object? dateTime = null,
     Object? type = null,
     Object? amount = null,
     Object? numberOfCoins = null,
   }) {
     return _then(_$_PaymentEntity(
-      symbol: null == symbol
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       dateTime: null == dateTime
           ? _value.dateTime
@@ -550,7 +550,7 @@ class __$$_PaymentEntityCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PaymentEntity implements _PaymentEntity {
   const _$_PaymentEntity(
-      {required this.symbol,
+      {required this.id,
       required this.dateTime,
       required this.type,
       required this.amount,
@@ -559,7 +559,7 @@ class _$_PaymentEntity implements _PaymentEntity {
   factory _$_PaymentEntity.fromJson(Map<String, dynamic> json) => _$$_PaymentEntityFromJson(json);
 
   @override
-  final String symbol;
+  final String id;
   @override
   final DateTime dateTime;
   @override
@@ -571,7 +571,7 @@ class _$_PaymentEntity implements _PaymentEntity {
 
   @override
   String toString() {
-    return 'PaymentEntity(symbol: $symbol, dateTime: $dateTime, type: $type, amount: $amount, numberOfCoins: $numberOfCoins)';
+    return 'PaymentEntity(id: $id, dateTime: $dateTime, type: $type, amount: $amount, numberOfCoins: $numberOfCoins)';
   }
 
   @override
@@ -579,7 +579,7 @@ class _$_PaymentEntity implements _PaymentEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentEntity &&
-            (identical(other.symbol, symbol) || other.symbol == symbol) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.dateTime, dateTime) || other.dateTime == dateTime) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.amount, amount) || other.amount == amount) &&
@@ -589,7 +589,7 @@ class _$_PaymentEntity implements _PaymentEntity {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, symbol, dateTime, type, amount, numberOfCoins);
+  int get hashCode => Object.hash(runtimeType, id, dateTime, type, amount, numberOfCoins);
 
   @JsonKey(ignore: true)
   @override
@@ -607,7 +607,7 @@ class _$_PaymentEntity implements _PaymentEntity {
 
 abstract class _PaymentEntity implements PaymentEntity {
   const factory _PaymentEntity(
-      {required final String symbol,
+      {required final String id,
       required final DateTime dateTime,
       required final String type,
       required final double amount,
@@ -616,7 +616,7 @@ abstract class _PaymentEntity implements PaymentEntity {
   factory _PaymentEntity.fromJson(Map<String, dynamic> json) = _$_PaymentEntity.fromJson;
 
   @override
-  String get symbol;
+  String get id;
   @override
   DateTime get dateTime;
   @override

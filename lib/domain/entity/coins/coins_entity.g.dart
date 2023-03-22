@@ -41,7 +41,7 @@ Map<String, dynamic> _$$_CoinEntityToJson(_$_CoinEntity instance) => <String, dy
     };
 
 _$_PaymentEntity _$$_PaymentEntityFromJson(Map<String, dynamic> json) => _$_PaymentEntity(
-      symbol: json['symbol'] as String,
+      id: json['id'] as String,
       dateTime: DateTime.parse(json['dateTime'] as String),
       type: json['type'] as String,
       amount: (json['amount'] as num).toDouble(),
@@ -49,7 +49,7 @@ _$_PaymentEntity _$$_PaymentEntityFromJson(Map<String, dynamic> json) => _$_Paym
     );
 
 Map<String, dynamic> _$$_PaymentEntityToJson(_$_PaymentEntity instance) => <String, dynamic>{
-      'symbol': instance.symbol,
+      'id': instance.id,
       'dateTime': instance.dateTime.toIso8601String(),
       'type': instance.type,
       'amount': instance.amount,

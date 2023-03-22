@@ -1,16 +1,19 @@
 import 'package:crypto_portfolio/data/gecko_api/api/dio_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/api/error_interceptor.dart';
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_coins_source.dart';
+import 'package:crypto_portfolio/data/gecko_api/sources/gecko_search_source.dart';
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_simple_source.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class GeckoApiClient {
   final GeckoCoinsSource coins;
+  final GeckoSearchSource search;
   final GeckoSimpleSource simple;
 
   const GeckoApiClient({
     required this.coins,
+    required this.search,
     required this.simple,
   });
 
@@ -37,6 +40,7 @@ class GeckoApiClient {
       ]));
     return GeckoApiClient(
       coins: GeckoCoinsSource(dioClient),
+      search: GeckoSearchSource(dioClient),
       simple: GeckoSimpleSource(dioClient),
     );
   }

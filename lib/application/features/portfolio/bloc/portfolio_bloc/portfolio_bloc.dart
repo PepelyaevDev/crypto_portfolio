@@ -12,21 +12,25 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
   final PortfolioRepo _portfolioRepo;
   PortfolioBloc(this._portfolioRepo)
       : super(PortfolioState(coins: _portfolioRepo.getCoinsLocal())) {
+    on<_Init>(_init, transformer: droppable());
     on<_RefreshData>(_refreshData, transformer: droppable());
     on<_UpdateHistory>(_updateHistory, transformer: droppable());
   }
 
-  Future<void> _refreshData(_, Emitter<PortfolioState> emit) async {
-    emit(PortfolioState(coins: state.coins, loading: true));
-    final coins = await _portfolioRepo.getCoinsRemote();
-    coins.fold(
-      (l) => emit(PortfolioState(coins: state.coins, error: l.errorMessage)),
-      (r) => emit(PortfolioState(coins: r)),
-    );
+  Future<void> _init(_, Emitter<PortfolioState> emit) async {
+    await for (final e in _portfolioRepo.coinsSubject.stream) {
+      e.fold(
+        (l) => emit(PortfolioState(coins: state.coins, error: l.errorMessage)),
+        (r) => emit(PortfolioState(coins: r)),
+      );
+    }
   }
 
-  Future<void> _updateHistory(_UpdateHistory event, Emitter<PortfolioState> emit) async {
-    final coins = await _portfolioRepo.updateHistory(event.paymentEntity);
-    emit(PortfolioState(coins: coins));
+  Future<void> _refreshData(_, __) async {
+    await _portfolioRepo.updateCoinsPrice();
+  }
+
+  Future<void> _updateHistory(_UpdateHistory event, _) async {
+    await _portfolioRepo.updateHistory(event.paymentEntity);
   }
 }

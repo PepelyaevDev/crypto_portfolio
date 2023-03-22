@@ -18,18 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PortfolioEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() refreshData,
     required TResult Function(PaymentEntity paymentEntity) updateHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? refreshData,
     TResult? Function(PaymentEntity paymentEntity)? updateHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? refreshData,
     TResult Function(PaymentEntity paymentEntity)? updateHistory,
     required TResult orElse(),
@@ -37,18 +40,21 @@ mixin _$PortfolioEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_RefreshData value) refreshData,
     required TResult Function(_UpdateHistory value) updateHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_RefreshData value)? refreshData,
     TResult? Function(_UpdateHistory value)? updateHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_RefreshData value)? refreshData,
     TResult Function(_UpdateHistory value)? updateHistory,
     required TResult orElse(),
@@ -71,6 +77,109 @@ class _$PortfolioEventCopyWithImpl<$Res, $Val extends PortfolioEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$_InitCopyWith<$Res> {
+  factory _$$_InitCopyWith(_$_Init value, $Res Function(_$_Init) then) =
+      __$$_InitCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_InitCopyWithImpl<$Res> extends _$PortfolioEventCopyWithImpl<$Res, _$_Init>
+    implements _$$_InitCopyWith<$Res> {
+  __$$_InitCopyWithImpl(_$_Init _value, $Res Function(_$_Init) _then) : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_Init implements _Init {
+  const _$_Init();
+
+  @override
+  String toString() {
+    return 'PortfolioEvent.init()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Init);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() refreshData,
+    required TResult Function(PaymentEntity paymentEntity) updateHistory,
+  }) {
+    return init();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? refreshData,
+    TResult? Function(PaymentEntity paymentEntity)? updateHistory,
+  }) {
+    return init?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? refreshData,
+    TResult Function(PaymentEntity paymentEntity)? updateHistory,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_RefreshData value) refreshData,
+    required TResult Function(_UpdateHistory value) updateHistory,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_RefreshData value)? refreshData,
+    TResult? Function(_UpdateHistory value)? updateHistory,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_RefreshData value)? refreshData,
+    TResult Function(_UpdateHistory value)? updateHistory,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Init implements PortfolioEvent {
+  const factory _Init() = _$_Init;
 }
 
 /// @nodoc
@@ -107,6 +216,7 @@ class _$_RefreshData implements _RefreshData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() refreshData,
     required TResult Function(PaymentEntity paymentEntity) updateHistory,
   }) {
@@ -116,6 +226,7 @@ class _$_RefreshData implements _RefreshData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? refreshData,
     TResult? Function(PaymentEntity paymentEntity)? updateHistory,
   }) {
@@ -125,6 +236,7 @@ class _$_RefreshData implements _RefreshData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? refreshData,
     TResult Function(PaymentEntity paymentEntity)? updateHistory,
     required TResult orElse(),
@@ -138,6 +250,7 @@ class _$_RefreshData implements _RefreshData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_RefreshData value) refreshData,
     required TResult Function(_UpdateHistory value) updateHistory,
   }) {
@@ -147,6 +260,7 @@ class _$_RefreshData implements _RefreshData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_RefreshData value)? refreshData,
     TResult? Function(_UpdateHistory value)? updateHistory,
   }) {
@@ -156,6 +270,7 @@ class _$_RefreshData implements _RefreshData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_RefreshData value)? refreshData,
     TResult Function(_UpdateHistory value)? updateHistory,
     required TResult orElse(),
@@ -244,6 +359,7 @@ class _$_UpdateHistory implements _UpdateHistory {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() refreshData,
     required TResult Function(PaymentEntity paymentEntity) updateHistory,
   }) {
@@ -253,6 +369,7 @@ class _$_UpdateHistory implements _UpdateHistory {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? refreshData,
     TResult? Function(PaymentEntity paymentEntity)? updateHistory,
   }) {
@@ -262,6 +379,7 @@ class _$_UpdateHistory implements _UpdateHistory {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? refreshData,
     TResult Function(PaymentEntity paymentEntity)? updateHistory,
     required TResult orElse(),
@@ -275,6 +393,7 @@ class _$_UpdateHistory implements _UpdateHistory {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_RefreshData value) refreshData,
     required TResult Function(_UpdateHistory value) updateHistory,
   }) {
@@ -284,6 +403,7 @@ class _$_UpdateHistory implements _UpdateHistory {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_RefreshData value)? refreshData,
     TResult? Function(_UpdateHistory value)? updateHistory,
   }) {
@@ -293,6 +413,7 @@ class _$_UpdateHistory implements _UpdateHistory {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_RefreshData value)? refreshData,
     TResult Function(_UpdateHistory value)? updateHistory,
     required TResult orElse(),
@@ -315,7 +436,6 @@ abstract class _UpdateHistory implements PortfolioEvent {
 /// @nodoc
 mixin _$PortfolioState {
   CoinsEntity get coins => throw _privateConstructorUsedError;
-  bool get loading => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -327,7 +447,7 @@ abstract class $PortfolioStateCopyWith<$Res> {
   factory $PortfolioStateCopyWith(PortfolioState value, $Res Function(PortfolioState) then) =
       _$PortfolioStateCopyWithImpl<$Res, PortfolioState>;
   @useResult
-  $Res call({CoinsEntity coins, bool loading, String? error});
+  $Res call({CoinsEntity coins, String? error});
 
   $CoinsEntityCopyWith<$Res> get coins;
 }
@@ -346,7 +466,6 @@ class _$PortfolioStateCopyWithImpl<$Res, $Val extends PortfolioState>
   @override
   $Res call({
     Object? coins = null,
-    Object? loading = null,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -354,10 +473,6 @@ class _$PortfolioStateCopyWithImpl<$Res, $Val extends PortfolioState>
           ? _value.coins
           : coins // ignore: cast_nullable_to_non_nullable
               as CoinsEntity,
-      loading: null == loading
-          ? _value.loading
-          : loading // ignore: cast_nullable_to_non_nullable
-              as bool,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -381,7 +496,7 @@ abstract class _$$_PortfolioStateCopyWith<$Res> implements $PortfolioStateCopyWi
       __$$_PortfolioStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({CoinsEntity coins, bool loading, String? error});
+  $Res call({CoinsEntity coins, String? error});
 
   @override
   $CoinsEntityCopyWith<$Res> get coins;
@@ -398,7 +513,6 @@ class __$$_PortfolioStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? coins = null,
-    Object? loading = null,
     Object? error = freezed,
   }) {
     return _then(_$_PortfolioState(
@@ -406,10 +520,6 @@ class __$$_PortfolioStateCopyWithImpl<$Res>
           ? _value.coins
           : coins // ignore: cast_nullable_to_non_nullable
               as CoinsEntity,
-      loading: null == loading
-          ? _value.loading
-          : loading // ignore: cast_nullable_to_non_nullable
-              as bool,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -421,19 +531,16 @@ class __$$_PortfolioStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PortfolioState implements _PortfolioState {
-  const _$_PortfolioState({required this.coins, this.loading = false, this.error});
+  const _$_PortfolioState({required this.coins, this.error});
 
   @override
   final CoinsEntity coins;
-  @override
-  @JsonKey()
-  final bool loading;
   @override
   final String? error;
 
   @override
   String toString() {
-    return 'PortfolioState(coins: $coins, loading: $loading, error: $error)';
+    return 'PortfolioState(coins: $coins, error: $error)';
   }
 
   @override
@@ -442,12 +549,11 @@ class _$_PortfolioState implements _PortfolioState {
         (other.runtimeType == runtimeType &&
             other is _$_PortfolioState &&
             (identical(other.coins, coins) || other.coins == coins) &&
-            (identical(other.loading, loading) || other.loading == loading) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, coins, loading, error);
+  int get hashCode => Object.hash(runtimeType, coins, error);
 
   @JsonKey(ignore: true)
   @override
@@ -457,15 +563,11 @@ class _$_PortfolioState implements _PortfolioState {
 }
 
 abstract class _PortfolioState implements PortfolioState {
-  const factory _PortfolioState(
-      {required final CoinsEntity coins,
-      final bool loading,
-      final String? error}) = _$_PortfolioState;
+  const factory _PortfolioState({required final CoinsEntity coins, final String? error}) =
+      _$_PortfolioState;
 
   @override
   CoinsEntity get coins;
-  @override
-  bool get loading;
   @override
   String? get error;
   @override
