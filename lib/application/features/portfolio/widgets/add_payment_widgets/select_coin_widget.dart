@@ -37,7 +37,6 @@ class _SelectCoinWidgetState extends State<SelectCoinWidget> {
           context.read<AddPaymentBloc>().add(AddPaymentEvent.clear());
         },
       ),
-      error: (_) => Text('error'),
       orElse: () => SizedBox(),
     );
   }
