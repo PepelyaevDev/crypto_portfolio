@@ -11,7 +11,7 @@ class GeckoSimpleSource {
     final response = await _dioClient.get<Map<String, dynamic>>(
       '$_path/price/',
       queryParameters: {
-        'ids': idList.toString().replaceAll(' ', ''),
+        'ids': idList.toString().replaceAll(' ', '').replaceAll('[', '').replaceAll(']', ''),
         'vs_currencies': 'usd',
       },
     );

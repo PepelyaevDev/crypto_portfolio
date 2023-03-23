@@ -45,7 +45,18 @@ class PortfolioRepo {
     updateCoinsLoadingSubject.add(false);
   }
 
+  Future<void> addNewCoinToCoinsList(CoinEntity coinEntity) async {
+    final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
+    if (coinsEntity.list.contains(coinEntity)) return;
+    final CoinsEntity newCoinsEntity = coinsEntity.copyWith(
+      list: [...coinsEntity.list, coinEntity],
+    );
+    coinsSubject.add(right(newCoinsEntity));
+    await _hiveApiClient.coins.updatePortfolioCoins(newCoinsEntity.convertToJson);
+  }
+
   Future<void> updateHistory(PaymentEntity paymentEntity) async {
+    //adding and removing payments
     final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
     final CoinEntity coinEntity = coinsEntity.list.firstWhere(
       (e) => e.id == paymentEntity.id,
@@ -59,7 +70,12 @@ class PortfolioRepo {
     } else {
       newHistory.add(paymentEntity);
     }
-    newCoins[newCoins.indexOf(coinEntity)] = coinEntity.copyWith(history: newHistory);
+    if (newHistory.isNotEmpty) {
+      newCoins[newCoins.indexOf(coinEntity)] = coinEntity.copyWith(history: newHistory);
+    }
+    if (newHistory.isEmpty) {
+      newCoins.remove(coinEntity);
+    }
     final CoinsEntity newCoinsEntity = CoinsEntity(
       list: newCoins,
       updateTime: coinsEntity.updateTime,

@@ -11,5 +11,13 @@
     "averagePrice" : "Average price",
     "priceOfAllCoins" : "Price of all coins",
     "invested" : "Invested",
-    "coinSearch": "Coin search"
+    "coinSearch": "Coin search",
+    "validatorEmptyField": "This field cannot be empty",
+    "invalidNumber": "Please enter a valid number. Example: 71.1203",
+    "addPayment" : "Add payment",
+    "paymentType" : "Payment type",
+    "deposit" : "deposit",
+    "withdraw" : "withdraw",
+    "amountOfMoney": "Amount of money",
+    "numberOfCoins": "Number of coins"
 }

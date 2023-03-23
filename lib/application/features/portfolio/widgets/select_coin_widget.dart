@@ -2,42 +2,24 @@ import 'package:crypto_portfolio/application/app/extension/context_extension.dar
 import 'package:crypto_portfolio/application/app/widgets/custom_text_field.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/add_payment_bloc/add_payment_bloc.dart';
 import 'package:crypto_portfolio/application/features/search/bloc/search_bloc.dart';
+import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
+import 'package:crypto_portfolio/domain/entity/search/search_entity.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SelectCoinWidget extends StatefulWidget {
-  final AddPaymentState coinState;
-  final String? coinId;
-
-  SelectCoinWidget({required this.coinState, this.coinId});
-
-  @override
-  State<SelectCoinWidget> createState() => _SelectCoinWidgetState();
-}
-
-class _SelectCoinWidgetState extends State<SelectCoinWidget> {
-  @override
-  void initState() {
-    if (widget.coinId != null) {
-      context.read<AddPaymentBloc>().add(AddPaymentEvent.getCoin(widget.coinId!));
-    }
-    super.initState();
-  }
-
+class SelectCoinWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return widget.coinState.maybeMap(
-      initial: (_) => _SearchCoinWidget(),
-      loading: (_) => CircularProgressIndicator(),
-      success: (state) => _SelectedCoinWidget(
-        img: state.coin.image,
-        name: state.coin.name,
-        onTapClear: () {
-          context.read<AddPaymentBloc>().add(AddPaymentEvent.clear());
-        },
-      ),
-      orElse: () => SizedBox(),
+    return BlocBuilder<AddPaymentBloc, AddPaymentState>(
+      builder: (_, AddPaymentState state) {
+        return state.maybeMap(
+          initial: (_) => _SearchCoinWidget(),
+          loading: (_) => Center(child: CircularProgressIndicator()),
+          success: (state) => _SelectedCoinWidget(coinEntity: state.coin),
+          orElse: () => SizedBox(),
+        );
+      },
     );
   }
 }
@@ -68,15 +50,7 @@ class _SearchCoinWidget extends StatelessWidget {
                   success: (state) => Wrap(
                     spacing: 10,
                     runSpacing: 10,
-                    children: state.searchEntity.coins
-                        .map((e) => _SearchedCoinWidget(
-                              onTap: () {
-                                context.read<AddPaymentBloc>().add(AddPaymentEvent.getCoin(e.id));
-                              },
-                              img: e.thumb,
-                              name: e.name,
-                            ))
-                        .toList(),
+                    children: state.searchEntity.coins.map((e) => _SearchedCoinWidget(e)).toList(),
                   ),
                   loading: (_) => Center(child: CircularProgressIndicator()),
                   orElse: () => SizedBox(),
@@ -91,19 +65,17 @@ class _SearchCoinWidget extends StatelessWidget {
 }
 
 class _SearchedCoinWidget extends StatelessWidget {
-  final String img;
-  final String name;
-  final VoidCallback? onTap;
-  _SearchedCoinWidget({
-    required this.img,
-    required this.name,
-    this.onTap,
-  });
+  final SearchCoinEntity searchCoinEntity;
+  _SearchedCoinWidget(this.searchCoinEntity);
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
+    return InkWell(
+      borderRadius: BorderRadius.circular(10),
+      onTap: () {
+        context.read<AddPaymentBloc>().add(AddPaymentEvent.getCoin(searchCoinEntity.id));
+      },
+      child: Ink(
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
@@ -113,9 +85,9 @@ class _SearchedCoinWidget extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.network(img, width: 20, height: 20),
+              Image.network(searchCoinEntity.thumb, width: 20, height: 20),
               SizedBox(width: 10),
-              Text(name),
+              Text(searchCoinEntity.name),
             ],
           ),
         ),
@@ -125,18 +97,14 @@ class _SearchedCoinWidget extends StatelessWidget {
 }
 
 class _SelectedCoinWidget extends StatelessWidget {
-  final String img;
-  final String name;
-  final VoidCallback? onTapClear;
-  _SelectedCoinWidget({
-    required this.img,
-    required this.name,
-    this.onTapClear,
-  });
+  final CoinEntity coinEntity;
+
+  _SelectedCoinWidget({required this.coinEntity});
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Ink(
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
@@ -146,13 +114,19 @@ class _SelectedCoinWidget extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.network(img, width: 20, height: 20),
+              Image.network(coinEntity.image, width: 20, height: 20),
               SizedBox(width: 10),
-              Text(name),
+              Text(coinEntity.name),
               SizedBox(width: 10),
-              IconButton(
-                onPressed: onTapClear,
-                icon: Icon(Icons.clear),
+              InkWell(
+                borderRadius: BorderRadius.circular(10),
+                onTap: () {
+                  context.read<AddPaymentBloc>().add(AddPaymentEvent.clear());
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(Icons.clear),
+                ),
               ),
             ],
           ),

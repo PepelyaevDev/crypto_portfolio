@@ -19,7 +19,9 @@ class AddPaymentBloc extends Bloc<AddPaymentEvent, AddPaymentState> {
   }
 
   Future<void> _getCoin(_GetCoin event, Emitter<AddPaymentState> emit) async {
-    final coin = await _marketRepo.getMarketCoinById(event.coinId);
+    if (event.coinId == null) return;
+    emit(AddPaymentState.loading());
+    final coin = await _marketRepo.getMarketCoinById(event.coinId!);
     coin.fold(
       (l) => emit(AddPaymentState.error(l.errorMessage)),
       (r) => emit(AddPaymentState.success(r)),
@@ -27,6 +29,7 @@ class AddPaymentBloc extends Bloc<AddPaymentEvent, AddPaymentState> {
   }
 
   Future<void> _updateHistory(_UpdateHistory event, _) async {
+    await _portfolioRepo.addNewCoinToCoinsList(event.coin);
     await _portfolioRepo.updateHistory(event.paymentEntity);
   }
 

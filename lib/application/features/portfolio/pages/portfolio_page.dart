@@ -1,8 +1,8 @@
 import 'package:crypto_portfolio/application/app/widgets/update_data_appbar.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/portfolio_bloc/portfolio_bloc.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/portfolio_coins_loading_bloc/portfolio_coins_loading_bloc.dart';
-import 'package:crypto_portfolio/application/features/portfolio/widgets/portfolio_widgets/empty_portfolio_widget.dart';
-import 'package:crypto_portfolio/application/features/portfolio/widgets/portfolio_widgets/portfolio_coins_widget.dart';
+import 'package:crypto_portfolio/application/features/portfolio/widgets/empty_portfolio_widget.dart';
+import 'package:crypto_portfolio/application/features/portfolio/widgets/portfolio_coins_widget.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

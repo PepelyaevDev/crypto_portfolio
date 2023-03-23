@@ -2,6 +2,7 @@ import 'package:crypto_portfolio/application/features/portfolio/pages/add_paymen
 import 'package:flutter/material.dart';
 
 class EmptyPortfolioWidget extends StatelessWidget {
+  ///TODO: create correct widget
   @override
   Widget build(BuildContext context) {
     return Center(

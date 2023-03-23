@@ -11,5 +11,13 @@
     "averagePrice" : "Средняя цена",
     "priceOfAllCoins" : "Стоимость монет",
     "invested" : "Вложено",
-    "coinSearch": "Поиск монеты"
+    "coinSearch": "Поиск монеты",
+    "validatorEmptyField": "Это поле не может быть пустым",
+    "invalidNumber": "Введите корректное число. Пример: 71.1203",
+    "addPayment" : "Добавить платеж",
+    "paymentType" : "Тип платежа",
+    "deposit" : "покупка",
+    "withdraw" : "продажа",
+    "amountOfMoney": "Количество денег",
+    "numberOfCoins": "Количество монет"
 }
