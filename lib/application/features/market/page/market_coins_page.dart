@@ -1,4 +1,4 @@
-import 'package:crypto_portfolio/application/app/widgets/update_data_appbar.dart';
+import 'package:crypto_portfolio/application/app/ui/widgets/update_data_appbar.dart';
 import 'package:crypto_portfolio/application/features/market/bloc/market_bloc.dart';
 import 'package:crypto_portfolio/application/features/market/widgets/market_coins_widget.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';

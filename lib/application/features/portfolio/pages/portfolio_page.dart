@@ -1,4 +1,4 @@
-import 'package:crypto_portfolio/application/app/widgets/update_data_appbar.dart';
+import 'package:crypto_portfolio/application/app/ui/widgets/update_data_appbar.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/portfolio_bloc/portfolio_bloc.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/portfolio_coins_loading_bloc/portfolio_coins_loading_bloc.dart';
 import 'package:crypto_portfolio/application/features/portfolio/widgets/empty_portfolio_widget.dart';
@@ -40,6 +40,7 @@ class PortfolioPage extends StatelessWidget {
               },
               builder: (context, portfolioState) {
                 return Scaffold(
+                  ///TODO: иконка плюса на добавление платежа
                   appBar: UpdateDataAppBar(
                     loading: loadingState,
                     updateTime: portfolioState.coins.updateTime,

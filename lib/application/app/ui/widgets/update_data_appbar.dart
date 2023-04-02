@@ -14,6 +14,9 @@ class UpdateDataAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      shadowColor: Colors.transparent,
+      backgroundColor: Colors.white,
+      titleTextStyle: TextStyle(color: Colors.black),
       title: Text('${context.localization.updated}: ${updateTime.time}'),
       actions: [
         if (loading)
@@ -24,7 +27,7 @@ class UpdateDataAppBar extends StatelessWidget implements PreferredSizeWidget {
                 height: 15,
                 width: 15,
                 child: CircularProgressIndicator(
-                  color: Colors.white,
+                  color: Colors.black,
                   strokeWidth: 2,
                 ),
               ),
@@ -32,8 +35,9 @@ class UpdateDataAppBar extends StatelessWidget implements PreferredSizeWidget {
           )
         else
           IconButton(
+            splashRadius: 15,
             onPressed: onTapUpdate,
-            icon: Icon(Icons.refresh),
+            icon: Icon(Icons.refresh, color: Colors.black),
           ),
       ],
     );

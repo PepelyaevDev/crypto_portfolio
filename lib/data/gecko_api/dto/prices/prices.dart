@@ -5,7 +5,7 @@ class PricesDTO {
   factory PricesDTO.fromJson(Map<String, dynamic> json) {
     final List<PriceDTO> list = [];
     for (final key in json.keys) {
-      list.add(PriceDTO(id: key, value: json[key]['usd']));
+      list.add(PriceDTO(id: key, value: double.parse(json[key]['usd'].toString())));
     }
     return PricesDTO(coins: list);
   }

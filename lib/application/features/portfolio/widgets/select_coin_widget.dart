@@ -1,5 +1,5 @@
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
-import 'package:crypto_portfolio/application/app/widgets/custom_text_field.dart';
+import 'package:crypto_portfolio/application/app/ui/widgets/custom_text_field.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/add_payment_bloc/add_payment_bloc.dart';
 import 'package:crypto_portfolio/application/features/search/bloc/search_bloc.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';

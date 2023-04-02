@@ -4,18 +4,24 @@ import 'package:url_launcher/url_launcher.dart';
 class CoinGeckoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text('Powered by '),
-          TextButton(
-            onPressed: () {
+          InkWell(
+            onTap: () {
               launchUrl(Uri.parse('https://www.coingecko.com/en/api'));
             },
-            child: Text('CoinGecko API'),
+            borderRadius: BorderRadius.circular(5),
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Text(
+                'CoinGecko API',
+                style: TextStyle(color: Colors.blue),
+              ),
+            ),
           ),
           SizedBox(width: 15),
         ],

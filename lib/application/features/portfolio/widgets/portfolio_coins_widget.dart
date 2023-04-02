@@ -1,6 +1,6 @@
-import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
-import 'package:crypto_portfolio/application/app/widgets/coingecko_widget.dart';
+import 'package:crypto_portfolio/application/app/ui/core/text_styles.dart';
+import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:flutter/material.dart';
@@ -11,130 +11,196 @@ class PortfolioCoinsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.blue, blurRadius: 5.0),
-            ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
-            child: Column(
-              children: [
-                _PortfolioPageRow(
-                  coinWidget: SizedBox(height: 0, width: 0),
-                  currentPrice: context.localization.currentPrice,
-                  averagePrice: context.localization.averagePrice,
-                  moneyInvested: context.localization.invested,
-                  priceAllCoins: context.localization.priceOfAllCoins,
-                ),
-              ],
-            ),
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: ListView.separated(
-              itemBuilder: (_, i) => _PortfolioPageRow(
-                coinWidget: Column(
-                  children: [
-                    Image.network(coins.list[i].image, width: 20, height: 20),
-                    Text(coins.list[i].symbol.toString()),
-                  ],
-                ),
-                currentPrice: coins.list[i].currentPrice.moneyFull,
-                averagePrice: coins.list[i].averagePrice.moneyFull,
-                moneyInvested: coins.list[i].moneyInvested.moneyFull,
-                priceAllCoins: coins.list[i].priceAllCoins.moneyFull,
-                history: coins.list[i].history,
-              ),
-              separatorBuilder: (_, __) => Divider(height: 10),
-              itemCount: coins.list.length,
-            ),
-          ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.grey, blurRadius: 1.0),
-            ],
-          ),
-          child: CoinGeckoWidget(),
-        ),
-      ],
+    return ListView.separated(
+      itemBuilder: (_, i) => _PortfolioCoinWidget(coins.list[i]),
+      separatorBuilder: (_, __) => Divider(height: 1),
+      itemCount: coins.list.length,
     );
   }
 }
 
-class _PortfolioPageRow extends StatefulWidget {
-  final Widget coinWidget;
-  final String currentPrice;
-  final String averagePrice;
-  final String moneyInvested;
-  final String priceAllCoins;
-  final List<PaymentEntity>? history;
+class _PortfolioCoinWidget extends StatefulWidget {
+  final CoinEntity coinEntity;
 
-  const _PortfolioPageRow({
-    required this.coinWidget,
-    required this.currentPrice,
-    required this.averagePrice,
-    required this.moneyInvested,
-    required this.priceAllCoins,
-    this.history,
-  });
+  _PortfolioCoinWidget(this.coinEntity);
 
   @override
-  State<_PortfolioPageRow> createState() => _PortfolioPageRowState();
+  State<_PortfolioCoinWidget> createState() => _PortfolioCoinWidgetState();
 }
 
-class _PortfolioPageRowState extends State<_PortfolioPageRow> {
-  ///TODO: show history
-  bool closeHistory = true;
+class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
+  bool openDetails = false;
 
-  onTap() {
+  void changeOpenDetails() {
     setState(() {
-      closeHistory = !closeHistory;
+      openDetails = !openDetails;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: widget.history == null ? null : onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              children: [
-                _RowElement(child: widget.coinWidget, flex: 1),
-                _RowElement(child: Text(widget.currentPrice, textAlign: TextAlign.center)),
-                _RowElement(child: Text(widget.averagePrice, textAlign: TextAlign.center)),
-                _RowElement(child: Text(widget.moneyInvested, textAlign: TextAlign.center)),
-                _RowElement(child: Text(widget.priceAllCoins, textAlign: TextAlign.center)),
-              ],
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _PortfolioPageRow(
+          coin: Image.network(widget.coinEntity.image, width: 20, height: 20),
+          name: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.coinEntity.name.toString(),
+                style: AppStyles.bold12,
+              ),
+              SizedBox(height: 3),
+              Text(
+                widget.coinEntity.currentPrice.moneyFull,
+                style: AppStyles.normal12,
+              ),
+            ],
+          ),
+          holdings: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                widget.coinEntity.priceAllCoins.moneyFull,
+                style: AppStyles.bold12,
+              ),
+              SizedBox(height: 3),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(widget.coinEntity.iconData, color: widget.coinEntity.color, size: 14),
+                  Text(
+                    ' ${widget.coinEntity.percentageDifference.toStringAsFixed(2)} % '
+                    '(${widget.coinEntity.dollarDifference.moneyFull})',
+                    style: AppStyles.normal12.copyWith(color: widget.coinEntity.color),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          button: InkWell(
+            borderRadius: BorderRadius.circular(10),
+            onTap: changeOpenDetails,
+            child: Icon(
+              openDetails ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+              size: 30,
             ),
-            closeHistory ? SizedBox(height: 0, width: 0) : Container(height: 100),
-          ],
+          ),
+        ),
+        openDetails ? _PortfolioCoinWidgetDetails(widget.coinEntity) : SizedBox()
+      ],
+    );
+  }
+}
+
+class _PortfolioCoinWidgetDetails extends StatelessWidget {
+  final CoinEntity coinEntity;
+
+  _PortfolioCoinWidgetDetails(this.coinEntity);
+
+  @override
+  Widget build(BuildContext context) {
+    return _PortfolioPageRow(
+      name: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            coinEntity.averagePrice.moneyFull,
+            style: AppStyles.bold12,
+          ),
+          Text(
+            '(Average purchase price)',
+            style: AppStyles.normal10,
+          ),
+        ],
+      ),
+      holdings: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            coinEntity.moneyInvested.moneyFull,
+            style: AppStyles.bold12,
+          ),
+          Text(
+            '(Invested)',
+            style: AppStyles.normal10,
+          ),
+        ],
+      ),
+      button: InkWell(
+        borderRadius: BorderRadius.circular(10),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => AddPaymentPage(
+                coinID: coinEntity.id,
+              ),
+            ),
+          );
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Icon(
+            Icons.add,
+            size: 20,
+          ),
         ),
       ),
     );
   }
 }
 
-class _RowElement extends StatelessWidget {
-  final Widget child;
-  final int flex;
+class _PortfolioPageRow extends StatelessWidget {
+  final Widget? coin;
+  final Widget name;
+  final Widget holdings;
+  final Widget button;
 
-  const _RowElement({required this.child, this.flex = 2});
+  const _PortfolioPageRow({
+    this.coin,
+    required this.name,
+    required this.holdings,
+    required this.button,
+  });
   @override
   Widget build(BuildContext context) {
-    return Expanded(flex: flex, child: Center(child: child));
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 1,
+            child: Align(
+              child: coin,
+            ),
+          ),
+          Expanded(
+            flex: 4,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: name,
+            ),
+          ),
+          Expanded(
+            flex: 4,
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: holdings,
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Align(
+              child: button,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
