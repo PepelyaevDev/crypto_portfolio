@@ -1,23 +1,21 @@
-import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
-import 'package:crypto_portfolio/application/app/extension/date_time_extension.dart';
 import 'package:flutter/material.dart';
 
 class UpdateDataAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool loading;
-  final DateTime updateTime;
   final VoidCallback onTapUpdate;
+  final Widget? title;
+
   UpdateDataAppBar({
     required this.loading,
-    required this.updateTime,
     required this.onTapUpdate,
+    this.title,
   });
   @override
   Widget build(BuildContext context) {
     return AppBar(
       shadowColor: Colors.transparent,
       backgroundColor: Colors.white,
-      titleTextStyle: TextStyle(color: Colors.black),
-      title: Text('${context.localization.updated}: ${updateTime.time}'),
+      title: title,
       actions: [
         if (loading)
           Padding(

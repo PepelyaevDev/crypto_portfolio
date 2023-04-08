@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
 import 'package:crypto_portfolio/application/app/ui/core/text_styles.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
@@ -113,7 +114,7 @@ class _PortfolioCoinWidgetDetails extends StatelessWidget {
             style: AppStyles.bold12,
           ),
           Text(
-            '(Average purchase price)',
+            context.localization.averageNetCost,
             style: AppStyles.normal10,
           ),
         ],
@@ -127,7 +128,7 @@ class _PortfolioCoinWidgetDetails extends StatelessWidget {
             style: AppStyles.bold12,
           ),
           Text(
-            '(Invested)',
+            context.localization.totalCost,
             style: AppStyles.normal10,
           ),
         ],

@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/ui/widgets/update_data_appbar.dart';
 import 'package:crypto_portfolio/application/features/market/bloc/market_bloc.dart';
 import 'package:crypto_portfolio/application/features/market/widgets/market_coins_widget.dart';
@@ -9,18 +10,22 @@ class MarketCoinsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MarketBloc(context.read<MarketRepo>())
-        ..add(
-          MarketEvent.refreshData(),
-        ),
+      create: (context) => MarketBloc(context.read<MarketRepo>())..add(MarketEvent.refreshData()),
       child: Builder(
         builder: (context) {
           return BlocConsumer<MarketBloc, MarketState>(
             listener: (context, state) {
+              String? snackBarContent;
               if (state.error != null) {
+                snackBarContent = state.error!;
+              }
+              if (state.error == null && !state.loading) {
+                snackBarContent = context.localization.updated;
+              }
+              if (snackBarContent != null) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(state.error!),
+                    content: Text(snackBarContent),
                     duration: Duration(milliseconds: 800),
                   ),
                 );
@@ -30,7 +35,6 @@ class MarketCoinsPage extends StatelessWidget {
               return Scaffold(
                 appBar: UpdateDataAppBar(
                   loading: state.loading,
-                  updateTime: state.coins.updateTime,
                   onTapUpdate: () {
                     context.read<MarketBloc>().add(MarketEvent.refreshData());
                   },

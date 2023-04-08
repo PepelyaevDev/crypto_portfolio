@@ -1,23 +1,22 @@
 {
-    "noData": "Нет данных",
     "market": "Рынок",
     "portfolio": "Портфель",
     "news": "Новости",
-    "updated" : "Обновлено",
-    "coin" : "Монета",
-    "price" : "Цена",
+
+    "updated" : "Данные обновлены",
+
     "marketCap" : "Капитализация",
-    "currentPrice" : "Рыночная цена",
-    "averagePrice" : "Средняя цена",
-    "priceOfAllCoins" : "Стоимость монет",
-    "invested" : "Вложено",
+    "price" : "Цена",
+    "averageNetCost": "Средняя цена",
+    "totalCost": "Вложено",
+
+    "addPayment" : "Добавить платёж",
     "coinSearch": "Поиск монеты",
-    "validatorEmptyField": "Это поле не может быть пустым",
-    "invalidNumber": "Введите корректное число. Пример: 71.1203",
-    "addPayment" : "Добавить платеж",
     "paymentType" : "Тип платежа",
     "deposit" : "покупка",
     "withdraw" : "продажа",
-    "amountOfMoney": "Количество денег",
-    "numberOfCoins": "Количество монет"
+    "amountOfMoney": "Количество монет",
+    "numberOfCoins": "Количество денег",
+    "validatorEmptyField": "Это поле не может быть пустым",
+    "validatorInvalidNumber": "Введите корректное число. Пример: 71.1203"
 }

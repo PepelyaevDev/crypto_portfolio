@@ -4,6 +4,7 @@ part of 'portfolio_bloc.dart';
 class PortfolioState with _$PortfolioState {
   const factory PortfolioState({
     required CoinsEntity coins,
+    @Default(false) bool loading,
     String? error,
   }) = _PortfolioState;
 }

@@ -9,6 +9,7 @@ class Failure with _$Failure {
 
   const factory Failure({
     @Default(Failure.defaultError) String errorMessage,
+    required DateTime dateTime,
   }) = _Failure;
 
   factory Failure.from(Object e) {
@@ -17,9 +18,9 @@ class Failure with _$Failure {
       if (e.error is String) {
         errorMessage = e.error as String;
       }
-      return Failure(errorMessage: errorMessage);
+      return Failure(errorMessage: errorMessage, dateTime: DateTime.now());
     } else {
-      return Failure();
+      return Failure(dateTime: DateTime.now());
     }
   }
 }

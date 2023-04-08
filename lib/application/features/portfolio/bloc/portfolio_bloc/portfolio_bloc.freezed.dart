@@ -436,6 +436,7 @@ abstract class _UpdateHistory implements PortfolioEvent {
 /// @nodoc
 mixin _$PortfolioState {
   CoinsEntity get coins => throw _privateConstructorUsedError;
+  bool get loading => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -447,7 +448,7 @@ abstract class $PortfolioStateCopyWith<$Res> {
   factory $PortfolioStateCopyWith(PortfolioState value, $Res Function(PortfolioState) then) =
       _$PortfolioStateCopyWithImpl<$Res, PortfolioState>;
   @useResult
-  $Res call({CoinsEntity coins, String? error});
+  $Res call({CoinsEntity coins, bool loading, String? error});
 
   $CoinsEntityCopyWith<$Res> get coins;
 }
@@ -466,6 +467,7 @@ class _$PortfolioStateCopyWithImpl<$Res, $Val extends PortfolioState>
   @override
   $Res call({
     Object? coins = null,
+    Object? loading = null,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -473,6 +475,10 @@ class _$PortfolioStateCopyWithImpl<$Res, $Val extends PortfolioState>
           ? _value.coins
           : coins // ignore: cast_nullable_to_non_nullable
               as CoinsEntity,
+      loading: null == loading
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -496,7 +502,7 @@ abstract class _$$_PortfolioStateCopyWith<$Res> implements $PortfolioStateCopyWi
       __$$_PortfolioStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({CoinsEntity coins, String? error});
+  $Res call({CoinsEntity coins, bool loading, String? error});
 
   @override
   $CoinsEntityCopyWith<$Res> get coins;
@@ -513,6 +519,7 @@ class __$$_PortfolioStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? coins = null,
+    Object? loading = null,
     Object? error = freezed,
   }) {
     return _then(_$_PortfolioState(
@@ -520,6 +527,10 @@ class __$$_PortfolioStateCopyWithImpl<$Res>
           ? _value.coins
           : coins // ignore: cast_nullable_to_non_nullable
               as CoinsEntity,
+      loading: null == loading
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -531,16 +542,19 @@ class __$$_PortfolioStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PortfolioState implements _PortfolioState {
-  const _$_PortfolioState({required this.coins, this.error});
+  const _$_PortfolioState({required this.coins, this.loading = false, this.error});
 
   @override
   final CoinsEntity coins;
+  @override
+  @JsonKey()
+  final bool loading;
   @override
   final String? error;
 
   @override
   String toString() {
-    return 'PortfolioState(coins: $coins, error: $error)';
+    return 'PortfolioState(coins: $coins, loading: $loading, error: $error)';
   }
 
   @override
@@ -549,11 +563,12 @@ class _$_PortfolioState implements _PortfolioState {
         (other.runtimeType == runtimeType &&
             other is _$_PortfolioState &&
             (identical(other.coins, coins) || other.coins == coins) &&
+            (identical(other.loading, loading) || other.loading == loading) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, coins, error);
+  int get hashCode => Object.hash(runtimeType, coins, loading, error);
 
   @JsonKey(ignore: true)
   @override
@@ -563,11 +578,15 @@ class _$_PortfolioState implements _PortfolioState {
 }
 
 abstract class _PortfolioState implements PortfolioState {
-  const factory _PortfolioState({required final CoinsEntity coins, final String? error}) =
-      _$_PortfolioState;
+  const factory _PortfolioState(
+      {required final CoinsEntity coins,
+      final bool loading,
+      final String? error}) = _$_PortfolioState;
 
   @override
   CoinsEntity get coins;
+  @override
+  bool get loading;
   @override
   String? get error;
   @override

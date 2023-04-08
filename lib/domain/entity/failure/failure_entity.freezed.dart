@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Failure {
   String get errorMessage => throw _privateConstructorUsedError;
+  DateTime get dateTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FailureCopyWith<Failure> get copyWith => throw _privateConstructorUsedError;
@@ -27,7 +28,7 @@ abstract class $FailureCopyWith<$Res> {
   factory $FailureCopyWith(Failure value, $Res Function(Failure) then) =
       _$FailureCopyWithImpl<$Res, Failure>;
   @useResult
-  $Res call({String errorMessage});
+  $Res call({String errorMessage, DateTime dateTime});
 }
 
 /// @nodoc
@@ -43,12 +44,17 @@ class _$FailureCopyWithImpl<$Res, $Val extends Failure> implements $FailureCopyW
   @override
   $Res call({
     Object? errorMessage = null,
+    Object? dateTime = null,
   }) {
     return _then(_value.copyWith(
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      dateTime: null == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -59,7 +65,7 @@ abstract class _$$_FailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
       __$$_FailureCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String errorMessage});
+  $Res call({String errorMessage, DateTime dateTime});
 }
 
 /// @nodoc
@@ -72,12 +78,17 @@ class __$$_FailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res, _$_Fail
   @override
   $Res call({
     Object? errorMessage = null,
+    Object? dateTime = null,
   }) {
     return _then(_$_Failure(
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      dateTime: null == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -85,15 +96,17 @@ class __$$_FailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res, _$_Fail
 /// @nodoc
 
 class _$_Failure implements _Failure {
-  const _$_Failure({this.errorMessage = Failure.defaultError});
+  const _$_Failure({this.errorMessage = Failure.defaultError, required this.dateTime});
 
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  final DateTime dateTime;
 
   @override
   String toString() {
-    return 'Failure(errorMessage: $errorMessage)';
+    return 'Failure(errorMessage: $errorMessage, dateTime: $dateTime)';
   }
 
   @override
@@ -101,11 +114,12 @@ class _$_Failure implements _Failure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Failure &&
-            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) &&
+            (identical(other.dateTime, dateTime) || other.dateTime == dateTime));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errorMessage);
+  int get hashCode => Object.hash(runtimeType, errorMessage, dateTime);
 
   @JsonKey(ignore: true)
   @override
@@ -115,10 +129,13 @@ class _$_Failure implements _Failure {
 }
 
 abstract class _Failure implements Failure {
-  const factory _Failure({final String errorMessage}) = _$_Failure;
+  const factory _Failure({final String errorMessage, required final DateTime dateTime}) =
+      _$_Failure;
 
   @override
   String get errorMessage;
+  @override
+  DateTime get dateTime;
   @override
   @JsonKey(ignore: true)
   _$$_FailureCopyWith<_$_Failure> get copyWith => throw _privateConstructorUsedError;

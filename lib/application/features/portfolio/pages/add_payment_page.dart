@@ -184,7 +184,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
       value.toDouble;
       return null;
     } catch (e) {
-      return context.localization.invalidNumber;
+      return context.localization.validatorInvalidNumber;
     }
   }
 

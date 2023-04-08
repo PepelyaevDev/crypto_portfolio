@@ -13,7 +13,6 @@ class PortfolioRepo {
   PortfolioRepo(this._hiveApiClient, this._geckoApiClient);
 
   final BehaviorSubject<Either<Failure, CoinsEntity>> coinsSubject = BehaviorSubject();
-  final BehaviorSubject<bool> updateCoinsLoadingSubject = BehaviorSubject();
 
   CoinsEntity getCoinsLocal() {
     final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
@@ -21,7 +20,6 @@ class PortfolioRepo {
   }
 
   Future<void> updateCoinsPrice() async {
-    updateCoinsLoadingSubject.add(true);
     try {
       final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
       final PricesDTO pricesDTO = await _geckoApiClient.simple.getPrice(
@@ -42,7 +40,6 @@ class PortfolioRepo {
     } catch (e) {
       coinsSubject.add(left(Failure.from(e)));
     }
-    updateCoinsLoadingSubject.add(false);
   }
 
   Future<void> addNewCoinToCoinsList(CoinEntity coinEntity) async {

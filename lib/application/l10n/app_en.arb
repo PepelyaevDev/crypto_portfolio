@@ -1,23 +1,22 @@
 {
-    "noData": "No data",
     "market": "Market",
     "portfolio": "Portfolio",
     "news": "News",
-    "updated" : "Updated",
-    "coin" : "Coin",
-    "price" : "Price",
+
+    "updated" : "Data updated",
+
     "marketCap" : "Market сap",
-    "currentPrice" : "Current price",
-    "averagePrice" : "Average price",
-    "priceOfAllCoins" : "Price of all coins",
-    "invested" : "Invested",
-    "coinSearch": "Coin search",
-    "validatorEmptyField": "This field cannot be empty",
-    "invalidNumber": "Please enter a valid number. Example: 71.1203",
+    "price" : "Price",
+    "averageNetCost": "Average net cost",
+    "totalCost": "Total cost",
+
     "addPayment" : "Add payment",
+    "coinSearch": "Coin search",
     "paymentType" : "Payment type",
     "deposit" : "deposit",
     "withdraw" : "withdraw",
     "amountOfMoney": "Amount of money",
-    "numberOfCoins": "Number of coins"
+    "numberOfCoins": "Number of coins",
+    "validatorEmptyField": "This field cannot be empty",
+    "validatorInvalidNumber": "Please enter a valid number. Example: 71.1203"
 }
