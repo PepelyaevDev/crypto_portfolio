@@ -15,7 +15,12 @@ class SelectCoinWidget extends StatelessWidget {
       builder: (_, AddPaymentState state) {
         return state.maybeMap(
           initial: (_) => _SearchCoinWidget(),
-          loading: (_) => Center(child: CircularProgressIndicator()),
+          loading: (_) => Center(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: CircularProgressIndicator(),
+            ),
+          ),
           success: (state) => _SelectedCoinWidget(coinEntity: state.coin),
           orElse: () => SizedBox(),
         );
@@ -36,23 +41,29 @@ class _SearchCoinWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             CustomTextField(
-              hintText: context.localization.coinSearch,
+              labelText: context.localization.coinSearch,
               onChanged: (value) {
                 searchDebouncer.run(() {
                   context.read<SearchBloc>().add(SearchEvent(value));
                 });
               },
             ),
-            SizedBox(height: 10),
             BlocBuilder<SearchBloc, SearchState>(
               builder: (_, state) {
                 return state.maybeMap(
-                  success: (state) => Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
-                    children: state.searchEntity.coins.map((e) => _SearchedCoinWidget(e)).toList(),
+                  success: (state) => Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Wrap(
+                      spacing: 10,
+                      runSpacing: 10,
+                      children:
+                          state.searchEntity.coins.map((e) => _SearchedCoinWidget(e)).toList(),
+                    ),
                   ),
-                  loading: (_) => Center(child: CircularProgressIndicator()),
+                  loading: (_) => Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Center(child: CircularProgressIndicator()),
+                  ),
                   orElse: () => SizedBox(),
                 );
               },
@@ -75,11 +86,11 @@ class _SearchedCoinWidget extends StatelessWidget {
       onTap: () {
         context.read<AddPaymentBloc>().add(AddPaymentEvent.getCoin(searchCoinEntity.id));
       },
-      child: Ink(
+      child: Container(
         decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [BoxShadow(color: Colors.blue, blurRadius: 2)]),
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.blue),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Row(
@@ -102,22 +113,25 @@ class _SelectedCoinWidget extends StatelessWidget {
   _SelectedCoinWidget({required this.coinEntity});
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Ink(
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [BoxShadow(color: Colors.blue, blurRadius: 2)]),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Colors.blue),
+      ),
+      child: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Row(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.network(coinEntity.image, width: 20, height: 20),
-              SizedBox(width: 10),
-              Text(coinEntity.name),
-              SizedBox(width: 10),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.network(coinEntity.image, width: 20, height: 20),
+                  SizedBox(width: 10),
+                  Text(coinEntity.name),
+                ],
+              ),
               InkWell(
                 borderRadius: BorderRadius.circular(10),
                 onTap: () {

@@ -12,9 +12,8 @@
 
     "addPayment" : "Add payment",
     "coinSearch": "Coin search",
-    "paymentType" : "Payment type",
-    "deposit" : "deposit",
-    "withdraw" : "withdraw",
+    "deposit" : "Deposit",
+    "withdraw" : "Withdraw",
     "amountOfMoney": "Amount of money",
     "numberOfCoins": "Number of coins",
     "validatorEmptyField": "This field cannot be empty",

@@ -1,5 +1,7 @@
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/nullable_string_extension.dart';
+import 'package:crypto_portfolio/application/app/ui/core/text_styles.dart';
+import 'package:crypto_portfolio/application/app/ui/widgets/custom_text_field.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/add_payment_bloc/add_payment_bloc.dart';
 import 'package:crypto_portfolio/application/features/portfolio/widgets/select_coin_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
@@ -53,51 +55,29 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                 key: _formKey,
                 child: ListView(
                   children: [
-                    SelectCoinWidget(),
                     SizedBox(height: 10),
+                    SelectCoinWidget(),
+                    SizedBox(height: 20),
                     Row(
                       children: [
-                        Text(
-                          '${context.localization.paymentType}: ',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
                         _paymentTypeButton(PaymentType.deposit, context.localization.deposit),
+                        SizedBox(width: 10),
                         _paymentTypeButton(PaymentType.withdraw, context.localization.withdraw),
                       ],
                     ),
-                    SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Text(
-                          '${context.localization.amountOfMoney}: ',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(width: 10),
-                        Expanded(
-                          child: TextFormField(
-                            keyboardType: TextInputType.numberWithOptions(),
-                            controller: moneyController,
-                            validator: (value) => _validator(value, context),
-                          ),
-                        ),
-                      ],
+                    SizedBox(height: 20),
+                    CustomTextField(
+                      labelText: context.localization.amountOfMoney,
+                      keyboardType: TextInputType.numberWithOptions(),
+                      controller: moneyController,
+                      validator: (value) => _validator(value, context),
                     ),
-                    SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Text(
-                          '${context.localization.numberOfCoins}: ',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(width: 10),
-                        Expanded(
-                          child: TextFormField(
-                            keyboardType: TextInputType.numberWithOptions(),
-                            controller: coinsController,
-                            validator: (value) => _validator(value, context),
-                          ),
-                        ),
-                      ],
+                    SizedBox(height: 20),
+                    CustomTextField(
+                      labelText: context.localization.numberOfCoins,
+                      keyboardType: TextInputType.numberWithOptions(),
+                      controller: coinsController,
+                      validator: (value) => _validator(value, context),
                     ),
                     SizedBox(height: 10),
                     BlocBuilder<AddPaymentBloc, AddPaymentState>(
@@ -148,31 +128,33 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
   }
 
   Widget _paymentTypeButton(String value, String title) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(10),
-      onTap: () {
-        setState(() {
-          _paymentType = value;
-        });
-      },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Radio<String>(
-            value: value,
-            groupValue: _paymentType,
-            onChanged: (String? value) {
-              setState(() {
-                _paymentType = value ?? PaymentType.deposit;
-              });
-            },
+    return Expanded(
+      child: InkWell(
+        borderRadius: BorderRadius.circular(10),
+        onTap: () {
+          setState(() {
+            _paymentType = value;
+          });
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: _paymentType == value ? Colors.blue : Colors.grey,
+            ),
           ),
-          Text(
-            title,
-            style: TextStyle(color: value == _paymentType ? Colors.black : Colors.grey),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                title,
+                style: AppStyles.normal12.copyWith(
+                  color: _paymentType == value ? Colors.black : Colors.grey,
+                ),
+              ),
+            ),
           ),
-          SizedBox(width: 10),
-        ],
+        ),
       ),
     );
   }

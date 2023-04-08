@@ -12,9 +12,8 @@
 
     "addPayment" : "Добавить платёж",
     "coinSearch": "Поиск монеты",
-    "paymentType" : "Тип платежа",
-    "deposit" : "покупка",
-    "withdraw" : "продажа",
+    "deposit" : "Покупка",
+    "withdraw" : "Продажа",
     "amountOfMoney": "Количество монет",
     "numberOfCoins": "Количество денег",
     "validatorEmptyField": "Это поле не может быть пустым",
