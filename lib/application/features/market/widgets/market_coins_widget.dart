@@ -71,7 +71,7 @@ class MarketCoinsWidget extends StatelessWidget {
               ),
               changes: SizedBox(),
             ),
-            separatorBuilder: (_, __) => Divider(height: 1),
+            separatorBuilder: (_, __) => Divider(height: 2),
             itemCount: coins.list.length,
           ),
         ),

@@ -14,7 +14,7 @@ class PortfolioCoinsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (_, i) => _PortfolioCoinWidget(coins.list[i]),
-      separatorBuilder: (_, __) => Divider(height: 1),
+      separatorBuilder: (_, __) => Divider(height: 2),
       itemCount: coins.list.length,
     );
   }
@@ -50,7 +50,7 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.coinEntity.name.toString(),
+                widget.coinEntity.symbol.toString().toUpperCase(),
                 style: AppStyles.bold12,
               ),
               SizedBox(height: 3),
@@ -181,14 +181,14 @@ class _PortfolioPageRow extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 3,
             child: Align(
               alignment: Alignment.centerLeft,
               child: name,
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 6,
             child: Align(
               alignment: Alignment.centerRight,
               child: holdings,

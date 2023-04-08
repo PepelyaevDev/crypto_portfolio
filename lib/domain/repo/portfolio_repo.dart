@@ -44,7 +44,7 @@ class PortfolioRepo {
 
   Future<void> addNewCoinToCoinsList(CoinEntity coinEntity) async {
     final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
-    if (coinsEntity.list.contains(coinEntity)) return;
+    if (coinsEntity.list.where((e) => e.id == coinEntity.id).isNotEmpty) return;
     final CoinsEntity newCoinsEntity = coinsEntity.copyWith(
       list: [...coinsEntity.list, coinEntity],
     );
