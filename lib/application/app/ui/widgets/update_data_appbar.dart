@@ -4,16 +4,18 @@ class UpdateDataAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool loading;
   final VoidCallback onTapUpdate;
   final Widget? title;
+  final bool shadow;
 
   UpdateDataAppBar({
     required this.loading,
     required this.onTapUpdate,
     this.title,
+    this.shadow = true,
   });
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      shadowColor: Colors.transparent,
+      shadowColor: shadow ? null : Colors.transparent,
       backgroundColor: Colors.white,
       title: title,
       actions: [

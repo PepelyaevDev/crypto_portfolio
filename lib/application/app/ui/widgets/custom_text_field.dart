@@ -20,6 +20,7 @@ class CustomTextField extends StatelessWidget {
       keyboardType: keyboardType,
       controller: controller,
       decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(horizontal: 10),
         labelText: labelText,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),

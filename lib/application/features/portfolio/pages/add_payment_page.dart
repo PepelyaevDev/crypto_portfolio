@@ -48,7 +48,10 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
             );
           },
           child: Scaffold(
-            appBar: AppBar(),
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.black,
+            ),
             body: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Form(

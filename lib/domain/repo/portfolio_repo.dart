@@ -14,6 +14,15 @@ class PortfolioRepo {
 
   final BehaviorSubject<Either<Failure, CoinsEntity>> coinsSubject = BehaviorSubject();
 
+  Future<void> _addUpdatedCoinsEntity(CoinsEntity coinsEntity) async {
+    coinsSubject.add(right(coinsEntity));
+    await _hiveApiClient.coins.updatePortfolioCoins(coinsEntity.convertToJson);
+  }
+
+  void _addFailure(Exception e) {
+    coinsSubject.add(left(Failure.from(e)));
+  }
+
   CoinsEntity getCoinsLocal() {
     final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
     return coinsEntity;

@@ -34,6 +34,7 @@ class MarketCoinsPage extends StatelessWidget {
             builder: (context, state) {
               return Scaffold(
                 appBar: UpdateDataAppBar(
+                  shadow: false,
                   loading: state.loading,
                   onTapUpdate: () {
                     context.read<MarketBloc>().add(MarketEvent.refreshData());

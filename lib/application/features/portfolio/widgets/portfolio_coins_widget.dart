@@ -12,10 +12,13 @@ class PortfolioCoinsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemBuilder: (_, i) => _PortfolioCoinWidget(coins.list[i]),
-      separatorBuilder: (_, __) => Divider(height: 2),
-      itemCount: coins.list.length,
+    return Padding(
+      padding: const EdgeInsets.only(top: 10.0),
+      child: ListView.separated(
+        itemBuilder: (_, i) => _PortfolioCoinWidget(coins.list[i]),
+        separatorBuilder: (_, __) => Divider(height: 2),
+        itemCount: coins.list.length,
+      ),
     );
   }
 }
