@@ -2,7 +2,7 @@ import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/dto/prices/prices.dart';
 import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
-import 'package:crypto_portfolio/domain/entity/coins/extensions/coins_json_converter.dart';
+import 'package:crypto_portfolio/domain/entity/coins/extensions/json_converter.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:rxdart/rxdart.dart';

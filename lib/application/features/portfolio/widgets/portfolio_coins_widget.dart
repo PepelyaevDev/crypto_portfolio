@@ -3,7 +3,7 @@ import 'package:crypto_portfolio/application/app/extension/double_extension.dart
 import 'package:crypto_portfolio/application/app/ui/core/text_styles.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
-import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
+import 'package:crypto_portfolio/domain/entity/coins/extensions/data.dart';
 import 'package:flutter/material.dart';
 
 class PortfolioCoinsWidget extends StatelessWidget {
