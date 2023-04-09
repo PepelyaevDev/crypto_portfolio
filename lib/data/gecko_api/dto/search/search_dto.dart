@@ -7,12 +7,6 @@ part 'search_dto.g.dart';
 class SearchDTO with _$SearchDTO {
   const factory SearchDTO({
     required List<SearchCoinDTO> coins,
-
-    ///TODO: add
-    // required List exchanges,
-    // required List icos,
-    // required List categories,
-    // required List nfts,
   }) = _SearchDTO;
 
   factory SearchDTO.fromJson(Map<String, Object?> json) => _$SearchDTOFromJson(json);

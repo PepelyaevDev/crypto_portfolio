@@ -77,7 +77,7 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
                 children: [
                   Icon(widget.coinEntity.iconData, color: widget.coinEntity.color, size: 14),
                   Text(
-                    ' ${widget.coinEntity.percentageDifference.toStringAsFixed(2)} % '
+                    ' ${widget.coinEntity.percentageDifference.percentageToString} % '
                     '(${widget.coinEntity.dollarDifference.moneyFull})',
                     style: AppStyles.normal12.copyWith(color: widget.coinEntity.color),
                   ),

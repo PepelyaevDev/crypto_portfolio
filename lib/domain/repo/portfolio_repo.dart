@@ -28,6 +28,11 @@ class PortfolioRepo {
     return coinsEntity;
   }
 
+  Future<void> updateCoinMarketData(String id) async {
+    ///TODO: добавить параметр price_change_percentage_24h в модель и на страницу маркета
+    ///TODO: метод для обновления данных монеты для детальной страницы приложения
+  }
+
   Future<void> updateCoinsPrice() async {
     try {
       final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;

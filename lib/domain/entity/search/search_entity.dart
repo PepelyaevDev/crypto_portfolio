@@ -6,12 +6,6 @@ part 'search_entity.freezed.dart';
 class SearchEntity with _$SearchEntity {
   const factory SearchEntity({
     required List<SearchCoinEntity> coins,
-
-    ///TODO: add
-    // required List exchanges,
-    // required List icos,
-    // required List categories,
-    // required List nfts,
   }) = _SearchEntity;
 }
 
