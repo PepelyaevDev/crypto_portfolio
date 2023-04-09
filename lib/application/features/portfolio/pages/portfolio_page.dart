@@ -1,4 +1,5 @@
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
+import 'package:crypto_portfolio/application/app/ui/widgets/refresh_icon_button.dart';
 import 'package:crypto_portfolio/application/app/ui/widgets/update_data_appbar.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/portfolio_bloc/portfolio_bloc.dart';
 import 'package:crypto_portfolio/application/features/portfolio/widgets/empty_portfolio_widget.dart';
@@ -40,17 +41,21 @@ class PortfolioPage extends StatelessWidget {
             }
           },
           builder: (context, portfolioState) {
-            return Scaffold(
-              ///TODO: иконка плюса на добавление платежа
-              appBar: UpdateDataAppBar(
-                loading: portfolioState.loading,
-                onTapUpdate: () {
-                  context.read<PortfolioBloc>().add(PortfolioEvent.refreshData());
-                },
+            return SafeArea(
+              child: Scaffold(
+                ///TODO: иконка плюса на добавление платежа
+                appBar: CustomAppBar(
+                  rightWidget: RefreshIconButton(
+                    loading: portfolioState.loading,
+                    onTapUpdate: () {
+                      context.read<PortfolioBloc>().add(PortfolioEvent.refreshData());
+                    },
+                  ),
+                ),
+                body: portfolioState.coins.list.isEmpty
+                    ? EmptyPortfolioWidget()
+                    : PortfolioCoinsWidget(coins: portfolioState.coins),
               ),
-              body: portfolioState.coins.list.isEmpty
-                  ? EmptyPortfolioWidget()
-                  : PortfolioCoinsWidget(coins: portfolioState.coins),
             );
           },
         );

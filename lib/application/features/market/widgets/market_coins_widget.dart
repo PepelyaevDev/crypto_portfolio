@@ -13,33 +13,10 @@ class MarketCoinsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.blue, blurRadius: 2.0),
-            ],
-          ),
-          child: Column(
-            children: [
-              _MarketPageRow(
-                marketCap: Text(
-                  context.localization.marketCap,
-                  style: AppStyles.normal12,
-                ),
-                price: Text(
-                  context.localization.price,
-                  style: AppStyles.normal12,
-                ),
-                changes: SizedBox(),
-              ),
-            ],
-          ),
-        ),
         SizedBox(height: 5),
         Expanded(
           child: ListView.separated(
-            itemBuilder: (_, i) => _MarketPageRow(
+            itemBuilder: (_, i) => MarketPageRow(
               index: Text(
                 (i + 1).toString(),
                 style: AppStyles.normal14,
@@ -92,13 +69,13 @@ class MarketCoinsWidget extends StatelessWidget {
   }
 }
 
-class _MarketPageRow extends StatelessWidget {
+class MarketPageRow extends StatelessWidget {
   final Widget? index;
   final Widget marketCap;
   final Widget price;
   final Widget changes;
 
-  const _MarketPageRow({
+  const MarketPageRow({
     this.index,
     required this.marketCap,
     required this.price,
