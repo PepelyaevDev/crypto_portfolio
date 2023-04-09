@@ -27,15 +27,19 @@ class PortfolioPage extends StatelessWidget {
         return BlocConsumer<PortfolioBloc, PortfolioState>(
           listener: (context, state) {
             String? snackBarContent;
+            Color? color;
             if (state.error != null) {
               snackBarContent = state.error!;
+              color = Colors.red;
             }
             if (state.error == null && !state.loading) {
               snackBarContent = context.localization.updated;
+              color = Colors.green;
             }
             if (snackBarContent != null) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
+                  backgroundColor: color,
                   content: Text(snackBarContent),
                   duration: Duration(milliseconds: 800),
                 ),

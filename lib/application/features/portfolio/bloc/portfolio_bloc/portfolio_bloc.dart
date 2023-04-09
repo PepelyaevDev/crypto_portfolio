@@ -17,7 +17,6 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
       : super(PortfolioState(coins: _portfolioRepo.getCoinsLocal())) {
     on<_Init>(_init, transformer: droppable());
     on<_RefreshData>(_refreshData, transformer: droppable());
-    on<_UpdateHistory>(_updateHistory, transformer: droppable());
   }
 
   Future<void> _init(_, Emitter<PortfolioState> emit) async {
@@ -35,12 +34,8 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
   }
 
   Future<void> _refreshData(_, Emitter<PortfolioState> emit) async {
-    if (state.coins.updateTime.newValue) return;
+    if (state.coins.list.isEmpty) return;
     emit(PortfolioState(coins: state.coins, loading: true));
     await _portfolioRepo.updateCoinsPrice();
-  }
-
-  Future<void> _updateHistory(_UpdateHistory event, _) async {
-    await _portfolioRepo.updateHistory(event.paymentEntity);
   }
 }

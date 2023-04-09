@@ -10,6 +10,7 @@
     "averageNetCost": "Average net cost",
     "totalCost": "Total cost",
 
+    "portfolioIsEmpty": "Your portfolio is empty, please add the first payment",
     "addPayment" : "Add payment",
     "coinSearch": "Coin search",
     "deposit" : "Deposit",

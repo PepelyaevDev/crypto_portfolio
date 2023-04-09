@@ -10,6 +10,7 @@
     "averageNetCost": "Средняя цена",
     "totalCost": "Вложено",
 
+    "portfolioIsEmpty": "Ваш портфель пуст, пожалуйста добавьте первый платеж",
     "addPayment" : "Добавить платёж",
     "coinSearch": "Поиск монеты",
     "deposit" : "Покупка",

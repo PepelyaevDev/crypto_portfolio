@@ -20,21 +20,18 @@ mixin _$PortfolioEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() refreshData,
-    required TResult Function(PaymentEntity paymentEntity) updateHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? refreshData,
-    TResult? Function(PaymentEntity paymentEntity)? updateHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? refreshData,
-    TResult Function(PaymentEntity paymentEntity)? updateHistory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,21 +39,18 @@ mixin _$PortfolioEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
     required TResult Function(_RefreshData value) refreshData,
-    required TResult Function(_UpdateHistory value) updateHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
     TResult? Function(_RefreshData value)? refreshData,
-    TResult? Function(_UpdateHistory value)? updateHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
     TResult Function(_RefreshData value)? refreshData,
-    TResult Function(_UpdateHistory value)? updateHistory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,7 +108,6 @@ class _$_Init implements _Init {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() refreshData,
-    required TResult Function(PaymentEntity paymentEntity) updateHistory,
   }) {
     return init();
   }
@@ -124,7 +117,6 @@ class _$_Init implements _Init {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? refreshData,
-    TResult? Function(PaymentEntity paymentEntity)? updateHistory,
   }) {
     return init?.call();
   }
@@ -134,7 +126,6 @@ class _$_Init implements _Init {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? refreshData,
-    TResult Function(PaymentEntity paymentEntity)? updateHistory,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -148,7 +139,6 @@ class _$_Init implements _Init {
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
     required TResult Function(_RefreshData value) refreshData,
-    required TResult Function(_UpdateHistory value) updateHistory,
   }) {
     return init(this);
   }
@@ -158,7 +148,6 @@ class _$_Init implements _Init {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
     TResult? Function(_RefreshData value)? refreshData,
-    TResult? Function(_UpdateHistory value)? updateHistory,
   }) {
     return init?.call(this);
   }
@@ -168,7 +157,6 @@ class _$_Init implements _Init {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
     TResult Function(_RefreshData value)? refreshData,
-    TResult Function(_UpdateHistory value)? updateHistory,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -218,7 +206,6 @@ class _$_RefreshData implements _RefreshData {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() refreshData,
-    required TResult Function(PaymentEntity paymentEntity) updateHistory,
   }) {
     return refreshData();
   }
@@ -228,7 +215,6 @@ class _$_RefreshData implements _RefreshData {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? refreshData,
-    TResult? Function(PaymentEntity paymentEntity)? updateHistory,
   }) {
     return refreshData?.call();
   }
@@ -238,7 +224,6 @@ class _$_RefreshData implements _RefreshData {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? refreshData,
-    TResult Function(PaymentEntity paymentEntity)? updateHistory,
     required TResult orElse(),
   }) {
     if (refreshData != null) {
@@ -252,7 +237,6 @@ class _$_RefreshData implements _RefreshData {
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
     required TResult Function(_RefreshData value) refreshData,
-    required TResult Function(_UpdateHistory value) updateHistory,
   }) {
     return refreshData(this);
   }
@@ -262,7 +246,6 @@ class _$_RefreshData implements _RefreshData {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
     TResult? Function(_RefreshData value)? refreshData,
-    TResult? Function(_UpdateHistory value)? updateHistory,
   }) {
     return refreshData?.call(this);
   }
@@ -272,7 +255,6 @@ class _$_RefreshData implements _RefreshData {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
     TResult Function(_RefreshData value)? refreshData,
-    TResult Function(_UpdateHistory value)? updateHistory,
     required TResult orElse(),
   }) {
     if (refreshData != null) {
@@ -284,153 +266,6 @@ class _$_RefreshData implements _RefreshData {
 
 abstract class _RefreshData implements PortfolioEvent {
   const factory _RefreshData() = _$_RefreshData;
-}
-
-/// @nodoc
-abstract class _$$_UpdateHistoryCopyWith<$Res> {
-  factory _$$_UpdateHistoryCopyWith(_$_UpdateHistory value, $Res Function(_$_UpdateHistory) then) =
-      __$$_UpdateHistoryCopyWithImpl<$Res>;
-  @useResult
-  $Res call({PaymentEntity paymentEntity});
-
-  $PaymentEntityCopyWith<$Res> get paymentEntity;
-}
-
-/// @nodoc
-class __$$_UpdateHistoryCopyWithImpl<$Res>
-    extends _$PortfolioEventCopyWithImpl<$Res, _$_UpdateHistory>
-    implements _$$_UpdateHistoryCopyWith<$Res> {
-  __$$_UpdateHistoryCopyWithImpl(_$_UpdateHistory _value, $Res Function(_$_UpdateHistory) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? paymentEntity = null,
-  }) {
-    return _then(_$_UpdateHistory(
-      null == paymentEntity
-          ? _value.paymentEntity
-          : paymentEntity // ignore: cast_nullable_to_non_nullable
-              as PaymentEntity,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PaymentEntityCopyWith<$Res> get paymentEntity {
-    return $PaymentEntityCopyWith<$Res>(_value.paymentEntity, (value) {
-      return _then(_value.copyWith(paymentEntity: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$_UpdateHistory implements _UpdateHistory {
-  const _$_UpdateHistory(this.paymentEntity);
-
-  @override
-  final PaymentEntity paymentEntity;
-
-  @override
-  String toString() {
-    return 'PortfolioEvent.updateHistory(paymentEntity: $paymentEntity)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_UpdateHistory &&
-            (identical(other.paymentEntity, paymentEntity) ||
-                other.paymentEntity == paymentEntity));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, paymentEntity);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_UpdateHistoryCopyWith<_$_UpdateHistory> get copyWith =>
-      __$$_UpdateHistoryCopyWithImpl<_$_UpdateHistory>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() init,
-    required TResult Function() refreshData,
-    required TResult Function(PaymentEntity paymentEntity) updateHistory,
-  }) {
-    return updateHistory(paymentEntity);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? init,
-    TResult? Function()? refreshData,
-    TResult? Function(PaymentEntity paymentEntity)? updateHistory,
-  }) {
-    return updateHistory?.call(paymentEntity);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function()? refreshData,
-    TResult Function(PaymentEntity paymentEntity)? updateHistory,
-    required TResult orElse(),
-  }) {
-    if (updateHistory != null) {
-      return updateHistory(paymentEntity);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Init value) init,
-    required TResult Function(_RefreshData value) refreshData,
-    required TResult Function(_UpdateHistory value) updateHistory,
-  }) {
-    return updateHistory(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Init value)? init,
-    TResult? Function(_RefreshData value)? refreshData,
-    TResult? Function(_UpdateHistory value)? updateHistory,
-  }) {
-    return updateHistory?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Init value)? init,
-    TResult Function(_RefreshData value)? refreshData,
-    TResult Function(_UpdateHistory value)? updateHistory,
-    required TResult orElse(),
-  }) {
-    if (updateHistory != null) {
-      return updateHistory(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdateHistory implements PortfolioEvent {
-  const factory _UpdateHistory(final PaymentEntity paymentEntity) = _$_UpdateHistory;
-
-  PaymentEntity get paymentEntity;
-  @JsonKey(ignore: true)
-  _$$_UpdateHistoryCopyWith<_$_UpdateHistory> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

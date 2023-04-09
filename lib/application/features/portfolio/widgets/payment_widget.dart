@@ -1,8 +1,6 @@
-import 'package:crypto_portfolio/application/features/portfolio/bloc/portfolio_bloc/portfolio_bloc.dart';
 import 'package:crypto_portfolio/application/features/portfolio/widgets/delete_payment_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PaymentWidget extends StatelessWidget {
   const PaymentWidget({required this.payment});
@@ -22,7 +20,7 @@ class PaymentWidget extends StatelessWidget {
                   return DeletePaymentWidget(
                     payment: payment,
                     onTapSuccess: () {
-                      context.read<PortfolioBloc>().add(PortfolioEvent.updateHistory(payment));
+                      //context.read<PortfolioBloc>().add(PortfolioEvent.updateHistory(payment));
                     },
                   );
                 });
