@@ -1,7 +1,7 @@
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/nullable_string_extension.dart';
 import 'package:crypto_portfolio/application/app/ui/core/text_styles.dart';
-import 'package:crypto_portfolio/application/app/ui/widgets/back_icon_button.dart';
+import 'package:crypto_portfolio/application/app/ui/widgets/app_bar_icon_button.dart';
 import 'package:crypto_portfolio/application/app/ui/widgets/custom_text_field.dart';
 import 'package:crypto_portfolio/application/app/ui/widgets/update_data_appbar.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/add_payment_bloc/add_payment_bloc.dart';
@@ -52,15 +52,13 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
           child: SafeArea(
             child: Scaffold(
               appBar: CustomAppBar(
-                leftWidget: SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: Center(
-                    child: BackIconButton(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
+                leftWidget: Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: AppBarIconButton(
+                    iconData: Icons.arrow_back,
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
                   ),
                 ),
               ),
@@ -70,7 +68,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                   key: _formKey,
                   child: ListView(
                     children: [
-                      SizedBox(height: 10),
+                      SizedBox(height: 5),
                       SelectCoinWidget(),
                       SizedBox(height: 20),
                       Row(

@@ -11,25 +11,28 @@ class RefreshIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 50,
-      width: 50,
-      child: loading
-          ? Center(
-              child: SizedBox(
-                height: 15,
-                width: 15,
-                child: CircularProgressIndicator(
-                  color: Colors.black,
-                  strokeWidth: 2,
+    return Padding(
+      padding: const EdgeInsets.only(right: 10.0),
+      child: SizedBox(
+        height: 50,
+        width: 40,
+        child: loading
+            ? Center(
+                child: SizedBox(
+                  height: 15,
+                  width: 15,
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                    strokeWidth: 2,
+                  ),
                 ),
+              )
+            : IconButton(
+                splashRadius: 15,
+                onPressed: onTapUpdate,
+                icon: Icon(Icons.refresh, color: Colors.black),
               ),
-            )
-          : IconButton(
-              splashRadius: 15,
-              onPressed: onTapUpdate,
-              icon: Icon(Icons.refresh, color: Colors.black),
-            ),
+      ),
     );
   }
 }
