@@ -14,14 +14,13 @@ class PortfolioRepo {
 
   final BehaviorSubject<Either<Failure, CoinsEntity>> coinsSubject = BehaviorSubject();
 
-   не обновляется страница после добавления платежа
-  Future<void> _addUpdatedCoinsEntity(CoinsEntity coinsEntity) async {
+  Future<void> _updatedCoinsEntity(List<CoinEntity> coinsList) async {
+    final CoinsEntity coinsEntity = CoinsEntity(
+      list: coinsList,
+      updateTime: DateTime.now(),
+    );
     coinsSubject.add(right(coinsEntity));
     await _hiveApiClient.coins.updatePortfolioCoins(coinsEntity.convertToJson);
-  }
-
-  void _addFailure(Exception e) {
-    coinsSubject.add(left(Failure.from(e)));
   }
 
   CoinsEntity getCoinsLocal() {
@@ -41,12 +40,7 @@ class PortfolioRepo {
           coin.copyWith(currentPrice: pricesDTO.coins.firstWhere((e) => e.id == coin.id).value),
         );
       }
-      final CoinsEntity updatedCoinsEntity = CoinsEntity(
-        list: updatedCoinsList,
-        updateTime: DateTime.now(),
-      );
-      coinsSubject.add(right(updatedCoinsEntity));
-      await _hiveApiClient.coins.updatePortfolioCoins(updatedCoinsEntity.convertToJson);
+      await _updatedCoinsEntity(updatedCoinsList);
     } catch (e) {
       coinsSubject.add(left(Failure.from(e)));
     }
@@ -55,11 +49,7 @@ class PortfolioRepo {
   Future<void> addNewCoinToCoinsList(CoinEntity coinEntity) async {
     final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
     if (coinsEntity.list.where((e) => e.id == coinEntity.id).isNotEmpty) return;
-    final CoinsEntity newCoinsEntity = coinsEntity.copyWith(
-      list: [...coinsEntity.list, coinEntity],
-    );
-    coinsSubject.add(right(newCoinsEntity));
-    await _hiveApiClient.coins.updatePortfolioCoins(newCoinsEntity.convertToJson);
+    await _updatedCoinsEntity([...coinsEntity.list, coinEntity]);
   }
 
   Future<void> updateHistory(PaymentEntity paymentEntity) async {
@@ -83,11 +73,6 @@ class PortfolioRepo {
     if (newHistory.isEmpty) {
       newCoins.remove(coinEntity);
     }
-    final CoinsEntity newCoinsEntity = CoinsEntity(
-      list: newCoins,
-      updateTime: coinsEntity.updateTime,
-    );
-    coinsSubject.add(right(newCoinsEntity));
-    await _hiveApiClient.coins.updatePortfolioCoins(newCoinsEntity.convertToJson);
+    await _updatedCoinsEntity(newCoins);
   }
 }
