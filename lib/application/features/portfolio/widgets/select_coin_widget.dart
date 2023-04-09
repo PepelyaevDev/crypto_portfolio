@@ -132,15 +132,12 @@ class _SelectedCoinWidget extends StatelessWidget {
                   Text(coinEntity.name),
                 ],
               ),
-              InkWell(
-                borderRadius: BorderRadius.circular(10),
-                onTap: () {
+              IconButton(
+                splashRadius: 15,
+                onPressed: () {
                   context.read<AddPaymentBloc>().add(AddPaymentEvent.clear());
                 },
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(Icons.clear),
-                ),
+                icon: Icon(Icons.clear),
               ),
             ],
           ),

@@ -14,6 +14,7 @@ class PortfolioRepo {
 
   final BehaviorSubject<Either<Failure, CoinsEntity>> coinsSubject = BehaviorSubject();
 
+   не обновляется страница после добавления платежа
   Future<void> _addUpdatedCoinsEntity(CoinsEntity coinsEntity) async {
     coinsSubject.add(right(coinsEntity));
     await _hiveApiClient.coins.updatePortfolioCoins(coinsEntity.convertToJson);
