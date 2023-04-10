@@ -1,5 +1,4 @@
 import 'package:money_formatter/money_formatter.dart';
-import 'dart:math';
 
 extension DoubleExtension on double {
   String get moneyCompact => MoneyFormatter(amount: this).output.compactSymbolOnLeft;
@@ -12,3 +11,6 @@ extension DoubleExtension on double {
     }
   }
 }
+
+///TODO: екстеншен на int который принимает контекст и выдает локализованный текст ошибки по коду
+/// ошибки, в фэйлуре лежит код ошибки
