@@ -41,7 +41,8 @@ extension CoinData on CoinEntity {
 
   Color get color => currentPrice < averagePrice ? Colors.red : Colors.green;
 
-  IconData get iconData => currentPrice < averagePrice ? Icons.arrow_downward : Icons.arrow_upward;
+  IconData get iconData =>
+      currentPrice < averagePrice ? Icons.arrow_drop_down : Icons.arrow_drop_up;
 
   double get dollarDifference {
     final double value = priceAllCoins - moneyInvested;

@@ -57,7 +57,10 @@ class MarketCoinsPage extends StatelessWidget {
                           context.localization.price,
                           style: AppStyles.normal12,
                         ),
-                        changes: SizedBox(),
+                        changes: Text(
+                          context.localization.percentage24h,
+                          style: AppStyles.normal12,
+                        ),
                       ),
                       height: 40,
                     ),

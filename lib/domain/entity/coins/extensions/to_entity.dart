@@ -9,6 +9,7 @@ extension GeckoCoinDtoToEntity on GeckoCoinDTO {
         image: image,
         currentPrice: currentPrice,
         marketCap: marketCap,
+        priceChangePercentage24H: priceChangePercentage_24h,
         history: [],
       );
 }

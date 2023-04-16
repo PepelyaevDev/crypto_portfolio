@@ -33,7 +33,9 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
       create: (BuildContext context) => AddPaymentBloc(
         context.read<MarketRepo>(),
         context.read<PortfolioRepo>(),
-      )..add(AddPaymentEvent.getCoin(widget.coinID)),
+      )..add(
+          AddPaymentEvent.getCoin(widget.coinID),
+        ),
       child: Builder(builder: (context) {
         return BlocListener<AddPaymentBloc, AddPaymentState>(
           listener: (context, state) {
@@ -80,17 +82,27 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                       ),
                       SizedBox(height: 20),
                       CustomTextField(
+                        suffixText: 'USD',
                         labelText: context.localization.amountOfMoney,
                         keyboardType: TextInputType.numberWithOptions(),
                         controller: moneyController,
                         validator: (value) => _validator(value, context),
                       ),
                       SizedBox(height: 20),
-                      CustomTextField(
-                        labelText: context.localization.numberOfCoins,
-                        keyboardType: TextInputType.numberWithOptions(),
-                        controller: coinsController,
-                        validator: (value) => _validator(value, context),
+                      BlocBuilder<AddPaymentBloc, AddPaymentState>(
+                        builder: (context, state) {
+                          final String? suffix = state.maybeMap(
+                            success: (state) => state.coin.symbol.toUpperCase(),
+                            orElse: () => null,
+                          );
+                          return CustomTextField(
+                            suffixText: suffix,
+                            labelText: context.localization.numberOfCoins,
+                            keyboardType: TextInputType.numberWithOptions(),
+                            controller: coinsController,
+                            validator: (value) => _validator(value, context),
+                          );
+                        },
                       ),
                       SizedBox(height: 10),
                       BlocBuilder<AddPaymentBloc, AddPaymentState>(

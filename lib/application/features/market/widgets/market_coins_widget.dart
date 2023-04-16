@@ -45,7 +45,27 @@ class MarketCoinsWidget extends StatelessWidget {
                 coins.list[i].currentPrice.moneyFull,
                 style: AppStyles.bold12,
               ),
-              changes: SizedBox(),
+              changes: Builder(builder: (context) {
+                final Color color;
+                final IconData icon;
+                if (coins.list[i].priceChangePercentage24H < 0) {
+                  color = Colors.red;
+                  icon = Icons.arrow_drop_down;
+                } else {
+                  color = Colors.green;
+                  icon = Icons.arrow_drop_up;
+                }
+                return Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(icon, color: color),
+                    Text(
+                      '${coins.list[i].priceChangePercentage24H.toStringAsFixed(2)} %',
+                      style: AppStyles.bold12.copyWith(color: color),
+                    ),
+                  ],
+                );
+              }),
             ),
             separatorBuilder: (_, __) => Divider(height: 2),
             itemCount: coins.list.length,

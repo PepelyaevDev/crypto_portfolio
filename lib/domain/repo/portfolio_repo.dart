@@ -29,7 +29,6 @@ class PortfolioRepo {
   }
 
   Future<void> updateCoinMarketData(String id) async {
-    ///TODO: добавить параметр price_change_percentage_24h в модель и на страницу маркета
     ///TODO: метод для обновления данных монеты для детальной страницы приложения
   }
 

@@ -22,6 +22,7 @@ class CoinEntity with _$CoinEntity {
     required String image,
     required double currentPrice,
     required double marketCap,
+    required double priceChangePercentage24H,
     //user data
     required List<PaymentEntity> history,
   }) = _CoinEntity;

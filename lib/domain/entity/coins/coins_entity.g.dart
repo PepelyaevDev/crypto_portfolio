@@ -25,6 +25,7 @@ _$_CoinEntity _$$_CoinEntityFromJson(Map<String, dynamic> json) => _$_CoinEntity
       image: json['image'] as String,
       currentPrice: (json['currentPrice'] as num).toDouble(),
       marketCap: (json['marketCap'] as num).toDouble(),
+      priceChangePercentage24H: (json['priceChangePercentage24H'] as num).toDouble(),
       history: (json['history'] as List<dynamic>)
           .map((e) => PaymentEntity.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -37,6 +38,7 @@ Map<String, dynamic> _$$_CoinEntityToJson(_$_CoinEntity instance) => <String, dy
       'image': instance.image,
       'currentPrice': instance.currentPrice,
       'marketCap': instance.marketCap,
+      'priceChangePercentage24H': instance.priceChangePercentage24H,
       'history': instance.history.map((e) => e.toJson()).toList(),
     };
 
