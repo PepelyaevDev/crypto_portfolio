@@ -1,12 +1,14 @@
-import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
-import 'package:crypto_portfolio/application/app/extension/nullable_string_extension.dart';
-import 'package:crypto_portfolio/application/app/ui/core/text_styles.dart';
-import 'package:crypto_portfolio/application/app/ui/widgets/app_bar_icon_button.dart';
-import 'package:crypto_portfolio/application/app/ui/widgets/custom_text_field.dart';
-import 'package:crypto_portfolio/application/app/ui/widgets/update_data_appbar.dart';
+import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
+import 'package:crypto_portfolio/application/app/utils/extension/context_extension.dart';
+import 'package:crypto_portfolio/application/app/utils/extension/nullable_string_extension.dart';
+import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
+import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
+import 'package:crypto_portfolio/application/app/design_system/widgets/custom_text_field.dart';
+import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_appbar.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/add_payment_bloc/add_payment_bloc.dart';
 import 'package:crypto_portfolio/application/features/portfolio/widgets/select_coin_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
+import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
 import 'package:flutter/material.dart';
@@ -41,11 +43,10 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
           listener: (context, state) {
             state.maybeMap(
               error: (e) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(e.error),
-                    duration: Duration(milliseconds: 800),
-                  ),
+                UpdateDataSnackBar.show(
+                  context: context,
+                  error: true,
+                  errorInfo: e.error.getMessage(context),
                 );
               },
               orElse: () => null,

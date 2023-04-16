@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:crypto_portfolio/application/app/extension/date_time_extension.dart';
+import 'package:crypto_portfolio/application/app/utils/extension/date_time_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
+import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -23,7 +24,7 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     await for (final e in _portfolioRepo.coinsSubject.stream) {
       e.fold((l) {
         if (l.dateTime.newValue) {
-          emit(PortfolioState(coins: state.coins, error: l.errorMessage));
+          emit(PortfolioState(coins: state.coins, error: l));
         }
       }, (r) {
         if (r.updateTime.newValue) {

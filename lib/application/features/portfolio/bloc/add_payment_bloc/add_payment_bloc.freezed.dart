@@ -491,7 +491,7 @@ mixin _$AddPaymentState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(CoinEntity coin) success,
-    required TResult Function(String error) error,
+    required TResult Function(Failure error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -499,7 +499,7 @@ mixin _$AddPaymentState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(CoinEntity coin)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(Failure error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -507,7 +507,7 @@ mixin _$AddPaymentState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CoinEntity coin)? success,
-    TResult Function(String error)? error,
+    TResult Function(Failure error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -592,7 +592,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(CoinEntity coin) success,
-    required TResult Function(String error) error,
+    required TResult Function(Failure error) error,
   }) {
     return initial();
   }
@@ -603,7 +603,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(CoinEntity coin)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(Failure error)? error,
   }) {
     return initial?.call();
   }
@@ -614,7 +614,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CoinEntity coin)? success,
-    TResult Function(String error)? error,
+    TResult Function(Failure error)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -702,7 +702,7 @@ class _$_Loading implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(CoinEntity coin) success,
-    required TResult Function(String error) error,
+    required TResult Function(Failure error) error,
   }) {
     return loading();
   }
@@ -713,7 +713,7 @@ class _$_Loading implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(CoinEntity coin)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(Failure error)? error,
   }) {
     return loading?.call();
   }
@@ -724,7 +724,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CoinEntity coin)? success,
-    TResult Function(String error)? error,
+    TResult Function(Failure error)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -849,7 +849,7 @@ class _$_Success implements _Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(CoinEntity coin) success,
-    required TResult Function(String error) error,
+    required TResult Function(Failure error) error,
   }) {
     return success(coin);
   }
@@ -860,7 +860,7 @@ class _$_Success implements _Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(CoinEntity coin)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(Failure error)? error,
   }) {
     return success?.call(coin);
   }
@@ -871,7 +871,7 @@ class _$_Success implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CoinEntity coin)? success,
-    TResult Function(String error)? error,
+    TResult Function(Failure error)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -931,7 +931,9 @@ abstract class _$$_ErrorCopyWith<$Res> {
   factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
       __$$_ErrorCopyWithImpl<$Res>;
   @useResult
-  $Res call({String error});
+  $Res call({Failure error});
+
+  $FailureCopyWith<$Res> get error;
 }
 
 /// @nodoc
@@ -948,8 +950,16 @@ class __$$_ErrorCopyWithImpl<$Res> extends _$AddPaymentStateCopyWithImpl<$Res, _
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Failure,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FailureCopyWith<$Res> get error {
+    return $FailureCopyWith<$Res>(_value.error, (value) {
+      return _then(_value.copyWith(error: value));
+    });
   }
 }
 
@@ -959,7 +969,7 @@ class _$_Error implements _Error {
   const _$_Error(this.error);
 
   @override
-  final String error;
+  final Failure error;
 
   @override
   String toString() {
@@ -988,7 +998,7 @@ class _$_Error implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(CoinEntity coin) success,
-    required TResult Function(String error) error,
+    required TResult Function(Failure error) error,
   }) {
     return error(this.error);
   }
@@ -999,7 +1009,7 @@ class _$_Error implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(CoinEntity coin)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(Failure error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -1010,7 +1020,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CoinEntity coin)? success,
-    TResult Function(String error)? error,
+    TResult Function(Failure error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1058,9 +1068,9 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements AddPaymentState {
-  const factory _Error(final String error) = _$_Error;
+  const factory _Error(final Failure error) = _$_Error;
 
-  String get error;
+  Failure get error;
   @JsonKey(ignore: true)
   _$$_ErrorCopyWith<_$_Error> get copyWith => throw _privateConstructorUsedError;
 }

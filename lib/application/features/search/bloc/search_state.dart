@@ -5,5 +5,5 @@ class SearchState with _$SearchState {
   const factory SearchState.initial() = _Initial;
   const factory SearchState.loading() = _Loading;
   const factory SearchState.success(SearchEntity searchEntity) = _Success;
-  const factory SearchState.error(String error) = _Error;
+  const factory SearchState.error(Failure error) = _Error;
 }

@@ -1,9 +1,11 @@
-import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
-import 'package:crypto_portfolio/application/app/ui/core/text_styles.dart';
-import 'package:crypto_portfolio/application/app/ui/widgets/refresh_icon_button.dart';
-import 'package:crypto_portfolio/application/app/ui/widgets/update_data_appbar.dart';
+import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
+import 'package:crypto_portfolio/application/app/utils/extension/context_extension.dart';
+import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
+import 'package:crypto_portfolio/application/app/design_system/widgets/refresh_icon_button.dart';
+import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_appbar.dart';
 import 'package:crypto_portfolio/application/features/market/bloc/market_bloc.dart';
 import 'package:crypto_portfolio/application/features/market/widgets/market_coins_widget.dart';
+import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,23 +19,11 @@ class MarketCoinsPage extends StatelessWidget {
         builder: (context) {
           return BlocConsumer<MarketBloc, MarketState>(
             listener: (context, state) {
-              String? snackBarContent;
-              Color? color;
-              if (state.error != null) {
-                snackBarContent = state.error!;
-                color = Colors.red;
-              }
-              if (state.error == null && !state.loading) {
-                snackBarContent = context.localization.updated;
-                color = Colors.green;
-              }
-              if (snackBarContent != null) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    backgroundColor: color,
-                    content: Text(snackBarContent),
-                    duration: Duration(milliseconds: 800),
-                  ),
+              if (!state.loading) {
+                UpdateDataSnackBar.show(
+                  context: context,
+                  error: state.error != null,
+                  errorInfo: state.error?.getMessage(context),
                 );
               }
             },

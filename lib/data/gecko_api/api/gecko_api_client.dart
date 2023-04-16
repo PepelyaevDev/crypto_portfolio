@@ -1,5 +1,4 @@
 import 'package:crypto_portfolio/data/gecko_api/api/dio_client.dart';
-import 'package:crypto_portfolio/data/gecko_api/api/error_interceptor.dart';
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_coins_source.dart';
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_search_source.dart';
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_simple_source.dart';
@@ -35,7 +34,6 @@ class GeckoApiClient {
         },
       ),
     )..interceptors.addAll([
-        ErrorInterceptor(),
         PrettyDioLogger(requestHeader: true, requestBody: true),
       ]));
     return GeckoApiClient(

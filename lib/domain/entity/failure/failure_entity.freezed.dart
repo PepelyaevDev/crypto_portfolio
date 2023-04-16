@@ -16,8 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Failure {
-  String get errorMessage => throw _privateConstructorUsedError;
+  ErrorType get errorType => throw _privateConstructorUsedError;
   DateTime get dateTime => throw _privateConstructorUsedError;
+  int? get statusCode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FailureCopyWith<Failure> get copyWith => throw _privateConstructorUsedError;
@@ -28,7 +29,7 @@ abstract class $FailureCopyWith<$Res> {
   factory $FailureCopyWith(Failure value, $Res Function(Failure) then) =
       _$FailureCopyWithImpl<$Res, Failure>;
   @useResult
-  $Res call({String errorMessage, DateTime dateTime});
+  $Res call({ErrorType errorType, DateTime dateTime, int? statusCode});
 }
 
 /// @nodoc
@@ -43,18 +44,23 @@ class _$FailureCopyWithImpl<$Res, $Val extends Failure> implements $FailureCopyW
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? errorMessage = null,
+    Object? errorType = null,
     Object? dateTime = null,
+    Object? statusCode = freezed,
   }) {
     return _then(_value.copyWith(
-      errorMessage: null == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
+      errorType: null == errorType
+          ? _value.errorType
+          : errorType // ignore: cast_nullable_to_non_nullable
+              as ErrorType,
       dateTime: null == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      statusCode: freezed == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -65,7 +71,7 @@ abstract class _$$_FailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
       __$$_FailureCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String errorMessage, DateTime dateTime});
+  $Res call({ErrorType errorType, DateTime dateTime, int? statusCode});
 }
 
 /// @nodoc
@@ -77,18 +83,23 @@ class __$$_FailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res, _$_Fail
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? errorMessage = null,
+    Object? errorType = null,
     Object? dateTime = null,
+    Object? statusCode = freezed,
   }) {
     return _then(_$_Failure(
-      errorMessage: null == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
+      errorType: null == errorType
+          ? _value.errorType
+          : errorType // ignore: cast_nullable_to_non_nullable
+              as ErrorType,
       dateTime: null == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      statusCode: freezed == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -96,17 +107,18 @@ class __$$_FailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res, _$_Fail
 /// @nodoc
 
 class _$_Failure implements _Failure {
-  const _$_Failure({this.errorMessage = Failure.defaultError, required this.dateTime});
+  const _$_Failure({required this.errorType, required this.dateTime, this.statusCode});
 
   @override
-  @JsonKey()
-  final String errorMessage;
+  final ErrorType errorType;
   @override
   final DateTime dateTime;
+  @override
+  final int? statusCode;
 
   @override
   String toString() {
-    return 'Failure(errorMessage: $errorMessage, dateTime: $dateTime)';
+    return 'Failure(errorType: $errorType, dateTime: $dateTime, statusCode: $statusCode)';
   }
 
   @override
@@ -114,12 +126,13 @@ class _$_Failure implements _Failure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Failure &&
-            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) &&
-            (identical(other.dateTime, dateTime) || other.dateTime == dateTime));
+            (identical(other.errorType, errorType) || other.errorType == errorType) &&
+            (identical(other.dateTime, dateTime) || other.dateTime == dateTime) &&
+            (identical(other.statusCode, statusCode) || other.statusCode == statusCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errorMessage, dateTime);
+  int get hashCode => Object.hash(runtimeType, errorType, dateTime, statusCode);
 
   @JsonKey(ignore: true)
   @override
@@ -129,13 +142,17 @@ class _$_Failure implements _Failure {
 }
 
 abstract class _Failure implements Failure {
-  const factory _Failure({final String errorMessage, required final DateTime dateTime}) =
-      _$_Failure;
+  const factory _Failure(
+      {required final ErrorType errorType,
+      required final DateTime dateTime,
+      final int? statusCode}) = _$_Failure;
 
   @override
-  String get errorMessage;
+  ErrorType get errorType;
   @override
   DateTime get dateTime;
+  @override
+  int? get statusCode;
   @override
   @JsonKey(ignore: true)
   _$$_FailureCopyWith<_$_Failure> get copyWith => throw _privateConstructorUsedError;

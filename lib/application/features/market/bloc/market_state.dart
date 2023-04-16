@@ -5,6 +5,6 @@ class MarketState with _$MarketState {
   const factory MarketState({
     required CoinsEntity coins,
     @Default(false) bool loading,
-    String? error,
+    Failure? error,
   }) = _MarketState;
 }

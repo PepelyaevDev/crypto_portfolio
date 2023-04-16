@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
+import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -19,7 +20,7 @@ class MarketBloc extends Bloc<MarketEvent, MarketState> {
     emit(MarketState(coins: state.coins, loading: true));
     final coins = await _marketRepo.getCoinsRemote();
     coins.fold(
-      (l) => emit(MarketState(coins: state.coins, error: l.errorMessage)),
+      (l) => emit(MarketState(coins: state.coins, error: l)),
       (r) => emit(MarketState(coins: r)),
     );
   }

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:crypto_portfolio/domain/entity/search/search_entity.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +37,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       emit(SearchState.loading());
       final result = await _marketRepo.search(event.query);
       result.fold(
-        (l) => emit(SearchState.error(l.errorMessage)),
+        (l) => emit(SearchState.error(l)),
         (r) => emit(SearchState.success(r)),
       );
     }, transformer: restartable());

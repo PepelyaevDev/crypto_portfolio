@@ -163,7 +163,7 @@ abstract class _RefreshData implements MarketEvent {
 mixin _$MarketState {
   CoinsEntity get coins => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
-  String? get error => throw _privateConstructorUsedError;
+  Failure? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MarketStateCopyWith<MarketState> get copyWith => throw _privateConstructorUsedError;
@@ -174,9 +174,10 @@ abstract class $MarketStateCopyWith<$Res> {
   factory $MarketStateCopyWith(MarketState value, $Res Function(MarketState) then) =
       _$MarketStateCopyWithImpl<$Res, MarketState>;
   @useResult
-  $Res call({CoinsEntity coins, bool loading, String? error});
+  $Res call({CoinsEntity coins, bool loading, Failure? error});
 
   $CoinsEntityCopyWith<$Res> get coins;
+  $FailureCopyWith<$Res>? get error;
 }
 
 /// @nodoc
@@ -208,7 +209,7 @@ class _$MarketStateCopyWithImpl<$Res, $Val extends MarketState>
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Failure?,
     ) as $Val);
   }
 
@@ -219,6 +220,18 @@ class _$MarketStateCopyWithImpl<$Res, $Val extends MarketState>
       return _then(_value.copyWith(coins: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FailureCopyWith<$Res>? get error {
+    if (_value.error == null) {
+      return null;
+    }
+
+    return $FailureCopyWith<$Res>(_value.error!, (value) {
+      return _then(_value.copyWith(error: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -227,10 +240,12 @@ abstract class _$$_MarketStateCopyWith<$Res> implements $MarketStateCopyWith<$Re
       __$$_MarketStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({CoinsEntity coins, bool loading, String? error});
+  $Res call({CoinsEntity coins, bool loading, Failure? error});
 
   @override
   $CoinsEntityCopyWith<$Res> get coins;
+  @override
+  $FailureCopyWith<$Res>? get error;
 }
 
 /// @nodoc
@@ -258,7 +273,7 @@ class __$$_MarketStateCopyWithImpl<$Res> extends _$MarketStateCopyWithImpl<$Res,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Failure?,
     ));
   }
 }
@@ -274,7 +289,7 @@ class _$_MarketState implements _MarketState {
   @JsonKey()
   final bool loading;
   @override
-  final String? error;
+  final Failure? error;
 
   @override
   String toString() {
@@ -303,14 +318,16 @@ class _$_MarketState implements _MarketState {
 
 abstract class _MarketState implements MarketState {
   const factory _MarketState(
-      {required final CoinsEntity coins, final bool loading, final String? error}) = _$_MarketState;
+      {required final CoinsEntity coins,
+      final bool loading,
+      final Failure? error}) = _$_MarketState;
 
   @override
   CoinsEntity get coins;
   @override
   bool get loading;
   @override
-  String? get error;
+  Failure? get error;
   @override
   @JsonKey(ignore: true)
   _$$_MarketStateCopyWith<_$_MarketState> get copyWith => throw _privateConstructorUsedError;

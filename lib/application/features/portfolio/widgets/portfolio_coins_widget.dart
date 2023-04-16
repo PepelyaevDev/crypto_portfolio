@@ -1,6 +1,6 @@
-import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
-import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
-import 'package:crypto_portfolio/application/app/ui/core/text_styles.dart';
+import 'package:crypto_portfolio/application/app/utils/extension/context_extension.dart';
+import 'package:crypto_portfolio/application/app/utils/extension/double_extension.dart';
+import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/data.dart';

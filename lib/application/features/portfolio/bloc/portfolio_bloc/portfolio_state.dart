@@ -5,6 +5,6 @@ class PortfolioState with _$PortfolioState {
   const factory PortfolioState({
     required CoinsEntity coins,
     @Default(false) bool loading,
-    String? error,
+    Failure? error,
   }) = _PortfolioState;
 }

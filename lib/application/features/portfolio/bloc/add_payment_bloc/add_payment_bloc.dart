@@ -1,5 +1,6 @@
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
+import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +24,7 @@ class AddPaymentBloc extends Bloc<AddPaymentEvent, AddPaymentState> {
     emit(AddPaymentState.loading());
     final coin = await _marketRepo.getMarketCoinById(event.coinId!);
     coin.fold(
-      (l) => emit(AddPaymentState.error(l.errorMessage)),
+      (l) => emit(AddPaymentState.error(l)),
       (r) => emit(AddPaymentState.success(r)),
     );
   }

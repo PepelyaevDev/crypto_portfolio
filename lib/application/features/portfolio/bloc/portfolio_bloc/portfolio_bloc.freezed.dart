@@ -272,7 +272,7 @@ abstract class _RefreshData implements PortfolioEvent {
 mixin _$PortfolioState {
   CoinsEntity get coins => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
-  String? get error => throw _privateConstructorUsedError;
+  Failure? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PortfolioStateCopyWith<PortfolioState> get copyWith => throw _privateConstructorUsedError;
@@ -283,9 +283,10 @@ abstract class $PortfolioStateCopyWith<$Res> {
   factory $PortfolioStateCopyWith(PortfolioState value, $Res Function(PortfolioState) then) =
       _$PortfolioStateCopyWithImpl<$Res, PortfolioState>;
   @useResult
-  $Res call({CoinsEntity coins, bool loading, String? error});
+  $Res call({CoinsEntity coins, bool loading, Failure? error});
 
   $CoinsEntityCopyWith<$Res> get coins;
+  $FailureCopyWith<$Res>? get error;
 }
 
 /// @nodoc
@@ -317,7 +318,7 @@ class _$PortfolioStateCopyWithImpl<$Res, $Val extends PortfolioState>
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Failure?,
     ) as $Val);
   }
 
@@ -326,6 +327,18 @@ class _$PortfolioStateCopyWithImpl<$Res, $Val extends PortfolioState>
   $CoinsEntityCopyWith<$Res> get coins {
     return $CoinsEntityCopyWith<$Res>(_value.coins, (value) {
       return _then(_value.copyWith(coins: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FailureCopyWith<$Res>? get error {
+    if (_value.error == null) {
+      return null;
+    }
+
+    return $FailureCopyWith<$Res>(_value.error!, (value) {
+      return _then(_value.copyWith(error: value) as $Val);
     });
   }
 }
@@ -337,10 +350,12 @@ abstract class _$$_PortfolioStateCopyWith<$Res> implements $PortfolioStateCopyWi
       __$$_PortfolioStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({CoinsEntity coins, bool loading, String? error});
+  $Res call({CoinsEntity coins, bool loading, Failure? error});
 
   @override
   $CoinsEntityCopyWith<$Res> get coins;
+  @override
+  $FailureCopyWith<$Res>? get error;
 }
 
 /// @nodoc
@@ -369,7 +384,7 @@ class __$$_PortfolioStateCopyWithImpl<$Res>
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Failure?,
     ));
   }
 }
@@ -385,7 +400,7 @@ class _$_PortfolioState implements _PortfolioState {
   @JsonKey()
   final bool loading;
   @override
-  final String? error;
+  final Failure? error;
 
   @override
   String toString() {
@@ -416,14 +431,14 @@ abstract class _PortfolioState implements PortfolioState {
   const factory _PortfolioState(
       {required final CoinsEntity coins,
       final bool loading,
-      final String? error}) = _$_PortfolioState;
+      final Failure? error}) = _$_PortfolioState;
 
   @override
   CoinsEntity get coins;
   @override
   bool get loading;
   @override
-  String? get error;
+  Failure? get error;
   @override
   @JsonKey(ignore: true)
   _$$_PortfolioStateCopyWith<_$_PortfolioState> get copyWith => throw _privateConstructorUsedError;
