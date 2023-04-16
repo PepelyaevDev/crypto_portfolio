@@ -1,4 +1,4 @@
-import 'package:crypto_portfolio/application/app/utils/extension/context_extension.dart';
+import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
 import 'package:flutter/material.dart';

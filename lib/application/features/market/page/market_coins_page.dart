@@ -1,5 +1,5 @@
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
-import 'package:crypto_portfolio/application/app/utils/extension/context_extension.dart';
+import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/refresh_icon_button.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_appbar.dart';

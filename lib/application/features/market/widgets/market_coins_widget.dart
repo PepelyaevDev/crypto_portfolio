@@ -1,4 +1,4 @@
-import 'package:crypto_portfolio/application/app/utils/extension/double_extension.dart';
+import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/coingecko_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
