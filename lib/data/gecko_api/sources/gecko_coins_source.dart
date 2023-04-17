@@ -7,12 +7,11 @@ class GeckoCoinsSource {
 
   static const String _path = '/api/v3/coins/';
 
-  Future<List<GeckoCoinDTO>> getMarketCoins({String? id}) async {
+  Future<List<GeckoCoinDTO>> getMarketCoins() async {
     final response = await _dioClient.get<List<dynamic>>(
       '$_path/markets/',
       queryParameters: {
         'vs_currency': 'usd',
-        'ids': id ?? '',
       },
     );
     return response.data!
@@ -20,5 +19,21 @@ class GeckoCoinsSource {
         .toList()
         .map((e) => GeckoCoinDTO.fromJson(e))
         .toList();
+  }
+
+  Future<GeckoCoinDTO> getMarketCoinById(String id) async {
+    final response = await _dioClient.get<List<dynamic>>(
+      '$_path/markets/',
+      queryParameters: {
+        'vs_currency': 'usd',
+        'ids': id,
+      },
+    );
+    return response.data!
+        .whereType<Map<String, dynamic>>()
+        .toList()
+        .map((e) => GeckoCoinDTO.fromJson(e))
+        .toList()
+        .firstWhere((element) => element.id == id);
   }
 }

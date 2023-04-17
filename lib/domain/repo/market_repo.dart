@@ -21,8 +21,8 @@ class MarketRepo {
 
   Future<Either<Failure, CoinEntity>> getMarketCoinById(String id) async {
     try {
-      final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoins(id: id);
-      final CoinEntity coinEntity = geckoCoins.firstWhere((e) => e.id == id).createEmptyCoin;
+      final CoinEntity coinEntity =
+          (await _geckoApiClient.coins.getMarketCoinById(id)).createEmptyCoin;
       return right(coinEntity);
     } catch (e) {
       return left(Failure.from(e));

@@ -2,6 +2,7 @@ import 'package:crypto_portfolio/application/app/extension/context_extension.dar
 import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
+import 'package:crypto_portfolio/application/features/portfolio/pages/detail_portfolio_coin_page.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/data.dart';
 import 'package:flutter/material.dart';
@@ -46,51 +47,62 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _PortfolioPageRow(
-          coin: Image.network(widget.coinEntity.image, width: 20, height: 20),
-          name: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                widget.coinEntity.symbol.toString().toUpperCase(),
-                style: AppStyles.bold12,
+        InkWell(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => DetailPortfolioCoinPage(
+                  widget.coinEntity.id,
+                ),
               ),
-              SizedBox(height: 3),
-              Text(
-                widget.coinEntity.currentPrice.moneyFull,
-                style: AppStyles.normal12,
+            );
+          },
+          child: _PortfolioPageRow(
+            coin: Image.network(widget.coinEntity.image, width: 20, height: 20),
+            name: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.coinEntity.symbol.toString().toUpperCase(),
+                  style: AppStyles.bold12,
+                ),
+                SizedBox(height: 3),
+                Text(
+                  widget.coinEntity.currentPrice.moneyFull,
+                  style: AppStyles.normal12,
+                ),
+              ],
+            ),
+            holdings: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  widget.coinEntity.priceAllCoins.moneyFull,
+                  style: AppStyles.bold12,
+                ),
+                SizedBox(height: 3),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(widget.coinEntity.iconData, color: widget.coinEntity.color, size: 14),
+                    Text(
+                      ' ${widget.coinEntity.percentageDifference.percentageToString} % '
+                      '(${widget.coinEntity.dollarDifference.moneyFull})',
+                      style: AppStyles.normal12.copyWith(color: widget.coinEntity.color),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            button: InkWell(
+              borderRadius: BorderRadius.circular(10),
+              onTap: changeOpenDetails,
+              child: Icon(
+                openDetails ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+                size: 30,
               ),
-            ],
-          ),
-          holdings: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                widget.coinEntity.priceAllCoins.moneyFull,
-                style: AppStyles.bold12,
-              ),
-              SizedBox(height: 3),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(widget.coinEntity.iconData, color: widget.coinEntity.color, size: 14),
-                  Text(
-                    ' ${widget.coinEntity.percentageDifference.percentageToString} % '
-                    '(${widget.coinEntity.dollarDifference.moneyFull})',
-                    style: AppStyles.normal12.copyWith(color: widget.coinEntity.color),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          button: InkWell(
-            borderRadius: BorderRadius.circular(10),
-            onTap: changeOpenDetails,
-            child: Icon(
-              openDetails ? Icons.arrow_drop_up : Icons.arrow_drop_down,
-              size: 30,
             ),
           ),
         ),

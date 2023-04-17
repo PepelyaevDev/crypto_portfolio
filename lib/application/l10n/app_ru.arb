@@ -16,8 +16,8 @@
     "coinSearch": "Поиск монеты",
     "deposit" : "Покупка",
     "withdraw" : "Продажа",
-    "amountOfMoney": "Количество монет",
-    "numberOfCoins": "Количество денег",
+    "amountOfMoney": "Количество денег",
+    "numberOfCoins": "Количество монет",
     "validatorEmptyField": "Это поле не может быть пустым",
     "validatorInvalidNumber": "Введите корректное число. Пример: 71.1203",
 

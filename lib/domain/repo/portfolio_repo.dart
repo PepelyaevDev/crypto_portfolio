@@ -3,6 +3,7 @@ import 'package:crypto_portfolio/data/gecko_api/dto/prices/prices.dart';
 import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/json_converter.dart';
+import 'package:crypto_portfolio/domain/entity/coins/extensions/to_entity.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:rxdart/rxdart.dart';
@@ -14,7 +15,7 @@ class PortfolioRepo {
 
   final BehaviorSubject<Either<Failure, CoinsEntity>> coinsSubject = BehaviorSubject();
 
-  Future<void> _updatedCoinsEntity(List<CoinEntity> coinsList) async {
+  Future<void> _updateCoinsEntity(List<CoinEntity> coinsList) async {
     final CoinsEntity coinsEntity = CoinsEntity(
       list: coinsList,
       updateTime: DateTime.now(),
@@ -29,7 +30,20 @@ class PortfolioRepo {
   }
 
   Future<void> updateCoinMarketData(String id) async {
-    ///TODO: метод для обновления данных монеты для детальной страницы приложения
+    try {
+      final List<CoinEntity> coinsList = [
+        ..._hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity.list,
+      ];
+      final CoinEntity emptyCoinEntity =
+          (await _geckoApiClient.coins.getMarketCoinById(id)).createEmptyCoin;
+      final CoinEntity updatedCoinEntity = emptyCoinEntity.copyWith(
+        history: coinsList.firstWhere((e) => e.id == emptyCoinEntity.id).history,
+      );
+      coinsList[coinsList.indexWhere((e) => e.id == updatedCoinEntity.id)] = updatedCoinEntity;
+      await _updateCoinsEntity(coinsList);
+    } catch (e) {
+      coinsSubject.add(left(Failure.from(e)));
+    }
   }
 
   Future<void> updateCoinsPrice() async {
@@ -44,7 +58,7 @@ class PortfolioRepo {
           coin.copyWith(currentPrice: pricesDTO.coins.firstWhere((e) => e.id == coin.id).value),
         );
       }
-      await _updatedCoinsEntity(updatedCoinsList);
+      await _updateCoinsEntity(updatedCoinsList);
     } catch (e) {
       coinsSubject.add(left(Failure.from(e)));
     }
@@ -53,7 +67,7 @@ class PortfolioRepo {
   Future<void> addNewCoinToCoinsList(CoinEntity coinEntity) async {
     final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
     if (coinsEntity.list.where((e) => e.id == coinEntity.id).isNotEmpty) return;
-    await _updatedCoinsEntity([...coinsEntity.list, coinEntity]);
+    await _updateCoinsEntity([...coinsEntity.list, coinEntity]);
   }
 
   Future<void> updateHistory(PaymentEntity paymentEntity) async {
@@ -77,6 +91,6 @@ class PortfolioRepo {
     if (newHistory.isEmpty) {
       newCoins.remove(coinEntity);
     }
-    await _updatedCoinsEntity(newCoins);
+    await _updateCoinsEntity(newCoins);
   }
 }
