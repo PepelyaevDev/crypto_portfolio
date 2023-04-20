@@ -82,13 +82,13 @@ class _SearchedCoinWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(4),
       onTap: () {
         context.read<AddPaymentBloc>().add(AddPaymentEvent.getCoin(searchCoinEntity.id));
       },
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(4),
           border: Border.all(color: Colors.blue),
         ),
         child: Padding(
@@ -115,7 +115,7 @@ class _SelectedCoinWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(4),
         border: Border.all(color: Colors.blue),
       ),
       child: Center(
@@ -127,6 +127,7 @@ class _SelectedCoinWidget extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  SizedBox(width: 5),
                   Image.network(coinEntity.image, width: 20, height: 20),
                   SizedBox(width: 10),
                   Text(coinEntity.name),

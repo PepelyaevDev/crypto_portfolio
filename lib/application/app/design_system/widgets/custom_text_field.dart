@@ -25,9 +25,7 @@ class CustomTextField extends StatelessWidget {
         suffixText: suffixText,
         contentPadding: EdgeInsets.symmetric(horizontal: 10),
         labelText: labelText,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+        border: OutlineInputBorder(),
       ),
       onChanged: onChanged,
     );

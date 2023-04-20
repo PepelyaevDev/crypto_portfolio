@@ -157,7 +157,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
   Widget _paymentTypeButton(String value, String title) {
     return Expanded(
       child: InkWell(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(4),
         onTap: () {
           setState(() {
             _paymentType = value;
@@ -165,7 +165,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
         },
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(4),
             border: Border.all(
               color: _paymentType == value ? Colors.blue : Colors.grey,
             ),
