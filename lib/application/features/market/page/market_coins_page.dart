@@ -2,7 +2,6 @@ import 'package:crypto_portfolio/application/app/design_system/widgets/update_da
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/refresh_icon_button.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_appbar.dart';
 import 'package:crypto_portfolio/application/features/market/bloc/market_bloc.dart';
 import 'package:crypto_portfolio/application/features/market/widgets/market_coins_widget.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
@@ -28,35 +27,38 @@ class MarketCoinsPage extends StatelessWidget {
               }
             },
             builder: (context, state) {
-              return SafeArea(
-                child: Scaffold(
-                  appBar: CustomAppBar(
-                    rightWidget: RefreshIconButton(
+              return Scaffold(
+                appBar: AppBar(
+                  shadowColor: Colors.blue,
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
+                  actions: [
+                    RefreshIconButton(
                       loading: state.loading,
                       onTapUpdate: () {
                         context.read<MarketBloc>().add(MarketEvent.refreshData());
                       },
                     ),
-                    bottomAppbarWidget: BottomAppbarWidget(
-                      child: MarketPageRow(
-                        marketCap: Text(
-                          context.localization.marketCap,
-                          style: AppStyles.normal12,
-                        ),
-                        price: Text(
-                          context.localization.price,
-                          style: AppStyles.normal12,
-                        ),
-                        changes: Text(
-                          context.localization.percentage24h,
-                          style: AppStyles.normal12,
-                        ),
+                  ],
+                  bottom: PreferredSize(
+                    child: MarketPageRow(
+                      marketCap: Text(
+                        context.localization.marketCap,
+                        style: AppStyles.normal12,
                       ),
-                      height: 40,
+                      price: Text(
+                        context.localization.price,
+                        style: AppStyles.normal12,
+                      ),
+                      changes: Text(
+                        context.localization.percentage24h,
+                        style: AppStyles.normal12,
+                      ),
                     ),
+                    preferredSize: Size(double.infinity, 40),
                   ),
-                  body: MarketCoinsWidget(coins: state.coins),
                 ),
+                body: MarketCoinsWidget(coins: state.coins),
               );
             },
           );

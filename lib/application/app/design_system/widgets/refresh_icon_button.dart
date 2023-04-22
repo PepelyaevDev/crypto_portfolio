@@ -28,7 +28,7 @@ class RefreshIconButton extends StatelessWidget {
                 ),
               )
             : IconButton(
-                splashRadius: 15,
+                splashRadius: 20,
                 onPressed: onTapUpdate,
                 icon: Icon(Icons.refresh, color: Colors.black),
               ),

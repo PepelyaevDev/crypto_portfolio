@@ -5,6 +5,7 @@ import 'package:crypto_portfolio/application/app/extension/date_time_extension.d
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,24 +15,35 @@ part 'portfolio_bloc.freezed.dart';
 
 class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
   final PortfolioRepo _portfolioRepo;
+  late StreamSubscription<Either<Failure, CoinsEntity>> _coinsListener;
   PortfolioBloc(this._portfolioRepo)
       : super(PortfolioState(coins: _portfolioRepo.getCoinsLocal())) {
-    on<_Init>(_init, transformer: droppable());
+    on<_Update>(_update, transformer: droppable());
     on<_RefreshData>(_refreshData, transformer: droppable());
+    _coinsListener = _portfolioRepo.coinsSubject.stream.listen((event) {
+      add(PortfolioEvent.update(event));
+    });
   }
 
-  Future<void> _init(_, Emitter<PortfolioState> emit) async {
-    await for (final e in _portfolioRepo.coinsSubject.stream) {
-      e.fold((l) {
+  @override
+  Future<void> close() async {
+    _coinsListener.cancel();
+    super.close();
+  }
+
+  Future<void> _update(_Update event, Emitter<PortfolioState> emit) async {
+    event.data.fold(
+      (l) {
         if (l.dateTime.newValue) {
           emit(PortfolioState(coins: state.coins, error: l));
         }
-      }, (r) {
+      },
+      (r) {
         if (r.updateTime.newValue) {
           emit(PortfolioState(coins: r));
         }
-      });
-    }
+      },
+    );
   }
 
   Future<void> _refreshData(_, Emitter<PortfolioState> emit) async {

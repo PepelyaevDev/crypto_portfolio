@@ -1,4 +1,4 @@
-import 'package:crypto_portfolio/application/features/portfolio/widgets/delete_payment_widget.dart';
+import 'package:crypto_portfolio/application/features/detail_coin/widget/delete_payment_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:flutter/material.dart';
 

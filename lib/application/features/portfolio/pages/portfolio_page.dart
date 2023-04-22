@@ -1,7 +1,6 @@
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/refresh_icon_button.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_appbar.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/portfolio_bloc/portfolio_bloc.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
 import 'package:crypto_portfolio/application/features/portfolio/widgets/empty_portfolio_widget.dart';
@@ -19,9 +18,8 @@ class PortfolioPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => PortfolioBloc(context.read<PortfolioRepo>())
-            ..add(PortfolioEvent.init())
-            ..add(PortfolioEvent.refreshData()),
+          create: (context) =>
+              PortfolioBloc(context.read<PortfolioRepo>())..add(PortfolioEvent.refreshData()),
         ),
       ],
       child: Builder(builder: (context) {
@@ -36,35 +34,33 @@ class PortfolioPage extends StatelessWidget {
             }
           },
           builder: (context, portfolioState) {
-            return SafeArea(
-              child: Scaffold(
-                appBar: CustomAppBar(
-                  rightWidget: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      AppBarIconButton(
-                        iconData: Icons.add,
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => AddPaymentPage(),
-                            ),
-                          );
-                        },
-                      ),
-                      RefreshIconButton(
-                        loading: portfolioState.loading,
-                        onTapUpdate: () {
-                          context.read<PortfolioBloc>().add(PortfolioEvent.refreshData());
-                        },
-                      ),
-                    ],
+            return Scaffold(
+              appBar: AppBar(
+                shadowColor: Colors.blue,
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.black,
+                actions: [
+                  AppBarIconButton(
+                    iconData: Icons.add,
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => AddPaymentPage(),
+                        ),
+                      );
+                    },
                   ),
-                ),
-                body: portfolioState.coins.list.isEmpty
-                    ? EmptyPortfolioWidget()
-                    : PortfolioCoinsWidget(coins: portfolioState.coins),
+                  RefreshIconButton(
+                    loading: portfolioState.loading,
+                    onTapUpdate: () {
+                      context.read<PortfolioBloc>().add(PortfolioEvent.refreshData());
+                    },
+                  ),
+                ],
               ),
+              body: portfolioState.coins.list.isEmpty
+                  ? EmptyPortfolioWidget()
+                  : PortfolioCoinsWidget(coins: portfolioState.coins),
             );
           },
         );

@@ -2,6 +2,6 @@ part of 'portfolio_bloc.dart';
 
 @freezed
 class PortfolioEvent with _$PortfolioEvent {
-  const factory PortfolioEvent.init() = _Init;
+  const factory PortfolioEvent.update(Either<Failure, CoinsEntity> data) = _Update;
   const factory PortfolioEvent.refreshData() = _RefreshData;
 }

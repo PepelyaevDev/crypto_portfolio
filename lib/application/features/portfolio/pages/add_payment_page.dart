@@ -2,9 +2,7 @@ import 'package:crypto_portfolio/application/app/design_system/widgets/update_da
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/nullable_string_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/custom_text_field.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_appbar.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/add_payment_bloc/add_payment_bloc.dart';
 import 'package:crypto_portfolio/application/features/portfolio/widgets/select_coin_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
@@ -52,99 +50,92 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
               orElse: () => null,
             );
           },
-          child: SafeArea(
-            child: Scaffold(
-              appBar: CustomAppBar(
-                leftWidget: Padding(
-                  padding: const EdgeInsets.only(left: 5.0),
-                  child: AppBarIconButton(
-                    iconData: Icons.arrow_back,
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ),
-              ),
-              body: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Form(
-                  key: _formKey,
-                  child: ListView(
-                    children: [
-                      SizedBox(height: 5),
-                      SelectCoinWidget(),
-                      SizedBox(height: 20),
-                      Row(
-                        children: [
-                          _paymentTypeButton(PaymentType.deposit, context.localization.deposit),
-                          SizedBox(width: 10),
-                          _paymentTypeButton(PaymentType.withdraw, context.localization.withdraw),
-                        ],
-                      ),
-                      SizedBox(height: 20),
-                      CustomTextField(
-                        suffixText: 'USD',
-                        labelText: context.localization.amountOfMoney,
-                        keyboardType: TextInputType.numberWithOptions(),
-                        controller: moneyController,
-                        validator: (value) => _validator(value, context),
-                      ),
-                      SizedBox(height: 20),
-                      BlocBuilder<AddPaymentBloc, AddPaymentState>(
-                        builder: (context, state) {
-                          final String? suffix = state.maybeMap(
-                            success: (state) => state.coin.symbol.toUpperCase(),
-                            orElse: () => null,
-                          );
-                          return CustomTextField(
-                            suffixText: suffix,
-                            labelText: context.localization.numberOfCoins,
-                            keyboardType: TextInputType.numberWithOptions(),
-                            controller: coinsController,
-                            validator: (value) => _validator(value, context),
-                          );
-                        },
-                      ),
-                      SizedBox(height: 10),
-                      BlocBuilder<AddPaymentBloc, AddPaymentState>(
-                        builder: (context, state) {
-                          return ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                state.maybeMap(
-                                  success: (state) {
-                                    context.read<AddPaymentBloc>().add(
-                                          AddPaymentEvent.updateHistory(
-                                            paymentEntity: PaymentEntity(
-                                              id: state.coin.id,
-                                              dateTime: DateTime.now(),
-                                              type: _paymentType,
-                                              amount: moneyController.text.toDouble,
-                                              numberOfCoins: coinsController.text.toDouble,
-                                            ),
-                                            coin: state.coin,
+          child: Scaffold(
+            appBar: AppBar(
+              shadowColor: Colors.blue,
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.black,
+            ),
+            body: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: Form(
+                key: _formKey,
+                child: ListView(
+                  children: [
+                    SizedBox(height: 20),
+                    SelectCoinWidget(),
+                    SizedBox(height: 20),
+                    Row(
+                      children: [
+                        _paymentTypeButton(PaymentType.deposit, context.localization.deposit),
+                        SizedBox(width: 10),
+                        _paymentTypeButton(PaymentType.withdraw, context.localization.withdraw),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    CustomTextField(
+                      suffixText: 'USD',
+                      labelText: context.localization.amountOfMoney,
+                      keyboardType: TextInputType.numberWithOptions(),
+                      controller: moneyController,
+                      validator: (value) => _validator(value, context),
+                    ),
+                    SizedBox(height: 20),
+                    BlocBuilder<AddPaymentBloc, AddPaymentState>(
+                      builder: (context, state) {
+                        final String? suffix = state.maybeMap(
+                          success: (state) => state.coin.symbol.toUpperCase(),
+                          orElse: () => null,
+                        );
+                        return CustomTextField(
+                          suffixText: suffix,
+                          labelText: context.localization.numberOfCoins,
+                          keyboardType: TextInputType.numberWithOptions(),
+                          controller: coinsController,
+                          validator: (value) => _validator(value, context),
+                        );
+                      },
+                    ),
+                    SizedBox(height: 10),
+                    BlocBuilder<AddPaymentBloc, AddPaymentState>(
+                      builder: (context, state) {
+                        return ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              state.maybeMap(
+                                success: (state) {
+                                  context.read<AddPaymentBloc>().add(
+                                        AddPaymentEvent.updateHistory(
+                                          paymentEntity: PaymentEntity(
+                                            id: state.coin.id,
+                                            dateTime: DateTime.now(),
+                                            type: _paymentType,
+                                            amount: moneyController.text.toDouble,
+                                            numberOfCoins: coinsController.text.toDouble,
                                           ),
-                                        );
-                                    Navigator.of(context).pop();
-                                  },
-                                  orElse: () => null,
-                                );
-                              }
-                            },
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                state.maybeMap(
-                                  success: (_) => Colors.blue,
-                                  orElse: () => Colors.grey,
-                                ),
+                                          coin: state.coin,
+                                        ),
+                                      );
+                                  Navigator.of(context).pop();
+                                },
+                                orElse: () => null,
+                              );
+                            }
+                          },
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                              state.maybeMap(
+                                success: (_) => Colors.blue,
+                                orElse: () => Colors.grey,
                               ),
                             ),
-                            child: Text(context.localization.addPayment),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
+                          ),
+                          child: Text(context.localization.addPayment),
+                        );
+                      },
+                    ),
+                    SizedBox(height: 15),
+                  ],
                 ),
               ),
             ),

@@ -7,6 +7,8 @@ class UpdateDataSnackBar {
     required bool error,
     required String? errorInfo,
   }) {
+    if (ModalRoute.of(context) == null) return;
+    if (ModalRoute.of(context)!.isCurrent == false) return;
     final String message;
     if (error) {
       message = errorInfo ?? context.localization.unknownError;

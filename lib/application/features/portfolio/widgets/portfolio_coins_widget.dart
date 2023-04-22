@@ -1,8 +1,8 @@
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
+import 'package:crypto_portfolio/application/features/detail_coin/page/detail_coin_page.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
-import 'package:crypto_portfolio/application/features/portfolio/pages/detail_portfolio_coin_page.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/data.dart';
 import 'package:flutter/material.dart';
@@ -13,13 +13,13 @@ class PortfolioCoinsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10.0),
-      child: ListView.separated(
-        itemBuilder: (_, i) => _PortfolioCoinWidget(coins.list[i]),
-        separatorBuilder: (_, __) => Divider(height: 2),
-        itemCount: coins.list.length,
+    return ListView.separated(
+      itemBuilder: (_, i) => Padding(
+        padding: EdgeInsets.only(top: i == 0 ? 8 : 0),
+        child: _PortfolioCoinWidget(coins.list[i]),
       ),
+      separatorBuilder: (_, __) => Divider(height: 2),
+      itemCount: coins.list.length,
     );
   }
 }
@@ -51,8 +51,11 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (_) => DetailPortfolioCoinPage(
-                  widget.coinEntity.id,
+                builder: (_) => DetailCoinPage(
+                  coinLogo: widget.coinEntity.image,
+                  coinSymbol: widget.coinEntity.symbol,
+                  coinId: widget.coinEntity.id,
+                  initialIndex: 1,
                 ),
               ),
             );
