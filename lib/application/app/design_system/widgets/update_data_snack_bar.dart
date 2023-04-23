@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class UpdateDataSnackBar {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        backgroundColor: error ? Colors.red : Colors.green,
+        backgroundColor: error ? AppColors.red : AppColors.green,
         duration: Duration(seconds: error ? 4 : 1),
       ),
     );

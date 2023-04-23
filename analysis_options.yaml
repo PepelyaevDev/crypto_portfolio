@@ -24,6 +24,11 @@ import_lint:
         [
             "application/**/*.dart",
         ]
+      exclude_imports:
+        [
+          "application/app/extension/*.dart",
+          "application/app/design_system/core/colors.dart",
+        ]
     features_rule:
       target_file_path: "application/features/**/*.dart"
       not_allow_imports:

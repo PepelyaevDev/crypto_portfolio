@@ -4,7 +4,7 @@ import 'package:crypto_portfolio/application/app/design_system/core/text_styles.
 import 'package:crypto_portfolio/application/features/detail_coin/page/detail_coin_page.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
-import 'package:crypto_portfolio/domain/entity/coins/extensions/data.dart';
+import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:flutter/material.dart';
 
 class PortfolioCoinsWidget extends StatelessWidget {
@@ -82,7 +82,7 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  widget.coinEntity.priceAllCoins.moneyFull,
+                  widget.coinEntity.holdingsValue.moneyFull,
                   style: AppStyles.bold12,
                 ),
                 SizedBox(height: 3),
@@ -93,7 +93,7 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
                     Text(
                       ' ${widget.coinEntity.percentageDifference.percentageToString} % '
                       '(${widget.coinEntity.dollarDifference.moneyFull})',
-                      style: AppStyles.normal12.copyWith(color: widget.coinEntity.color),
+                      style: AppStyles.bold12.copyWith(color: widget.coinEntity.color),
                     ),
                   ],
                 ),
@@ -128,7 +128,7 @@ class _PortfolioCoinWidgetDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            coinEntity.averagePrice.moneyFull,
+            coinEntity.averageNetCost.moneyFull,
             style: AppStyles.bold12,
           ),
           Text(
@@ -142,7 +142,7 @@ class _PortfolioCoinWidgetDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            coinEntity.moneyInvested.moneyFull,
+            coinEntity.totalCost.moneyFull,
             style: AppStyles.bold12,
           ),
           Text(

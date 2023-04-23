@@ -1,8 +1,9 @@
+import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:flutter/material.dart';
 
 extension CoinData on CoinEntity {
-  double get moneyInvested {
+  double get totalCost {
     double value = 0;
     for (final payment in history) {
       switch (payment.type) {
@@ -17,7 +18,7 @@ extension CoinData on CoinEntity {
     return value;
   }
 
-  double get totalAmount {
+  double get holdings {
     double value = 0;
     for (final payment in history) {
       switch (payment.type) {
@@ -32,25 +33,25 @@ extension CoinData on CoinEntity {
     return value;
   }
 
-  double get averagePrice {
-    final double value = totalAmount == 0 ? 0 : moneyInvested / totalAmount;
+  double get averageNetCost {
+    final double value = holdings == 0 ? 0 : totalCost / holdings;
     return double.parse(value.toStringAsFixed(2));
   }
 
-  double get priceAllCoins => totalAmount * currentPrice;
+  double get holdingsValue => holdings * currentPrice;
 
-  Color get color => currentPrice < averagePrice ? Colors.red : Colors.green;
+  Color get color => currentPrice < averageNetCost ? AppColors.red : AppColors.green;
 
   IconData get iconData =>
-      currentPrice < averagePrice ? Icons.arrow_drop_down : Icons.arrow_drop_up;
+      currentPrice < averageNetCost ? Icons.arrow_drop_down : Icons.arrow_drop_up;
 
   double get dollarDifference {
-    final double value = priceAllCoins - moneyInvested;
+    final double value = holdingsValue - totalCost;
     return value > 0 ? value : value * -1;
   }
 
   double get percentageDifference {
-    final double value = dollarDifference / moneyInvested * 100;
+    final double value = dollarDifference / totalCost * 100;
     return value > 0 ? value : value * -1;
   }
 }

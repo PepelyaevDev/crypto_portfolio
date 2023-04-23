@@ -2,6 +2,10 @@ import 'package:crypto_portfolio/application/app/design_system/widgets/update_da
 import 'package:crypto_portfolio/application/features/detail_coin/bloc/detail_portfolio_coin_bloc'
     '/detail_portfolio_coin_bloc.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/empty_potrfolio_coin_widget.dart';
+import 'package:crypto_portfolio/application/features/detail_coin/widget/payment_history_widget.dart';
+import 'package:crypto_portfolio/application/features/detail_coin/widget/portfolio_stat_widget.dart';
+import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
+import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,10 +36,34 @@ class DetailPortfolioCoinWidget extends StatelessWidget {
             if (state.coin == null) {
               return EmptyPortfolioCoinWidget(coinId: coinId);
             }
-            return Center(
-              child: Text(
-                'portfolio info',
-              ),
+            return ListView(
+              children: [
+                PortfolioStatWidget(
+                  coin: state.coin!,
+                  loading: state.loading,
+                  onTapUpdate: () {
+                    context
+                        .read<DetailPortfolioCoinBloc>()
+                        .add(DetailPortfolioCoinEvent.refreshData());
+                  },
+                ),
+                SizedBox(height: 10),
+                PaymentHistoryWidget(
+                  history: state.coin!.history,
+                  onTapAdd: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => AddPaymentPage(
+                          coinID: coinId,
+                        ),
+                      ),
+                    );
+                  },
+                  onTapDelete: (PaymentEntity payment) {},
+                  onTapDeleteAll: () {},
+                ),
+                SizedBox(height: 30),
+              ],
             );
           },
         );

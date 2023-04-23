@@ -58,8 +58,7 @@ mixin _$PortfolioEvent {
 
 /// @nodoc
 abstract class $PortfolioEventCopyWith<$Res> {
-  factory $PortfolioEventCopyWith(
-          PortfolioEvent value, $Res Function(PortfolioEvent) then) =
+  factory $PortfolioEventCopyWith(PortfolioEvent value, $Res Function(PortfolioEvent) then) =
       _$PortfolioEventCopyWithImpl<$Res, PortfolioEvent>;
 }
 
@@ -83,11 +82,9 @@ abstract class _$$_UpdateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UpdateCopyWithImpl<$Res>
-    extends _$PortfolioEventCopyWithImpl<$Res, _$_Update>
+class __$$_UpdateCopyWithImpl<$Res> extends _$PortfolioEventCopyWithImpl<$Res, _$_Update>
     implements _$$_UpdateCopyWith<$Res> {
-  __$$_UpdateCopyWithImpl(_$_Update _value, $Res Function(_$_Update) _then)
-      : super(_value, _then);
+  __$$_UpdateCopyWithImpl(_$_Update _value, $Res Function(_$_Update) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -201,23 +198,19 @@ abstract class _Update implements PortfolioEvent {
 
   Either<Failure, CoinsEntity> get data;
   @JsonKey(ignore: true)
-  _$$_UpdateCopyWith<_$_Update> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_UpdateCopyWith<_$_Update> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_RefreshDataCopyWith<$Res> {
-  factory _$$_RefreshDataCopyWith(
-          _$_RefreshData value, $Res Function(_$_RefreshData) then) =
+  factory _$$_RefreshDataCopyWith(_$_RefreshData value, $Res Function(_$_RefreshData) then) =
       __$$_RefreshDataCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_RefreshDataCopyWithImpl<$Res>
-    extends _$PortfolioEventCopyWithImpl<$Res, _$_RefreshData>
+class __$$_RefreshDataCopyWithImpl<$Res> extends _$PortfolioEventCopyWithImpl<$Res, _$_RefreshData>
     implements _$$_RefreshDataCopyWith<$Res> {
-  __$$_RefreshDataCopyWithImpl(
-      _$_RefreshData _value, $Res Function(_$_RefreshData) _then)
+  __$$_RefreshDataCopyWithImpl(_$_RefreshData _value, $Res Function(_$_RefreshData) _then)
       : super(_value, _then);
 }
 
@@ -233,8 +226,7 @@ class _$_RefreshData implements _RefreshData {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_RefreshData);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_RefreshData);
   }
 
   @override
@@ -314,14 +306,12 @@ mixin _$PortfolioState {
   Failure? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PortfolioStateCopyWith<PortfolioState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $PortfolioStateCopyWith<PortfolioState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PortfolioStateCopyWith<$Res> {
-  factory $PortfolioStateCopyWith(
-          PortfolioState value, $Res Function(PortfolioState) then) =
+  factory $PortfolioStateCopyWith(PortfolioState value, $Res Function(PortfolioState) then) =
       _$PortfolioStateCopyWithImpl<$Res, PortfolioState>;
   @useResult
   $Res call({CoinsEntity coins, bool loading, Failure? error});
@@ -385,8 +375,7 @@ class _$PortfolioStateCopyWithImpl<$Res, $Val extends PortfolioState>
 }
 
 /// @nodoc
-abstract class _$$_PortfolioStateCopyWith<$Res>
-    implements $PortfolioStateCopyWith<$Res> {
+abstract class _$$_PortfolioStateCopyWith<$Res> implements $PortfolioStateCopyWith<$Res> {
   factory _$$_PortfolioStateCopyWith(
           _$_PortfolioState value, $Res Function(_$_PortfolioState) then) =
       __$$_PortfolioStateCopyWithImpl<$Res>;
@@ -404,8 +393,7 @@ abstract class _$$_PortfolioStateCopyWith<$Res>
 class __$$_PortfolioStateCopyWithImpl<$Res>
     extends _$PortfolioStateCopyWithImpl<$Res, _$_PortfolioState>
     implements _$$_PortfolioStateCopyWith<$Res> {
-  __$$_PortfolioStateCopyWithImpl(
-      _$_PortfolioState _value, $Res Function(_$_PortfolioState) _then)
+  __$$_PortfolioStateCopyWithImpl(_$_PortfolioState _value, $Res Function(_$_PortfolioState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -435,8 +423,7 @@ class __$$_PortfolioStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PortfolioState implements _PortfolioState {
-  const _$_PortfolioState(
-      {required this.coins, this.loading = false, this.error});
+  const _$_PortfolioState({required this.coins, this.loading = false, this.error});
 
   @override
   final CoinsEntity coins;
@@ -485,6 +472,5 @@ abstract class _PortfolioState implements PortfolioState {
   Failure? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_PortfolioStateCopyWith<_$_PortfolioState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_PortfolioStateCopyWith<_$_PortfolioState> get copyWith => throw _privateConstructorUsedError;
 }

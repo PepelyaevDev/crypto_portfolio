@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/coingecko_widget.dart';
@@ -65,10 +66,10 @@ class MarketCoinsWidget extends StatelessWidget {
                     final Color color;
                     final IconData icon;
                     if (coins.list[i].priceChangePercentage24H < 0) {
-                      color = Colors.red;
+                      color = AppColors.red;
                       icon = Icons.arrow_drop_down;
                     } else {
-                      color = Colors.green;
+                      color = AppColors.green;
                       icon = Icons.arrow_drop_up;
                     }
                     return Row(
@@ -91,9 +92,9 @@ class MarketCoinsWidget extends StatelessWidget {
         ),
         Ink(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.white,
             boxShadow: [
-              BoxShadow(color: Colors.grey, blurRadius: 1.0),
+              BoxShadow(color: AppColors.grey, blurRadius: 1.0),
             ],
           ),
           child: Align(

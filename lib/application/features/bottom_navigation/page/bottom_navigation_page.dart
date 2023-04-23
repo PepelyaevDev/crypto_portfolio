@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +17,7 @@ class BottomNavigationPage extends StatelessWidget {
             child: state.tab.screen,
           ),
           bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: Colors.white,
+            backgroundColor: AppColors.white,
             items: BottomNavigationTabs.data.values.map((value) {
               final BottomNavigationKey key = BottomNavigationTabs.data.keys.firstWhere(
                 (key) => BottomNavigationTabs.data[key] == value,

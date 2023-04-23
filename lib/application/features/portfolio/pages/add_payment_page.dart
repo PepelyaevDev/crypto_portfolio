@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/nullable_string_extension.dart';
@@ -52,9 +53,9 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
           },
           child: Scaffold(
             appBar: AppBar(
-              shadowColor: Colors.blue,
-              backgroundColor: Colors.white,
-              foregroundColor: Colors.black,
+              shadowColor: AppColors.blue,
+              backgroundColor: AppColors.white,
+              foregroundColor: AppColors.black,
             ),
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -67,9 +68,9 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                     SizedBox(height: 20),
                     Row(
                       children: [
-                        _paymentTypeButton(PaymentType.deposit, context.localization.deposit),
+                        _paymentTypeButton(PaymentType.deposit, context.localization.buy),
                         SizedBox(width: 10),
-                        _paymentTypeButton(PaymentType.withdraw, context.localization.withdraw),
+                        _paymentTypeButton(PaymentType.withdraw, context.localization.sell),
                       ],
                     ),
                     SizedBox(height: 20),
@@ -125,8 +126,8 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
                               state.maybeMap(
-                                success: (_) => Colors.blue,
-                                orElse: () => Colors.grey,
+                                success: (_) => AppColors.blue,
+                                orElse: () => AppColors.grey,
                               ),
                             ),
                           ),
@@ -158,7 +159,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
             border: Border.all(
-              color: _paymentType == value ? Colors.blue : Colors.grey,
+              color: _paymentType == value ? AppColors.blue : AppColors.grey,
             ),
           ),
           child: Center(
@@ -167,7 +168,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
               child: Text(
                 title,
                 style: AppStyles.normal12.copyWith(
-                  color: _paymentType == value ? Colors.black : Colors.grey,
+                  color: _paymentType == value ? AppColors.black : AppColors.grey,
                 ),
               ),
             ),

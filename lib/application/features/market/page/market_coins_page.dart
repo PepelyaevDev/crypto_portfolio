@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
@@ -29,9 +30,9 @@ class MarketCoinsPage extends StatelessWidget {
             builder: (context, state) {
               return Scaffold(
                 appBar: AppBar(
-                  shadowColor: Colors.blue,
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.black,
+                  shadowColor: AppColors.blue,
+                  backgroundColor: AppColors.white,
+                  foregroundColor: AppColors.black,
                   actions: [
                     RefreshIconButton(
                       loading: state.loading,

@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/detail_portfolio_coin_widget.dart';
 import 'package:flutter/material.dart';
@@ -53,13 +54,13 @@ class _DetailCoinPageState extends State<DetailCoinPage> with SingleTickerProvid
             ],
           ),
         ),
-        shadowColor: Colors.transparent,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        shadowColor: AppColors.transparent,
+        backgroundColor: AppColors.white,
+        foregroundColor: AppColors.black,
         bottom: TabBar(
-          labelColor: Colors.black,
+          labelColor: AppColors.black,
           labelStyle: AppStyles.normal14,
-          indicatorColor: Colors.blue,
+          indicatorColor: AppColors.blue,
           controller: tabController,
           tabs: <Tab>[
             Tab(text: 'Market data'),

@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/refresh_icon_button.dart';
@@ -36,9 +37,9 @@ class PortfolioPage extends StatelessWidget {
           builder: (context, portfolioState) {
             return Scaffold(
               appBar: AppBar(
-                shadowColor: Colors.blue,
-                backgroundColor: Colors.white,
-                foregroundColor: Colors.black,
+                shadowColor: AppColors.blue,
+                backgroundColor: AppColors.white,
+                foregroundColor: AppColors.black,
                 actions: [
                   AppBarIconButton(
                     iconData: Icons.add,

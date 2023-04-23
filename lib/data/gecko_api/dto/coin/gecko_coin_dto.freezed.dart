@@ -27,9 +27,9 @@ mixin _$GeckoCoinDTO {
   @JsonKey(name: 'current_price')
   double get currentPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'market_cap')
-  double get marketCap => throw _privateConstructorUsedError;
+  double? get marketCap => throw _privateConstructorUsedError;
   @JsonKey(name: 'market_cap_rank')
-  double get marketCapRank => throw _privateConstructorUsedError;
+  double? get marketCapRank => throw _privateConstructorUsedError;
   @JsonKey(name: 'fully_diluted_valuation')
   double? get fullyDilutedValuation => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_volume')
@@ -80,8 +80,8 @@ abstract class $GeckoCoinDTOCopyWith<$Res> {
       String name,
       String image,
       @JsonKey(name: 'current_price') double currentPrice,
-      @JsonKey(name: 'market_cap') double marketCap,
-      @JsonKey(name: 'market_cap_rank') double marketCapRank,
+      @JsonKey(name: 'market_cap') double? marketCap,
+      @JsonKey(name: 'market_cap_rank') double? marketCapRank,
       @JsonKey(name: 'fully_diluted_valuation') double? fullyDilutedValuation,
       @JsonKey(name: 'total_volume') double totalVolume,
       double high_24h,
@@ -123,8 +123,8 @@ class _$GeckoCoinDTOCopyWithImpl<$Res, $Val extends GeckoCoinDTO>
     Object? name = null,
     Object? image = null,
     Object? currentPrice = null,
-    Object? marketCap = null,
-    Object? marketCapRank = null,
+    Object? marketCap = freezed,
+    Object? marketCapRank = freezed,
     Object? fullyDilutedValuation = freezed,
     Object? totalVolume = null,
     Object? high_24h = null,
@@ -166,14 +166,14 @@ class _$GeckoCoinDTOCopyWithImpl<$Res, $Val extends GeckoCoinDTO>
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      marketCap: null == marketCap
+      marketCap: freezed == marketCap
           ? _value.marketCap
           : marketCap // ignore: cast_nullable_to_non_nullable
-              as double,
-      marketCapRank: null == marketCapRank
+              as double?,
+      marketCapRank: freezed == marketCapRank
           ? _value.marketCapRank
           : marketCapRank // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       fullyDilutedValuation: freezed == fullyDilutedValuation
           ? _value.fullyDilutedValuation
           : fullyDilutedValuation // ignore: cast_nullable_to_non_nullable
@@ -278,8 +278,8 @@ abstract class _$$_GeckoCoinDTOCopyWith<$Res> implements $GeckoCoinDTOCopyWith<$
       String name,
       String image,
       @JsonKey(name: 'current_price') double currentPrice,
-      @JsonKey(name: 'market_cap') double marketCap,
-      @JsonKey(name: 'market_cap_rank') double marketCapRank,
+      @JsonKey(name: 'market_cap') double? marketCap,
+      @JsonKey(name: 'market_cap_rank') double? marketCapRank,
       @JsonKey(name: 'fully_diluted_valuation') double? fullyDilutedValuation,
       @JsonKey(name: 'total_volume') double totalVolume,
       double high_24h,
@@ -318,8 +318,8 @@ class __$$_GeckoCoinDTOCopyWithImpl<$Res> extends _$GeckoCoinDTOCopyWithImpl<$Re
     Object? name = null,
     Object? image = null,
     Object? currentPrice = null,
-    Object? marketCap = null,
-    Object? marketCapRank = null,
+    Object? marketCap = freezed,
+    Object? marketCapRank = freezed,
     Object? fullyDilutedValuation = freezed,
     Object? totalVolume = null,
     Object? high_24h = null,
@@ -361,14 +361,14 @@ class __$$_GeckoCoinDTOCopyWithImpl<$Res> extends _$GeckoCoinDTOCopyWithImpl<$Re
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      marketCap: null == marketCap
+      marketCap: freezed == marketCap
           ? _value.marketCap
           : marketCap // ignore: cast_nullable_to_non_nullable
-              as double,
-      marketCapRank: null == marketCapRank
+              as double?,
+      marketCapRank: freezed == marketCapRank
           ? _value.marketCapRank
           : marketCapRank // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       fullyDilutedValuation: freezed == fullyDilutedValuation
           ? _value.fullyDilutedValuation
           : fullyDilutedValuation // ignore: cast_nullable_to_non_nullable
@@ -512,10 +512,10 @@ class _$_GeckoCoinDTO implements _GeckoCoinDTO {
   final double currentPrice;
   @override
   @JsonKey(name: 'market_cap')
-  final double marketCap;
+  final double? marketCap;
   @override
   @JsonKey(name: 'market_cap_rank')
-  final double marketCapRank;
+  final double? marketCapRank;
   @override
   @JsonKey(name: 'fully_diluted_valuation')
   final double? fullyDilutedValuation;
@@ -671,9 +671,9 @@ abstract class _GeckoCoinDTO implements GeckoCoinDTO {
       @JsonKey(name: 'current_price')
           required final double currentPrice,
       @JsonKey(name: 'market_cap')
-          required final double marketCap,
+          required final double? marketCap,
       @JsonKey(name: 'market_cap_rank')
-          required final double marketCapRank,
+          required final double? marketCapRank,
       @JsonKey(name: 'fully_diluted_valuation')
           required final double? fullyDilutedValuation,
       @JsonKey(name: 'total_volume')
@@ -723,10 +723,10 @@ abstract class _GeckoCoinDTO implements GeckoCoinDTO {
   double get currentPrice;
   @override
   @JsonKey(name: 'market_cap')
-  double get marketCap;
+  double? get marketCap;
   @override
   @JsonKey(name: 'market_cap_rank')
-  double get marketCapRank;
+  double? get marketCapRank;
   @override
   @JsonKey(name: 'fully_diluted_valuation')
   double? get fullyDilutedValuation;

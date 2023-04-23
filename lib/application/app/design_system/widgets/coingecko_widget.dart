@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -19,7 +20,7 @@ class CoinGeckoWidget extends StatelessWidget {
               padding: const EdgeInsets.all(5.0),
               child: Text(
                 'CoinGecko API',
-                style: TextStyle(color: Colors.blue),
+                style: TextStyle(color: AppColors.blue),
               ),
             ),
           ),

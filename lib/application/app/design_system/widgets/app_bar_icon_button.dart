@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:flutter/material.dart';
 
 class AppBarIconButton extends StatelessWidget {
@@ -18,7 +19,7 @@ class AppBarIconButton extends StatelessWidget {
         child: IconButton(
           splashRadius: 20,
           onPressed: onTap,
-          icon: Icon(iconData, color: Colors.black),
+          icon: Icon(iconData, color: AppColors.black),
         ),
       ),
     );

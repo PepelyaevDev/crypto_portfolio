@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/custom_text_field.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/add_payment_bloc/add_payment_bloc.dart';
@@ -22,7 +23,7 @@ class SelectCoinWidget extends StatelessWidget {
             ),
           ),
           success: (state) => _SelectedCoinWidget(coinEntity: state.coin),
-          orElse: () => SizedBox(),
+          orElse: () => _SearchCoinWidget(),
         );
       },
     );
@@ -89,7 +90,7 @@ class _SearchedCoinWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4),
-          border: Border.all(color: Colors.blue),
+          border: Border.all(color: AppColors.blue),
         ),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -116,7 +117,7 @@ class _SelectedCoinWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
-        border: Border.all(color: Colors.blue),
+        border: Border.all(color: AppColors.blue),
       ),
       child: Center(
         child: Padding(
