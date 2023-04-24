@@ -54,73 +54,62 @@ class PortfolioStatWidget extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: 20.0,
-                horizontal: 20,
+                horizontal: 30,
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(context.localization.holdings),
-                      ),
-                      Expanded(
-                        child: Text(
-                          coin.holdings.toStringAsFixed(5),
-                          style: AppStyles.bold14.copyWith(color: AppColors.black),
+                  _PortfolioDataRow(
+                    firstWidget: Text(context.localization.holdings),
+                    secondWidget: Text(
+                      coin.holdings.toStringAsFixed(5),
+                      style: AppStyles.bold14.copyWith(color: AppColors.black),
+                      textAlign: TextAlign.end,
+                    ),
+                  ),
+                  Divider(height: 30),
+                  _PortfolioDataRow(
+                    firstWidget: Text(context.localization.profitLoss),
+                    secondWidget: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Icon(coin.iconData, color: coin.color),
+                        Text(
+                          '${coin.percentageDifference.percentageToString} % '
+                          '(${coin.dollarDifference.moneyFull})',
+                          style: AppStyles.bold14.copyWith(color: coin.color),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   Divider(height: 30),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(context.localization.profitLoss),
-                      ),
-                      Expanded(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(coin.iconData, color: coin.color),
-                            Text(
-                              '${coin.percentageDifference.percentageToString} % '
-                              '(${coin.dollarDifference.moneyFull})',
-                              style: AppStyles.bold14.copyWith(color: coin.color),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                  _PortfolioDataRow(
+                    firstWidget: _PortfolioDataColumn(
+                      title: context.localization.price,
+                      value: coin.currentPrice.moneyFull,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                    secondWidget: _PortfolioDataColumn(
+                      title: context.localization.averageNetCost,
+                      value: coin.averageNetCost.moneyFull,
+                      valueColor: coin.color,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                    ),
                   ),
                   Divider(height: 30),
-                  Row(
-                    children: [
-                      _PortfolioDataColumn(
-                        title: context.localization.price,
-                        value: coin.currentPrice.moneyFull,
-                      ),
-                      _PortfolioDataColumn(
-                        title: context.localization.averageNetCost,
-                        value: coin.averageNetCost.moneyFull,
-                        valueColor: coin.color,
-                      ),
-                    ],
-                  ),
-                  Divider(height: 30),
-                  Row(
-                    children: [
-                      _PortfolioDataColumn(
-                        title: context.localization.totalCost,
-                        value: coin.totalCost.moneyFull,
-                      ),
-                      _PortfolioDataColumn(
-                        title: context.localization.holdingsValue,
-                        value: coin.holdingsValue.moneyFull,
-                        valueColor: coin.color,
-                      ),
-                    ],
+                  _PortfolioDataRow(
+                    firstWidget: _PortfolioDataColumn(
+                      title: context.localization.totalCost,
+                      value: coin.totalCost.moneyFull,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                    secondWidget: _PortfolioDataColumn(
+                      title: context.localization.holdingsValue,
+                      value: coin.holdingsValue.moneyFull,
+                      valueColor: coin.color,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                    ),
                   ),
                 ],
               ),
@@ -132,13 +121,35 @@ class PortfolioStatWidget extends StatelessWidget {
   }
 }
 
+class _PortfolioDataRow extends StatelessWidget {
+  final Widget firstWidget;
+  final Widget secondWidget;
+  const _PortfolioDataRow({
+    required this.firstWidget,
+    required this.secondWidget,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(flex: 2, child: firstWidget),
+        Expanded(flex: 3, child: secondWidget),
+      ],
+    );
+  }
+}
+
 class _PortfolioDataColumn extends StatelessWidget {
   final String title;
   final String value;
+  final CrossAxisAlignment crossAxisAlignment;
   late final Color _valueColor;
+
   _PortfolioDataColumn({
     required this.title,
     required this.value,
+    required this.crossAxisAlignment,
     Color? valueColor,
   }) {
     _valueColor = valueColor ?? AppColors.black;
@@ -146,24 +157,22 @@ class _PortfolioDataColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: AppStyles.normal14.copyWith(
-              color: AppColors.black.withOpacity(0.7),
-            ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: crossAxisAlignment,
+      children: [
+        Text(
+          title,
+          style: AppStyles.normal14.copyWith(
+            color: AppColors.black.withOpacity(0.7),
           ),
-          SizedBox(height: 5),
-          Text(
-            value,
-            style: AppStyles.bold14.copyWith(color: _valueColor),
-          ),
-        ],
-      ),
+        ),
+        SizedBox(height: 5),
+        Text(
+          value,
+          style: AppStyles.bold14.copyWith(color: _valueColor),
+        ),
+      ],
     );
   }
 }

@@ -13,6 +13,8 @@
 
     "statistics": "Statistics",
     "paymentHistory": "Payment history",
+    "received": "Received",
+    "paid": "Paid",
 
     "holdings": "Holdings",
     "holdingsValue": "Holdings value",

@@ -44,6 +44,6 @@ class PaymentEntity with _$PaymentEntity {
 }
 
 class PaymentType {
-  static const String withdraw = 'withdraw';
-  static const String deposit = 'deposit';
+  static const String sell = 'sell';
+  static const String buy = 'buy';
 }

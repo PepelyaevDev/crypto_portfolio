@@ -24,7 +24,7 @@ class AddPaymentPage extends StatefulWidget {
 
 class _AddPaymentPageState extends State<AddPaymentPage> {
   final _formKey = GlobalKey<FormState>();
-  String _paymentType = PaymentType.deposit;
+  String _paymentType = PaymentType.buy;
   final TextEditingController moneyController = TextEditingController();
   final TextEditingController coinsController = TextEditingController();
 
@@ -68,9 +68,9 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                     SizedBox(height: 20),
                     Row(
                       children: [
-                        _paymentTypeButton(PaymentType.deposit, context.localization.buy),
+                        _paymentTypeButton(PaymentType.buy, context.localization.buy),
                         SizedBox(width: 10),
-                        _paymentTypeButton(PaymentType.withdraw, context.localization.sell),
+                        _paymentTypeButton(PaymentType.sell, context.localization.sell),
                       ],
                     ),
                     SizedBox(height: 20),

@@ -50,6 +50,7 @@ class DetailPortfolioCoinWidget extends StatelessWidget {
                 SizedBox(height: 10),
                 PaymentHistoryWidget(
                   history: state.coin!.history,
+                  name: state.coin!.symbol.toUpperCase(),
                   onTapAdd: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(

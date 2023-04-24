@@ -7,10 +7,10 @@ extension CoinData on CoinEntity {
     double value = 0;
     for (final payment in history) {
       switch (payment.type) {
-        case PaymentType.deposit:
+        case PaymentType.buy:
           value = value + payment.amount;
           break;
-        case PaymentType.withdraw:
+        case PaymentType.sell:
           value = value - payment.amount;
           break;
       }
@@ -22,10 +22,10 @@ extension CoinData on CoinEntity {
     double value = 0;
     for (final payment in history) {
       switch (payment.type) {
-        case PaymentType.deposit:
+        case PaymentType.buy:
           value = value + payment.numberOfCoins;
           break;
-        case PaymentType.withdraw:
+        case PaymentType.sell:
           value = value - payment.numberOfCoins;
           break;
       }

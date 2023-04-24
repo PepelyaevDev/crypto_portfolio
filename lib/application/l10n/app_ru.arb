@@ -13,6 +13,8 @@
 
     "statistics": "Статистика",
     "paymentHistory": "История платежей",
+    "received": "Получено",
+    "paid": "Вложено",
 
     "holdings": "Количество",
     "holdingsValue": "Общая стоимость",
