@@ -131,7 +131,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                               ),
                             ),
                           ),
-                          child: Text(context.localization.addPayment),
+                          child: Text(context.localization.addTransaction),
                         );
                       },
                     ),

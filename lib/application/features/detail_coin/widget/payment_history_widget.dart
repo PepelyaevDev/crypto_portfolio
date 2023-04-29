@@ -36,7 +36,7 @@ class PaymentHistoryWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  context.localization.paymentHistory,
+                  context.localization.transactionHistory,
                   style: AppStyles.bold22,
                 ),
                 Row(
@@ -48,7 +48,32 @@ class PaymentHistoryWidget extends StatelessWidget {
                     ),
                     AppBarIconButton(
                       iconData: Icons.delete_outline,
-                      onTap: onTapDeleteAll,
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) => _DeletePopup(
+                            title: context.localization.deleteTransactionHistory,
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  context.localization.statisticsWillDeleted,
+                                  style: AppStyles.normal16,
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  context.localization.actionNotUndone,
+                                  style: AppStyles.normal16,
+                                ),
+                              ],
+                            ),
+                            onTapDelete: () {
+                              onTapDeleteAll.call();
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -60,7 +85,7 @@ class PaymentHistoryWidget extends StatelessWidget {
               color: AppColors.white,
               borderRadius: BorderRadius.circular(3),
               boxShadow: [
-                BoxShadow(color: AppColors.blue.withOpacity(0.3), blurRadius: 5),
+                BoxShadow(color: AppColors.blue.withOpacity(0.2), blurRadius: 3),
               ],
             ),
             child: Padding(
@@ -174,17 +199,32 @@ class _PaymentWidget extends StatelessWidget {
               onTap: () {
                 showDialog(
                   context: context,
-                  builder: (_) => _DeletePaymentWidget(
-                    payment: payment,
+                  builder: (_) => _DeletePopup(
+                    title: context.localization.deleteTransaction,
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          context.localization.statisticsWillRecalculated,
+                          style: AppStyles.normal16,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          context.localization.actionNotUndone,
+                          style: AppStyles.normal16,
+                        ),
+                      ],
+                    ),
                     onTapDelete: () {
                       onTapDelete(payment);
+                      Navigator.of(context).pop();
                     },
                   ),
                 );
               },
               child: Padding(
-                padding: const EdgeInsets.all(7.0),
-                child: Icon(Icons.clear, size: 15),
+                padding: const EdgeInsets.all(5.0),
+                child: Icon(Icons.clear, size: 20),
               ),
             ),
           ],
@@ -194,43 +234,93 @@ class _PaymentWidget extends StatelessWidget {
   }
 }
 
-class _DeletePaymentWidget extends StatelessWidget {
-  final PaymentEntity payment;
+class _DeletePopup extends StatelessWidget {
+  final String title;
+  final Widget content;
   final VoidCallback onTapDelete;
 
-  _DeletePaymentWidget({required this.payment, required this.onTapDelete});
+  _DeletePopup({
+    required this.title,
+    required this.content,
+    required this.onTapDelete,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final double radius = 5;
     return Center(
       child: Material(
-        borderRadius: BorderRadius.circular(15),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: AppColors.white,
-            boxShadow: [
-              BoxShadow(color: AppColors.blue.withOpacity(0.3), blurRadius: 5),
+        borderRadius: BorderRadius.circular(radius),
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width - 40,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                height: 7,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(radius),
+                    topRight: Radius.circular(radius),
+                  ),
+                  color: AppColors.red,
+                ),
+              ),
+              Ink(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(radius),
+                    bottomRight: Radius.circular(radius),
+                  ),
+                  color: AppColors.lightGray,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SizedBox(height: 20),
+                      Text(title, style: AppStyles.bold22),
+                      SizedBox(height: 20),
+                      content,
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(AppColors.white),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                              child: Text(
+                                context.localization.cancel,
+                                style: AppStyles.normal14.copyWith(color: AppColors.black),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(AppColors.red),
+                            ),
+                            onPressed: onTapDelete,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                              child: Text(context.localization.delete),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
+                ),
+              ),
             ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: Icon(Icons.close),
-                ),
-                ElevatedButton(
-                  onPressed: onTapDelete,
-                  child: Text('Delete payment'),
-                ),
-              ],
-            ),
           ),
         ),
       ),

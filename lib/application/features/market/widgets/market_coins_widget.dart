@@ -47,12 +47,12 @@ class MarketCoinsWidget extends StatelessWidget {
                         children: [
                           Text(
                             coins.list[i].symbol.toString().toUpperCase(),
-                            style: AppStyles.bold12,
+                            style: AppStyles.bold14,
                           ),
-                          SizedBox(height: 3),
+                          SizedBox(height: 5),
                           Text(
                             coins.list[i].marketCap.moneyCompact,
-                            style: AppStyles.normal12,
+                            style: AppStyles.normal14,
                           ),
                         ],
                       ),
@@ -60,7 +60,7 @@ class MarketCoinsWidget extends StatelessWidget {
                   ),
                   price: Text(
                     coins.list[i].currentPrice.moneyFull,
-                    style: AppStyles.bold12,
+                    style: AppStyles.bold14,
                   ),
                   changes: Builder(builder: (context) {
                     final Color color;
@@ -78,7 +78,7 @@ class MarketCoinsWidget extends StatelessWidget {
                         Icon(icon, color: color),
                         Text(
                           '${coins.list[i].priceChangePercentage24H.toStringAsFixed(2)} %',
-                          style: AppStyles.bold12.copyWith(color: color),
+                          style: AppStyles.bold14.copyWith(color: color),
                         ),
                       ],
                     );
@@ -122,31 +122,35 @@ class MarketPageRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.only(
+        right: 15,
+        bottom: 15,
+        top: 15,
+      ),
       child: Row(
         children: [
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Align(
               child: index,
             ),
           ),
           Expanded(
-            flex: 3,
+            flex: 5,
             child: Align(
               alignment: Alignment.centerLeft,
               child: marketCap,
             ),
           ),
           Expanded(
-            flex: 3,
+            flex: 5,
             child: Align(
               alignment: Alignment.centerRight,
               child: price,
             ),
           ),
           Expanded(
-            flex: 3,
+            flex: 5,
             child: Align(
               alignment: Alignment.centerRight,
               child: changes,

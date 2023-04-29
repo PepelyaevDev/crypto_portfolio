@@ -20,18 +20,24 @@ mixin _$DetailPortfolioCoinEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(Either<Failure, CoinsEntity> data) update,
     required TResult Function() refreshData,
+    required TResult Function(PaymentEntity payment) deletePayment,
+    required TResult Function(String coinId) deleteCoin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Either<Failure, CoinsEntity> data)? update,
     TResult? Function()? refreshData,
+    TResult? Function(PaymentEntity payment)? deletePayment,
+    TResult? Function(String coinId)? deleteCoin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Either<Failure, CoinsEntity> data)? update,
     TResult Function()? refreshData,
+    TResult Function(PaymentEntity payment)? deletePayment,
+    TResult Function(String coinId)? deleteCoin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,24 @@ mixin _$DetailPortfolioCoinEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Update value) update,
     required TResult Function(_RefreshData value) refreshData,
+    required TResult Function(_DeletePayment value) deletePayment,
+    required TResult Function(_DeleteCoin value) deleteCoin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Update value)? update,
     TResult? Function(_RefreshData value)? refreshData,
+    TResult? Function(_DeletePayment value)? deletePayment,
+    TResult? Function(_DeleteCoin value)? deleteCoin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Update value)? update,
     TResult Function(_RefreshData value)? refreshData,
+    TResult Function(_DeletePayment value)? deletePayment,
+    TResult Function(_DeleteCoin value)? deleteCoin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -136,6 +148,8 @@ class _$_Update implements _Update {
   TResult when<TResult extends Object?>({
     required TResult Function(Either<Failure, CoinsEntity> data) update,
     required TResult Function() refreshData,
+    required TResult Function(PaymentEntity payment) deletePayment,
+    required TResult Function(String coinId) deleteCoin,
   }) {
     return update(data);
   }
@@ -145,6 +159,8 @@ class _$_Update implements _Update {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Either<Failure, CoinsEntity> data)? update,
     TResult? Function()? refreshData,
+    TResult? Function(PaymentEntity payment)? deletePayment,
+    TResult? Function(String coinId)? deleteCoin,
   }) {
     return update?.call(data);
   }
@@ -154,6 +170,8 @@ class _$_Update implements _Update {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Either<Failure, CoinsEntity> data)? update,
     TResult Function()? refreshData,
+    TResult Function(PaymentEntity payment)? deletePayment,
+    TResult Function(String coinId)? deleteCoin,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -167,6 +185,8 @@ class _$_Update implements _Update {
   TResult map<TResult extends Object?>({
     required TResult Function(_Update value) update,
     required TResult Function(_RefreshData value) refreshData,
+    required TResult Function(_DeletePayment value) deletePayment,
+    required TResult Function(_DeleteCoin value) deleteCoin,
   }) {
     return update(this);
   }
@@ -176,6 +196,8 @@ class _$_Update implements _Update {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Update value)? update,
     TResult? Function(_RefreshData value)? refreshData,
+    TResult? Function(_DeletePayment value)? deletePayment,
+    TResult? Function(_DeleteCoin value)? deleteCoin,
   }) {
     return update?.call(this);
   }
@@ -185,6 +207,8 @@ class _$_Update implements _Update {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Update value)? update,
     TResult Function(_RefreshData value)? refreshData,
+    TResult Function(_DeletePayment value)? deletePayment,
+    TResult Function(_DeleteCoin value)? deleteCoin,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -239,6 +263,8 @@ class _$_RefreshData implements _RefreshData {
   TResult when<TResult extends Object?>({
     required TResult Function(Either<Failure, CoinsEntity> data) update,
     required TResult Function() refreshData,
+    required TResult Function(PaymentEntity payment) deletePayment,
+    required TResult Function(String coinId) deleteCoin,
   }) {
     return refreshData();
   }
@@ -248,6 +274,8 @@ class _$_RefreshData implements _RefreshData {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Either<Failure, CoinsEntity> data)? update,
     TResult? Function()? refreshData,
+    TResult? Function(PaymentEntity payment)? deletePayment,
+    TResult? Function(String coinId)? deleteCoin,
   }) {
     return refreshData?.call();
   }
@@ -257,6 +285,8 @@ class _$_RefreshData implements _RefreshData {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Either<Failure, CoinsEntity> data)? update,
     TResult Function()? refreshData,
+    TResult Function(PaymentEntity payment)? deletePayment,
+    TResult Function(String coinId)? deleteCoin,
     required TResult orElse(),
   }) {
     if (refreshData != null) {
@@ -270,6 +300,8 @@ class _$_RefreshData implements _RefreshData {
   TResult map<TResult extends Object?>({
     required TResult Function(_Update value) update,
     required TResult Function(_RefreshData value) refreshData,
+    required TResult Function(_DeletePayment value) deletePayment,
+    required TResult Function(_DeleteCoin value) deleteCoin,
   }) {
     return refreshData(this);
   }
@@ -279,6 +311,8 @@ class _$_RefreshData implements _RefreshData {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Update value)? update,
     TResult? Function(_RefreshData value)? refreshData,
+    TResult? Function(_DeletePayment value)? deletePayment,
+    TResult? Function(_DeleteCoin value)? deleteCoin,
   }) {
     return refreshData?.call(this);
   }
@@ -288,6 +322,8 @@ class _$_RefreshData implements _RefreshData {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Update value)? update,
     TResult Function(_RefreshData value)? refreshData,
+    TResult Function(_DeletePayment value)? deletePayment,
+    TResult Function(_DeleteCoin value)? deleteCoin,
     required TResult orElse(),
   }) {
     if (refreshData != null) {
@@ -299,6 +335,300 @@ class _$_RefreshData implements _RefreshData {
 
 abstract class _RefreshData implements DetailPortfolioCoinEvent {
   const factory _RefreshData() = _$_RefreshData;
+}
+
+/// @nodoc
+abstract class _$$_DeletePaymentCopyWith<$Res> {
+  factory _$$_DeletePaymentCopyWith(_$_DeletePayment value, $Res Function(_$_DeletePayment) then) =
+      __$$_DeletePaymentCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PaymentEntity payment});
+
+  $PaymentEntityCopyWith<$Res> get payment;
+}
+
+/// @nodoc
+class __$$_DeletePaymentCopyWithImpl<$Res>
+    extends _$DetailPortfolioCoinEventCopyWithImpl<$Res, _$_DeletePayment>
+    implements _$$_DeletePaymentCopyWith<$Res> {
+  __$$_DeletePaymentCopyWithImpl(_$_DeletePayment _value, $Res Function(_$_DeletePayment) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? payment = null,
+  }) {
+    return _then(_$_DeletePayment(
+      null == payment
+          ? _value.payment
+          : payment // ignore: cast_nullable_to_non_nullable
+              as PaymentEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentEntityCopyWith<$Res> get payment {
+    return $PaymentEntityCopyWith<$Res>(_value.payment, (value) {
+      return _then(_value.copyWith(payment: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_DeletePayment implements _DeletePayment {
+  const _$_DeletePayment(this.payment);
+
+  @override
+  final PaymentEntity payment;
+
+  @override
+  String toString() {
+    return 'DetailPortfolioCoinEvent.deletePayment(payment: $payment)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DeletePayment &&
+            (identical(other.payment, payment) || other.payment == payment));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, payment);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DeletePaymentCopyWith<_$_DeletePayment> get copyWith =>
+      __$$_DeletePaymentCopyWithImpl<_$_DeletePayment>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Either<Failure, CoinsEntity> data) update,
+    required TResult Function() refreshData,
+    required TResult Function(PaymentEntity payment) deletePayment,
+    required TResult Function(String coinId) deleteCoin,
+  }) {
+    return deletePayment(payment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Either<Failure, CoinsEntity> data)? update,
+    TResult? Function()? refreshData,
+    TResult? Function(PaymentEntity payment)? deletePayment,
+    TResult? Function(String coinId)? deleteCoin,
+  }) {
+    return deletePayment?.call(payment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Either<Failure, CoinsEntity> data)? update,
+    TResult Function()? refreshData,
+    TResult Function(PaymentEntity payment)? deletePayment,
+    TResult Function(String coinId)? deleteCoin,
+    required TResult orElse(),
+  }) {
+    if (deletePayment != null) {
+      return deletePayment(payment);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Update value) update,
+    required TResult Function(_RefreshData value) refreshData,
+    required TResult Function(_DeletePayment value) deletePayment,
+    required TResult Function(_DeleteCoin value) deleteCoin,
+  }) {
+    return deletePayment(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Update value)? update,
+    TResult? Function(_RefreshData value)? refreshData,
+    TResult? Function(_DeletePayment value)? deletePayment,
+    TResult? Function(_DeleteCoin value)? deleteCoin,
+  }) {
+    return deletePayment?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Update value)? update,
+    TResult Function(_RefreshData value)? refreshData,
+    TResult Function(_DeletePayment value)? deletePayment,
+    TResult Function(_DeleteCoin value)? deleteCoin,
+    required TResult orElse(),
+  }) {
+    if (deletePayment != null) {
+      return deletePayment(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeletePayment implements DetailPortfolioCoinEvent {
+  const factory _DeletePayment(final PaymentEntity payment) = _$_DeletePayment;
+
+  PaymentEntity get payment;
+  @JsonKey(ignore: true)
+  _$$_DeletePaymentCopyWith<_$_DeletePayment> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DeleteCoinCopyWith<$Res> {
+  factory _$$_DeleteCoinCopyWith(_$_DeleteCoin value, $Res Function(_$_DeleteCoin) then) =
+      __$$_DeleteCoinCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String coinId});
+}
+
+/// @nodoc
+class __$$_DeleteCoinCopyWithImpl<$Res>
+    extends _$DetailPortfolioCoinEventCopyWithImpl<$Res, _$_DeleteCoin>
+    implements _$$_DeleteCoinCopyWith<$Res> {
+  __$$_DeleteCoinCopyWithImpl(_$_DeleteCoin _value, $Res Function(_$_DeleteCoin) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? coinId = null,
+  }) {
+    return _then(_$_DeleteCoin(
+      null == coinId
+          ? _value.coinId
+          : coinId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DeleteCoin implements _DeleteCoin {
+  const _$_DeleteCoin(this.coinId);
+
+  @override
+  final String coinId;
+
+  @override
+  String toString() {
+    return 'DetailPortfolioCoinEvent.deleteCoin(coinId: $coinId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DeleteCoin &&
+            (identical(other.coinId, coinId) || other.coinId == coinId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, coinId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DeleteCoinCopyWith<_$_DeleteCoin> get copyWith =>
+      __$$_DeleteCoinCopyWithImpl<_$_DeleteCoin>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Either<Failure, CoinsEntity> data) update,
+    required TResult Function() refreshData,
+    required TResult Function(PaymentEntity payment) deletePayment,
+    required TResult Function(String coinId) deleteCoin,
+  }) {
+    return deleteCoin(coinId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Either<Failure, CoinsEntity> data)? update,
+    TResult? Function()? refreshData,
+    TResult? Function(PaymentEntity payment)? deletePayment,
+    TResult? Function(String coinId)? deleteCoin,
+  }) {
+    return deleteCoin?.call(coinId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Either<Failure, CoinsEntity> data)? update,
+    TResult Function()? refreshData,
+    TResult Function(PaymentEntity payment)? deletePayment,
+    TResult Function(String coinId)? deleteCoin,
+    required TResult orElse(),
+  }) {
+    if (deleteCoin != null) {
+      return deleteCoin(coinId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Update value) update,
+    required TResult Function(_RefreshData value) refreshData,
+    required TResult Function(_DeletePayment value) deletePayment,
+    required TResult Function(_DeleteCoin value) deleteCoin,
+  }) {
+    return deleteCoin(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Update value)? update,
+    TResult? Function(_RefreshData value)? refreshData,
+    TResult? Function(_DeletePayment value)? deletePayment,
+    TResult? Function(_DeleteCoin value)? deleteCoin,
+  }) {
+    return deleteCoin?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Update value)? update,
+    TResult Function(_RefreshData value)? refreshData,
+    TResult Function(_DeletePayment value)? deletePayment,
+    TResult Function(_DeleteCoin value)? deleteCoin,
+    required TResult orElse(),
+  }) {
+    if (deleteCoin != null) {
+      return deleteCoin(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteCoin implements DetailPortfolioCoinEvent {
+  const factory _DeleteCoin(final String coinId) = _$_DeleteCoin;
+
+  String get coinId;
+  @JsonKey(ignore: true)
+  _$$_DeleteCoinCopyWith<_$_DeleteCoin> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

@@ -48,7 +48,7 @@ class PortfolioStatWidget extends StatelessWidget {
               color: AppColors.white,
               borderRadius: BorderRadius.circular(3),
               boxShadow: [
-                BoxShadow(color: AppColors.blue.withOpacity(0.3), blurRadius: 5),
+                BoxShadow(color: AppColors.blue.withOpacity(0.2), blurRadius: 3),
               ],
             ),
             child: Padding(
@@ -86,7 +86,7 @@ class PortfolioStatWidget extends StatelessWidget {
                   Divider(height: 30),
                   _PortfolioDataRow(
                     firstWidget: _PortfolioDataColumn(
-                      title: context.localization.price,
+                      title: context.localization.currentPrice,
                       value: coin.currentPrice.moneyFull,
                       crossAxisAlignment: CrossAxisAlignment.start,
                     ),

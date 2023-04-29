@@ -2,6 +2,7 @@ import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/dto/prices/prices.dart';
 import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
+import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/json_converter.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/to_entity.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
@@ -16,6 +17,7 @@ class PortfolioRepo {
   final BehaviorSubject<Either<Failure, CoinsEntity>> coinsSubject = BehaviorSubject();
 
   Future<void> _updateCoinsEntity(List<CoinEntity> coinsList) async {
+    coinsList.sort((a, b) => b.holdingsValue.compareTo(a.holdingsValue));
     final CoinsEntity coinsEntity = CoinsEntity(
       list: coinsList,
       updateTime: DateTime.now(),
@@ -64,10 +66,18 @@ class PortfolioRepo {
     }
   }
 
-  Future<void> addNewCoinToCoinsList(CoinEntity coinEntity) async {
+  Future<void> addCoin(CoinEntity coinEntity) async {
     final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
     if (coinsEntity.list.where((e) => e.id == coinEntity.id).isNotEmpty) return;
     await _updateCoinsEntity([...coinsEntity.list, coinEntity]);
+  }
+
+  Future<void> deleteCoin(String coinId) async {
+    final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
+    final List<CoinEntity> newCoins = [];
+    newCoins.addAll(coinsEntity.list);
+    newCoins.removeWhere((element) => element.id == coinId);
+    await _updateCoinsEntity(newCoins);
   }
 
   Future<void> updateHistory(PaymentEntity paymentEntity) async {
@@ -83,7 +93,7 @@ class PortfolioRepo {
     if (newHistory.contains(paymentEntity)) {
       newHistory.remove(paymentEntity);
     } else {
-      newHistory.add(paymentEntity);
+      newHistory.insert(0, paymentEntity);
     }
     if (newHistory.isNotEmpty) {
       newCoins[newCoins.indexOf(coinEntity)] = coinEntity.copyWith(history: newHistory);

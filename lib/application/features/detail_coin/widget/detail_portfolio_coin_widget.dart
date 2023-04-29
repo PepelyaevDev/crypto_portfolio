@@ -60,8 +60,16 @@ class DetailPortfolioCoinWidget extends StatelessWidget {
                       ),
                     );
                   },
-                  onTapDelete: (PaymentEntity payment) {},
-                  onTapDeleteAll: () {},
+                  onTapDelete: (PaymentEntity payment) {
+                    context
+                        .read<DetailPortfolioCoinBloc>()
+                        .add(DetailPortfolioCoinEvent.deletePayment(payment));
+                  },
+                  onTapDeleteAll: () {
+                    context
+                        .read<DetailPortfolioCoinBloc>()
+                        .add(DetailPortfolioCoinEvent.deleteCoin(state.coin!.id));
+                  },
                 ),
                 SizedBox(height: 30),
               ],

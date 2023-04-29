@@ -30,7 +30,7 @@ class AddPaymentBloc extends Bloc<AddPaymentEvent, AddPaymentState> {
   }
 
   Future<void> _updateHistory(_UpdateHistory event, _) async {
-    await _portfolioRepo.addNewCoinToCoinsList(event.coin);
+    await _portfolioRepo.addCoin(event.coin);
     await _portfolioRepo.updateHistory(event.paymentEntity);
   }
 

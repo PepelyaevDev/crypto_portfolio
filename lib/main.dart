@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 ///TODO: отображение без интернета
 ///TODO: добавить добавление даты при создании платежа
 ///TODO: проверка на продажу большего количества монет чем есть
+///TODO: pull refresh на всех страницах
+///TODO: общий портфельный виджет и детальная с полной историей
 ///TODO: библиотека для графиков https://pub.dev/packages/syncfusion_flutter_charts
 
 Future<void> main() async {

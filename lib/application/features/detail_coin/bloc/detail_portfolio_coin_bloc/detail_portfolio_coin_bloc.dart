@@ -25,16 +25,19 @@ class DetailPortfolioCoinBloc extends Bloc<DetailPortfolioCoinEvent, DetailPortf
         )) {
     on<_Update>(_update, transformer: droppable());
     on<_RefreshData>(_refreshData, transformer: droppable());
-
+    on<_DeletePayment>(_deletePayment, transformer: droppable());
+    on<_DeleteCoin>(_deleteCoin, transformer: droppable());
     _coinsListener = _portfolioRepo.coinsSubject.stream.listen((event) {
       add(DetailPortfolioCoinEvent.update(event));
     });
   }
 
-  @override
-  Future<void> close() async {
-    _coinsListener.cancel();
-    super.close();
+  Future<void> _deletePayment(_DeletePayment event, Emitter<DetailPortfolioCoinState> emit) async {
+    await _portfolioRepo.updateHistory(event.payment);
+  }
+
+  Future<void> _deleteCoin(_DeleteCoin event, Emitter<DetailPortfolioCoinState> emit) async {
+    await _portfolioRepo.deleteCoin(event.coinId);
   }
 
   Future<void> _update(_Update event, Emitter<DetailPortfolioCoinState> emit) async {
@@ -61,5 +64,11 @@ class DetailPortfolioCoinBloc extends Bloc<DetailPortfolioCoinEvent, DetailPortf
     }
     emit(DetailPortfolioCoinState(coin: state.coin, loading: true));
     await _portfolioRepo.updateCoinMarketData(_coinId);
+  }
+
+  @override
+  Future<void> close() async {
+    _coinsListener.cancel();
+    super.close();
   }
 }

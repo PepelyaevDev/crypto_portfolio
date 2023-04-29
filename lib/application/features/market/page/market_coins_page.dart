@@ -1,7 +1,6 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/refresh_icon_button.dart';
 import 'package:crypto_portfolio/application/features/market/bloc/market_bloc.dart';
 import 'package:crypto_portfolio/application/features/market/widgets/market_coins_widget.dart';
@@ -43,18 +42,9 @@ class MarketCoinsPage extends StatelessWidget {
                   ],
                   bottom: PreferredSize(
                     child: MarketPageRow(
-                      marketCap: Text(
-                        context.localization.marketCap,
-                        style: AppStyles.normal12,
-                      ),
-                      price: Text(
-                        context.localization.price,
-                        style: AppStyles.normal12,
-                      ),
-                      changes: Text(
-                        context.localization.percentage24h,
-                        style: AppStyles.normal12,
-                      ),
+                      marketCap: Text(context.localization.marketCap),
+                      price: Text(context.localization.price),
+                      changes: Text(context.localization.percentage24h),
                     ),
                     preferredSize: Size(double.infinity, 40),
                   ),

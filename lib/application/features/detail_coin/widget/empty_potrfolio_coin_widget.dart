@@ -33,7 +33,7 @@ class EmptyPortfolioCoinWidget extends StatelessWidget {
                 ),
               );
             },
-            child: Text(context.localization.addPayment),
+            child: Text(context.localization.addTransaction),
           ),
         ],
       ),
