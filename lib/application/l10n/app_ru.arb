@@ -14,6 +14,8 @@
     "delete": "Удалить",
     "cancel": "Отмена",
 
+    "portfolioData": "Данные о портфеле",
+    "marketData": "Рыночные данные",
     "statistics": "Статистика",
     "transactionHistory": "История операций",
     "received": "Получено",

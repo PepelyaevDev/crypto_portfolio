@@ -1,5 +1,6 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
+import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/detail_portfolio_coin_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -63,8 +64,8 @@ class _DetailCoinPageState extends State<DetailCoinPage> with SingleTickerProvid
           indicatorColor: AppColors.blue,
           controller: tabController,
           tabs: <Tab>[
-            Tab(text: 'Market data'),
-            Tab(text: 'Portfolio data'),
+            Tab(text: context.localization.marketData),
+            Tab(text: context.localization.portfolioData),
           ],
         ),
       ),
