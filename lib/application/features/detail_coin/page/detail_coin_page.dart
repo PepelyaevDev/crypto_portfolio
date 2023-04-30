@@ -51,15 +51,18 @@ class _DetailCoinPageState extends State<DetailCoinPage> with SingleTickerProvid
             children: [
               Image.network(widget.coinLogo, width: 30, height: 30),
               SizedBox(width: 10),
-              Text(widget.coinSymbol.toUpperCase()),
+              Text(
+                widget.coinSymbol.toUpperCase(),
+                style: AppStyles.normal14,
+              ),
             ],
           ),
         ),
         shadowColor: AppColors.transparent,
         backgroundColor: AppColors.white,
-        foregroundColor: AppColors.black,
+        foregroundColor: AppColors.blackLight,
         bottom: TabBar(
-          labelColor: AppColors.black,
+          labelColor: AppColors.blackLight,
           labelStyle: AppStyles.normal14,
           indicatorColor: AppColors.blue,
           controller: tabController,
@@ -75,6 +78,7 @@ class _DetailCoinPageState extends State<DetailCoinPage> with SingleTickerProvid
           Center(
             child: Text(
               'market info',
+              style: AppStyles.normal14,
             ),
           ),
           DetailPortfolioCoinWidget(widget.coinId),

@@ -7,12 +7,12 @@ import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:flutter/material.dart';
 
-class PortfolioStatWidget extends StatelessWidget {
+class DetailPortfolioStatWidget extends StatelessWidget {
   final CoinEntity coin;
   final bool loading;
   final VoidCallback onTapUpdate;
 
-  const PortfolioStatWidget({
+  const DetailPortfolioStatWidget({
     required this.coin,
     required this.loading,
     required this.onTapUpdate,
@@ -61,16 +61,22 @@ class PortfolioStatWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   _PortfolioDataRow(
-                    firstWidget: Text(context.localization.holdings),
+                    firstWidget: Text(
+                      context.localization.holdings,
+                      style: AppStyles.normal14,
+                    ),
                     secondWidget: Text(
                       coin.holdings.toStringAsFixed(5),
-                      style: AppStyles.bold14.copyWith(color: AppColors.black),
+                      style: AppStyles.bold14.copyWith(color: AppColors.blackLight),
                       textAlign: TextAlign.end,
                     ),
                   ),
                   Divider(height: 30),
                   _PortfolioDataRow(
-                    firstWidget: Text(context.localization.profitLoss),
+                    firstWidget: Text(
+                      context.localization.profitLoss,
+                      style: AppStyles.normal14,
+                    ),
                     secondWidget: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -100,8 +106,8 @@ class PortfolioStatWidget extends StatelessWidget {
                   Divider(height: 30),
                   _PortfolioDataRow(
                     firstWidget: _PortfolioDataColumn(
-                      title: context.localization.totalCost,
-                      value: coin.totalCost.moneyFull,
+                      title: context.localization.invested,
+                      value: coin.invested.moneyFull,
                       crossAxisAlignment: CrossAxisAlignment.start,
                     ),
                     secondWidget: _PortfolioDataColumn(
@@ -152,7 +158,7 @@ class _PortfolioDataColumn extends StatelessWidget {
     required this.crossAxisAlignment,
     Color? valueColor,
   }) {
-    _valueColor = valueColor ?? AppColors.black;
+    _valueColor = valueColor ?? AppColors.blackLight;
   }
 
   @override
@@ -164,7 +170,7 @@ class _PortfolioDataColumn extends StatelessWidget {
         Text(
           title,
           style: AppStyles.normal14.copyWith(
-            color: AppColors.black.withOpacity(0.7),
+            color: AppColors.blackLight.withOpacity(0.7),
           ),
         ),
         SizedBox(height: 5),

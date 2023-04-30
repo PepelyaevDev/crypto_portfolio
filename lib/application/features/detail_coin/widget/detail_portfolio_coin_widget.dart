@@ -3,7 +3,7 @@ import 'package:crypto_portfolio/application/features/detail_coin/bloc/detail_po
     '/detail_portfolio_coin_bloc.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/empty_potrfolio_coin_widget.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/payment_history_widget.dart';
-import 'package:crypto_portfolio/application/features/detail_coin/widget/portfolio_stat_widget.dart';
+import 'package:crypto_portfolio/application/features/detail_coin/widget/detail_portfolio_stat_widget.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
@@ -38,7 +38,7 @@ class DetailPortfolioCoinWidget extends StatelessWidget {
             }
             return ListView(
               children: [
-                PortfolioStatWidget(
+                DetailPortfolioStatWidget(
                   coin: state.coin!,
                   loading: state.loading,
                   onTapUpdate: () {

@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
@@ -6,6 +7,7 @@ import 'package:crypto_portfolio/application/features/portfolio/pages/add_paymen
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:flutter/material.dart';
+import 'portfolio_stat_widget.dart';
 
 class PortfolioCoinsWidget extends StatelessWidget {
   final CoinsEntity coins;
@@ -13,13 +15,19 @@ class PortfolioCoinsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemBuilder: (_, i) => Padding(
-        padding: EdgeInsets.only(top: i == 0 ? 8 : 0),
-        child: _PortfolioCoinWidget(coins.list[i]),
-      ),
-      separatorBuilder: (_, __) => Divider(height: 2),
-      itemCount: coins.list.length,
+    return ListView(
+      children: [
+        SizedBox(height: 20),
+        PortfolioStatWidget(coins),
+        SizedBox(height: 10),
+        ListView.separated(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: (_, i) => _PortfolioCoinWidget(coins.list[i]),
+          separatorBuilder: (_, __) => Divider(height: 2),
+          itemCount: coins.list.length,
+        ),
+      ],
     );
   }
 }
@@ -75,7 +83,7 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
                   SizedBox(height: 5),
                   Text(
                     widget.coinEntity.currentPrice.moneyFull,
-                    style: AppStyles.normal14,
+                    style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
                   ),
                 ],
               ),
@@ -95,7 +103,7 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
                       Text(
                         ' ${widget.coinEntity.percentageDifference.percentageToString} % '
                         '(${widget.coinEntity.dollarDifference.moneyFull})',
-                        style: AppStyles.bold14.copyWith(color: widget.coinEntity.color),
+                        style: AppStyles.bold12.copyWith(color: widget.coinEntity.color),
                       ),
                     ],
                   ),
@@ -106,7 +114,8 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
                 onTap: changeOpenDetails,
                 child: Icon(
                   openDetails ? Icons.arrow_drop_up : Icons.arrow_drop_down,
-                  size: 40,
+                  size: 35,
+                  color: AppColors.blackLight,
                 ),
               ),
             ),
@@ -128,7 +137,7 @@ class _PortfolioCoinWidgetDetails extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(height: 15),
+        SizedBox(height: 7),
         _PortfolioPageRow(
           name: Column(
             mainAxisSize: MainAxisSize.min,
@@ -138,10 +147,9 @@ class _PortfolioCoinWidgetDetails extends StatelessWidget {
                 coinEntity.averageNetCost.moneyFull,
                 style: AppStyles.bold14,
               ),
-              SizedBox(height: 5),
               Text(
                 context.localization.averageNetCost,
-                style: AppStyles.normal12,
+                style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
               ),
             ],
           ),
@@ -150,13 +158,12 @@ class _PortfolioCoinWidgetDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                coinEntity.totalCost.moneyFull,
+                coinEntity.invested.moneyFull,
                 style: AppStyles.bold14,
               ),
-              SizedBox(height: 5),
               Text(
-                context.localization.totalCost,
-                style: AppStyles.normal12,
+                context.localization.invested,
+                style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
               ),
             ],
           ),
@@ -176,6 +183,7 @@ class _PortfolioCoinWidgetDetails extends StatelessWidget {
               child: Icon(
                 Icons.add,
                 size: 25,
+                color: AppColors.blackLight,
               ),
             ),
           ),

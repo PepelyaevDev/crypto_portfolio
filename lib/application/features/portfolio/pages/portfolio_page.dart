@@ -39,7 +39,7 @@ class PortfolioPage extends StatelessWidget {
               appBar: AppBar(
                 shadowColor: AppColors.blue,
                 backgroundColor: AppColors.white,
-                foregroundColor: AppColors.black,
+                foregroundColor: AppColors.blackLight,
                 actions: [
                   AppBarIconButton(
                     iconData: Icons.add,

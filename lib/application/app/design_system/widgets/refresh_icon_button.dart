@@ -25,7 +25,7 @@ class RefreshIconButton extends StatelessWidget {
                   height: 15,
                   width: 15,
                   child: CircularProgressIndicator(
-                    color: AppColors.black,
+                    color: AppColors.blackLight,
                     strokeWidth: 2,
                   ),
                 ),
@@ -33,7 +33,7 @@ class RefreshIconButton extends StatelessWidget {
             : IconButton(
                 splashRadius: 20,
                 onPressed: onTapUpdate,
-                icon: Icon(Icons.refresh, color: AppColors.black),
+                icon: Icon(Icons.refresh, color: AppColors.blackLight),
               ),
       ),
     );

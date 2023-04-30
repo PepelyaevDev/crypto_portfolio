@@ -1,4 +1,5 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
+import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/refresh_icon_button.dart';
@@ -31,7 +32,7 @@ class MarketCoinsPage extends StatelessWidget {
                 appBar: AppBar(
                   shadowColor: AppColors.blue,
                   backgroundColor: AppColors.white,
-                  foregroundColor: AppColors.black,
+                  foregroundColor: AppColors.blackLight,
                   actions: [
                     RefreshIconButton(
                       loading: state.loading,
@@ -42,11 +43,21 @@ class MarketCoinsPage extends StatelessWidget {
                   ],
                   bottom: PreferredSize(
                     child: MarketPageRow(
-                      marketCap: Text(context.localization.marketCap),
-                      price: Text(context.localization.price),
-                      changes: Text(context.localization.percentage24h),
+                      marketCap: Text(
+                        context.localization.marketCap,
+                        style: AppStyles.normal14,
+                      ),
+                      price: Text(
+                        context.localization.price,
+                        style: AppStyles.normal14,
+                      ),
+                      changes: Text(
+                        context.localization.percentage24h,
+                        style: AppStyles.normal14,
+                      ),
+                      verticalPaddings: 10,
                     ),
-                    preferredSize: Size(double.infinity, 40),
+                    preferredSize: Size(double.infinity, 35),
                   ),
                 ),
                 body: MarketCoinsWidget(coins: state.coins),

@@ -1,44 +1,24 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
+import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:flutter/material.dart';
 
-extension CoinData on CoinEntity {
+extension PortfolioData on CoinsEntity {
   double get invested {
     double value = 0;
-    for (final payment in history) {
-      switch (payment.type) {
-        case PaymentType.buy:
-          value = value + payment.amount;
-          break;
-        case PaymentType.sell:
-          value = value - payment.amount;
-          break;
-      }
+    for (final coin in list) {
+      value += coin.invested;
     }
     return value;
   }
 
-  double get holdings {
+  double get holdingsValue {
     double value = 0;
-    for (final payment in history) {
-      switch (payment.type) {
-        case PaymentType.buy:
-          value = value + payment.numberOfCoins;
-          break;
-        case PaymentType.sell:
-          value = value - payment.numberOfCoins;
-          break;
-      }
+    for (final coin in list) {
+      value += coin.holdingsValue;
     }
     return value;
   }
-
-  double get averageNetCost {
-    final double value = holdings == 0 ? 0 : invested / holdings;
-    return double.parse(value.toStringAsFixed(2));
-  }
-
-  double get holdingsValue => holdings * currentPrice;
 
   Color get color => holdingsValue < invested ? AppColors.redLight : AppColors.greenLight;
 

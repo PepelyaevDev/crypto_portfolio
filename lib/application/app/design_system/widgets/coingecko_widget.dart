@@ -1,4 +1,5 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
+import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -10,7 +11,10 @@ class CoinGeckoWidget extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Powered by '),
+          Text(
+            'Powered by ',
+            style: AppStyles.normal14,
+          ),
           InkWell(
             onTap: () {
               launchUrl(Uri.parse('https://www.coingecko.com/en/api'));
@@ -20,7 +24,7 @@ class CoinGeckoWidget extends StatelessWidget {
               padding: const EdgeInsets.all(5.0),
               child: Text(
                 'CoinGecko API',
-                style: TextStyle(color: AppColors.blue),
+                style: AppStyles.normal14.copyWith(color: AppColors.blue),
               ),
             ),
           ),

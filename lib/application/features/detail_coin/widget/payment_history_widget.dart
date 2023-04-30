@@ -129,7 +129,7 @@ class _PaymentWidget extends StatelessWidget {
     final String paymentType;
     final String moneyText;
     if (payment.type == PaymentType.buy) {
-      color = AppColors.green;
+      color = AppColors.greenLight;
       icon = Icons.arrow_forward;
       paymentType = context.localization.buy;
       moneyText = context.localization.paid;
@@ -162,10 +162,12 @@ class _PaymentWidget extends StatelessWidget {
                 SizedBox(height: 5),
                 Text(
                   payment.dateTime.date(context),
+                  style: AppStyles.normal14,
                 ),
                 SizedBox(height: 5),
                 Text(
                   payment.dateTime.time,
+                  style: AppStyles.normal14,
                 ),
               ],
             ),
@@ -185,11 +187,13 @@ class _PaymentWidget extends StatelessWidget {
                 SizedBox(height: 5),
                 Text(
                   '${payment.numberOfCoins} $name',
+                  style: AppStyles.normal14,
                 ),
                 SizedBox(height: 5),
                 Text(
                   '${context.localization.price}: '
                   '${(payment.amount / payment.numberOfCoins).moneyFull}',
+                  style: AppStyles.normal14,
                 ),
               ],
             ),
@@ -263,7 +267,7 @@ class _DeletePopup extends StatelessWidget {
                     topLeft: Radius.circular(radius),
                     topRight: Radius.circular(radius),
                   ),
-                  color: AppColors.red,
+                  color: AppColors.redLight,
                 ),
               ),
               Ink(
@@ -272,7 +276,7 @@ class _DeletePopup extends StatelessWidget {
                     bottomLeft: Radius.circular(radius),
                     bottomRight: Radius.circular(radius),
                   ),
-                  color: AppColors.lightGray,
+                  color: AppColors.grayLight,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -298,14 +302,14 @@ class _DeletePopup extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(horizontal: 30.0),
                               child: Text(
                                 context.localization.cancel,
-                                style: AppStyles.normal14.copyWith(color: AppColors.black),
+                                style: AppStyles.normal14.copyWith(color: AppColors.blackLight),
                               ),
                             ),
                           ),
                           SizedBox(width: 10),
                           ElevatedButton(
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(AppColors.red),
+                              backgroundColor: MaterialStateProperty.all(AppColors.redLight),
                             ),
                             onPressed: onTapDelete,
                             child: Padding(

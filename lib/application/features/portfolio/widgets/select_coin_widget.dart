@@ -1,4 +1,5 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
+import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/custom_text_field.dart';
 import 'package:crypto_portfolio/application/features/portfolio/bloc/add_payment_bloc/add_payment_bloc.dart';
@@ -99,7 +100,10 @@ class _SearchedCoinWidget extends StatelessWidget {
             children: [
               Image.network(searchCoinEntity.thumb, width: 20, height: 20),
               SizedBox(width: 10),
-              Text(searchCoinEntity.name),
+              Text(
+                searchCoinEntity.name,
+                style: AppStyles.normal14,
+              ),
             ],
           ),
         ),
@@ -131,7 +135,10 @@ class _SelectedCoinWidget extends StatelessWidget {
                   SizedBox(width: 5),
                   Image.network(coinEntity.image, width: 20, height: 20),
                   SizedBox(width: 10),
-                  Text(coinEntity.name),
+                  Text(
+                    coinEntity.name,
+                    style: AppStyles.normal14,
+                  ),
                 ],
               ),
               IconButton(

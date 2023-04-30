@@ -55,7 +55,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
             appBar: AppBar(
               shadowColor: AppColors.blue,
               backgroundColor: AppColors.white,
-              foregroundColor: AppColors.black,
+              foregroundColor: AppColors.blackLight,
             ),
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -168,7 +168,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
               child: Text(
                 title,
                 style: AppStyles.normal12.copyWith(
-                  color: _paymentType == value ? AppColors.black : AppColors.grey,
+                  color: _paymentType == value ? AppColors.blackLight : AppColors.grey,
                 ),
               ),
             ),

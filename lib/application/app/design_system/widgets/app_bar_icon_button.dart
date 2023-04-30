@@ -19,7 +19,7 @@ class AppBarIconButton extends StatelessWidget {
         child: IconButton(
           splashRadius: 20,
           onPressed: onTap,
-          icon: Icon(iconData, color: AppColors.black),
+          icon: Icon(iconData, color: AppColors.blackLight),
         ),
       ),
     );

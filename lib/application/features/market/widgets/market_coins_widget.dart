@@ -49,10 +49,10 @@ class MarketCoinsWidget extends StatelessWidget {
                             coins.list[i].symbol.toString().toUpperCase(),
                             style: AppStyles.bold14,
                           ),
-                          SizedBox(height: 5),
+                          SizedBox(height: 2),
                           Text(
                             coins.list[i].marketCap.moneyCompact,
-                            style: AppStyles.normal14,
+                            style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
                           ),
                         ],
                       ),
@@ -66,10 +66,10 @@ class MarketCoinsWidget extends StatelessWidget {
                     final Color color;
                     final IconData icon;
                     if (coins.list[i].priceChangePercentage24H < 0) {
-                      color = AppColors.red;
+                      color = AppColors.redLight;
                       icon = Icons.arrow_drop_down;
                     } else {
-                      color = AppColors.green;
+                      color = AppColors.greenLight;
                       icon = Icons.arrow_drop_up;
                     }
                     return Row(
@@ -112,20 +112,23 @@ class MarketPageRow extends StatelessWidget {
   final Widget marketCap;
   final Widget price;
   final Widget changes;
+  final double verticalPaddings;
 
   const MarketPageRow({
     this.index,
     required this.marketCap,
     required this.price,
     required this.changes,
+    this.verticalPaddings = 15,
   });
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
+      padding: EdgeInsets.only(
         right: 15,
-        bottom: 15,
-        top: 15,
+        bottom: verticalPaddings,
+        top: verticalPaddings,
       ),
       child: Row(
         children: [

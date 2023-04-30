@@ -19,7 +19,7 @@ class UpdateDataSnackBar {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        backgroundColor: error ? AppColors.red : AppColors.green,
+        backgroundColor: error ? AppColors.redLight : AppColors.greenLight,
         duration: Duration(seconds: error ? 4 : 1),
       ),
     );
