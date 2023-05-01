@@ -93,7 +93,10 @@ class PortfolioRepo {
     if (newHistory.contains(paymentEntity)) {
       newHistory.remove(paymentEntity);
     } else {
-      newHistory.insert(0, paymentEntity);
+      newHistory.add(paymentEntity);
+      newHistory.sort((a, b) {
+        return b.dateTime.compareTo(a.dateTime);
+      });
     }
     if (newHistory.isNotEmpty) {
       newCoins[newCoins.indexOf(coinEntity)] = coinEntity.copyWith(history: newHistory);

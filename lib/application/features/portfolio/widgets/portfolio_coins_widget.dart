@@ -112,10 +112,13 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
               button: InkWell(
                 borderRadius: BorderRadius.circular(10),
                 onTap: changeOpenDetails,
-                child: Icon(
-                  openDetails ? Icons.arrow_drop_up : Icons.arrow_drop_down,
-                  size: 35,
-                  color: AppColors.blackLight,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Icon(
+                    openDetails ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+                    size: 30,
+                    color: AppColors.blackLight,
+                  ),
                 ),
               ),
             ),

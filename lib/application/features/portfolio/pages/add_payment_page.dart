@@ -1,6 +1,7 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
+import 'package:crypto_portfolio/application/app/extension/date_time_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/nullable_string_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/custom_text_field.dart';
@@ -10,6 +11,7 @@ import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,6 +29,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
   String _paymentType = PaymentType.buy;
   final TextEditingController moneyController = TextEditingController();
   final TextEditingController coinsController = TextEditingController();
+  DateTime dateTime = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +100,47 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                         );
                       },
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 20),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 3,
+                          child: _DatePickerItem(
+                            title: 'Date',
+                            dateTime: dateTime.date(context),
+                            onTap: () => _showDialog(
+                              CupertinoDatePicker(
+                                initialDateTime: dateTime,
+                                mode: CupertinoDatePickerMode.date,
+                                use24hFormat: true,
+                                onDateTimeChanged: (DateTime newDate) {
+                                  setState(() => dateTime = newDate);
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          flex: 3,
+                          child: _DatePickerItem(
+                            title: 'Time',
+                            dateTime: dateTime.time,
+                            onTap: () => _showDialog(
+                              CupertinoDatePicker(
+                                initialDateTime: dateTime,
+                                mode: CupertinoDatePickerMode.time,
+                                use24hFormat: true,
+                                onDateTimeChanged: (DateTime newTime) {
+                                  setState(() => dateTime = newTime);
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
                     BlocBuilder<AddPaymentBloc, AddPaymentState>(
                       builder: (context, state) {
                         return ElevatedButton(
@@ -109,7 +152,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                                         AddPaymentEvent.updateHistory(
                                           paymentEntity: PaymentEntity(
                                             id: state.coin.id,
-                                            dateTime: DateTime.now(),
+                                            dateTime: dateTime,
                                             type: _paymentType,
                                             amount: moneyController.text.toDouble,
                                             numberOfCoins: coinsController.text.toDouble,
@@ -135,7 +178,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                         );
                       },
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: 20),
                   ],
                 ),
               ),
@@ -189,10 +232,70 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
     }
   }
 
+  void _showDialog(Widget child) {
+    showCupertinoModalPopup<void>(
+      context: context,
+      builder: (BuildContext context) => Container(
+        height: 216,
+        padding: const EdgeInsets.only(top: 6.0),
+        margin: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        color: CupertinoColors.systemBackground.resolveFrom(context),
+        child: SafeArea(
+          top: false,
+          child: child,
+        ),
+      ),
+    );
+  }
+
   @override
   void dispose() {
     moneyController.dispose();
     coinsController.dispose();
     super.dispose();
+  }
+}
+
+class _DatePickerItem extends StatelessWidget {
+  final String title;
+  final String dateTime;
+  final VoidCallback onTap;
+
+  const _DatePickerItem({
+    required this.title,
+    required this.dateTime,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(4),
+          border: Border.all(
+            color: AppColors.grey,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 13.0),
+          child: Center(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('$title: ', style: AppStyles.normal14),
+                Text(
+                  dateTime,
+                  style: AppStyles.normal14.copyWith(color: AppColors.blue),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
