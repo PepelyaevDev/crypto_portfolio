@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 ///TODO: проверка на продажу большего количества монет чем есть
 ///TODO: pull refresh на всех страницах
 ///TODO: общий портфельный виджет и детальная с полной историей
-///TODO: поменять иконки в нижнем меню
 ///TODO: библиотека для графиков https://pub.dev/packages/syncfusion_flutter_charts
 
 Future<void> main() async {

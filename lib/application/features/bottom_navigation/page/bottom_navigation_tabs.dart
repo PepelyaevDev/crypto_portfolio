@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/design_system/icons/app_icons.dart';
 import 'package:crypto_portfolio/application/features/market/page/market_coins_page.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/portfolio_page.dart';
 import 'package:flutter/material.dart';
@@ -7,19 +8,24 @@ class BottomNavigationTabs {
     BottomNavigationKey.market: BottomNavigationTab(
       index: 0,
       screen: MarketCoinsPage(),
-      icon: Icon(Icons.query_stats),
+      icon: _bottomNavigationIcon(AppIcons.chartLine),
     ),
     BottomNavigationKey.portfolio: BottomNavigationTab(
       index: 1,
       screen: PortfolioPage(),
-      icon: Icon(Icons.shopping_bag),
+      icon: _bottomNavigationIcon(AppIcons.briefcase),
     ),
     BottomNavigationKey.news: BottomNavigationTab(
       index: 2,
       screen: SizedBox(),
-      icon: Icon(Icons.newspaper),
+      icon: _bottomNavigationIcon(AppIcons.newspaper),
     ),
   };
+
+  static Widget _bottomNavigationIcon(IconData iconData) => Padding(
+        padding: const EdgeInsets.only(bottom: 2.0),
+        child: Icon(iconData, size: 18),
+      );
 }
 
 enum BottomNavigationKey { market, portfolio, news }
