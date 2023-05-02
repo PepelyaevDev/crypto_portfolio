@@ -98,7 +98,12 @@ class _SearchedCoinWidget extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.network(searchCoinEntity.thumb, width: 20, height: 20),
+              Image.network(
+                searchCoinEntity.thumb,
+                width: 20,
+                height: 20,
+                errorBuilder: (_, __, ___) => SizedBox(),
+              ),
               SizedBox(width: 10),
               Text(
                 searchCoinEntity.name,
@@ -133,7 +138,12 @@ class _SelectedCoinWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(width: 5),
-                  Image.network(coinEntity.image, width: 20, height: 20),
+                  Image.network(
+                    coinEntity.image,
+                    width: 20,
+                    height: 20,
+                    errorBuilder: (_, __, ___) => SizedBox(),
+                  ),
                   SizedBox(width: 10),
                   Text(
                     coinEntity.name,

@@ -71,7 +71,12 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
           mainAxisSize: MainAxisSize.min,
           children: [
             _PortfolioPageRow(
-              coin: Image.network(widget.coinEntity.image, width: 25, height: 25),
+              coin: Image.network(
+                widget.coinEntity.image,
+                width: 25,
+                height: 25,
+                errorBuilder: (_, __, ___) => SizedBox(),
+              ),
               name: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,

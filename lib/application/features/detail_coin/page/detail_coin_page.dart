@@ -49,7 +49,12 @@ class _DetailCoinPageState extends State<DetailCoinPage> with SingleTickerProvid
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.network(widget.coinLogo, width: 30, height: 30),
+              Image.network(
+                widget.coinLogo,
+                width: 30,
+                height: 30,
+                errorBuilder: (_, __, ___) => SizedBox(),
+              ),
               SizedBox(width: 10),
               Text(
                 widget.coinSymbol.toUpperCase(),

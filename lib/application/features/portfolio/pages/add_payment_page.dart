@@ -144,10 +144,10 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                     BlocBuilder<AddPaymentBloc, AddPaymentState>(
                       builder: (context, state) {
                         return ElevatedButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              state.maybeMap(
-                                success: (state) {
+                          onPressed: state.maybeMap(
+                            success: (state) {
+                              return () {
+                                if (_formKey.currentState!.validate()) {
                                   context.read<AddPaymentBloc>().add(
                                         AddPaymentEvent.updateHistory(
                                           paymentEntity: PaymentEntity(
@@ -161,11 +161,11 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                                         ),
                                       );
                                   Navigator.of(context).pop();
-                                },
-                                orElse: () => null,
-                              );
-                            }
-                          },
+                                }
+                              };
+                            },
+                            orElse: () => null,
+                          ),
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
                               state.maybeMap(

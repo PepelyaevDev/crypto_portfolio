@@ -40,7 +40,12 @@ class MarketCoinsWidget extends StatelessWidget {
                   marketCap: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.network(coins.list[i].image, width: 20, height: 20),
+                      Image.network(
+                        coins.list[i].image,
+                        width: 20,
+                        height: 20,
+                        errorBuilder: (_, __, ___) => SizedBox(),
+                      ),
                       SizedBox(width: 10),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
