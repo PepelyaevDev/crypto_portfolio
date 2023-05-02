@@ -22,59 +22,65 @@ class DetailPortfolioCoinWidget extends StatelessWidget {
       create: (context) => DetailPortfolioCoinBloc(context.read<PortfolioRepo>(), coinId)
         ..add(DetailPortfolioCoinEvent.refreshData()),
       child: Builder(builder: (context) {
-        return BlocConsumer<DetailPortfolioCoinBloc, DetailPortfolioCoinState>(
-          listener: (context, state) {
-            if (!state.loading) {
-              UpdateDataSnackBar.show(
-                context: context,
-                error: state.error != null,
-                errorInfo: state.error?.getMessage(context),
-              );
-            }
+        return RefreshIndicator(
+          onRefresh: () async {
+            context.read<DetailPortfolioCoinBloc>().add(DetailPortfolioCoinEvent.refreshData());
+            return;
           },
-          builder: (context, state) {
-            if (state.coin == null) {
-              return EmptyPortfolioCoinWidget(coinId: coinId);
-            }
-            return ListView(
-              children: [
-                DetailPortfolioStatWidget(
-                  coin: state.coin!,
-                  loading: state.loading,
-                  onTapUpdate: () {
-                    context
-                        .read<DetailPortfolioCoinBloc>()
-                        .add(DetailPortfolioCoinEvent.refreshData());
-                  },
-                ),
-                SizedBox(height: 10),
-                PaymentHistoryWidget(
-                  history: state.coin!.history,
-                  name: state.coin!.symbol.toUpperCase(),
-                  onTapAdd: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => AddPaymentPage(
-                          coinID: coinId,
+          child: BlocConsumer<DetailPortfolioCoinBloc, DetailPortfolioCoinState>(
+            listener: (context, state) {
+              if (!state.loading) {
+                UpdateDataSnackBar.show(
+                  context: context,
+                  error: state.error != null,
+                  errorInfo: state.error?.getMessage(context),
+                );
+              }
+            },
+            builder: (context, state) {
+              if (state.coin == null) {
+                return EmptyPortfolioCoinWidget(coinId: coinId);
+              }
+              return ListView(
+                children: [
+                  DetailPortfolioStatWidget(
+                    coin: state.coin!,
+                    loading: state.loading,
+                    onTapUpdate: () {
+                      context
+                          .read<DetailPortfolioCoinBloc>()
+                          .add(DetailPortfolioCoinEvent.refreshData());
+                    },
+                  ),
+                  SizedBox(height: 10),
+                  PaymentHistoryWidget(
+                    history: state.coin!.history,
+                    name: state.coin!.symbol.toUpperCase(),
+                    onTapAdd: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => AddPaymentPage(
+                            coinID: coinId,
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                  onTapDelete: (PaymentEntity payment) {
-                    context
-                        .read<DetailPortfolioCoinBloc>()
-                        .add(DetailPortfolioCoinEvent.deletePayment(payment));
-                  },
-                  onTapDeleteAll: () {
-                    context
-                        .read<DetailPortfolioCoinBloc>()
-                        .add(DetailPortfolioCoinEvent.deleteCoin(state.coin!.id));
-                  },
-                ),
-                SizedBox(height: 30),
-              ],
-            );
-          },
+                      );
+                    },
+                    onTapDelete: (PaymentEntity payment) {
+                      context
+                          .read<DetailPortfolioCoinBloc>()
+                          .add(DetailPortfolioCoinEvent.deletePayment(payment));
+                    },
+                    onTapDeleteAll: () {
+                      context
+                          .read<DetailPortfolioCoinBloc>()
+                          .add(DetailPortfolioCoinEvent.deleteCoin(state.coin!.id));
+                    },
+                  ),
+                  SizedBox(height: 30),
+                ],
+              );
+            },
+          ),
         );
       }),
     );

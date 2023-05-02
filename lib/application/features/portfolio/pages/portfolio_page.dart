@@ -61,7 +61,13 @@ class PortfolioPage extends StatelessWidget {
               ),
               body: portfolioState.coins.list.isEmpty
                   ? EmptyPortfolioWidget()
-                  : PortfolioCoinsWidget(coins: portfolioState.coins),
+                  : RefreshIndicator(
+                      onRefresh: () async {
+                        context.read<PortfolioBloc>().add(PortfolioEvent.refreshData());
+                        return;
+                      },
+                      child: PortfolioCoinsWidget(coins: portfolioState.coins),
+                    ),
             );
           },
         );

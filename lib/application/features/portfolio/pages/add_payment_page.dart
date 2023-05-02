@@ -106,7 +106,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                         Expanded(
                           flex: 3,
                           child: _DatePickerItem(
-                            title: 'Date',
+                            title: context.localization.date,
                             dateTime: dateTime.date(context),
                             onTap: () => _showDialog(
                               CupertinoDatePicker(
@@ -124,7 +124,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                         Expanded(
                           flex: 3,
                           child: _DatePickerItem(
-                            title: 'Time',
+                            title: context.localization.time,
                             dateTime: dateTime.time,
                             onTap: () => _showDialog(
                               CupertinoDatePicker(
@@ -286,10 +286,10 @@ class _DatePickerItem extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('$title: ', style: AppStyles.normal14),
+                Text('$title: ', style: AppStyles.normal12),
                 Text(
                   dateTime,
-                  style: AppStyles.normal14.copyWith(color: AppColors.blue),
+                  style: AppStyles.normal12.copyWith(color: AppColors.blue),
                 )
               ],
             ),

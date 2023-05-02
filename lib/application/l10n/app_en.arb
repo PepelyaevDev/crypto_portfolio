@@ -42,6 +42,8 @@
     "numberOfCoins": "Number of coins",
     "validatorEmptyField": "This field cannot be empty",
     "validatorInvalidNumber": "Please enter a valid number. Example: 71.1203",
+    "date": "Date",
+    "time": "Time",
 
     "response429": "Server is not available. Please wait 2 minutes and try again",
     "unknownError": "Something went wrong. Try again later please"

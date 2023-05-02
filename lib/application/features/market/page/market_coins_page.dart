@@ -60,7 +60,13 @@ class MarketCoinsPage extends StatelessWidget {
                     preferredSize: Size(double.infinity, 35),
                   ),
                 ),
-                body: MarketCoinsWidget(coins: state.coins),
+                body: RefreshIndicator(
+                  onRefresh: () async {
+                    context.read<MarketBloc>().add(MarketEvent.refreshData());
+                    return;
+                  },
+                  child: MarketCoinsWidget(coins: state.coins),
+                ),
               );
             },
           );
