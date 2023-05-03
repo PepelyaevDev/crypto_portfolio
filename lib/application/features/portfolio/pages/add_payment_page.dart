@@ -8,6 +8,7 @@ import 'package:crypto_portfolio/application/app/design_system/widgets/custom_te
 import 'package:crypto_portfolio/application/features/portfolio/bloc/add_payment_bloc/add_payment_bloc.dart';
 import 'package:crypto_portfolio/application/features/portfolio/widgets/select_coin_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
+import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
@@ -96,7 +97,11 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                           labelText: context.localization.numberOfCoins,
                           keyboardType: TextInputType.numberWithOptions(),
                           controller: coinsController,
-                          validator: (value) => _validator(value, context),
+                          validator: (value) => _coinsValidator(
+                            value,
+                            state.maybeMap(success: (state) => state.coin, orElse: () => null),
+                            context,
+                          ),
                         );
                       },
                     ),
@@ -219,6 +224,19 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
         ),
       ),
     );
+  }
+
+  String? _coinsValidator(String? value, CoinEntity? coin, BuildContext context) {
+    final String? firstChek = _validator(value, context);
+    if (firstChek != null) {
+      return firstChek;
+    } else {
+      if (coin == null) return context.localization.notSelectedCoin;
+      if (_paymentType == PaymentType.sell && value.toDouble > coin.holdings) {
+        return '${context.localization.youHave} ${coin.holdings.toString()} ${coin.symbol.toUpperCase()}. ${context.localization.cannotSell} $value ${coin.symbol.toUpperCase()}';
+      }
+      return null;
+    }
   }
 
   String? _validator(String? value, BuildContext context) {

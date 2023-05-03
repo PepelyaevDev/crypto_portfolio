@@ -1,3 +1,4 @@
+import 'package:decimal/decimal.dart';
 import 'package:money_formatter/money_formatter.dart';
 
 extension DoubleExtension on double {
@@ -9,5 +10,19 @@ extension DoubleExtension on double {
     } else {
       return toStringAsFixed(2);
     }
+  }
+
+  double addNumber(double secondNumber) {
+    final Decimal first = Decimal.parse(toString());
+    final Decimal second = Decimal.parse(secondNumber.toString());
+    final Decimal result = first + second;
+    return result.toDouble();
+  }
+
+  double subtractNumber(double secondNumber) {
+    final Decimal first = Decimal.parse(toString());
+    final Decimal second = Decimal.parse(secondNumber.toString());
+    final Decimal result = first - second;
+    return result.toDouble();
   }
 }

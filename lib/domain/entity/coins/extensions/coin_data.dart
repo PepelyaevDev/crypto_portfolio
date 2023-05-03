@@ -1,4 +1,5 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
+import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:flutter/material.dart';
 
@@ -23,10 +24,10 @@ extension CoinData on CoinEntity {
     for (final payment in history) {
       switch (payment.type) {
         case PaymentType.buy:
-          value = value + payment.numberOfCoins;
+          value = value.addNumber(payment.numberOfCoins);
           break;
         case PaymentType.sell:
-          value = value - payment.numberOfCoins;
+          value = value.subtractNumber(payment.numberOfCoins);
           break;
       }
     }

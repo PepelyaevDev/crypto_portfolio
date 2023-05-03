@@ -5,7 +5,6 @@ import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:flutter/material.dart';
 
 ///TODO: отображение для кейсов, когда вывел из монеты больше чем вложил
-///TODO: проверка на продажу большего количества монет чем есть
 ///TODO: общий портфельный виджет и детальная с полной историей
 ///TODO: библиотека для графиков https://pub.dev/packages/syncfusion_flutter_charts
 

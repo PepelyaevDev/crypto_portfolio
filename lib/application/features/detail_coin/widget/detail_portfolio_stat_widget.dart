@@ -66,7 +66,7 @@ class DetailPortfolioStatWidget extends StatelessWidget {
                       style: AppStyles.normal14,
                     ),
                     secondWidget: Text(
-                      coin.holdings.toStringAsFixed(5),
+                      coin.holdings.toString(),
                       style: AppStyles.bold14.copyWith(color: AppColors.blackLight),
                       textAlign: TextAlign.end,
                     ),

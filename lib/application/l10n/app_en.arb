@@ -44,6 +44,9 @@
     "validatorInvalidNumber": "Please enter a valid number. Example: 71.1203",
     "date": "Date",
     "time": "Time",
+    "notSelectedCoin": "You have not selected a coin",
+    "youHave": "You have",
+    "cannotSell": "You cannot sell",
 
     "response429": "Server is not available. Please wait 2 minutes and try again",
     "unknownError": "Something went wrong. Try again later please"
