@@ -48,8 +48,7 @@ class PortfolioStatWidget extends StatelessWidget {
               ),
               _PortfolioStatRow(
                 title: context.localization.totalProfitLoss,
-                value: ' ${coins.percentageDifference.percentageToString} % '
-                    '(${coins.dollarDifference.moneyFull})',
+                value: coins.profit,
                 valueIcon: coins.iconData,
                 valueColor: coins.color,
               ),

@@ -4,7 +4,7 @@ import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:flutter/material.dart';
 
-///TODO: отображение для кейсов, когда вывел из монеты больше чем вложил
+///TODO: добавление платежей с 0
 ///TODO: общий портфельный виджет и детальная с полной историей
 ///TODO: библиотека для графиков https://pub.dev/packages/syncfusion_flutter_charts
 

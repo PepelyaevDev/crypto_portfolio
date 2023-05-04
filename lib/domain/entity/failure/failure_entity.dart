@@ -13,7 +13,7 @@ class Failure with _$Failure {
     int? statusCode,
   }) = _Failure;
 
-  factory Failure.from(Object e) {
+  factory Failure.from(Object? e) {
     if (e is DioError) {
       return Failure(
         errorType: ErrorType.values.firstWhere((t) => t.name == e.type.name),

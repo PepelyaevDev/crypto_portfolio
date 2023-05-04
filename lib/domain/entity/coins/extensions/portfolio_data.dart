@@ -1,7 +1,9 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
+import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:flutter/material.dart';
+import 'package:money_formatter/money_formatter.dart';
 
 extension PortfolioData on CoinsEntity {
   double get invested {
@@ -24,13 +26,24 @@ extension PortfolioData on CoinsEntity {
 
   IconData get iconData => holdingsValue < invested ? Icons.arrow_drop_down : Icons.arrow_drop_up;
 
-  double get dollarDifference {
-    final double value = holdingsValue - invested;
-    return value > 0 ? value : value * -1;
-  }
+  String get profit {
+    double dollarDiff = holdingsValue - invested;
+    dollarDiff = dollarDiff > 0 ? dollarDiff : dollarDiff * -1;
 
-  double get percentageDifference {
-    final double value = dollarDifference / invested * 100;
-    return value > 0 ? value : value * -1;
+    double percentageDiff = dollarDiff / invested * 100;
+    String? percentageDiffString;
+    if (percentageDiff < 0) {
+      percentageDiffString = null;
+    } else if (percentageDiff > 10000) {
+      percentageDiffString = MoneyFormatter(amount: percentageDiff).output.compactNonSymbol;
+    } else {
+      percentageDiffString = percentageDiff.toStringAsFixed(2);
+    }
+
+    if (percentageDiffString == null) {
+      return ' ${dollarDiff.moneyFull}';
+    } else {
+      return ' $percentageDiffString % (${dollarDiff.moneyFull})';
+    }
   }
 }

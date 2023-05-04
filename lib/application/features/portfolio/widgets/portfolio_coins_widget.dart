@@ -100,14 +100,12 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
                     widget.coinEntity.holdingsValue.moneyFull,
                     style: AppStyles.bold14,
                   ),
-                  SizedBox(height: 5),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(widget.coinEntity.iconData, color: widget.coinEntity.color, size: 14),
+                      Icon(widget.coinEntity.iconData, color: widget.coinEntity.color),
                       Text(
-                        ' ${widget.coinEntity.percentageDifference.percentageToString} % '
-                        '(${widget.coinEntity.dollarDifference.moneyFull})',
+                        widget.coinEntity.profit,
                         style: AppStyles.bold12.copyWith(color: widget.coinEntity.color),
                       ),
                     ],
@@ -152,7 +150,7 @@ class _PortfolioCoinWidgetDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                coinEntity.averageNetCost.moneyFull,
+                coinEntity.averageNetCost,
                 style: AppStyles.bold14,
               ),
               Text(

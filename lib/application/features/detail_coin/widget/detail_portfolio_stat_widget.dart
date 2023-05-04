@@ -82,8 +82,7 @@ class DetailPortfolioStatWidget extends StatelessWidget {
                       children: [
                         Icon(coin.iconData, color: coin.color),
                         Text(
-                          '${coin.percentageDifference.percentageToString} % '
-                          '(${coin.dollarDifference.moneyFull})',
+                          coin.profit,
                           style: AppStyles.bold14.copyWith(color: coin.color),
                         ),
                       ],
@@ -98,7 +97,7 @@ class DetailPortfolioStatWidget extends StatelessWidget {
                     ),
                     secondWidget: _PortfolioDataColumn(
                       title: context.localization.averageNetCost,
-                      value: coin.averageNetCost.moneyFull,
+                      value: coin.averageNetCost,
                       valueColor: coin.color,
                       crossAxisAlignment: CrossAxisAlignment.end,
                     ),
