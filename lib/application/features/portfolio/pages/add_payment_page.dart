@@ -228,15 +228,13 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
 
   String? _coinsValidator(String? value, CoinEntity? coin, BuildContext context) {
     final String? firstChek = _validator(value, context);
-    if (firstChek != null) {
-      return firstChek;
-    } else {
-      if (coin == null) return context.localization.notSelectedCoin;
-      if (_paymentType == PaymentType.sell && value.toDouble > coin.holdings) {
-        return '${context.localization.youHave} ${coin.holdings.toString()} ${coin.symbol.toUpperCase()}. ${context.localization.cannotSell} $value ${coin.symbol.toUpperCase()}';
-      }
-      return null;
+    if (firstChek != null) return firstChek;
+    if (value.toDouble == 0) return context.localization.mustBeGreater0;
+    if (coin == null) return context.localization.notSelectedCoin;
+    if (_paymentType == PaymentType.sell && value.toDouble > coin.holdings) {
+      return '${context.localization.youHave} ${coin.holdings.toString()} ${coin.symbol.toUpperCase()}. ${context.localization.cannotSell} $value ${coin.symbol.toUpperCase()}';
     }
+    return null;
   }
 
   String? _validator(String? value, BuildContext context) {

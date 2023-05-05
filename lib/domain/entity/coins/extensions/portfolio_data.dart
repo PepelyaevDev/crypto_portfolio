@@ -30,7 +30,7 @@ extension PortfolioData on CoinsEntity {
     double dollarDiff = holdingsValue - invested;
     dollarDiff = dollarDiff > 0 ? dollarDiff : dollarDiff * -1;
 
-    double percentageDiff = dollarDiff / invested * 100;
+    double percentageDiff = invested == 0 ? -1 : dollarDiff / invested * 100;
     String? percentageDiffString;
     if (percentageDiff < 0) {
       percentageDiffString = null;

@@ -47,6 +47,7 @@
     "notSelectedCoin": "You have not selected a coin",
     "youHave": "You have",
     "cannotSell": "You cannot sell",
+    "mustBeGreater0": "Value must be greater than 0",
 
     "response429": "Server is not available. Please wait 2 minutes and try again",
     "unknownError": "Something went wrong. Try again later please"
