@@ -1,7 +1,8 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
-import 'package:crypto_portfolio/application/features/detail_coin/widget/detail_portfolio_coin_widget.dart';
+import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/detail_market_coin_widget.dart';
+import 'package:crypto_portfolio/application/features/detail_coin/widget/portfolio_widgets/detail_portfolio_coin_widget.dart';
 import 'package:flutter/material.dart';
 
 class DetailCoinPage extends StatefulWidget {
@@ -80,12 +81,7 @@ class _DetailCoinPageState extends State<DetailCoinPage> with SingleTickerProvid
       body: TabBarView(
         controller: tabController,
         children: <Widget>[
-          Center(
-            child: Text(
-              'market info',
-              style: AppStyles.normal14,
-            ),
-          ),
+          DetailMarketCoinWidget(widget.coinId),
           DetailPortfolioCoinWidget(widget.coinId),
         ],
       ),

@@ -50,5 +50,14 @@
     "mustBeGreater0": "Value must be greater than 0",
 
     "response429": "Server is not available. Please wait 2 minutes and try again",
-    "unknownError": "Something went wrong. Try again later please"
+    "unknownError": "Something went wrong. Try again later please",
+
+    "d1": "24H",
+    "d7": "7D",
+    "d30": "1M",
+    "d90": "3M",
+    "d365": "1Y",
+    "d1095": "3Y",
+    "d1825": "5Y",
+    "dMax": "MAX"
 }

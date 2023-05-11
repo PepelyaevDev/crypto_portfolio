@@ -1,9 +1,9 @@
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/bloc/detail_portfolio_coin_bloc'
     '/detail_portfolio_coin_bloc.dart';
-import 'package:crypto_portfolio/application/features/detail_coin/widget/empty_potrfolio_coin_widget.dart';
-import 'package:crypto_portfolio/application/features/detail_coin/widget/payment_history_widget.dart';
-import 'package:crypto_portfolio/application/features/detail_coin/widget/detail_portfolio_stat_widget.dart';
+import 'package:crypto_portfolio/application/features/detail_coin/widget/portfolio_widgets/empty_potrfolio_coin_widget.dart';
+import 'package:crypto_portfolio/application/features/detail_coin/widget/portfolio_widgets/payment_history_widget.dart';
+import 'package:crypto_portfolio/application/features/detail_coin/widget/portfolio_widgets/detail_portfolio_stat_widget.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';

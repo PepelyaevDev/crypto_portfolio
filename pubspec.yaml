@@ -21,6 +21,7 @@ dependencies:
   money_formatter: ^0.0.3
   pretty_dio_logger: ^1.2.0-beta-1
   rxdart: ^0.27.7
+  syncfusion_flutter_charts: ^21.2.3
   url_launcher: ^6.1.10
   flutter: 
     sdk: flutter

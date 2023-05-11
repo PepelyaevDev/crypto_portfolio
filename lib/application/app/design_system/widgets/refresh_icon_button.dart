@@ -5,11 +5,13 @@ class RefreshIconButton extends StatelessWidget {
   final bool loading;
   final VoidCallback onTapUpdate;
   final double rightPadding;
+  final double height;
 
   RefreshIconButton({
     required this.loading,
     required this.onTapUpdate,
     this.rightPadding = 10,
+    this.height = 50,
   });
 
   @override
@@ -17,7 +19,7 @@ class RefreshIconButton extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(right: rightPadding),
       child: SizedBox(
-        height: 50,
+        height: height,
         width: 40,
         child: loading
             ? Center(
