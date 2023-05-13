@@ -15,7 +15,7 @@ class CoinGeckoWidget extends StatelessWidget {
       children: [
         Text(
           'Powered by ',
-          style: AppStyles.normal14,
+          style: AppStyles.normal12,
         ),
         InkWell(
           onTap: () {
@@ -26,7 +26,7 @@ class CoinGeckoWidget extends StatelessWidget {
             padding: const EdgeInsets.all(5.0),
             child: Text(
               'CoinGecko API',
-              style: AppStyles.normal14.copyWith(color: AppColors.blue),
+              style: AppStyles.normal12.copyWith(color: AppColors.blue),
             ),
           ),
         ),

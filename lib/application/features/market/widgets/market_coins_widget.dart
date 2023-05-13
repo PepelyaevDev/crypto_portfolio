@@ -105,7 +105,7 @@ class MarketCoinsWidget extends StatelessWidget {
           child: Align(
             alignment: Alignment.centerRight,
             child: Padding(
-              padding: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(2.0),
               child: CoinGeckoWidget(),
             ),
           ),
