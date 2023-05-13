@@ -214,56 +214,23 @@ abstract class _GetCoin implements MarketCoinEvent {
 
 /// @nodoc
 mixin _$MarketCoinState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(CoinEntity coinEntity) success,
-    required TResult Function(Failure error) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(CoinEntity coinEntity)? success,
-    TResult? Function(Failure error)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(CoinEntity coinEntity)? success,
-    TResult Function(Failure error)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  CoinEntity? get coin => throw _privateConstructorUsedError;
+  bool get loading => throw _privateConstructorUsedError;
+  Failure? get error => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $MarketCoinStateCopyWith<MarketCoinState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MarketCoinStateCopyWith<$Res> {
   factory $MarketCoinStateCopyWith(MarketCoinState value, $Res Function(MarketCoinState) then) =
       _$MarketCoinStateCopyWithImpl<$Res, MarketCoinState>;
+  @useResult
+  $Res call({CoinEntity? coin, bool loading, Failure? error});
+
+  $CoinEntityCopyWith<$Res>? get coin;
+  $FailureCopyWith<$Res>? get error;
 }
 
 /// @nodoc
@@ -275,396 +242,152 @@ class _$MarketCoinStateCopyWithImpl<$Res, $Val extends MarketCoinState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(_$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$MarketCoinStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Loading implements _Loading {
-  const _$_Loading();
-
-  @override
-  String toString() {
-    return 'MarketCoinState.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Loading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(CoinEntity coinEntity) success,
-    required TResult Function(Failure error) error,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(CoinEntity coinEntity)? success,
-    TResult? Function(Failure error)? error,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(CoinEntity coinEntity)? success,
-    TResult Function(Failure error)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading implements MarketCoinState {
-  const factory _Loading() = _$_Loading;
-}
-
-/// @nodoc
-abstract class _$$_SuccessCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(_$_Success value, $Res Function(_$_Success) then) =
-      __$$_SuccessCopyWithImpl<$Res>;
-  @useResult
-  $Res call({CoinEntity coinEntity});
-
-  $CoinEntityCopyWith<$Res> get coinEntity;
-}
-
-/// @nodoc
-class __$$_SuccessCopyWithImpl<$Res> extends _$MarketCoinStateCopyWithImpl<$Res, _$_Success>
-    implements _$$_SuccessCopyWith<$Res> {
-  __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
-      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? coinEntity = null,
+    Object? coin = freezed,
+    Object? loading = null,
+    Object? error = freezed,
   }) {
-    return _then(_$_Success(
-      null == coinEntity
-          ? _value.coinEntity
-          : coinEntity // ignore: cast_nullable_to_non_nullable
-              as CoinEntity,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CoinEntityCopyWith<$Res> get coinEntity {
-    return $CoinEntityCopyWith<$Res>(_value.coinEntity, (value) {
-      return _then(_value.copyWith(coinEntity: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$_Success implements _Success {
-  const _$_Success(this.coinEntity);
-
-  @override
-  final CoinEntity coinEntity;
-
-  @override
-  String toString() {
-    return 'MarketCoinState.success(coinEntity: $coinEntity)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Success &&
-            (identical(other.coinEntity, coinEntity) || other.coinEntity == coinEntity));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, coinEntity);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(CoinEntity coinEntity) success,
-    required TResult Function(Failure error) error,
-  }) {
-    return success(coinEntity);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(CoinEntity coinEntity)? success,
-    TResult? Function(Failure error)? error,
-  }) {
-    return success?.call(coinEntity);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(CoinEntity coinEntity)? success,
-    TResult Function(Failure error)? error,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(coinEntity);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Success implements MarketCoinState {
-  const factory _Success(final CoinEntity coinEntity) = _$_Success;
-
-  CoinEntity get coinEntity;
-  @JsonKey(ignore: true)
-  _$$_SuccessCopyWith<_$_Success> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Failure error});
-
-  $FailureCopyWith<$Res> get error;
-}
-
-/// @nodoc
-class __$$_ErrorCopyWithImpl<$Res> extends _$MarketCoinStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then) : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? error = null,
-  }) {
-    return _then(_$_Error(
-      null == error
+    return _then(_value.copyWith(
+      coin: freezed == coin
+          ? _value.coin
+          : coin // ignore: cast_nullable_to_non_nullable
+              as CoinEntity?,
+      loading: null == loading
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as Failure,
-    ));
+              as Failure?,
+    ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $FailureCopyWith<$Res> get error {
-    return $FailureCopyWith<$Res>(_value.error, (value) {
-      return _then(_value.copyWith(error: value));
+  $CoinEntityCopyWith<$Res>? get coin {
+    if (_value.coin == null) {
+      return null;
+    }
+
+    return $CoinEntityCopyWith<$Res>(_value.coin!, (value) {
+      return _then(_value.copyWith(coin: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FailureCopyWith<$Res>? get error {
+    if (_value.error == null) {
+      return null;
+    }
+
+    return $FailureCopyWith<$Res>(_value.error!, (value) {
+      return _then(_value.copyWith(error: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-
-class _$_Error implements _Error {
-  const _$_Error(this.error);
+abstract class _$$_MarketCoinStateCopyWith<$Res> implements $MarketCoinStateCopyWith<$Res> {
+  factory _$$_MarketCoinStateCopyWith(
+          _$_MarketCoinState value, $Res Function(_$_MarketCoinState) then) =
+      __$$_MarketCoinStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({CoinEntity? coin, bool loading, Failure? error});
 
   @override
-  final Failure error;
+  $CoinEntityCopyWith<$Res>? get coin;
+  @override
+  $FailureCopyWith<$Res>? get error;
+}
+
+/// @nodoc
+class __$$_MarketCoinStateCopyWithImpl<$Res>
+    extends _$MarketCoinStateCopyWithImpl<$Res, _$_MarketCoinState>
+    implements _$$_MarketCoinStateCopyWith<$Res> {
+  __$$_MarketCoinStateCopyWithImpl(
+      _$_MarketCoinState _value, $Res Function(_$_MarketCoinState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? coin = freezed,
+    Object? loading = null,
+    Object? error = freezed,
+  }) {
+    return _then(_$_MarketCoinState(
+      coin: freezed == coin
+          ? _value.coin
+          : coin // ignore: cast_nullable_to_non_nullable
+              as CoinEntity?,
+      loading: null == loading
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as Failure?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_MarketCoinState implements _MarketCoinState {
+  const _$_MarketCoinState({this.coin, this.loading = false, this.error});
+
+  @override
+  final CoinEntity? coin;
+  @override
+  @JsonKey()
+  final bool loading;
+  @override
+  final Failure? error;
 
   @override
   String toString() {
-    return 'MarketCoinState.error(error: $error)';
+    return 'MarketCoinState(coin: $coin, loading: $loading, error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Error &&
+            other is _$_MarketCoinState &&
+            (identical(other.coin, coin) || other.coin == coin) &&
+            (identical(other.loading, loading) || other.loading == loading) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error);
+  int get hashCode => Object.hash(runtimeType, coin, loading, error);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith => __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(CoinEntity coinEntity) success,
-    required TResult Function(Failure error) error,
-  }) {
-    return error(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(CoinEntity coinEntity)? success,
-    TResult? Function(Failure error)? error,
-  }) {
-    return error?.call(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(CoinEntity coinEntity)? success,
-    TResult Function(Failure error)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
+  _$$_MarketCoinStateCopyWith<_$_MarketCoinState> get copyWith =>
+      __$$_MarketCoinStateCopyWithImpl<_$_MarketCoinState>(this, _$identity);
 }
 
-abstract class _Error implements MarketCoinState {
-  const factory _Error(final Failure error) = _$_Error;
+abstract class _MarketCoinState implements MarketCoinState {
+  const factory _MarketCoinState(
+      {final CoinEntity? coin, final bool loading, final Failure? error}) = _$_MarketCoinState;
 
-  Failure get error;
+  @override
+  CoinEntity? get coin;
+  @override
+  bool get loading;
+  @override
+  Failure? get error;
+  @override
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith => throw _privateConstructorUsedError;
+  _$$_MarketCoinStateCopyWith<_$_MarketCoinState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

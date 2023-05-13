@@ -10,6 +10,7 @@ class UpdateDataSnackBar {
   }) {
     if (ModalRoute.of(context) == null) return;
     if (ModalRoute.of(context)!.isCurrent == false) return;
+    ScaffoldMessenger.of(context).clearSnackBars();
     final String message;
     if (error) {
       message = errorInfo ?? context.localization.unknownError;

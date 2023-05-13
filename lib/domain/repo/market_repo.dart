@@ -22,6 +22,18 @@ class MarketRepo {
     return _hiveApiClient.coins.getMarketCoins().convertToCoinsEntity;
   }
 
+  Future<Either<Failure, CoinsEntity>> getCoinsRemote() async {
+    try {
+      final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoins();
+      final List<CoinEntity> coinsList = geckoCoins.map((e) => e.createEmptyCoin).toList();
+      final CoinsEntity coinsEntity = CoinsEntity(list: coinsList, updateTime: DateTime.now());
+      await _hiveApiClient.coins.updateMarketCoins(coinsEntity.convertToJson);
+      return right(coinsEntity);
+    } catch (e) {
+      return left(Failure.from(e));
+    }
+  }
+
   Future<Either<Failure, MarketChartEntity>> getMarketChart({
     required String id,
     required MarketChartDistance distance,
@@ -42,18 +54,6 @@ class MarketRepo {
       final CoinEntity coinEntity =
           (await _geckoApiClient.coins.getMarketCoinById(id)).createEmptyCoin;
       return right(coinEntity);
-    } catch (e) {
-      return left(Failure.from(e));
-    }
-  }
-
-  Future<Either<Failure, CoinsEntity>> getCoinsRemote() async {
-    try {
-      final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoins();
-      final List<CoinEntity> coinsList = geckoCoins.map((e) => e.createEmptyCoin).toList();
-      final CoinsEntity coinsEntity = CoinsEntity(list: coinsList, updateTime: DateTime.now());
-      await _hiveApiClient.coins.updateMarketCoins(coinsEntity.convertToJson);
-      return right(coinsEntity);
     } catch (e) {
       return left(Failure.from(e));
     }

@@ -11,16 +11,16 @@ part 'market_coin_bloc.freezed.dart';
 
 class MarketCoinBloc extends Bloc<MarketCoinEvent, MarketCoinState> {
   final MarketRepo _marketRepo;
-  MarketCoinBloc(this._marketRepo) : super(const MarketCoinState.loading()) {
+  MarketCoinBloc(this._marketRepo) : super(const MarketCoinState(loading: true)) {
     on<_GetCoin>(_getCoin, transformer: droppable());
   }
 
   Future<void> _getCoin(_GetCoin event, Emitter<MarketCoinState> emit) async {
-    emit(MarketCoinState.loading());
+    emit(MarketCoinState(coin: state.coin, loading: true));
     final result = await _marketRepo.getMarketCoinById(event.coinId);
     result.fold(
-      (error) => emit(MarketCoinState.error(error)),
-      (marketCoin) => emit(MarketCoinState.success(marketCoin)),
+      (error) => emit(MarketCoinState(coin: state.coin, error: error)),
+      (marketCoin) => emit(MarketCoinState(coin: marketCoin)),
     );
   }
 }

@@ -25,7 +25,7 @@ class MarketChartWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 5.0),
         child: BlocBuilder<MarketChartBloc, MarketChartState>(
           builder: (context, state) {
-            return state.maybeMap(
+            return state.map(
               success: (state) => SfCartesianChart(
                 onTrackballPositionChanging: (args) {
                   onTrackballPositionChanging(args, state);
@@ -66,7 +66,7 @@ class MarketChartWidget extends StatelessWidget {
                   )
                 ],
               ),
-              orElse: () => Stack(
+              loading: (_) => Stack(
                 children: [
                   SfCartesianChart(),
                   Align(
@@ -75,6 +75,7 @@ class MarketChartWidget extends StatelessWidget {
                   ),
                 ],
               ),
+              error: (_) => SfCartesianChart(),
             );
           },
         ),
