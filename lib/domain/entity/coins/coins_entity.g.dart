@@ -26,6 +26,10 @@ _$_CoinEntity _$$_CoinEntityFromJson(Map<String, dynamic> json) => _$_CoinEntity
       currentPrice: (json['currentPrice'] as num).toDouble(),
       marketCap: (json['marketCap'] as num).toDouble(),
       priceChangePercentage24H: (json['priceChangePercentage24H'] as num).toDouble(),
+      marketCapRank: (json['marketCapRank'] as num?)?.toDouble(),
+      circulatingSupply: (json['circulatingSupply'] as num?)?.toDouble(),
+      totalSupply: (json['totalSupply'] as num?)?.toDouble(),
+      maxSupply: (json['maxSupply'] as num?)?.toDouble(),
       history: (json['history'] as List<dynamic>)
           .map((e) => PaymentEntity.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -39,6 +43,10 @@ Map<String, dynamic> _$$_CoinEntityToJson(_$_CoinEntity instance) => <String, dy
       'currentPrice': instance.currentPrice,
       'marketCap': instance.marketCap,
       'priceChangePercentage24H': instance.priceChangePercentage24H,
+      'marketCapRank': instance.marketCapRank,
+      'circulatingSupply': instance.circulatingSupply,
+      'totalSupply': instance.totalSupply,
+      'maxSupply': instance.maxSupply,
       'history': instance.history.map((e) => e.toJson()).toList(),
     };
 

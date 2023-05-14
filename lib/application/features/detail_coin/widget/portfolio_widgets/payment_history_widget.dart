@@ -1,4 +1,5 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
+import 'package:crypto_portfolio/application/app/design_system/core/decorations.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
@@ -83,13 +84,7 @@ class PaymentHistoryWidget extends StatelessWidget {
             ),
           ),
           Ink(
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              borderRadius: BorderRadius.circular(3),
-              boxShadow: [
-                BoxShadow(color: AppColors.blue.withOpacity(0.2), blurRadius: 3),
-              ],
-            ),
+            decoration: AppDecorations.blueBorderDecoration,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: 15,

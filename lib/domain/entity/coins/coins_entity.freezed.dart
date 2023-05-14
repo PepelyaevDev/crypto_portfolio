@@ -179,7 +179,11 @@ mixin _$CoinEntity {
   String get image => throw _privateConstructorUsedError;
   double get currentPrice => throw _privateConstructorUsedError;
   double get marketCap => throw _privateConstructorUsedError;
-  double get priceChangePercentage24H => throw _privateConstructorUsedError; //user data
+  double get priceChangePercentage24H => throw _privateConstructorUsedError;
+  double? get marketCapRank => throw _privateConstructorUsedError;
+  double? get circulatingSupply => throw _privateConstructorUsedError;
+  double? get totalSupply => throw _privateConstructorUsedError;
+  double? get maxSupply => throw _privateConstructorUsedError; //user data
   List<PaymentEntity> get history => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -200,6 +204,10 @@ abstract class $CoinEntityCopyWith<$Res> {
       double currentPrice,
       double marketCap,
       double priceChangePercentage24H,
+      double? marketCapRank,
+      double? circulatingSupply,
+      double? totalSupply,
+      double? maxSupply,
       List<PaymentEntity> history});
 }
 
@@ -222,6 +230,10 @@ class _$CoinEntityCopyWithImpl<$Res, $Val extends CoinEntity> implements $CoinEn
     Object? currentPrice = null,
     Object? marketCap = null,
     Object? priceChangePercentage24H = null,
+    Object? marketCapRank = freezed,
+    Object? circulatingSupply = freezed,
+    Object? totalSupply = freezed,
+    Object? maxSupply = freezed,
     Object? history = null,
   }) {
     return _then(_value.copyWith(
@@ -253,6 +265,22 @@ class _$CoinEntityCopyWithImpl<$Res, $Val extends CoinEntity> implements $CoinEn
           ? _value.priceChangePercentage24H
           : priceChangePercentage24H // ignore: cast_nullable_to_non_nullable
               as double,
+      marketCapRank: freezed == marketCapRank
+          ? _value.marketCapRank
+          : marketCapRank // ignore: cast_nullable_to_non_nullable
+              as double?,
+      circulatingSupply: freezed == circulatingSupply
+          ? _value.circulatingSupply
+          : circulatingSupply // ignore: cast_nullable_to_non_nullable
+              as double?,
+      totalSupply: freezed == totalSupply
+          ? _value.totalSupply
+          : totalSupply // ignore: cast_nullable_to_non_nullable
+              as double?,
+      maxSupply: freezed == maxSupply
+          ? _value.maxSupply
+          : maxSupply // ignore: cast_nullable_to_non_nullable
+              as double?,
       history: null == history
           ? _value.history
           : history // ignore: cast_nullable_to_non_nullable
@@ -275,6 +303,10 @@ abstract class _$$_CoinEntityCopyWith<$Res> implements $CoinEntityCopyWith<$Res>
       double currentPrice,
       double marketCap,
       double priceChangePercentage24H,
+      double? marketCapRank,
+      double? circulatingSupply,
+      double? totalSupply,
+      double? maxSupply,
       List<PaymentEntity> history});
 }
 
@@ -294,6 +326,10 @@ class __$$_CoinEntityCopyWithImpl<$Res> extends _$CoinEntityCopyWithImpl<$Res, _
     Object? currentPrice = null,
     Object? marketCap = null,
     Object? priceChangePercentage24H = null,
+    Object? marketCapRank = freezed,
+    Object? circulatingSupply = freezed,
+    Object? totalSupply = freezed,
+    Object? maxSupply = freezed,
     Object? history = null,
   }) {
     return _then(_$_CoinEntity(
@@ -325,6 +361,22 @@ class __$$_CoinEntityCopyWithImpl<$Res> extends _$CoinEntityCopyWithImpl<$Res, _
           ? _value.priceChangePercentage24H
           : priceChangePercentage24H // ignore: cast_nullable_to_non_nullable
               as double,
+      marketCapRank: freezed == marketCapRank
+          ? _value.marketCapRank
+          : marketCapRank // ignore: cast_nullable_to_non_nullable
+              as double?,
+      circulatingSupply: freezed == circulatingSupply
+          ? _value.circulatingSupply
+          : circulatingSupply // ignore: cast_nullable_to_non_nullable
+              as double?,
+      totalSupply: freezed == totalSupply
+          ? _value.totalSupply
+          : totalSupply // ignore: cast_nullable_to_non_nullable
+              as double?,
+      maxSupply: freezed == maxSupply
+          ? _value.maxSupply
+          : maxSupply // ignore: cast_nullable_to_non_nullable
+              as double?,
       history: null == history
           ? _value._history
           : history // ignore: cast_nullable_to_non_nullable
@@ -344,6 +396,10 @@ class _$_CoinEntity implements _CoinEntity {
       required this.currentPrice,
       required this.marketCap,
       required this.priceChangePercentage24H,
+      required this.marketCapRank,
+      required this.circulatingSupply,
+      required this.totalSupply,
+      required this.maxSupply,
       required final List<PaymentEntity> history})
       : _history = history;
 
@@ -364,6 +420,14 @@ class _$_CoinEntity implements _CoinEntity {
   final double marketCap;
   @override
   final double priceChangePercentage24H;
+  @override
+  final double? marketCapRank;
+  @override
+  final double? circulatingSupply;
+  @override
+  final double? totalSupply;
+  @override
+  final double? maxSupply;
 //user data
   final List<PaymentEntity> _history;
 //user data
@@ -376,7 +440,7 @@ class _$_CoinEntity implements _CoinEntity {
 
   @override
   String toString() {
-    return 'CoinEntity(id: $id, symbol: $symbol, name: $name, image: $image, currentPrice: $currentPrice, marketCap: $marketCap, priceChangePercentage24H: $priceChangePercentage24H, history: $history)';
+    return 'CoinEntity(id: $id, symbol: $symbol, name: $name, image: $image, currentPrice: $currentPrice, marketCap: $marketCap, priceChangePercentage24H: $priceChangePercentage24H, marketCapRank: $marketCapRank, circulatingSupply: $circulatingSupply, totalSupply: $totalSupply, maxSupply: $maxSupply, history: $history)';
   }
 
   @override
@@ -392,13 +456,31 @@ class _$_CoinEntity implements _CoinEntity {
             (identical(other.marketCap, marketCap) || other.marketCap == marketCap) &&
             (identical(other.priceChangePercentage24H, priceChangePercentage24H) ||
                 other.priceChangePercentage24H == priceChangePercentage24H) &&
+            (identical(other.marketCapRank, marketCapRank) ||
+                other.marketCapRank == marketCapRank) &&
+            (identical(other.circulatingSupply, circulatingSupply) ||
+                other.circulatingSupply == circulatingSupply) &&
+            (identical(other.totalSupply, totalSupply) || other.totalSupply == totalSupply) &&
+            (identical(other.maxSupply, maxSupply) || other.maxSupply == maxSupply) &&
             const DeepCollectionEquality().equals(other._history, _history));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, symbol, name, image, currentPrice, marketCap,
-      priceChangePercentage24H, const DeepCollectionEquality().hash(_history));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      symbol,
+      name,
+      image,
+      currentPrice,
+      marketCap,
+      priceChangePercentage24H,
+      marketCapRank,
+      circulatingSupply,
+      totalSupply,
+      maxSupply,
+      const DeepCollectionEquality().hash(_history));
 
   @JsonKey(ignore: true)
   @override
@@ -423,6 +505,10 @@ abstract class _CoinEntity implements CoinEntity {
       required final double currentPrice,
       required final double marketCap,
       required final double priceChangePercentage24H,
+      required final double? marketCapRank,
+      required final double? circulatingSupply,
+      required final double? totalSupply,
+      required final double? maxSupply,
       required final List<PaymentEntity> history}) = _$_CoinEntity;
 
   factory _CoinEntity.fromJson(Map<String, dynamic> json) = _$_CoinEntity.fromJson;
@@ -441,6 +527,14 @@ abstract class _CoinEntity implements CoinEntity {
   double get marketCap;
   @override
   double get priceChangePercentage24H;
+  @override
+  double? get marketCapRank;
+  @override
+  double? get circulatingSupply;
+  @override
+  double? get totalSupply;
+  @override
+  double? get maxSupply;
   @override //user data
   List<PaymentEntity> get history;
   @override

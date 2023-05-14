@@ -23,6 +23,10 @@ class CoinEntity with _$CoinEntity {
     required double currentPrice,
     required double marketCap,
     required double priceChangePercentage24H,
+    required double? marketCapRank,
+    required double? circulatingSupply,
+    required double? totalSupply,
+    required double? maxSupply,
     //user data
     required List<PaymentEntity> history,
   }) = _CoinEntity;

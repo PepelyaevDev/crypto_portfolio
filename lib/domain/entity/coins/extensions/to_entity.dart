@@ -10,6 +10,10 @@ extension GeckoCoinDtoToEntity on GeckoCoinDTO {
         currentPrice: currentPrice,
         marketCap: marketCap ?? 0,
         priceChangePercentage24H: priceChangePercentage_24h,
+        marketCapRank: marketCapRank,
+        circulatingSupply: circulatingSupply,
+        totalSupply: totalSupply,
+        maxSupply: maxSupply,
         history: [],
       );
 }

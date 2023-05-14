@@ -52,7 +52,7 @@ class DetailMarketDataPriceWidget extends StatelessWidget {
             : InkWell(
                 borderRadius: BorderRadius.circular(15),
                 onTap: onTapRefresh,
-                child: Icon(Icons.refresh, size: 30),
+                child: Icon(Icons.refresh, size: 30, color: AppColors.blackLight),
               );
         return StreamBuilder(
           stream: stream,

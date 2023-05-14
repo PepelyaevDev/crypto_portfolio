@@ -6,6 +6,10 @@
     "updated" : "Данные обновлены",
 
     "marketCap" : "Капитализация",
+    "marketCapRank" : "Рейтинг по капитализации",
+    "circulatingSupply": "Доступный объем",
+    "totalSupply": "Общий объем",
+    "maxSupply": "Максимальный объем",
     "price" : "Цена",
     "currentPrice" : "Текущая цена",
     "percentage24h": "24 ч. %",

@@ -6,6 +6,10 @@
     "updated" : "Data updated",
 
     "marketCap" : "Market сap",
+    "marketCapRank" : "Market сap rank",
+    "circulatingSupply": "Circulating supply",
+    "totalSupply": "Total supply",
+    "maxSupply": "Max supply",
     "price" : "Price",
     "currentPrice" : "Current price",
     "percentage24h": "24 h. %",

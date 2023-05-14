@@ -1,9 +1,19 @@
+import 'package:crypto_portfolio/application/app/design_system/core/consts.dart';
+import 'package:crypto_portfolio/application/app/design_system/core/reg_exp.dart';
 import 'package:decimal/decimal.dart';
+import 'package:intl/intl.dart';
 import 'package:money_formatter/money_formatter.dart';
 
 extension DoubleExtension on double {
   String get moneyCompact => MoneyFormatter(amount: this).output.compactSymbolOnLeft;
   String get moneyFull => MoneyFormatter(amount: this).output.symbolOnLeft;
+  String compactLong(String locale) {
+    final String formattedNumber = NumberFormat.compactLong(locale: locale).format(this);
+    return formattedNumber.replaceAllMapped(
+      AppRegExp.firstLetter,
+      (match) => match.group(0)?.toUpperCase() ?? emptyString,
+    );
+  }
 
   double addNumber(double secondNumber) {
     final Decimal first = Decimal.parse(toString());

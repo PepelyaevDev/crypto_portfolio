@@ -2,6 +2,7 @@ import 'package:crypto_portfolio/application/app/design_system/widgets/update_da
 import 'package:crypto_portfolio/application/features/detail_coin/bloc/market_chart_bloc/market_chart_bloc.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/bloc/market_coin_bloc/market_coin_bloc.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/detail_market_data_price_widget.dart';
+import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/detail_market_stat_widget.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/distance_buttons.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/market_chart_widget.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
@@ -116,6 +117,9 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                           );
                     },
                   ),
+                  SizedBox(height: 10),
+                  DetailMarketStatWidget(),
+                  SizedBox(height: 10),
                 ],
               ),
             ),
