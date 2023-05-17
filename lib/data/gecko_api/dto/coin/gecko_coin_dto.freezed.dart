@@ -34,16 +34,16 @@ mixin _$GeckoCoinDTO {
   double? get fullyDilutedValuation => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_volume')
   double get totalVolume => throw _privateConstructorUsedError;
-  double get high_24h => throw _privateConstructorUsedError;
-  double get low_24h => throw _privateConstructorUsedError;
+  double? get high_24h => throw _privateConstructorUsedError;
+  double? get low_24h => throw _privateConstructorUsedError;
   @JsonKey(name: 'price_change_24h')
-  double get priceChange_24h => throw _privateConstructorUsedError;
+  double? get priceChange_24h => throw _privateConstructorUsedError;
   @JsonKey(name: 'price_change_percentage_24h')
-  double get priceChangePercentage_24h => throw _privateConstructorUsedError;
+  double? get priceChangePercentage_24h => throw _privateConstructorUsedError;
   @JsonKey(name: 'market_cap_change_24h')
-  double get marketCapChange_24h => throw _privateConstructorUsedError;
+  double? get marketCapChange_24h => throw _privateConstructorUsedError;
   @JsonKey(name: 'market_cap_change_percentage_24h')
-  double get marketCapChangePercentage_24h => throw _privateConstructorUsedError;
+  double? get marketCapChangePercentage_24h => throw _privateConstructorUsedError;
   @JsonKey(name: 'circulating_supply')
   double? get circulatingSupply => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_supply')
@@ -84,12 +84,12 @@ abstract class $GeckoCoinDTOCopyWith<$Res> {
       @JsonKey(name: 'market_cap_rank') double? marketCapRank,
       @JsonKey(name: 'fully_diluted_valuation') double? fullyDilutedValuation,
       @JsonKey(name: 'total_volume') double totalVolume,
-      double high_24h,
-      double low_24h,
-      @JsonKey(name: 'price_change_24h') double priceChange_24h,
-      @JsonKey(name: 'price_change_percentage_24h') double priceChangePercentage_24h,
-      @JsonKey(name: 'market_cap_change_24h') double marketCapChange_24h,
-      @JsonKey(name: 'market_cap_change_percentage_24h') double marketCapChangePercentage_24h,
+      double? high_24h,
+      double? low_24h,
+      @JsonKey(name: 'price_change_24h') double? priceChange_24h,
+      @JsonKey(name: 'price_change_percentage_24h') double? priceChangePercentage_24h,
+      @JsonKey(name: 'market_cap_change_24h') double? marketCapChange_24h,
+      @JsonKey(name: 'market_cap_change_percentage_24h') double? marketCapChangePercentage_24h,
       @JsonKey(name: 'circulating_supply') double? circulatingSupply,
       @JsonKey(name: 'total_supply') double? totalSupply,
       @JsonKey(name: 'max_supply') double? maxSupply,
@@ -127,12 +127,12 @@ class _$GeckoCoinDTOCopyWithImpl<$Res, $Val extends GeckoCoinDTO>
     Object? marketCapRank = freezed,
     Object? fullyDilutedValuation = freezed,
     Object? totalVolume = null,
-    Object? high_24h = null,
-    Object? low_24h = null,
-    Object? priceChange_24h = null,
-    Object? priceChangePercentage_24h = null,
-    Object? marketCapChange_24h = null,
-    Object? marketCapChangePercentage_24h = null,
+    Object? high_24h = freezed,
+    Object? low_24h = freezed,
+    Object? priceChange_24h = freezed,
+    Object? priceChangePercentage_24h = freezed,
+    Object? marketCapChange_24h = freezed,
+    Object? marketCapChangePercentage_24h = freezed,
     Object? circulatingSupply = freezed,
     Object? totalSupply = freezed,
     Object? maxSupply = freezed,
@@ -182,30 +182,30 @@ class _$GeckoCoinDTOCopyWithImpl<$Res, $Val extends GeckoCoinDTO>
           ? _value.totalVolume
           : totalVolume // ignore: cast_nullable_to_non_nullable
               as double,
-      high_24h: null == high_24h
+      high_24h: freezed == high_24h
           ? _value.high_24h
           : high_24h // ignore: cast_nullable_to_non_nullable
-              as double,
-      low_24h: null == low_24h
+              as double?,
+      low_24h: freezed == low_24h
           ? _value.low_24h
           : low_24h // ignore: cast_nullable_to_non_nullable
-              as double,
-      priceChange_24h: null == priceChange_24h
+              as double?,
+      priceChange_24h: freezed == priceChange_24h
           ? _value.priceChange_24h
           : priceChange_24h // ignore: cast_nullable_to_non_nullable
-              as double,
-      priceChangePercentage_24h: null == priceChangePercentage_24h
+              as double?,
+      priceChangePercentage_24h: freezed == priceChangePercentage_24h
           ? _value.priceChangePercentage_24h
           : priceChangePercentage_24h // ignore: cast_nullable_to_non_nullable
-              as double,
-      marketCapChange_24h: null == marketCapChange_24h
+              as double?,
+      marketCapChange_24h: freezed == marketCapChange_24h
           ? _value.marketCapChange_24h
           : marketCapChange_24h // ignore: cast_nullable_to_non_nullable
-              as double,
-      marketCapChangePercentage_24h: null == marketCapChangePercentage_24h
+              as double?,
+      marketCapChangePercentage_24h: freezed == marketCapChangePercentage_24h
           ? _value.marketCapChangePercentage_24h
           : marketCapChangePercentage_24h // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       circulatingSupply: freezed == circulatingSupply
           ? _value.circulatingSupply
           : circulatingSupply // ignore: cast_nullable_to_non_nullable
@@ -282,12 +282,12 @@ abstract class _$$_GeckoCoinDTOCopyWith<$Res> implements $GeckoCoinDTOCopyWith<$
       @JsonKey(name: 'market_cap_rank') double? marketCapRank,
       @JsonKey(name: 'fully_diluted_valuation') double? fullyDilutedValuation,
       @JsonKey(name: 'total_volume') double totalVolume,
-      double high_24h,
-      double low_24h,
-      @JsonKey(name: 'price_change_24h') double priceChange_24h,
-      @JsonKey(name: 'price_change_percentage_24h') double priceChangePercentage_24h,
-      @JsonKey(name: 'market_cap_change_24h') double marketCapChange_24h,
-      @JsonKey(name: 'market_cap_change_percentage_24h') double marketCapChangePercentage_24h,
+      double? high_24h,
+      double? low_24h,
+      @JsonKey(name: 'price_change_24h') double? priceChange_24h,
+      @JsonKey(name: 'price_change_percentage_24h') double? priceChangePercentage_24h,
+      @JsonKey(name: 'market_cap_change_24h') double? marketCapChange_24h,
+      @JsonKey(name: 'market_cap_change_percentage_24h') double? marketCapChangePercentage_24h,
       @JsonKey(name: 'circulating_supply') double? circulatingSupply,
       @JsonKey(name: 'total_supply') double? totalSupply,
       @JsonKey(name: 'max_supply') double? maxSupply,
@@ -322,12 +322,12 @@ class __$$_GeckoCoinDTOCopyWithImpl<$Res> extends _$GeckoCoinDTOCopyWithImpl<$Re
     Object? marketCapRank = freezed,
     Object? fullyDilutedValuation = freezed,
     Object? totalVolume = null,
-    Object? high_24h = null,
-    Object? low_24h = null,
-    Object? priceChange_24h = null,
-    Object? priceChangePercentage_24h = null,
-    Object? marketCapChange_24h = null,
-    Object? marketCapChangePercentage_24h = null,
+    Object? high_24h = freezed,
+    Object? low_24h = freezed,
+    Object? priceChange_24h = freezed,
+    Object? priceChangePercentage_24h = freezed,
+    Object? marketCapChange_24h = freezed,
+    Object? marketCapChangePercentage_24h = freezed,
     Object? circulatingSupply = freezed,
     Object? totalSupply = freezed,
     Object? maxSupply = freezed,
@@ -377,30 +377,30 @@ class __$$_GeckoCoinDTOCopyWithImpl<$Res> extends _$GeckoCoinDTOCopyWithImpl<$Re
           ? _value.totalVolume
           : totalVolume // ignore: cast_nullable_to_non_nullable
               as double,
-      high_24h: null == high_24h
+      high_24h: freezed == high_24h
           ? _value.high_24h
           : high_24h // ignore: cast_nullable_to_non_nullable
-              as double,
-      low_24h: null == low_24h
+              as double?,
+      low_24h: freezed == low_24h
           ? _value.low_24h
           : low_24h // ignore: cast_nullable_to_non_nullable
-              as double,
-      priceChange_24h: null == priceChange_24h
+              as double?,
+      priceChange_24h: freezed == priceChange_24h
           ? _value.priceChange_24h
           : priceChange_24h // ignore: cast_nullable_to_non_nullable
-              as double,
-      priceChangePercentage_24h: null == priceChangePercentage_24h
+              as double?,
+      priceChangePercentage_24h: freezed == priceChangePercentage_24h
           ? _value.priceChangePercentage_24h
           : priceChangePercentage_24h // ignore: cast_nullable_to_non_nullable
-              as double,
-      marketCapChange_24h: null == marketCapChange_24h
+              as double?,
+      marketCapChange_24h: freezed == marketCapChange_24h
           ? _value.marketCapChange_24h
           : marketCapChange_24h // ignore: cast_nullable_to_non_nullable
-              as double,
-      marketCapChangePercentage_24h: null == marketCapChangePercentage_24h
+              as double?,
+      marketCapChangePercentage_24h: freezed == marketCapChangePercentage_24h
           ? _value.marketCapChangePercentage_24h
           : marketCapChangePercentage_24h // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       circulatingSupply: freezed == circulatingSupply
           ? _value.circulatingSupply
           : circulatingSupply // ignore: cast_nullable_to_non_nullable
@@ -523,21 +523,21 @@ class _$_GeckoCoinDTO implements _GeckoCoinDTO {
   @JsonKey(name: 'total_volume')
   final double totalVolume;
   @override
-  final double high_24h;
+  final double? high_24h;
   @override
-  final double low_24h;
+  final double? low_24h;
   @override
   @JsonKey(name: 'price_change_24h')
-  final double priceChange_24h;
+  final double? priceChange_24h;
   @override
   @JsonKey(name: 'price_change_percentage_24h')
-  final double priceChangePercentage_24h;
+  final double? priceChangePercentage_24h;
   @override
   @JsonKey(name: 'market_cap_change_24h')
-  final double marketCapChange_24h;
+  final double? marketCapChange_24h;
   @override
   @JsonKey(name: 'market_cap_change_percentage_24h')
-  final double marketCapChangePercentage_24h;
+  final double? marketCapChangePercentage_24h;
   @override
   @JsonKey(name: 'circulating_supply')
   final double? circulatingSupply;
@@ -678,16 +678,16 @@ abstract class _GeckoCoinDTO implements GeckoCoinDTO {
           required final double? fullyDilutedValuation,
       @JsonKey(name: 'total_volume')
           required final double totalVolume,
-      required final double high_24h,
-      required final double low_24h,
+      required final double? high_24h,
+      required final double? low_24h,
       @JsonKey(name: 'price_change_24h')
-          required final double priceChange_24h,
+          required final double? priceChange_24h,
       @JsonKey(name: 'price_change_percentage_24h')
-          required final double priceChangePercentage_24h,
+          required final double? priceChangePercentage_24h,
       @JsonKey(name: 'market_cap_change_24h')
-          required final double marketCapChange_24h,
+          required final double? marketCapChange_24h,
       @JsonKey(name: 'market_cap_change_percentage_24h')
-          required final double marketCapChangePercentage_24h,
+          required final double? marketCapChangePercentage_24h,
       @JsonKey(name: 'circulating_supply')
           required final double? circulatingSupply,
       @JsonKey(name: 'total_supply')
@@ -734,21 +734,21 @@ abstract class _GeckoCoinDTO implements GeckoCoinDTO {
   @JsonKey(name: 'total_volume')
   double get totalVolume;
   @override
-  double get high_24h;
+  double? get high_24h;
   @override
-  double get low_24h;
+  double? get low_24h;
   @override
   @JsonKey(name: 'price_change_24h')
-  double get priceChange_24h;
+  double? get priceChange_24h;
   @override
   @JsonKey(name: 'price_change_percentage_24h')
-  double get priceChangePercentage_24h;
+  double? get priceChangePercentage_24h;
   @override
   @JsonKey(name: 'market_cap_change_24h')
-  double get marketCapChange_24h;
+  double? get marketCapChange_24h;
   @override
   @JsonKey(name: 'market_cap_change_percentage_24h')
-  double get marketCapChangePercentage_24h;
+  double? get marketCapChangePercentage_24h;
   @override
   @JsonKey(name: 'circulating_supply')
   double? get circulatingSupply;

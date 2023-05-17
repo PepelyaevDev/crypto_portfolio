@@ -6,20 +6,19 @@ import 'package:crypto_portfolio/application/app/extension/context_extension.dar
 import 'package:crypto_portfolio/application/app/extension/date_time_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
+import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:flutter/material.dart';
 
 import 'delete_popup.dart';
 
 class PaymentHistoryWidget extends StatelessWidget {
-  final List<PaymentEntity> history;
-  final String name;
+  final CoinEntity coin;
   final VoidCallback onTapAdd;
   final ValueChanged<PaymentEntity> onTapDelete;
   final VoidCallback onTapDeleteAll;
 
   const PaymentHistoryWidget({
-    required this.history,
-    required this.name,
+    required this.coin,
     required this.onTapAdd,
     required this.onTapDelete,
     required this.onTapDeleteAll,
@@ -94,12 +93,12 @@ class PaymentHistoryWidget extends StatelessWidget {
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (_, i) => _PaymentWidget(
-                  name: name,
-                  payment: history[i],
-                  onTapDelete: onTapDelete,
+                  name: coin.symbol,
+                  payment: coin.history[i],
+                  onTapDelete: _canDelete.call(i) ? onTapDelete : null,
                 ),
                 separatorBuilder: (_, __) => Divider(height: 25),
-                itemCount: history.length,
+                itemCount: coin.history.length,
               ),
             ),
           ),
@@ -107,12 +106,19 @@ class PaymentHistoryWidget extends StatelessWidget {
       ),
     );
   }
+
+  bool _canDelete(int i) {
+    if (coin.history[i].type == PaymentType.buy && coin.history[i].numberOfCoins > coin.holdings) {
+      return false;
+    }
+    return true;
+  }
 }
 
 class _PaymentWidget extends StatelessWidget {
   final String name;
   final PaymentEntity payment;
-  final ValueChanged<PaymentEntity> onTapDelete;
+  final ValueChanged<PaymentEntity>? onTapDelete;
   const _PaymentWidget({
     required this.name,
     required this.payment,
@@ -201,25 +207,36 @@ class _PaymentWidget extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (_) => DeletePopup(
-                    title: context.localization.deleteTransaction,
+                    title: onTapDelete == null
+                        ? context.localization.deletionNotPossible
+                        : context.localization.deleteTransaction,
                     content: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          context.localization.statisticsWillRecalculated,
+                          onTapDelete == null
+                              ? context.localization.numberCoinsWillNegative
+                              : context.localization.statisticsWillRecalculated,
                           style: AppStyles.normal16,
+                          textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: 10),
-                        Text(
-                          context.localization.actionNotUndone,
-                          style: AppStyles.normal16,
-                        ),
+                        if (onTapDelete != null)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10.0),
+                            child: Text(
+                              context.localization.actionNotUndone,
+                              style: AppStyles.normal16,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                       ],
                     ),
-                    onTapDelete: () {
-                      onTapDelete(payment);
-                      Navigator.of(context).pop();
-                    },
+                    onTapDelete: onTapDelete == null
+                        ? null
+                        : () {
+                            onTapDelete!(payment);
+                            Navigator.of(context).pop();
+                          },
                   ),
                 );
               },

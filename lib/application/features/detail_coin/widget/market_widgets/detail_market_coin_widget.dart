@@ -1,4 +1,7 @@
+import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
+import 'package:crypto_portfolio/application/app/design_system/widgets/development_widget.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
+import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/bloc/market_chart_bloc/market_chart_bloc.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/bloc/market_coin_bloc/market_coin_bloc.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/detail_market_data_price_widget.dart';
@@ -120,6 +123,14 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                   SizedBox(height: 10),
                   DetailMarketStatWidget(),
                   SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15.0),
+                    child: Text(
+                      context.localization.news,
+                      style: AppStyles.bold22,
+                    ),
+                  ),
+                  DevelopmentWidget(context.localization.hereWillBeNews),
                 ],
               ),
             ),

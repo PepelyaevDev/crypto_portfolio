@@ -1,10 +1,12 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
+import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/refresh_icon_button.dart';
 import 'package:crypto_portfolio/application/features/market/bloc/market_bloc.dart';
 import 'package:crypto_portfolio/application/features/market/widgets/market_coins_widget.dart';
+import 'package:crypto_portfolio/application/features/search/page/search_page.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +36,16 @@ class MarketCoinsPage extends StatelessWidget {
                   backgroundColor: AppColors.white,
                   foregroundColor: AppColors.blackLight,
                   actions: [
+                    AppBarIconButton(
+                      iconData: Icons.search,
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => SearchPage(),
+                          ),
+                        );
+                      },
+                    ),
                     RefreshIconButton(
                       loading: state.loading,
                       onTapUpdate: () {

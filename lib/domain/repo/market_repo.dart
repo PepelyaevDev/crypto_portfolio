@@ -24,7 +24,7 @@ class MarketRepo {
 
   Future<Either<Failure, CoinsEntity>> getCoinsRemote() async {
     try {
-      final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoins();
+      final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoins(1);
       final List<CoinEntity> coinsList = geckoCoins.map((e) => e.createEmptyCoin).toList();
       final CoinsEntity coinsEntity = CoinsEntity(list: coinsList, updateTime: DateTime.now());
       await _hiveApiClient.coins.updateMarketCoins(coinsEntity.convertToJson);
@@ -51,8 +51,8 @@ class MarketRepo {
 
   Future<Either<Failure, CoinEntity>> getMarketCoinById(String id) async {
     try {
-      final CoinEntity coinEntity =
-          (await _geckoApiClient.coins.getMarketCoinById(id)).createEmptyCoin;
+      final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoinsByIds([id]);
+      final CoinEntity coinEntity = geckoCoins.firstWhere((e) => e.id == id).createEmptyCoin;
       return right(coinEntity);
     } catch (e) {
       return left(Failure.from(e));

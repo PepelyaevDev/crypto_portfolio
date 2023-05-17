@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class DeletePopup extends StatelessWidget {
   final String title;
   final Widget content;
-  final VoidCallback onTapDelete;
+  final VoidCallback? onTapDelete;
 
   DeletePopup({
     required this.title,
@@ -49,7 +49,11 @@ class DeletePopup extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(height: 20),
-                      Text(title, style: AppStyles.bold22),
+                      Text(
+                        title,
+                        style: AppStyles.bold22,
+                        textAlign: TextAlign.center,
+                      ),
                       SizedBox(height: 20),
                       content,
                       SizedBox(height: 20),
@@ -71,17 +75,20 @@ class DeletePopup extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(width: 10),
-                          ElevatedButton(
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(AppColors.redLight),
+                          if (onTapDelete != null)
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(AppColors.redLight),
+                                ),
+                                onPressed: onTapDelete,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                                  child: Text(context.localization.delete),
+                                ),
+                              ),
                             ),
-                            onPressed: onTapDelete,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                              child: Text(context.localization.delete),
-                            ),
-                          ),
                         ],
                       ),
                       SizedBox(height: 20),

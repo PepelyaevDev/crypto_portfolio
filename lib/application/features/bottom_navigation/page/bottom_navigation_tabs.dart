@@ -1,5 +1,6 @@
 import 'package:crypto_portfolio/application/app/design_system/icons/app_icons.dart';
 import 'package:crypto_portfolio/application/features/market/page/market_coins_page.dart';
+import 'package:crypto_portfolio/application/features/news/page/news_page.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/portfolio_page.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class BottomNavigationTabs {
     ),
     BottomNavigationKey.news: BottomNavigationTab(
       index: 2,
-      screen: SizedBox(),
+      screen: NewsPage(),
       icon: _bottomNavigationIcon(AppIcons.newspaper),
     ),
   };

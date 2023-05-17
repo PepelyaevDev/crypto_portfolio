@@ -58,8 +58,9 @@ class _SearchCoinWidget extends StatelessWidget {
                     child: Wrap(
                       spacing: 10,
                       runSpacing: 10,
-                      children:
-                          state.searchEntity.coins.map((e) => _SearchedCoinWidget(e)).toList(),
+                      children: state.searchEntity.coins.map((e) {
+                        return _SearchedCoinWidget(e);
+                      }).toList(),
                     ),
                   ),
                   loading: (_) => Padding(
@@ -106,7 +107,7 @@ class _SearchedCoinWidget extends StatelessWidget {
               ),
               SizedBox(width: 10),
               Text(
-                searchCoinEntity.name,
+                searchCoinEntity.symbol,
                 style: AppStyles.normal14,
               ),
             ],
@@ -134,22 +135,26 @@ class _SelectedCoinWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(width: 5),
-                  Image.network(
-                    coinEntity.image,
-                    width: 20,
-                    height: 20,
-                    errorBuilder: (_, __, ___) => SizedBox(),
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    coinEntity.name,
-                    style: AppStyles.normal14,
-                  ),
-                ],
+              SizedBox(
+                width: MediaQuery.of(context).size.width - 150,
+                child: Row(
+                  children: [
+                    SizedBox(width: 5),
+                    Image.network(
+                      coinEntity.image,
+                      width: 20,
+                      height: 20,
+                      errorBuilder: (_, __, ___) => SizedBox(),
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        coinEntity.name,
+                        style: AppStyles.normal14,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               IconButton(
                 splashRadius: 15,

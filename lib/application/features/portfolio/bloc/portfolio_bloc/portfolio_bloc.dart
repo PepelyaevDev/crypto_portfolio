@@ -49,6 +49,6 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
   Future<void> _refreshData(_, Emitter<PortfolioState> emit) async {
     if (state.coins.list.isEmpty) return;
     emit(PortfolioState(coins: state.coins, loading: true));
-    await _portfolioRepo.updateCoinsPrice();
+    await _portfolioRepo.updateCoinsMarketData();
   }
 }

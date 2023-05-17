@@ -20,16 +20,16 @@ class GeckoCoinDTO with _$GeckoCoinDTO {
         required double? fullyDilutedValuation,
     @JsonKey(name: 'total_volume')
         required double totalVolume,
-    required double high_24h,
-    required double low_24h,
+    required double? high_24h,
+    required double? low_24h,
     @JsonKey(name: 'price_change_24h')
-        required double priceChange_24h,
+        required double? priceChange_24h,
     @JsonKey(name: 'price_change_percentage_24h')
-        required double priceChangePercentage_24h,
+        required double? priceChangePercentage_24h,
     @JsonKey(name: 'market_cap_change_24h')
-        required double marketCapChange_24h,
+        required double? marketCapChange_24h,
     @JsonKey(name: 'market_cap_change_percentage_24h')
-        required double marketCapChangePercentage_24h,
+        required double? marketCapChangePercentage_24h,
     @JsonKey(name: 'circulating_supply')
         required double? circulatingSupply,
     @JsonKey(name: 'total_supply')

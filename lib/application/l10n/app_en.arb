@@ -1,4 +1,9 @@
 {
+    "underDevelopment": "This block is under development",
+    "hereWillBeNews": "Here will be the latest news, with automatic translation into your language",
+    "hereWillBeAllNews": "Here you will find the latest news about cryptocurrencies, with automatic translation into your language",
+    "hereWillBePortfolioNews": "Here you will find the latest news about the coins in your portfolio, with automatic translation into your language",
+
     "market": "Market",
     "portfolio": "Portfolio",
     "news": "News",
@@ -28,6 +33,8 @@
     "received": "Received",
     "paid": "Paid",
     "deleteTransaction": "Delete transaction",
+    "deletionNotPossible": "Deletion is not possible",
+    "numberCoinsWillNegative": "If you delete this transaction, the number of coins will become negative",
     "statisticsWillRecalculated": "The statistics of this coin will be recalculated",
     "actionNotUndone": "This action will not be undone",
     "deleteTransactionHistory": "Delete transaction history",
@@ -52,6 +59,9 @@
     "youHave": "You have",
     "cannotSell": "You cannot sell",
     "mustBeGreater0": "Value must be greater than 0",
+
+    "allNews": "All news",
+    "portfolioNews": "Portfolio news",
 
     "response429": "Server is not available. Please wait 2 minutes and try again",
     "unknownError": "Something went wrong. Try again later please",

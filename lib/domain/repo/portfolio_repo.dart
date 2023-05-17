@@ -1,5 +1,5 @@
 import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
-import 'package:crypto_portfolio/data/gecko_api/dto/prices/prices.dart';
+import 'package:crypto_portfolio/data/gecko_api/dto/coin/gecko_coin_dto.dart';
 import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
@@ -36,8 +36,8 @@ class PortfolioRepo {
       final List<CoinEntity> coinsList = [
         ..._hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity.list,
       ];
-      final CoinEntity emptyCoinEntity =
-          (await _geckoApiClient.coins.getMarketCoinById(id)).createEmptyCoin;
+      final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoinsByIds([id]);
+      final CoinEntity emptyCoinEntity = geckoCoins.firstWhere((e) => e.id == id).createEmptyCoin;
       final CoinEntity updatedCoinEntity = emptyCoinEntity.copyWith(
         history: coinsList.firstWhere((e) => e.id == emptyCoinEntity.id).history,
       );
@@ -48,16 +48,17 @@ class PortfolioRepo {
     }
   }
 
-  Future<void> updateCoinsPrice() async {
+  Future<void> updateCoinsMarketData() async {
     try {
       final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
-      final PricesDTO pricesDTO = await _geckoApiClient.simple.getPrice(
+      final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoinsByIds(
         coinsEntity.list.map((e) => e.id).toList(),
       );
       final List<CoinEntity> updatedCoinsList = [];
       for (final coin in coinsEntity.list) {
+        final CoinEntity emptyCoin = geckoCoins.firstWhere((e) => e.id == coin.id).createEmptyCoin;
         updatedCoinsList.add(
-          coin.copyWith(currentPrice: pricesDTO.coins.firstWhere((e) => e.id == coin.id).value),
+          emptyCoin.copyWith(history: coin.history),
         );
       }
       await _updateCoinsEntity(updatedCoinsList);
