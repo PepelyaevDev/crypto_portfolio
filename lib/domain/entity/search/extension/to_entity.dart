@@ -7,12 +7,8 @@ extension SearchDtoToEntity on SearchDTO {
             .map(
               (e) => SearchCoinEntity(
                 id: e.id,
-                name: e.name,
-                apiSymbol: e.apiSymbol,
-                symbol: e.symbol,
-                marketCapRank: e.marketCapRank,
+                symbol: e.symbol.toUpperCase(),
                 thumb: e.thumb,
-                large: e.large,
               ),
             )
             .toList(),

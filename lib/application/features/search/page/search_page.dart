@@ -107,7 +107,7 @@ class _SearchedCoinWidget extends StatelessWidget {
                 SizedBox(width: 10),
                 Expanded(
                   child: Text(
-                    searchCoinEntity.name,
+                    searchCoinEntity.symbol,
                     style: AppStyles.normal14,
                   ),
                 ),

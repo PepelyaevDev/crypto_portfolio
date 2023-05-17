@@ -13,11 +13,7 @@ class SearchEntity with _$SearchEntity {
 class SearchCoinEntity with _$SearchCoinEntity {
   const factory SearchCoinEntity({
     required String id,
-    required String name,
-    required String apiSymbol,
     required String symbol,
-    int? marketCapRank,
     required String thumb,
-    required String large,
   }) = _SearchCoinEntity;
 }

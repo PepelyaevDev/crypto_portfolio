@@ -89,7 +89,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                     BlocBuilder<AddPaymentBloc, AddPaymentState>(
                       builder: (context, state) {
                         final String? suffix = state.maybeMap(
-                          success: (state) => state.coin.symbol.toUpperCase(),
+                          success: (state) => state.coin.symbol,
                           orElse: () => null,
                         );
                         return CustomTextField(
@@ -232,7 +232,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
     if (value.toDouble == 0) return context.localization.mustBeGreater0;
     if (coin == null) return context.localization.notSelectedCoin;
     if (_paymentType == PaymentType.sell && value.toDouble > coin.holdings) {
-      return '${context.localization.youHave} ${coin.holdings.toString()} ${coin.symbol.toUpperCase()}. ${context.localization.cannotSell} $value ${coin.symbol.toUpperCase()}';
+      return '${context.localization.youHave} ${coin.holdings.toString()} ${coin.symbol}. ${context.localization.cannotSell} $value ${coin.symbol}';
     }
     return null;
   }

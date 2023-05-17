@@ -82,7 +82,7 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.coinEntity.symbol.toString().toUpperCase(),
+                    widget.coinEntity.symbol.toString(),
                     style: AppStyles.bold14,
                   ),
                   SizedBox(height: 5),

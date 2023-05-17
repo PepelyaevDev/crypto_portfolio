@@ -58,7 +58,7 @@ class _DetailCoinPageState extends State<DetailCoinPage> with SingleTickerProvid
               ),
               SizedBox(width: 10),
               Text(
-                widget.coinSymbol.toUpperCase(),
+                widget.coinSymbol,
                 style: AppStyles.normal14,
               ),
             ],

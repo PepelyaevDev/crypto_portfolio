@@ -18,7 +18,6 @@ class CoinEntity with _$CoinEntity {
     //market data
     required String id,
     required String symbol,
-    required String name,
     required String image,
     required double currentPrice,
     required double marketCap,

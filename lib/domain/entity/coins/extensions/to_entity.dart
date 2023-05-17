@@ -4,8 +4,7 @@ import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 extension GeckoCoinDtoToEntity on GeckoCoinDTO {
   CoinEntity get createEmptyCoin => CoinEntity(
         id: id,
-        symbol: symbol,
-        name: name,
+        symbol: symbol.toUpperCase(),
         image: image,
         currentPrice: currentPrice,
         marketCap: marketCap ?? 0,

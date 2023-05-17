@@ -149,7 +149,7 @@ class _SelectedCoinWidget extends StatelessWidget {
                     SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        coinEntity.name,
+                        coinEntity.symbol,
                         style: AppStyles.normal14,
                       ),
                     ),

@@ -175,7 +175,6 @@ mixin _$CoinEntity {
 //market data
   String get id => throw _privateConstructorUsedError;
   String get symbol => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   double get currentPrice => throw _privateConstructorUsedError;
   double get marketCap => throw _privateConstructorUsedError;
@@ -199,7 +198,6 @@ abstract class $CoinEntityCopyWith<$Res> {
   $Res call(
       {String id,
       String symbol,
-      String name,
       String image,
       double currentPrice,
       double marketCap,
@@ -225,7 +223,6 @@ class _$CoinEntityCopyWithImpl<$Res, $Val extends CoinEntity> implements $CoinEn
   $Res call({
     Object? id = null,
     Object? symbol = null,
-    Object? name = null,
     Object? image = null,
     Object? currentPrice = null,
     Object? marketCap = null,
@@ -244,10 +241,6 @@ class _$CoinEntityCopyWithImpl<$Res, $Val extends CoinEntity> implements $CoinEn
       symbol: null == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
               as String,
       image: null == image
           ? _value.image
@@ -298,7 +291,6 @@ abstract class _$$_CoinEntityCopyWith<$Res> implements $CoinEntityCopyWith<$Res>
   $Res call(
       {String id,
       String symbol,
-      String name,
       String image,
       double currentPrice,
       double marketCap,
@@ -321,7 +313,6 @@ class __$$_CoinEntityCopyWithImpl<$Res> extends _$CoinEntityCopyWithImpl<$Res, _
   $Res call({
     Object? id = null,
     Object? symbol = null,
-    Object? name = null,
     Object? image = null,
     Object? currentPrice = null,
     Object? marketCap = null,
@@ -340,10 +331,6 @@ class __$$_CoinEntityCopyWithImpl<$Res> extends _$CoinEntityCopyWithImpl<$Res, _
       symbol: null == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
               as String,
       image: null == image
           ? _value.image
@@ -391,7 +378,6 @@ class _$_CoinEntity implements _CoinEntity {
   const _$_CoinEntity(
       {required this.id,
       required this.symbol,
-      required this.name,
       required this.image,
       required this.currentPrice,
       required this.marketCap,
@@ -410,8 +396,6 @@ class _$_CoinEntity implements _CoinEntity {
   final String id;
   @override
   final String symbol;
-  @override
-  final String name;
   @override
   final String image;
   @override
@@ -440,7 +424,7 @@ class _$_CoinEntity implements _CoinEntity {
 
   @override
   String toString() {
-    return 'CoinEntity(id: $id, symbol: $symbol, name: $name, image: $image, currentPrice: $currentPrice, marketCap: $marketCap, priceChangePercentage24H: $priceChangePercentage24H, marketCapRank: $marketCapRank, circulatingSupply: $circulatingSupply, totalSupply: $totalSupply, maxSupply: $maxSupply, history: $history)';
+    return 'CoinEntity(id: $id, symbol: $symbol, image: $image, currentPrice: $currentPrice, marketCap: $marketCap, priceChangePercentage24H: $priceChangePercentage24H, marketCapRank: $marketCapRank, circulatingSupply: $circulatingSupply, totalSupply: $totalSupply, maxSupply: $maxSupply, history: $history)';
   }
 
   @override
@@ -450,7 +434,6 @@ class _$_CoinEntity implements _CoinEntity {
             other is _$_CoinEntity &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.symbol, symbol) || other.symbol == symbol) &&
-            (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.currentPrice, currentPrice) || other.currentPrice == currentPrice) &&
             (identical(other.marketCap, marketCap) || other.marketCap == marketCap) &&
@@ -471,7 +454,6 @@ class _$_CoinEntity implements _CoinEntity {
       runtimeType,
       id,
       symbol,
-      name,
       image,
       currentPrice,
       marketCap,
@@ -500,7 +482,6 @@ abstract class _CoinEntity implements CoinEntity {
   const factory _CoinEntity(
       {required final String id,
       required final String symbol,
-      required final String name,
       required final String image,
       required final double currentPrice,
       required final double marketCap,
@@ -517,8 +498,6 @@ abstract class _CoinEntity implements CoinEntity {
   String get id;
   @override
   String get symbol;
-  @override
-  String get name;
   @override
   String get image;
   @override

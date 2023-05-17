@@ -51,7 +51,7 @@ class MarketCoinsWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            coins.list[i].symbol.toString().toUpperCase(),
+                            coins.list[i].symbol.toString(),
                             style: AppStyles.bold14,
                           ),
                           SizedBox(height: 2),
