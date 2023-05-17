@@ -134,6 +134,7 @@ mixin _$SearchCoinEntity {
   String get id => throw _privateConstructorUsedError;
   String get symbol => throw _privateConstructorUsedError;
   String get thumb => throw _privateConstructorUsedError;
+  int? get marketCapRank => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchCoinEntityCopyWith<SearchCoinEntity> get copyWith => throw _privateConstructorUsedError;
@@ -144,7 +145,7 @@ abstract class $SearchCoinEntityCopyWith<$Res> {
   factory $SearchCoinEntityCopyWith(SearchCoinEntity value, $Res Function(SearchCoinEntity) then) =
       _$SearchCoinEntityCopyWithImpl<$Res, SearchCoinEntity>;
   @useResult
-  $Res call({String id, String symbol, String thumb});
+  $Res call({String id, String symbol, String thumb, int? marketCapRank});
 }
 
 /// @nodoc
@@ -163,6 +164,7 @@ class _$SearchCoinEntityCopyWithImpl<$Res, $Val extends SearchCoinEntity>
     Object? id = null,
     Object? symbol = null,
     Object? thumb = null,
+    Object? marketCapRank = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -177,6 +179,10 @@ class _$SearchCoinEntityCopyWithImpl<$Res, $Val extends SearchCoinEntity>
           ? _value.thumb
           : thumb // ignore: cast_nullable_to_non_nullable
               as String,
+      marketCapRank: freezed == marketCapRank
+          ? _value.marketCapRank
+          : marketCapRank // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -188,7 +194,7 @@ abstract class _$$_SearchCoinEntityCopyWith<$Res> implements $SearchCoinEntityCo
       __$$_SearchCoinEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String symbol, String thumb});
+  $Res call({String id, String symbol, String thumb, int? marketCapRank});
 }
 
 /// @nodoc
@@ -205,6 +211,7 @@ class __$$_SearchCoinEntityCopyWithImpl<$Res>
     Object? id = null,
     Object? symbol = null,
     Object? thumb = null,
+    Object? marketCapRank = freezed,
   }) {
     return _then(_$_SearchCoinEntity(
       id: null == id
@@ -219,6 +226,10 @@ class __$$_SearchCoinEntityCopyWithImpl<$Res>
           ? _value.thumb
           : thumb // ignore: cast_nullable_to_non_nullable
               as String,
+      marketCapRank: freezed == marketCapRank
+          ? _value.marketCapRank
+          : marketCapRank // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -226,7 +237,8 @@ class __$$_SearchCoinEntityCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SearchCoinEntity implements _SearchCoinEntity {
-  const _$_SearchCoinEntity({required this.id, required this.symbol, required this.thumb});
+  const _$_SearchCoinEntity(
+      {required this.id, required this.symbol, required this.thumb, required this.marketCapRank});
 
   @override
   final String id;
@@ -234,10 +246,12 @@ class _$_SearchCoinEntity implements _SearchCoinEntity {
   final String symbol;
   @override
   final String thumb;
+  @override
+  final int? marketCapRank;
 
   @override
   String toString() {
-    return 'SearchCoinEntity(id: $id, symbol: $symbol, thumb: $thumb)';
+    return 'SearchCoinEntity(id: $id, symbol: $symbol, thumb: $thumb, marketCapRank: $marketCapRank)';
   }
 
   @override
@@ -247,11 +261,13 @@ class _$_SearchCoinEntity implements _SearchCoinEntity {
             other is _$_SearchCoinEntity &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.symbol, symbol) || other.symbol == symbol) &&
-            (identical(other.thumb, thumb) || other.thumb == thumb));
+            (identical(other.thumb, thumb) || other.thumb == thumb) &&
+            (identical(other.marketCapRank, marketCapRank) ||
+                other.marketCapRank == marketCapRank));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, symbol, thumb);
+  int get hashCode => Object.hash(runtimeType, id, symbol, thumb, marketCapRank);
 
   @JsonKey(ignore: true)
   @override
@@ -264,7 +280,8 @@ abstract class _SearchCoinEntity implements SearchCoinEntity {
   const factory _SearchCoinEntity(
       {required final String id,
       required final String symbol,
-      required final String thumb}) = _$_SearchCoinEntity;
+      required final String thumb,
+      required final int? marketCapRank}) = _$_SearchCoinEntity;
 
   @override
   String get id;
@@ -272,6 +289,8 @@ abstract class _SearchCoinEntity implements SearchCoinEntity {
   String get symbol;
   @override
   String get thumb;
+  @override
+  int? get marketCapRank;
   @override
   @JsonKey(ignore: true)
   _$$_SearchCoinEntityCopyWith<_$_SearchCoinEntity> get copyWith =>

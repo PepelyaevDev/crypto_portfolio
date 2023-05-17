@@ -216,6 +216,7 @@ class _PortfolioPageRow extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        SizedBox(width: 10),
         Expanded(
           flex: 2,
           child: Align(

@@ -15,5 +15,6 @@ class SearchCoinEntity with _$SearchCoinEntity {
     required String id,
     required String symbol,
     required String thumb,
+    required int? marketCapRank,
   }) = _SearchCoinEntity;
 }

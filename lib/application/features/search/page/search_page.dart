@@ -97,20 +97,39 @@ class _SearchedCoinWidget extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.network(
-                  searchCoinEntity.thumb,
-                  width: 20,
-                  height: 20,
-                  errorBuilder: (_, __, ___) => SizedBox(),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.network(
+                      searchCoinEntity.thumb,
+                      width: 20,
+                      height: 20,
+                      errorBuilder: (_, __, ___) => SizedBox(),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      searchCoinEntity.symbol,
+                      style: AppStyles.normal14,
+                    ),
+                  ],
                 ),
-                SizedBox(width: 10),
-                Expanded(
-                  child: Text(
-                    searchCoinEntity.symbol,
-                    style: AppStyles.normal14,
-                  ),
-                ),
+                searchCoinEntity.marketCapRank == null
+                    ? SizedBox()
+                    : Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            '${context.localization.marketCapRank}: ',
+                            style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
+                          ),
+                          Text(
+                            searchCoinEntity.marketCapRank.toString(),
+                            style: AppStyles.bold16,
+                          ),
+                        ],
+                      ),
               ],
             ),
           ),

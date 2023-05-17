@@ -9,6 +9,7 @@ extension SearchDtoToEntity on SearchDTO {
                 id: e.id,
                 symbol: e.symbol.toUpperCase(),
                 thumb: e.thumb,
+                marketCapRank: e.marketCapRank,
               ),
             )
             .toList(),
