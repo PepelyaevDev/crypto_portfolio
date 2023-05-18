@@ -44,7 +44,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
       child: Builder(builder: (context) {
         return BlocListener<AddPaymentBloc, AddPaymentState>(
           listener: (context, state) {
-            state.maybeMap(
+            state.mapOrNull(
               error: (e) {
                 UpdateDataSnackBar.show(
                   context: context,
@@ -52,7 +52,6 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                   errorInfo: e.error.getMessage(context),
                 );
               },
-              orElse: () => null,
             );
           },
           child: Scaffold(
