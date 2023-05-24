@@ -17,7 +17,8 @@ class BottomNavigationPage extends StatelessWidget {
             child: state.tab.screen,
           ),
           bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: AppColors.white,
+            selectedItemColor: AppColors.blue,
+            unselectedItemColor: AppColors.grayDark,
             items: BottomNavigationTabs.data.values.map((value) {
               final BottomNavigationKey key = BottomNavigationTabs.data.keys.firstWhere(
                 (key) => BottomNavigationTabs.data[key] == value,
@@ -26,6 +27,9 @@ class BottomNavigationPage extends StatelessWidget {
               switch (key) {
                 case BottomNavigationKey.market:
                   label = context.localization.market;
+                  break;
+                case BottomNavigationKey.watchlist:
+                  label = context.localization.watchlist;
                   break;
                 case BottomNavigationKey.portfolio:
                   label = context.localization.portfolio;
@@ -37,6 +41,7 @@ class BottomNavigationPage extends StatelessWidget {
               return BottomNavigationBarItem(
                 icon: value.icon,
                 label: label,
+                backgroundColor: AppColors.white,
               );
             }).toList(),
             currentIndex: state.tab.index,

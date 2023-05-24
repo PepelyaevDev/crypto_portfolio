@@ -1,9 +1,11 @@
 import 'package:crypto_portfolio/application/features/bottom_navigation/bloc/bottom_navigation_bloc.dart';
 import 'package:crypto_portfolio/application/features/bottom_navigation/page/bottom_navigation_page.dart';
+import 'package:crypto_portfolio/application/features/watchlist/bloc/watchlist_bloc.dart';
 import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
+import 'package:crypto_portfolio/domain/repo/watchlist_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -28,11 +30,17 @@ class CryptoPortfolioApp extends StatelessWidget {
         RepositoryProvider(
           create: (_) => PortfolioRepo(hiveApiClient, geckoApiClient),
         ),
+        RepositoryProvider(
+          create: (_) => WatchlistRepo(hiveApiClient, geckoApiClient),
+        ),
       ],
       child: Builder(builder: (context) {
         return MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) => BottomNavigationBloc()),
+            BlocProvider(
+              create: (context) => WatchlistBloc(context.read<WatchlistRepo>()),
+            ),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

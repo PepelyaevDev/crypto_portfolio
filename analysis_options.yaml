@@ -2,6 +2,7 @@ include: package:lints/recommended.yaml
 
 analyzer:
   exclude:
+    - "**/app_icons.dart"
     - "**/*.g.dart"
     - "**/*.freezed.dart"
   errors:
@@ -26,8 +27,8 @@ import_lint:
         ]
       exclude_imports:
         [
-          "application/app/extension/*.dart",
-          "application/app/design_system/core/colors.dart",
+            "application/app/extension/*.dart",
+            "application/app/design_system/core/colors.dart",
         ]
     features_rule:
       target_file_path: "application/features/**/*.dart"

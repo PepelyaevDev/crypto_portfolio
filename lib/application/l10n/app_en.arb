@@ -3,12 +3,19 @@
     "hereWillBeNews": "Here will be the latest news, with automatic translation into your language",
     "hereWillBeAllNews": "Here you will find the latest news about cryptocurrencies, with automatic translation into your language",
     "hereWillBePortfolioNews": "Here you will find the latest news about the coins in your portfolio, with automatic translation into your language",
+    "hereWillBeWatchlistNews": "Here will be the latest news about coins added to the watchlist, with automatic translation into your language",
 
     "market": "Market",
+    "watchlist": "Watchlist",
     "portfolio": "Portfolio",
     "news": "News",
 
+    "addCoins": "Add coins",
+    "watchlistIsEmpty": "Your watchlist is empty, please add coins",
+
     "updated" : "Data updated",
+    "addedToWatchlist": "Added to watchlist",
+    "removedFromWatchlist": "Removed from watchlist",
 
     "marketCap" : "Market сap",
     "marketCapRank" : "Market сap rank",
@@ -60,8 +67,7 @@
     "cannotSell": "You cannot sell",
     "mustBeGreater0": "Value must be greater than 0",
 
-    "allNews": "All news",
-    "portfolioNews": "Portfolio news",
+    "allNews": "All",
 
     "response429": "Server is not available. Please wait 2 minutes and try again",
     "unknownError": "Something went wrong. Try again later please",

@@ -5,6 +5,7 @@ import 'package:crypto_portfolio/application/app/design_system/widgets/update_da
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/page/detail_coin_page.dart';
 import 'package:crypto_portfolio/application/features/search/bloc/search_bloc.dart';
+import 'package:crypto_portfolio/application/features/watchlist/waidgets/watchlist_icon_widget.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/entity/search/search_entity.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
@@ -55,14 +56,14 @@ class SearchPage extends StatelessWidget {
                   return state.maybeMap(
                     success: (state) => Padding(
                       padding: const EdgeInsets.only(top: 10.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: state.searchEntity.coins.map((e) {
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 10.0),
-                            child: _SearchedCoinWidget(e),
-                          );
-                        }).toList(),
+                      child: ListView.separated(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: state.searchEntity.coins.length,
+                        separatorBuilder: (_, __) => Divider(height: 15),
+                        itemBuilder: (context, i) {
+                          return _SearchedCoinWidget(state.searchEntity.coins[i]);
+                        },
                       ),
                     ),
                     loading: (_) => Padding(
@@ -87,65 +88,46 @@ class _SearchedCoinWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(4),
-        onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => DetailCoinPage(
-                coinLogo: searchCoinEntity.thumb,
-                coinSymbol: searchCoinEntity.symbol,
-                coinId: searchCoinEntity.id,
-              ),
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => DetailCoinPage(
+              coinLogo: searchCoinEntity.icon,
+              coinSymbol: searchCoinEntity.symbol,
+              coinId: searchCoinEntity.id,
             ),
-          );
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            border: Border.all(color: AppColors.blue),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Image.network(
-                      searchCoinEntity.thumb,
-                      width: 20,
-                      height: 20,
-                      errorBuilder: (_, __, ___) => SizedBox(),
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      searchCoinEntity.symbol,
-                      style: AppStyles.normal14,
-                    ),
-                  ],
+                Image.network(
+                  searchCoinEntity.icon,
+                  width: 30,
+                  height: 30,
+                  errorBuilder: (_, __, ___) => SizedBox(),
                 ),
-                searchCoinEntity.marketCapRank == null
-                    ? SizedBox()
-                    : Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            '${context.localization.marketCapRank}: ',
-                            style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
-                          ),
-                          Text(
-                            searchCoinEntity.marketCapRank.toString(),
-                            style: AppStyles.bold16,
-                          ),
-                        ],
-                      ),
+                SizedBox(width: 10),
+                Text(
+                  searchCoinEntity.symbol,
+                  style: AppStyles.bold16,
+                ),
+                SizedBox(width: 10),
+                Text(
+                  '#${searchCoinEntity.marketCapRank.toString()}',
+                  style: AppStyles.normal14.copyWith(color: AppColors.grayDark),
+                ),
               ],
             ),
-          ),
+            WatchlistIconWidget(searchCoinEntity.id),
+          ],
         ),
       ),
     );

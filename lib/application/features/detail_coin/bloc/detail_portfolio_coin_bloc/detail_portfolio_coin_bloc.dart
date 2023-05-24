@@ -63,7 +63,7 @@ class DetailPortfolioCoinBloc extends Bloc<DetailPortfolioCoinEvent, DetailPortf
       return;
     }
     emit(DetailPortfolioCoinState(coin: state.coin, loading: true));
-    await _portfolioRepo.updateCoinMarketData(_coinId);
+    await _portfolioRepo.updateCoinsMarketData();
   }
 
   @override

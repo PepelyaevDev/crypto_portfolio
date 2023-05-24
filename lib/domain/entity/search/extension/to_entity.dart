@@ -8,7 +8,7 @@ extension SearchDtoToEntity on SearchDTO {
               (e) => SearchCoinEntity(
                 id: e.id,
                 symbol: e.symbol.toUpperCase(),
-                thumb: e.thumb,
+                icon: e.large,
                 marketCapRank: e.marketCapRank,
               ),
             )

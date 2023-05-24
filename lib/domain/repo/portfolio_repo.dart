@@ -31,23 +31,6 @@ class PortfolioRepo {
     return coinsEntity;
   }
 
-  Future<void> updateCoinMarketData(String id) async {
-    try {
-      final List<CoinEntity> coinsList = [
-        ..._hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity.list,
-      ];
-      final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoinsByIds([id]);
-      final CoinEntity emptyCoinEntity = geckoCoins.firstWhere((e) => e.id == id).createEmptyCoin;
-      final CoinEntity updatedCoinEntity = emptyCoinEntity.copyWith(
-        history: coinsList.firstWhere((e) => e.id == emptyCoinEntity.id).history,
-      );
-      coinsList[coinsList.indexWhere((e) => e.id == updatedCoinEntity.id)] = updatedCoinEntity;
-      await _updateCoinsEntity(coinsList);
-    } catch (e) {
-      coinsSubject.add(left(Failure.from(e)));
-    }
-  }
-
   Future<void> updateCoinsMarketData() async {
     try {
       final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;

@@ -2,6 +2,7 @@ import 'package:crypto_portfolio/application/app/design_system/icons/app_icons.d
 import 'package:crypto_portfolio/application/features/market/page/market_coins_page.dart';
 import 'package:crypto_portfolio/application/features/news/page/news_page.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/portfolio_page.dart';
+import 'package:crypto_portfolio/application/features/watchlist/page/watchlist_page.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationTabs {
@@ -9,15 +10,20 @@ class BottomNavigationTabs {
     BottomNavigationKey.market: BottomNavigationTab(
       index: 0,
       screen: MarketCoinsPage(),
-      icon: _bottomNavigationIcon(AppIcons.chartLine),
+      icon: _bottomNavigationIcon(AppIcons.chart_line),
+    ),
+    BottomNavigationKey.watchlist: BottomNavigationTab(
+      index: 1,
+      screen: WatchlistPage(),
+      icon: _bottomNavigationIcon(AppIcons.star_empty),
     ),
     BottomNavigationKey.portfolio: BottomNavigationTab(
-      index: 1,
+      index: 2,
       screen: PortfolioPage(),
       icon: _bottomNavigationIcon(AppIcons.briefcase),
     ),
     BottomNavigationKey.news: BottomNavigationTab(
-      index: 2,
+      index: 3,
       screen: NewsPage(),
       icon: _bottomNavigationIcon(AppIcons.newspaper),
     ),
@@ -29,7 +35,7 @@ class BottomNavigationTabs {
       );
 }
 
-enum BottomNavigationKey { market, portfolio, news }
+enum BottomNavigationKey { market, watchlist, portfolio, news }
 
 class BottomNavigationTab {
   final int index;

@@ -14,7 +14,7 @@ class SearchCoinEntity with _$SearchCoinEntity {
   const factory SearchCoinEntity({
     required String id,
     required String symbol,
-    required String thumb,
+    required String icon,
     required int? marketCapRank,
   }) = _SearchCoinEntity;
 }

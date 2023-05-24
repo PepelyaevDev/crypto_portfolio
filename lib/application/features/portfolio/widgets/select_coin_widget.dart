@@ -113,7 +113,7 @@ class _SearchedCoinWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Image.network(
-                searchCoinEntity.thumb,
+                searchCoinEntity.icon,
                 width: 20,
                 height: 20,
                 errorBuilder: (_, __, ___) => SizedBox(),

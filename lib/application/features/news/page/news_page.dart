@@ -18,7 +18,7 @@ class _NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin
   void initState() {
     tabController = TabController(
       vsync: this,
-      length: 2,
+      length: 3,
     );
     super.initState();
   }
@@ -43,7 +43,8 @@ class _NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin
           controller: tabController,
           tabs: <Tab>[
             Tab(text: context.localization.allNews),
-            Tab(text: context.localization.portfolioNews),
+            Tab(text: context.localization.watchlist),
+            Tab(text: context.localization.portfolio),
           ],
         ),
       ),
@@ -51,6 +52,7 @@ class _NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin
         controller: tabController,
         children: <Widget>[
           DevelopmentWidget(context.localization.hereWillBeAllNews),
+          DevelopmentWidget(context.localization.hereWillBeWatchlistNews),
           DevelopmentWidget(context.localization.hereWillBePortfolioNews),
         ],
       ),
