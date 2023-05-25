@@ -34,22 +34,24 @@ class CryptoPortfolioApp extends StatelessWidget {
           create: (_) => WatchlistRepo(hiveApiClient, geckoApiClient),
         ),
       ],
-      child: Builder(builder: (context) {
-        return MultiBlocProvider(
-          providers: [
-            BlocProvider(create: (context) => BottomNavigationBloc()),
-            BlocProvider(
-              create: (context) => WatchlistBloc(context.read<WatchlistRepo>()),
+      child: Builder(
+        builder: (context) {
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => BottomNavigationBloc()),
+              BlocProvider(
+                create: (context) => WatchlistBloc(context.read<WatchlistRepo>()),
+              ),
+            ],
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              home: const BottomNavigationPage(),
             ),
-          ],
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-            home: const BottomNavigationPage(),
-          ),
-        );
-      }),
+          );
+        },
+      ),
     );
   }
 }
