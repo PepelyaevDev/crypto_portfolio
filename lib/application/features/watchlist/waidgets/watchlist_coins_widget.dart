@@ -143,7 +143,7 @@ class WatchlistPageRow extends StatelessWidget {
         children: [
           SizedBox(width: 10),
           Expanded(
-            flex: 5,
+            flex: 6,
             child: Align(
               alignment: Alignment.centerLeft,
               child: marketCap,

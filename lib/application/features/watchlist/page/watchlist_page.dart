@@ -74,6 +74,8 @@ class _WatchlistPageState extends State<WatchlistPage> {
                       marketCap: Text(
                         context.localization.marketCap,
                         style: AppStyles.normal14,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: true,
                       ),
                       price: Text(
                         context.localization.price,
