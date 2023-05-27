@@ -2,6 +2,7 @@ import 'package:crypto_portfolio/application/app/design_system/core/colors.dart'
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
+import 'package:crypto_portfolio/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/bottom_navigation_bloc.dart';
@@ -12,7 +13,7 @@ class BottomNavigationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (DateTime.now().isAfter(DateTime(2099, 5, 24))) {
+    if (DateTime.now().isAfter(applicationBlockingDate)) {
       return Scaffold(
         body: Center(
           child: Text(
