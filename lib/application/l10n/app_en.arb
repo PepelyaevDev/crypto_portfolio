@@ -56,7 +56,7 @@
     "coinSearch": "Coin search",
     "buy" : "Buy",
     "sell" : "Sell",
-    "amountOfMoney": "Amount of money",
+    "amountOfMoney": "Trade amount in USD",
     "numberOfCoins": "Number of coins",
     "validatorEmptyField": "This field cannot be empty",
     "validatorInvalidNumber": "Please enter a valid number. Example: 71.1203",
