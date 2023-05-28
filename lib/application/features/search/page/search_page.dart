@@ -120,10 +120,11 @@ class _SearchedCoinWidget extends StatelessWidget {
                   style: AppStyles.bold16,
                 ),
                 SizedBox(width: 10),
-                Text(
-                  '#${searchCoinEntity.marketCapRank.toString()}',
-                  style: AppStyles.normal14.copyWith(color: AppColors.grayDark),
-                ),
+                if (searchCoinEntity.marketCapRank != null)
+                  Text(
+                    '#${searchCoinEntity.marketCapRank.toString()}',
+                    style: AppStyles.normal14.copyWith(color: AppColors.grayDark),
+                  ),
               ],
             ),
             WatchlistIconWidget(searchCoinEntity.id),
