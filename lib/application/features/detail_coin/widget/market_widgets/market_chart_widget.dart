@@ -31,6 +31,7 @@ class MarketChartWidget extends StatelessWidget {
                   onTrackballPositionChanging(args, state);
                 },
                 trackballBehavior: TrackballBehavior(
+                  activationMode: ActivationMode.singleTap,
                   enable: true,
                   markerSettings: TrackballMarkerSettings(
                     markerVisibility: TrackballVisibilityMode.visible,
