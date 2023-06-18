@@ -1,8 +1,8 @@
-import 'package:crypto_portfolio/data/gecko_api/api/dio_client.dart';
+import 'package:crypto_portfolio/data/gecko_api/api/gecko_dio_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/dto/search/search_dto.dart';
 
 class GeckoSearchSource {
-  final DioClient _dioClient;
+  final GeckoDioClient _dioClient;
   GeckoSearchSource(this._dioClient);
 
   static const String _path = '/api/v3/search/';

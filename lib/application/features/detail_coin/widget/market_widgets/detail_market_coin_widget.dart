@@ -1,5 +1,4 @@
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/development_widget.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/bloc/market_chart_bloc/market_chart_bloc.dart';
@@ -8,6 +7,8 @@ import 'package:crypto_portfolio/application/features/detail_coin/widget/market_
 import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/detail_market_stat_widget.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/distance_buttons.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/market_chart_widget.dart';
+import 'package:crypto_portfolio/application/features/news/bloc/news_bloc.dart';
+import 'package:crypto_portfolio/application/features/news/widgets/news_list_widget.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/entity/market_chart/market_chart_entity.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
@@ -27,9 +28,11 @@ class DetailMarketCoinWidget extends StatefulWidget {
 class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
   MarketChartDistance _selectedDistance = MarketChartDistance.d1;
   final BehaviorSubject<MarketChartPriceEntity?> _selectedPrice = BehaviorSubject();
+  final ScrollController _controller = ScrollController();
 
   @override
   void dispose() {
+    _controller.dispose();
     _selectedPrice.close();
     super.dispose();
   }
@@ -83,6 +86,7 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                 return;
               },
               child: ListView(
+                controller: _controller,
                 children: [
                   SizedBox(height: 15),
                   DetailMarketDataPriceWidget(
@@ -130,7 +134,20 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                       style: AppStyles.bold22,
                     ),
                   ),
-                  DevelopmentWidget(context.localization.hereWillBeNews),
+                  BlocBuilder<MarketCoinBloc, MarketCoinState>(
+                    builder: (context, state) {
+                      if (state.loading) {
+                        return Center(child: CircularProgressIndicator());
+                      } else if (state.coin != null) {
+                        return NewsListWidget(
+                          controller: _controller,
+                          category: NewsCategory.coin,
+                          symbol: state.coin!.symbol,
+                        );
+                      }
+                      return SizedBox();
+                    },
+                  ),
                 ],
               ),
             ),

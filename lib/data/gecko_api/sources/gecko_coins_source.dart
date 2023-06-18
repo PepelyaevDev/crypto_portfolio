@@ -1,9 +1,9 @@
-import 'package:crypto_portfolio/data/gecko_api/api/dio_client.dart';
+import 'package:crypto_portfolio/data/gecko_api/api/gecko_dio_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/dto/coin/gecko_coin_dto.dart';
 import 'package:crypto_portfolio/data/gecko_api/dto/market_chart/market_chart_dto.dart';
 
 class GeckoCoinsSource {
-  final DioClient _dioClient;
+  final GeckoDioClient _dioClient;
   GeckoCoinsSource(this._dioClient);
 
   static const String _path = '/api/v3/coins/';

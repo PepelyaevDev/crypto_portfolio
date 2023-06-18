@@ -1,8 +1,11 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/development_widget.dart';
+import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
+import 'package:crypto_portfolio/application/features/news/bloc/news_bloc.dart';
+import 'package:crypto_portfolio/application/features/news/widgets/news_desc_popup.dart';
 import 'package:flutter/material.dart';
+import 'package:crypto_portfolio/application/features/news/widgets/news_list_widget.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage();
@@ -36,6 +39,17 @@ class _NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin
         shadowColor: AppColors.transparent,
         backgroundColor: AppColors.white,
         foregroundColor: AppColors.blackLight,
+        actions: [
+          AppBarIconButton(
+            iconData: Icons.question_mark_rounded,
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (_) => NewsDescPopup(),
+              );
+            },
+          ),
+        ],
         bottom: TabBar(
           labelColor: AppColors.blackLight,
           labelStyle: AppStyles.normal14,
@@ -44,17 +58,46 @@ class _NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin
           tabs: <Tab>[
             Tab(text: context.localization.allNews),
             Tab(text: context.localization.watchlist),
-            Tab(text: context.localization.portfolio),
           ],
         ),
       ),
       body: TabBarView(
         controller: tabController,
         children: <Widget>[
-          DevelopmentWidget(context.localization.hereWillBeAllNews),
-          DevelopmentWidget(context.localization.hereWillBeWatchlistNews),
-          DevelopmentWidget(context.localization.hereWillBePortfolioNews),
+          _NewsListContent(category: NewsCategory.all),
+          _NewsListContent(category: NewsCategory.watchlist),
         ],
+      ),
+    );
+  }
+}
+
+class _NewsListContent extends StatefulWidget {
+  final NewsCategory category;
+  const _NewsListContent({
+    required this.category,
+  });
+
+  @override
+  State<_NewsListContent> createState() => _NewsListContentState();
+}
+
+class _NewsListContentState extends State<_NewsListContent> {
+  final ScrollController controller = ScrollController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      controller: controller,
+      child: NewsListWidget(
+        controller: controller,
+        category: widget.category,
       ),
     );
   }

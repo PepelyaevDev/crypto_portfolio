@@ -111,7 +111,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                           flex: 3,
                           child: _DatePickerItem(
                             title: context.localization.date,
-                            dateTime: dateTime.date(context),
+                            dateTime: dateTime.dateLong(context),
                             onTap: () => _showDialog(
                               CupertinoDatePicker(
                                 initialDateTime: dateTime,

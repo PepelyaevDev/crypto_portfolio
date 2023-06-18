@@ -14,7 +14,7 @@ class DetailMarketStatWidget extends StatelessWidget {
     return BlocBuilder<MarketCoinBloc, MarketCoinState>(
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(10.0),
           child: Container(
             decoration: AppDecorations.blueBorderDecoration,
             child: Padding(

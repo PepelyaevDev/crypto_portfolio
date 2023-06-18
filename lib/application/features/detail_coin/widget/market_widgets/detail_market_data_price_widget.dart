@@ -59,7 +59,7 @@ class DetailMarketDataPriceWidget extends StatelessWidget {
           builder: (_, snapshot) {
             final date = snapshot.data == null ? DateTime.now() : snapshot.data!.time;
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 children: [
                   Row(
@@ -77,7 +77,7 @@ class DetailMarketDataPriceWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '${date.date(context)} ${date.time}',
+                        '${date.dateLong(context)} ${date.time}',
                         style: AppStyles.normal16,
                       ),
                       CoinGeckoWidget(rightPadding: 0),

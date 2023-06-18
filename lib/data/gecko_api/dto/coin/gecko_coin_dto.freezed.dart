@@ -457,45 +457,29 @@ class _$_GeckoCoinDTO implements _GeckoCoinDTO {
       required this.symbol,
       required this.name,
       required this.image,
-      @JsonKey(name: 'current_price')
-          required this.currentPrice,
-      @JsonKey(name: 'market_cap')
-          required this.marketCap,
-      @JsonKey(name: 'market_cap_rank')
-          required this.marketCapRank,
-      @JsonKey(name: 'fully_diluted_valuation')
-          required this.fullyDilutedValuation,
-      @JsonKey(name: 'total_volume')
-          required this.totalVolume,
+      @JsonKey(name: 'current_price') required this.currentPrice,
+      @JsonKey(name: 'market_cap') required this.marketCap,
+      @JsonKey(name: 'market_cap_rank') required this.marketCapRank,
+      @JsonKey(name: 'fully_diluted_valuation') required this.fullyDilutedValuation,
+      @JsonKey(name: 'total_volume') required this.totalVolume,
       required this.high_24h,
       required this.low_24h,
-      @JsonKey(name: 'price_change_24h')
-          required this.priceChange_24h,
-      @JsonKey(name: 'price_change_percentage_24h')
-          required this.priceChangePercentage_24h,
-      @JsonKey(name: 'market_cap_change_24h')
-          required this.marketCapChange_24h,
+      @JsonKey(name: 'price_change_24h') required this.priceChange_24h,
+      @JsonKey(name: 'price_change_percentage_24h') required this.priceChangePercentage_24h,
+      @JsonKey(name: 'market_cap_change_24h') required this.marketCapChange_24h,
       @JsonKey(name: 'market_cap_change_percentage_24h')
-          required this.marketCapChangePercentage_24h,
-      @JsonKey(name: 'circulating_supply')
-          required this.circulatingSupply,
-      @JsonKey(name: 'total_supply')
-          required this.totalSupply,
-      @JsonKey(name: 'max_supply')
-          required this.maxSupply,
+      required this.marketCapChangePercentage_24h,
+      @JsonKey(name: 'circulating_supply') required this.circulatingSupply,
+      @JsonKey(name: 'total_supply') required this.totalSupply,
+      @JsonKey(name: 'max_supply') required this.maxSupply,
       required this.ath,
-      @JsonKey(name: 'ath_change_percentage')
-          required this.athChangePercentage,
-      @JsonKey(name: 'ath_date')
-          required this.athDate,
+      @JsonKey(name: 'ath_change_percentage') required this.athChangePercentage,
+      @JsonKey(name: 'ath_date') required this.athDate,
       required this.atl,
-      @JsonKey(name: 'atl_change_percentage')
-          required this.atlChangePercentage,
-      @JsonKey(name: 'atl_date')
-          required this.atlDate,
+      @JsonKey(name: 'atl_change_percentage') required this.atlChangePercentage,
+      @JsonKey(name: 'atl_date') required this.atlDate,
       required this.roi,
-      @JsonKey(name: 'last_updated')
-          required this.lastUpdated});
+      @JsonKey(name: 'last_updated') required this.lastUpdated});
 
   factory _$_GeckoCoinDTO.fromJson(Map<String, dynamic> json) => _$$_GeckoCoinDTOFromJson(json);
 
@@ -668,45 +652,30 @@ abstract class _GeckoCoinDTO implements GeckoCoinDTO {
       required final String symbol,
       required final String name,
       required final String image,
-      @JsonKey(name: 'current_price')
-          required final double currentPrice,
-      @JsonKey(name: 'market_cap')
-          required final double? marketCap,
-      @JsonKey(name: 'market_cap_rank')
-          required final double? marketCapRank,
-      @JsonKey(name: 'fully_diluted_valuation')
-          required final double? fullyDilutedValuation,
-      @JsonKey(name: 'total_volume')
-          required final double totalVolume,
+      @JsonKey(name: 'current_price') required final double currentPrice,
+      @JsonKey(name: 'market_cap') required final double? marketCap,
+      @JsonKey(name: 'market_cap_rank') required final double? marketCapRank,
+      @JsonKey(name: 'fully_diluted_valuation') required final double? fullyDilutedValuation,
+      @JsonKey(name: 'total_volume') required final double totalVolume,
       required final double? high_24h,
       required final double? low_24h,
-      @JsonKey(name: 'price_change_24h')
-          required final double? priceChange_24h,
+      @JsonKey(name: 'price_change_24h') required final double? priceChange_24h,
       @JsonKey(name: 'price_change_percentage_24h')
-          required final double? priceChangePercentage_24h,
-      @JsonKey(name: 'market_cap_change_24h')
-          required final double? marketCapChange_24h,
+      required final double? priceChangePercentage_24h,
+      @JsonKey(name: 'market_cap_change_24h') required final double? marketCapChange_24h,
       @JsonKey(name: 'market_cap_change_percentage_24h')
-          required final double? marketCapChangePercentage_24h,
-      @JsonKey(name: 'circulating_supply')
-          required final double? circulatingSupply,
-      @JsonKey(name: 'total_supply')
-          required final double? totalSupply,
-      @JsonKey(name: 'max_supply')
-          required final double? maxSupply,
+      required final double? marketCapChangePercentage_24h,
+      @JsonKey(name: 'circulating_supply') required final double? circulatingSupply,
+      @JsonKey(name: 'total_supply') required final double? totalSupply,
+      @JsonKey(name: 'max_supply') required final double? maxSupply,
       required final double ath,
-      @JsonKey(name: 'ath_change_percentage')
-          required final double athChangePercentage,
-      @JsonKey(name: 'ath_date')
-          required final String athDate,
+      @JsonKey(name: 'ath_change_percentage') required final double athChangePercentage,
+      @JsonKey(name: 'ath_date') required final String athDate,
       required final double atl,
-      @JsonKey(name: 'atl_change_percentage')
-          required final double atlChangePercentage,
-      @JsonKey(name: 'atl_date')
-          required final String atlDate,
+      @JsonKey(name: 'atl_change_percentage') required final double atlChangePercentage,
+      @JsonKey(name: 'atl_date') required final String atlDate,
       required final GeckoRoiDTO? roi,
-      @JsonKey(name: 'last_updated')
-          required final String lastUpdated}) = _$_GeckoCoinDTO;
+      @JsonKey(name: 'last_updated') required final String lastUpdated}) = _$_GeckoCoinDTO;
 
   factory _GeckoCoinDTO.fromJson(Map<String, dynamic> json) = _$_GeckoCoinDTO.fromJson;
 

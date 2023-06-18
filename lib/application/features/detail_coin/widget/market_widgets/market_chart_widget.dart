@@ -1,5 +1,6 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
+import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/bloc/market_chart_bloc/market_chart_bloc.dart';
 import 'package:crypto_portfolio/domain/entity/market_chart/extensions/get_chart_data.dart';
 import 'package:crypto_portfolio/domain/entity/market_chart/market_chart_entity.dart';
@@ -21,65 +22,63 @@ class MarketChartWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height / 2,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5.0),
-        child: BlocBuilder<MarketChartBloc, MarketChartState>(
-          builder: (context, state) {
-            return state.map(
-              success: (state) => SfCartesianChart(
-                onTrackballPositionChanging: (args) {
-                  onTrackballPositionChanging(args, state);
+      child: BlocBuilder<MarketChartBloc, MarketChartState>(
+        builder: (context, state) {
+          return state.map(
+            success: (state) => SfCartesianChart(
+              onTrackballPositionChanging: (args) {
+                onTrackballPositionChanging(args, state);
+              },
+              trackballBehavior: TrackballBehavior(
+                activationMode: ActivationMode.singleTap,
+                enable: true,
+                markerSettings: TrackballMarkerSettings(
+                  markerVisibility: TrackballVisibilityMode.visible,
+                ),
+                tooltipSettings: InteractiveTooltip(
+                  arrowLength: 0,
+                  arrowWidth: 0,
+                ),
+                builder: (_, TrackballDetails details) {
+                  return _CustomTrackballWidget(
+                    onDispose: onTrackballDispose,
+                  );
                 },
-                trackballBehavior: TrackballBehavior(
-                  activationMode: ActivationMode.singleTap,
-                  enable: true,
-                  markerSettings: TrackballMarkerSettings(
-                    markerVisibility: TrackballVisibilityMode.visible,
-                  ),
-                  tooltipSettings: InteractiveTooltip(
-                    arrowLength: 0,
-                    arrowWidth: 0,
-                  ),
-                  builder: (_, TrackballDetails details) {
-                    return _CustomTrackballWidget(
-                      onDispose: onTrackballDispose,
-                    );
-                  },
-                ),
-                primaryXAxis: DateTimeAxis(
-                  axisLabelFormatter: (axisLabelRenderArgs) {
-                    final String text = DateFormat(
-                      state.marketChart.dateFormatPattern(),
-                    ).format(
-                      DateTime.fromMillisecondsSinceEpoch(
-                        axisLabelRenderArgs.value.toInt(),
-                      ),
-                    );
-                    return ChartAxisLabel(text, AppStyles.normal12);
-                  },
-                ),
-                series: [
-                  LineSeries(
-                    color: AppColors.blue,
-                    dataSource: <MarketChartPriceEntity>[...state.marketChart.prices],
-                    xValueMapper: (price, _) => price.time,
-                    yValueMapper: (price, _) => price.price,
-                  )
-                ],
               ),
-              loading: (_) => Stack(
-                children: [
-                  SfCartesianChart(),
-                  Align(
-                    alignment: Alignment.center,
-                    child: CircularProgressIndicator(),
-                  ),
-                ],
+              primaryXAxis: DateTimeAxis(
+                axisLabelFormatter: (axisLabelRenderArgs) {
+                  final String text = DateFormat(
+                    state.marketChart.dateFormatPattern(),
+                    context.localization.localeName,
+                  ).format(
+                    DateTime.fromMillisecondsSinceEpoch(
+                      axisLabelRenderArgs.value.toInt(),
+                    ),
+                  );
+                  return ChartAxisLabel(text, AppStyles.normal12);
+                },
               ),
-              error: (_) => SfCartesianChart(),
-            );
-          },
-        ),
+              series: [
+                LineSeries(
+                  color: AppColors.blue,
+                  dataSource: <MarketChartPriceEntity>[...state.marketChart.prices],
+                  xValueMapper: (price, _) => price.time,
+                  yValueMapper: (price, _) => price.price,
+                )
+              ],
+            ),
+            loading: (_) => Stack(
+              children: [
+                SfCartesianChart(),
+                Align(
+                  alignment: Alignment.center,
+                  child: CircularProgressIndicator(),
+                ),
+              ],
+            ),
+            error: (_) => SfCartesianChart(),
+          );
+        },
       ),
     );
   }

@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart' hide Interceptors;
 
-class DioClient {
+class GeckoDioClient {
   final Dio _dio;
 
-  DioClient(this._dio);
+  GeckoDioClient(this._dio);
 
   // Get.
   Future<Response<T>> get<T>(

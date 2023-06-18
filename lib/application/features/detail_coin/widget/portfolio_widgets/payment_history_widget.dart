@@ -27,7 +27,7 @@ class PaymentHistoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,6 +57,7 @@ class PaymentHistoryWidget extends StatelessWidget {
                             title: context.localization.deleteTransactionHistory,
                             content: Column(
                               mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   context.localization.statisticsWillDeleted,
@@ -164,7 +165,7 @@ class _PaymentWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  payment.dateTime.date(context),
+                  payment.dateTime.dateLong(context),
                   style: AppStyles.normal14,
                 ),
                 SizedBox(height: 5),
@@ -212,13 +213,13 @@ class _PaymentWidget extends StatelessWidget {
                         : context.localization.deleteTransaction,
                     content: Column(
                       mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           onTapDelete == null
                               ? context.localization.numberCoinsWillNegative
                               : context.localization.statisticsWillRecalculated,
                           style: AppStyles.normal16,
-                          textAlign: TextAlign.center,
                         ),
                         if (onTapDelete != null)
                           Padding(
@@ -226,7 +227,6 @@ class _PaymentWidget extends StatelessWidget {
                             child: Text(
                               context.localization.actionNotUndone,
                               style: AppStyles.normal16,
-                              textAlign: TextAlign.center,
                             ),
                           ),
                       ],

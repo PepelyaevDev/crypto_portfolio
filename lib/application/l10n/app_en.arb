@@ -1,10 +1,4 @@
 {
-    "underDevelopment": "This block is under development",
-    "hereWillBeNews": "Here will be the latest news about this coin, with automatic translation into your language",
-    "hereWillBeAllNews": "Here you will find the latest news about cryptocurrencies, with automatic translation into your language",
-    "hereWillBePortfolioNews": "Here you will find the latest news about the coins in your portfolio, with automatic translation into your language",
-    "hereWillBeWatchlistNews": "Here will be the latest news about coins added to the watchlist, with automatic translation into your language",
-
     "market": "Market",
     "watchlist": "Watchlist",
     "portfolio": "Portfolio",
@@ -68,6 +62,11 @@
     "mustBeGreater0": "Value must be greater than 0",
 
     "allNews": "All",
+    "source": "Source",
+    "author": "Author",
+    "ok": "OK",
+    "personalNews": "Personal news",
+    "personalNewsDesc": "The 'Watchlist' section contains news about coins from your portfolio and about coins added to watchlist",
 
     "response429": "Server is not available. Please wait 2 minutes and try again",
     "unknownError": "Something went wrong. Try again later please",

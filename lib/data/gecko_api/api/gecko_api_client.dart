@@ -1,4 +1,4 @@
-import 'package:crypto_portfolio/data/gecko_api/api/dio_client.dart';
+import 'package:crypto_portfolio/data/gecko_api/api/gecko_dio_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_coins_source.dart';
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_search_source.dart';
 import 'package:dio/dio.dart';
@@ -14,7 +14,7 @@ class GeckoApiClient {
   });
 
   static GeckoApiClient get getClient {
-    final dioClient = DioClient(Dio(
+    final dioClient = GeckoDioClient(Dio(
       BaseOptions(
         baseUrl: 'https://api.coingecko.com',
         connectTimeout: 15000,

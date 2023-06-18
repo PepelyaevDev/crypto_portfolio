@@ -19,7 +19,10 @@ class CoinGeckoWidget extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            launchUrl(Uri.parse('https://www.coingecko.com/en/api'));
+            launchUrl(
+              Uri.parse('https://www.coingecko.com/en/api'),
+              mode: LaunchMode.externalApplication,
+            );
           },
           borderRadius: BorderRadius.circular(5),
           child: Padding(
