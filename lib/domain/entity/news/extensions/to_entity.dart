@@ -2,7 +2,7 @@ import 'package:crypto_portfolio/data/cryptopanic_api/dto/cryptopanic_news_dto.d
 import 'package:crypto_portfolio/domain/entity/news/news_entity.dart';
 
 extension CryptopanicNewsDtoToEntity on CryptopanicNewsResponse {
-  NewsListEntity toEntity({required NewsListEntity oldList}) {
+  NewsListEntity toEntity({required NewsListEntity oldList, required int? nextPage}) {
     final List<NewsEntity> list = [...oldList.list];
     for (var e in results) {
       if (e.metadata != null && e.metadata!.description != null) {
@@ -27,7 +27,7 @@ extension CryptopanicNewsDtoToEntity on CryptopanicNewsResponse {
     return NewsListEntity(
       list: list,
       updateTime: DateTime.now(),
-      nextPage: next == null ? null : oldList.nextPage! + 1,
+      nextPage: nextPage,
       currencies: oldList.currencies,
       locale: oldList.locale,
     );

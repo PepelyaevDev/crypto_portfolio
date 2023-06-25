@@ -1,6 +1,6 @@
 part of 'news_bloc.dart';
 
-enum NewsCategory { all, watchlist, coin}
+enum NewsCategory { all, watchlist, coin }
 
 @freezed
 class NewsEvent with _$NewsEvent {

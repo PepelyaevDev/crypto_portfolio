@@ -12,12 +12,27 @@ class NewsRepo {
   //Don't call method if nextPage is null
   Future<Either<Failure, NewsListEntity>> updateNews(NewsListEntity oldList) async {
     try {
-      final CryptopanicNewsResponse newsResponse = await _cryptopanicApiClient.news.getNews(
-        oldList.currencies,
-        oldList.locale,
-        oldList.nextPage!,
-      );
-      return right(newsResponse.toEntity(oldList: oldList));
+      late CryptopanicNewsResponse newsResponse;
+      bool updated = false;
+      int? nextPage = oldList.nextPage;
+      while (!updated) {
+        newsResponse = await _cryptopanicApiClient.news.getNews(
+          oldList.currencies,
+          oldList.locale,
+          nextPage!,
+        );
+        if (newsResponse.next == null) {
+          nextPage = null;
+          updated = true;
+        } else if (newsResponse.results.where((e) => e.metadata != null).isNotEmpty) {
+          nextPage = nextPage + 1;
+          updated = true;
+        } else {
+          nextPage = nextPage + 1;
+          await Future<void>.delayed(const Duration(milliseconds: 300));
+        }
+      }
+      return right(newsResponse.toEntity(oldList: oldList, nextPage: nextPage));
     } catch (e) {
       return left(Failure.from(e));
     }
