@@ -18,7 +18,7 @@ class EmptyPortfolioCoinWidget extends StatelessWidget {
             child: SizedBox(
               child: Text(
                 context.localization.portfolioCoinIsEmpty,
-                style: AppStyles.bold16,
+                style: AppStyles.normal16,
                 textAlign: TextAlign.center,
               ),
             ),

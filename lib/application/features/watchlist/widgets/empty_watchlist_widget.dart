@@ -17,7 +17,7 @@ class EmptyWatchlistWidget extends StatelessWidget {
             child: SizedBox(
               child: Text(
                 context.localization.watchlistIsEmpty,
-                style: AppStyles.bold16,
+                style: AppStyles.normal16,
                 textAlign: TextAlign.center,
               ),
             ),

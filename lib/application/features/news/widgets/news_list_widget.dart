@@ -5,6 +5,7 @@ import 'package:crypto_portfolio/application/app/design_system/widgets/update_da
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/date_time_extension.dart';
 import 'package:crypto_portfolio/application/features/news/bloc/news_bloc.dart';
+import 'package:crypto_portfolio/application/features/news/widgets/no_currencies_widget.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/entity/news/news_entity.dart';
 import 'package:crypto_portfolio/domain/repo/news_repo.dart';
@@ -34,21 +35,22 @@ class _NewsListWidgetState extends State<NewsListWidget> {
   late final NewsBloc bloc;
   late final void Function() listener;
 
+  void _init() {
+    bloc.add(
+      NewsEvent.init(
+        category: widget.category,
+        locale: context.localization.localeName,
+        symbol: widget.symbol,
+      ),
+    );
+  }
+
   @override
   void initState() {
     bloc = NewsBloc(
       context.read<NewsRepo>(),
       context.read<PortfolioRepo>(),
       context.read<WatchlistRepo>(),
-    );
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => bloc.add(
-        NewsEvent.init(
-          category: widget.category,
-          locale: context.localization.localeName,
-          symbol: widget.symbol,
-        ),
-      ),
     );
     listener = () {
       if (widget.controller.position.maxScrollExtent == widget.controller.position.pixels) {
@@ -58,6 +60,7 @@ class _NewsListWidgetState extends State<NewsListWidget> {
       }
     };
     widget.controller.addListener(listener);
+    WidgetsBinding.instance.addPostFrameCallback((_) => _init());
     super.initState();
   }
 
@@ -85,37 +88,71 @@ class _NewsListWidgetState extends State<NewsListWidget> {
       },
       builder: (context, state) {
         return state.when(
-          loading: () => Center(child: CircularProgressIndicator()),
-          noCoins: () {
-            return SizedBox();
-          },
-          success: (news) => _NewsList(news),
-          error: (news, error) => news == null
-              ? Center(
-                  child: Text(
-                    error.getMessage(context),
-                  ),
-                )
-              : _NewsList(news),
+          loading: () => Padding(
+            padding: const EdgeInsets.all(20),
+            child: Center(child: CircularProgressIndicator()),
+          ),
+          noCoins: () => NoCurrenciesWidget(),
+          success: (news) => _NewsList(news: news),
+          error: (news, error) => _NewsList(news: news, error: error.getMessage(context)),
         );
       },
     );
   }
 }
 
+class _ErrorMessage extends StatelessWidget {
+  final String message;
+  const _ErrorMessage(this.message);
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Text(
+          message,
+          style: AppStyles.normal14.copyWith(color: AppColors.redLight),
+        ),
+      ),
+    );
+  }
+}
+
 class _NewsList extends StatelessWidget {
-  final NewsListEntity news;
-  const _NewsList(this.news);
+  final NewsListEntity? news;
+  final String? error;
+  const _NewsList({this.news, this.error});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        ...news.list.map((e) => _NewsWidget(e)).toList(),
-        if (news.nextPage != null) Center(child: CircularProgressIndicator()),
-      ],
-    );
+    if (news == null && error != null) {
+      return _ErrorMessage(error!);
+    }
+    if (news != null) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ...news!.list.map((e) => _NewsWidget(e)).toList(),
+          if (error != null) _ErrorMessage(error!),
+          if (news!.nextPage != null && error == null)
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Center(child: CircularProgressIndicator()),
+            ),
+          if (news!.list.isEmpty && news!.nextPage == null && error == null)
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Text(
+                  context.localization.newsNotFound,
+                  style: AppStyles.normal14.copyWith(color: AppColors.redLight),
+                ),
+              ),
+            )
+        ],
+      );
+    }
+    return SizedBox();
   }
 }
 

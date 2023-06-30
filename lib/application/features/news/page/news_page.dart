@@ -21,7 +21,7 @@ class _NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin
   void initState() {
     tabController = TabController(
       vsync: this,
-      length: 3,
+      length: 2,
     );
     super.initState();
   }
@@ -84,6 +84,7 @@ class _NewsListContent extends StatefulWidget {
 
 class _NewsListContentState extends State<_NewsListContent> {
   final ScrollController controller = ScrollController();
+  bool refreshState = false;
 
   @override
   void dispose() {
@@ -93,12 +94,30 @@ class _NewsListContentState extends State<_NewsListContent> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: controller,
-      child: NewsListWidget(
+    return RefreshIndicator(
+      onRefresh: () async {
+        _refresh();
+        return;
+      },
+      child: SingleChildScrollView(
         controller: controller,
-        category: widget.category,
+        child: refreshState
+            ? SizedBox()
+            : NewsListWidget(
+                controller: controller,
+                category: widget.category,
+              ),
       ),
     );
+  }
+
+  Future<void> _refresh() async {
+    setState(() {
+      refreshState = true;
+    });
+    await Future<void>.delayed(const Duration(milliseconds: 1));
+    setState(() {
+      refreshState = false;
+    });
   }
 }

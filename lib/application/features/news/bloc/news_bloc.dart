@@ -24,12 +24,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     on<_Update>(_update, transformer: droppable());
   }
 
-  bool blocInitialized = false;
-
   void _init(_Init event, Emitter<NewsState> emit) async {
-    if (blocInitialized) {
-      return;
-    }
+    emit(NewsState.loading());
     final List<String>? currencies = _getCurrencies(event.category, event.symbol);
     if (currencies == null) {
       emit(NewsState.noCoins());
@@ -48,7 +44,6 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         (r) => emit(NewsState.success(r)),
       );
     }
-    blocInitialized = true;
   }
 
   void _update(_Update event, Emitter<NewsState> emit) async {

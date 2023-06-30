@@ -3,7 +3,7 @@ import 'package:crypto_portfolio/application/app/design_system/core/text_styles.
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/detail_market_coin_widget.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/portfolio_widgets/detail_portfolio_coin_widget.dart';
-import 'package:crypto_portfolio/application/features/watchlist/waidgets/watchlist_icon_widget.dart';
+import 'package:crypto_portfolio/application/features/watchlist/widgets/watchlist_icon_widget.dart';
 import 'package:flutter/material.dart';
 
 class DetailCoinPage extends StatefulWidget {

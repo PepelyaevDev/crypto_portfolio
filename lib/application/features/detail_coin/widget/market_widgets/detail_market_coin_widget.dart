@@ -137,7 +137,10 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                   BlocBuilder<MarketCoinBloc, MarketCoinState>(
                     builder: (context, state) {
                       if (state.loading) {
-                        return Center(child: CircularProgressIndicator());
+                        return Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Center(child: CircularProgressIndicator()),
+                        );
                       } else if (state.coin != null) {
                         return NewsListWidget(
                           controller: _controller,
@@ -145,7 +148,7 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                           symbol: state.coin!.symbol,
                         );
                       }
-                      return SizedBox();
+                      return SizedBox(height: 20);
                     },
                   ),
                 ],

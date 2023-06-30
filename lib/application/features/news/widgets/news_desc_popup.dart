@@ -1,6 +1,7 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
+import 'package:crypto_portfolio/application/features/news/widgets/no_currencies_widget.dart';
 import 'package:flutter/material.dart';
 
 class NewsDescPopup extends StatelessWidget {
@@ -33,43 +34,30 @@ class NewsDescPopup extends StatelessWidget {
                   ),
                   color: AppColors.grayLight,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SizedBox(height: 20),
-                      Text(
-                        context.localization.personalNews,
-                        style: AppStyles.bold22,
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        context.localization.personalNewsDesc,
-                        style: AppStyles.normal16,
-                      ),
-                      SizedBox(height: 20),
-                      Center(
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(AppColors.white),
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                            child: Text(
-                              context.localization.ok,
-                              style: AppStyles.normal14.copyWith(color: AppColors.blackLight),
-                            ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    NoCurrenciesWidget(),
+                    SizedBox(height: 20),
+                    Center(
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(AppColors.white),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                          child: Text(
+                            context.localization.ok,
+                            style: AppStyles.normal14.copyWith(color: AppColors.blackLight),
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: 20),
+                  ],
                 ),
               ),
             ],

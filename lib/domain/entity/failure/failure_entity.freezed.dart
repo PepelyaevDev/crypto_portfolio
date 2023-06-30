@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Failure {
-  ErrorType get errorType => throw _privateConstructorUsedError;
+  DioErrorType get errorType => throw _privateConstructorUsedError;
   DateTime get dateTime => throw _privateConstructorUsedError;
   int? get statusCode => throw _privateConstructorUsedError;
 
@@ -29,7 +29,7 @@ abstract class $FailureCopyWith<$Res> {
   factory $FailureCopyWith(Failure value, $Res Function(Failure) then) =
       _$FailureCopyWithImpl<$Res, Failure>;
   @useResult
-  $Res call({ErrorType errorType, DateTime dateTime, int? statusCode});
+  $Res call({DioErrorType errorType, DateTime dateTime, int? statusCode});
 }
 
 /// @nodoc
@@ -52,7 +52,7 @@ class _$FailureCopyWithImpl<$Res, $Val extends Failure> implements $FailureCopyW
       errorType: null == errorType
           ? _value.errorType
           : errorType // ignore: cast_nullable_to_non_nullable
-              as ErrorType,
+              as DioErrorType,
       dateTime: null == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -71,7 +71,7 @@ abstract class _$$_FailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
       __$$_FailureCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ErrorType errorType, DateTime dateTime, int? statusCode});
+  $Res call({DioErrorType errorType, DateTime dateTime, int? statusCode});
 }
 
 /// @nodoc
@@ -91,7 +91,7 @@ class __$$_FailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res, _$_Fail
       errorType: null == errorType
           ? _value.errorType
           : errorType // ignore: cast_nullable_to_non_nullable
-              as ErrorType,
+              as DioErrorType,
       dateTime: null == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -110,7 +110,7 @@ class _$_Failure implements _Failure {
   const _$_Failure({required this.errorType, required this.dateTime, this.statusCode});
 
   @override
-  final ErrorType errorType;
+  final DioErrorType errorType;
   @override
   final DateTime dateTime;
   @override
@@ -143,12 +143,12 @@ class _$_Failure implements _Failure {
 
 abstract class _Failure implements Failure {
   const factory _Failure(
-      {required final ErrorType errorType,
+      {required final DioErrorType errorType,
       required final DateTime dateTime,
       final int? statusCode}) = _$_Failure;
 
   @override
-  ErrorType get errorType;
+  DioErrorType get errorType;
   @override
   DateTime get dateTime;
   @override

@@ -6,8 +6,8 @@ import 'package:crypto_portfolio/application/app/design_system/widgets/update_da
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/features/search/page/search_page.dart';
 import 'package:crypto_portfolio/application/features/watchlist/bloc/watchlist_bloc.dart';
-import 'package:crypto_portfolio/application/features/watchlist/waidgets/empty_watchlist_widget.dart';
-import 'package:crypto_portfolio/application/features/watchlist/waidgets/watchlist_coins_widget.dart';
+import 'package:crypto_portfolio/application/features/watchlist/widgets/empty_watchlist_widget.dart';
+import 'package:crypto_portfolio/application/features/watchlist/widgets/watchlist_coins_widget.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

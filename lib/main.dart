@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 
 DateTime applicationBlockingDate = DateTime(2099, 6, 14);
 
-//дизайн заугрзки и ошибок в новостях
 //просьба поставить оценку в маркете
 //расширить общее инфо о портфеле
+//у монет с низкой ценой нет разницы на графике
 
 Future<void> main() async {
   final HiveApiClient hiveApiClient = await HiveApiClient.getClient;
