@@ -40,6 +40,7 @@ class WatchlistIconWidget extends StatelessWidget {
               icon: Icon(
                 state.idsList.contains(id) ? AppIcons.star : AppIcons.star_empty,
                 color: AppColors.blue,
+                size: 20,
               ),
             ),
           ),

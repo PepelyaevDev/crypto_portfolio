@@ -6,7 +6,21 @@ import 'package:money_formatter/money_formatter.dart';
 
 extension DoubleExtension on double {
   String get moneyCompact => MoneyFormatter(amount: this).output.compactSymbolOnLeft;
-  String get moneyFull => MoneyFormatter(amount: this).output.symbolOnLeft;
+
+  String get moneyFull {
+    int fractionDigits = 2;
+    if (this < 2) {
+      fractionDigits = 5;
+    }
+    if (this < 0.01) {
+      fractionDigits = 8;
+    }
+    return MoneyFormatter(
+      amount: this,
+      settings: MoneyFormatterSettings(fractionDigits: fractionDigits),
+    ).output.symbolOnLeft;
+  }
+
   String compactLong(String locale) {
     final String formattedNumber = NumberFormat.compactLong(locale: locale).format(this);
     return formattedNumber.replaceAllMapped(
