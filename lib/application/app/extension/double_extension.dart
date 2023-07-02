@@ -9,10 +9,10 @@ extension DoubleExtension on double {
 
   String get moneyFull {
     int fractionDigits = 2;
-    if (this < 2) {
+    if (this > -2 && this < 2) {
       fractionDigits = 5;
     }
-    if (this < 0.01) {
+    if (this > -0.01 && this < 0.01) {
       fractionDigits = 8;
     }
     return MoneyFormatter(

@@ -6,8 +6,11 @@ import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:flutter/material.dart';
 
 //просьба поставить оценку в маркете
-//расширить общее инфо о портфеле
+//при изменении избранного на других страницах в новостях будет старый список
+//поправить кнопки в виджете статистики портфеля (история операции и открытия графика pie)
+//процент стейблов, возможность списывать и зщачислять к стейблам
 //добавить подсказку как смотреть полные новости
+//лицензия syncfusion_flutter_charts либо замена либы
 
 Future<void> main() async {
   final HiveApiClient hiveApiClient = await HiveApiClient.getClient;

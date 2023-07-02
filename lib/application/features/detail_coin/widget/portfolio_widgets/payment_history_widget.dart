@@ -93,10 +93,11 @@ class PaymentHistoryWidget extends StatelessWidget {
               child: ListView.separated(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (_, i) => _PaymentWidget(
+                itemBuilder: (_, i) => PaymentWidget(
                   name: coin.symbol,
+                  coinLogo: coin.image,
                   payment: coin.history[i],
-                  onTapDelete: _canDelete.call(i) ? onTapDelete : null,
+                  onTapDelete: coin.canDelete(i) ? onTapDelete : null,
                 ),
                 separatorBuilder: (_, __) => Divider(height: 25),
                 itemCount: coin.history.length,
@@ -107,21 +108,16 @@ class PaymentHistoryWidget extends StatelessWidget {
       ),
     );
   }
-
-  bool _canDelete(int i) {
-    if (coin.history[i].type == PaymentType.buy && coin.history[i].numberOfCoins > coin.holdings) {
-      return false;
-    }
-    return true;
-  }
 }
 
-class _PaymentWidget extends StatelessWidget {
+class PaymentWidget extends StatelessWidget {
   final String name;
+  final String coinLogo;
   final PaymentEntity payment;
   final ValueChanged<PaymentEntity>? onTapDelete;
-  const _PaymentWidget({
+  const PaymentWidget({
     required this.name,
+    required this.coinLogo,
     required this.payment,
     required this.onTapDelete,
   });
@@ -129,49 +125,53 @@ class _PaymentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color color;
-    final IconData icon;
     final String paymentType;
     final String moneyText;
     if (payment.type == PaymentType.buy) {
       color = AppColors.greenLight;
-      icon = Icons.arrow_forward;
       paymentType = context.localization.buy;
       moneyText = context.localization.paid;
     } else {
       color = AppColors.blue;
-      icon = Icons.arrow_back;
       paymentType = context.localization.sell;
       moneyText = context.localization.received;
     }
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              icon,
-              color: color,
-              size: 20,
+            Image.network(
+              coinLogo,
+              width: 20,
+              height: 20,
+              errorBuilder: (_, __, ___) => SizedBox(),
             ),
             SizedBox(width: 10),
             Column(
-              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  paymentType,
-                  style: AppStyles.bold14,
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: '$paymentType ',
+                        style: AppStyles.bold14.copyWith(color: color),
+                      ),
+                      TextSpan(
+                        text: '${payment.numberOfCoins} $name',
+                        style: AppStyles.bold14.copyWith(color: AppColors.grayDark),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 5),
                 Text(
-                  payment.dateTime.dateLong(context),
-                  style: AppStyles.normal14,
-                ),
-                SizedBox(height: 5),
-                Text(
-                  payment.dateTime.time,
-                  style: AppStyles.normal14,
+                  '${context.localization.price}: '
+                  '${(payment.amount / payment.numberOfCoins).moneyFull}',
+                  style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
                 ),
               ],
             ),
@@ -181,23 +181,26 @@ class _PaymentWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Column(
-              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(
-                  '$moneyText: ${payment.amount.moneyFull}',
-                  style: AppStyles.bold14.copyWith(color: color),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: '$moneyText: ',
+                        style: AppStyles.bold14.copyWith(color: AppColors.grayDark),
+                      ),
+                      TextSpan(
+                        text: payment.amount.moneyFull,
+                        style: AppStyles.bold14.copyWith(color: color),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 5),
                 Text(
-                  '${payment.numberOfCoins} $name',
-                  style: AppStyles.normal14,
-                ),
-                SizedBox(height: 5),
-                Text(
-                  '${context.localization.price}: '
-                  '${(payment.amount / payment.numberOfCoins).moneyFull}',
-                  style: AppStyles.normal14,
+                  '${payment.dateTime.dateLong(context)} ${payment.dateTime.time}',
+                  style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
                 ),
               ],
             ),

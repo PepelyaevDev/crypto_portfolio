@@ -58,8 +58,7 @@ class PortfolioRepo {
 
   Future<void> deleteCoin(String coinId) async {
     final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
-    final List<CoinEntity> newCoins = [];
-    newCoins.addAll(coinsEntity.list);
+    final List<CoinEntity> newCoins = [...coinsEntity.list];
     newCoins.removeWhere((element) => element.id == coinId);
     await _updateCoinsEntity(newCoins);
   }
@@ -70,10 +69,8 @@ class PortfolioRepo {
     final CoinEntity coinEntity = coinsEntity.list.firstWhere(
       (e) => e.id == paymentEntity.id,
     );
-    final List<CoinEntity> newCoins = [];
-    newCoins.addAll(coinsEntity.list);
-    final List<PaymentEntity> newHistory = [];
-    newHistory.addAll(coinEntity.history);
+    final List<CoinEntity> newCoins = [...coinsEntity.list];
+    final List<PaymentEntity> newHistory = [...coinEntity.history];
     if (newHistory.contains(paymentEntity)) {
       newHistory.remove(paymentEntity);
     } else {

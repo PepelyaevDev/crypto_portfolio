@@ -79,7 +79,13 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     if (symbols.isEmpty) {
       return null;
     } else {
-      return symbols;
+      final List<String> currencies = [];
+      for (var e in symbols) {
+        if (!currencies.contains(e)) {
+          currencies.add(e);
+        }
+      }
+      return currencies;
     }
   }
 }

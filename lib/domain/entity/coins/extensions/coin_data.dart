@@ -70,4 +70,11 @@ extension CoinData on CoinEntity {
       return ' $percentageDiffString % (${dollarDiff.moneyFull})';
     }
   }
+
+  bool canDelete(int i) {
+    if (history[i].type == PaymentType.buy && history[i].numberOfCoins > holdings) {
+      return false;
+    }
+    return true;
+  }
 }
