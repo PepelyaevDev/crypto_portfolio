@@ -48,8 +48,8 @@ class DetailPortfolioStatWidget extends StatelessWidget {
             decoration: AppDecorations.blueBorderDecoration,
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                vertical: 20.0,
-                horizontal: 30,
+                vertical: 15.0,
+                horizontal: 10,
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,

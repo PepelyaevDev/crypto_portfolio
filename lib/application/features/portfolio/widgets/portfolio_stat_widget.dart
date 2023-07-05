@@ -28,7 +28,7 @@ class _PortfolioStatWidgetState extends State<PortfolioStatWidget> {
         width: MediaQuery.of(context).size.width,
         decoration: AppDecorations.blueBorderDecoration,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+          padding: const EdgeInsets.fromLTRB(10, 15, 10, 0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
