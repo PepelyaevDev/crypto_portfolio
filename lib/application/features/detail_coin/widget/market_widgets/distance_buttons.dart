@@ -74,7 +74,7 @@ class _DistanceButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(3),
-          color: thisDistanceChosen ? AppColors.blueLight : AppColors.transparent,
+          color: thisDistanceChosen ? AppColors.primary : AppColors.transparent,
         ),
         child: Padding(
           padding: const EdgeInsets.all(7.0),

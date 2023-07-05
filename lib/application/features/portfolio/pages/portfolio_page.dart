@@ -37,7 +37,7 @@ class PortfolioPage extends StatelessWidget {
           builder: (context, portfolioState) {
             return Scaffold(
               appBar: AppBar(
-                shadowColor: AppColors.blueLight,
+                shadowColor: AppColors.primary,
                 backgroundColor: AppColors.white,
                 foregroundColor: AppColors.blackLight,
                 actions: [

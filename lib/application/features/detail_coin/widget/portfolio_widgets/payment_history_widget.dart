@@ -132,7 +132,7 @@ class PaymentWidget extends StatelessWidget {
       paymentType = context.localization.buy;
       moneyText = context.localization.paid;
     } else {
-      color = AppColors.blueLight;
+      color = AppColors.primary;
       paymentType = context.localization.sell;
       moneyText = context.localization.received;
     }

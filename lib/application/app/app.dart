@@ -54,7 +54,7 @@ class CryptoPortfolioApp extends StatelessWidget {
             child: MaterialApp(
               theme: ThemeData(
                 colorScheme: ColorScheme.fromSwatch().copyWith(
-                  primary: AppColors.blueLight,
+                  primary: AppColors.primary,
                 ),
               ),
               debugShowCheckedModeBanner: false,

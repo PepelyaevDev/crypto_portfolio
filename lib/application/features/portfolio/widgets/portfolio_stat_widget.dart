@@ -24,12 +24,13 @@ class _PortfolioStatWidgetState extends State<PortfolioStatWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
-      child: Ink(
+      child: Container(
         width: MediaQuery.of(context).size.width,
         decoration: AppDecorations.blueBorderDecoration,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,38 +59,56 @@ class _PortfolioStatWidgetState extends State<PortfolioStatWidget> {
               ),
               if (openPieChart)
                 Padding(
-                  padding: const EdgeInsets.only(top: 5.0),
-                  child: Column(
-                    children: [
-                      PieChartWidget(widget.coins),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => PortfolioHistoryPage(),
-                          ));
-                        },
-                        child: Text(context.localization.transactionHistory),
-                      )
-                    ],
-                  ),
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: PieChartWidget(widget.coins),
                 ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 5),
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(5),
-                  onTap: () {
-                    setState(() {
-                      openPieChart = !openPieChart;
-                    });
-                  },
-                  child: Ink(
-                    width: double.infinity,
-                    child: Icon(
-                      openPieChart ? Icons.arrow_drop_up : Icons.arrow_drop_down,
-                      size: 30,
-                      color: AppColors.blackLight,
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(AppColors.white),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            side: BorderSide(color: AppColors.primary),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => PortfolioHistoryPage(),
+                        ));
+                      },
+                      child: Text(
+                        context.localization.transactionHistory,
+                        style: AppStyles.normal12.copyWith(color: AppColors.primary),
+                      ),
                     ),
-                  ),
+                    TextButton(
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(0)),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          openPieChart = !openPieChart;
+                        });
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(context.localization.coinChart),
+                          Icon(
+                            openPieChart ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+                            size: 30,
+                            color: AppColors.primary,
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

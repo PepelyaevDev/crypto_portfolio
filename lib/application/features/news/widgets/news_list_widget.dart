@@ -229,7 +229,7 @@ class _NewsWidgetState extends State<_NewsWidget> {
                           padding: const EdgeInsets.all(5.0),
                           child: Text(
                             widget.news.sourceTitle,
-                            style: AppStyles.normal14.copyWith(color: AppColors.blueLight),
+                            style: AppStyles.normal14.copyWith(color: AppColors.primary),
                             softWrap: false,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -267,7 +267,7 @@ class _NewsWidgetState extends State<_NewsWidget> {
                           widget.news.url,
                           softWrap: false,
                           overflow: TextOverflow.ellipsis,
-                          style: AppStyles.normal14.copyWith(color: AppColors.blueLight),
+                          style: AppStyles.normal14.copyWith(color: AppColors.primary),
                         ),
                       ),
                     ),

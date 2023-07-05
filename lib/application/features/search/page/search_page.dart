@@ -22,7 +22,7 @@ class SearchPage extends StatelessWidget {
       child: Builder(builder: (context) {
         return Scaffold(
           appBar: AppBar(
-            shadowColor: AppColors.blueLight,
+            shadowColor: AppColors.primary,
             backgroundColor: AppColors.white,
             foregroundColor: AppColors.blackLight,
           ),

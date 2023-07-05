@@ -20,7 +20,7 @@ class PortfolioHistoryPage extends StatelessWidget {
             builder: (context, state) {
               return Scaffold(
                 appBar: AppBar(
-                  shadowColor: AppColors.blueLight,
+                  shadowColor: AppColors.primary,
                   backgroundColor: AppColors.white,
                   foregroundColor: AppColors.blackLight,
                   actions: [

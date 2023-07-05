@@ -17,7 +17,7 @@ class BottomNavigationPage extends StatelessWidget {
             child: state.tab.screen,
           ),
           bottomNavigationBar: BottomNavigationBar(
-            selectedItemColor: AppColors.blueLight,
+            selectedItemColor: AppColors.primary,
             unselectedItemColor: AppColors.grayDark,
             items: BottomNavigationTabs.data.values.map((value) {
               final BottomNavigationKey key = BottomNavigationTabs.data.keys.firstWhere(

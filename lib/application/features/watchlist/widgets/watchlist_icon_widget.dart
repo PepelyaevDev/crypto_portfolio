@@ -31,7 +31,7 @@ class WatchlistIconWidget extends StatelessWidget {
                           ? context.localization.removedFromWatchlist
                           : context.localization.addedToWatchlist,
                     ),
-                    backgroundColor: AppColors.blueLight,
+                    backgroundColor: AppColors.primary,
                     duration: Duration(seconds: 1),
                   ),
                 );
@@ -39,7 +39,7 @@ class WatchlistIconWidget extends StatelessWidget {
               },
               icon: Icon(
                 state.idsList.contains(id) ? AppIcons.star : AppIcons.star_empty,
-                color: AppColors.blueLight,
+                color: AppColors.primary,
                 size: 20,
               ),
             ),

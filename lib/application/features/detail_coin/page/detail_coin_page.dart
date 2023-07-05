@@ -75,7 +75,7 @@ class _DetailCoinPageState extends State<DetailCoinPage> with SingleTickerProvid
         bottom: TabBar(
           labelColor: AppColors.blackLight,
           labelStyle: AppStyles.normal14,
-          indicatorColor: AppColors.blueLight,
+          indicatorColor: AppColors.primary,
           controller: tabController,
           tabs: <Tab>[
             Tab(text: context.localization.marketData),

@@ -5,6 +5,6 @@ abstract class AppDecorations {
   static BoxDecoration blueBorderDecoration = BoxDecoration(
     color: AppColors.white,
     borderRadius: BorderRadius.circular(3),
-    boxShadow: [BoxShadow(color: AppColors.blueLight.withOpacity(0.2), blurRadius: 2)],
+    boxShadow: [BoxShadow(color: AppColors.primary.withOpacity(0.2), blurRadius: 2)],
   );
 }
