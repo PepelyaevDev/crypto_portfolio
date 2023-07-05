@@ -29,7 +29,7 @@ class CoinGeckoWidget extends StatelessWidget {
             padding: const EdgeInsets.all(5.0),
             child: Text(
               'CoinGecko API',
-              style: AppStyles.normal12.copyWith(color: AppColors.blue),
+              style: AppStyles.normal12.copyWith(color: AppColors.blueLight),
             ),
           ),
         ),

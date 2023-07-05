@@ -105,7 +105,7 @@ class _SearchedCoinWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4),
-          border: Border.all(color: AppColors.blue),
+          border: Border.all(color: AppColors.blueLight),
         ),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -140,7 +140,7 @@ class _SelectedCoinWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
-        border: Border.all(color: AppColors.blue),
+        border: Border.all(color: AppColors.blueLight),
       ),
       child: Center(
         child: Padding(

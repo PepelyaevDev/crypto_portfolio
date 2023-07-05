@@ -60,7 +60,7 @@ class MarketChartWidget extends StatelessWidget {
               ),
               series: [
                 LineSeries(
-                  color: AppColors.blue,
+                  color: AppColors.blueLight,
                   dataSource: <MarketChartPriceEntity>[...state.marketChart.prices],
                   xValueMapper: (price, _) => price.time,
                   yValueMapper: (price, _) => price.price,

@@ -23,7 +23,7 @@ class NewsDescPopup extends StatelessWidget {
                     topLeft: Radius.circular(radius),
                     topRight: Radius.circular(radius),
                   ),
-                  color: AppColors.blue,
+                  color: AppColors.blueLight,
                 ),
               ),
               Ink(

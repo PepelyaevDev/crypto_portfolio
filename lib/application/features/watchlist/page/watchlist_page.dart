@@ -45,7 +45,7 @@ class _WatchlistPageState extends State<WatchlistPage> {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            shadowColor: AppColors.blue,
+            shadowColor: AppColors.blueLight,
             backgroundColor: AppColors.white,
             foregroundColor: AppColors.blackLight,
             actions: [

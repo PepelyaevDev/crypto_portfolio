@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/features/bottom_navigation/bloc/bottom_navigation_bloc.dart';
 import 'package:crypto_portfolio/application/features/bottom_navigation/page/bottom_navigation_page.dart';
 import 'package:crypto_portfolio/application/features/watchlist/bloc/watchlist_bloc.dart';
@@ -51,6 +52,11 @@ class CryptoPortfolioApp extends StatelessWidget {
               ),
             ],
             child: MaterialApp(
+              theme: ThemeData(
+                colorScheme: ColorScheme.fromSwatch().copyWith(
+                  primary: AppColors.blueLight,
+                ),
+              ),
               debugShowCheckedModeBanner: false,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,

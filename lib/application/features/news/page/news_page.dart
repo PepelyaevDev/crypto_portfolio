@@ -53,7 +53,7 @@ class _NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin
         bottom: TabBar(
           labelColor: AppColors.blackLight,
           labelStyle: AppStyles.normal14,
-          indicatorColor: AppColors.blue,
+          indicatorColor: AppColors.blueLight,
           controller: tabController,
           tabs: <Tab>[
             Tab(text: context.localization.allNews),
