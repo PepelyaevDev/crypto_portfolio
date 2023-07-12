@@ -99,7 +99,7 @@ class MarketCoinsWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.white,
             boxShadow: [
-              BoxShadow(color: AppColors.grey, blurRadius: 1.0),
+              BoxShadow(color: AppColors.gray, blurRadius: 1.0),
             ],
           ),
           child: Align(

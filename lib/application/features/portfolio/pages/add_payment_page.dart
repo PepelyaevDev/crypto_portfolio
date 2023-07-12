@@ -174,7 +174,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                             backgroundColor: MaterialStateProperty.all<Color>(
                               state.maybeMap(
                                 success: (_) => AppColors.primary,
-                                orElse: () => AppColors.grey,
+                                orElse: () => AppColors.gray,
                               ),
                             ),
                           ),
@@ -206,7 +206,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
             border: Border.all(
-              color: _paymentType == value ? AppColors.primary : AppColors.grey,
+              color: _paymentType == value ? AppColors.primary : AppColors.gray,
             ),
           ),
           child: Center(
@@ -215,7 +215,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
               child: Text(
                 title,
                 style: AppStyles.normal12.copyWith(
-                  color: _paymentType == value ? AppColors.blackLight : AppColors.grey,
+                  color: _paymentType == value ? AppColors.blackLight : AppColors.gray,
                 ),
               ),
             ),
@@ -292,7 +292,7 @@ class _DatePickerItem extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4),
           border: Border.all(
-            color: AppColors.grey,
+            color: AppColors.gray,
           ),
         ),
         child: Padding(

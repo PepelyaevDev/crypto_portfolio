@@ -41,6 +41,8 @@ flutter_icons:
   ios: true
   min_sdk_android: 21
 flutter: 
+  assets: 
+    - assets/logo.png
   fonts: 
     - 
       family: AppIcons

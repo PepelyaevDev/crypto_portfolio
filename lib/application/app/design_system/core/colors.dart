@@ -9,7 +9,7 @@ abstract class AppColors {
   static Color greenLight = Colors.green.shade400;
 
   static Color white = Colors.white;
-  static Color grey = Colors.grey;
+  static Color gray = Colors.grey;
 
   static Color grayLight = Color(0xFFf5f5f5);
   static Color grayDark = Color(0xFF696969);

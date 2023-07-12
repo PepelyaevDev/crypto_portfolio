@@ -1,6 +1,7 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
+import 'package:crypto_portfolio/application/app/design_system/widgets/logo_widget.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/features/news/bloc/news_bloc.dart';
 import 'package:crypto_portfolio/application/features/news/widgets/news_desc_popup.dart';
@@ -39,6 +40,8 @@ class _NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin
         shadowColor: AppColors.transparent,
         backgroundColor: AppColors.white,
         foregroundColor: AppColors.blackLight,
+        title: LogoWidget(),
+        centerTitle: true,
         actions: [
           AppBarIconButton(
             iconData: Icons.question_mark_rounded,

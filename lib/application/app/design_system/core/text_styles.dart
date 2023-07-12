@@ -22,4 +22,5 @@ abstract class AppStyles {
   static final TextStyle normal14 = TextStyle(fontSize: 14, color: _defaultColor);
   static final TextStyle normal16 = TextStyle(fontSize: 16, color: _defaultColor);
   static final TextStyle normal18 = TextStyle(fontSize: 18, color: _defaultColor);
+  static final TextStyle normal20 = TextStyle(fontSize: 20, color: _defaultColor);
 }

@@ -1,6 +1,7 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
+import 'package:crypto_portfolio/application/app/design_system/widgets/logo_widget.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/refresh_icon_button.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
@@ -48,6 +49,8 @@ class _WatchlistPageState extends State<WatchlistPage> {
             shadowColor: AppColors.primary,
             backgroundColor: AppColors.white,
             foregroundColor: AppColors.blackLight,
+            title: LogoWidget(),
+            centerTitle: true,
             actions: [
               AppBarIconButton(
                 iconData: Icons.search,
