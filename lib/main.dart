@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 //процент стейблов, возможность списывать и зщачислять к стейблам
 //добавить подсказку как смотреть полные новости
 //лицензия syncfusion_flutter_charts либо замена либы
+//лого + название + аппбары
+//информация о проекте/контакты
 
 Future<void> main() async {
   final HiveApiClient hiveApiClient = await HiveApiClient.getClient;
