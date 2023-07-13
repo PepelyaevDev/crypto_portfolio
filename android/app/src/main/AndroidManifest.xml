@@ -2,7 +2,7 @@
     package="com.example.crypto_portfolio">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="crypto_portfolio"
+        android:label="SimpleCrypto"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
