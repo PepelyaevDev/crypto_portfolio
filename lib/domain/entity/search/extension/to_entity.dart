@@ -6,7 +6,6 @@ extension SearchDtoToEntity on SearchDTO {
         coins: coins
             .map(
               (e) => SearchCoinEntity(
-                id: e.id,
                 symbol: e.symbol.toUpperCase(),
                 icon: e.large,
                 marketCapRank: e.marketCapRank,

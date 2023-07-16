@@ -12,7 +12,6 @@ class SearchEntity with _$SearchEntity {
 @freezed
 class SearchCoinEntity with _$SearchCoinEntity {
   const factory SearchCoinEntity({
-    required String id,
     required String symbol,
     required String icon,
     required int? marketCapRank,

@@ -4,8 +4,8 @@ import 'package:crypto_portfolio/application/features/portfolio/pages/add_paymen
 import 'package:flutter/material.dart';
 
 class EmptyPortfolioCoinWidget extends StatelessWidget {
-  final String coinId;
-  const EmptyPortfolioCoinWidget({required this.coinId});
+  final String symbol;
+  const EmptyPortfolioCoinWidget({required this.symbol});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class EmptyPortfolioCoinWidget extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (_) => AddPaymentPage(
-                    coinID: coinId,
+                    symbol: symbol,
                   ),
                 ),
               );

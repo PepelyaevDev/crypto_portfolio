@@ -20,17 +20,17 @@ class AddPaymentBloc extends Bloc<AddPaymentEvent, AddPaymentState> {
   }
 
   Future<void> _getCoin(_GetCoin event, Emitter<AddPaymentState> emit) async {
-    if (event.coinId == null) return;
+    if (event.symbol == null) return;
     emit(AddPaymentState.loading());
     try {
       final CoinsEntity portfolioCoins = _portfolioRepo.getCoinsLocal();
       final CoinEntity currentCoin = portfolioCoins.list.firstWhere(
-        (e) => e.id == event.coinId!,
+        (e) => e.symbol == event.symbol!,
         orElse: () => throw Exception(),
       );
       emit(AddPaymentState.success(currentCoin));
     } catch (_) {
-      final result = await _marketRepo.getMarketCoinById(event.coinId!);
+      final result = await _marketRepo.getMarketCoinBySymbol(event.symbol!);
       result.fold(
         (error) => emit(AddPaymentState.error(error)),
         (marketCoin) => emit(AddPaymentState.success(marketCoin)),

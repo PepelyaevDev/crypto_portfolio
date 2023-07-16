@@ -12,14 +12,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 
 class DetailPortfolioCoinWidget extends StatelessWidget {
-  final String coinId;
+  final String symbol;
 
-  const DetailPortfolioCoinWidget(this.coinId);
+  const DetailPortfolioCoinWidget(this.symbol);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DetailPortfolioCoinBloc(context.read<PortfolioRepo>(), coinId)
+      create: (context) => DetailPortfolioCoinBloc(context.read<PortfolioRepo>(), symbol)
         ..add(DetailPortfolioCoinEvent.refreshData()),
       child: Builder(builder: (context) {
         return RefreshIndicator(
@@ -39,7 +39,7 @@ class DetailPortfolioCoinWidget extends StatelessWidget {
             },
             builder: (context, state) {
               if (state.coin == null) {
-                return EmptyPortfolioCoinWidget(coinId: coinId);
+                return EmptyPortfolioCoinWidget(symbol: symbol);
               }
               return ListView(
                 children: [
@@ -59,7 +59,7 @@ class DetailPortfolioCoinWidget extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (_) => AddPaymentPage(
-                            coinID: coinId,
+                            symbol: symbol,
                           ),
                         ),
                       );
@@ -72,7 +72,7 @@ class DetailPortfolioCoinWidget extends StatelessWidget {
                     onTapDeleteAll: () {
                       context
                           .read<DetailPortfolioCoinBloc>()
-                          .add(DetailPortfolioCoinEvent.deleteCoin(state.coin!.id));
+                          .add(DetailPortfolioCoinEvent.deleteCoin(state.coin!.symbol));
                     },
                   ),
                   SizedBox(height: 30),

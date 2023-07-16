@@ -95,7 +95,6 @@ class _SearchedCoinWidget extends StatelessWidget {
             builder: (_) => DetailCoinPage(
               coinLogo: searchCoinEntity.icon,
               coinSymbol: searchCoinEntity.symbol,
-              coinId: searchCoinEntity.id,
             ),
           ),
         );
@@ -127,7 +126,7 @@ class _SearchedCoinWidget extends StatelessWidget {
                   ),
               ],
             ),
-            WatchlistIconWidget(searchCoinEntity.id),
+            WatchlistIconWidget(searchCoinEntity.symbol),
           ],
         ),
       ),

@@ -15,13 +15,13 @@ part 'detail_portfolio_coin_bloc.freezed.dart';
 
 class DetailPortfolioCoinBloc extends Bloc<DetailPortfolioCoinEvent, DetailPortfolioCoinState> {
   final PortfolioRepo _portfolioRepo;
-  final String _coinId;
+  final String _symbol;
   late StreamSubscription<Either<Failure, CoinsEntity>> _coinsListener;
-  DetailPortfolioCoinBloc(this._portfolioRepo, this._coinId)
+  DetailPortfolioCoinBloc(this._portfolioRepo, this._symbol)
       : super(DetailPortfolioCoinState(
-          coin: _portfolioRepo.getCoinsLocal().list.where((e) => e.id == _coinId).isEmpty
+          coin: _portfolioRepo.getCoinsLocal().list.where((e) => e.symbol == _symbol).isEmpty
               ? null
-              : _portfolioRepo.getCoinsLocal().list.firstWhere((e) => e.id == _coinId),
+              : _portfolioRepo.getCoinsLocal().list.firstWhere((e) => e.symbol == _symbol),
         )) {
     on<_Update>(_update, transformer: droppable());
     on<_RefreshData>(_refreshData, transformer: droppable());
@@ -37,7 +37,7 @@ class DetailPortfolioCoinBloc extends Bloc<DetailPortfolioCoinEvent, DetailPortf
   }
 
   Future<void> _deleteCoin(_DeleteCoin event, Emitter<DetailPortfolioCoinState> emit) async {
-    await _portfolioRepo.deleteCoin(event.coinId);
+    await _portfolioRepo.deleteCoin(event.symbol);
   }
 
   Future<void> _update(_Update event, Emitter<DetailPortfolioCoinState> emit) async {
@@ -49,7 +49,7 @@ class DetailPortfolioCoinBloc extends Bloc<DetailPortfolioCoinEvent, DetailPortf
       },
       (r) {
         if (r.updateTime.newValue) {
-          final List<CoinEntity> coins = r.list.where((e) => e.id == _coinId).toList();
+          final List<CoinEntity> coins = r.list.where((e) => e.symbol == _symbol).toList();
           coins.isEmpty
               ? emit(DetailPortfolioCoinState(coin: null))
               : emit(DetailPortfolioCoinState(coin: coins.first));
@@ -59,7 +59,7 @@ class DetailPortfolioCoinBloc extends Bloc<DetailPortfolioCoinEvent, DetailPortf
   }
 
   Future<void> _refreshData(_, Emitter<DetailPortfolioCoinState> emit) async {
-    if (_portfolioRepo.getCoinsLocal().list.where((e) => e.id == _coinId).isEmpty) {
+    if (_portfolioRepo.getCoinsLocal().list.where((e) => e.symbol == _symbol).isEmpty) {
       return;
     }
     emit(DetailPortfolioCoinState(coin: state.coin, loading: true));

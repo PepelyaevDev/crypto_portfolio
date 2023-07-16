@@ -34,12 +34,13 @@ class PortfolioRepo {
   Future<void> updateCoinsMarketData() async {
     try {
       final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
-      final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoinsByIds(
-        coinsEntity.list.map((e) => e.id).toList(),
+      final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoinsBySymbols(
+        symbols: coinsEntity.list.map((e) => e.symbol).toList(),
       );
       final List<CoinEntity> updatedCoinsList = [];
       for (final coin in coinsEntity.list) {
-        final CoinEntity emptyCoin = geckoCoins.firstWhere((e) => e.id == coin.id).createEmptyCoin;
+        final CoinEntity emptyCoin =
+            geckoCoins.firstWhere((e) => e.symbol.toUpperCase() == coin.symbol).createEmptyCoin;
         updatedCoinsList.add(
           emptyCoin.copyWith(history: coin.history),
         );
@@ -52,14 +53,14 @@ class PortfolioRepo {
 
   Future<void> addCoin(CoinEntity coinEntity) async {
     final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
-    if (coinsEntity.list.where((e) => e.id == coinEntity.id).isNotEmpty) return;
+    if (coinsEntity.list.where((e) => e.symbol == coinEntity.symbol).isNotEmpty) return;
     await _updateCoinsEntity([...coinsEntity.list, coinEntity]);
   }
 
-  Future<void> deleteCoin(String coinId) async {
+  Future<void> deleteCoin(String symbol) async {
     final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
     final List<CoinEntity> newCoins = [...coinsEntity.list];
-    newCoins.removeWhere((element) => element.id == coinId);
+    newCoins.removeWhere((element) => element.symbol == symbol);
     await _updateCoinsEntity(newCoins);
   }
 
@@ -67,7 +68,7 @@ class PortfolioRepo {
     //adding and removing payments
     final CoinsEntity coinsEntity = _hiveApiClient.coins.getPortfolioCoins().convertToCoinsEntity;
     final CoinEntity coinEntity = coinsEntity.list.firstWhere(
-      (e) => e.id == paymentEntity.id,
+      (e) => e.symbol == paymentEntity.symbol,
     );
     final List<CoinEntity> newCoins = [...coinsEntity.list];
     final List<PaymentEntity> newHistory = [...coinEntity.history];

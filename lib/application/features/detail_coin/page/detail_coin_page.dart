@@ -9,12 +9,10 @@ import 'package:flutter/material.dart';
 class DetailCoinPage extends StatefulWidget {
   final String coinLogo;
   final String coinSymbol;
-  final String coinId;
   final int initialIndex;
   const DetailCoinPage({
     required this.coinLogo,
     required this.coinSymbol,
-    required this.coinId,
     this.initialIndex = 0,
   });
 
@@ -66,7 +64,7 @@ class _DetailCoinPageState extends State<DetailCoinPage> with SingleTickerProvid
           ),
         ),
         actions: [
-          WatchlistIconWidget(widget.coinId, appBarIcon: true),
+          WatchlistIconWidget(widget.coinSymbol, appBarIcon: true),
           SizedBox(width: 5),
         ],
         shadowColor: AppColors.transparent,
@@ -86,8 +84,8 @@ class _DetailCoinPageState extends State<DetailCoinPage> with SingleTickerProvid
       body: TabBarView(
         controller: tabController,
         children: <Widget>[
-          DetailMarketCoinWidget(widget.coinId),
-          DetailPortfolioCoinWidget(widget.coinId),
+          DetailMarketCoinWidget(widget.coinSymbol),
+          DetailPortfolioCoinWidget(widget.coinSymbol),
         ],
       ),
     );

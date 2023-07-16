@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 //добавить подсказку как смотреть полные новости
 //лицензия syncfusion_flutter_charts либо замена либы
 //информация о проекте/контакты
+//настройки с возможностью выбирать язык приложения и новостей
+//рассмотреть добавление hive моделей
 
 Future<void> main() async {
   final HiveApiClient hiveApiClient = await HiveApiClient.getClient;

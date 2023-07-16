@@ -17,9 +17,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddPaymentPage extends StatefulWidget {
-  final String? coinID;
+  final String? symbol;
 
-  const AddPaymentPage({this.coinID});
+  const AddPaymentPage({this.symbol});
 
   @override
   State<AddPaymentPage> createState() => _AddPaymentPageState();
@@ -39,7 +39,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
         context.read<MarketRepo>(),
         context.read<PortfolioRepo>(),
       )..add(
-          AddPaymentEvent.getCoin(widget.coinID),
+          AddPaymentEvent.getCoin(widget.symbol),
         ),
       child: Builder(builder: (context) {
         return BlocListener<AddPaymentBloc, AddPaymentState>(
@@ -155,7 +155,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                                   context.read<AddPaymentBloc>().add(
                                         AddPaymentEvent.updateHistory(
                                           paymentEntity: PaymentEntity(
-                                            id: state.coin.id,
+                                            symbol: state.coin.symbol,
                                             dateTime: dateTime,
                                             type: _paymentType,
                                             amount: moneyController.text.toDouble,

@@ -21,7 +21,7 @@ mixin _$DetailPortfolioCoinEvent {
     required TResult Function(Either<Failure, CoinsEntity> data) update,
     required TResult Function() refreshData,
     required TResult Function(PaymentEntity payment) deletePayment,
-    required TResult Function(String coinId) deleteCoin,
+    required TResult Function(String symbol) deleteCoin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$DetailPortfolioCoinEvent {
     TResult? Function(Either<Failure, CoinsEntity> data)? update,
     TResult? Function()? refreshData,
     TResult? Function(PaymentEntity payment)? deletePayment,
-    TResult? Function(String coinId)? deleteCoin,
+    TResult? Function(String symbol)? deleteCoin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$DetailPortfolioCoinEvent {
     TResult Function(Either<Failure, CoinsEntity> data)? update,
     TResult Function()? refreshData,
     TResult Function(PaymentEntity payment)? deletePayment,
-    TResult Function(String coinId)? deleteCoin,
+    TResult Function(String symbol)? deleteCoin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -149,7 +149,7 @@ class _$_Update implements _Update {
     required TResult Function(Either<Failure, CoinsEntity> data) update,
     required TResult Function() refreshData,
     required TResult Function(PaymentEntity payment) deletePayment,
-    required TResult Function(String coinId) deleteCoin,
+    required TResult Function(String symbol) deleteCoin,
   }) {
     return update(data);
   }
@@ -160,7 +160,7 @@ class _$_Update implements _Update {
     TResult? Function(Either<Failure, CoinsEntity> data)? update,
     TResult? Function()? refreshData,
     TResult? Function(PaymentEntity payment)? deletePayment,
-    TResult? Function(String coinId)? deleteCoin,
+    TResult? Function(String symbol)? deleteCoin,
   }) {
     return update?.call(data);
   }
@@ -171,7 +171,7 @@ class _$_Update implements _Update {
     TResult Function(Either<Failure, CoinsEntity> data)? update,
     TResult Function()? refreshData,
     TResult Function(PaymentEntity payment)? deletePayment,
-    TResult Function(String coinId)? deleteCoin,
+    TResult Function(String symbol)? deleteCoin,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -264,7 +264,7 @@ class _$_RefreshData implements _RefreshData {
     required TResult Function(Either<Failure, CoinsEntity> data) update,
     required TResult Function() refreshData,
     required TResult Function(PaymentEntity payment) deletePayment,
-    required TResult Function(String coinId) deleteCoin,
+    required TResult Function(String symbol) deleteCoin,
   }) {
     return refreshData();
   }
@@ -275,7 +275,7 @@ class _$_RefreshData implements _RefreshData {
     TResult? Function(Either<Failure, CoinsEntity> data)? update,
     TResult? Function()? refreshData,
     TResult? Function(PaymentEntity payment)? deletePayment,
-    TResult? Function(String coinId)? deleteCoin,
+    TResult? Function(String symbol)? deleteCoin,
   }) {
     return refreshData?.call();
   }
@@ -286,7 +286,7 @@ class _$_RefreshData implements _RefreshData {
     TResult Function(Either<Failure, CoinsEntity> data)? update,
     TResult Function()? refreshData,
     TResult Function(PaymentEntity payment)? deletePayment,
-    TResult Function(String coinId)? deleteCoin,
+    TResult Function(String symbol)? deleteCoin,
     required TResult orElse(),
   }) {
     if (refreshData != null) {
@@ -412,7 +412,7 @@ class _$_DeletePayment implements _DeletePayment {
     required TResult Function(Either<Failure, CoinsEntity> data) update,
     required TResult Function() refreshData,
     required TResult Function(PaymentEntity payment) deletePayment,
-    required TResult Function(String coinId) deleteCoin,
+    required TResult Function(String symbol) deleteCoin,
   }) {
     return deletePayment(payment);
   }
@@ -423,7 +423,7 @@ class _$_DeletePayment implements _DeletePayment {
     TResult? Function(Either<Failure, CoinsEntity> data)? update,
     TResult? Function()? refreshData,
     TResult? Function(PaymentEntity payment)? deletePayment,
-    TResult? Function(String coinId)? deleteCoin,
+    TResult? Function(String symbol)? deleteCoin,
   }) {
     return deletePayment?.call(payment);
   }
@@ -434,7 +434,7 @@ class _$_DeletePayment implements _DeletePayment {
     TResult Function(Either<Failure, CoinsEntity> data)? update,
     TResult Function()? refreshData,
     TResult Function(PaymentEntity payment)? deletePayment,
-    TResult Function(String coinId)? deleteCoin,
+    TResult Function(String symbol)? deleteCoin,
     required TResult orElse(),
   }) {
     if (deletePayment != null) {
@@ -494,7 +494,7 @@ abstract class _$$_DeleteCoinCopyWith<$Res> {
   factory _$$_DeleteCoinCopyWith(_$_DeleteCoin value, $Res Function(_$_DeleteCoin) then) =
       __$$_DeleteCoinCopyWithImpl<$Res>;
   @useResult
-  $Res call({String coinId});
+  $Res call({String symbol});
 }
 
 /// @nodoc
@@ -507,12 +507,12 @@ class __$$_DeleteCoinCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? coinId = null,
+    Object? symbol = null,
   }) {
     return _then(_$_DeleteCoin(
-      null == coinId
-          ? _value.coinId
-          : coinId // ignore: cast_nullable_to_non_nullable
+      null == symbol
+          ? _value.symbol
+          : symbol // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -521,14 +521,14 @@ class __$$_DeleteCoinCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DeleteCoin implements _DeleteCoin {
-  const _$_DeleteCoin(this.coinId);
+  const _$_DeleteCoin(this.symbol);
 
   @override
-  final String coinId;
+  final String symbol;
 
   @override
   String toString() {
-    return 'DetailPortfolioCoinEvent.deleteCoin(coinId: $coinId)';
+    return 'DetailPortfolioCoinEvent.deleteCoin(symbol: $symbol)';
   }
 
   @override
@@ -536,11 +536,11 @@ class _$_DeleteCoin implements _DeleteCoin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DeleteCoin &&
-            (identical(other.coinId, coinId) || other.coinId == coinId));
+            (identical(other.symbol, symbol) || other.symbol == symbol));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, coinId);
+  int get hashCode => Object.hash(runtimeType, symbol);
 
   @JsonKey(ignore: true)
   @override
@@ -554,9 +554,9 @@ class _$_DeleteCoin implements _DeleteCoin {
     required TResult Function(Either<Failure, CoinsEntity> data) update,
     required TResult Function() refreshData,
     required TResult Function(PaymentEntity payment) deletePayment,
-    required TResult Function(String coinId) deleteCoin,
+    required TResult Function(String symbol) deleteCoin,
   }) {
-    return deleteCoin(coinId);
+    return deleteCoin(symbol);
   }
 
   @override
@@ -565,9 +565,9 @@ class _$_DeleteCoin implements _DeleteCoin {
     TResult? Function(Either<Failure, CoinsEntity> data)? update,
     TResult? Function()? refreshData,
     TResult? Function(PaymentEntity payment)? deletePayment,
-    TResult? Function(String coinId)? deleteCoin,
+    TResult? Function(String symbol)? deleteCoin,
   }) {
-    return deleteCoin?.call(coinId);
+    return deleteCoin?.call(symbol);
   }
 
   @override
@@ -576,11 +576,11 @@ class _$_DeleteCoin implements _DeleteCoin {
     TResult Function(Either<Failure, CoinsEntity> data)? update,
     TResult Function()? refreshData,
     TResult Function(PaymentEntity payment)? deletePayment,
-    TResult Function(String coinId)? deleteCoin,
+    TResult Function(String symbol)? deleteCoin,
     required TResult orElse(),
   }) {
     if (deleteCoin != null) {
-      return deleteCoin(coinId);
+      return deleteCoin(symbol);
     }
     return orElse();
   }
@@ -624,9 +624,9 @@ class _$_DeleteCoin implements _DeleteCoin {
 }
 
 abstract class _DeleteCoin implements DetailPortfolioCoinEvent {
-  const factory _DeleteCoin(final String coinId) = _$_DeleteCoin;
+  const factory _DeleteCoin(final String symbol) = _$_DeleteCoin;
 
-  String get coinId;
+  String get symbol;
   @JsonKey(ignore: true)
   _$$_DeleteCoinCopyWith<_$_DeleteCoin> get copyWith => throw _privateConstructorUsedError;
 }

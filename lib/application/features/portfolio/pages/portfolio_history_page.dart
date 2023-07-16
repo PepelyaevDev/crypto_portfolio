@@ -43,7 +43,8 @@ class PortfolioHistoryPage extends StatelessWidget {
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (_, i) {
-                        final CoinEntity coin = _coin(state.coins, _payments(state.coins)[i].id);
+                        final CoinEntity coin =
+                            _coin(state.coins, _payments(state.coins)[i].symbol);
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: PaymentWidget(
@@ -86,7 +87,7 @@ class PortfolioHistoryPage extends StatelessWidget {
     return payments;
   }
 
-  CoinEntity _coin(CoinsEntity coins, String coinId) {
-    return coins.list.firstWhere((e) => e.id == coinId);
+  CoinEntity _coin(CoinsEntity coins, String symbol) {
+    return coins.list.firstWhere((e) => e.symbol == symbol);
   }
 }

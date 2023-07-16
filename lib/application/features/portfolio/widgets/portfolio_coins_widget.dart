@@ -59,7 +59,6 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
             builder: (_) => DetailCoinPage(
               coinLogo: widget.coinEntity.image,
               coinSymbol: widget.coinEntity.symbol,
-              coinId: widget.coinEntity.id,
               initialIndex: 1,
             ),
           ),
@@ -179,7 +178,7 @@ class _PortfolioCoinWidgetDetails extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (_) => AddPaymentPage(
-                    coinID: coinEntity.id,
+                    symbol: coinEntity.symbol,
                   ),
                 ),
               );

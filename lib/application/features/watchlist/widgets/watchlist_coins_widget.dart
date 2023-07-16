@@ -29,7 +29,6 @@ class WatchlistCoinsWidget extends StatelessWidget {
                       builder: (_) => DetailCoinPage(
                         coinLogo: coins.list[i].image,
                         coinSymbol: coins.list[i].symbol,
-                        coinId: coins.list[i].id,
                       ),
                     ),
                   );
@@ -88,7 +87,7 @@ class WatchlistCoinsWidget extends StatelessWidget {
                       );
                     },
                   ),
-                  iconButton: WatchlistIconWidget(coins.list[i].id),
+                  iconButton: WatchlistIconWidget(coins.list[i].symbol),
                 ),
               ),
             ),

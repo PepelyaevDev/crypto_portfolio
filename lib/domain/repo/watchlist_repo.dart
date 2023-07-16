@@ -14,23 +14,23 @@ class WatchlistRepo {
   final GeckoApiClient _geckoApiClient;
   WatchlistRepo(this._hiveApiClient, this._geckoApiClient);
 
-  List<String> getCoinsIds() {
-    final String? result = _hiveApiClient.coins.getWatchlistIdsCoins();
+  List<String> getSymbols() {
+    final String? result = _hiveApiClient.coins.getWatchlistSymbols();
     if (result == null) {
       return [];
     }
     return List<String>.from(jsonDecode(result));
   }
 
-  Future<List<String>> updateCoinsIds(String id) async {
-    List<String> coinsIds = getCoinsIds();
-    if (coinsIds.contains(id)) {
-      coinsIds.remove(id);
+  Future<List<String>> updateSymbols({required String symbol}) async {
+    List<String> symbols = getSymbols();
+    if (symbols.contains(symbol)) {
+      symbols.remove(symbol);
     } else {
-      coinsIds.add(id);
+      symbols.add(symbol);
     }
-    await _hiveApiClient.coins.updateWatchlistIdsCoins(jsonEncode(coinsIds));
-    return coinsIds;
+    await _hiveApiClient.coins.updateWatchlistSymbols(jsonEncode(symbols));
+    return symbols;
   }
 
   CoinsEntity getCoinsLocal() {
@@ -39,10 +39,12 @@ class WatchlistRepo {
 
   Future<Either<Failure, CoinsEntity>> getCoinsRemote() async {
     try {
-      final List<String> idsList = getCoinsIds();
+      final List<String> symbols = getSymbols();
       final List<GeckoCoinDTO> geckoCoins = [];
-      if (idsList.isNotEmpty) {
-        geckoCoins.addAll(await _geckoApiClient.coins.getMarketCoinsByIds(idsList));
+      if (symbols.isNotEmpty) {
+        geckoCoins.addAll(await _geckoApiClient.coins.getMarketCoinsBySymbols(
+          symbols: symbols,
+        ));
       }
       geckoCoins.sort((a, b) {
         if (a.marketCap == null && b.marketCap == null) {

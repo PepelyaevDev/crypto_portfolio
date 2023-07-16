@@ -131,7 +131,6 @@ abstract class _SearchEntity implements SearchEntity {
 
 /// @nodoc
 mixin _$SearchCoinEntity {
-  String get id => throw _privateConstructorUsedError;
   String get symbol => throw _privateConstructorUsedError;
   String get icon => throw _privateConstructorUsedError;
   int? get marketCapRank => throw _privateConstructorUsedError;
@@ -145,7 +144,7 @@ abstract class $SearchCoinEntityCopyWith<$Res> {
   factory $SearchCoinEntityCopyWith(SearchCoinEntity value, $Res Function(SearchCoinEntity) then) =
       _$SearchCoinEntityCopyWithImpl<$Res, SearchCoinEntity>;
   @useResult
-  $Res call({String id, String symbol, String icon, int? marketCapRank});
+  $Res call({String symbol, String icon, int? marketCapRank});
 }
 
 /// @nodoc
@@ -161,16 +160,11 @@ class _$SearchCoinEntityCopyWithImpl<$Res, $Val extends SearchCoinEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? symbol = null,
     Object? icon = null,
     Object? marketCapRank = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       symbol: null == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
@@ -194,7 +188,7 @@ abstract class _$$_SearchCoinEntityCopyWith<$Res> implements $SearchCoinEntityCo
       __$$_SearchCoinEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String symbol, String icon, int? marketCapRank});
+  $Res call({String symbol, String icon, int? marketCapRank});
 }
 
 /// @nodoc
@@ -208,16 +202,11 @@ class __$$_SearchCoinEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? symbol = null,
     Object? icon = null,
     Object? marketCapRank = freezed,
   }) {
     return _then(_$_SearchCoinEntity(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       symbol: null == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
@@ -238,10 +227,8 @@ class __$$_SearchCoinEntityCopyWithImpl<$Res>
 
 class _$_SearchCoinEntity implements _SearchCoinEntity {
   const _$_SearchCoinEntity(
-      {required this.id, required this.symbol, required this.icon, required this.marketCapRank});
+      {required this.symbol, required this.icon, required this.marketCapRank});
 
-  @override
-  final String id;
   @override
   final String symbol;
   @override
@@ -251,7 +238,7 @@ class _$_SearchCoinEntity implements _SearchCoinEntity {
 
   @override
   String toString() {
-    return 'SearchCoinEntity(id: $id, symbol: $symbol, icon: $icon, marketCapRank: $marketCapRank)';
+    return 'SearchCoinEntity(symbol: $symbol, icon: $icon, marketCapRank: $marketCapRank)';
   }
 
   @override
@@ -259,7 +246,6 @@ class _$_SearchCoinEntity implements _SearchCoinEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SearchCoinEntity &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.symbol, symbol) || other.symbol == symbol) &&
             (identical(other.icon, icon) || other.icon == icon) &&
             (identical(other.marketCapRank, marketCapRank) ||
@@ -267,7 +253,7 @@ class _$_SearchCoinEntity implements _SearchCoinEntity {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, symbol, icon, marketCapRank);
+  int get hashCode => Object.hash(runtimeType, symbol, icon, marketCapRank);
 
   @JsonKey(ignore: true)
   @override
@@ -278,13 +264,10 @@ class _$_SearchCoinEntity implements _SearchCoinEntity {
 
 abstract class _SearchCoinEntity implements SearchCoinEntity {
   const factory _SearchCoinEntity(
-      {required final String id,
-      required final String symbol,
+      {required final String symbol,
       required final String icon,
       required final int? marketCapRank}) = _$_SearchCoinEntity;
 
-  @override
-  String get id;
   @override
   String get symbol;
   @override

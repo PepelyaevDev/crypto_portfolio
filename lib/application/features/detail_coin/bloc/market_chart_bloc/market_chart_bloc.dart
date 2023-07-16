@@ -11,9 +11,9 @@ part 'market_chart_bloc.freezed.dart';
 
 class MarketChartBloc extends Bloc<MarketChartEvent, MarketChartState> {
   final MarketRepo _marketRepo;
-  final String _coinId;
+  final String _symbol;
   final Map<MarketChartDistance, MarketChartEntity?> _marketChartCache = {};
-  MarketChartBloc(this._marketRepo, this._coinId) : super(const MarketChartState.loading()) {
+  MarketChartBloc(this._marketRepo, this._symbol) : super(const MarketChartState.loading()) {
     on<_SetDistance>(_setDistance, transformer: restartable());
     on<_Refresh>(_refresh, transformer: droppable());
   }
@@ -22,7 +22,10 @@ class MarketChartBloc extends Bloc<MarketChartEvent, MarketChartState> {
     MarketChartEntity? marketChartEntity = _marketChartCache[event.distance];
     if (marketChartEntity == null) {
       emit(const MarketChartState.loading());
-      final result = await _marketRepo.getMarketChart(id: _coinId, distance: event.distance);
+      final result = await _marketRepo.getMarketChart(
+        symbol: _symbol,
+        distance: event.distance,
+      );
       result.fold(
         (l) => emit(MarketChartState.error(l)),
         (r) {

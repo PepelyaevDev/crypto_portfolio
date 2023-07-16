@@ -17,9 +17,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 
 class DetailMarketCoinWidget extends StatefulWidget {
-  final String coinId;
+  final String symbol;
 
-  const DetailMarketCoinWidget(this.coinId);
+  const DetailMarketCoinWidget(this.symbol);
 
   @override
   State<DetailMarketCoinWidget> createState() => _DetailMarketCoinWidgetState();
@@ -43,10 +43,10 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
       providers: [
         BlocProvider<MarketCoinBloc>(
           create: (_) => MarketCoinBloc(context.read<MarketRepo>())
-            ..add(MarketCoinEvent.getCoin(widget.coinId)),
+            ..add(MarketCoinEvent.getCoin(symbol: widget.symbol)),
         ),
         BlocProvider<MarketChartBloc>(
-          create: (_) => MarketChartBloc(context.read<MarketRepo>(), widget.coinId)
+          create: (_) => MarketChartBloc(context.read<MarketRepo>(), widget.symbol)
             ..add(MarketChartEvent.setDistance(_selectedDistance)),
         ),
       ],
@@ -81,7 +81,7 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
             ],
             child: RefreshIndicator(
               onRefresh: () async {
-                context.read<MarketCoinBloc>().add(MarketCoinEvent.getCoin(widget.coinId));
+                context.read<MarketCoinBloc>().add(MarketCoinEvent.getCoin(symbol: widget.symbol));
                 context.read<MarketChartBloc>().add(MarketChartEvent.refresh(_selectedDistance));
                 return;
               },
@@ -92,7 +92,9 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                   DetailMarketDataPriceWidget(
                     stream: _selectedPrice.stream,
                     onTapRefresh: () {
-                      context.read<MarketCoinBloc>().add(MarketCoinEvent.getCoin(widget.coinId));
+                      context.read<MarketCoinBloc>().add(MarketCoinEvent.getCoin(
+                            symbol: widget.symbol,
+                          ));
                     },
                   ),
                   SizedBox(height: 15),
@@ -141,14 +143,12 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                           padding: const EdgeInsets.all(20),
                           child: Center(child: CircularProgressIndicator()),
                         );
-                      } else if (state.coin != null) {
-                        return NewsListWidget(
-                          controller: _controller,
-                          category: NewsCategory.coin,
-                          symbol: state.coin!.symbol,
-                        );
                       }
-                      return SizedBox(height: 20);
+                      return NewsListWidget(
+                        controller: _controller,
+                        category: NewsCategory.coin,
+                        symbol: widget.symbol,
+                      );
                     },
                   ),
                 ],

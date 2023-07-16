@@ -16,7 +16,6 @@ class CoinsEntity with _$CoinsEntity {
 class CoinEntity with _$CoinEntity {
   const factory CoinEntity({
     //market data
-    required String id,
     required String symbol,
     required String image,
     required double currentPrice,
@@ -36,7 +35,7 @@ class CoinEntity with _$CoinEntity {
 @freezed
 class PaymentEntity with _$PaymentEntity {
   const factory PaymentEntity({
-    required String id,
+    required String symbol,
     required DateTime dateTime,
     required String type,
     required double amount,

@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WatchlistIconWidget extends StatelessWidget {
-  final String id;
+  final String symbol;
   final bool appBarIcon;
-  const WatchlistIconWidget(this.id, {this.appBarIcon = false});
+  const WatchlistIconWidget(this.symbol, {this.appBarIcon = false});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class WatchlistIconWidget extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      state.idsList.contains(id)
+                      state.symbols.contains(symbol)
                           ? context.localization.removedFromWatchlist
                           : context.localization.addedToWatchlist,
                     ),
@@ -35,10 +35,10 @@ class WatchlistIconWidget extends StatelessWidget {
                     duration: Duration(seconds: 1),
                   ),
                 );
-                context.read<WatchlistBloc>().add(WatchlistEvent.update(id));
+                context.read<WatchlistBloc>().add(WatchlistEvent.update(symbol));
               },
               icon: Icon(
-                state.idsList.contains(id) ? AppIcons.star : AppIcons.star_empty,
+                state.symbols.contains(symbol) ? AppIcons.star : AppIcons.star_empty,
                 color: AppColors.primary,
                 size: 20,
               ),
