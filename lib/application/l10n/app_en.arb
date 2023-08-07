@@ -3,6 +3,7 @@
     "watchlist": "Watchlist",
     "portfolio": "Portfolio",
     "news": "News",
+    "settings": "Settings",
 
     "addCoins": "Add coins",
     "watchlistIsEmpty": "Your watchlist is empty, please add coins",
@@ -72,6 +73,11 @@
 
     "response429": "Server is not available. Please wait 2 minutes and try again",
     "unknownError": "Something went wrong. Try again later please",
+
+    "languageSettings": "Language settings",
+    "appLanguage": "App language",
+    "newsLanguage": "News language",
+    "selectNewsLanguageDiscription": "You will see news from different sources in selected languages",
 
     "d1": "24H",
     "d7": "7D",

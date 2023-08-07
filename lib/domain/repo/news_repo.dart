@@ -18,7 +18,7 @@ class NewsRepo {
       while (!updated) {
         newsResponse = await _cryptopanicApiClient.news.getNews(
           oldList.currencies,
-          oldList.locale,
+          oldList.locales,
           nextPage!,
         );
         if (newsResponse.next == null) {

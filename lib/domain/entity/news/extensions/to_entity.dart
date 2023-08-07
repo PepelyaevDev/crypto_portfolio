@@ -29,7 +29,7 @@ extension CryptopanicNewsDtoToEntity on CryptopanicNewsResponse {
       updateTime: DateTime.now(),
       nextPage: nextPage,
       currencies: oldList.currencies,
-      locale: oldList.locale,
+      locales: oldList.locales,
     );
   }
 

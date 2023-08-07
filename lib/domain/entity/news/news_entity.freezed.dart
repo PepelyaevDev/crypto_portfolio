@@ -19,7 +19,7 @@ mixin _$NewsListEntity {
   List<NewsEntity> get list => throw _privateConstructorUsedError;
   DateTime get updateTime => throw _privateConstructorUsedError;
   List<String> get currencies => throw _privateConstructorUsedError;
-  String get locale => throw _privateConstructorUsedError;
+  List<String> get locales => throw _privateConstructorUsedError;
   int? get nextPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $NewsListEntityCopyWith<$Res> {
       {List<NewsEntity> list,
       DateTime updateTime,
       List<String> currencies,
-      String locale,
+      List<String> locales,
       int? nextPage});
 }
 
@@ -55,7 +55,7 @@ class _$NewsListEntityCopyWithImpl<$Res, $Val extends NewsListEntity>
     Object? list = null,
     Object? updateTime = null,
     Object? currencies = null,
-    Object? locale = null,
+    Object? locales = null,
     Object? nextPage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -71,10 +71,10 @@ class _$NewsListEntityCopyWithImpl<$Res, $Val extends NewsListEntity>
           ? _value.currencies
           : currencies // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      locale: null == locale
-          ? _value.locale
-          : locale // ignore: cast_nullable_to_non_nullable
-              as String,
+      locales: null == locales
+          ? _value.locales
+          : locales // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       nextPage: freezed == nextPage
           ? _value.nextPage
           : nextPage // ignore: cast_nullable_to_non_nullable
@@ -94,7 +94,7 @@ abstract class _$$_NewsListEntityCopyWith<$Res> implements $NewsListEntityCopyWi
       {List<NewsEntity> list,
       DateTime updateTime,
       List<String> currencies,
-      String locale,
+      List<String> locales,
       int? nextPage});
 }
 
@@ -111,7 +111,7 @@ class __$$_NewsListEntityCopyWithImpl<$Res>
     Object? list = null,
     Object? updateTime = null,
     Object? currencies = null,
-    Object? locale = null,
+    Object? locales = null,
     Object? nextPage = freezed,
   }) {
     return _then(_$_NewsListEntity(
@@ -127,10 +127,10 @@ class __$$_NewsListEntityCopyWithImpl<$Res>
           ? _value._currencies
           : currencies // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      locale: null == locale
-          ? _value.locale
-          : locale // ignore: cast_nullable_to_non_nullable
-              as String,
+      locales: null == locales
+          ? _value._locales
+          : locales // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       nextPage: freezed == nextPage
           ? _value.nextPage
           : nextPage // ignore: cast_nullable_to_non_nullable
@@ -146,10 +146,11 @@ class _$_NewsListEntity implements _NewsListEntity {
       {required final List<NewsEntity> list,
       required this.updateTime,
       required final List<String> currencies,
-      required this.locale,
+      required final List<String> locales,
       required this.nextPage})
       : _list = list,
-        _currencies = currencies;
+        _currencies = currencies,
+        _locales = locales;
 
   final List<NewsEntity> _list;
   @override
@@ -169,14 +170,20 @@ class _$_NewsListEntity implements _NewsListEntity {
     return EqualUnmodifiableListView(_currencies);
   }
 
+  final List<String> _locales;
   @override
-  final String locale;
+  List<String> get locales {
+    if (_locales is EqualUnmodifiableListView) return _locales;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_locales);
+  }
+
   @override
   final int? nextPage;
 
   @override
   String toString() {
-    return 'NewsListEntity(list: $list, updateTime: $updateTime, currencies: $currencies, locale: $locale, nextPage: $nextPage)';
+    return 'NewsListEntity(list: $list, updateTime: $updateTime, currencies: $currencies, locales: $locales, nextPage: $nextPage)';
   }
 
   @override
@@ -187,13 +194,18 @@ class _$_NewsListEntity implements _NewsListEntity {
             const DeepCollectionEquality().equals(other._list, _list) &&
             (identical(other.updateTime, updateTime) || other.updateTime == updateTime) &&
             const DeepCollectionEquality().equals(other._currencies, _currencies) &&
-            (identical(other.locale, locale) || other.locale == locale) &&
+            const DeepCollectionEquality().equals(other._locales, _locales) &&
             (identical(other.nextPage, nextPage) || other.nextPage == nextPage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_list),
-      updateTime, const DeepCollectionEquality().hash(_currencies), locale, nextPage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_list),
+      updateTime,
+      const DeepCollectionEquality().hash(_currencies),
+      const DeepCollectionEquality().hash(_locales),
+      nextPage);
 
   @JsonKey(ignore: true)
   @override
@@ -207,7 +219,7 @@ abstract class _NewsListEntity implements NewsListEntity {
       {required final List<NewsEntity> list,
       required final DateTime updateTime,
       required final List<String> currencies,
-      required final String locale,
+      required final List<String> locales,
       required final int? nextPage}) = _$_NewsListEntity;
 
   @override
@@ -217,7 +229,7 @@ abstract class _NewsListEntity implements NewsListEntity {
   @override
   List<String> get currencies;
   @override
-  String get locale;
+  List<String> get locales;
   @override
   int? get nextPage;
   @override

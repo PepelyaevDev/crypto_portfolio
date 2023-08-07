@@ -10,7 +10,7 @@ class CryptopanicNewsSource {
 
   Future<CryptopanicNewsResponse> getNews(
     List<String> currencies,
-    String locale,
+    List<String> locales,
     int page,
   ) async {
     final response = await _dioClient.get<Map<String, Object?>>(
@@ -18,7 +18,7 @@ class CryptopanicNewsSource {
       queryParameters: {
         'auth_token': CryptopanicApiClient.token,
         'currencies': currencies.map((e) => e.toUpperCase()).toList().join(','),
-        'regions': locale,
+        'regions': locales.join(','),
         'kind': 'news',
         'metadata': true,
         'page': page,

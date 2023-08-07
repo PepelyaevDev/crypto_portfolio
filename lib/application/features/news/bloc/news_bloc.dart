@@ -1,6 +1,7 @@
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:crypto_portfolio/domain/entity/news/news_entity.dart';
+import 'package:crypto_portfolio/domain/repo/locale_repo.dart';
 import 'package:crypto_portfolio/domain/repo/news_repo.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
 import 'package:crypto_portfolio/domain/repo/watchlist_repo.dart';
@@ -13,10 +14,12 @@ part 'news_bloc.freezed.dart';
 
 class NewsBloc extends Bloc<NewsEvent, NewsState> {
   final NewsRepo _newsRepo;
+  final LocaleRepo _localeRepo;
   final PortfolioRepo _portfolioRepo;
   final WatchlistRepo _watchlistRepo;
   NewsBloc(
     this._newsRepo,
+    this._localeRepo,
     this._portfolioRepo,
     this._watchlistRepo,
   ) : super(NewsState.loading()) {
@@ -35,7 +38,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           list: [],
           updateTime: DateTime.now(),
           currencies: currencies,
-          locale: event.locale,
+          locales: _localeRepo.newsSelectedLocales.map((e) => e.name).toList(),
           nextPage: 1,
         ),
       );

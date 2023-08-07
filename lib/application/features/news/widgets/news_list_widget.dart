@@ -8,6 +8,7 @@ import 'package:crypto_portfolio/application/features/news/bloc/news_bloc.dart';
 import 'package:crypto_portfolio/application/features/news/widgets/no_currencies_widget.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/entity/news/news_entity.dart';
+import 'package:crypto_portfolio/domain/repo/locale_repo.dart';
 import 'package:crypto_portfolio/domain/repo/news_repo.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
 import 'package:crypto_portfolio/domain/repo/watchlist_repo.dart';
@@ -49,6 +50,7 @@ class _NewsListWidgetState extends State<NewsListWidget> {
   void initState() {
     bloc = NewsBloc(
       context.read<NewsRepo>(),
+      context.read<LocaleRepo>(),
       context.read<PortfolioRepo>(),
       context.read<WatchlistRepo>(),
     );

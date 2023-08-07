@@ -12,6 +12,8 @@ abstract class AppStyles {
       TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: _defaultColor);
   static final TextStyle bold18 =
       TextStyle(fontWeight: FontWeight.w500, fontSize: 18, color: _defaultColor);
+  static final TextStyle bold20 =
+      TextStyle(fontWeight: FontWeight.w500, fontSize: 20, color: _defaultColor);
   static final TextStyle bold22 =
       TextStyle(fontWeight: FontWeight.w500, fontSize: 22, color: _defaultColor);
   static final TextStyle bold30 =

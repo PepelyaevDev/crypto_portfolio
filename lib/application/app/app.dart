@@ -1,10 +1,12 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/features/bottom_navigation/bloc/bottom_navigation_bloc.dart';
 import 'package:crypto_portfolio/application/features/bottom_navigation/page/bottom_navigation_page.dart';
+import 'package:crypto_portfolio/application/features/settings/bloc/locale_bloc/locale_bloc.dart';
 import 'package:crypto_portfolio/application/features/watchlist/bloc/watchlist_bloc.dart';
 import 'package:crypto_portfolio/data/cryptopanic_api/api/cryptopanic_api_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
+import 'package:crypto_portfolio/domain/repo/locale_repo.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:crypto_portfolio/domain/repo/news_repo.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
@@ -41,6 +43,9 @@ class CryptoPortfolioApp extends StatelessWidget {
         RepositoryProvider(
           create: (_) => NewsRepo(cryptopanicApiClient),
         ),
+        RepositoryProvider(
+          create: (_) => LocaleRepo(hiveApiClient),
+        ),
       ],
       child: Builder(
         builder: (context) {
@@ -50,17 +55,25 @@ class CryptoPortfolioApp extends StatelessWidget {
               BlocProvider(
                 create: (context) => WatchlistBloc(context.read<WatchlistRepo>()),
               ),
-            ],
-            child: MaterialApp(
-              theme: ThemeData(
-                colorScheme: ColorScheme.fromSwatch().copyWith(
-                  primary: AppColors.primary,
-                ),
+              BlocProvider(
+                create: (context) => LocaleBloc(context.read<LocaleRepo>()),
               ),
-              debugShowCheckedModeBanner: false,
-              localizationsDelegates: AppLocalizations.localizationsDelegates,
-              supportedLocales: AppLocalizations.supportedLocales,
-              home: const BottomNavigationPage(),
+            ],
+            child: BlocBuilder<LocaleBloc, LocaleState>(
+              builder: (context, state) {
+                return MaterialApp(
+                  locale: Locale(state.appSelectedLocale.name),
+                  theme: ThemeData(
+                    colorScheme: ColorScheme.fromSwatch().copyWith(
+                      primary: AppColors.primary,
+                    ),
+                  ),
+                  debugShowCheckedModeBanner: false,
+                  localizationsDelegates: AppLocalizations.localizationsDelegates,
+                  supportedLocales: AppLocalizations.supportedLocales,
+                  home: const BottomNavigationPage(),
+                );
+              },
             ),
           );
         },

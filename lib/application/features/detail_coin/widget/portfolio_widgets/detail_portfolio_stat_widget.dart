@@ -27,22 +27,20 @@ class DetailPortfolioStatWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  context.localization.statistics,
-                  style: AppStyles.bold22,
-                ),
-                RefreshIconButton(
-                  loading: loading,
-                  onTapUpdate: onTapUpdate,
-                  rightPadding: 0,
-                )
-              ],
-            ),
+          SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                context.localization.statistics,
+                style: AppStyles.bold22,
+              ),
+              RefreshIconButton(
+                loading: loading,
+                onTapUpdate: onTapUpdate,
+                rightPadding: 0,
+              )
+            ],
           ),
           Container(
             decoration: AppDecorations.blueBorderDecoration,

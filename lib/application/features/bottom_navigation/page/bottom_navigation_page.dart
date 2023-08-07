@@ -37,6 +37,9 @@ class BottomNavigationPage extends StatelessWidget {
                 case BottomNavigationKey.news:
                   label = context.localization.news;
                   break;
+                case BottomNavigationKey.settings:
+                  label = context.localization.settings;
+                  break;
               }
               return BottomNavigationBarItem(
                 icon: value.icon,

@@ -8,7 +8,7 @@ class NewsListEntity with _$NewsListEntity {
     required List<NewsEntity> list,
     required DateTime updateTime,
     required List<String> currencies,
-    required String locale,
+    required List<String> locales,
     required int? nextPage,
   }) = _NewsListEntity;
 }

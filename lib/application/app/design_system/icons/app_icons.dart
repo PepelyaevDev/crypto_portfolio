@@ -42,6 +42,8 @@ class AppIcons {
   static const IconData star = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData star_empty =
       IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData cog = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData briefcase = IconData(0xf0b1, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData language = IconData(0xf1ab, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData newspaper = IconData(0xf1ea, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
