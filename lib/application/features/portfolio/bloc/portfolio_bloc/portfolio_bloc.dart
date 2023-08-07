@@ -34,7 +34,7 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
   Future<void> _update(_Update event, Emitter<PortfolioState> emit) async {
     event.data.fold(
       (l) {
-        if (l.dateTime.newValue) {
+        if (l.time.newValue) {
           emit(PortfolioState(coins: state.coins, error: l));
         }
       },

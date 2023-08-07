@@ -318,7 +318,6 @@ abstract class $WatchlistStateCopyWith<$Res> {
   $Res call({List<String> symbols, CoinsEntity coins, bool loading, Failure? error});
 
   $CoinsEntityCopyWith<$Res> get coins;
-  $FailureCopyWith<$Res>? get error;
 }
 
 /// @nodoc
@@ -366,18 +365,6 @@ class _$WatchlistStateCopyWithImpl<$Res, $Val extends WatchlistState>
       return _then(_value.copyWith(coins: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FailureCopyWith<$Res>? get error {
-    if (_value.error == null) {
-      return null;
-    }
-
-    return $FailureCopyWith<$Res>(_value.error!, (value) {
-      return _then(_value.copyWith(error: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -391,8 +378,6 @@ abstract class _$$_WatchlistStateCopyWith<$Res> implements $WatchlistStateCopyWi
 
   @override
   $CoinsEntityCopyWith<$Res> get coins;
-  @override
-  $FailureCopyWith<$Res>? get error;
 }
 
 /// @nodoc

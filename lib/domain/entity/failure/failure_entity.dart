@@ -1,25 +1,28 @@
 import 'package:dio/dio.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:equatable/equatable.dart';
 
-part 'failure_entity.freezed.dart';
-
-@freezed
-class Failure with _$Failure {
-  const factory Failure({
-    required DioErrorType errorType,
-    required DateTime dateTime,
-    int? statusCode,
-  }) = _Failure;
+sealed class Failure extends Equatable {
+  final DateTime time;
+  Failure() : time = DateTime.now();
 
   factory Failure.from(Object? e) {
     if (e is DioError) {
-      return Failure(
-        errorType: e.type,
-        dateTime: DateTime.now(),
-        statusCode: e.response != null ? e.response!.statusCode : null,
-      );
+      if (e.response != null) {
+        return switch (e.response!.statusCode) {
+          429 => TooManyRequestsFailure(),
+          _ => UnknownFailure(),
+        };
+      }
+      return UnknownFailure();
     } else {
-      return Failure(errorType: DioErrorType.other, dateTime: DateTime.now());
+      return UnknownFailure();
     }
   }
+
+  @override
+  List<Object?> get props => [time];
 }
+
+class UnknownFailure extends Failure {}
+
+class TooManyRequestsFailure extends Failure {}

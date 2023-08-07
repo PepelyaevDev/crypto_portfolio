@@ -43,7 +43,7 @@ class DetailPortfolioCoinBloc extends Bloc<DetailPortfolioCoinEvent, DetailPortf
   Future<void> _update(_Update event, Emitter<DetailPortfolioCoinState> emit) async {
     event.data.fold(
       (l) {
-        if (l.dateTime.newValue) {
+        if (l.time.newValue) {
           emit(DetailPortfolioCoinState(coin: state.coin, error: l));
         }
       },

@@ -317,7 +317,6 @@ abstract class $PortfolioStateCopyWith<$Res> {
   $Res call({CoinsEntity coins, bool loading, Failure? error});
 
   $CoinsEntityCopyWith<$Res> get coins;
-  $FailureCopyWith<$Res>? get error;
 }
 
 /// @nodoc
@@ -360,18 +359,6 @@ class _$PortfolioStateCopyWithImpl<$Res, $Val extends PortfolioState>
       return _then(_value.copyWith(coins: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FailureCopyWith<$Res>? get error {
-    if (_value.error == null) {
-      return null;
-    }
-
-    return $FailureCopyWith<$Res>(_value.error!, (value) {
-      return _then(_value.copyWith(error: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -385,8 +372,6 @@ abstract class _$$_PortfolioStateCopyWith<$Res> implements $PortfolioStateCopyWi
 
   @override
   $CoinsEntityCopyWith<$Res> get coins;
-  @override
-  $FailureCopyWith<$Res>? get error;
 }
 
 /// @nodoc

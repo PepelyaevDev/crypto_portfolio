@@ -230,7 +230,6 @@ abstract class $MarketCoinStateCopyWith<$Res> {
   $Res call({CoinEntity? coin, bool loading, Failure? error});
 
   $CoinEntityCopyWith<$Res>? get coin;
-  $FailureCopyWith<$Res>? get error;
 }
 
 /// @nodoc
@@ -277,18 +276,6 @@ class _$MarketCoinStateCopyWithImpl<$Res, $Val extends MarketCoinState>
       return _then(_value.copyWith(coin: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FailureCopyWith<$Res>? get error {
-    if (_value.error == null) {
-      return null;
-    }
-
-    return $FailureCopyWith<$Res>(_value.error!, (value) {
-      return _then(_value.copyWith(error: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -302,8 +289,6 @@ abstract class _$$_MarketCoinStateCopyWith<$Res> implements $MarketCoinStateCopy
 
   @override
   $CoinEntityCopyWith<$Res>? get coin;
-  @override
-  $FailureCopyWith<$Res>? get error;
 }
 
 /// @nodoc

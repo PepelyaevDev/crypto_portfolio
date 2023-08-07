@@ -572,8 +572,6 @@ abstract class _$$_ErrorCopyWith<$Res> {
       __$$_ErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({Failure error});
-
-  $FailureCopyWith<$Res> get error;
 }
 
 /// @nodoc
@@ -592,14 +590,6 @@ class __$$_ErrorCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res, _$_Er
           : error // ignore: cast_nullable_to_non_nullable
               as Failure,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FailureCopyWith<$Res> get error {
-    return $FailureCopyWith<$Res>(_value.error, (value) {
-      return _then(_value.copyWith(error: value));
-    });
   }
 }
 

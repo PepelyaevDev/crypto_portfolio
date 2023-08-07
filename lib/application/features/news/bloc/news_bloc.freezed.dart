@@ -807,7 +807,6 @@ abstract class _$$_ErrorCopyWith<$Res> {
   $Res call({NewsListEntity? news, Failure error});
 
   $NewsListEntityCopyWith<$Res>? get news;
-  $FailureCopyWith<$Res> get error;
 }
 
 /// @nodoc
@@ -842,14 +841,6 @@ class __$$_ErrorCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res, _$_Erro
 
     return $NewsListEntityCopyWith<$Res>(_value.news!, (value) {
       return _then(_value.copyWith(news: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FailureCopyWith<$Res> get error {
-    return $FailureCopyWith<$Res>(_value.error, (value) {
-      return _then(_value.copyWith(error: value));
     });
   }
 }
