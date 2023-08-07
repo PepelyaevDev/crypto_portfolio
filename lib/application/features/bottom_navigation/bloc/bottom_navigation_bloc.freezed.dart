@@ -25,15 +25,16 @@ mixin _$BottomNavigationEvent {
 
 /// @nodoc
 abstract class $BottomNavigationEventCopyWith<$Res> {
-  factory $BottomNavigationEventCopyWith(
-          BottomNavigationEvent value, $Res Function(BottomNavigationEvent) then) =
+  factory $BottomNavigationEventCopyWith(BottomNavigationEvent value,
+          $Res Function(BottomNavigationEvent) then) =
       _$BottomNavigationEventCopyWithImpl<$Res, BottomNavigationEvent>;
   @useResult
   $Res call({BottomNavigationKey key});
 }
 
 /// @nodoc
-class _$BottomNavigationEventCopyWithImpl<$Res, $Val extends BottomNavigationEvent>
+class _$BottomNavigationEventCopyWithImpl<$Res,
+        $Val extends BottomNavigationEvent>
     implements $BottomNavigationEventCopyWith<$Res> {
   _$BottomNavigationEventCopyWithImpl(this._value, this._then);
 
@@ -59,8 +60,8 @@ class _$BottomNavigationEventCopyWithImpl<$Res, $Val extends BottomNavigationEve
 /// @nodoc
 abstract class _$$_BottomNavigationEventCopyWith<$Res>
     implements $BottomNavigationEventCopyWith<$Res> {
-  factory _$$_BottomNavigationEventCopyWith(
-          _$_BottomNavigationEvent value, $Res Function(_$_BottomNavigationEvent) then) =
+  factory _$$_BottomNavigationEventCopyWith(_$_BottomNavigationEvent value,
+          $Res Function(_$_BottomNavigationEvent) then) =
       __$$_BottomNavigationEventCopyWithImpl<$Res>;
   @override
   @useResult
@@ -71,8 +72,8 @@ abstract class _$$_BottomNavigationEventCopyWith<$Res>
 class __$$_BottomNavigationEventCopyWithImpl<$Res>
     extends _$BottomNavigationEventCopyWithImpl<$Res, _$_BottomNavigationEvent>
     implements _$$_BottomNavigationEventCopyWith<$Res> {
-  __$$_BottomNavigationEventCopyWithImpl(
-      _$_BottomNavigationEvent _value, $Res Function(_$_BottomNavigationEvent) _then)
+  __$$_BottomNavigationEventCopyWithImpl(_$_BottomNavigationEvent _value,
+      $Res Function(_$_BottomNavigationEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -117,11 +118,13 @@ class _$_BottomNavigationEvent implements _BottomNavigationEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$_BottomNavigationEventCopyWith<_$_BottomNavigationEvent> get copyWith =>
-      __$$_BottomNavigationEventCopyWithImpl<_$_BottomNavigationEvent>(this, _$identity);
+      __$$_BottomNavigationEventCopyWithImpl<_$_BottomNavigationEvent>(
+          this, _$identity);
 }
 
 abstract class _BottomNavigationEvent implements BottomNavigationEvent {
-  const factory _BottomNavigationEvent(final BottomNavigationKey key) = _$_BottomNavigationEvent;
+  const factory _BottomNavigationEvent(final BottomNavigationKey key) =
+      _$_BottomNavigationEvent;
 
   @override
   BottomNavigationKey get key;
@@ -142,15 +145,16 @@ mixin _$BottomNavigationState {
 
 /// @nodoc
 abstract class $BottomNavigationStateCopyWith<$Res> {
-  factory $BottomNavigationStateCopyWith(
-          BottomNavigationState value, $Res Function(BottomNavigationState) then) =
+  factory $BottomNavigationStateCopyWith(BottomNavigationState value,
+          $Res Function(BottomNavigationState) then) =
       _$BottomNavigationStateCopyWithImpl<$Res, BottomNavigationState>;
   @useResult
   $Res call({BottomNavigationTab tab});
 }
 
 /// @nodoc
-class _$BottomNavigationStateCopyWithImpl<$Res, $Val extends BottomNavigationState>
+class _$BottomNavigationStateCopyWithImpl<$Res,
+        $Val extends BottomNavigationState>
     implements $BottomNavigationStateCopyWith<$Res> {
   _$BottomNavigationStateCopyWithImpl(this._value, this._then);
 
@@ -176,8 +180,8 @@ class _$BottomNavigationStateCopyWithImpl<$Res, $Val extends BottomNavigationSta
 /// @nodoc
 abstract class _$$_BottomNavigationStateCopyWith<$Res>
     implements $BottomNavigationStateCopyWith<$Res> {
-  factory _$$_BottomNavigationStateCopyWith(
-          _$_BottomNavigationState value, $Res Function(_$_BottomNavigationState) then) =
+  factory _$$_BottomNavigationStateCopyWith(_$_BottomNavigationState value,
+          $Res Function(_$_BottomNavigationState) then) =
       __$$_BottomNavigationStateCopyWithImpl<$Res>;
   @override
   @useResult
@@ -188,8 +192,8 @@ abstract class _$$_BottomNavigationStateCopyWith<$Res>
 class __$$_BottomNavigationStateCopyWithImpl<$Res>
     extends _$BottomNavigationStateCopyWithImpl<$Res, _$_BottomNavigationState>
     implements _$$_BottomNavigationStateCopyWith<$Res> {
-  __$$_BottomNavigationStateCopyWithImpl(
-      _$_BottomNavigationState _value, $Res Function(_$_BottomNavigationState) _then)
+  __$$_BottomNavigationStateCopyWithImpl(_$_BottomNavigationState _value,
+      $Res Function(_$_BottomNavigationState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -234,11 +238,13 @@ class _$_BottomNavigationState implements _BottomNavigationState {
   @override
   @pragma('vm:prefer-inline')
   _$$_BottomNavigationStateCopyWith<_$_BottomNavigationState> get copyWith =>
-      __$$_BottomNavigationStateCopyWithImpl<_$_BottomNavigationState>(this, _$identity);
+      __$$_BottomNavigationStateCopyWithImpl<_$_BottomNavigationState>(
+          this, _$identity);
 }
 
 abstract class _BottomNavigationState implements BottomNavigationState {
-  const factory _BottomNavigationState(final BottomNavigationTab tab) = _$_BottomNavigationState;
+  const factory _BottomNavigationState(final BottomNavigationTab tab) =
+      _$_BottomNavigationState;
 
   @override
   BottomNavigationTab get tab;

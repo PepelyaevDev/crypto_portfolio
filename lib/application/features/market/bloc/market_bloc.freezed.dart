@@ -52,7 +52,8 @@ mixin _$MarketEvent {
 
 /// @nodoc
 abstract class $MarketEventCopyWith<$Res> {
-  factory $MarketEventCopyWith(MarketEvent value, $Res Function(MarketEvent) then) =
+  factory $MarketEventCopyWith(
+          MarketEvent value, $Res Function(MarketEvent) then) =
       _$MarketEventCopyWithImpl<$Res, MarketEvent>;
 }
 
@@ -69,14 +70,17 @@ class _$MarketEventCopyWithImpl<$Res, $Val extends MarketEvent>
 
 /// @nodoc
 abstract class _$$_RefreshDataCopyWith<$Res> {
-  factory _$$_RefreshDataCopyWith(_$_RefreshData value, $Res Function(_$_RefreshData) then) =
+  factory _$$_RefreshDataCopyWith(
+          _$_RefreshData value, $Res Function(_$_RefreshData) then) =
       __$$_RefreshDataCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_RefreshDataCopyWithImpl<$Res> extends _$MarketEventCopyWithImpl<$Res, _$_RefreshData>
+class __$$_RefreshDataCopyWithImpl<$Res>
+    extends _$MarketEventCopyWithImpl<$Res, _$_RefreshData>
     implements _$$_RefreshDataCopyWith<$Res> {
-  __$$_RefreshDataCopyWithImpl(_$_RefreshData _value, $Res Function(_$_RefreshData) _then)
+  __$$_RefreshDataCopyWithImpl(
+      _$_RefreshData _value, $Res Function(_$_RefreshData) _then)
       : super(_value, _then);
 }
 
@@ -92,7 +96,8 @@ class _$_RefreshData implements _RefreshData {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_RefreshData);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_RefreshData);
   }
 
   @override
@@ -166,12 +171,14 @@ mixin _$MarketState {
   Failure? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MarketStateCopyWith<MarketState> get copyWith => throw _privateConstructorUsedError;
+  $MarketStateCopyWith<MarketState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MarketStateCopyWith<$Res> {
-  factory $MarketStateCopyWith(MarketState value, $Res Function(MarketState) then) =
+  factory $MarketStateCopyWith(
+          MarketState value, $Res Function(MarketState) then) =
       _$MarketStateCopyWithImpl<$Res, MarketState>;
   @useResult
   $Res call({CoinsEntity coins, bool loading, Failure? error});
@@ -222,8 +229,10 @@ class _$MarketStateCopyWithImpl<$Res, $Val extends MarketState>
 }
 
 /// @nodoc
-abstract class _$$_MarketStateCopyWith<$Res> implements $MarketStateCopyWith<$Res> {
-  factory _$$_MarketStateCopyWith(_$_MarketState value, $Res Function(_$_MarketState) then) =
+abstract class _$$_MarketStateCopyWith<$Res>
+    implements $MarketStateCopyWith<$Res> {
+  factory _$$_MarketStateCopyWith(
+          _$_MarketState value, $Res Function(_$_MarketState) then) =
       __$$_MarketStateCopyWithImpl<$Res>;
   @override
   @useResult
@@ -234,9 +243,11 @@ abstract class _$$_MarketStateCopyWith<$Res> implements $MarketStateCopyWith<$Re
 }
 
 /// @nodoc
-class __$$_MarketStateCopyWithImpl<$Res> extends _$MarketStateCopyWithImpl<$Res, _$_MarketState>
+class __$$_MarketStateCopyWithImpl<$Res>
+    extends _$MarketStateCopyWithImpl<$Res, _$_MarketState>
     implements _$$_MarketStateCopyWith<$Res> {
-  __$$_MarketStateCopyWithImpl(_$_MarketState _value, $Res Function(_$_MarketState) _then)
+  __$$_MarketStateCopyWithImpl(
+      _$_MarketState _value, $Res Function(_$_MarketState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -315,5 +326,6 @@ abstract class _MarketState implements MarketState {
   Failure? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_MarketStateCopyWith<_$_MarketState> get copyWith => throw _privateConstructorUsedError;
+  _$$_MarketStateCopyWith<_$_MarketState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

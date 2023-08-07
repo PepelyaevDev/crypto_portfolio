@@ -6,7 +6,7 @@ sealed class Failure extends Equatable {
   Failure() : time = DateTime.now();
 
   factory Failure.from(Object? e) {
-    if (e is DioError) {
+    if (e is DioException) {
       if (e.response != null) {
         return switch (e.response!.statusCode) {
           429 => TooManyRequestsFailure(),

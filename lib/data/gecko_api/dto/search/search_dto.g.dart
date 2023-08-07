@@ -12,11 +12,13 @@ _$_SearchDTO _$$_SearchDTOFromJson(Map<String, dynamic> json) => _$_SearchDTO(
           .toList(),
     );
 
-Map<String, dynamic> _$$_SearchDTOToJson(_$_SearchDTO instance) => <String, dynamic>{
+Map<String, dynamic> _$$_SearchDTOToJson(_$_SearchDTO instance) =>
+    <String, dynamic>{
       'coins': instance.coins.map((e) => e.toJson()).toList(),
     };
 
-_$_SearchCoinDTO _$$_SearchCoinDTOFromJson(Map<String, dynamic> json) => _$_SearchCoinDTO(
+_$_SearchCoinDTO _$$_SearchCoinDTOFromJson(Map<String, dynamic> json) =>
+    _$_SearchCoinDTO(
       id: json['id'] as String,
       name: json['name'] as String,
       apiSymbol: json['api_symbol'] as String,
@@ -26,7 +28,8 @@ _$_SearchCoinDTO _$$_SearchCoinDTOFromJson(Map<String, dynamic> json) => _$_Sear
       large: json['large'] as String,
     );
 
-Map<String, dynamic> _$$_SearchCoinDTOToJson(_$_SearchCoinDTO instance) => <String, dynamic>{
+Map<String, dynamic> _$$_SearchCoinDTOToJson(_$_SearchCoinDTO instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'api_symbol': instance.apiSymbol,

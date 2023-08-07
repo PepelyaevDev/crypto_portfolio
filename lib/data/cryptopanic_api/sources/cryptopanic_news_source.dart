@@ -1,10 +1,10 @@
 import 'package:crypto_portfolio/data/cryptopanic_api/api/cryptopanic_api_client.dart';
-import 'package:crypto_portfolio/data/cryptopanic_api/api/cryptopanic_dio_client.dart';
 import 'package:crypto_portfolio/data/cryptopanic_api/dto/cryptopanic_news_dto.dart';
+import 'package:dio/dio.dart';
 
 class CryptopanicNewsSource {
-  final CryptopanicDioClient _dioClient;
-  CryptopanicNewsSource(this._dioClient);
+  final Dio _dio;
+  CryptopanicNewsSource(this._dio);
 
   static const String _path = '/posts/';
 
@@ -13,7 +13,7 @@ class CryptopanicNewsSource {
     List<String> locales,
     int page,
   ) async {
-    final response = await _dioClient.get<Map<String, Object?>>(
+    final response = await _dio.get<Map<String, Object?>>(
       _path,
       queryParameters: {
         'auth_token': CryptopanicApiClient.token,

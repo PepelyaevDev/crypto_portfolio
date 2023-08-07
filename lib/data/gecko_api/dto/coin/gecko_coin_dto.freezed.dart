@@ -43,7 +43,8 @@ mixin _$GeckoCoinDTO {
   @JsonKey(name: 'market_cap_change_24h')
   double? get marketCapChange_24h => throw _privateConstructorUsedError;
   @JsonKey(name: 'market_cap_change_percentage_24h')
-  double? get marketCapChangePercentage_24h => throw _privateConstructorUsedError;
+  double? get marketCapChangePercentage_24h =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: 'circulating_supply')
   double? get circulatingSupply => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_supply')
@@ -66,12 +67,14 @@ mixin _$GeckoCoinDTO {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GeckoCoinDTOCopyWith<GeckoCoinDTO> get copyWith => throw _privateConstructorUsedError;
+  $GeckoCoinDTOCopyWith<GeckoCoinDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $GeckoCoinDTOCopyWith<$Res> {
-  factory $GeckoCoinDTOCopyWith(GeckoCoinDTO value, $Res Function(GeckoCoinDTO) then) =
+  factory $GeckoCoinDTOCopyWith(
+          GeckoCoinDTO value, $Res Function(GeckoCoinDTO) then) =
       _$GeckoCoinDTOCopyWithImpl<$Res, GeckoCoinDTO>;
   @useResult
   $Res call(
@@ -87,9 +90,11 @@ abstract class $GeckoCoinDTOCopyWith<$Res> {
       double? high_24h,
       double? low_24h,
       @JsonKey(name: 'price_change_24h') double? priceChange_24h,
-      @JsonKey(name: 'price_change_percentage_24h') double? priceChangePercentage_24h,
+      @JsonKey(name: 'price_change_percentage_24h')
+      double? priceChangePercentage_24h,
       @JsonKey(name: 'market_cap_change_24h') double? marketCapChange_24h,
-      @JsonKey(name: 'market_cap_change_percentage_24h') double? marketCapChangePercentage_24h,
+      @JsonKey(name: 'market_cap_change_percentage_24h')
+      double? marketCapChangePercentage_24h,
       @JsonKey(name: 'circulating_supply') double? circulatingSupply,
       @JsonKey(name: 'total_supply') double? totalSupply,
       @JsonKey(name: 'max_supply') double? maxSupply,
@@ -267,8 +272,10 @@ class _$GeckoCoinDTOCopyWithImpl<$Res, $Val extends GeckoCoinDTO>
 }
 
 /// @nodoc
-abstract class _$$_GeckoCoinDTOCopyWith<$Res> implements $GeckoCoinDTOCopyWith<$Res> {
-  factory _$$_GeckoCoinDTOCopyWith(_$_GeckoCoinDTO value, $Res Function(_$_GeckoCoinDTO) then) =
+abstract class _$$_GeckoCoinDTOCopyWith<$Res>
+    implements $GeckoCoinDTOCopyWith<$Res> {
+  factory _$$_GeckoCoinDTOCopyWith(
+          _$_GeckoCoinDTO value, $Res Function(_$_GeckoCoinDTO) then) =
       __$$_GeckoCoinDTOCopyWithImpl<$Res>;
   @override
   @useResult
@@ -285,9 +292,11 @@ abstract class _$$_GeckoCoinDTOCopyWith<$Res> implements $GeckoCoinDTOCopyWith<$
       double? high_24h,
       double? low_24h,
       @JsonKey(name: 'price_change_24h') double? priceChange_24h,
-      @JsonKey(name: 'price_change_percentage_24h') double? priceChangePercentage_24h,
+      @JsonKey(name: 'price_change_percentage_24h')
+      double? priceChangePercentage_24h,
       @JsonKey(name: 'market_cap_change_24h') double? marketCapChange_24h,
-      @JsonKey(name: 'market_cap_change_percentage_24h') double? marketCapChangePercentage_24h,
+      @JsonKey(name: 'market_cap_change_percentage_24h')
+      double? marketCapChangePercentage_24h,
       @JsonKey(name: 'circulating_supply') double? circulatingSupply,
       @JsonKey(name: 'total_supply') double? totalSupply,
       @JsonKey(name: 'max_supply') double? maxSupply,
@@ -305,9 +314,11 @@ abstract class _$$_GeckoCoinDTOCopyWith<$Res> implements $GeckoCoinDTOCopyWith<$
 }
 
 /// @nodoc
-class __$$_GeckoCoinDTOCopyWithImpl<$Res> extends _$GeckoCoinDTOCopyWithImpl<$Res, _$_GeckoCoinDTO>
+class __$$_GeckoCoinDTOCopyWithImpl<$Res>
+    extends _$GeckoCoinDTOCopyWithImpl<$Res, _$_GeckoCoinDTO>
     implements _$$_GeckoCoinDTOCopyWith<$Res> {
-  __$$_GeckoCoinDTOCopyWithImpl(_$_GeckoCoinDTO _value, $Res Function(_$_GeckoCoinDTO) _then)
+  __$$_GeckoCoinDTOCopyWithImpl(
+      _$_GeckoCoinDTO _value, $Res Function(_$_GeckoCoinDTO) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -460,12 +471,14 @@ class _$_GeckoCoinDTO implements _GeckoCoinDTO {
       @JsonKey(name: 'current_price') required this.currentPrice,
       @JsonKey(name: 'market_cap') required this.marketCap,
       @JsonKey(name: 'market_cap_rank') required this.marketCapRank,
-      @JsonKey(name: 'fully_diluted_valuation') required this.fullyDilutedValuation,
+      @JsonKey(name: 'fully_diluted_valuation')
+      required this.fullyDilutedValuation,
       @JsonKey(name: 'total_volume') required this.totalVolume,
       required this.high_24h,
       required this.low_24h,
       @JsonKey(name: 'price_change_24h') required this.priceChange_24h,
-      @JsonKey(name: 'price_change_percentage_24h') required this.priceChangePercentage_24h,
+      @JsonKey(name: 'price_change_percentage_24h')
+      required this.priceChangePercentage_24h,
       @JsonKey(name: 'market_cap_change_24h') required this.marketCapChange_24h,
       @JsonKey(name: 'market_cap_change_percentage_24h')
       required this.marketCapChangePercentage_24h,
@@ -481,7 +494,8 @@ class _$_GeckoCoinDTO implements _GeckoCoinDTO {
       required this.roi,
       @JsonKey(name: 'last_updated') required this.lastUpdated});
 
-  factory _$_GeckoCoinDTO.fromJson(Map<String, dynamic> json) => _$$_GeckoCoinDTOFromJson(json);
+  factory _$_GeckoCoinDTO.fromJson(Map<String, dynamic> json) =>
+      _$$_GeckoCoinDTOFromJson(json);
 
   @override
   final String id;
@@ -567,27 +581,36 @@ class _$_GeckoCoinDTO implements _GeckoCoinDTO {
             (identical(other.symbol, symbol) || other.symbol == symbol) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.currentPrice, currentPrice) || other.currentPrice == currentPrice) &&
-            (identical(other.marketCap, marketCap) || other.marketCap == marketCap) &&
+            (identical(other.currentPrice, currentPrice) ||
+                other.currentPrice == currentPrice) &&
+            (identical(other.marketCap, marketCap) ||
+                other.marketCap == marketCap) &&
             (identical(other.marketCapRank, marketCapRank) ||
                 other.marketCapRank == marketCapRank) &&
             (identical(other.fullyDilutedValuation, fullyDilutedValuation) ||
                 other.fullyDilutedValuation == fullyDilutedValuation) &&
-            (identical(other.totalVolume, totalVolume) || other.totalVolume == totalVolume) &&
-            (identical(other.high_24h, high_24h) || other.high_24h == high_24h) &&
+            (identical(other.totalVolume, totalVolume) ||
+                other.totalVolume == totalVolume) &&
+            (identical(other.high_24h, high_24h) ||
+                other.high_24h == high_24h) &&
             (identical(other.low_24h, low_24h) || other.low_24h == low_24h) &&
             (identical(other.priceChange_24h, priceChange_24h) ||
                 other.priceChange_24h == priceChange_24h) &&
-            (identical(other.priceChangePercentage_24h, priceChangePercentage_24h) ||
+            (identical(other.priceChangePercentage_24h,
+                    priceChangePercentage_24h) ||
                 other.priceChangePercentage_24h == priceChangePercentage_24h) &&
             (identical(other.marketCapChange_24h, marketCapChange_24h) ||
                 other.marketCapChange_24h == marketCapChange_24h) &&
-            (identical(other.marketCapChangePercentage_24h, marketCapChangePercentage_24h) ||
-                other.marketCapChangePercentage_24h == marketCapChangePercentage_24h) &&
+            (identical(other.marketCapChangePercentage_24h,
+                    marketCapChangePercentage_24h) ||
+                other.marketCapChangePercentage_24h ==
+                    marketCapChangePercentage_24h) &&
             (identical(other.circulatingSupply, circulatingSupply) ||
                 other.circulatingSupply == circulatingSupply) &&
-            (identical(other.totalSupply, totalSupply) || other.totalSupply == totalSupply) &&
-            (identical(other.maxSupply, maxSupply) || other.maxSupply == maxSupply) &&
+            (identical(other.totalSupply, totalSupply) ||
+                other.totalSupply == totalSupply) &&
+            (identical(other.maxSupply, maxSupply) ||
+                other.maxSupply == maxSupply) &&
             (identical(other.ath, ath) || other.ath == ath) &&
             (identical(other.athChangePercentage, athChangePercentage) ||
                 other.athChangePercentage == athChangePercentage) &&
@@ -597,7 +620,8 @@ class _$_GeckoCoinDTO implements _GeckoCoinDTO {
                 other.atlChangePercentage == atlChangePercentage) &&
             (identical(other.atlDate, atlDate) || other.atlDate == atlDate) &&
             (identical(other.roi, roi) || other.roi == roi) &&
-            (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated));
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated));
   }
 
   @JsonKey(ignore: true)
@@ -655,29 +679,36 @@ abstract class _GeckoCoinDTO implements GeckoCoinDTO {
       @JsonKey(name: 'current_price') required final double currentPrice,
       @JsonKey(name: 'market_cap') required final double? marketCap,
       @JsonKey(name: 'market_cap_rank') required final double? marketCapRank,
-      @JsonKey(name: 'fully_diluted_valuation') required final double? fullyDilutedValuation,
+      @JsonKey(name: 'fully_diluted_valuation')
+      required final double? fullyDilutedValuation,
       @JsonKey(name: 'total_volume') required final double totalVolume,
       required final double? high_24h,
       required final double? low_24h,
       @JsonKey(name: 'price_change_24h') required final double? priceChange_24h,
       @JsonKey(name: 'price_change_percentage_24h')
       required final double? priceChangePercentage_24h,
-      @JsonKey(name: 'market_cap_change_24h') required final double? marketCapChange_24h,
+      @JsonKey(name: 'market_cap_change_24h')
+      required final double? marketCapChange_24h,
       @JsonKey(name: 'market_cap_change_percentage_24h')
       required final double? marketCapChangePercentage_24h,
-      @JsonKey(name: 'circulating_supply') required final double? circulatingSupply,
+      @JsonKey(name: 'circulating_supply')
+      required final double? circulatingSupply,
       @JsonKey(name: 'total_supply') required final double? totalSupply,
       @JsonKey(name: 'max_supply') required final double? maxSupply,
       required final double ath,
-      @JsonKey(name: 'ath_change_percentage') required final double athChangePercentage,
+      @JsonKey(name: 'ath_change_percentage')
+      required final double athChangePercentage,
       @JsonKey(name: 'ath_date') required final String athDate,
       required final double atl,
-      @JsonKey(name: 'atl_change_percentage') required final double atlChangePercentage,
+      @JsonKey(name: 'atl_change_percentage')
+      required final double atlChangePercentage,
       @JsonKey(name: 'atl_date') required final String atlDate,
       required final GeckoRoiDTO? roi,
-      @JsonKey(name: 'last_updated') required final String lastUpdated}) = _$_GeckoCoinDTO;
+      @JsonKey(name: 'last_updated')
+      required final String lastUpdated}) = _$_GeckoCoinDTO;
 
-  factory _GeckoCoinDTO.fromJson(Map<String, dynamic> json) = _$_GeckoCoinDTO.fromJson;
+  factory _GeckoCoinDTO.fromJson(Map<String, dynamic> json) =
+      _$_GeckoCoinDTO.fromJson;
 
   @override
   String get id;
@@ -750,7 +781,8 @@ abstract class _GeckoCoinDTO implements GeckoCoinDTO {
   String get lastUpdated;
   @override
   @JsonKey(ignore: true)
-  _$$_GeckoCoinDTOCopyWith<_$_GeckoCoinDTO> get copyWith => throw _privateConstructorUsedError;
+  _$$_GeckoCoinDTOCopyWith<_$_GeckoCoinDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 GeckoRoiDTO _$GeckoRoiDTOFromJson(Map<String, dynamic> json) {
@@ -765,12 +797,14 @@ mixin _$GeckoRoiDTO {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GeckoRoiDTOCopyWith<GeckoRoiDTO> get copyWith => throw _privateConstructorUsedError;
+  $GeckoRoiDTOCopyWith<GeckoRoiDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $GeckoRoiDTOCopyWith<$Res> {
-  factory $GeckoRoiDTOCopyWith(GeckoRoiDTO value, $Res Function(GeckoRoiDTO) then) =
+  factory $GeckoRoiDTOCopyWith(
+          GeckoRoiDTO value, $Res Function(GeckoRoiDTO) then) =
       _$GeckoRoiDTOCopyWithImpl<$Res, GeckoRoiDTO>;
   @useResult
   $Res call({double times, String currency, double percentage});
@@ -811,8 +845,10 @@ class _$GeckoRoiDTOCopyWithImpl<$Res, $Val extends GeckoRoiDTO>
 }
 
 /// @nodoc
-abstract class _$$_GeckoRoiDTOCopyWith<$Res> implements $GeckoRoiDTOCopyWith<$Res> {
-  factory _$$_GeckoRoiDTOCopyWith(_$_GeckoRoiDTO value, $Res Function(_$_GeckoRoiDTO) then) =
+abstract class _$$_GeckoRoiDTOCopyWith<$Res>
+    implements $GeckoRoiDTOCopyWith<$Res> {
+  factory _$$_GeckoRoiDTOCopyWith(
+          _$_GeckoRoiDTO value, $Res Function(_$_GeckoRoiDTO) then) =
       __$$_GeckoRoiDTOCopyWithImpl<$Res>;
   @override
   @useResult
@@ -820,9 +856,11 @@ abstract class _$$_GeckoRoiDTOCopyWith<$Res> implements $GeckoRoiDTOCopyWith<$Re
 }
 
 /// @nodoc
-class __$$_GeckoRoiDTOCopyWithImpl<$Res> extends _$GeckoRoiDTOCopyWithImpl<$Res, _$_GeckoRoiDTO>
+class __$$_GeckoRoiDTOCopyWithImpl<$Res>
+    extends _$GeckoRoiDTOCopyWithImpl<$Res, _$_GeckoRoiDTO>
     implements _$$_GeckoRoiDTOCopyWith<$Res> {
-  __$$_GeckoRoiDTOCopyWithImpl(_$_GeckoRoiDTO _value, $Res Function(_$_GeckoRoiDTO) _then)
+  __$$_GeckoRoiDTOCopyWithImpl(
+      _$_GeckoRoiDTO _value, $Res Function(_$_GeckoRoiDTO) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -852,9 +890,11 @@ class __$$_GeckoRoiDTOCopyWithImpl<$Res> extends _$GeckoRoiDTOCopyWithImpl<$Res,
 /// @nodoc
 @JsonSerializable()
 class _$_GeckoRoiDTO implements _GeckoRoiDTO {
-  const _$_GeckoRoiDTO({required this.times, required this.currency, required this.percentage});
+  const _$_GeckoRoiDTO(
+      {required this.times, required this.currency, required this.percentage});
 
-  factory _$_GeckoRoiDTO.fromJson(Map<String, dynamic> json) => _$$_GeckoRoiDTOFromJson(json);
+  factory _$_GeckoRoiDTO.fromJson(Map<String, dynamic> json) =>
+      _$$_GeckoRoiDTOFromJson(json);
 
   @override
   final double times;
@@ -874,8 +914,10 @@ class _$_GeckoRoiDTO implements _GeckoRoiDTO {
         (other.runtimeType == runtimeType &&
             other is _$_GeckoRoiDTO &&
             (identical(other.times, times) || other.times == times) &&
-            (identical(other.currency, currency) || other.currency == currency) &&
-            (identical(other.percentage, percentage) || other.percentage == percentage));
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.percentage, percentage) ||
+                other.percentage == percentage));
   }
 
   @JsonKey(ignore: true)
@@ -902,7 +944,8 @@ abstract class _GeckoRoiDTO implements GeckoRoiDTO {
       required final String currency,
       required final double percentage}) = _$_GeckoRoiDTO;
 
-  factory _GeckoRoiDTO.fromJson(Map<String, dynamic> json) = _$_GeckoRoiDTO.fromJson;
+  factory _GeckoRoiDTO.fromJson(Map<String, dynamic> json) =
+      _$_GeckoRoiDTO.fromJson;
 
   @override
   double get times;
@@ -912,5 +955,6 @@ abstract class _GeckoRoiDTO implements GeckoRoiDTO {
   double get percentage;
   @override
   @JsonKey(ignore: true)
-  _$$_GeckoRoiDTOCopyWith<_$_GeckoRoiDTO> get copyWith => throw _privateConstructorUsedError;
+  _$$_GeckoRoiDTOCopyWith<_$_GeckoRoiDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }

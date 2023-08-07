@@ -24,7 +24,8 @@ mixin _$SearchDTO {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SearchDTOCopyWith<SearchDTO> get copyWith => throw _privateConstructorUsedError;
+  $SearchDTOCopyWith<SearchDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -36,7 +37,8 @@ abstract class $SearchDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SearchDTOCopyWithImpl<$Res, $Val extends SearchDTO> implements $SearchDTOCopyWith<$Res> {
+class _$SearchDTOCopyWithImpl<$Res, $Val extends SearchDTO>
+    implements $SearchDTOCopyWith<$Res> {
   _$SearchDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -60,7 +62,8 @@ class _$SearchDTOCopyWithImpl<$Res, $Val extends SearchDTO> implements $SearchDT
 
 /// @nodoc
 abstract class _$$_SearchDTOCopyWith<$Res> implements $SearchDTOCopyWith<$Res> {
-  factory _$$_SearchDTOCopyWith(_$_SearchDTO value, $Res Function(_$_SearchDTO) then) =
+  factory _$$_SearchDTOCopyWith(
+          _$_SearchDTO value, $Res Function(_$_SearchDTO) then) =
       __$$_SearchDTOCopyWithImpl<$Res>;
   @override
   @useResult
@@ -68,9 +71,11 @@ abstract class _$$_SearchDTOCopyWith<$Res> implements $SearchDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SearchDTOCopyWithImpl<$Res> extends _$SearchDTOCopyWithImpl<$Res, _$_SearchDTO>
+class __$$_SearchDTOCopyWithImpl<$Res>
+    extends _$SearchDTOCopyWithImpl<$Res, _$_SearchDTO>
     implements _$$_SearchDTOCopyWith<$Res> {
-  __$$_SearchDTOCopyWithImpl(_$_SearchDTO _value, $Res Function(_$_SearchDTO) _then)
+  __$$_SearchDTOCopyWithImpl(
+      _$_SearchDTO _value, $Res Function(_$_SearchDTO) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -90,9 +95,11 @@ class __$$_SearchDTOCopyWithImpl<$Res> extends _$SearchDTOCopyWithImpl<$Res, _$_
 /// @nodoc
 @JsonSerializable()
 class _$_SearchDTO implements _SearchDTO {
-  const _$_SearchDTO({required final List<SearchCoinDTO> coins}) : _coins = coins;
+  const _$_SearchDTO({required final List<SearchCoinDTO> coins})
+      : _coins = coins;
 
-  factory _$_SearchDTO.fromJson(Map<String, dynamic> json) => _$$_SearchDTOFromJson(json);
+  factory _$_SearchDTO.fromJson(Map<String, dynamic> json) =>
+      _$$_SearchDTOFromJson(json);
 
   final List<SearchCoinDTO> _coins;
   @override
@@ -117,7 +124,8 @@ class _$_SearchDTO implements _SearchDTO {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_coins));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_coins));
 
   @JsonKey(ignore: true)
   @override
@@ -134,15 +142,18 @@ class _$_SearchDTO implements _SearchDTO {
 }
 
 abstract class _SearchDTO implements SearchDTO {
-  const factory _SearchDTO({required final List<SearchCoinDTO> coins}) = _$_SearchDTO;
+  const factory _SearchDTO({required final List<SearchCoinDTO> coins}) =
+      _$_SearchDTO;
 
-  factory _SearchDTO.fromJson(Map<String, dynamic> json) = _$_SearchDTO.fromJson;
+  factory _SearchDTO.fromJson(Map<String, dynamic> json) =
+      _$_SearchDTO.fromJson;
 
   @override
   List<SearchCoinDTO> get coins;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchDTOCopyWith<_$_SearchDTO> get copyWith => throw _privateConstructorUsedError;
+  _$$_SearchDTOCopyWith<_$_SearchDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 SearchCoinDTO _$SearchCoinDTOFromJson(Map<String, dynamic> json) {
@@ -163,12 +174,14 @@ mixin _$SearchCoinDTO {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SearchCoinDTOCopyWith<SearchCoinDTO> get copyWith => throw _privateConstructorUsedError;
+  $SearchCoinDTOCopyWith<SearchCoinDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SearchCoinDTOCopyWith<$Res> {
-  factory $SearchCoinDTOCopyWith(SearchCoinDTO value, $Res Function(SearchCoinDTO) then) =
+  factory $SearchCoinDTOCopyWith(
+          SearchCoinDTO value, $Res Function(SearchCoinDTO) then) =
       _$SearchCoinDTOCopyWithImpl<$Res, SearchCoinDTO>;
   @useResult
   $Res call(
@@ -236,8 +249,10 @@ class _$SearchCoinDTOCopyWithImpl<$Res, $Val extends SearchCoinDTO>
 }
 
 /// @nodoc
-abstract class _$$_SearchCoinDTOCopyWith<$Res> implements $SearchCoinDTOCopyWith<$Res> {
-  factory _$$_SearchCoinDTOCopyWith(_$_SearchCoinDTO value, $Res Function(_$_SearchCoinDTO) then) =
+abstract class _$$_SearchCoinDTOCopyWith<$Res>
+    implements $SearchCoinDTOCopyWith<$Res> {
+  factory _$$_SearchCoinDTOCopyWith(
+          _$_SearchCoinDTO value, $Res Function(_$_SearchCoinDTO) then) =
       __$$_SearchCoinDTOCopyWithImpl<$Res>;
   @override
   @useResult
@@ -255,7 +270,8 @@ abstract class _$$_SearchCoinDTOCopyWith<$Res> implements $SearchCoinDTOCopyWith
 class __$$_SearchCoinDTOCopyWithImpl<$Res>
     extends _$SearchCoinDTOCopyWithImpl<$Res, _$_SearchCoinDTO>
     implements _$$_SearchCoinDTOCopyWith<$Res> {
-  __$$_SearchCoinDTOCopyWithImpl(_$_SearchCoinDTO _value, $Res Function(_$_SearchCoinDTO) _then)
+  __$$_SearchCoinDTOCopyWithImpl(
+      _$_SearchCoinDTO _value, $Res Function(_$_SearchCoinDTO) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -314,7 +330,8 @@ class _$_SearchCoinDTO implements _SearchCoinDTO {
       required this.thumb,
       required this.large});
 
-  factory _$_SearchCoinDTO.fromJson(Map<String, dynamic> json) => _$$_SearchCoinDTOFromJson(json);
+  factory _$_SearchCoinDTO.fromJson(Map<String, dynamic> json) =>
+      _$$_SearchCoinDTOFromJson(json);
 
   @override
   final String id;
@@ -345,7 +362,8 @@ class _$_SearchCoinDTO implements _SearchCoinDTO {
             other is _$_SearchCoinDTO &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.apiSymbol, apiSymbol) || other.apiSymbol == apiSymbol) &&
+            (identical(other.apiSymbol, apiSymbol) ||
+                other.apiSymbol == apiSymbol) &&
             (identical(other.symbol, symbol) || other.symbol == symbol) &&
             (identical(other.marketCapRank, marketCapRank) ||
                 other.marketCapRank == marketCapRank) &&
@@ -355,8 +373,8 @@ class _$_SearchCoinDTO implements _SearchCoinDTO {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, apiSymbol, symbol, marketCapRank, thumb, large);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, apiSymbol, symbol, marketCapRank, thumb, large);
 
   @JsonKey(ignore: true)
   @override
@@ -382,7 +400,8 @@ abstract class _SearchCoinDTO implements SearchCoinDTO {
       required final String thumb,
       required final String large}) = _$_SearchCoinDTO;
 
-  factory _SearchCoinDTO.fromJson(Map<String, dynamic> json) = _$_SearchCoinDTO.fromJson;
+  factory _SearchCoinDTO.fromJson(Map<String, dynamic> json) =
+      _$_SearchCoinDTO.fromJson;
 
   @override
   String get id;
@@ -402,5 +421,6 @@ abstract class _SearchCoinDTO implements SearchCoinDTO {
   String get large;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchCoinDTOCopyWith<_$_SearchCoinDTO> get copyWith => throw _privateConstructorUsedError;
+  _$$_SearchCoinDTOCopyWith<_$_SearchCoinDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }

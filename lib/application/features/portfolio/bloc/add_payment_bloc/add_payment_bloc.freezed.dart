@@ -20,21 +20,24 @@ mixin _$AddPaymentEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String? symbol) getCoin,
     required TResult Function() clear,
-    required TResult Function(CoinEntity coin, PaymentEntity paymentEntity) updateHistory,
+    required TResult Function(CoinEntity coin, PaymentEntity paymentEntity)
+        updateHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? symbol)? getCoin,
     TResult? Function()? clear,
-    TResult? Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
+    TResult? Function(CoinEntity coin, PaymentEntity paymentEntity)?
+        updateHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? symbol)? getCoin,
     TResult Function()? clear,
-    TResult Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
+    TResult Function(CoinEntity coin, PaymentEntity paymentEntity)?
+        updateHistory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,7 +67,8 @@ mixin _$AddPaymentEvent {
 
 /// @nodoc
 abstract class $AddPaymentEventCopyWith<$Res> {
-  factory $AddPaymentEventCopyWith(AddPaymentEvent value, $Res Function(AddPaymentEvent) then) =
+  factory $AddPaymentEventCopyWith(
+          AddPaymentEvent value, $Res Function(AddPaymentEvent) then) =
       _$AddPaymentEventCopyWithImpl<$Res, AddPaymentEvent>;
 }
 
@@ -81,14 +85,16 @@ class _$AddPaymentEventCopyWithImpl<$Res, $Val extends AddPaymentEvent>
 
 /// @nodoc
 abstract class _$$_GetCoinCopyWith<$Res> {
-  factory _$$_GetCoinCopyWith(_$_GetCoin value, $Res Function(_$_GetCoin) then) =
+  factory _$$_GetCoinCopyWith(
+          _$_GetCoin value, $Res Function(_$_GetCoin) then) =
       __$$_GetCoinCopyWithImpl<$Res>;
   @useResult
   $Res call({String? symbol});
 }
 
 /// @nodoc
-class __$$_GetCoinCopyWithImpl<$Res> extends _$AddPaymentEventCopyWithImpl<$Res, _$_GetCoin>
+class __$$_GetCoinCopyWithImpl<$Res>
+    extends _$AddPaymentEventCopyWithImpl<$Res, _$_GetCoin>
     implements _$$_GetCoinCopyWith<$Res> {
   __$$_GetCoinCopyWithImpl(_$_GetCoin _value, $Res Function(_$_GetCoin) _then)
       : super(_value, _then);
@@ -142,7 +148,8 @@ class _$_GetCoin implements _GetCoin {
   TResult when<TResult extends Object?>({
     required TResult Function(String? symbol) getCoin,
     required TResult Function() clear,
-    required TResult Function(CoinEntity coin, PaymentEntity paymentEntity) updateHistory,
+    required TResult Function(CoinEntity coin, PaymentEntity paymentEntity)
+        updateHistory,
   }) {
     return getCoin(symbol);
   }
@@ -152,7 +159,8 @@ class _$_GetCoin implements _GetCoin {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? symbol)? getCoin,
     TResult? Function()? clear,
-    TResult? Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
+    TResult? Function(CoinEntity coin, PaymentEntity paymentEntity)?
+        updateHistory,
   }) {
     return getCoin?.call(symbol);
   }
@@ -162,7 +170,8 @@ class _$_GetCoin implements _GetCoin {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? symbol)? getCoin,
     TResult Function()? clear,
-    TResult Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
+    TResult Function(CoinEntity coin, PaymentEntity paymentEntity)?
+        updateHistory,
     required TResult orElse(),
   }) {
     if (getCoin != null) {
@@ -211,7 +220,8 @@ abstract class _GetCoin implements AddPaymentEvent {
 
   String? get symbol;
   @JsonKey(ignore: true)
-  _$$_GetCoinCopyWith<_$_GetCoin> get copyWith => throw _privateConstructorUsedError;
+  _$$_GetCoinCopyWith<_$_GetCoin> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -221,9 +231,11 @@ abstract class _$$_ClearCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ClearCopyWithImpl<$Res> extends _$AddPaymentEventCopyWithImpl<$Res, _$_Clear>
+class __$$_ClearCopyWithImpl<$Res>
+    extends _$AddPaymentEventCopyWithImpl<$Res, _$_Clear>
     implements _$$_ClearCopyWith<$Res> {
-  __$$_ClearCopyWithImpl(_$_Clear _value, $Res Function(_$_Clear) _then) : super(_value, _then);
+  __$$_ClearCopyWithImpl(_$_Clear _value, $Res Function(_$_Clear) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -238,7 +250,8 @@ class _$_Clear implements _Clear {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Clear);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Clear);
   }
 
   @override
@@ -249,7 +262,8 @@ class _$_Clear implements _Clear {
   TResult when<TResult extends Object?>({
     required TResult Function(String? symbol) getCoin,
     required TResult Function() clear,
-    required TResult Function(CoinEntity coin, PaymentEntity paymentEntity) updateHistory,
+    required TResult Function(CoinEntity coin, PaymentEntity paymentEntity)
+        updateHistory,
   }) {
     return clear();
   }
@@ -259,7 +273,8 @@ class _$_Clear implements _Clear {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? symbol)? getCoin,
     TResult? Function()? clear,
-    TResult? Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
+    TResult? Function(CoinEntity coin, PaymentEntity paymentEntity)?
+        updateHistory,
   }) {
     return clear?.call();
   }
@@ -269,7 +284,8 @@ class _$_Clear implements _Clear {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? symbol)? getCoin,
     TResult Function()? clear,
-    TResult Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
+    TResult Function(CoinEntity coin, PaymentEntity paymentEntity)?
+        updateHistory,
     required TResult orElse(),
   }) {
     if (clear != null) {
@@ -319,7 +335,8 @@ abstract class _Clear implements AddPaymentEvent {
 
 /// @nodoc
 abstract class _$$_UpdateHistoryCopyWith<$Res> {
-  factory _$$_UpdateHistoryCopyWith(_$_UpdateHistory value, $Res Function(_$_UpdateHistory) then) =
+  factory _$$_UpdateHistoryCopyWith(
+          _$_UpdateHistory value, $Res Function(_$_UpdateHistory) then) =
       __$$_UpdateHistoryCopyWithImpl<$Res>;
   @useResult
   $Res call({CoinEntity coin, PaymentEntity paymentEntity});
@@ -332,7 +349,8 @@ abstract class _$$_UpdateHistoryCopyWith<$Res> {
 class __$$_UpdateHistoryCopyWithImpl<$Res>
     extends _$AddPaymentEventCopyWithImpl<$Res, _$_UpdateHistory>
     implements _$$_UpdateHistoryCopyWith<$Res> {
-  __$$_UpdateHistoryCopyWithImpl(_$_UpdateHistory _value, $Res Function(_$_UpdateHistory) _then)
+  __$$_UpdateHistoryCopyWithImpl(
+      _$_UpdateHistory _value, $Res Function(_$_UpdateHistory) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -409,7 +427,8 @@ class _$_UpdateHistory implements _UpdateHistory {
   TResult when<TResult extends Object?>({
     required TResult Function(String? symbol) getCoin,
     required TResult Function() clear,
-    required TResult Function(CoinEntity coin, PaymentEntity paymentEntity) updateHistory,
+    required TResult Function(CoinEntity coin, PaymentEntity paymentEntity)
+        updateHistory,
   }) {
     return updateHistory(coin, paymentEntity);
   }
@@ -419,7 +438,8 @@ class _$_UpdateHistory implements _UpdateHistory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? symbol)? getCoin,
     TResult? Function()? clear,
-    TResult? Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
+    TResult? Function(CoinEntity coin, PaymentEntity paymentEntity)?
+        updateHistory,
   }) {
     return updateHistory?.call(coin, paymentEntity);
   }
@@ -429,7 +449,8 @@ class _$_UpdateHistory implements _UpdateHistory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? symbol)? getCoin,
     TResult Function()? clear,
-    TResult Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
+    TResult Function(CoinEntity coin, PaymentEntity paymentEntity)?
+        updateHistory,
     required TResult orElse(),
   }) {
     if (updateHistory != null) {
@@ -481,7 +502,8 @@ abstract class _UpdateHistory implements AddPaymentEvent {
   CoinEntity get coin;
   PaymentEntity get paymentEntity;
   @JsonKey(ignore: true)
-  _$$_UpdateHistoryCopyWith<_$_UpdateHistory> get copyWith => throw _privateConstructorUsedError;
+  _$$_UpdateHistoryCopyWith<_$_UpdateHistory> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -540,7 +562,8 @@ mixin _$AddPaymentState {
 
 /// @nodoc
 abstract class $AddPaymentStateCopyWith<$Res> {
-  factory $AddPaymentStateCopyWith(AddPaymentState value, $Res Function(AddPaymentState) then) =
+  factory $AddPaymentStateCopyWith(
+          AddPaymentState value, $Res Function(AddPaymentState) then) =
       _$AddPaymentStateCopyWithImpl<$Res, AddPaymentState>;
 }
 
@@ -557,12 +580,14 @@ class _$AddPaymentStateCopyWithImpl<$Res, $Val extends AddPaymentState>
 
 /// @nodoc
 abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(_$_Initial value, $Res Function(_$_Initial) then) =
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$AddPaymentStateCopyWithImpl<$Res, _$_Initial>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$AddPaymentStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -580,7 +605,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -667,12 +693,14 @@ abstract class _Initial implements AddPaymentState {
 
 /// @nodoc
 abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(_$_Loading value, $Res Function(_$_Loading) then) =
+  factory _$$_LoadingCopyWith(
+          _$_Loading value, $Res Function(_$_Loading) then) =
       __$$_LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$AddPaymentStateCopyWithImpl<$Res, _$_Loading>
+class __$$_LoadingCopyWithImpl<$Res>
+    extends _$AddPaymentStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -690,7 +718,8 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Loading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
   @override
@@ -777,7 +806,8 @@ abstract class _Loading implements AddPaymentState {
 
 /// @nodoc
 abstract class _$$_SuccessCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(_$_Success value, $Res Function(_$_Success) then) =
+  factory _$$_SuccessCopyWith(
+          _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @useResult
   $Res call({CoinEntity coin});
@@ -786,7 +816,8 @@ abstract class _$$_SuccessCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res> extends _$AddPaymentStateCopyWithImpl<$Res, _$_Success>
+class __$$_SuccessCopyWithImpl<$Res>
+    extends _$AddPaymentStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
       : super(_value, _then);
@@ -923,7 +954,8 @@ abstract class _Success implements AddPaymentState {
 
   CoinEntity get coin;
   @JsonKey(ignore: true)
-  _$$_SuccessCopyWith<_$_Success> get copyWith => throw _privateConstructorUsedError;
+  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -935,9 +967,11 @@ abstract class _$$_ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res> extends _$AddPaymentStateCopyWithImpl<$Res, _$_Error>
+class __$$_ErrorCopyWithImpl<$Res>
+    extends _$AddPaymentStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then) : super(_value, _then);
+  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -980,7 +1014,8 @@ class _$_Error implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith => __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1062,5 +1097,6 @@ abstract class _Error implements AddPaymentState {
 
   Failure get error;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith => throw _privateConstructorUsedError;
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
 }

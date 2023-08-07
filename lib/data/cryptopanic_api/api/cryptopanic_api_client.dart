@@ -1,4 +1,3 @@
-import 'package:crypto_portfolio/data/cryptopanic_api/api/cryptopanic_dio_client.dart';
 import 'package:crypto_portfolio/data/cryptopanic_api/sources/cryptopanic_news_source.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -10,11 +9,11 @@ class CryptopanicApiClient {
   const CryptopanicApiClient({required this.news});
 
   static CryptopanicApiClient get getClient {
-    final dioClient = CryptopanicDioClient(Dio(
+    final dio = Dio(
       BaseOptions(
         baseUrl: 'https://cryptopanic.com/api/v1',
-        connectTimeout: 15000,
-        receiveTimeout: 15000,
+        connectTimeout: Duration(seconds: 5),
+        receiveTimeout: Duration(seconds: 5),
         responseType: ResponseType.json,
         validateStatus: (status) {
           final int code = status ?? 500;
@@ -28,9 +27,9 @@ class CryptopanicApiClient {
       ),
     )..interceptors.addAll([
         PrettyDioLogger(requestHeader: true, requestBody: true),
-      ]));
+      ]);
     return CryptopanicApiClient(
-      news: CryptopanicNewsSource(dioClient),
+      news: CryptopanicNewsSource(dio),
     );
   }
 }

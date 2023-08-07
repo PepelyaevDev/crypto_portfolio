@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 //добавить подсказку как смотреть полные новости
 //лицензия syncfusion_flutter_charts либо замена либы
 //информация о проекте/контакты
-//рассмотреть добавление hive моделей
-//сделать наследников силд экватабл фэйлур на каждую ожидаемую ошибку без полей, удалить дио клиент
+//рассмотреть добавление hive моделей/удаление hive
+//удалить ненужные либы
 
 Future<void> main() async {
   final HiveApiClient hiveApiClient = await HiveApiClient.getClient;

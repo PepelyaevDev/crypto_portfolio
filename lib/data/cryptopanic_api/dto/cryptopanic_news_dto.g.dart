@@ -6,7 +6,8 @@ part of 'cryptopanic_news_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CryptopanicNewsResponse _$$_CryptopanicNewsResponseFromJson(Map<String, dynamic> json) =>
+_$_CryptopanicNewsResponse _$$_CryptopanicNewsResponseFromJson(
+        Map<String, dynamic> json) =>
     _$_CryptopanicNewsResponse(
       count: json['count'] as int,
       next: json['next'] as String?,
@@ -16,7 +17,8 @@ _$_CryptopanicNewsResponse _$$_CryptopanicNewsResponseFromJson(Map<String, dynam
           .toList(),
     );
 
-Map<String, dynamic> _$$_CryptopanicNewsResponseToJson(_$_CryptopanicNewsResponse instance) =>
+Map<String, dynamic> _$$_CryptopanicNewsResponseToJson(
+        _$_CryptopanicNewsResponse instance) =>
     <String, dynamic>{
       'count': instance.count,
       'next': instance.next,
@@ -24,27 +26,33 @@ Map<String, dynamic> _$$_CryptopanicNewsResponseToJson(_$_CryptopanicNewsRespons
       'results': instance.results.map((e) => e.toJson()).toList(),
     };
 
-_$_CryptopanicNewsDTO _$$_CryptopanicNewsDTOFromJson(Map<String, dynamic> json) =>
+_$_CryptopanicNewsDTO _$$_CryptopanicNewsDTOFromJson(
+        Map<String, dynamic> json) =>
     _$_CryptopanicNewsDTO(
       kind: json['kind'] as String,
       domain: json['domain'] as String?,
-      source: CryptopanicSourceDTO.fromJson(json['source'] as Map<String, dynamic>),
+      source:
+          CryptopanicSourceDTO.fromJson(json['source'] as Map<String, dynamic>),
       title: json['title'] as String,
       publishedAt: json['published_at'] as String,
       slug: json['slug'] as String?,
       currencies: (json['currencies'] as List<dynamic>?)
-          ?.map((e) => CryptopanicCurrenciesDTO.fromJson(e as Map<String, dynamic>))
+          ?.map((e) =>
+              CryptopanicCurrenciesDTO.fromJson(e as Map<String, dynamic>))
           .toList(),
       id: json['id'] as int,
       url: json['url'] as String,
       createdAt: json['created_at'] as String,
-      votes: CryptopanicVotesDTO.fromJson(json['votes'] as Map<String, dynamic>),
+      votes:
+          CryptopanicVotesDTO.fromJson(json['votes'] as Map<String, dynamic>),
       metadata: json['metadata'] == null
           ? null
-          : CryptopanicMetadataDTO.fromJson(json['metadata'] as Map<String, dynamic>),
+          : CryptopanicMetadataDTO.fromJson(
+              json['metadata'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_CryptopanicNewsDTOToJson(_$_CryptopanicNewsDTO instance) =>
+Map<String, dynamic> _$$_CryptopanicNewsDTOToJson(
+        _$_CryptopanicNewsDTO instance) =>
     <String, dynamic>{
       'kind': instance.kind,
       'domain': instance.domain,
@@ -60,7 +68,8 @@ Map<String, dynamic> _$$_CryptopanicNewsDTOToJson(_$_CryptopanicNewsDTO instance
       'metadata': instance.metadata?.toJson(),
     };
 
-_$_CryptopanicSourceDTO _$$_CryptopanicSourceDTOFromJson(Map<String, dynamic> json) =>
+_$_CryptopanicSourceDTO _$$_CryptopanicSourceDTOFromJson(
+        Map<String, dynamic> json) =>
     _$_CryptopanicSourceDTO(
       title: json['title'] as String,
       region: json['region'] as String,
@@ -68,7 +77,8 @@ _$_CryptopanicSourceDTO _$$_CryptopanicSourceDTOFromJson(Map<String, dynamic> js
       path: json['path'] as String?,
     );
 
-Map<String, dynamic> _$$_CryptopanicSourceDTOToJson(_$_CryptopanicSourceDTO instance) =>
+Map<String, dynamic> _$$_CryptopanicSourceDTOToJson(
+        _$_CryptopanicSourceDTO instance) =>
     <String, dynamic>{
       'title': instance.title,
       'region': instance.region,
@@ -76,7 +86,8 @@ Map<String, dynamic> _$$_CryptopanicSourceDTOToJson(_$_CryptopanicSourceDTO inst
       'path': instance.path,
     };
 
-_$_CryptopanicCurrenciesDTO _$$_CryptopanicCurrenciesDTOFromJson(Map<String, dynamic> json) =>
+_$_CryptopanicCurrenciesDTO _$$_CryptopanicCurrenciesDTOFromJson(
+        Map<String, dynamic> json) =>
     _$_CryptopanicCurrenciesDTO(
       code: json['code'] as String,
       title: json['title'] as String,
@@ -84,7 +95,8 @@ _$_CryptopanicCurrenciesDTO _$$_CryptopanicCurrenciesDTOFromJson(Map<String, dyn
       url: json['url'] as String?,
     );
 
-Map<String, dynamic> _$$_CryptopanicCurrenciesDTOToJson(_$_CryptopanicCurrenciesDTO instance) =>
+Map<String, dynamic> _$$_CryptopanicCurrenciesDTOToJson(
+        _$_CryptopanicCurrenciesDTO instance) =>
     <String, dynamic>{
       'code': instance.code,
       'title': instance.title,
@@ -92,7 +104,8 @@ Map<String, dynamic> _$$_CryptopanicCurrenciesDTOToJson(_$_CryptopanicCurrencies
       'url': instance.url,
     };
 
-_$_CryptopanicVotesDTO _$$_CryptopanicVotesDTOFromJson(Map<String, dynamic> json) =>
+_$_CryptopanicVotesDTO _$$_CryptopanicVotesDTOFromJson(
+        Map<String, dynamic> json) =>
     _$_CryptopanicVotesDTO(
       negative: json['negative'] as int,
       positive: json['positive'] as int,
@@ -105,7 +118,8 @@ _$_CryptopanicVotesDTO _$$_CryptopanicVotesDTOFromJson(Map<String, dynamic> json
       comments: json['comments'] as int,
     );
 
-Map<String, dynamic> _$$_CryptopanicVotesDTOToJson(_$_CryptopanicVotesDTO instance) =>
+Map<String, dynamic> _$$_CryptopanicVotesDTOToJson(
+        _$_CryptopanicVotesDTO instance) =>
     <String, dynamic>{
       'negative': instance.negative,
       'positive': instance.positive,
@@ -118,13 +132,15 @@ Map<String, dynamic> _$$_CryptopanicVotesDTOToJson(_$_CryptopanicVotesDTO instan
       'comments': instance.comments,
     };
 
-_$_CryptopanicMetadataDTO _$$_CryptopanicMetadataDTOFromJson(Map<String, dynamic> json) =>
+_$_CryptopanicMetadataDTO _$$_CryptopanicMetadataDTOFromJson(
+        Map<String, dynamic> json) =>
     _$_CryptopanicMetadataDTO(
       image: json['image'] as String?,
       description: json['description'] as String?,
     );
 
-Map<String, dynamic> _$$_CryptopanicMetadataDTOToJson(_$_CryptopanicMetadataDTO instance) =>
+Map<String, dynamic> _$$_CryptopanicMetadataDTOToJson(
+        _$_CryptopanicMetadataDTO instance) =>
     <String, dynamic>{
       'image': instance.image,
       'description': instance.description,

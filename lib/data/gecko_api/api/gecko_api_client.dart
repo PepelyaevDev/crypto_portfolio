@@ -1,4 +1,3 @@
-import 'package:crypto_portfolio/data/gecko_api/api/gecko_dio_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_coins_source.dart';
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_search_source.dart';
 import 'package:dio/dio.dart';
@@ -14,11 +13,11 @@ class GeckoApiClient {
   });
 
   static GeckoApiClient get getClient {
-    final dioClient = GeckoDioClient(Dio(
+    final dio = Dio(
       BaseOptions(
         baseUrl: 'https://api.coingecko.com',
-        connectTimeout: 15000,
-        receiveTimeout: 15000,
+        connectTimeout: Duration(seconds: 5),
+        receiveTimeout: Duration(seconds: 5),
         responseType: ResponseType.json,
         validateStatus: (status) {
           final int code = status ?? 500;
@@ -32,10 +31,10 @@ class GeckoApiClient {
       ),
     )..interceptors.addAll([
         PrettyDioLogger(requestHeader: true, requestBody: true),
-      ]));
+      ]);
     return GeckoApiClient(
-      coins: GeckoCoinsSource(dioClient),
-      search: GeckoSearchSource(dioClient),
+      coins: GeckoCoinsSource(dio),
+      search: GeckoSearchSource(dio),
     );
   }
 }

@@ -23,12 +23,14 @@ mixin _$NewsListEntity {
   int? get nextPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $NewsListEntityCopyWith<NewsListEntity> get copyWith => throw _privateConstructorUsedError;
+  $NewsListEntityCopyWith<NewsListEntity> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $NewsListEntityCopyWith<$Res> {
-  factory $NewsListEntityCopyWith(NewsListEntity value, $Res Function(NewsListEntity) then) =
+  factory $NewsListEntityCopyWith(
+          NewsListEntity value, $Res Function(NewsListEntity) then) =
       _$NewsListEntityCopyWithImpl<$Res, NewsListEntity>;
   @useResult
   $Res call(
@@ -84,7 +86,8 @@ class _$NewsListEntityCopyWithImpl<$Res, $Val extends NewsListEntity>
 }
 
 /// @nodoc
-abstract class _$$_NewsListEntityCopyWith<$Res> implements $NewsListEntityCopyWith<$Res> {
+abstract class _$$_NewsListEntityCopyWith<$Res>
+    implements $NewsListEntityCopyWith<$Res> {
   factory _$$_NewsListEntityCopyWith(
           _$_NewsListEntity value, $Res Function(_$_NewsListEntity) then) =
       __$$_NewsListEntityCopyWithImpl<$Res>;
@@ -102,7 +105,8 @@ abstract class _$$_NewsListEntityCopyWith<$Res> implements $NewsListEntityCopyWi
 class __$$_NewsListEntityCopyWithImpl<$Res>
     extends _$NewsListEntityCopyWithImpl<$Res, _$_NewsListEntity>
     implements _$$_NewsListEntityCopyWith<$Res> {
-  __$$_NewsListEntityCopyWithImpl(_$_NewsListEntity _value, $Res Function(_$_NewsListEntity) _then)
+  __$$_NewsListEntityCopyWithImpl(
+      _$_NewsListEntity _value, $Res Function(_$_NewsListEntity) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -192,10 +196,13 @@ class _$_NewsListEntity implements _NewsListEntity {
         (other.runtimeType == runtimeType &&
             other is _$_NewsListEntity &&
             const DeepCollectionEquality().equals(other._list, _list) &&
-            (identical(other.updateTime, updateTime) || other.updateTime == updateTime) &&
-            const DeepCollectionEquality().equals(other._currencies, _currencies) &&
+            (identical(other.updateTime, updateTime) ||
+                other.updateTime == updateTime) &&
+            const DeepCollectionEquality()
+                .equals(other._currencies, _currencies) &&
             const DeepCollectionEquality().equals(other._locales, _locales) &&
-            (identical(other.nextPage, nextPage) || other.nextPage == nextPage));
+            (identical(other.nextPage, nextPage) ||
+                other.nextPage == nextPage));
   }
 
   @override
@@ -234,7 +241,8 @@ abstract class _NewsListEntity implements NewsListEntity {
   int? get nextPage;
   @override
   @JsonKey(ignore: true)
-  _$$_NewsListEntityCopyWith<_$_NewsListEntity> get copyWith => throw _privateConstructorUsedError;
+  _$$_NewsListEntityCopyWith<_$_NewsListEntity> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -249,12 +257,14 @@ mixin _$NewsEntity {
   List<String> get currencies => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $NewsEntityCopyWith<NewsEntity> get copyWith => throw _privateConstructorUsedError;
+  $NewsEntityCopyWith<NewsEntity> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $NewsEntityCopyWith<$Res> {
-  factory $NewsEntityCopyWith(NewsEntity value, $Res Function(NewsEntity) then) =
+  factory $NewsEntityCopyWith(
+          NewsEntity value, $Res Function(NewsEntity) then) =
       _$NewsEntityCopyWithImpl<$Res, NewsEntity>;
   @useResult
   $Res call(
@@ -269,7 +279,8 @@ abstract class $NewsEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewsEntityCopyWithImpl<$Res, $Val extends NewsEntity> implements $NewsEntityCopyWith<$Res> {
+class _$NewsEntityCopyWithImpl<$Res, $Val extends NewsEntity>
+    implements $NewsEntityCopyWith<$Res> {
   _$NewsEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -327,8 +338,10 @@ class _$NewsEntityCopyWithImpl<$Res, $Val extends NewsEntity> implements $NewsEn
 }
 
 /// @nodoc
-abstract class _$$_NewsEntityCopyWith<$Res> implements $NewsEntityCopyWith<$Res> {
-  factory _$$_NewsEntityCopyWith(_$_NewsEntity value, $Res Function(_$_NewsEntity) then) =
+abstract class _$$_NewsEntityCopyWith<$Res>
+    implements $NewsEntityCopyWith<$Res> {
+  factory _$$_NewsEntityCopyWith(
+          _$_NewsEntity value, $Res Function(_$_NewsEntity) then) =
       __$$_NewsEntityCopyWithImpl<$Res>;
   @override
   @useResult
@@ -344,9 +357,11 @@ abstract class _$$_NewsEntityCopyWith<$Res> implements $NewsEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_NewsEntityCopyWithImpl<$Res> extends _$NewsEntityCopyWithImpl<$Res, _$_NewsEntity>
+class __$$_NewsEntityCopyWithImpl<$Res>
+    extends _$NewsEntityCopyWithImpl<$Res, _$_NewsEntity>
     implements _$$_NewsEntityCopyWith<$Res> {
-  __$$_NewsEntityCopyWithImpl(_$_NewsEntity _value, $Res Function(_$_NewsEntity) _then)
+  __$$_NewsEntityCopyWithImpl(
+      _$_NewsEntity _value, $Res Function(_$_NewsEntity) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -445,18 +460,31 @@ class _$_NewsEntity implements _NewsEntity {
         (other.runtimeType == runtimeType &&
             other is _$_NewsEntity &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) || other.description == description) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.sourceTitle, sourceTitle) || other.sourceTitle == sourceTitle) &&
-            (identical(other.sourceUrl, sourceUrl) || other.sourceUrl == sourceUrl) &&
+            (identical(other.sourceTitle, sourceTitle) ||
+                other.sourceTitle == sourceTitle) &&
+            (identical(other.sourceUrl, sourceUrl) ||
+                other.sourceUrl == sourceUrl) &&
             (identical(other.url, url) || other.url == url) &&
-            (identical(other.createdTime, createdTime) || other.createdTime == createdTime) &&
-            const DeepCollectionEquality().equals(other._currencies, _currencies));
+            (identical(other.createdTime, createdTime) ||
+                other.createdTime == createdTime) &&
+            const DeepCollectionEquality()
+                .equals(other._currencies, _currencies));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, title, description, image, sourceTitle, sourceUrl,
-      url, createdTime, const DeepCollectionEquality().hash(_currencies));
+  int get hashCode => Object.hash(
+      runtimeType,
+      title,
+      description,
+      image,
+      sourceTitle,
+      sourceUrl,
+      url,
+      createdTime,
+      const DeepCollectionEquality().hash(_currencies));
 
   @JsonKey(ignore: true)
   @override
@@ -494,5 +522,6 @@ abstract class _NewsEntity implements NewsEntity {
   List<String> get currencies;
   @override
   @JsonKey(ignore: true)
-  _$$_NewsEntityCopyWith<_$_NewsEntity> get copyWith => throw _privateConstructorUsedError;
+  _$$_NewsEntityCopyWith<_$_NewsEntity> get copyWith =>
+      throw _privateConstructorUsedError;
 }
