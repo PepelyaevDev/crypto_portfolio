@@ -1,7 +1,6 @@
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_coins_source.dart';
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_search_source.dart';
 import 'package:dio/dio.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class GeckoApiClient {
   final GeckoCoinsSource coins;
@@ -29,9 +28,7 @@ class GeckoApiClient {
           }
         },
       ),
-    )..interceptors.addAll([
-        PrettyDioLogger(requestHeader: true, requestBody: true),
-      ]);
+    );
     return GeckoApiClient(
       coins: GeckoCoinsSource(dio),
       search: GeckoSearchSource(dio),

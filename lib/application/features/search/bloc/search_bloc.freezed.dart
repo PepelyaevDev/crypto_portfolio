@@ -19,14 +19,12 @@ mixin _$SearchEvent {
   String get query => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SearchEventCopyWith<SearchEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SearchEventCopyWith<SearchEvent> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SearchEventCopyWith<$Res> {
-  factory $SearchEventCopyWith(
-          SearchEvent value, $Res Function(SearchEvent) then) =
+  factory $SearchEventCopyWith(SearchEvent value, $Res Function(SearchEvent) then) =
       _$SearchEventCopyWithImpl<$Res, SearchEvent>;
   @useResult
   $Res call({String query});
@@ -57,10 +55,8 @@ class _$SearchEventCopyWithImpl<$Res, $Val extends SearchEvent>
 }
 
 /// @nodoc
-abstract class _$$_SearchEventCopyWith<$Res>
-    implements $SearchEventCopyWith<$Res> {
-  factory _$$_SearchEventCopyWith(
-          _$_SearchEvent value, $Res Function(_$_SearchEvent) then) =
+abstract class _$$_SearchEventCopyWith<$Res> implements $SearchEventCopyWith<$Res> {
+  factory _$$_SearchEventCopyWith(_$_SearchEvent value, $Res Function(_$_SearchEvent) then) =
       __$$_SearchEventCopyWithImpl<$Res>;
   @override
   @useResult
@@ -68,11 +64,9 @@ abstract class _$$_SearchEventCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SearchEventCopyWithImpl<$Res>
-    extends _$SearchEventCopyWithImpl<$Res, _$_SearchEvent>
+class __$$_SearchEventCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res, _$_SearchEvent>
     implements _$$_SearchEventCopyWith<$Res> {
-  __$$_SearchEventCopyWithImpl(
-      _$_SearchEvent _value, $Res Function(_$_SearchEvent) _then)
+  __$$_SearchEventCopyWithImpl(_$_SearchEvent _value, $Res Function(_$_SearchEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -127,8 +121,7 @@ abstract class _SearchEvent implements SearchEvent {
   String get query;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchEventCopyWith<_$_SearchEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SearchEventCopyWith<_$_SearchEvent> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -187,8 +180,7 @@ mixin _$SearchState {
 
 /// @nodoc
 abstract class $SearchStateCopyWith<$Res> {
-  factory $SearchStateCopyWith(
-          SearchState value, $Res Function(SearchState) then) =
+  factory $SearchStateCopyWith(SearchState value, $Res Function(SearchState) then) =
       _$SearchStateCopyWithImpl<$Res, SearchState>;
 }
 
@@ -205,14 +197,12 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
 
 /// @nodoc
 abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
+  factory _$$_InitialCopyWith(_$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res, _$_Initial>
+class __$$_InitialCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -230,8 +220,7 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -318,14 +307,12 @@ abstract class _Initial implements SearchState {
 
 /// @nodoc
 abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
+  factory _$$_LoadingCopyWith(_$_Loading value, $Res Function(_$_Loading) then) =
       __$$_LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res, _$_Loading>
+class __$$_LoadingCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -343,8 +330,7 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
   @override
@@ -431,8 +417,7 @@ abstract class _Loading implements SearchState {
 
 /// @nodoc
 abstract class _$$_SuccessCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(
-          _$_Success value, $Res Function(_$_Success) then) =
+  factory _$$_SuccessCopyWith(_$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @useResult
   $Res call({SearchEntity searchEntity});
@@ -441,8 +426,7 @@ abstract class _$$_SuccessCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res, _$_Success>
+class __$$_SuccessCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
       : super(_value, _then);
@@ -487,8 +471,7 @@ class _$_Success implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Success &&
-            (identical(other.searchEntity, searchEntity) ||
-                other.searchEntity == searchEntity));
+            (identical(other.searchEntity, searchEntity) || other.searchEntity == searchEntity));
   }
 
   @override
@@ -580,8 +563,7 @@ abstract class _Success implements SearchState {
 
   SearchEntity get searchEntity;
   @JsonKey(ignore: true)
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SuccessCopyWith<_$_Success> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -593,11 +575,9 @@ abstract class _$$_ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res, _$_Error>
+class __$$_ErrorCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, _then);
+  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -640,8 +620,7 @@ class _$_Error implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$_ErrorCopyWith<_$_Error> get copyWith => __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -723,6 +702,5 @@ abstract class _Error implements SearchState {
 
   Failure get error;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ErrorCopyWith<_$_Error> get copyWith => throw _privateConstructorUsedError;
 }

@@ -7,33 +7,4 @@ analyzer:
     - "**/*.freezed.dart"
   errors:
     invalid_annotation_target: ignore
-  plugins:
-    - import_lint
-
-import_lint:
-  rules:
-    data_rule:
-      target_file_path: "data/**/*.dart"
-      not_allow_imports:
-        [
-            "application/**/*.dart",
-            "domain/**/*.dart",
-        ]
-    domain_rule:
-      target_file_path: "domain/**/*.dart"
-      not_allow_imports:
-        [
-            "application/**/*.dart",
-        ]
-      exclude_imports:
-        [
-            "application/app/extension/*.dart",
-            "application/app/design_system/core/colors.dart",
-        ]
-    features_rule:
-      target_file_path: "application/features/**/*.dart"
-      not_allow_imports:
-        [
-            "data/**/*.dart",
-        ]
 

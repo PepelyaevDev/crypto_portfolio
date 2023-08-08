@@ -57,14 +57,12 @@ mixin _$MarketChartEvent {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MarketChartEventCopyWith<MarketChartEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MarketChartEventCopyWith<MarketChartEvent> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MarketChartEventCopyWith<$Res> {
-  factory $MarketChartEventCopyWith(
-          MarketChartEvent value, $Res Function(MarketChartEvent) then) =
+  factory $MarketChartEventCopyWith(MarketChartEvent value, $Res Function(MarketChartEvent) then) =
       _$MarketChartEventCopyWithImpl<$Res, MarketChartEvent>;
   @useResult
   $Res call({MarketChartDistance distance});
@@ -95,10 +93,8 @@ class _$MarketChartEventCopyWithImpl<$Res, $Val extends MarketChartEvent>
 }
 
 /// @nodoc
-abstract class _$$_SetDistanceCopyWith<$Res>
-    implements $MarketChartEventCopyWith<$Res> {
-  factory _$$_SetDistanceCopyWith(
-          _$_SetDistance value, $Res Function(_$_SetDistance) then) =
+abstract class _$$_SetDistanceCopyWith<$Res> implements $MarketChartEventCopyWith<$Res> {
+  factory _$$_SetDistanceCopyWith(_$_SetDistance value, $Res Function(_$_SetDistance) then) =
       __$$_SetDistanceCopyWithImpl<$Res>;
   @override
   @useResult
@@ -109,8 +105,7 @@ abstract class _$$_SetDistanceCopyWith<$Res>
 class __$$_SetDistanceCopyWithImpl<$Res>
     extends _$MarketChartEventCopyWithImpl<$Res, _$_SetDistance>
     implements _$$_SetDistanceCopyWith<$Res> {
-  __$$_SetDistanceCopyWithImpl(
-      _$_SetDistance _value, $Res Function(_$_SetDistance) _then)
+  __$$_SetDistanceCopyWithImpl(_$_SetDistance _value, $Res Function(_$_SetDistance) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -145,8 +140,7 @@ class _$_SetDistance implements _SetDistance {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SetDistance &&
-            (identical(other.distance, distance) ||
-                other.distance == distance));
+            (identical(other.distance, distance) || other.distance == distance));
   }
 
   @override
@@ -222,22 +216,18 @@ class _$_SetDistance implements _SetDistance {
 }
 
 abstract class _SetDistance implements MarketChartEvent {
-  const factory _SetDistance(final MarketChartDistance distance) =
-      _$_SetDistance;
+  const factory _SetDistance(final MarketChartDistance distance) = _$_SetDistance;
 
   @override
   MarketChartDistance get distance;
   @override
   @JsonKey(ignore: true)
-  _$$_SetDistanceCopyWith<_$_SetDistance> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SetDistanceCopyWith<_$_SetDistance> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_RefreshCopyWith<$Res>
-    implements $MarketChartEventCopyWith<$Res> {
-  factory _$$_RefreshCopyWith(
-          _$_Refresh value, $Res Function(_$_Refresh) then) =
+abstract class _$$_RefreshCopyWith<$Res> implements $MarketChartEventCopyWith<$Res> {
+  factory _$$_RefreshCopyWith(_$_Refresh value, $Res Function(_$_Refresh) then) =
       __$$_RefreshCopyWithImpl<$Res>;
   @override
   @useResult
@@ -245,8 +235,7 @@ abstract class _$$_RefreshCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RefreshCopyWithImpl<$Res>
-    extends _$MarketChartEventCopyWithImpl<$Res, _$_Refresh>
+class __$$_RefreshCopyWithImpl<$Res> extends _$MarketChartEventCopyWithImpl<$Res, _$_Refresh>
     implements _$$_RefreshCopyWith<$Res> {
   __$$_RefreshCopyWithImpl(_$_Refresh _value, $Res Function(_$_Refresh) _then)
       : super(_value, _then);
@@ -283,8 +272,7 @@ class _$_Refresh implements _Refresh {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Refresh &&
-            (identical(other.distance, distance) ||
-                other.distance == distance));
+            (identical(other.distance, distance) || other.distance == distance));
   }
 
   @override
@@ -366,8 +354,7 @@ abstract class _Refresh implements MarketChartEvent {
   MarketChartDistance get distance;
   @override
   @JsonKey(ignore: true)
-  _$$_RefreshCopyWith<_$_Refresh> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_RefreshCopyWith<_$_Refresh> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -420,8 +407,7 @@ mixin _$MarketChartState {
 
 /// @nodoc
 abstract class $MarketChartStateCopyWith<$Res> {
-  factory $MarketChartStateCopyWith(
-          MarketChartState value, $Res Function(MarketChartState) then) =
+  factory $MarketChartStateCopyWith(MarketChartState value, $Res Function(MarketChartState) then) =
       _$MarketChartStateCopyWithImpl<$Res, MarketChartState>;
 }
 
@@ -438,14 +424,12 @@ class _$MarketChartStateCopyWithImpl<$Res, $Val extends MarketChartState>
 
 /// @nodoc
 abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
+  factory _$$_LoadingCopyWith(_$_Loading value, $Res Function(_$_Loading) then) =
       __$$_LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$MarketChartStateCopyWithImpl<$Res, _$_Loading>
+class __$$_LoadingCopyWithImpl<$Res> extends _$MarketChartStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -463,8 +447,7 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
   @override
@@ -545,16 +528,14 @@ abstract class _Loading implements MarketChartState {
 
 /// @nodoc
 abstract class _$$_SuccessCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(
-          _$_Success value, $Res Function(_$_Success) then) =
+  factory _$$_SuccessCopyWith(_$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @useResult
   $Res call({MarketChartEntity marketChart});
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res>
-    extends _$MarketChartStateCopyWithImpl<$Res, _$_Success>
+class __$$_SuccessCopyWithImpl<$Res> extends _$MarketChartStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
       : super(_value, _then);
@@ -591,8 +572,7 @@ class _$_Success implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Success &&
-            (identical(other.marketChart, marketChart) ||
-                other.marketChart == marketChart));
+            (identical(other.marketChart, marketChart) || other.marketChart == marketChart));
   }
 
   @override
@@ -678,8 +658,7 @@ abstract class _Success implements MarketChartState {
 
   MarketChartEntity get marketChart;
   @JsonKey(ignore: true)
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SuccessCopyWith<_$_Success> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -691,11 +670,9 @@ abstract class _$$_ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$MarketChartStateCopyWithImpl<$Res, _$_Error>
+class __$$_ErrorCopyWithImpl<$Res> extends _$MarketChartStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, _then);
+  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -738,8 +715,7 @@ class _$_Error implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$_ErrorCopyWith<_$_Error> get copyWith => __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -815,6 +791,5 @@ abstract class _Error implements MarketChartState {
 
   Failure get error;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ErrorCopyWith<_$_Error> get copyWith => throw _privateConstructorUsedError;
 }

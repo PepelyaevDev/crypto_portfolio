@@ -14,8 +14,7 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CryptopanicNewsResponse _$CryptopanicNewsResponseFromJson(
-    Map<String, dynamic> json) {
+CryptopanicNewsResponse _$CryptopanicNewsResponseFromJson(Map<String, dynamic> json) {
   return _CryptopanicNewsResponse.fromJson(json);
 }
 
@@ -34,20 +33,15 @@ mixin _$CryptopanicNewsResponse {
 
 /// @nodoc
 abstract class $CryptopanicNewsResponseCopyWith<$Res> {
-  factory $CryptopanicNewsResponseCopyWith(CryptopanicNewsResponse value,
-          $Res Function(CryptopanicNewsResponse) then) =
+  factory $CryptopanicNewsResponseCopyWith(
+          CryptopanicNewsResponse value, $Res Function(CryptopanicNewsResponse) then) =
       _$CryptopanicNewsResponseCopyWithImpl<$Res, CryptopanicNewsResponse>;
   @useResult
-  $Res call(
-      {int count,
-      String? next,
-      String? previous,
-      List<CryptopanicNewsDTO> results});
+  $Res call({int count, String? next, String? previous, List<CryptopanicNewsDTO> results});
 }
 
 /// @nodoc
-class _$CryptopanicNewsResponseCopyWithImpl<$Res,
-        $Val extends CryptopanicNewsResponse>
+class _$CryptopanicNewsResponseCopyWithImpl<$Res, $Val extends CryptopanicNewsResponse>
     implements $CryptopanicNewsResponseCopyWith<$Res> {
   _$CryptopanicNewsResponseCopyWithImpl(this._value, this._then);
 
@@ -88,25 +82,20 @@ class _$CryptopanicNewsResponseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$_CryptopanicNewsResponseCopyWith<$Res>
     implements $CryptopanicNewsResponseCopyWith<$Res> {
-  factory _$$_CryptopanicNewsResponseCopyWith(_$_CryptopanicNewsResponse value,
-          $Res Function(_$_CryptopanicNewsResponse) then) =
+  factory _$$_CryptopanicNewsResponseCopyWith(
+          _$_CryptopanicNewsResponse value, $Res Function(_$_CryptopanicNewsResponse) then) =
       __$$_CryptopanicNewsResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int count,
-      String? next,
-      String? previous,
-      List<CryptopanicNewsDTO> results});
+  $Res call({int count, String? next, String? previous, List<CryptopanicNewsDTO> results});
 }
 
 /// @nodoc
 class __$$_CryptopanicNewsResponseCopyWithImpl<$Res>
-    extends _$CryptopanicNewsResponseCopyWithImpl<$Res,
-        _$_CryptopanicNewsResponse>
+    extends _$CryptopanicNewsResponseCopyWithImpl<$Res, _$_CryptopanicNewsResponse>
     implements _$$_CryptopanicNewsResponseCopyWith<$Res> {
-  __$$_CryptopanicNewsResponseCopyWithImpl(_$_CryptopanicNewsResponse _value,
-      $Res Function(_$_CryptopanicNewsResponse) _then)
+  __$$_CryptopanicNewsResponseCopyWithImpl(
+      _$_CryptopanicNewsResponse _value, $Res Function(_$_CryptopanicNewsResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -177,23 +166,20 @@ class _$_CryptopanicNewsResponse implements _CryptopanicNewsResponse {
             other is _$_CryptopanicNewsResponse &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.next, next) || other.next == next) &&
-            (identical(other.previous, previous) ||
-                other.previous == previous) &&
+            (identical(other.previous, previous) || other.previous == previous) &&
             const DeepCollectionEquality().equals(other._results, _results));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, count, next, previous,
-      const DeepCollectionEquality().hash(_results));
+  int get hashCode => Object.hash(
+      runtimeType, count, next, previous, const DeepCollectionEquality().hash(_results));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CryptopanicNewsResponseCopyWith<_$_CryptopanicNewsResponse>
-      get copyWith =>
-          __$$_CryptopanicNewsResponseCopyWithImpl<_$_CryptopanicNewsResponse>(
-              this, _$identity);
+  _$$_CryptopanicNewsResponseCopyWith<_$_CryptopanicNewsResponse> get copyWith =>
+      __$$_CryptopanicNewsResponseCopyWithImpl<_$_CryptopanicNewsResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -205,11 +191,10 @@ class _$_CryptopanicNewsResponse implements _CryptopanicNewsResponse {
 
 abstract class _CryptopanicNewsResponse implements CryptopanicNewsResponse {
   const factory _CryptopanicNewsResponse(
-          {required final int count,
-          final String? next,
-          final String? previous,
-          required final List<CryptopanicNewsDTO> results}) =
-      _$_CryptopanicNewsResponse;
+      {required final int count,
+      final String? next,
+      final String? previous,
+      required final List<CryptopanicNewsDTO> results}) = _$_CryptopanicNewsResponse;
 
   factory _CryptopanicNewsResponse.fromJson(Map<String, dynamic> json) =
       _$_CryptopanicNewsResponse.fromJson;
@@ -224,8 +209,8 @@ abstract class _CryptopanicNewsResponse implements CryptopanicNewsResponse {
   List<CryptopanicNewsDTO> get results;
   @override
   @JsonKey(ignore: true)
-  _$$_CryptopanicNewsResponseCopyWith<_$_CryptopanicNewsResponse>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_CryptopanicNewsResponseCopyWith<_$_CryptopanicNewsResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 CryptopanicNewsDTO _$CryptopanicNewsDTOFromJson(Map<String, dynamic> json) {
@@ -241,8 +226,7 @@ mixin _$CryptopanicNewsDTO {
   @JsonKey(name: 'published_at')
   String get publishedAt => throw _privateConstructorUsedError;
   String? get slug => throw _privateConstructorUsedError;
-  List<CryptopanicCurrenciesDTO>? get currencies =>
-      throw _privateConstructorUsedError;
+  List<CryptopanicCurrenciesDTO>? get currencies => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
@@ -389,10 +373,9 @@ class _$CryptopanicNewsDTOCopyWithImpl<$Res, $Val extends CryptopanicNewsDTO>
 }
 
 /// @nodoc
-abstract class _$$_CryptopanicNewsDTOCopyWith<$Res>
-    implements $CryptopanicNewsDTOCopyWith<$Res> {
-  factory _$$_CryptopanicNewsDTOCopyWith(_$_CryptopanicNewsDTO value,
-          $Res Function(_$_CryptopanicNewsDTO) then) =
+abstract class _$$_CryptopanicNewsDTOCopyWith<$Res> implements $CryptopanicNewsDTOCopyWith<$Res> {
+  factory _$$_CryptopanicNewsDTOCopyWith(
+          _$_CryptopanicNewsDTO value, $Res Function(_$_CryptopanicNewsDTO) then) =
       __$$_CryptopanicNewsDTOCopyWithImpl<$Res>;
   @override
   @useResult
@@ -565,43 +548,26 @@ class _$_CryptopanicNewsDTO implements _CryptopanicNewsDTO {
             (identical(other.domain, domain) || other.domain == domain) &&
             (identical(other.source, source) || other.source == source) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.publishedAt, publishedAt) ||
-                other.publishedAt == publishedAt) &&
+            (identical(other.publishedAt, publishedAt) || other.publishedAt == publishedAt) &&
             (identical(other.slug, slug) || other.slug == slug) &&
-            const DeepCollectionEquality()
-                .equals(other._currencies, _currencies) &&
+            const DeepCollectionEquality().equals(other._currencies, _currencies) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.url, url) || other.url == url) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
+            (identical(other.createdAt, createdAt) || other.createdAt == createdAt) &&
             (identical(other.votes, votes) || other.votes == votes) &&
-            (identical(other.metadata, metadata) ||
-                other.metadata == metadata));
+            (identical(other.metadata, metadata) || other.metadata == metadata));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      kind,
-      domain,
-      source,
-      title,
-      publishedAt,
-      slug,
-      const DeepCollectionEquality().hash(_currencies),
-      id,
-      url,
-      createdAt,
-      votes,
-      metadata);
+  int get hashCode => Object.hash(runtimeType, kind, domain, source, title, publishedAt, slug,
+      const DeepCollectionEquality().hash(_currencies), id, url, createdAt, votes, metadata);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_CryptopanicNewsDTOCopyWith<_$_CryptopanicNewsDTO> get copyWith =>
-      __$$_CryptopanicNewsDTOCopyWithImpl<_$_CryptopanicNewsDTO>(
-          this, _$identity);
+      __$$_CryptopanicNewsDTOCopyWithImpl<_$_CryptopanicNewsDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -626,8 +592,7 @@ abstract class _CryptopanicNewsDTO implements CryptopanicNewsDTO {
       required final CryptopanicVotesDTO votes,
       final CryptopanicMetadataDTO? metadata}) = _$_CryptopanicNewsDTO;
 
-  factory _CryptopanicNewsDTO.fromJson(Map<String, dynamic> json) =
-      _$_CryptopanicNewsDTO.fromJson;
+  factory _CryptopanicNewsDTO.fromJson(Map<String, dynamic> json) = _$_CryptopanicNewsDTO.fromJson;
 
   @override
   String get kind;
@@ -680,16 +645,15 @@ mixin _$CryptopanicSourceDTO {
 
 /// @nodoc
 abstract class $CryptopanicSourceDTOCopyWith<$Res> {
-  factory $CryptopanicSourceDTOCopyWith(CryptopanicSourceDTO value,
-          $Res Function(CryptopanicSourceDTO) then) =
+  factory $CryptopanicSourceDTOCopyWith(
+          CryptopanicSourceDTO value, $Res Function(CryptopanicSourceDTO) then) =
       _$CryptopanicSourceDTOCopyWithImpl<$Res, CryptopanicSourceDTO>;
   @useResult
   $Res call({String title, String region, String domain, String? path});
 }
 
 /// @nodoc
-class _$CryptopanicSourceDTOCopyWithImpl<$Res,
-        $Val extends CryptopanicSourceDTO>
+class _$CryptopanicSourceDTOCopyWithImpl<$Res, $Val extends CryptopanicSourceDTO>
     implements $CryptopanicSourceDTOCopyWith<$Res> {
   _$CryptopanicSourceDTOCopyWithImpl(this._value, this._then);
 
@@ -730,8 +694,8 @@ class _$CryptopanicSourceDTOCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$_CryptopanicSourceDTOCopyWith<$Res>
     implements $CryptopanicSourceDTOCopyWith<$Res> {
-  factory _$$_CryptopanicSourceDTOCopyWith(_$_CryptopanicSourceDTO value,
-          $Res Function(_$_CryptopanicSourceDTO) then) =
+  factory _$$_CryptopanicSourceDTOCopyWith(
+          _$_CryptopanicSourceDTO value, $Res Function(_$_CryptopanicSourceDTO) then) =
       __$$_CryptopanicSourceDTOCopyWithImpl<$Res>;
   @override
   @useResult
@@ -742,8 +706,8 @@ abstract class _$$_CryptopanicSourceDTOCopyWith<$Res>
 class __$$_CryptopanicSourceDTOCopyWithImpl<$Res>
     extends _$CryptopanicSourceDTOCopyWithImpl<$Res, _$_CryptopanicSourceDTO>
     implements _$$_CryptopanicSourceDTOCopyWith<$Res> {
-  __$$_CryptopanicSourceDTOCopyWithImpl(_$_CryptopanicSourceDTO _value,
-      $Res Function(_$_CryptopanicSourceDTO) _then)
+  __$$_CryptopanicSourceDTOCopyWithImpl(
+      _$_CryptopanicSourceDTO _value, $Res Function(_$_CryptopanicSourceDTO) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -779,10 +743,7 @@ class __$$_CryptopanicSourceDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CryptopanicSourceDTO implements _CryptopanicSourceDTO {
   const _$_CryptopanicSourceDTO(
-      {required this.title,
-      required this.region,
-      required this.domain,
-      this.path});
+      {required this.title, required this.region, required this.domain, this.path});
 
   factory _$_CryptopanicSourceDTO.fromJson(Map<String, dynamic> json) =>
       _$$_CryptopanicSourceDTOFromJson(json);
@@ -820,8 +781,7 @@ class _$_CryptopanicSourceDTO implements _CryptopanicSourceDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$_CryptopanicSourceDTOCopyWith<_$_CryptopanicSourceDTO> get copyWith =>
-      __$$_CryptopanicSourceDTOCopyWithImpl<_$_CryptopanicSourceDTO>(
-          this, _$identity);
+      __$$_CryptopanicSourceDTOCopyWithImpl<_$_CryptopanicSourceDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -855,8 +815,7 @@ abstract class _CryptopanicSourceDTO implements CryptopanicSourceDTO {
       throw _privateConstructorUsedError;
 }
 
-CryptopanicCurrenciesDTO _$CryptopanicCurrenciesDTOFromJson(
-    Map<String, dynamic> json) {
+CryptopanicCurrenciesDTO _$CryptopanicCurrenciesDTOFromJson(Map<String, dynamic> json) {
   return _CryptopanicCurrenciesDTO.fromJson(json);
 }
 
@@ -875,16 +834,15 @@ mixin _$CryptopanicCurrenciesDTO {
 
 /// @nodoc
 abstract class $CryptopanicCurrenciesDTOCopyWith<$Res> {
-  factory $CryptopanicCurrenciesDTOCopyWith(CryptopanicCurrenciesDTO value,
-          $Res Function(CryptopanicCurrenciesDTO) then) =
+  factory $CryptopanicCurrenciesDTOCopyWith(
+          CryptopanicCurrenciesDTO value, $Res Function(CryptopanicCurrenciesDTO) then) =
       _$CryptopanicCurrenciesDTOCopyWithImpl<$Res, CryptopanicCurrenciesDTO>;
   @useResult
   $Res call({String code, String title, String? slug, String? url});
 }
 
 /// @nodoc
-class _$CryptopanicCurrenciesDTOCopyWithImpl<$Res,
-        $Val extends CryptopanicCurrenciesDTO>
+class _$CryptopanicCurrenciesDTOCopyWithImpl<$Res, $Val extends CryptopanicCurrenciesDTO>
     implements $CryptopanicCurrenciesDTOCopyWith<$Res> {
   _$CryptopanicCurrenciesDTOCopyWithImpl(this._value, this._then);
 
@@ -926,8 +884,7 @@ class _$CryptopanicCurrenciesDTOCopyWithImpl<$Res,
 abstract class _$$_CryptopanicCurrenciesDTOCopyWith<$Res>
     implements $CryptopanicCurrenciesDTOCopyWith<$Res> {
   factory _$$_CryptopanicCurrenciesDTOCopyWith(
-          _$_CryptopanicCurrenciesDTO value,
-          $Res Function(_$_CryptopanicCurrenciesDTO) then) =
+          _$_CryptopanicCurrenciesDTO value, $Res Function(_$_CryptopanicCurrenciesDTO) then) =
       __$$_CryptopanicCurrenciesDTOCopyWithImpl<$Res>;
   @override
   @useResult
@@ -936,11 +893,10 @@ abstract class _$$_CryptopanicCurrenciesDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_CryptopanicCurrenciesDTOCopyWithImpl<$Res>
-    extends _$CryptopanicCurrenciesDTOCopyWithImpl<$Res,
-        _$_CryptopanicCurrenciesDTO>
+    extends _$CryptopanicCurrenciesDTOCopyWithImpl<$Res, _$_CryptopanicCurrenciesDTO>
     implements _$$_CryptopanicCurrenciesDTOCopyWith<$Res> {
-  __$$_CryptopanicCurrenciesDTOCopyWithImpl(_$_CryptopanicCurrenciesDTO _value,
-      $Res Function(_$_CryptopanicCurrenciesDTO) _then)
+  __$$_CryptopanicCurrenciesDTOCopyWithImpl(
+      _$_CryptopanicCurrenciesDTO _value, $Res Function(_$_CryptopanicCurrenciesDTO) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -975,8 +931,7 @@ class __$$_CryptopanicCurrenciesDTOCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CryptopanicCurrenciesDTO implements _CryptopanicCurrenciesDTO {
-  const _$_CryptopanicCurrenciesDTO(
-      {required this.code, required this.title, this.slug, this.url});
+  const _$_CryptopanicCurrenciesDTO({required this.code, required this.title, this.slug, this.url});
 
   factory _$_CryptopanicCurrenciesDTO.fromJson(Map<String, dynamic> json) =>
       _$$_CryptopanicCurrenciesDTOFromJson(json);
@@ -1013,9 +968,8 @@ class _$_CryptopanicCurrenciesDTO implements _CryptopanicCurrenciesDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CryptopanicCurrenciesDTOCopyWith<_$_CryptopanicCurrenciesDTO>
-      get copyWith => __$$_CryptopanicCurrenciesDTOCopyWithImpl<
-          _$_CryptopanicCurrenciesDTO>(this, _$identity);
+  _$$_CryptopanicCurrenciesDTOCopyWith<_$_CryptopanicCurrenciesDTO> get copyWith =>
+      __$$_CryptopanicCurrenciesDTOCopyWithImpl<_$_CryptopanicCurrenciesDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1045,8 +999,8 @@ abstract class _CryptopanicCurrenciesDTO implements CryptopanicCurrenciesDTO {
   String? get url;
   @override
   @JsonKey(ignore: true)
-  _$$_CryptopanicCurrenciesDTOCopyWith<_$_CryptopanicCurrenciesDTO>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_CryptopanicCurrenciesDTOCopyWith<_$_CryptopanicCurrenciesDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 CryptopanicVotesDTO _$CryptopanicVotesDTOFromJson(Map<String, dynamic> json) {
@@ -1154,10 +1108,9 @@ class _$CryptopanicVotesDTOCopyWithImpl<$Res, $Val extends CryptopanicVotesDTO>
 }
 
 /// @nodoc
-abstract class _$$_CryptopanicVotesDTOCopyWith<$Res>
-    implements $CryptopanicVotesDTOCopyWith<$Res> {
-  factory _$$_CryptopanicVotesDTOCopyWith(_$_CryptopanicVotesDTO value,
-          $Res Function(_$_CryptopanicVotesDTO) then) =
+abstract class _$$_CryptopanicVotesDTOCopyWith<$Res> implements $CryptopanicVotesDTOCopyWith<$Res> {
+  factory _$$_CryptopanicVotesDTOCopyWith(
+          _$_CryptopanicVotesDTO value, $Res Function(_$_CryptopanicVotesDTO) then) =
       __$$_CryptopanicVotesDTOCopyWithImpl<$Res>;
   @override
   @useResult
@@ -1177,8 +1130,8 @@ abstract class _$$_CryptopanicVotesDTOCopyWith<$Res>
 class __$$_CryptopanicVotesDTOCopyWithImpl<$Res>
     extends _$CryptopanicVotesDTOCopyWithImpl<$Res, _$_CryptopanicVotesDTO>
     implements _$$_CryptopanicVotesDTOCopyWith<$Res> {
-  __$$_CryptopanicVotesDTOCopyWithImpl(_$_CryptopanicVotesDTO _value,
-      $Res Function(_$_CryptopanicVotesDTO) _then)
+  __$$_CryptopanicVotesDTOCopyWithImpl(
+      _$_CryptopanicVotesDTO _value, $Res Function(_$_CryptopanicVotesDTO) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1281,33 +1234,27 @@ class _$_CryptopanicVotesDTO implements _CryptopanicVotesDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CryptopanicVotesDTO &&
-            (identical(other.negative, negative) ||
-                other.negative == negative) &&
-            (identical(other.positive, positive) ||
-                other.positive == positive) &&
-            (identical(other.important, important) ||
-                other.important == important) &&
+            (identical(other.negative, negative) || other.negative == negative) &&
+            (identical(other.positive, positive) || other.positive == positive) &&
+            (identical(other.important, important) || other.important == important) &&
             (identical(other.liked, liked) || other.liked == liked) &&
-            (identical(other.disliked, disliked) ||
-                other.disliked == disliked) &&
+            (identical(other.disliked, disliked) || other.disliked == disliked) &&
             (identical(other.lol, lol) || other.lol == lol) &&
             (identical(other.toxic, toxic) || other.toxic == toxic) &&
             (identical(other.saved, saved) || other.saved == saved) &&
-            (identical(other.comments, comments) ||
-                other.comments == comments));
+            (identical(other.comments, comments) || other.comments == comments));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, negative, positive, important,
-      liked, disliked, lol, toxic, saved, comments);
+  int get hashCode => Object.hash(
+      runtimeType, negative, positive, important, liked, disliked, lol, toxic, saved, comments);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_CryptopanicVotesDTOCopyWith<_$_CryptopanicVotesDTO> get copyWith =>
-      __$$_CryptopanicVotesDTOCopyWithImpl<_$_CryptopanicVotesDTO>(
-          this, _$identity);
+      __$$_CryptopanicVotesDTOCopyWithImpl<_$_CryptopanicVotesDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1356,8 +1303,7 @@ abstract class _CryptopanicVotesDTO implements CryptopanicVotesDTO {
       throw _privateConstructorUsedError;
 }
 
-CryptopanicMetadataDTO _$CryptopanicMetadataDTOFromJson(
-    Map<String, dynamic> json) {
+CryptopanicMetadataDTO _$CryptopanicMetadataDTOFromJson(Map<String, dynamic> json) {
   return _CryptopanicMetadataDTO.fromJson(json);
 }
 
@@ -1374,16 +1320,15 @@ mixin _$CryptopanicMetadataDTO {
 
 /// @nodoc
 abstract class $CryptopanicMetadataDTOCopyWith<$Res> {
-  factory $CryptopanicMetadataDTOCopyWith(CryptopanicMetadataDTO value,
-          $Res Function(CryptopanicMetadataDTO) then) =
+  factory $CryptopanicMetadataDTOCopyWith(
+          CryptopanicMetadataDTO value, $Res Function(CryptopanicMetadataDTO) then) =
       _$CryptopanicMetadataDTOCopyWithImpl<$Res, CryptopanicMetadataDTO>;
   @useResult
   $Res call({String? image, String? description});
 }
 
 /// @nodoc
-class _$CryptopanicMetadataDTOCopyWithImpl<$Res,
-        $Val extends CryptopanicMetadataDTO>
+class _$CryptopanicMetadataDTOCopyWithImpl<$Res, $Val extends CryptopanicMetadataDTO>
     implements $CryptopanicMetadataDTOCopyWith<$Res> {
   _$CryptopanicMetadataDTOCopyWithImpl(this._value, this._then);
 
@@ -1414,8 +1359,8 @@ class _$CryptopanicMetadataDTOCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$_CryptopanicMetadataDTOCopyWith<$Res>
     implements $CryptopanicMetadataDTOCopyWith<$Res> {
-  factory _$$_CryptopanicMetadataDTOCopyWith(_$_CryptopanicMetadataDTO value,
-          $Res Function(_$_CryptopanicMetadataDTO) then) =
+  factory _$$_CryptopanicMetadataDTOCopyWith(
+          _$_CryptopanicMetadataDTO value, $Res Function(_$_CryptopanicMetadataDTO) then) =
       __$$_CryptopanicMetadataDTOCopyWithImpl<$Res>;
   @override
   @useResult
@@ -1424,11 +1369,10 @@ abstract class _$$_CryptopanicMetadataDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_CryptopanicMetadataDTOCopyWithImpl<$Res>
-    extends _$CryptopanicMetadataDTOCopyWithImpl<$Res,
-        _$_CryptopanicMetadataDTO>
+    extends _$CryptopanicMetadataDTOCopyWithImpl<$Res, _$_CryptopanicMetadataDTO>
     implements _$$_CryptopanicMetadataDTOCopyWith<$Res> {
-  __$$_CryptopanicMetadataDTOCopyWithImpl(_$_CryptopanicMetadataDTO _value,
-      $Res Function(_$_CryptopanicMetadataDTO) _then)
+  __$$_CryptopanicMetadataDTOCopyWithImpl(
+      _$_CryptopanicMetadataDTO _value, $Res Function(_$_CryptopanicMetadataDTO) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1474,8 +1418,7 @@ class _$_CryptopanicMetadataDTO implements _CryptopanicMetadataDTO {
         (other.runtimeType == runtimeType &&
             other is _$_CryptopanicMetadataDTO &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.description, description) ||
-                other.description == description));
+            (identical(other.description, description) || other.description == description));
   }
 
   @JsonKey(ignore: true)
@@ -1486,8 +1429,7 @@ class _$_CryptopanicMetadataDTO implements _CryptopanicMetadataDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$_CryptopanicMetadataDTOCopyWith<_$_CryptopanicMetadataDTO> get copyWith =>
-      __$$_CryptopanicMetadataDTOCopyWithImpl<_$_CryptopanicMetadataDTO>(
-          this, _$identity);
+      __$$_CryptopanicMetadataDTOCopyWithImpl<_$_CryptopanicMetadataDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1498,9 +1440,8 @@ class _$_CryptopanicMetadataDTO implements _CryptopanicMetadataDTO {
 }
 
 abstract class _CryptopanicMetadataDTO implements CryptopanicMetadataDTO {
-  const factory _CryptopanicMetadataDTO(
-      {final String? image,
-      final String? description}) = _$_CryptopanicMetadataDTO;
+  const factory _CryptopanicMetadataDTO({final String? image, final String? description}) =
+      _$_CryptopanicMetadataDTO;
 
   factory _CryptopanicMetadataDTO.fromJson(Map<String, dynamic> json) =
       _$_CryptopanicMetadataDTO.fromJson;

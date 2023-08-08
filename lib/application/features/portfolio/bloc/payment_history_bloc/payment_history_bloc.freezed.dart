@@ -76,8 +76,7 @@ class _$PaymentHistoryEventCopyWithImpl<$Res, $Val extends PaymentHistoryEvent>
 
 /// @nodoc
 abstract class _$$_DeletePaymentCopyWith<$Res> {
-  factory _$$_DeletePaymentCopyWith(
-          _$_DeletePayment value, $Res Function(_$_DeletePayment) then) =
+  factory _$$_DeletePaymentCopyWith(_$_DeletePayment value, $Res Function(_$_DeletePayment) then) =
       __$$_DeletePaymentCopyWithImpl<$Res>;
   @useResult
   $Res call({PaymentEntity payment});
@@ -89,8 +88,7 @@ abstract class _$$_DeletePaymentCopyWith<$Res> {
 class __$$_DeletePaymentCopyWithImpl<$Res>
     extends _$PaymentHistoryEventCopyWithImpl<$Res, _$_DeletePayment>
     implements _$$_DeletePaymentCopyWith<$Res> {
-  __$$_DeletePaymentCopyWithImpl(
-      _$_DeletePayment _value, $Res Function(_$_DeletePayment) _then)
+  __$$_DeletePaymentCopyWithImpl(_$_DeletePayment _value, $Res Function(_$_DeletePayment) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -213,8 +211,7 @@ abstract class _DeletePayment implements PaymentHistoryEvent {
 
   PaymentEntity get payment;
   @JsonKey(ignore: true)
-  _$$_DeletePaymentCopyWith<_$_DeletePayment> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_DeletePaymentCopyWith<_$_DeletePayment> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -228,11 +225,9 @@ abstract class _$$_UpdateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UpdateCopyWithImpl<$Res>
-    extends _$PaymentHistoryEventCopyWithImpl<$Res, _$_Update>
+class __$$_UpdateCopyWithImpl<$Res> extends _$PaymentHistoryEventCopyWithImpl<$Res, _$_Update>
     implements _$$_UpdateCopyWith<$Res> {
-  __$$_UpdateCopyWithImpl(_$_Update _value, $Res Function(_$_Update) _then)
-      : super(_value, _then);
+  __$$_UpdateCopyWithImpl(_$_Update _value, $Res Function(_$_Update) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -354,8 +349,7 @@ abstract class _Update implements PaymentHistoryEvent {
 
   CoinsEntity get coins;
   @JsonKey(ignore: true)
-  _$$_UpdateCopyWith<_$_Update> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_UpdateCopyWith<_$_Update> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -411,10 +405,9 @@ class _$PaymentHistoryStateCopyWithImpl<$Res, $Val extends PaymentHistoryState>
 }
 
 /// @nodoc
-abstract class _$$_PaymentHistoryStateCopyWith<$Res>
-    implements $PaymentHistoryStateCopyWith<$Res> {
-  factory _$$_PaymentHistoryStateCopyWith(_$_PaymentHistoryState value,
-          $Res Function(_$_PaymentHistoryState) then) =
+abstract class _$$_PaymentHistoryStateCopyWith<$Res> implements $PaymentHistoryStateCopyWith<$Res> {
+  factory _$$_PaymentHistoryStateCopyWith(
+          _$_PaymentHistoryState value, $Res Function(_$_PaymentHistoryState) then) =
       __$$_PaymentHistoryStateCopyWithImpl<$Res>;
   @override
   @useResult
@@ -428,8 +421,8 @@ abstract class _$$_PaymentHistoryStateCopyWith<$Res>
 class __$$_PaymentHistoryStateCopyWithImpl<$Res>
     extends _$PaymentHistoryStateCopyWithImpl<$Res, _$_PaymentHistoryState>
     implements _$$_PaymentHistoryStateCopyWith<$Res> {
-  __$$_PaymentHistoryStateCopyWithImpl(_$_PaymentHistoryState _value,
-      $Res Function(_$_PaymentHistoryState) _then)
+  __$$_PaymentHistoryStateCopyWithImpl(
+      _$_PaymentHistoryState _value, $Res Function(_$_PaymentHistoryState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -474,13 +467,11 @@ class _$_PaymentHistoryState implements _PaymentHistoryState {
   @override
   @pragma('vm:prefer-inline')
   _$$_PaymentHistoryStateCopyWith<_$_PaymentHistoryState> get copyWith =>
-      __$$_PaymentHistoryStateCopyWithImpl<_$_PaymentHistoryState>(
-          this, _$identity);
+      __$$_PaymentHistoryStateCopyWithImpl<_$_PaymentHistoryState>(this, _$identity);
 }
 
 abstract class _PaymentHistoryState implements PaymentHistoryState {
-  const factory _PaymentHistoryState({required final CoinsEntity coins}) =
-      _$_PaymentHistoryState;
+  const factory _PaymentHistoryState({required final CoinsEntity coins}) = _$_PaymentHistoryState;
 
   @override
   CoinsEntity get coins;

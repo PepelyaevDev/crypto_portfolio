@@ -25,14 +25,12 @@ mixin _$CoinsEntity {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CoinsEntityCopyWith<CoinsEntity> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CoinsEntityCopyWith<CoinsEntity> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CoinsEntityCopyWith<$Res> {
-  factory $CoinsEntityCopyWith(
-          CoinsEntity value, $Res Function(CoinsEntity) then) =
+  factory $CoinsEntityCopyWith(CoinsEntity value, $Res Function(CoinsEntity) then) =
       _$CoinsEntityCopyWithImpl<$Res, CoinsEntity>;
   @useResult
   $Res call({List<CoinEntity> list, DateTime updateTime});
@@ -68,10 +66,8 @@ class _$CoinsEntityCopyWithImpl<$Res, $Val extends CoinsEntity>
 }
 
 /// @nodoc
-abstract class _$$_CoinsEntityCopyWith<$Res>
-    implements $CoinsEntityCopyWith<$Res> {
-  factory _$$_CoinsEntityCopyWith(
-          _$_CoinsEntity value, $Res Function(_$_CoinsEntity) then) =
+abstract class _$$_CoinsEntityCopyWith<$Res> implements $CoinsEntityCopyWith<$Res> {
+  factory _$$_CoinsEntityCopyWith(_$_CoinsEntity value, $Res Function(_$_CoinsEntity) then) =
       __$$_CoinsEntityCopyWithImpl<$Res>;
   @override
   @useResult
@@ -79,11 +75,9 @@ abstract class _$$_CoinsEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CoinsEntityCopyWithImpl<$Res>
-    extends _$CoinsEntityCopyWithImpl<$Res, _$_CoinsEntity>
+class __$$_CoinsEntityCopyWithImpl<$Res> extends _$CoinsEntityCopyWithImpl<$Res, _$_CoinsEntity>
     implements _$$_CoinsEntityCopyWith<$Res> {
-  __$$_CoinsEntityCopyWithImpl(
-      _$_CoinsEntity _value, $Res Function(_$_CoinsEntity) _then)
+  __$$_CoinsEntityCopyWithImpl(_$_CoinsEntity _value, $Res Function(_$_CoinsEntity) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -108,12 +102,10 @@ class __$$_CoinsEntityCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CoinsEntity implements _CoinsEntity {
-  const _$_CoinsEntity(
-      {required final List<CoinEntity> list, required this.updateTime})
+  const _$_CoinsEntity({required final List<CoinEntity> list, required this.updateTime})
       : _list = list;
 
-  factory _$_CoinsEntity.fromJson(Map<String, dynamic> json) =>
-      _$$_CoinsEntityFromJson(json);
+  factory _$_CoinsEntity.fromJson(Map<String, dynamic> json) => _$$_CoinsEntityFromJson(json);
 
   final List<CoinEntity> _list;
   @override
@@ -137,14 +129,13 @@ class _$_CoinsEntity implements _CoinsEntity {
         (other.runtimeType == runtimeType &&
             other is _$_CoinsEntity &&
             const DeepCollectionEquality().equals(other._list, _list) &&
-            (identical(other.updateTime, updateTime) ||
-                other.updateTime == updateTime));
+            (identical(other.updateTime, updateTime) || other.updateTime == updateTime));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_list), updateTime);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_list), updateTime);
 
   @JsonKey(ignore: true)
   @override
@@ -162,11 +153,9 @@ class _$_CoinsEntity implements _CoinsEntity {
 
 abstract class _CoinsEntity implements CoinsEntity {
   const factory _CoinsEntity(
-      {required final List<CoinEntity> list,
-      required final DateTime updateTime}) = _$_CoinsEntity;
+      {required final List<CoinEntity> list, required final DateTime updateTime}) = _$_CoinsEntity;
 
-  factory _CoinsEntity.fromJson(Map<String, dynamic> json) =
-      _$_CoinsEntity.fromJson;
+  factory _CoinsEntity.fromJson(Map<String, dynamic> json) = _$_CoinsEntity.fromJson;
 
   @override
   List<CoinEntity> get list;
@@ -174,8 +163,7 @@ abstract class _CoinsEntity implements CoinsEntity {
   DateTime get updateTime;
   @override
   @JsonKey(ignore: true)
-  _$$_CoinsEntityCopyWith<_$_CoinsEntity> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_CoinsEntityCopyWith<_$_CoinsEntity> get copyWith => throw _privateConstructorUsedError;
 }
 
 CoinEntity _$CoinEntityFromJson(Map<String, dynamic> json) {
@@ -198,14 +186,12 @@ mixin _$CoinEntity {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CoinEntityCopyWith<CoinEntity> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CoinEntityCopyWith<CoinEntity> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CoinEntityCopyWith<$Res> {
-  factory $CoinEntityCopyWith(
-          CoinEntity value, $Res Function(CoinEntity) then) =
+  factory $CoinEntityCopyWith(CoinEntity value, $Res Function(CoinEntity) then) =
       _$CoinEntityCopyWithImpl<$Res, CoinEntity>;
   @useResult
   $Res call(
@@ -222,8 +208,7 @@ abstract class $CoinEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CoinEntityCopyWithImpl<$Res, $Val extends CoinEntity>
-    implements $CoinEntityCopyWith<$Res> {
+class _$CoinEntityCopyWithImpl<$Res, $Val extends CoinEntity> implements $CoinEntityCopyWith<$Res> {
   _$CoinEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -291,10 +276,8 @@ class _$CoinEntityCopyWithImpl<$Res, $Val extends CoinEntity>
 }
 
 /// @nodoc
-abstract class _$$_CoinEntityCopyWith<$Res>
-    implements $CoinEntityCopyWith<$Res> {
-  factory _$$_CoinEntityCopyWith(
-          _$_CoinEntity value, $Res Function(_$_CoinEntity) then) =
+abstract class _$$_CoinEntityCopyWith<$Res> implements $CoinEntityCopyWith<$Res> {
+  factory _$$_CoinEntityCopyWith(_$_CoinEntity value, $Res Function(_$_CoinEntity) then) =
       __$$_CoinEntityCopyWithImpl<$Res>;
   @override
   @useResult
@@ -312,11 +295,9 @@ abstract class _$$_CoinEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CoinEntityCopyWithImpl<$Res>
-    extends _$CoinEntityCopyWithImpl<$Res, _$_CoinEntity>
+class __$$_CoinEntityCopyWithImpl<$Res> extends _$CoinEntityCopyWithImpl<$Res, _$_CoinEntity>
     implements _$$_CoinEntityCopyWith<$Res> {
-  __$$_CoinEntityCopyWithImpl(
-      _$_CoinEntity _value, $Res Function(_$_CoinEntity) _then)
+  __$$_CoinEntityCopyWithImpl(_$_CoinEntity _value, $Res Function(_$_CoinEntity) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -394,8 +375,7 @@ class _$_CoinEntity implements _CoinEntity {
       required final List<PaymentEntity> history})
       : _history = history;
 
-  factory _$_CoinEntity.fromJson(Map<String, dynamic> json) =>
-      _$$_CoinEntityFromJson(json);
+  factory _$_CoinEntity.fromJson(Map<String, dynamic> json) => _$$_CoinEntityFromJson(json);
 
 //market data
   @override
@@ -438,21 +418,16 @@ class _$_CoinEntity implements _CoinEntity {
             other is _$_CoinEntity &&
             (identical(other.symbol, symbol) || other.symbol == symbol) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.currentPrice, currentPrice) ||
-                other.currentPrice == currentPrice) &&
-            (identical(other.marketCap, marketCap) ||
-                other.marketCap == marketCap) &&
-            (identical(
-                    other.priceChangePercentage24H, priceChangePercentage24H) ||
+            (identical(other.currentPrice, currentPrice) || other.currentPrice == currentPrice) &&
+            (identical(other.marketCap, marketCap) || other.marketCap == marketCap) &&
+            (identical(other.priceChangePercentage24H, priceChangePercentage24H) ||
                 other.priceChangePercentage24H == priceChangePercentage24H) &&
             (identical(other.marketCapRank, marketCapRank) ||
                 other.marketCapRank == marketCapRank) &&
             (identical(other.circulatingSupply, circulatingSupply) ||
                 other.circulatingSupply == circulatingSupply) &&
-            (identical(other.totalSupply, totalSupply) ||
-                other.totalSupply == totalSupply) &&
-            (identical(other.maxSupply, maxSupply) ||
-                other.maxSupply == maxSupply) &&
+            (identical(other.totalSupply, totalSupply) || other.totalSupply == totalSupply) &&
+            (identical(other.maxSupply, maxSupply) || other.maxSupply == maxSupply) &&
             const DeepCollectionEquality().equals(other._history, _history));
   }
 
@@ -498,8 +473,7 @@ abstract class _CoinEntity implements CoinEntity {
       required final double? maxSupply,
       required final List<PaymentEntity> history}) = _$_CoinEntity;
 
-  factory _CoinEntity.fromJson(Map<String, dynamic> json) =
-      _$_CoinEntity.fromJson;
+  factory _CoinEntity.fromJson(Map<String, dynamic> json) = _$_CoinEntity.fromJson;
 
   @override //market data
   String get symbol;
@@ -523,8 +497,7 @@ abstract class _CoinEntity implements CoinEntity {
   List<PaymentEntity> get history;
   @override
   @JsonKey(ignore: true)
-  _$$_CoinEntityCopyWith<_$_CoinEntity> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_CoinEntityCopyWith<_$_CoinEntity> get copyWith => throw _privateConstructorUsedError;
 }
 
 PaymentEntity _$PaymentEntityFromJson(Map<String, dynamic> json) {
@@ -541,22 +514,15 @@ mixin _$PaymentEntity {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PaymentEntityCopyWith<PaymentEntity> get copyWith =>
-      throw _privateConstructorUsedError;
+  $PaymentEntityCopyWith<PaymentEntity> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PaymentEntityCopyWith<$Res> {
-  factory $PaymentEntityCopyWith(
-          PaymentEntity value, $Res Function(PaymentEntity) then) =
+  factory $PaymentEntityCopyWith(PaymentEntity value, $Res Function(PaymentEntity) then) =
       _$PaymentEntityCopyWithImpl<$Res, PaymentEntity>;
   @useResult
-  $Res call(
-      {String symbol,
-      DateTime dateTime,
-      String type,
-      double amount,
-      double numberOfCoins});
+  $Res call({String symbol, DateTime dateTime, String type, double amount, double numberOfCoins});
 }
 
 /// @nodoc
@@ -604,27 +570,19 @@ class _$PaymentEntityCopyWithImpl<$Res, $Val extends PaymentEntity>
 }
 
 /// @nodoc
-abstract class _$$_PaymentEntityCopyWith<$Res>
-    implements $PaymentEntityCopyWith<$Res> {
-  factory _$$_PaymentEntityCopyWith(
-          _$_PaymentEntity value, $Res Function(_$_PaymentEntity) then) =
+abstract class _$$_PaymentEntityCopyWith<$Res> implements $PaymentEntityCopyWith<$Res> {
+  factory _$$_PaymentEntityCopyWith(_$_PaymentEntity value, $Res Function(_$_PaymentEntity) then) =
       __$$_PaymentEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String symbol,
-      DateTime dateTime,
-      String type,
-      double amount,
-      double numberOfCoins});
+  $Res call({String symbol, DateTime dateTime, String type, double amount, double numberOfCoins});
 }
 
 /// @nodoc
 class __$$_PaymentEntityCopyWithImpl<$Res>
     extends _$PaymentEntityCopyWithImpl<$Res, _$_PaymentEntity>
     implements _$$_PaymentEntityCopyWith<$Res> {
-  __$$_PaymentEntityCopyWithImpl(
-      _$_PaymentEntity _value, $Res Function(_$_PaymentEntity) _then)
+  __$$_PaymentEntityCopyWithImpl(_$_PaymentEntity _value, $Res Function(_$_PaymentEntity) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -671,8 +629,7 @@ class _$_PaymentEntity implements _PaymentEntity {
       required this.amount,
       required this.numberOfCoins});
 
-  factory _$_PaymentEntity.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentEntityFromJson(json);
+  factory _$_PaymentEntity.fromJson(Map<String, dynamic> json) => _$$_PaymentEntityFromJson(json);
 
   @override
   final String symbol;
@@ -696,8 +653,7 @@ class _$_PaymentEntity implements _PaymentEntity {
         (other.runtimeType == runtimeType &&
             other is _$_PaymentEntity &&
             (identical(other.symbol, symbol) || other.symbol == symbol) &&
-            (identical(other.dateTime, dateTime) ||
-                other.dateTime == dateTime) &&
+            (identical(other.dateTime, dateTime) || other.dateTime == dateTime) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.numberOfCoins, numberOfCoins) ||
@@ -706,8 +662,7 @@ class _$_PaymentEntity implements _PaymentEntity {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, symbol, dateTime, type, amount, numberOfCoins);
+  int get hashCode => Object.hash(runtimeType, symbol, dateTime, type, amount, numberOfCoins);
 
   @JsonKey(ignore: true)
   @override
@@ -731,8 +686,7 @@ abstract class _PaymentEntity implements PaymentEntity {
       required final double amount,
       required final double numberOfCoins}) = _$_PaymentEntity;
 
-  factory _PaymentEntity.fromJson(Map<String, dynamic> json) =
-      _$_PaymentEntity.fromJson;
+  factory _PaymentEntity.fromJson(Map<String, dynamic> json) = _$_PaymentEntity.fromJson;
 
   @override
   String get symbol;
@@ -746,6 +700,5 @@ abstract class _PaymentEntity implements PaymentEntity {
   double get numberOfCoins;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentEntityCopyWith<_$_PaymentEntity> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_PaymentEntityCopyWith<_$_PaymentEntity> get copyWith => throw _privateConstructorUsedError;
 }

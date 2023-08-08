@@ -19,14 +19,12 @@ mixin _$SearchEntity {
   List<SearchCoinEntity> get coins => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SearchEntityCopyWith<SearchEntity> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SearchEntityCopyWith<SearchEntity> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SearchEntityCopyWith<$Res> {
-  factory $SearchEntityCopyWith(
-          SearchEntity value, $Res Function(SearchEntity) then) =
+  factory $SearchEntityCopyWith(SearchEntity value, $Res Function(SearchEntity) then) =
       _$SearchEntityCopyWithImpl<$Res, SearchEntity>;
   @useResult
   $Res call({List<SearchCoinEntity> coins});
@@ -57,10 +55,8 @@ class _$SearchEntityCopyWithImpl<$Res, $Val extends SearchEntity>
 }
 
 /// @nodoc
-abstract class _$$_SearchEntityCopyWith<$Res>
-    implements $SearchEntityCopyWith<$Res> {
-  factory _$$_SearchEntityCopyWith(
-          _$_SearchEntity value, $Res Function(_$_SearchEntity) then) =
+abstract class _$$_SearchEntityCopyWith<$Res> implements $SearchEntityCopyWith<$Res> {
+  factory _$$_SearchEntityCopyWith(_$_SearchEntity value, $Res Function(_$_SearchEntity) then) =
       __$$_SearchEntityCopyWithImpl<$Res>;
   @override
   @useResult
@@ -68,11 +64,9 @@ abstract class _$$_SearchEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SearchEntityCopyWithImpl<$Res>
-    extends _$SearchEntityCopyWithImpl<$Res, _$_SearchEntity>
+class __$$_SearchEntityCopyWithImpl<$Res> extends _$SearchEntityCopyWithImpl<$Res, _$_SearchEntity>
     implements _$$_SearchEntityCopyWith<$Res> {
-  __$$_SearchEntityCopyWithImpl(
-      _$_SearchEntity _value, $Res Function(_$_SearchEntity) _then)
+  __$$_SearchEntityCopyWithImpl(_$_SearchEntity _value, $Res Function(_$_SearchEntity) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,8 +86,7 @@ class __$$_SearchEntityCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SearchEntity implements _SearchEntity {
-  const _$_SearchEntity({required final List<SearchCoinEntity> coins})
-      : _coins = coins;
+  const _$_SearchEntity({required final List<SearchCoinEntity> coins}) : _coins = coins;
 
   final List<SearchCoinEntity> _coins;
   @override
@@ -117,8 +110,7 @@ class _$_SearchEntity implements _SearchEntity {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_coins));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_coins));
 
   @JsonKey(ignore: true)
   @override
@@ -128,15 +120,13 @@ class _$_SearchEntity implements _SearchEntity {
 }
 
 abstract class _SearchEntity implements SearchEntity {
-  const factory _SearchEntity({required final List<SearchCoinEntity> coins}) =
-      _$_SearchEntity;
+  const factory _SearchEntity({required final List<SearchCoinEntity> coins}) = _$_SearchEntity;
 
   @override
   List<SearchCoinEntity> get coins;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchEntityCopyWith<_$_SearchEntity> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SearchEntityCopyWith<_$_SearchEntity> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -146,14 +136,12 @@ mixin _$SearchCoinEntity {
   int? get marketCapRank => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SearchCoinEntityCopyWith<SearchCoinEntity> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SearchCoinEntityCopyWith<SearchCoinEntity> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SearchCoinEntityCopyWith<$Res> {
-  factory $SearchCoinEntityCopyWith(
-          SearchCoinEntity value, $Res Function(SearchCoinEntity) then) =
+  factory $SearchCoinEntityCopyWith(SearchCoinEntity value, $Res Function(SearchCoinEntity) then) =
       _$SearchCoinEntityCopyWithImpl<$Res, SearchCoinEntity>;
   @useResult
   $Res call({String symbol, String icon, int? marketCapRank});
@@ -194,8 +182,7 @@ class _$SearchCoinEntityCopyWithImpl<$Res, $Val extends SearchCoinEntity>
 }
 
 /// @nodoc
-abstract class _$$_SearchCoinEntityCopyWith<$Res>
-    implements $SearchCoinEntityCopyWith<$Res> {
+abstract class _$$_SearchCoinEntityCopyWith<$Res> implements $SearchCoinEntityCopyWith<$Res> {
   factory _$$_SearchCoinEntityCopyWith(
           _$_SearchCoinEntity value, $Res Function(_$_SearchCoinEntity) then) =
       __$$_SearchCoinEntityCopyWithImpl<$Res>;

@@ -51,14 +51,12 @@ mixin _$MarketCoinEvent {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MarketCoinEventCopyWith<MarketCoinEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MarketCoinEventCopyWith<MarketCoinEvent> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MarketCoinEventCopyWith<$Res> {
-  factory $MarketCoinEventCopyWith(
-          MarketCoinEvent value, $Res Function(MarketCoinEvent) then) =
+  factory $MarketCoinEventCopyWith(MarketCoinEvent value, $Res Function(MarketCoinEvent) then) =
       _$MarketCoinEventCopyWithImpl<$Res, MarketCoinEvent>;
   @useResult
   $Res call({String symbol});
@@ -89,10 +87,8 @@ class _$MarketCoinEventCopyWithImpl<$Res, $Val extends MarketCoinEvent>
 }
 
 /// @nodoc
-abstract class _$$_GetCoinCopyWith<$Res>
-    implements $MarketCoinEventCopyWith<$Res> {
-  factory _$$_GetCoinCopyWith(
-          _$_GetCoin value, $Res Function(_$_GetCoin) then) =
+abstract class _$$_GetCoinCopyWith<$Res> implements $MarketCoinEventCopyWith<$Res> {
+  factory _$$_GetCoinCopyWith(_$_GetCoin value, $Res Function(_$_GetCoin) then) =
       __$$_GetCoinCopyWithImpl<$Res>;
   @override
   @useResult
@@ -100,8 +96,7 @@ abstract class _$$_GetCoinCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_GetCoinCopyWithImpl<$Res>
-    extends _$MarketCoinEventCopyWithImpl<$Res, _$_GetCoin>
+class __$$_GetCoinCopyWithImpl<$Res> extends _$MarketCoinEventCopyWithImpl<$Res, _$_GetCoin>
     implements _$$_GetCoinCopyWith<$Res> {
   __$$_GetCoinCopyWithImpl(_$_GetCoin _value, $Res Function(_$_GetCoin) _then)
       : super(_value, _then);
@@ -214,8 +209,7 @@ abstract class _GetCoin implements MarketCoinEvent {
   String get symbol;
   @override
   @JsonKey(ignore: true)
-  _$$_GetCoinCopyWith<_$_GetCoin> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_GetCoinCopyWith<_$_GetCoin> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -225,14 +219,12 @@ mixin _$MarketCoinState {
   Failure? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MarketCoinStateCopyWith<MarketCoinState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MarketCoinStateCopyWith<MarketCoinState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MarketCoinStateCopyWith<$Res> {
-  factory $MarketCoinStateCopyWith(
-          MarketCoinState value, $Res Function(MarketCoinState) then) =
+  factory $MarketCoinStateCopyWith(MarketCoinState value, $Res Function(MarketCoinState) then) =
       _$MarketCoinStateCopyWithImpl<$Res, MarketCoinState>;
   @useResult
   $Res call({CoinEntity? coin, bool loading, Failure? error});
@@ -287,8 +279,7 @@ class _$MarketCoinStateCopyWithImpl<$Res, $Val extends MarketCoinState>
 }
 
 /// @nodoc
-abstract class _$$_MarketCoinStateCopyWith<$Res>
-    implements $MarketCoinStateCopyWith<$Res> {
+abstract class _$$_MarketCoinStateCopyWith<$Res> implements $MarketCoinStateCopyWith<$Res> {
   factory _$$_MarketCoinStateCopyWith(
           _$_MarketCoinState value, $Res Function(_$_MarketCoinState) then) =
       __$$_MarketCoinStateCopyWithImpl<$Res>;
@@ -372,9 +363,7 @@ class _$_MarketCoinState implements _MarketCoinState {
 
 abstract class _MarketCoinState implements MarketCoinState {
   const factory _MarketCoinState(
-      {final CoinEntity? coin,
-      final bool loading,
-      final Failure? error}) = _$_MarketCoinState;
+      {final CoinEntity? coin, final bool loading, final Failure? error}) = _$_MarketCoinState;
 
   @override
   CoinEntity? get coin;

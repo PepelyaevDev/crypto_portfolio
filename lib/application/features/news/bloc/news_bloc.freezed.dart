@@ -18,23 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$NewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            NewsCategory category, String locale, String? symbol)
-        init,
+    required TResult Function(NewsCategory category, String locale, String? symbol) init,
     required TResult Function(NewsListEntity oldList) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(NewsCategory category, String locale, String? symbol)?
-        init,
+    TResult? Function(NewsCategory category, String locale, String? symbol)? init,
     TResult? Function(NewsListEntity oldList)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NewsCategory category, String locale, String? symbol)?
-        init,
+    TResult Function(NewsCategory category, String locale, String? symbol)? init,
     TResult Function(NewsListEntity oldList)? update,
     required TResult orElse(),
   }) =>
@@ -67,8 +63,7 @@ abstract class $NewsEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewsEventCopyWithImpl<$Res, $Val extends NewsEvent>
-    implements $NewsEventCopyWith<$Res> {
+class _$NewsEventCopyWithImpl<$Res, $Val extends NewsEvent> implements $NewsEventCopyWith<$Res> {
   _$NewsEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -88,8 +83,7 @@ abstract class _$$_InitCopyWith<$Res> {
 /// @nodoc
 class __$$_InitCopyWithImpl<$Res> extends _$NewsEventCopyWithImpl<$Res, _$_Init>
     implements _$$_InitCopyWith<$Res> {
-  __$$_InitCopyWithImpl(_$_Init _value, $Res Function(_$_Init) _then)
-      : super(_value, _then);
+  __$$_InitCopyWithImpl(_$_Init _value, $Res Function(_$_Init) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -137,8 +131,7 @@ class _$_Init implements _Init {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Init &&
-            (identical(other.category, category) ||
-                other.category == category) &&
+            (identical(other.category, category) || other.category == category) &&
             (identical(other.locale, locale) || other.locale == locale) &&
             (identical(other.symbol, symbol) || other.symbol == symbol));
   }
@@ -149,15 +142,12 @@ class _$_Init implements _Init {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitCopyWith<_$_Init> get copyWith =>
-      __$$_InitCopyWithImpl<_$_Init>(this, _$identity);
+  _$$_InitCopyWith<_$_Init> get copyWith => __$$_InitCopyWithImpl<_$_Init>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            NewsCategory category, String locale, String? symbol)
-        init,
+    required TResult Function(NewsCategory category, String locale, String? symbol) init,
     required TResult Function(NewsListEntity oldList) update,
   }) {
     return init(category, locale, symbol);
@@ -166,8 +156,7 @@ class _$_Init implements _Init {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(NewsCategory category, String locale, String? symbol)?
-        init,
+    TResult? Function(NewsCategory category, String locale, String? symbol)? init,
     TResult? Function(NewsListEntity oldList)? update,
   }) {
     return init?.call(category, locale, symbol);
@@ -176,8 +165,7 @@ class _$_Init implements _Init {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NewsCategory category, String locale, String? symbol)?
-        init,
+    TResult Function(NewsCategory category, String locale, String? symbol)? init,
     TResult Function(NewsListEntity oldList)? update,
     required TResult orElse(),
   }) {
@@ -243,11 +231,9 @@ abstract class _$$_UpdateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UpdateCopyWithImpl<$Res>
-    extends _$NewsEventCopyWithImpl<$Res, _$_Update>
+class __$$_UpdateCopyWithImpl<$Res> extends _$NewsEventCopyWithImpl<$Res, _$_Update>
     implements _$$_UpdateCopyWith<$Res> {
-  __$$_UpdateCopyWithImpl(_$_Update _value, $Res Function(_$_Update) _then)
-      : super(_value, _then);
+  __$$_UpdateCopyWithImpl(_$_Update _value, $Res Function(_$_Update) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -304,9 +290,7 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            NewsCategory category, String locale, String? symbol)
-        init,
+    required TResult Function(NewsCategory category, String locale, String? symbol) init,
     required TResult Function(NewsListEntity oldList) update,
   }) {
     return update(oldList);
@@ -315,8 +299,7 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(NewsCategory category, String locale, String? symbol)?
-        init,
+    TResult? Function(NewsCategory category, String locale, String? symbol)? init,
     TResult? Function(NewsListEntity oldList)? update,
   }) {
     return update?.call(oldList);
@@ -325,8 +308,7 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NewsCategory category, String locale, String? symbol)?
-        init,
+    TResult Function(NewsCategory category, String locale, String? symbol)? init,
     TResult Function(NewsListEntity oldList)? update,
     required TResult orElse(),
   }) {
@@ -373,8 +355,7 @@ abstract class _Update implements NewsEvent {
 
   NewsListEntity get oldList;
   @JsonKey(ignore: true)
-  _$$_UpdateCopyWith<_$_Update> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_UpdateCopyWith<_$_Update> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -438,8 +419,7 @@ abstract class $NewsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewsStateCopyWithImpl<$Res, $Val extends NewsState>
-    implements $NewsStateCopyWith<$Res> {
+class _$NewsStateCopyWithImpl<$Res, $Val extends NewsState> implements $NewsStateCopyWith<$Res> {
   _$NewsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -450,14 +430,12 @@ class _$NewsStateCopyWithImpl<$Res, $Val extends NewsState>
 
 /// @nodoc
 abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
+  factory _$$_LoadingCopyWith(_$_Loading value, $Res Function(_$_Loading) then) =
       __$$_LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$NewsStateCopyWithImpl<$Res, _$_Loading>
+class __$$_LoadingCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -475,8 +453,7 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
   @override
@@ -563,14 +540,12 @@ abstract class _Loading implements NewsState {
 
 /// @nodoc
 abstract class _$$_NoCoinsCopyWith<$Res> {
-  factory _$$_NoCoinsCopyWith(
-          _$_NoCoins value, $Res Function(_$_NoCoins) then) =
+  factory _$$_NoCoinsCopyWith(_$_NoCoins value, $Res Function(_$_NoCoins) then) =
       __$$_NoCoinsCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NoCoinsCopyWithImpl<$Res>
-    extends _$NewsStateCopyWithImpl<$Res, _$_NoCoins>
+class __$$_NoCoinsCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res, _$_NoCoins>
     implements _$$_NoCoinsCopyWith<$Res> {
   __$$_NoCoinsCopyWithImpl(_$_NoCoins _value, $Res Function(_$_NoCoins) _then)
       : super(_value, _then);
@@ -588,8 +563,7 @@ class _$_NoCoins implements _NoCoins {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NoCoins);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_NoCoins);
   }
 
   @override
@@ -676,8 +650,7 @@ abstract class _NoCoins implements NewsState {
 
 /// @nodoc
 abstract class _$$_SuccessCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(
-          _$_Success value, $Res Function(_$_Success) then) =
+  factory _$$_SuccessCopyWith(_$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @useResult
   $Res call({NewsListEntity news});
@@ -686,8 +659,7 @@ abstract class _$$_SuccessCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res>
-    extends _$NewsStateCopyWithImpl<$Res, _$_Success>
+class __$$_SuccessCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
       : super(_value, _then);
@@ -824,8 +796,7 @@ abstract class _Success implements NewsState {
 
   NewsListEntity get news;
   @JsonKey(ignore: true)
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SuccessCopyWith<_$_Success> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -839,11 +810,9 @@ abstract class _$$_ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$NewsStateCopyWithImpl<$Res, _$_Error>
+class __$$_ErrorCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, _then);
+  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -906,8 +875,7 @@ class _$_Error implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$_ErrorCopyWith<_$_Error> get copyWith => __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -985,12 +953,10 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements NewsState {
-  const factory _Error(
-      {final NewsListEntity? news, required final Failure error}) = _$_Error;
+  const factory _Error({final NewsListEntity? news, required final Failure error}) = _$_Error;
 
   NewsListEntity? get news;
   Failure get error;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ErrorCopyWith<_$_Error> get copyWith => throw _privateConstructorUsedError;
 }

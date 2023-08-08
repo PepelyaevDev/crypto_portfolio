@@ -58,8 +58,7 @@ mixin _$WatchlistEvent {
 
 /// @nodoc
 abstract class $WatchlistEventCopyWith<$Res> {
-  factory $WatchlistEventCopyWith(
-          WatchlistEvent value, $Res Function(WatchlistEvent) then) =
+  factory $WatchlistEventCopyWith(WatchlistEvent value, $Res Function(WatchlistEvent) then) =
       _$WatchlistEventCopyWithImpl<$Res, WatchlistEvent>;
 }
 
@@ -83,11 +82,9 @@ abstract class _$$_UpdateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UpdateCopyWithImpl<$Res>
-    extends _$WatchlistEventCopyWithImpl<$Res, _$_Update>
+class __$$_UpdateCopyWithImpl<$Res> extends _$WatchlistEventCopyWithImpl<$Res, _$_Update>
     implements _$$_UpdateCopyWith<$Res> {
-  __$$_UpdateCopyWithImpl(_$_Update _value, $Res Function(_$_Update) _then)
-      : super(_value, _then);
+  __$$_UpdateCopyWithImpl(_$_Update _value, $Res Function(_$_Update) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -201,20 +198,17 @@ abstract class _Update implements WatchlistEvent {
 
   String get symbol;
   @JsonKey(ignore: true)
-  _$$_UpdateCopyWith<_$_Update> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_UpdateCopyWith<_$_Update> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_RefreshCopyWith<$Res> {
-  factory _$$_RefreshCopyWith(
-          _$_Refresh value, $Res Function(_$_Refresh) then) =
+  factory _$$_RefreshCopyWith(_$_Refresh value, $Res Function(_$_Refresh) then) =
       __$$_RefreshCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_RefreshCopyWithImpl<$Res>
-    extends _$WatchlistEventCopyWithImpl<$Res, _$_Refresh>
+class __$$_RefreshCopyWithImpl<$Res> extends _$WatchlistEventCopyWithImpl<$Res, _$_Refresh>
     implements _$$_RefreshCopyWith<$Res> {
   __$$_RefreshCopyWithImpl(_$_Refresh _value, $Res Function(_$_Refresh) _then)
       : super(_value, _then);
@@ -232,8 +226,7 @@ class _$_Refresh implements _Refresh {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Refresh);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Refresh);
   }
 
   @override
@@ -314,18 +307,15 @@ mixin _$WatchlistState {
   Failure? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $WatchlistStateCopyWith<WatchlistState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $WatchlistStateCopyWith<WatchlistState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $WatchlistStateCopyWith<$Res> {
-  factory $WatchlistStateCopyWith(
-          WatchlistState value, $Res Function(WatchlistState) then) =
+  factory $WatchlistStateCopyWith(WatchlistState value, $Res Function(WatchlistState) then) =
       _$WatchlistStateCopyWithImpl<$Res, WatchlistState>;
   @useResult
-  $Res call(
-      {List<String> symbols, CoinsEntity coins, bool loading, Failure? error});
+  $Res call({List<String> symbols, CoinsEntity coins, bool loading, Failure? error});
 
   $CoinsEntityCopyWith<$Res> get coins;
 }
@@ -378,15 +368,13 @@ class _$WatchlistStateCopyWithImpl<$Res, $Val extends WatchlistState>
 }
 
 /// @nodoc
-abstract class _$$_WatchlistStateCopyWith<$Res>
-    implements $WatchlistStateCopyWith<$Res> {
+abstract class _$$_WatchlistStateCopyWith<$Res> implements $WatchlistStateCopyWith<$Res> {
   factory _$$_WatchlistStateCopyWith(
           _$_WatchlistState value, $Res Function(_$_WatchlistState) then) =
       __$$_WatchlistStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<String> symbols, CoinsEntity coins, bool loading, Failure? error});
+  $Res call({List<String> symbols, CoinsEntity coins, bool loading, Failure? error});
 
   @override
   $CoinsEntityCopyWith<$Res> get coins;
@@ -396,8 +384,7 @@ abstract class _$$_WatchlistStateCopyWith<$Res>
 class __$$_WatchlistStateCopyWithImpl<$Res>
     extends _$WatchlistStateCopyWithImpl<$Res, _$_WatchlistState>
     implements _$$_WatchlistStateCopyWith<$Res> {
-  __$$_WatchlistStateCopyWithImpl(
-      _$_WatchlistState _value, $Res Function(_$_WatchlistState) _then)
+  __$$_WatchlistStateCopyWithImpl(_$_WatchlistState _value, $Res Function(_$_WatchlistState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -433,10 +420,7 @@ class __$$_WatchlistStateCopyWithImpl<$Res>
 
 class _$_WatchlistState implements _WatchlistState {
   const _$_WatchlistState(
-      {required final List<String> symbols,
-      required this.coins,
-      this.loading = false,
-      this.error})
+      {required final List<String> symbols, required this.coins, this.loading = false, this.error})
       : _symbols = symbols;
 
   final List<String> _symbols;
@@ -472,8 +456,8 @@ class _$_WatchlistState implements _WatchlistState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_symbols), coins, loading, error);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_symbols), coins, loading, error);
 
   @JsonKey(ignore: true)
   @override
@@ -499,6 +483,5 @@ abstract class _WatchlistState implements WatchlistState {
   Failure? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_WatchlistStateCopyWith<_$_WatchlistState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_WatchlistStateCopyWith<_$_WatchlistState> get copyWith => throw _privateConstructorUsedError;
 }

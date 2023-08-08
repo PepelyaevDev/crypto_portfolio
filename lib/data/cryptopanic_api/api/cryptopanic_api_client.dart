@@ -1,6 +1,5 @@
 import 'package:crypto_portfolio/data/cryptopanic_api/sources/cryptopanic_news_source.dart';
 import 'package:dio/dio.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class CryptopanicApiClient {
   final CryptopanicNewsSource news;
@@ -25,9 +24,7 @@ class CryptopanicApiClient {
           }
         },
       ),
-    )..interceptors.addAll([
-        PrettyDioLogger(requestHeader: true, requestBody: true),
-      ]);
+    );
     return CryptopanicApiClient(
       news: CryptopanicNewsSource(dio),
     );
