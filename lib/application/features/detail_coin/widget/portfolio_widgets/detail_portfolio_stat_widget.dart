@@ -84,20 +84,6 @@ class DetailPortfolioStatWidget extends StatelessWidget {
                   Divider(height: 30),
                   _PortfolioDataRow(
                     firstWidget: _PortfolioDataColumn(
-                      title: context.localization.currentPrice,
-                      value: coin.currentPrice.moneyFull,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                    ),
-                    secondWidget: _PortfolioDataColumn(
-                      title: context.localization.averageNetCost,
-                      value: coin.averageNetCost,
-                      valueColor: coin.color,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                    ),
-                  ),
-                  Divider(height: 30),
-                  _PortfolioDataRow(
-                    firstWidget: _PortfolioDataColumn(
                       title: context.localization.invested,
                       value: coin.invested.moneyFull,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,6 +91,20 @@ class DetailPortfolioStatWidget extends StatelessWidget {
                     secondWidget: _PortfolioDataColumn(
                       title: context.localization.holdingsValue,
                       value: coin.holdingsValue.moneyFull,
+                      valueColor: coin.color,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                    ),
+                  ),
+                  Divider(height: 30),
+                  _PortfolioDataRow(
+                    firstWidget: _PortfolioDataColumn(
+                      title: context.localization.currentPrice,
+                      value: coin.currentPrice.moneyFull,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                    secondWidget: _PortfolioDataColumn(
+                      title: context.localization.averageNetCost,
+                      value: coin.averageNetCost,
                       valueColor: coin.color,
                       crossAxisAlignment: CrossAxisAlignment.end,
                     ),
