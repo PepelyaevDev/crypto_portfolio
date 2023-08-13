@@ -6,7 +6,6 @@ import 'package:crypto_portfolio/application/features/stable_coins/bloc/stable_b
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/portfolio_data.dart';
-import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,12 +29,11 @@ class _StablePercentWidgetState extends State<StablePercentWidget> {
     return BlocBuilder<StableBloc, StableState>(
       builder: (context, state) {
         return switch (state) {
-          StableInitial _ => CircularProgressIndicator(),
-          StableFailure _ => Text(state.failure.getMessage(context)),
           StableSuccess _ => _SuccessStablePercentWidget(
               portfolioCoins: widget.portfolioCoins,
               stableCoins: state.coins,
             ),
+          _ => SizedBox.shrink(),
         };
       },
     );
@@ -58,24 +56,22 @@ class _SuccessStablePercentWidget extends StatelessWidget {
         stableAmount = stableAmount.addNumber(e.holdingsValue);
       }
     }
-    if (stableAmount == 0) {
-      return SizedBox.shrink();
-    }
     final double stablePercent = stableAmount / portfolioCoins.holdingsValue;
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(5)),
-            child: LinearProgressIndicator(
-              value: stablePercent,
-              minHeight: 20,
-              color: AppColors.primary,
-              backgroundColor: AppColors.grayMedium,
+        if (stableAmount > 0)
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+              child: LinearProgressIndicator(
+                value: stablePercent,
+                minHeight: 20,
+                color: AppColors.primary,
+                backgroundColor: AppColors.grayMedium,
+              ),
             ),
           ),
-        ),
         Text(
           '${context.localization.percentageStablecoins}: ${(stablePercent * 100).toStringAsFixed(2)}%',
           style: AppStyles.normal14,
