@@ -94,7 +94,7 @@ class _SearchedCoinWidget extends StatelessWidget {
           MaterialPageRoute(
             builder: (_) => DetailCoinPage(
               coinLogo: searchCoinEntity.icon,
-              coinSymbol: searchCoinEntity.symbol,
+              id: searchCoinEntity.id,
             ),
           ),
         );
@@ -115,7 +115,7 @@ class _SearchedCoinWidget extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 Text(
-                  searchCoinEntity.symbol,
+                  searchCoinEntity.id.symbol,
                   style: AppStyles.bold16,
                 ),
                 SizedBox(width: 10),
@@ -126,7 +126,7 @@ class _SearchedCoinWidget extends StatelessWidget {
                   ),
               ],
             ),
-            WatchlistIconWidget(searchCoinEntity.symbol),
+            WatchlistIconWidget(searchCoinEntity.id),
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:crypto_portfolio/domain/entity/market_chart/market_chart_entity.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
@@ -11,9 +12,9 @@ part 'market_chart_bloc.freezed.dart';
 
 class MarketChartBloc extends Bloc<MarketChartEvent, MarketChartState> {
   final MarketRepo _marketRepo;
-  final String _symbol;
+  final CoinId _id;
   final Map<MarketChartDistance, MarketChartEntity?> _marketChartCache = {};
-  MarketChartBloc(this._marketRepo, this._symbol) : super(const MarketChartState.loading()) {
+  MarketChartBloc(this._marketRepo, this._id) : super(const MarketChartState.loading()) {
     on<_SetDistance>(_setDistance, transformer: restartable());
     on<_Refresh>(_refresh, transformer: droppable());
   }
@@ -23,7 +24,7 @@ class MarketChartBloc extends Bloc<MarketChartEvent, MarketChartState> {
     if (marketChartEntity == null) {
       emit(const MarketChartState.loading());
       final result = await _marketRepo.getMarketChart(
-        symbol: _symbol,
+        id: _id,
         distance: event.distance,
       );
       result.fold(

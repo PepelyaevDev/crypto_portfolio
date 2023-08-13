@@ -58,7 +58,7 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
           MaterialPageRoute(
             builder: (_) => DetailCoinPage(
               coinLogo: widget.coinEntity.image,
-              coinSymbol: widget.coinEntity.symbol,
+              id: widget.coinEntity.id,
               initialIndex: 1,
             ),
           ),
@@ -81,7 +81,7 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.coinEntity.symbol.toString(),
+                    widget.coinEntity.id.symbol.toString(),
                     style: AppStyles.bold14,
                   ),
                   SizedBox(height: 5),
@@ -177,9 +177,7 @@ class _PortfolioCoinWidgetDetails extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (_) => AddPaymentPage(
-                    symbol: coinEntity.symbol,
-                  ),
+                  builder: (_) => AddPaymentPage(id: coinEntity.id),
                 ),
               );
             },

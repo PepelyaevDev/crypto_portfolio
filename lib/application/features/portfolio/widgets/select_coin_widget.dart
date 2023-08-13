@@ -100,7 +100,7 @@ class _SearchedCoinWidget extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(4),
       onTap: () {
-        context.read<AddPaymentBloc>().add(AddPaymentEvent.getCoin(searchCoinEntity.symbol));
+        context.read<AddPaymentBloc>().add(AddPaymentEvent.getCoin(searchCoinEntity.id));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -120,7 +120,7 @@ class _SearchedCoinWidget extends StatelessWidget {
               ),
               SizedBox(width: 10),
               Text(
-                searchCoinEntity.symbol,
+                searchCoinEntity.id.symbol,
                 style: AppStyles.normal14,
               ),
             ],
@@ -162,7 +162,7 @@ class _SelectedCoinWidget extends StatelessWidget {
                     SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        coinEntity.symbol,
+                        coinEntity.id.symbol,
                         style: AppStyles.normal14,
                       ),
                     ),

@@ -4,6 +4,7 @@ import 'package:crypto_portfolio/data/gecko_api/dto/market_chart/market_chart_dt
 import 'package:crypto_portfolio/data/gecko_api/dto/search/search_dto.dart';
 import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
+import 'package:crypto_portfolio/domain/entity/coins/extensions/to_dto.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/to_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/json_converter.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
@@ -35,12 +36,12 @@ class MarketRepo {
   }
 
   Future<Either<Failure, MarketChartEntity>> getMarketChart({
-    required String symbol,
+    required CoinId id,
     required MarketChartDistance distance,
   }) async {
     try {
       final MarketChartDTO marketChartDTO = await _geckoApiClient.coins.getChartData(
-        symbol: symbol,
+        params: id.toDto,
         days: distance.days,
       );
       return right(marketChartDTO.toEntity(distance));
@@ -49,16 +50,12 @@ class MarketRepo {
     }
   }
 
-  Future<Either<Failure, CoinEntity>> getMarketCoinBySymbol(String symbol) async {
+  Future<Either<Failure, CoinEntity>> getMarketCoinById({required CoinId id}) async {
     try {
-      final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoinsBySymbols(
-        symbols: [symbol],
+      final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoinsByParams(
+        paramsList: [id.toDto],
       );
-      final CoinEntity coinEntity = geckoCoins
-          .firstWhere(
-            (e) => e.symbol.toUpperCase() == symbol,
-          )
-          .createEmptyCoin;
+      final CoinEntity coinEntity = geckoCoins.createEmptyCoin(id);
       return right(coinEntity);
     } catch (e) {
       return left(Failure.from(e));

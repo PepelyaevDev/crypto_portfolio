@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$WatchlistEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String symbol) update,
+    required TResult Function(CoinId id) update,
     required TResult Function() refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String symbol)? update,
+    TResult? Function(CoinId id)? update,
     TResult? Function()? refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String symbol)? update,
+    TResult Function(CoinId id)? update,
     TResult Function()? refresh,
     required TResult orElse(),
   }) =>
@@ -78,7 +78,9 @@ abstract class _$$_UpdateCopyWith<$Res> {
   factory _$$_UpdateCopyWith(_$_Update value, $Res Function(_$_Update) then) =
       __$$_UpdateCopyWithImpl<$Res>;
   @useResult
-  $Res call({String symbol});
+  $Res call({CoinId id});
+
+  $CoinIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
@@ -89,28 +91,36 @@ class __$$_UpdateCopyWithImpl<$Res> extends _$WatchlistEventCopyWithImpl<$Res, _
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? symbol = null,
+    Object? id = null,
   }) {
     return _then(_$_Update(
-      null == symbol
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as CoinId,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CoinIdCopyWith<$Res> get id {
+    return $CoinIdCopyWith<$Res>(_value.id, (value) {
+      return _then(_value.copyWith(id: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$_Update implements _Update {
-  const _$_Update(this.symbol);
+  const _$_Update(this.id);
 
   @override
-  final String symbol;
+  final CoinId id;
 
   @override
   String toString() {
-    return 'WatchlistEvent.update(symbol: $symbol)';
+    return 'WatchlistEvent.update(id: $id)';
   }
 
   @override
@@ -118,11 +128,11 @@ class _$_Update implements _Update {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Update &&
-            (identical(other.symbol, symbol) || other.symbol == symbol));
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, symbol);
+  int get hashCode => Object.hash(runtimeType, id);
 
   @JsonKey(ignore: true)
   @override
@@ -133,30 +143,30 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String symbol) update,
+    required TResult Function(CoinId id) update,
     required TResult Function() refresh,
   }) {
-    return update(symbol);
+    return update(id);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String symbol)? update,
+    TResult? Function(CoinId id)? update,
     TResult? Function()? refresh,
   }) {
-    return update?.call(symbol);
+    return update?.call(id);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String symbol)? update,
+    TResult Function(CoinId id)? update,
     TResult Function()? refresh,
     required TResult orElse(),
   }) {
     if (update != null) {
-      return update(symbol);
+      return update(id);
     }
     return orElse();
   }
@@ -194,9 +204,9 @@ class _$_Update implements _Update {
 }
 
 abstract class _Update implements WatchlistEvent {
-  const factory _Update(final String symbol) = _$_Update;
+  const factory _Update(final CoinId id) = _$_Update;
 
-  String get symbol;
+  CoinId get id;
   @JsonKey(ignore: true)
   _$$_UpdateCopyWith<_$_Update> get copyWith => throw _privateConstructorUsedError;
 }
@@ -235,7 +245,7 @@ class _$_Refresh implements _Refresh {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String symbol) update,
+    required TResult Function(CoinId id) update,
     required TResult Function() refresh,
   }) {
     return refresh();
@@ -244,7 +254,7 @@ class _$_Refresh implements _Refresh {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String symbol)? update,
+    TResult? Function(CoinId id)? update,
     TResult? Function()? refresh,
   }) {
     return refresh?.call();
@@ -253,7 +263,7 @@ class _$_Refresh implements _Refresh {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String symbol)? update,
+    TResult Function(CoinId id)? update,
     TResult Function()? refresh,
     required TResult orElse(),
   }) {
@@ -301,7 +311,7 @@ abstract class _Refresh implements WatchlistEvent {
 
 /// @nodoc
 mixin _$WatchlistState {
-  List<String> get symbols => throw _privateConstructorUsedError;
+  List<CoinId> get ids => throw _privateConstructorUsedError;
   CoinsEntity get coins => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
   Failure? get error => throw _privateConstructorUsedError;
@@ -315,7 +325,7 @@ abstract class $WatchlistStateCopyWith<$Res> {
   factory $WatchlistStateCopyWith(WatchlistState value, $Res Function(WatchlistState) then) =
       _$WatchlistStateCopyWithImpl<$Res, WatchlistState>;
   @useResult
-  $Res call({List<String> symbols, CoinsEntity coins, bool loading, Failure? error});
+  $Res call({List<CoinId> ids, CoinsEntity coins, bool loading, Failure? error});
 
   $CoinsEntityCopyWith<$Res> get coins;
 }
@@ -333,16 +343,16 @@ class _$WatchlistStateCopyWithImpl<$Res, $Val extends WatchlistState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? symbols = null,
+    Object? ids = null,
     Object? coins = null,
     Object? loading = null,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
-      symbols: null == symbols
-          ? _value.symbols
-          : symbols // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      ids: null == ids
+          ? _value.ids
+          : ids // ignore: cast_nullable_to_non_nullable
+              as List<CoinId>,
       coins: null == coins
           ? _value.coins
           : coins // ignore: cast_nullable_to_non_nullable
@@ -374,7 +384,7 @@ abstract class _$$_WatchlistStateCopyWith<$Res> implements $WatchlistStateCopyWi
       __$$_WatchlistStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<String> symbols, CoinsEntity coins, bool loading, Failure? error});
+  $Res call({List<CoinId> ids, CoinsEntity coins, bool loading, Failure? error});
 
   @override
   $CoinsEntityCopyWith<$Res> get coins;
@@ -390,16 +400,16 @@ class __$$_WatchlistStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? symbols = null,
+    Object? ids = null,
     Object? coins = null,
     Object? loading = null,
     Object? error = freezed,
   }) {
     return _then(_$_WatchlistState(
-      symbols: null == symbols
-          ? _value._symbols
-          : symbols // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      ids: null == ids
+          ? _value._ids
+          : ids // ignore: cast_nullable_to_non_nullable
+              as List<CoinId>,
       coins: null == coins
           ? _value.coins
           : coins // ignore: cast_nullable_to_non_nullable
@@ -420,15 +430,15 @@ class __$$_WatchlistStateCopyWithImpl<$Res>
 
 class _$_WatchlistState implements _WatchlistState {
   const _$_WatchlistState(
-      {required final List<String> symbols, required this.coins, this.loading = false, this.error})
-      : _symbols = symbols;
+      {required final List<CoinId> ids, required this.coins, this.loading = false, this.error})
+      : _ids = ids;
 
-  final List<String> _symbols;
+  final List<CoinId> _ids;
   @override
-  List<String> get symbols {
-    if (_symbols is EqualUnmodifiableListView) return _symbols;
+  List<CoinId> get ids {
+    if (_ids is EqualUnmodifiableListView) return _ids;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_symbols);
+    return EqualUnmodifiableListView(_ids);
   }
 
   @override
@@ -441,7 +451,7 @@ class _$_WatchlistState implements _WatchlistState {
 
   @override
   String toString() {
-    return 'WatchlistState(symbols: $symbols, coins: $coins, loading: $loading, error: $error)';
+    return 'WatchlistState(ids: $ids, coins: $coins, loading: $loading, error: $error)';
   }
 
   @override
@@ -449,15 +459,15 @@ class _$_WatchlistState implements _WatchlistState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WatchlistState &&
-            const DeepCollectionEquality().equals(other._symbols, _symbols) &&
+            const DeepCollectionEquality().equals(other._ids, _ids) &&
             (identical(other.coins, coins) || other.coins == coins) &&
             (identical(other.loading, loading) || other.loading == loading) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_symbols), coins, loading, error);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_ids), coins, loading, error);
 
   @JsonKey(ignore: true)
   @override
@@ -468,13 +478,13 @@ class _$_WatchlistState implements _WatchlistState {
 
 abstract class _WatchlistState implements WatchlistState {
   const factory _WatchlistState(
-      {required final List<String> symbols,
+      {required final List<CoinId> ids,
       required final CoinsEntity coins,
       final bool loading,
       final Failure? error}) = _$_WatchlistState;
 
   @override
-  List<String> get symbols;
+  List<CoinId> get ids;
   @override
   CoinsEntity get coins;
   @override

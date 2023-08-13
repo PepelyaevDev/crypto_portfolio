@@ -7,18 +7,18 @@ class HiveCoinsSource {
   static const String _marketCoinsBoxKey = 'marketCoinsBoxKey';
   static const String _portfolioCoinsBoxKey = 'portfolioCoinsBoxKey';
   static const String _watchlistCoinsBoxKey = 'watchlistCoinsBoxKey';
-  static const String _watchlistSymbolsBoxKey = 'watchlistSymbolsBoxKey';
+  static const String _watchlistIdsBoxKey = 'watchlistSymbolsBoxKey';
 
-  //WatchlistSymbols
-  String? getWatchlistSymbols() {
-    return _appBox.get(_watchlistSymbolsBoxKey);
+  //WatchlistIds
+  String? getWatchlistIds() {
+    return _appBox.get(_watchlistIdsBoxKey);
   }
 
-  Future<void> updateWatchlistSymbols(String json) async {
-    await _appBox.put(_watchlistSymbolsBoxKey, json);
+  Future<void> updateWatchlistIds(String json) async {
+    await _appBox.put(_watchlistIdsBoxKey, json);
   }
 
-  //Watchlist
+  //WatchlistCoins
   String? getWatchlistCoins() {
     return _appBox.get(_watchlistCoinsBoxKey);
   }

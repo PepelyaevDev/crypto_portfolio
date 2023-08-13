@@ -173,7 +173,7 @@ CoinEntity _$CoinEntityFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CoinEntity {
 //market data
-  String get symbol => throw _privateConstructorUsedError;
+  CoinId get id => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   double get currentPrice => throw _privateConstructorUsedError;
   double get marketCap => throw _privateConstructorUsedError;
@@ -195,7 +195,7 @@ abstract class $CoinEntityCopyWith<$Res> {
       _$CoinEntityCopyWithImpl<$Res, CoinEntity>;
   @useResult
   $Res call(
-      {String symbol,
+      {CoinId id,
       String image,
       double currentPrice,
       double marketCap,
@@ -205,6 +205,8 @@ abstract class $CoinEntityCopyWith<$Res> {
       double? totalSupply,
       double? maxSupply,
       List<PaymentEntity> history});
+
+  $CoinIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
@@ -219,7 +221,7 @@ class _$CoinEntityCopyWithImpl<$Res, $Val extends CoinEntity> implements $CoinEn
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? symbol = null,
+    Object? id = null,
     Object? image = null,
     Object? currentPrice = null,
     Object? marketCap = null,
@@ -231,10 +233,10 @@ class _$CoinEntityCopyWithImpl<$Res, $Val extends CoinEntity> implements $CoinEn
     Object? history = null,
   }) {
     return _then(_value.copyWith(
-      symbol: null == symbol
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as CoinId,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -273,6 +275,14 @@ class _$CoinEntityCopyWithImpl<$Res, $Val extends CoinEntity> implements $CoinEn
               as List<PaymentEntity>,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CoinIdCopyWith<$Res> get id {
+    return $CoinIdCopyWith<$Res>(_value.id, (value) {
+      return _then(_value.copyWith(id: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -282,7 +292,7 @@ abstract class _$$_CoinEntityCopyWith<$Res> implements $CoinEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String symbol,
+      {CoinId id,
       String image,
       double currentPrice,
       double marketCap,
@@ -292,6 +302,9 @@ abstract class _$$_CoinEntityCopyWith<$Res> implements $CoinEntityCopyWith<$Res>
       double? totalSupply,
       double? maxSupply,
       List<PaymentEntity> history});
+
+  @override
+  $CoinIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
@@ -303,7 +316,7 @@ class __$$_CoinEntityCopyWithImpl<$Res> extends _$CoinEntityCopyWithImpl<$Res, _
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? symbol = null,
+    Object? id = null,
     Object? image = null,
     Object? currentPrice = null,
     Object? marketCap = null,
@@ -315,10 +328,10 @@ class __$$_CoinEntityCopyWithImpl<$Res> extends _$CoinEntityCopyWithImpl<$Res, _
     Object? history = null,
   }) {
     return _then(_$_CoinEntity(
-      symbol: null == symbol
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as CoinId,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -363,7 +376,7 @@ class __$$_CoinEntityCopyWithImpl<$Res> extends _$CoinEntityCopyWithImpl<$Res, _
 @JsonSerializable()
 class _$_CoinEntity implements _CoinEntity {
   const _$_CoinEntity(
-      {required this.symbol,
+      {required this.id,
       required this.image,
       required this.currentPrice,
       required this.marketCap,
@@ -379,7 +392,7 @@ class _$_CoinEntity implements _CoinEntity {
 
 //market data
   @override
-  final String symbol;
+  final CoinId id;
   @override
   final String image;
   @override
@@ -408,7 +421,7 @@ class _$_CoinEntity implements _CoinEntity {
 
   @override
   String toString() {
-    return 'CoinEntity(symbol: $symbol, image: $image, currentPrice: $currentPrice, marketCap: $marketCap, priceChangePercentage24H: $priceChangePercentage24H, marketCapRank: $marketCapRank, circulatingSupply: $circulatingSupply, totalSupply: $totalSupply, maxSupply: $maxSupply, history: $history)';
+    return 'CoinEntity(id: $id, image: $image, currentPrice: $currentPrice, marketCap: $marketCap, priceChangePercentage24H: $priceChangePercentage24H, marketCapRank: $marketCapRank, circulatingSupply: $circulatingSupply, totalSupply: $totalSupply, maxSupply: $maxSupply, history: $history)';
   }
 
   @override
@@ -416,7 +429,7 @@ class _$_CoinEntity implements _CoinEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CoinEntity &&
-            (identical(other.symbol, symbol) || other.symbol == symbol) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.currentPrice, currentPrice) || other.currentPrice == currentPrice) &&
             (identical(other.marketCap, marketCap) || other.marketCap == marketCap) &&
@@ -435,7 +448,7 @@ class _$_CoinEntity implements _CoinEntity {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      symbol,
+      id,
       image,
       currentPrice,
       marketCap,
@@ -462,7 +475,7 @@ class _$_CoinEntity implements _CoinEntity {
 
 abstract class _CoinEntity implements CoinEntity {
   const factory _CoinEntity(
-      {required final String symbol,
+      {required final CoinId id,
       required final String image,
       required final double currentPrice,
       required final double marketCap,
@@ -476,7 +489,7 @@ abstract class _CoinEntity implements CoinEntity {
   factory _CoinEntity.fromJson(Map<String, dynamic> json) = _$_CoinEntity.fromJson;
 
   @override //market data
-  String get symbol;
+  CoinId get id;
   @override
   String get image;
   @override
@@ -500,13 +513,154 @@ abstract class _CoinEntity implements CoinEntity {
   _$$_CoinEntityCopyWith<_$_CoinEntity> get copyWith => throw _privateConstructorUsedError;
 }
 
+CoinId _$CoinIdFromJson(Map<String, dynamic> json) {
+  return _CoinId.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CoinId {
+  String get symbol => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CoinIdCopyWith<CoinId> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CoinIdCopyWith<$Res> {
+  factory $CoinIdCopyWith(CoinId value, $Res Function(CoinId) then) =
+      _$CoinIdCopyWithImpl<$Res, CoinId>;
+  @useResult
+  $Res call({String symbol, String name});
+}
+
+/// @nodoc
+class _$CoinIdCopyWithImpl<$Res, $Val extends CoinId> implements $CoinIdCopyWith<$Res> {
+  _$CoinIdCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? symbol = null,
+    Object? name = null,
+  }) {
+    return _then(_value.copyWith(
+      symbol: null == symbol
+          ? _value.symbol
+          : symbol // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_CoinIdCopyWith<$Res> implements $CoinIdCopyWith<$Res> {
+  factory _$$_CoinIdCopyWith(_$_CoinId value, $Res Function(_$_CoinId) then) =
+      __$$_CoinIdCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String symbol, String name});
+}
+
+/// @nodoc
+class __$$_CoinIdCopyWithImpl<$Res> extends _$CoinIdCopyWithImpl<$Res, _$_CoinId>
+    implements _$$_CoinIdCopyWith<$Res> {
+  __$$_CoinIdCopyWithImpl(_$_CoinId _value, $Res Function(_$_CoinId) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? symbol = null,
+    Object? name = null,
+  }) {
+    return _then(_$_CoinId(
+      symbol: null == symbol
+          ? _value.symbol
+          : symbol // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_CoinId implements _CoinId {
+  const _$_CoinId({required this.symbol, required this.name});
+
+  factory _$_CoinId.fromJson(Map<String, dynamic> json) => _$$_CoinIdFromJson(json);
+
+  @override
+  final String symbol;
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'CoinId(symbol: $symbol, name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CoinId &&
+            (identical(other.symbol, symbol) || other.symbol == symbol) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, symbol, name);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CoinIdCopyWith<_$_CoinId> get copyWith =>
+      __$$_CoinIdCopyWithImpl<_$_CoinId>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CoinIdToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CoinId implements CoinId {
+  const factory _CoinId({required final String symbol, required final String name}) = _$_CoinId;
+
+  factory _CoinId.fromJson(Map<String, dynamic> json) = _$_CoinId.fromJson;
+
+  @override
+  String get symbol;
+  @override
+  String get name;
+  @override
+  @JsonKey(ignore: true)
+  _$$_CoinIdCopyWith<_$_CoinId> get copyWith => throw _privateConstructorUsedError;
+}
+
 PaymentEntity _$PaymentEntityFromJson(Map<String, dynamic> json) {
   return _PaymentEntity.fromJson(json);
 }
 
 /// @nodoc
 mixin _$PaymentEntity {
-  String get symbol => throw _privateConstructorUsedError;
+  CoinId get id => throw _privateConstructorUsedError;
   DateTime get dateTime => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
@@ -522,7 +676,9 @@ abstract class $PaymentEntityCopyWith<$Res> {
   factory $PaymentEntityCopyWith(PaymentEntity value, $Res Function(PaymentEntity) then) =
       _$PaymentEntityCopyWithImpl<$Res, PaymentEntity>;
   @useResult
-  $Res call({String symbol, DateTime dateTime, String type, double amount, double numberOfCoins});
+  $Res call({CoinId id, DateTime dateTime, String type, double amount, double numberOfCoins});
+
+  $CoinIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
@@ -538,17 +694,17 @@ class _$PaymentEntityCopyWithImpl<$Res, $Val extends PaymentEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? symbol = null,
+    Object? id = null,
     Object? dateTime = null,
     Object? type = null,
     Object? amount = null,
     Object? numberOfCoins = null,
   }) {
     return _then(_value.copyWith(
-      symbol: null == symbol
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as CoinId,
       dateTime: null == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -567,6 +723,14 @@ class _$PaymentEntityCopyWithImpl<$Res, $Val extends PaymentEntity>
               as double,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CoinIdCopyWith<$Res> get id {
+    return $CoinIdCopyWith<$Res>(_value.id, (value) {
+      return _then(_value.copyWith(id: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -575,7 +739,10 @@ abstract class _$$_PaymentEntityCopyWith<$Res> implements $PaymentEntityCopyWith
       __$$_PaymentEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String symbol, DateTime dateTime, String type, double amount, double numberOfCoins});
+  $Res call({CoinId id, DateTime dateTime, String type, double amount, double numberOfCoins});
+
+  @override
+  $CoinIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
@@ -588,17 +755,17 @@ class __$$_PaymentEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? symbol = null,
+    Object? id = null,
     Object? dateTime = null,
     Object? type = null,
     Object? amount = null,
     Object? numberOfCoins = null,
   }) {
     return _then(_$_PaymentEntity(
-      symbol: null == symbol
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as CoinId,
       dateTime: null == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -623,7 +790,7 @@ class __$$_PaymentEntityCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PaymentEntity implements _PaymentEntity {
   const _$_PaymentEntity(
-      {required this.symbol,
+      {required this.id,
       required this.dateTime,
       required this.type,
       required this.amount,
@@ -632,7 +799,7 @@ class _$_PaymentEntity implements _PaymentEntity {
   factory _$_PaymentEntity.fromJson(Map<String, dynamic> json) => _$$_PaymentEntityFromJson(json);
 
   @override
-  final String symbol;
+  final CoinId id;
   @override
   final DateTime dateTime;
   @override
@@ -644,7 +811,7 @@ class _$_PaymentEntity implements _PaymentEntity {
 
   @override
   String toString() {
-    return 'PaymentEntity(symbol: $symbol, dateTime: $dateTime, type: $type, amount: $amount, numberOfCoins: $numberOfCoins)';
+    return 'PaymentEntity(id: $id, dateTime: $dateTime, type: $type, amount: $amount, numberOfCoins: $numberOfCoins)';
   }
 
   @override
@@ -652,7 +819,7 @@ class _$_PaymentEntity implements _PaymentEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentEntity &&
-            (identical(other.symbol, symbol) || other.symbol == symbol) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.dateTime, dateTime) || other.dateTime == dateTime) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.amount, amount) || other.amount == amount) &&
@@ -662,7 +829,7 @@ class _$_PaymentEntity implements _PaymentEntity {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, symbol, dateTime, type, amount, numberOfCoins);
+  int get hashCode => Object.hash(runtimeType, id, dateTime, type, amount, numberOfCoins);
 
   @JsonKey(ignore: true)
   @override
@@ -680,7 +847,7 @@ class _$_PaymentEntity implements _PaymentEntity {
 
 abstract class _PaymentEntity implements PaymentEntity {
   const factory _PaymentEntity(
-      {required final String symbol,
+      {required final CoinId id,
       required final DateTime dateTime,
       required final String type,
       required final double amount,
@@ -689,7 +856,7 @@ abstract class _PaymentEntity implements PaymentEntity {
   factory _PaymentEntity.fromJson(Map<String, dynamic> json) = _$_PaymentEntity.fromJson;
 
   @override
-  String get symbol;
+  CoinId get id;
   @override
   DateTime get dateTime;
   @override

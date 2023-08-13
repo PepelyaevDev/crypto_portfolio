@@ -5,5 +5,5 @@ class DetailPortfolioCoinEvent with _$DetailPortfolioCoinEvent {
   const factory DetailPortfolioCoinEvent.update(Either<Failure, CoinsEntity> data) = _Update;
   const factory DetailPortfolioCoinEvent.refreshData() = _RefreshData;
   const factory DetailPortfolioCoinEvent.deletePayment(PaymentEntity payment) = _DeletePayment;
-  const factory DetailPortfolioCoinEvent.deleteCoin(String symbol) = _DeleteCoin;
+  const factory DetailPortfolioCoinEvent.deleteCoin(CoinId id) = _DeleteCoin;
 }

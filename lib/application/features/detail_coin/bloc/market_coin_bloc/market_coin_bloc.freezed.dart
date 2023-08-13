@@ -16,20 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MarketCoinEvent {
-  String get symbol => throw _privateConstructorUsedError;
+  CoinId get id => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String symbol) getCoin,
+    required TResult Function(CoinId id) getCoin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String symbol)? getCoin,
+    TResult? Function(CoinId id)? getCoin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String symbol)? getCoin,
+    TResult Function(CoinId id)? getCoin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,7 +59,9 @@ abstract class $MarketCoinEventCopyWith<$Res> {
   factory $MarketCoinEventCopyWith(MarketCoinEvent value, $Res Function(MarketCoinEvent) then) =
       _$MarketCoinEventCopyWithImpl<$Res, MarketCoinEvent>;
   @useResult
-  $Res call({String symbol});
+  $Res call({CoinId id});
+
+  $CoinIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
@@ -75,14 +77,22 @@ class _$MarketCoinEventCopyWithImpl<$Res, $Val extends MarketCoinEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? symbol = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
-      symbol: null == symbol
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as CoinId,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CoinIdCopyWith<$Res> get id {
+    return $CoinIdCopyWith<$Res>(_value.id, (value) {
+      return _then(_value.copyWith(id: value) as $Val);
+    });
   }
 }
 
@@ -92,7 +102,10 @@ abstract class _$$_GetCoinCopyWith<$Res> implements $MarketCoinEventCopyWith<$Re
       __$$_GetCoinCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String symbol});
+  $Res call({CoinId id});
+
+  @override
+  $CoinIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
@@ -104,13 +117,13 @@ class __$$_GetCoinCopyWithImpl<$Res> extends _$MarketCoinEventCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? symbol = null,
+    Object? id = null,
   }) {
     return _then(_$_GetCoin(
-      symbol: null == symbol
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as CoinId,
     ));
   }
 }
@@ -118,14 +131,14 @@ class __$$_GetCoinCopyWithImpl<$Res> extends _$MarketCoinEventCopyWithImpl<$Res,
 /// @nodoc
 
 class _$_GetCoin implements _GetCoin {
-  const _$_GetCoin({required this.symbol});
+  const _$_GetCoin({required this.id});
 
   @override
-  final String symbol;
+  final CoinId id;
 
   @override
   String toString() {
-    return 'MarketCoinEvent.getCoin(symbol: $symbol)';
+    return 'MarketCoinEvent.getCoin(id: $id)';
   }
 
   @override
@@ -133,11 +146,11 @@ class _$_GetCoin implements _GetCoin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GetCoin &&
-            (identical(other.symbol, symbol) || other.symbol == symbol));
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, symbol);
+  int get hashCode => Object.hash(runtimeType, id);
 
   @JsonKey(ignore: true)
   @override
@@ -148,27 +161,27 @@ class _$_GetCoin implements _GetCoin {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String symbol) getCoin,
+    required TResult Function(CoinId id) getCoin,
   }) {
-    return getCoin(symbol);
+    return getCoin(id);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String symbol)? getCoin,
+    TResult? Function(CoinId id)? getCoin,
   }) {
-    return getCoin?.call(symbol);
+    return getCoin?.call(id);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String symbol)? getCoin,
+    TResult Function(CoinId id)? getCoin,
     required TResult orElse(),
   }) {
     if (getCoin != null) {
-      return getCoin(symbol);
+      return getCoin(id);
     }
     return orElse();
   }
@@ -203,10 +216,10 @@ class _$_GetCoin implements _GetCoin {
 }
 
 abstract class _GetCoin implements MarketCoinEvent {
-  const factory _GetCoin({required final String symbol}) = _$_GetCoin;
+  const factory _GetCoin({required final CoinId id}) = _$_GetCoin;
 
   @override
-  String get symbol;
+  CoinId get id;
   @override
   @JsonKey(ignore: true)
   _$$_GetCoinCopyWith<_$_GetCoin> get copyWith => throw _privateConstructorUsedError;

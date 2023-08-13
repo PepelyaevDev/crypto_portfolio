@@ -17,9 +17,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddPaymentPage extends StatefulWidget {
-  final String? symbol;
+  final CoinId? id;
 
-  const AddPaymentPage({this.symbol});
+  const AddPaymentPage({this.id});
 
   @override
   State<AddPaymentPage> createState() => _AddPaymentPageState();
@@ -39,7 +39,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
         context.read<MarketRepo>(),
         context.read<PortfolioRepo>(),
       )..add(
-          AddPaymentEvent.getCoin(widget.symbol),
+          AddPaymentEvent.getCoin(widget.id),
         ),
       child: Builder(builder: (context) {
         return BlocListener<AddPaymentBloc, AddPaymentState>(
@@ -88,7 +88,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                     BlocBuilder<AddPaymentBloc, AddPaymentState>(
                       builder: (context, state) {
                         final String? suffix = state.maybeMap(
-                          success: (state) => state.coin.symbol,
+                          success: (state) => state.coin.id.symbol,
                           orElse: () => null,
                         );
                         return CustomTextField(
@@ -155,7 +155,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                                   context.read<AddPaymentBloc>().add(
                                         AddPaymentEvent.updateHistory(
                                           paymentEntity: PaymentEntity(
-                                            symbol: state.coin.symbol,
+                                            id: state.coin.id,
                                             dateTime: dateTime,
                                             type: _paymentType,
                                             amount: moneyController.text.toDouble,
@@ -231,7 +231,8 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
     if (value.toDouble == 0) return context.localization.mustBeGreater0;
     if (coin == null) return context.localization.notSelectedCoin;
     if (_paymentType == PaymentType.sell && value.toDouble > coin.holdings) {
-      return '${context.localization.youHave} ${coin.holdings.toString()} ${coin.symbol}. ${context.localization.cannotSell} $value ${coin.symbol}';
+      return '${context.localization.youHave} ${coin.holdings.toString()} ${coin.id.symbol}. '
+          '${context.localization.cannotSell} $value ${coin.id.symbol}';
     }
     return null;
   }

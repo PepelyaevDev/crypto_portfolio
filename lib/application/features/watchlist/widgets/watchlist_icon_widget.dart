@@ -2,13 +2,14 @@ import 'package:crypto_portfolio/application/app/design_system/core/colors.dart'
 import 'package:crypto_portfolio/application/app/design_system/icons/app_icons.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/features/watchlist/bloc/watchlist_bloc.dart';
+import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WatchlistIconWidget extends StatelessWidget {
-  final String symbol;
+  final CoinId id;
   final bool appBarIcon;
-  const WatchlistIconWidget(this.symbol, {this.appBarIcon = false});
+  const WatchlistIconWidget(this.id, {this.appBarIcon = false});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class WatchlistIconWidget extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      state.symbols.contains(symbol)
+                      state.ids.contains(id)
                           ? context.localization.removedFromWatchlist
                           : context.localization.addedToWatchlist,
                     ),
@@ -35,10 +36,10 @@ class WatchlistIconWidget extends StatelessWidget {
                     duration: Duration(seconds: 1),
                   ),
                 );
-                context.read<WatchlistBloc>().add(WatchlistEvent.update(symbol));
+                context.read<WatchlistBloc>().add(WatchlistEvent.update(id));
               },
               icon: Icon(
-                state.symbols.contains(symbol) ? AppIcons.star : AppIcons.star_empty,
+                state.ids.contains(id) ? AppIcons.star : AppIcons.star_empty,
                 color: AppColors.primary,
                 size: 20,
               ),

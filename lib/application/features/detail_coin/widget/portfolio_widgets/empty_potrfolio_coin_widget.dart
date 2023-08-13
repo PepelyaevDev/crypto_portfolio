@@ -1,11 +1,12 @@
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
+import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:flutter/material.dart';
 
 class EmptyPortfolioCoinWidget extends StatelessWidget {
-  final String symbol;
-  const EmptyPortfolioCoinWidget({required this.symbol});
+  final CoinId id;
+  const EmptyPortfolioCoinWidget({required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +27,7 @@ class EmptyPortfolioCoinWidget extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => AddPaymentPage(
-                    symbol: symbol,
-                  ),
-                ),
+                MaterialPageRoute(builder: (_) => AddPaymentPage(id: id)),
               );
             },
             child: Text(context.localization.addTransaction),

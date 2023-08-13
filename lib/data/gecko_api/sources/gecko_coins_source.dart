@@ -1,4 +1,7 @@
+import 'package:crypto_portfolio/data/gecko_api/dto/all_coins_list/all_coins_list.dart';
+import 'package:crypto_portfolio/data/gecko_api/dto/all_coins_list/extensions/get_id.dart';
 import 'package:crypto_portfolio/data/gecko_api/dto/coin/gecko_coin_dto.dart';
+import 'package:crypto_portfolio/data/gecko_api/dto/get_coin_params/get_coin_params.dart';
 import 'package:dio/dio.dart';
 import 'package:synchronized/synchronized.dart';
 import 'package:crypto_portfolio/data/gecko_api/dto/market_chart/market_chart_dto.dart';
@@ -9,7 +12,7 @@ class GeckoCoinsSource {
 
   static const String _path = '/api/v3/coins/';
 
-  final List<Map<String, dynamic>> _coinsCache = [];
+  AllCoinsListDto _coinsCache = AllCoinsListDto(coins: []);
   final _lock = Lock();
 
   Future<List<GeckoCoinDTO>> getMarketCoins({required int page}) async {
@@ -27,8 +30,10 @@ class GeckoCoinsSource {
         .toList();
   }
 
-  Future<List<GeckoCoinDTO>> getMarketCoinsBySymbols({required List<String> symbols}) async {
-    final List<String> ids = await _getIdsFromSymbols(symbols: symbols);
+  Future<List<GeckoCoinDTO>> getMarketCoinsByParams({
+    required List<GetCoinParams> paramsList,
+  }) async {
+    final List<String> ids = await _getIdsFromParamsList(paramsList: paramsList);
     final response = await _dio.get<List<dynamic>>(
       '$_path/markets/',
       queryParameters: {
@@ -44,10 +49,10 @@ class GeckoCoinsSource {
   }
 
   Future<MarketChartDTO> getChartData({
-    required String symbol,
+    required GetCoinParams params,
     required String days,
   }) async {
-    final String id = await _getIdFromSymbol(symbol: symbol);
+    final String id = await _getIdFromParams(params: params);
     final response = await _dio.get<Map<String, dynamic>>(
       '$_path/$id/market_chart',
       queryParameters: {
@@ -59,31 +64,24 @@ class GeckoCoinsSource {
     return MarketChartDTO.fromJson(response.data!);
   }
 
-  Future<List<String>> _getIdsFromSymbols({required List<String> symbols}) async {
+  Future<List<String>> _getIdsFromParamsList({
+    required List<GetCoinParams> paramsList,
+  }) async {
     final List<String> ids = [];
-    for (var symbol in symbols) {
-      ids.add(await _getIdFromSymbol(symbol: symbol));
+    for (var params in paramsList) {
+      ids.add(await _getIdFromParams(params: params));
     }
     return ids;
   }
 
-  Future<String> _getIdFromSymbol({required String symbol}) async {
+  Future<String> _getIdFromParams({required GetCoinParams params}) async {
     await _lock.synchronized(() async {
-      if (_coinsCache.isEmpty) {
-        await _updateCoinsCache();
+      if (_coinsCache.coins.isEmpty) {
+        final response = await _dio.get<List<dynamic>>('$_path/list');
+        _coinsCache = AllCoinsListDto.fromJson({'coins': response.data!});
       }
     });
-    return _coinsCache.firstWhere((e) {
-      return e['symbol'].toString().toUpperCase() == symbol;
-    })['id']!;
-  }
 
-  Future<void> _updateCoinsCache() async {
-    final response = await _dio.get<List<dynamic>>('$_path/list');
-    for (var e in response.data!) {
-      if (e is Map<String, dynamic>) {
-        _coinsCache.add(e);
-      }
-    }
+    return _coinsCache.getId(params);
   }
 }

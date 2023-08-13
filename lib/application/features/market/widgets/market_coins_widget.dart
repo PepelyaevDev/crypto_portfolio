@@ -26,7 +26,7 @@ class MarketCoinsWidget extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (_) => DetailCoinPage(
                         coinLogo: coins.list[i].image,
-                        coinSymbol: coins.list[i].symbol,
+                        id: coins.list[i].id,
                       ),
                     ),
                   );
@@ -50,7 +50,7 @@ class MarketCoinsWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            coins.list[i].symbol.toString(),
+                            coins.list[i].id.symbol.toString(),
                             style: AppStyles.bold14,
                           ),
                           SizedBox(height: 2),

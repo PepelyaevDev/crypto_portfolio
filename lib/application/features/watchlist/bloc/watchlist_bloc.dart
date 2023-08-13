@@ -13,7 +13,7 @@ class WatchlistBloc extends Bloc<WatchlistEvent, WatchlistState> {
   final WatchlistRepo _watchlistRepo;
   WatchlistBloc(this._watchlistRepo)
       : super(WatchlistState(
-          symbols: _watchlistRepo.getSymbols(),
+          ids: _watchlistRepo.getIds(),
           coins: _watchlistRepo.getCoinsLocal(),
         )) {
     on<_Update>(_update);
@@ -21,17 +21,17 @@ class WatchlistBloc extends Bloc<WatchlistEvent, WatchlistState> {
   }
 
   void _update(_Update event, Emitter<WatchlistState> emit) async {
-    final List<String> newList = await _watchlistRepo.updateSymbols(symbol: event.symbol);
-    emit(WatchlistState(symbols: newList, coins: state.coins));
+    final List<CoinId> newList = await _watchlistRepo.updateIds(id: event.id);
+    emit(WatchlistState(ids: newList, coins: state.coins));
   }
 
   void _refresh(_Refresh event, Emitter<WatchlistState> emit) async {
-    if (state.symbols.isEmpty && state.coins.list.isEmpty) {
+    if (state.ids.isEmpty && state.coins.list.isEmpty) {
       return;
     }
     emit(
       WatchlistState(
-        symbols: state.symbols,
+        ids: state.ids,
         coins: state.coins,
         loading: true,
       ),
@@ -41,7 +41,7 @@ class WatchlistBloc extends Bloc<WatchlistEvent, WatchlistState> {
       (l) {
         emit(
           WatchlistState(
-            symbols: state.symbols,
+            ids: state.ids,
             coins: state.coins,
             error: l,
           ),
@@ -50,7 +50,7 @@ class WatchlistBloc extends Bloc<WatchlistEvent, WatchlistState> {
       (r) {
         emit(
           WatchlistState(
-            symbols: state.symbols,
+            ids: state.ids,
             coins: r,
           ),
         );

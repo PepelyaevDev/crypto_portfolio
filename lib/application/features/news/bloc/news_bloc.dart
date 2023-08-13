@@ -1,4 +1,5 @@
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:crypto_portfolio/domain/entity/news/news_entity.dart';
 import 'package:crypto_portfolio/domain/repo/locale_repo.dart';
@@ -65,9 +66,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       case NewsCategory.all:
         return [];
       case NewsCategory.watchlist:
-        final List<String> watchlistSymbols = _watchlistRepo.getSymbols();
-        final List<String> portfolioSymbols =
-            _portfolioRepo.getCoinsLocal().list.map((e) => e.symbol).toList();
+        final List<CoinId> watchlistSymbols = _watchlistRepo.getIds();
+        final List<CoinId> portfolioSymbols =
+            _portfolioRepo.getCoinsLocal().list.map((e) => e.id).toList();
         return _getCurrenciesFromSymbols([
           ...watchlistSymbols,
           ...portfolioSymbols,
@@ -77,17 +78,12 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     }
   }
 
-  List<String>? _getCurrenciesFromSymbols(List<String> symbols) {
-    if (symbols.isEmpty) {
+  List<String>? _getCurrenciesFromSymbols(List<CoinId> ids) {
+    if (ids.isEmpty) {
       return null;
     } else {
-      final List<String> currencies = [];
-      for (var e in symbols) {
-        if (!currencies.contains(e)) {
-          currencies.add(e);
-        }
-      }
-      return currencies;
+      final List<String> currencies = [...ids.map((e) => e.symbol).toList()];
+      return currencies.toSet().toList();
     }
   }
 }

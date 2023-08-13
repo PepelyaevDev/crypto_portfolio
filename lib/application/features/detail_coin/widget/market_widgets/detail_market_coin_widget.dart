@@ -9,6 +9,7 @@ import 'package:crypto_portfolio/application/features/detail_coin/widget/market_
 import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/market_chart_widget.dart';
 import 'package:crypto_portfolio/application/features/news/bloc/news_bloc.dart';
 import 'package:crypto_portfolio/application/features/news/widgets/news_list_widget.dart';
+import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/entity/market_chart/market_chart_entity.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
@@ -17,9 +18,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 
 class DetailMarketCoinWidget extends StatefulWidget {
-  final String symbol;
+  final CoinId id;
 
-  const DetailMarketCoinWidget(this.symbol);
+  const DetailMarketCoinWidget(this.id);
 
   @override
   State<DetailMarketCoinWidget> createState() => _DetailMarketCoinWidgetState();
@@ -43,10 +44,10 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
       providers: [
         BlocProvider<MarketCoinBloc>(
           create: (_) => MarketCoinBloc(context.read<MarketRepo>())
-            ..add(MarketCoinEvent.getCoin(symbol: widget.symbol)),
+            ..add(MarketCoinEvent.getCoin(id: widget.id)),
         ),
         BlocProvider<MarketChartBloc>(
-          create: (_) => MarketChartBloc(context.read<MarketRepo>(), widget.symbol)
+          create: (_) => MarketChartBloc(context.read<MarketRepo>(), widget.id)
             ..add(MarketChartEvent.setDistance(_selectedDistance)),
         ),
       ],
@@ -81,7 +82,7 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
             ],
             child: RefreshIndicator(
               onRefresh: () async {
-                context.read<MarketCoinBloc>().add(MarketCoinEvent.getCoin(symbol: widget.symbol));
+                context.read<MarketCoinBloc>().add(MarketCoinEvent.getCoin(id: widget.id));
                 context.read<MarketChartBloc>().add(MarketChartEvent.refresh(_selectedDistance));
                 return;
               },
@@ -92,9 +93,9 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                   DetailMarketDataPriceWidget(
                     stream: _selectedPrice.stream,
                     onTapRefresh: () {
-                      context.read<MarketCoinBloc>().add(MarketCoinEvent.getCoin(
-                            symbol: widget.symbol,
-                          ));
+                      context.read<MarketCoinBloc>().add(
+                            MarketCoinEvent.getCoin(id: widget.id),
+                          );
                     },
                   ),
                   SizedBox(height: 15),
@@ -147,7 +148,7 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                       return NewsListWidget(
                         controller: _controller,
                         category: NewsCategory.coin,
-                        symbol: widget.symbol,
+                        symbol: widget.id.symbol,
                       );
                     },
                   ),

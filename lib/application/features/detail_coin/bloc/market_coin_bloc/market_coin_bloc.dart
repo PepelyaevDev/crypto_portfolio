@@ -17,7 +17,7 @@ class MarketCoinBloc extends Bloc<MarketCoinEvent, MarketCoinState> {
 
   Future<void> _getCoin(_GetCoin event, Emitter<MarketCoinState> emit) async {
     emit(MarketCoinState(coin: state.coin, loading: true));
-    final result = await _marketRepo.getMarketCoinBySymbol(event.symbol);
+    final result = await _marketRepo.getMarketCoinById(id: event.id);
     result.fold(
       (error) => emit(MarketCoinState(coin: state.coin, error: error)),
       (marketCoin) => emit(MarketCoinState(coin: marketCoin)),

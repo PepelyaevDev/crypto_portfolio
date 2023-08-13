@@ -4,15 +4,16 @@ import 'package:crypto_portfolio/application/app/extension/context_extension.dar
 import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/detail_market_coin_widget.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/portfolio_widgets/detail_portfolio_coin_widget.dart';
 import 'package:crypto_portfolio/application/features/watchlist/widgets/watchlist_icon_widget.dart';
+import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:flutter/material.dart';
 
 class DetailCoinPage extends StatefulWidget {
   final String coinLogo;
-  final String coinSymbol;
+  final CoinId id;
   final int initialIndex;
   const DetailCoinPage({
     required this.coinLogo,
-    required this.coinSymbol,
+    required this.id,
     this.initialIndex = 0,
   });
 
@@ -57,14 +58,14 @@ class _DetailCoinPageState extends State<DetailCoinPage> with SingleTickerProvid
               ),
               SizedBox(width: 10),
               Text(
-                widget.coinSymbol,
+                widget.id.symbol,
                 style: AppStyles.normal14,
               ),
             ],
           ),
         ),
         actions: [
-          WatchlistIconWidget(widget.coinSymbol, appBarIcon: true),
+          WatchlistIconWidget(widget.id, appBarIcon: true),
           SizedBox(width: 5),
         ],
         shadowColor: AppColors.transparent,
@@ -84,8 +85,8 @@ class _DetailCoinPageState extends State<DetailCoinPage> with SingleTickerProvid
       body: TabBarView(
         controller: tabController,
         children: <Widget>[
-          DetailMarketCoinWidget(widget.coinSymbol),
-          DetailPortfolioCoinWidget(widget.coinSymbol),
+          DetailMarketCoinWidget(widget.id),
+          DetailPortfolioCoinWidget(widget.id),
         ],
       ),
     );

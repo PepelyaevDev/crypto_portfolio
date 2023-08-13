@@ -1,9 +1,8 @@
-import 'dart:convert';
-
 import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/dto/coin/gecko_coin_dto.dart';
 import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
+import 'package:crypto_portfolio/domain/entity/coins/extensions/to_dto.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/to_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/json_converter.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
@@ -14,23 +13,19 @@ class WatchlistRepo {
   final GeckoApiClient _geckoApiClient;
   WatchlistRepo(this._hiveApiClient, this._geckoApiClient);
 
-  List<String> getSymbols() {
-    final String? result = _hiveApiClient.coins.getWatchlistSymbols();
-    if (result == null) {
-      return [];
-    }
-    return List<String>.from(jsonDecode(result));
+  List<CoinId> getIds() {
+    return _hiveApiClient.coins.getWatchlistIds().convertToIdsList;
   }
 
-  Future<List<String>> updateSymbols({required String symbol}) async {
-    List<String> symbols = getSymbols();
-    if (symbols.contains(symbol)) {
-      symbols.remove(symbol);
+  Future<List<CoinId>> updateIds({required CoinId id}) async {
+    List<CoinId> ids = getIds();
+    if (ids.contains(id)) {
+      ids.remove(id);
     } else {
-      symbols.add(symbol);
+      ids.add(id);
     }
-    await _hiveApiClient.coins.updateWatchlistSymbols(jsonEncode(symbols));
-    return symbols;
+    await _hiveApiClient.coins.updateWatchlistIds(ids.convertToJson);
+    return ids;
   }
 
   CoinsEntity getCoinsLocal() {
@@ -39,11 +34,11 @@ class WatchlistRepo {
 
   Future<Either<Failure, CoinsEntity>> getCoinsRemote() async {
     try {
-      final List<String> symbols = getSymbols();
+      final List<CoinId> ids = getIds();
       final List<GeckoCoinDTO> geckoCoins = [];
-      if (symbols.isNotEmpty) {
-        geckoCoins.addAll(await _geckoApiClient.coins.getMarketCoinsBySymbols(
-          symbols: symbols,
+      if (ids.isNotEmpty) {
+        geckoCoins.addAll(await _geckoApiClient.coins.getMarketCoinsByParams(
+          paramsList: ids.map((e) => e.toDto).toList(),
         ));
       }
       geckoCoins.sort((a, b) {

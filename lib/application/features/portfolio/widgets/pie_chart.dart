@@ -21,10 +21,10 @@ class _PieChartWidgetState extends State<PieChartWidget> {
     dataMap.clear();
     legendLabels.clear();
     for (var e in widget.portfolioCoins.list) {
-      dataMap.addAll({e.symbol: e.holdingsValue});
+      dataMap.addAll({e.id.symbol: e.holdingsValue});
       legendLabels.addAll({
-        e.symbol:
-            '${e.symbol} - ${(e.holdingsValue / widget.portfolioCoins.holdingsValue * 100).toStringAsFixed(2)}%',
+        e.id.symbol:
+            '${e.id.symbol} - ${(e.holdingsValue / widget.portfolioCoins.holdingsValue * 100).toStringAsFixed(2)}%',
       });
     }
   }

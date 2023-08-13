@@ -18,21 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AddPaymentEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? symbol) getCoin,
+    required TResult Function(CoinId? id) getCoin,
     required TResult Function() clear,
     required TResult Function(CoinEntity coin, PaymentEntity paymentEntity) updateHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? symbol)? getCoin,
+    TResult? Function(CoinId? id)? getCoin,
     TResult? Function()? clear,
     TResult? Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? symbol)? getCoin,
+    TResult Function(CoinId? id)? getCoin,
     TResult Function()? clear,
     TResult Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
     required TResult orElse(),
@@ -84,7 +84,9 @@ abstract class _$$_GetCoinCopyWith<$Res> {
   factory _$$_GetCoinCopyWith(_$_GetCoin value, $Res Function(_$_GetCoin) then) =
       __$$_GetCoinCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? symbol});
+  $Res call({CoinId? id});
+
+  $CoinIdCopyWith<$Res>? get id;
 }
 
 /// @nodoc
@@ -96,28 +98,40 @@ class __$$_GetCoinCopyWithImpl<$Res> extends _$AddPaymentEventCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? symbol = freezed,
+    Object? id = freezed,
   }) {
     return _then(_$_GetCoin(
-      freezed == symbol
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
-              as String?,
+      freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as CoinId?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CoinIdCopyWith<$Res>? get id {
+    if (_value.id == null) {
+      return null;
+    }
+
+    return $CoinIdCopyWith<$Res>(_value.id!, (value) {
+      return _then(_value.copyWith(id: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$_GetCoin implements _GetCoin {
-  const _$_GetCoin(this.symbol);
+  const _$_GetCoin(this.id);
 
   @override
-  final String? symbol;
+  final CoinId? id;
 
   @override
   String toString() {
-    return 'AddPaymentEvent.getCoin(symbol: $symbol)';
+    return 'AddPaymentEvent.getCoin(id: $id)';
   }
 
   @override
@@ -125,11 +139,11 @@ class _$_GetCoin implements _GetCoin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GetCoin &&
-            (identical(other.symbol, symbol) || other.symbol == symbol));
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, symbol);
+  int get hashCode => Object.hash(runtimeType, id);
 
   @JsonKey(ignore: true)
   @override
@@ -140,33 +154,33 @@ class _$_GetCoin implements _GetCoin {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? symbol) getCoin,
+    required TResult Function(CoinId? id) getCoin,
     required TResult Function() clear,
     required TResult Function(CoinEntity coin, PaymentEntity paymentEntity) updateHistory,
   }) {
-    return getCoin(symbol);
+    return getCoin(id);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? symbol)? getCoin,
+    TResult? Function(CoinId? id)? getCoin,
     TResult? Function()? clear,
     TResult? Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
   }) {
-    return getCoin?.call(symbol);
+    return getCoin?.call(id);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? symbol)? getCoin,
+    TResult Function(CoinId? id)? getCoin,
     TResult Function()? clear,
     TResult Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
     required TResult orElse(),
   }) {
     if (getCoin != null) {
-      return getCoin(symbol);
+      return getCoin(id);
     }
     return orElse();
   }
@@ -207,9 +221,9 @@ class _$_GetCoin implements _GetCoin {
 }
 
 abstract class _GetCoin implements AddPaymentEvent {
-  const factory _GetCoin(final String? symbol) = _$_GetCoin;
+  const factory _GetCoin(final CoinId? id) = _$_GetCoin;
 
-  String? get symbol;
+  CoinId? get id;
   @JsonKey(ignore: true)
   _$$_GetCoinCopyWith<_$_GetCoin> get copyWith => throw _privateConstructorUsedError;
 }
@@ -247,7 +261,7 @@ class _$_Clear implements _Clear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? symbol) getCoin,
+    required TResult Function(CoinId? id) getCoin,
     required TResult Function() clear,
     required TResult Function(CoinEntity coin, PaymentEntity paymentEntity) updateHistory,
   }) {
@@ -257,7 +271,7 @@ class _$_Clear implements _Clear {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? symbol)? getCoin,
+    TResult? Function(CoinId? id)? getCoin,
     TResult? Function()? clear,
     TResult? Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
   }) {
@@ -267,7 +281,7 @@ class _$_Clear implements _Clear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? symbol)? getCoin,
+    TResult Function(CoinId? id)? getCoin,
     TResult Function()? clear,
     TResult Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
     required TResult orElse(),
@@ -407,7 +421,7 @@ class _$_UpdateHistory implements _UpdateHistory {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? symbol) getCoin,
+    required TResult Function(CoinId? id) getCoin,
     required TResult Function() clear,
     required TResult Function(CoinEntity coin, PaymentEntity paymentEntity) updateHistory,
   }) {
@@ -417,7 +431,7 @@ class _$_UpdateHistory implements _UpdateHistory {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? symbol)? getCoin,
+    TResult? Function(CoinId? id)? getCoin,
     TResult? Function()? clear,
     TResult? Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
   }) {
@@ -427,7 +441,7 @@ class _$_UpdateHistory implements _UpdateHistory {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? symbol)? getCoin,
+    TResult Function(CoinId? id)? getCoin,
     TResult Function()? clear,
     TResult Function(CoinEntity coin, PaymentEntity paymentEntity)? updateHistory,
     required TResult orElse(),

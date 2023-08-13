@@ -16,7 +16,7 @@ class CoinsEntity with _$CoinsEntity {
 class CoinEntity with _$CoinEntity {
   const factory CoinEntity({
     //market data
-    required String symbol,
+    required CoinId id,
     required String image,
     required double currentPrice,
     required double marketCap,
@@ -33,9 +33,19 @@ class CoinEntity with _$CoinEntity {
 }
 
 @freezed
+class CoinId with _$CoinId {
+  const factory CoinId({
+    required String symbol,
+    required String name,
+  }) = _CoinId;
+
+  factory CoinId.fromJson(Map<String, Object?> json) => _$CoinIdFromJson(json);
+}
+
+@freezed
 class PaymentEntity with _$PaymentEntity {
   const factory PaymentEntity({
-    required String symbol,
+    required CoinId id,
     required DateTime dateTime,
     required String type,
     required double amount,

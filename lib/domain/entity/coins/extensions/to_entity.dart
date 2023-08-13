@@ -3,7 +3,7 @@ import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 
 extension GeckoCoinDtoToEntity on GeckoCoinDTO {
   CoinEntity get createEmptyCoin => CoinEntity(
-        symbol: symbol.toUpperCase(),
+        id: CoinId(symbol: symbol.toUpperCase(), name: name),
         image: image,
         currentPrice: currentPrice,
         marketCap: marketCap ?? 0,
@@ -14,4 +14,12 @@ extension GeckoCoinDtoToEntity on GeckoCoinDTO {
         maxSupply: maxSupply,
         history: [],
       );
+}
+
+extension GeckoCoinsDtoToEntity on List<GeckoCoinDTO> {
+  CoinEntity createEmptyCoin(CoinId id) {
+    return firstWhere((e) {
+      return e.symbol.toUpperCase() == id.symbol && e.name == id.name;
+    }).createEmptyCoin;
+  }
 }

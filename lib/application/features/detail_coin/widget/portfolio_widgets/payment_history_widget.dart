@@ -94,7 +94,7 @@ class PaymentHistoryWidget extends StatelessWidget {
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (_, i) => PaymentWidget(
-                  name: coin.symbol,
+                  name: coin.id.symbol,
                   coinLogo: coin.image,
                   payment: coin.history[i],
                   onTapDelete: coin.canDelete(i) ? onTapDelete : null,
