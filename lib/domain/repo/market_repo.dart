@@ -23,6 +23,17 @@ class MarketRepo {
     return _hiveApiClient.coins.getMarketCoins().convertToCoinsEntity;
   }
 
+  Future<Either<Failure, CoinsEntity>> getStableCoins() async {
+    try {
+      final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getStableCoins();
+      final List<CoinEntity> coinsList = geckoCoins.map((e) => e.createEmptyCoin).toList();
+      final CoinsEntity coinsEntity = CoinsEntity(list: coinsList, updateTime: DateTime.now());
+      return right(coinsEntity);
+    } catch (e) {
+      return left(Failure.from(e));
+    }
+  }
+
   Future<Either<Failure, CoinsEntity>> getCoinsRemote() async {
     try {
       final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoins(page: 1);

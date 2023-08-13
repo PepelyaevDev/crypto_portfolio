@@ -2,6 +2,7 @@ import 'package:crypto_portfolio/application/app/design_system/core/colors.dart'
 import 'package:crypto_portfolio/application/features/bottom_navigation/bloc/bottom_navigation_bloc.dart';
 import 'package:crypto_portfolio/application/features/bottom_navigation/page/bottom_navigation_page.dart';
 import 'package:crypto_portfolio/application/features/settings/bloc/locale_bloc/locale_bloc.dart';
+import 'package:crypto_portfolio/application/features/stable_coins/bloc/stable_bloc.dart';
 import 'package:crypto_portfolio/application/features/watchlist/bloc/watchlist_bloc.dart';
 import 'package:crypto_portfolio/data/cryptopanic_api/api/cryptopanic_api_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
@@ -52,6 +53,7 @@ class CryptoPortfolioApp extends StatelessWidget {
           return MultiBlocProvider(
             providers: [
               BlocProvider(create: (context) => BottomNavigationBloc()),
+              BlocProvider(create: (context) => StableBloc(context.read<MarketRepo>())),
               BlocProvider(
                 create: (context) => WatchlistBloc(context.read<WatchlistRepo>()),
               ),

@@ -5,7 +5,7 @@ extension GeckoCoinDtoToEntity on GeckoCoinDTO {
   CoinEntity get createEmptyCoin => CoinEntity(
         id: CoinId(symbol: symbol.toUpperCase(), name: name),
         image: image,
-        currentPrice: currentPrice,
+        currentPrice: currentPrice ?? 0,
         marketCap: marketCap ?? 0,
         priceChangePercentage24H: priceChangePercentage_24h ?? 0,
         marketCapRank: marketCapRank,

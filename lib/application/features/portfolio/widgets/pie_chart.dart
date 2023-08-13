@@ -1,4 +1,5 @@
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
+import 'package:crypto_portfolio/application/features/stable_coins/widgets/stable_percent_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/portfolio_data.dart';
@@ -50,7 +51,8 @@ class _PieChartWidgetState extends State<PieChartWidget> {
           dataMap: dataMap,
           legendOptions: LegendOptions(legendTextStyle: AppStyles.normal14),
           chartValuesOptions: ChartValuesOptions(showChartValues: false),
-        )
+        ),
+        StablePercentWidget(widget.portfolioCoins),
       ],
     );
   }

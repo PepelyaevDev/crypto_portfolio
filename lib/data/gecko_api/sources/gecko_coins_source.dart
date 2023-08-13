@@ -30,6 +30,21 @@ class GeckoCoinsSource {
         .toList();
   }
 
+  Future<List<GeckoCoinDTO>> getStableCoins() async {
+    final response = await _dio.get<List<dynamic>>(
+      '$_path/markets/',
+      queryParameters: {
+        'vs_currency': 'usd',
+        'category': 'stablecoins',
+      },
+    );
+    return response.data!
+        .whereType<Map<String, dynamic>>()
+        .toList()
+        .map((e) => GeckoCoinDTO.fromJson(e))
+        .toList();
+  }
+
   Future<List<GeckoCoinDTO>> getMarketCoinsByParams({
     required List<GetCoinParams> paramsList,
   }) async {

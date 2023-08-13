@@ -25,7 +25,7 @@ mixin _$GeckoCoinDTO {
   String get name => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   @JsonKey(name: 'current_price')
-  double get currentPrice => throw _privateConstructorUsedError;
+  double? get currentPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'market_cap')
   double? get marketCap => throw _privateConstructorUsedError;
   @JsonKey(name: 'market_cap_rank')
@@ -33,7 +33,7 @@ mixin _$GeckoCoinDTO {
   @JsonKey(name: 'fully_diluted_valuation')
   double? get fullyDilutedValuation => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_volume')
-  double get totalVolume => throw _privateConstructorUsedError;
+  double? get totalVolume => throw _privateConstructorUsedError;
   double? get high_24h => throw _privateConstructorUsedError;
   double? get low_24h => throw _privateConstructorUsedError;
   @JsonKey(name: 'price_change_24h')
@@ -50,19 +50,19 @@ mixin _$GeckoCoinDTO {
   double? get totalSupply => throw _privateConstructorUsedError;
   @JsonKey(name: 'max_supply')
   double? get maxSupply => throw _privateConstructorUsedError;
-  double get ath => throw _privateConstructorUsedError;
+  double? get ath => throw _privateConstructorUsedError;
   @JsonKey(name: 'ath_change_percentage')
-  double get athChangePercentage => throw _privateConstructorUsedError;
+  double? get athChangePercentage => throw _privateConstructorUsedError;
   @JsonKey(name: 'ath_date')
-  String get athDate => throw _privateConstructorUsedError;
-  double get atl => throw _privateConstructorUsedError;
+  String? get athDate => throw _privateConstructorUsedError;
+  double? get atl => throw _privateConstructorUsedError;
   @JsonKey(name: 'atl_change_percentage')
-  double get atlChangePercentage => throw _privateConstructorUsedError;
+  double? get atlChangePercentage => throw _privateConstructorUsedError;
   @JsonKey(name: 'atl_date')
-  String get atlDate => throw _privateConstructorUsedError;
+  String? get atlDate => throw _privateConstructorUsedError;
   GeckoRoiDTO? get roi => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_updated')
-  String get lastUpdated => throw _privateConstructorUsedError;
+  String? get lastUpdated => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -79,11 +79,11 @@ abstract class $GeckoCoinDTOCopyWith<$Res> {
       String symbol,
       String name,
       String image,
-      @JsonKey(name: 'current_price') double currentPrice,
+      @JsonKey(name: 'current_price') double? currentPrice,
       @JsonKey(name: 'market_cap') double? marketCap,
       @JsonKey(name: 'market_cap_rank') double? marketCapRank,
       @JsonKey(name: 'fully_diluted_valuation') double? fullyDilutedValuation,
-      @JsonKey(name: 'total_volume') double totalVolume,
+      @JsonKey(name: 'total_volume') double? totalVolume,
       double? high_24h,
       double? low_24h,
       @JsonKey(name: 'price_change_24h') double? priceChange_24h,
@@ -93,14 +93,14 @@ abstract class $GeckoCoinDTOCopyWith<$Res> {
       @JsonKey(name: 'circulating_supply') double? circulatingSupply,
       @JsonKey(name: 'total_supply') double? totalSupply,
       @JsonKey(name: 'max_supply') double? maxSupply,
-      double ath,
-      @JsonKey(name: 'ath_change_percentage') double athChangePercentage,
-      @JsonKey(name: 'ath_date') String athDate,
-      double atl,
-      @JsonKey(name: 'atl_change_percentage') double atlChangePercentage,
-      @JsonKey(name: 'atl_date') String atlDate,
+      double? ath,
+      @JsonKey(name: 'ath_change_percentage') double? athChangePercentage,
+      @JsonKey(name: 'ath_date') String? athDate,
+      double? atl,
+      @JsonKey(name: 'atl_change_percentage') double? atlChangePercentage,
+      @JsonKey(name: 'atl_date') String? atlDate,
       GeckoRoiDTO? roi,
-      @JsonKey(name: 'last_updated') String lastUpdated});
+      @JsonKey(name: 'last_updated') String? lastUpdated});
 
   $GeckoRoiDTOCopyWith<$Res>? get roi;
 }
@@ -122,11 +122,11 @@ class _$GeckoCoinDTOCopyWithImpl<$Res, $Val extends GeckoCoinDTO>
     Object? symbol = null,
     Object? name = null,
     Object? image = null,
-    Object? currentPrice = null,
+    Object? currentPrice = freezed,
     Object? marketCap = freezed,
     Object? marketCapRank = freezed,
     Object? fullyDilutedValuation = freezed,
-    Object? totalVolume = null,
+    Object? totalVolume = freezed,
     Object? high_24h = freezed,
     Object? low_24h = freezed,
     Object? priceChange_24h = freezed,
@@ -136,14 +136,14 @@ class _$GeckoCoinDTOCopyWithImpl<$Res, $Val extends GeckoCoinDTO>
     Object? circulatingSupply = freezed,
     Object? totalSupply = freezed,
     Object? maxSupply = freezed,
-    Object? ath = null,
-    Object? athChangePercentage = null,
-    Object? athDate = null,
-    Object? atl = null,
-    Object? atlChangePercentage = null,
-    Object? atlDate = null,
+    Object? ath = freezed,
+    Object? athChangePercentage = freezed,
+    Object? athDate = freezed,
+    Object? atl = freezed,
+    Object? atlChangePercentage = freezed,
+    Object? atlDate = freezed,
     Object? roi = freezed,
-    Object? lastUpdated = null,
+    Object? lastUpdated = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -162,10 +162,10 @@ class _$GeckoCoinDTOCopyWithImpl<$Res, $Val extends GeckoCoinDTO>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      currentPrice: null == currentPrice
+      currentPrice: freezed == currentPrice
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       marketCap: freezed == marketCap
           ? _value.marketCap
           : marketCap // ignore: cast_nullable_to_non_nullable
@@ -178,10 +178,10 @@ class _$GeckoCoinDTOCopyWithImpl<$Res, $Val extends GeckoCoinDTO>
           ? _value.fullyDilutedValuation
           : fullyDilutedValuation // ignore: cast_nullable_to_non_nullable
               as double?,
-      totalVolume: null == totalVolume
+      totalVolume: freezed == totalVolume
           ? _value.totalVolume
           : totalVolume // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       high_24h: freezed == high_24h
           ? _value.high_24h
           : high_24h // ignore: cast_nullable_to_non_nullable
@@ -218,38 +218,38 @@ class _$GeckoCoinDTOCopyWithImpl<$Res, $Val extends GeckoCoinDTO>
           ? _value.maxSupply
           : maxSupply // ignore: cast_nullable_to_non_nullable
               as double?,
-      ath: null == ath
+      ath: freezed == ath
           ? _value.ath
           : ath // ignore: cast_nullable_to_non_nullable
-              as double,
-      athChangePercentage: null == athChangePercentage
+              as double?,
+      athChangePercentage: freezed == athChangePercentage
           ? _value.athChangePercentage
           : athChangePercentage // ignore: cast_nullable_to_non_nullable
-              as double,
-      athDate: null == athDate
+              as double?,
+      athDate: freezed == athDate
           ? _value.athDate
           : athDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      atl: null == atl
+              as String?,
+      atl: freezed == atl
           ? _value.atl
           : atl // ignore: cast_nullable_to_non_nullable
-              as double,
-      atlChangePercentage: null == atlChangePercentage
+              as double?,
+      atlChangePercentage: freezed == atlChangePercentage
           ? _value.atlChangePercentage
           : atlChangePercentage // ignore: cast_nullable_to_non_nullable
-              as double,
-      atlDate: null == atlDate
+              as double?,
+      atlDate: freezed == atlDate
           ? _value.atlDate
           : atlDate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       roi: freezed == roi
           ? _value.roi
           : roi // ignore: cast_nullable_to_non_nullable
               as GeckoRoiDTO?,
-      lastUpdated: null == lastUpdated
+      lastUpdated: freezed == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 
@@ -277,11 +277,11 @@ abstract class _$$_GeckoCoinDTOCopyWith<$Res> implements $GeckoCoinDTOCopyWith<$
       String symbol,
       String name,
       String image,
-      @JsonKey(name: 'current_price') double currentPrice,
+      @JsonKey(name: 'current_price') double? currentPrice,
       @JsonKey(name: 'market_cap') double? marketCap,
       @JsonKey(name: 'market_cap_rank') double? marketCapRank,
       @JsonKey(name: 'fully_diluted_valuation') double? fullyDilutedValuation,
-      @JsonKey(name: 'total_volume') double totalVolume,
+      @JsonKey(name: 'total_volume') double? totalVolume,
       double? high_24h,
       double? low_24h,
       @JsonKey(name: 'price_change_24h') double? priceChange_24h,
@@ -291,14 +291,14 @@ abstract class _$$_GeckoCoinDTOCopyWith<$Res> implements $GeckoCoinDTOCopyWith<$
       @JsonKey(name: 'circulating_supply') double? circulatingSupply,
       @JsonKey(name: 'total_supply') double? totalSupply,
       @JsonKey(name: 'max_supply') double? maxSupply,
-      double ath,
-      @JsonKey(name: 'ath_change_percentage') double athChangePercentage,
-      @JsonKey(name: 'ath_date') String athDate,
-      double atl,
-      @JsonKey(name: 'atl_change_percentage') double atlChangePercentage,
-      @JsonKey(name: 'atl_date') String atlDate,
+      double? ath,
+      @JsonKey(name: 'ath_change_percentage') double? athChangePercentage,
+      @JsonKey(name: 'ath_date') String? athDate,
+      double? atl,
+      @JsonKey(name: 'atl_change_percentage') double? atlChangePercentage,
+      @JsonKey(name: 'atl_date') String? atlDate,
       GeckoRoiDTO? roi,
-      @JsonKey(name: 'last_updated') String lastUpdated});
+      @JsonKey(name: 'last_updated') String? lastUpdated});
 
   @override
   $GeckoRoiDTOCopyWith<$Res>? get roi;
@@ -317,11 +317,11 @@ class __$$_GeckoCoinDTOCopyWithImpl<$Res> extends _$GeckoCoinDTOCopyWithImpl<$Re
     Object? symbol = null,
     Object? name = null,
     Object? image = null,
-    Object? currentPrice = null,
+    Object? currentPrice = freezed,
     Object? marketCap = freezed,
     Object? marketCapRank = freezed,
     Object? fullyDilutedValuation = freezed,
-    Object? totalVolume = null,
+    Object? totalVolume = freezed,
     Object? high_24h = freezed,
     Object? low_24h = freezed,
     Object? priceChange_24h = freezed,
@@ -331,14 +331,14 @@ class __$$_GeckoCoinDTOCopyWithImpl<$Res> extends _$GeckoCoinDTOCopyWithImpl<$Re
     Object? circulatingSupply = freezed,
     Object? totalSupply = freezed,
     Object? maxSupply = freezed,
-    Object? ath = null,
-    Object? athChangePercentage = null,
-    Object? athDate = null,
-    Object? atl = null,
-    Object? atlChangePercentage = null,
-    Object? atlDate = null,
+    Object? ath = freezed,
+    Object? athChangePercentage = freezed,
+    Object? athDate = freezed,
+    Object? atl = freezed,
+    Object? atlChangePercentage = freezed,
+    Object? atlDate = freezed,
     Object? roi = freezed,
-    Object? lastUpdated = null,
+    Object? lastUpdated = freezed,
   }) {
     return _then(_$_GeckoCoinDTO(
       id: null == id
@@ -357,10 +357,10 @@ class __$$_GeckoCoinDTOCopyWithImpl<$Res> extends _$GeckoCoinDTOCopyWithImpl<$Re
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      currentPrice: null == currentPrice
+      currentPrice: freezed == currentPrice
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       marketCap: freezed == marketCap
           ? _value.marketCap
           : marketCap // ignore: cast_nullable_to_non_nullable
@@ -373,10 +373,10 @@ class __$$_GeckoCoinDTOCopyWithImpl<$Res> extends _$GeckoCoinDTOCopyWithImpl<$Re
           ? _value.fullyDilutedValuation
           : fullyDilutedValuation // ignore: cast_nullable_to_non_nullable
               as double?,
-      totalVolume: null == totalVolume
+      totalVolume: freezed == totalVolume
           ? _value.totalVolume
           : totalVolume // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       high_24h: freezed == high_24h
           ? _value.high_24h
           : high_24h // ignore: cast_nullable_to_non_nullable
@@ -413,38 +413,38 @@ class __$$_GeckoCoinDTOCopyWithImpl<$Res> extends _$GeckoCoinDTOCopyWithImpl<$Re
           ? _value.maxSupply
           : maxSupply // ignore: cast_nullable_to_non_nullable
               as double?,
-      ath: null == ath
+      ath: freezed == ath
           ? _value.ath
           : ath // ignore: cast_nullable_to_non_nullable
-              as double,
-      athChangePercentage: null == athChangePercentage
+              as double?,
+      athChangePercentage: freezed == athChangePercentage
           ? _value.athChangePercentage
           : athChangePercentage // ignore: cast_nullable_to_non_nullable
-              as double,
-      athDate: null == athDate
+              as double?,
+      athDate: freezed == athDate
           ? _value.athDate
           : athDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      atl: null == atl
+              as String?,
+      atl: freezed == atl
           ? _value.atl
           : atl // ignore: cast_nullable_to_non_nullable
-              as double,
-      atlChangePercentage: null == atlChangePercentage
+              as double?,
+      atlChangePercentage: freezed == atlChangePercentage
           ? _value.atlChangePercentage
           : atlChangePercentage // ignore: cast_nullable_to_non_nullable
-              as double,
-      atlDate: null == atlDate
+              as double?,
+      atlDate: freezed == atlDate
           ? _value.atlDate
           : atlDate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       roi: freezed == roi
           ? _value.roi
           : roi // ignore: cast_nullable_to_non_nullable
               as GeckoRoiDTO?,
-      lastUpdated: null == lastUpdated
+      lastUpdated: freezed == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -493,7 +493,7 @@ class _$_GeckoCoinDTO implements _GeckoCoinDTO {
   final String image;
   @override
   @JsonKey(name: 'current_price')
-  final double currentPrice;
+  final double? currentPrice;
   @override
   @JsonKey(name: 'market_cap')
   final double? marketCap;
@@ -505,7 +505,7 @@ class _$_GeckoCoinDTO implements _GeckoCoinDTO {
   final double? fullyDilutedValuation;
   @override
   @JsonKey(name: 'total_volume')
-  final double totalVolume;
+  final double? totalVolume;
   @override
   final double? high_24h;
   @override
@@ -532,26 +532,26 @@ class _$_GeckoCoinDTO implements _GeckoCoinDTO {
   @JsonKey(name: 'max_supply')
   final double? maxSupply;
   @override
-  final double ath;
+  final double? ath;
   @override
   @JsonKey(name: 'ath_change_percentage')
-  final double athChangePercentage;
+  final double? athChangePercentage;
   @override
   @JsonKey(name: 'ath_date')
-  final String athDate;
+  final String? athDate;
   @override
-  final double atl;
+  final double? atl;
   @override
   @JsonKey(name: 'atl_change_percentage')
-  final double atlChangePercentage;
+  final double? atlChangePercentage;
   @override
   @JsonKey(name: 'atl_date')
-  final String atlDate;
+  final String? atlDate;
   @override
   final GeckoRoiDTO? roi;
   @override
   @JsonKey(name: 'last_updated')
-  final String lastUpdated;
+  final String? lastUpdated;
 
   @override
   String toString() {
@@ -652,11 +652,11 @@ abstract class _GeckoCoinDTO implements GeckoCoinDTO {
       required final String symbol,
       required final String name,
       required final String image,
-      @JsonKey(name: 'current_price') required final double currentPrice,
+      @JsonKey(name: 'current_price') required final double? currentPrice,
       @JsonKey(name: 'market_cap') required final double? marketCap,
       @JsonKey(name: 'market_cap_rank') required final double? marketCapRank,
       @JsonKey(name: 'fully_diluted_valuation') required final double? fullyDilutedValuation,
-      @JsonKey(name: 'total_volume') required final double totalVolume,
+      @JsonKey(name: 'total_volume') required final double? totalVolume,
       required final double? high_24h,
       required final double? low_24h,
       @JsonKey(name: 'price_change_24h') required final double? priceChange_24h,
@@ -668,14 +668,14 @@ abstract class _GeckoCoinDTO implements GeckoCoinDTO {
       @JsonKey(name: 'circulating_supply') required final double? circulatingSupply,
       @JsonKey(name: 'total_supply') required final double? totalSupply,
       @JsonKey(name: 'max_supply') required final double? maxSupply,
-      required final double ath,
-      @JsonKey(name: 'ath_change_percentage') required final double athChangePercentage,
-      @JsonKey(name: 'ath_date') required final String athDate,
-      required final double atl,
-      @JsonKey(name: 'atl_change_percentage') required final double atlChangePercentage,
-      @JsonKey(name: 'atl_date') required final String atlDate,
+      required final double? ath,
+      @JsonKey(name: 'ath_change_percentage') required final double? athChangePercentage,
+      @JsonKey(name: 'ath_date') required final String? athDate,
+      required final double? atl,
+      @JsonKey(name: 'atl_change_percentage') required final double? atlChangePercentage,
+      @JsonKey(name: 'atl_date') required final String? atlDate,
       required final GeckoRoiDTO? roi,
-      @JsonKey(name: 'last_updated') required final String lastUpdated}) = _$_GeckoCoinDTO;
+      @JsonKey(name: 'last_updated') required final String? lastUpdated}) = _$_GeckoCoinDTO;
 
   factory _GeckoCoinDTO.fromJson(Map<String, dynamic> json) = _$_GeckoCoinDTO.fromJson;
 
@@ -689,7 +689,7 @@ abstract class _GeckoCoinDTO implements GeckoCoinDTO {
   String get image;
   @override
   @JsonKey(name: 'current_price')
-  double get currentPrice;
+  double? get currentPrice;
   @override
   @JsonKey(name: 'market_cap')
   double? get marketCap;
@@ -701,7 +701,7 @@ abstract class _GeckoCoinDTO implements GeckoCoinDTO {
   double? get fullyDilutedValuation;
   @override
   @JsonKey(name: 'total_volume')
-  double get totalVolume;
+  double? get totalVolume;
   @override
   double? get high_24h;
   @override
@@ -728,26 +728,26 @@ abstract class _GeckoCoinDTO implements GeckoCoinDTO {
   @JsonKey(name: 'max_supply')
   double? get maxSupply;
   @override
-  double get ath;
+  double? get ath;
   @override
   @JsonKey(name: 'ath_change_percentage')
-  double get athChangePercentage;
+  double? get athChangePercentage;
   @override
   @JsonKey(name: 'ath_date')
-  String get athDate;
+  String? get athDate;
   @override
-  double get atl;
+  double? get atl;
   @override
   @JsonKey(name: 'atl_change_percentage')
-  double get atlChangePercentage;
+  double? get atlChangePercentage;
   @override
   @JsonKey(name: 'atl_date')
-  String get atlDate;
+  String? get atlDate;
   @override
   GeckoRoiDTO? get roi;
   @override
   @JsonKey(name: 'last_updated')
-  String get lastUpdated;
+  String? get lastUpdated;
   @override
   @JsonKey(ignore: true)
   _$$_GeckoCoinDTOCopyWith<_$_GeckoCoinDTO> get copyWith => throw _privateConstructorUsedError;
