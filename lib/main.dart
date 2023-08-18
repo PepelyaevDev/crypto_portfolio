@@ -6,10 +6,9 @@ import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:flutter/material.dart';
 
 //просьба поставить оценку в маркете
-//процент стейблов (стейбл блок), возможность списывать и зачислять к стейблам
+//возможность списывать и зачислять к стейблам, не вводить сумму сделки в платежах со стейблами
 //добавить подсказку как смотреть полные новости
 //лицензия syncfusion_flutter_charts либо замена либы
-//информация о проекте/контакты
 //рассмотреть добавление hive моделей/замена hive на shared_preferences/sqflite
 
 Future<void> main() async {

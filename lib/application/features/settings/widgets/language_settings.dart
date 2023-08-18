@@ -7,6 +7,8 @@ import 'package:crypto_portfolio/application/features/settings/bloc/locale_bloc/
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'settings_item.dart';
+
 class LanguageSettings extends StatefulWidget {
   @override
   State<LanguageSettings> createState() => _LanguageSettingsState();
@@ -18,7 +20,6 @@ class _LanguageSettingsState extends State<LanguageSettings> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -39,7 +40,7 @@ class _LanguageSettingsState extends State<LanguageSettings> {
           decoration: AppDecorations.blueBorderDecoration,
           child: Column(
             children: [
-              _LanguageSettingItem(
+              SettingItem(
                 title: context.localization.appLanguage,
                 child: _SelectAppLocaleWidget(),
               ),
@@ -47,65 +48,13 @@ class _LanguageSettingsState extends State<LanguageSettings> {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Divider(height: 1),
               ),
-              _LanguageSettingItem(
+              SettingItem(
                 title: context.localization.newsLanguage,
                 child: _SelectNewsLocaleWidget(),
               ),
             ],
           ),
         ),
-      ],
-    );
-  }
-}
-
-class _LanguageSettingItem extends StatefulWidget {
-  final String title;
-  final Widget child;
-
-  const _LanguageSettingItem({
-    required this.title,
-    required this.child,
-  });
-
-  @override
-  State<_LanguageSettingItem> createState() => _LanguageSettingItemState();
-}
-
-class _LanguageSettingItemState extends State<_LanguageSettingItem> {
-  bool _widgetClose = true;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 5),
-        InkWell(
-          borderRadius: BorderRadius.circular(5),
-          onTap: () {
-            setState(() {
-              _widgetClose = !_widgetClose;
-            });
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  widget.title,
-                  style: AppStyles.normal18.copyWith(color: AppColors.blackLight),
-                ),
-                Icon(
-                  _widgetClose ? Icons.arrow_drop_down : Icons.arrow_drop_up,
-                  color: AppColors.primary,
-                ),
-              ],
-            ),
-          ),
-        ),
-        if (!_widgetClose) widget.child,
-        if (_widgetClose) SizedBox(height: 5),
       ],
     );
   }
@@ -166,7 +115,7 @@ class _SelectNewsLocaleWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
               child: Text(
-                context.localization.selectNewsLanguageDiscription,
+                context.localization.selectNewsLanguageDescription,
                 style: AppStyles.normal14.copyWith(color: AppColors.gray),
               ),
             ),
