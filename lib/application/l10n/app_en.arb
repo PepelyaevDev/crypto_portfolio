@@ -71,6 +71,9 @@
     "personalNews": "Personal news",
     "personalNewsDesc": "The 'Watchlist' section contains news about coins from your portfolio and about coins added to watchlist",
     "newsNotFound": "News not found",
+    "viewInSource": "View in source",
+    "clickOnLink": "Click on the link",
+    "clickOnTitle": "Click on title",
 
     "response429": "Server is not available. Please wait 2 minutes and try again",
     "unknownError": "Something went wrong. Try again later please",

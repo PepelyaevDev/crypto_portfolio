@@ -76,6 +76,8 @@ flutter_icons:
 flutter: 
   assets: 
     - assets/logo.png
+    - assets/news_instruction/tap_header.png
+    - assets/news_instruction/tap_source.png
   fonts: 
     - 
       family: AppIcons

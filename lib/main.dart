@@ -5,11 +5,13 @@ import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
 import 'package:flutter/material.dart';
 
-//просьба поставить оценку в маркете
-//возможность списывать и зачислять к стейблам, не вводить сумму сделки в платежах со стейблами
-//добавить подсказку как смотреть полные новости
+//Before release
 //лицензия syncfusion_flutter_charts либо замена либы
 //рассмотреть добавление hive моделей/замена hive на shared_preferences/sqflite
+
+//After release
+//просьба поставить оценку в маркете
+//возможность списывать и зачислять к стейблам, не вводить сумму сделки в платежах со стейблами
 
 Future<void> main() async {
   final HiveApiClient hiveApiClient = await HiveApiClient.getClient;
