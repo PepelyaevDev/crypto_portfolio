@@ -6,7 +6,7 @@ import 'package:crypto_portfolio/application/features/stable_coins/bloc/stable_b
 import 'package:crypto_portfolio/application/features/watchlist/bloc/watchlist_bloc.dart';
 import 'package:crypto_portfolio/data/cryptopanic_api/api/cryptopanic_api_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
-import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
+import 'package:crypto_portfolio/data/hive_api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/repo/locale_repo.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:crypto_portfolio/domain/repo/news_repo.dart';

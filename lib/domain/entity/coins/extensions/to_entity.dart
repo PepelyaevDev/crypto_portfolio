@@ -23,3 +23,12 @@ extension GeckoCoinsDtoToEntity on List<GeckoCoinDTO> {
     }).createEmptyCoin;
   }
 }
+
+extension CoinsEntityFromNullable on CoinsEntity? {
+  CoinsEntity get convertFromNullable => this == null
+      ? CoinsEntity(
+          list: [],
+          updateTime: DateTime.now(),
+        )
+      : this!;
+}

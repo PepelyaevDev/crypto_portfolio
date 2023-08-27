@@ -9,7 +9,7 @@ class CoinsEntity with _$CoinsEntity {
     required DateTime updateTime,
   }) = _CoinsEntity;
 
-  factory CoinsEntity.fromJson(Map<String, Object?> json) => _$CoinsEntityFromJson(json);
+  factory CoinsEntity.fromJson(dynamic json) => _$CoinsEntityFromJson(json as Map<String, dynamic>);
 }
 
 @freezed
@@ -29,7 +29,7 @@ class CoinEntity with _$CoinEntity {
     required List<PaymentEntity> history,
   }) = _CoinEntity;
 
-  factory CoinEntity.fromJson(Map<String, Object?> json) => _$CoinEntityFromJson(json);
+  factory CoinEntity.fromJson(dynamic json) => _$CoinEntityFromJson(json as Map<String, dynamic>);
 }
 
 @freezed
@@ -39,7 +39,7 @@ class CoinId with _$CoinId {
     required String name,
   }) = _CoinId;
 
-  factory CoinId.fromJson(Map<String, Object?> json) => _$CoinIdFromJson(json);
+  factory CoinId.fromJson(dynamic json) => _$CoinIdFromJson(json as Map<String, dynamic>);
 }
 
 @freezed
@@ -52,7 +52,8 @@ class PaymentEntity with _$PaymentEntity {
     required double numberOfCoins,
   }) = _PaymentEntity;
 
-  factory PaymentEntity.fromJson(Map<String, Object?> json) => _$PaymentEntityFromJson(json);
+  factory PaymentEntity.fromJson(dynamic json) =>
+      _$PaymentEntityFromJson(json as Map<String, dynamic>);
 }
 
 class PaymentType {

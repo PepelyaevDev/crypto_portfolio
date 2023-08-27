@@ -12,7 +12,7 @@ part 'market_bloc.freezed.dart';
 
 class MarketBloc extends Bloc<MarketEvent, MarketState> {
   final MarketRepo _marketRepo;
-  MarketBloc(this._marketRepo) : super(MarketState(coins: _marketRepo.getCoinsLocal())) {
+  MarketBloc(this._marketRepo) : super(MarketState(coins: _marketRepo.getCoinsLocal)) {
     on<_RefreshData>(_refreshData, transformer: droppable());
   }
 

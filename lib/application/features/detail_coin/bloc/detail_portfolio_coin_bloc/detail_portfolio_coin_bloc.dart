@@ -20,7 +20,7 @@ class DetailPortfolioCoinBloc extends Bloc<DetailPortfolioCoinEvent, DetailPortf
   late StreamSubscription<Either<Failure, CoinsEntity>> _coinsListener;
   DetailPortfolioCoinBloc(this._portfolioRepo, this._id)
       : super(DetailPortfolioCoinState(
-          coin: CoinsExtension.getCoinById(_portfolioRepo.getCoinsLocal(), _id),
+          coin: CoinsExtension.getCoinById(_portfolioRepo.getCoinsLocal, _id),
         )) {
     on<_Update>(_update, transformer: droppable());
     on<_RefreshData>(_refreshData, transformer: droppable());
@@ -31,13 +31,11 @@ class DetailPortfolioCoinBloc extends Bloc<DetailPortfolioCoinEvent, DetailPortf
     });
   }
 
-  Future<void> _deletePayment(_DeletePayment event, Emitter<DetailPortfolioCoinState> emit) async {
-    await _portfolioRepo.updateHistory(event.payment);
-  }
+  void _deletePayment(_DeletePayment event, Emitter<DetailPortfolioCoinState> emit) =>
+      _portfolioRepo.updateHistory(event.payment);
 
-  Future<void> _deleteCoin(_DeleteCoin event, Emitter<DetailPortfolioCoinState> emit) async {
-    await _portfolioRepo.deleteCoin(event.id);
-  }
+  void _deleteCoin(_DeleteCoin event, Emitter<DetailPortfolioCoinState> emit) =>
+      _portfolioRepo.deleteCoin(event.id);
 
   Future<void> _update(_Update event, Emitter<DetailPortfolioCoinState> emit) async {
     event.data.fold(
@@ -56,7 +54,7 @@ class DetailPortfolioCoinBloc extends Bloc<DetailPortfolioCoinEvent, DetailPortf
   }
 
   Future<void> _refreshData(_, Emitter<DetailPortfolioCoinState> emit) async {
-    if (_portfolioRepo.getCoinsLocal().list.where((e) => e.id == _id).isEmpty) {
+    if (_portfolioRepo.getCoinsLocal.list.where((e) => e.id == _id).isEmpty) {
       return;
     }
     emit(DetailPortfolioCoinState(coin: state.coin, loading: true));

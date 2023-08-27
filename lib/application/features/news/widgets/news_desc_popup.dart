@@ -1,4 +1,5 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
+import 'package:crypto_portfolio/application/app/design_system/core/consts.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:flutter/material.dart';
@@ -63,14 +64,14 @@ class NewsDescPopup extends StatelessWidget {
                           style: AppStyles.normal14,
                         ),
                         SizedBox(height: 5),
-                        Image.asset('assets/news_instruction/tap_source.png'),
+                        Image.asset(tapSourcePath),
                         SizedBox(height: 5),
                         Text(
                           '2. ${context.localization.clickOnTitle}',
                           style: AppStyles.normal14,
                         ),
                         SizedBox(height: 5),
-                        Image.asset('assets/news_instruction/tap_header.png'),
+                        Image.asset(tapHeaderPath),
                         SizedBox(height: 10),
                         Center(
                           child: ElevatedButton(

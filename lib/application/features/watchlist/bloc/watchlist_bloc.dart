@@ -13,15 +13,15 @@ class WatchlistBloc extends Bloc<WatchlistEvent, WatchlistState> {
   final WatchlistRepo _watchlistRepo;
   WatchlistBloc(this._watchlistRepo)
       : super(WatchlistState(
-          ids: _watchlistRepo.getIds(),
-          coins: _watchlistRepo.getCoinsLocal(),
+          ids: _watchlistRepo.getIds,
+          coins: _watchlistRepo.getCoinsLocal,
         )) {
     on<_Update>(_update);
     on<_Refresh>(_refresh, transformer: droppable());
   }
 
-  void _update(_Update event, Emitter<WatchlistState> emit) async {
-    final List<CoinId> newList = await _watchlistRepo.updateIds(id: event.id);
+  void _update(_Update event, Emitter<WatchlistState> emit) {
+    final List<CoinId> newList = _watchlistRepo.updateIds(id: event.id);
     emit(WatchlistState(ids: newList, coins: state.coins));
   }
 

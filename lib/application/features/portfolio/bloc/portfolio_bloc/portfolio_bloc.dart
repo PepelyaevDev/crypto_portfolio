@@ -16,8 +16,7 @@ part 'portfolio_bloc.freezed.dart';
 class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
   final PortfolioRepo _portfolioRepo;
   late StreamSubscription<Either<Failure, CoinsEntity>> _coinsListener;
-  PortfolioBloc(this._portfolioRepo)
-      : super(PortfolioState(coins: _portfolioRepo.getCoinsLocal())) {
+  PortfolioBloc(this._portfolioRepo) : super(PortfolioState(coins: _portfolioRepo.getCoinsLocal)) {
     on<_Update>(_update, transformer: droppable());
     on<_RefreshData>(_refreshData, transformer: droppable());
     _coinsListener = _portfolioRepo.coinsSubject.stream.listen((event) {

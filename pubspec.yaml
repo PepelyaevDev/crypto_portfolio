@@ -20,6 +20,7 @@ dependencies:
 
   #flutter.dev
   url_launcher: ^6.1.12
+  path_provider: ^2.1.0
 
   #fluttercommunity.dev
   rxdart: ^0.27.7
@@ -42,9 +43,9 @@ dependencies:
   #sub6resources.com
   flutter_html: ^3.0.0-beta.2
 
-  #hivedb.dev
-  hive: ^3.0.0-dev
-  hive_flutter: ^2.0.0-dev
+  #isar.dev
+  hive: ^4.0.0-dev.2
+  isar_flutter_libs: ^4.0.0-dev.14
 
   #wiseminds.cc
   money_formatter: ^0.0.4

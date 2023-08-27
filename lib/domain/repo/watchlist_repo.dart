@@ -1,10 +1,9 @@
 import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/dto/coin/gecko_coin_dto.dart';
-import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
+import 'package:crypto_portfolio/data/hive_api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/to_dto.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/to_entity.dart';
-import 'package:crypto_portfolio/domain/entity/coins/extensions/json_converter.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:dartz/dartz.dart';
 
@@ -13,33 +12,31 @@ class WatchlistRepo {
   final GeckoApiClient _geckoApiClient;
   WatchlistRepo(this._hiveApiClient, this._geckoApiClient);
 
-  List<CoinId> getIds() {
-    return _hiveApiClient.coins.getWatchlistIds().convertToIdsList;
-  }
+  List<CoinId> get getIds => _hiveApiClient.watchlistIds.values ?? [];
 
-  Future<List<CoinId>> updateIds({required CoinId id}) async {
-    List<CoinId> ids = getIds();
+  List<CoinId> updateIds({required CoinId id}) {
+    List<CoinId> ids = getIds;
     if (ids.contains(id)) {
       ids.remove(id);
     } else {
       ids.add(id);
     }
-    await _hiveApiClient.coins.updateWatchlistIds(ids.convertToJson);
+    _hiveApiClient.watchlistIds.put(ids);
     return ids;
   }
 
-  CoinsEntity getCoinsLocal() {
-    return _hiveApiClient.coins.getWatchlistCoins().convertToCoinsEntity;
-  }
+  CoinsEntity get getCoinsLocal => _hiveApiClient.watchlistCoins.value.convertFromNullable;
 
   Future<Either<Failure, CoinsEntity>> getCoinsRemote() async {
     try {
-      final List<CoinId> ids = getIds();
+      final List<CoinId> ids = getIds;
       final List<GeckoCoinDTO> geckoCoins = [];
       if (ids.isNotEmpty) {
-        geckoCoins.addAll(await _geckoApiClient.coins.getMarketCoinsByParams(
-          paramsList: ids.map((e) => e.toDto).toList(),
-        ));
+        geckoCoins.addAll(
+          await _geckoApiClient.coins.getMarketCoinsByParams(
+            paramsList: ids.map((e) => e.toDto).toList(),
+          ),
+        );
       }
       geckoCoins.sort((a, b) {
         if (a.marketCap == null && b.marketCap == null) {
@@ -56,7 +53,7 @@ class WatchlistRepo {
         list: geckoCoins.map((e) => e.createEmptyCoin).toList(),
         updateTime: DateTime.now(),
       );
-      await _hiveApiClient.coins.updateWatchlistCoins(coinsEntity.convertToJson);
+      _hiveApiClient.watchlistCoins.put(coinsEntity);
       return right(coinsEntity);
     } catch (e) {
       return left(Failure.from(e));

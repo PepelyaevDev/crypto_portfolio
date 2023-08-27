@@ -7,9 +7,7 @@ part of 'coins_entity.dart';
 // **************************************************************************
 
 _$_CoinsEntity _$$_CoinsEntityFromJson(Map<String, dynamic> json) => _$_CoinsEntity(
-      list: (json['list'] as List<dynamic>)
-          .map((e) => CoinEntity.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      list: (json['list'] as List<dynamic>).map(CoinEntity.fromJson).toList(),
       updateTime: DateTime.parse(json['updateTime'] as String),
     );
 
@@ -19,7 +17,7 @@ Map<String, dynamic> _$$_CoinsEntityToJson(_$_CoinsEntity instance) => <String, 
     };
 
 _$_CoinEntity _$$_CoinEntityFromJson(Map<String, dynamic> json) => _$_CoinEntity(
-      id: CoinId.fromJson(json['id'] as Map<String, dynamic>),
+      id: CoinId.fromJson(json['id']),
       image: json['image'] as String,
       currentPrice: (json['currentPrice'] as num).toDouble(),
       marketCap: (json['marketCap'] as num).toDouble(),
@@ -28,9 +26,7 @@ _$_CoinEntity _$$_CoinEntityFromJson(Map<String, dynamic> json) => _$_CoinEntity
       circulatingSupply: (json['circulatingSupply'] as num?)?.toDouble(),
       totalSupply: (json['totalSupply'] as num?)?.toDouble(),
       maxSupply: (json['maxSupply'] as num?)?.toDouble(),
-      history: (json['history'] as List<dynamic>)
-          .map((e) => PaymentEntity.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      history: (json['history'] as List<dynamic>).map(PaymentEntity.fromJson).toList(),
     );
 
 Map<String, dynamic> _$$_CoinEntityToJson(_$_CoinEntity instance) => <String, dynamic>{
@@ -57,7 +53,7 @@ Map<String, dynamic> _$$_CoinIdToJson(_$_CoinId instance) => <String, dynamic>{
     };
 
 _$_PaymentEntity _$$_PaymentEntityFromJson(Map<String, dynamic> json) => _$_PaymentEntity(
-      id: CoinId.fromJson(json['id'] as Map<String, dynamic>),
+      id: CoinId.fromJson(json['id']),
       dateTime: DateTime.parse(json['dateTime'] as String),
       type: json['type'] as String,
       amount: (json['amount'] as num).toDouble(),

@@ -22,13 +22,13 @@ class LocaleBloc extends Bloc<LocaleEvent, LocaleState> {
     on<_ChangeNewsLocales>(_changeNewsLocales);
   }
 
-  void _changeAppLocale(_ChangeAppLocale event, Emitter<LocaleState> emit) async {
-    await _localeRepo.changeAppLocale(event.locale);
+  void _changeAppLocale(_ChangeAppLocale event, Emitter<LocaleState> emit) {
+    _localeRepo.changeAppLocale(event.locale);
     emit(_getState(_localeRepo));
   }
 
-  void _changeNewsLocales(_ChangeNewsLocales event, Emitter<LocaleState> emit) async {
-    await _localeRepo.changeNewsLocales(event.locales);
+  void _changeNewsLocales(_ChangeNewsLocales event, Emitter<LocaleState> emit) {
+    _localeRepo.changeNewsLocales(event.locales);
     emit(_getState(_localeRepo));
   }
 }

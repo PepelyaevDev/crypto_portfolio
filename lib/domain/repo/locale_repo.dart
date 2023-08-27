@@ -1,6 +1,5 @@
-import 'dart:convert';
 import 'dart:ui';
-import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
+import 'package:crypto_portfolio/data/hive_api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/entity/locale/app_locale.dart';
 
 class LocaleRepo {
@@ -14,7 +13,7 @@ class LocaleRepo {
       }).toList();
 
   AppLocale get appSelectedLocale {
-    final String? locale = _hiveApiClient.locales.getSelectedAppLocale();
+    final String? locale = _hiveApiClient.appLocale.value;
     if (locale == null) {
       final String appLanguageCode = PlatformDispatcher.instance.locale.languageCode;
       final AppLocale appLocale = AppLocale.fromString(appLanguageCode);
@@ -25,9 +24,7 @@ class LocaleRepo {
     }
   }
 
-  Future<void> changeAppLocale(AppLocale newLocale) async {
-    await _hiveApiClient.locales.updateSelectedAppLocale(newLocale.name);
-  }
+  void changeAppLocale(AppLocale newLocale) => _hiveApiClient.appLocale.put(newLocale.name);
 
   ///News locales
 
@@ -36,18 +33,17 @@ class LocaleRepo {
       }).toList();
 
   List<AppLocale> get newsSelectedLocales {
-    final String? result = _hiveApiClient.locales.getSelectedNewsLocales();
-    if (result == null || result.isEmpty) {
+    final List<String>? locales = _hiveApiClient.newsLocales.values;
+    if (locales == null || locales.isEmpty) {
       changeNewsLocales([appSelectedLocale]);
       return [appSelectedLocale];
     } else {
-      final List<String> locales = List<String>.from(jsonDecode(result));
       return locales.map((e) => AppLocale.fromString(e)).toList().toSet().toList();
     }
   }
 
-  Future<void> changeNewsLocales(List<AppLocale> newList) async {
+  void changeNewsLocales(List<AppLocale> newList) {
     final List<String> list = newList.map((e) => e.name).toList();
-    await _hiveApiClient.locales.updateSelectedNewsLocales(jsonEncode(list));
+    _hiveApiClient.newsLocales.put(list);
   }
 }

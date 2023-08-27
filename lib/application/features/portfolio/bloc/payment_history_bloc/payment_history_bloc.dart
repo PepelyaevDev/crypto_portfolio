@@ -14,7 +14,7 @@ class PaymentHistoryBloc extends Bloc<PaymentHistoryEvent, PaymentHistoryState> 
   final PortfolioRepo _portfolioRepo;
   late StreamSubscription<Either<Failure, CoinsEntity>> _coinsListener;
   PaymentHistoryBloc(this._portfolioRepo)
-      : super(PaymentHistoryState(coins: _portfolioRepo.getCoinsLocal())) {
+      : super(PaymentHistoryState(coins: _portfolioRepo.getCoinsLocal)) {
     on<_DeletePayment>((event, emit) {
       _portfolioRepo.updateHistory(event.payment);
     });

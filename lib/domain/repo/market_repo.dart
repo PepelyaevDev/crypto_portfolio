@@ -2,11 +2,10 @@ import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/dto/coin/gecko_coin_dto.dart';
 import 'package:crypto_portfolio/data/gecko_api/dto/market_chart/market_chart_dto.dart';
 import 'package:crypto_portfolio/data/gecko_api/dto/search/search_dto.dart';
-import 'package:crypto_portfolio/data/hive_api/api/hive_api_client.dart';
+import 'package:crypto_portfolio/data/hive_api/hive_api_client.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/to_dto.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/to_entity.dart';
-import 'package:crypto_portfolio/domain/entity/coins/extensions/json_converter.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:crypto_portfolio/domain/entity/market_chart/extensions/to_entity.dart';
 import 'package:crypto_portfolio/domain/entity/market_chart/market_chart_entity.dart';
@@ -19,9 +18,7 @@ class MarketRepo {
   final GeckoApiClient _geckoApiClient;
   MarketRepo(this._hiveApiClient, this._geckoApiClient);
 
-  CoinsEntity getCoinsLocal() {
-    return _hiveApiClient.coins.getMarketCoins().convertToCoinsEntity;
-  }
+  CoinsEntity get getCoinsLocal => _hiveApiClient.marketCoins.value.convertFromNullable;
 
   Future<Either<Failure, CoinsEntity>> getStableCoins() async {
     try {
@@ -39,7 +36,7 @@ class MarketRepo {
       final List<GeckoCoinDTO> geckoCoins = await _geckoApiClient.coins.getMarketCoins(page: 1);
       final List<CoinEntity> coinsList = geckoCoins.map((e) => e.createEmptyCoin).toList();
       final CoinsEntity coinsEntity = CoinsEntity(list: coinsList, updateTime: DateTime.now());
-      await _hiveApiClient.coins.updateMarketCoins(coinsEntity.convertToJson);
+      _hiveApiClient.marketCoins.put(coinsEntity);
       return right(coinsEntity);
     } catch (e) {
       return left(Failure.from(e));

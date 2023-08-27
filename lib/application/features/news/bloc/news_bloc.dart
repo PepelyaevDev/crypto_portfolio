@@ -66,9 +66,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       case NewsCategory.all:
         return [];
       case NewsCategory.watchlist:
-        final List<CoinId> watchlistSymbols = _watchlistRepo.getIds();
+        final List<CoinId> watchlistSymbols = _watchlistRepo.getIds;
         final List<CoinId> portfolioSymbols =
-            _portfolioRepo.getCoinsLocal().list.map((e) => e.id).toList();
+            _portfolioRepo.getCoinsLocal.list.map((e) => e.id).toList();
         return _getCurrenciesFromSymbols([
           ...watchlistSymbols,
           ...portfolioSymbols,
