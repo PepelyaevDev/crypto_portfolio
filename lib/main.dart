@@ -5,13 +5,6 @@ import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/hive_api/hive_api_client.dart';
 import 'package:flutter/material.dart';
 
-//Before release
-//лицензия syncfusion_flutter_charts либо замена либы
-
-//After release
-//просьба поставить оценку в маркете
-//возможность списывать и зачислять к стейблам, не вводить сумму сделки в платежах со стейблами
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
