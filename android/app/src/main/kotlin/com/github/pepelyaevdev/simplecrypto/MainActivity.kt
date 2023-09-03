@@ -1,4 +1,4 @@
-package com.example.crypto_portfolio
+package com.github.pepelyaevdev.simplecrypto
 
 import io.flutter.embedding.android.FlutterActivity
 
