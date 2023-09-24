@@ -80,7 +80,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                     CustomTextField(
                       suffixText: 'USD',
                       labelText: context.localization.amountOfMoney,
-                      keyboardType: TextInputType.numberWithOptions(),
+                      keyboardType: TextInputType.numberWithOptions(decimal: true),
                       controller: moneyController,
                       validator: (value) => _validator(value, context),
                     ),
@@ -94,7 +94,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                         return CustomTextField(
                           suffixText: suffix,
                           labelText: context.localization.numberOfCoins,
-                          keyboardType: TextInputType.numberWithOptions(),
+                          keyboardType: TextInputType.numberWithOptions(decimal: true),
                           controller: coinsController,
                           validator: (value) => _coinsValidator(
                             value,
