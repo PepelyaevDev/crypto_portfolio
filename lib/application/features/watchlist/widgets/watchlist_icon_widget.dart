@@ -16,8 +16,8 @@ class WatchlistIconWidget extends StatelessWidget {
     return BlocBuilder<WatchlistBloc, WatchlistState>(
       builder: (context, state) {
         return SizedBox(
-          height: appBarIcon ? 50 : null,
-          width: appBarIcon ? 40 : null,
+          height: appBarIcon ? 50 : 40,
+          width: 40,
           child: Center(
             child: IconButton(
               splashRadius: 20,

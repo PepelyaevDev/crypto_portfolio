@@ -6,7 +6,7 @@
     "settings": "Настройки",
 
     "addCoins": "Добавить  монеты",
-    "watchlistIsEmpty": "Ваш список избранного пуст, пожалуйса добавьте монеты",
+    "watchlistIsEmpty": "Ваш список избранного пуст, пожалуйста добавьте монеты",
 
     "updated" : "Данные обновлены",
     "addedToWatchlist": "Добавлено в избранное",
@@ -81,6 +81,7 @@
     "languageSettings": "Настройки языка",
     "appLanguage": "Язык приложения",
     "newsLanguage": "Язык новостей",
+    "selectAppLanguageDescription": "Вся информация в приложении кроме новостей",
     "selectNewsLanguageDescription": "Вы будете видеть новости из разных источников на выбранных языках",
     "additionalInformation": "Дополнительная информация",
     "email": "Почта: ",

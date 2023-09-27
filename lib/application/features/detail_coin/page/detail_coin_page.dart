@@ -66,7 +66,7 @@ class _DetailCoinPageState extends State<DetailCoinPage> with SingleTickerProvid
         ),
         actions: [
           WatchlistIconWidget(widget.id, appBarIcon: true),
-          SizedBox(width: 5),
+          SizedBox(width: 10),
         ],
         shadowColor: AppColors.transparent,
         backgroundColor: AppColors.white,

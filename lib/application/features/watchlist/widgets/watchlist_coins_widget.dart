@@ -120,14 +120,12 @@ class WatchlistPageRow extends StatelessWidget {
   final Widget marketCap;
   final Widget price;
   final Widget changes;
-  final double verticalPaddings;
 
   const WatchlistPageRow({
     this.iconButton,
     required this.marketCap,
     required this.price,
     required this.changes,
-    this.verticalPaddings = 15,
   });
 
   @override
@@ -135,8 +133,8 @@ class WatchlistPageRow extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(
         left: 15,
-        bottom: verticalPaddings,
-        top: verticalPaddings,
+        bottom: 10,
+        top: 10,
       ),
       child: Row(
         children: [

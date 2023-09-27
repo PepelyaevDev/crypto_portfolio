@@ -44,6 +44,7 @@ class _NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin
         centerTitle: true,
         actions: [
           AppBarIconButton(
+            rightPadding: 10,
             iconData: Icons.question_mark_rounded,
             onTap: () {
               showDialog(

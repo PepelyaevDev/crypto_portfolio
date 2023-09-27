@@ -11,7 +11,10 @@ class EmptyPortfolioWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.symmetric(
+              vertical: 10.0,
+              horizontal: 30,
+            ),
             child: SizedBox(
               child: Text(
                 context.localization.portfolioIsEmpty,

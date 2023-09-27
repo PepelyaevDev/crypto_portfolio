@@ -88,7 +88,6 @@ class _WatchlistPageState extends State<WatchlistPage> {
                         context.localization.percentage24h,
                         style: AppStyles.normal14,
                       ),
-                      verticalPaddings: 10,
                     ),
                     preferredSize: Size(double.infinity, 35),
                   ),

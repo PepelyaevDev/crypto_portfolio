@@ -58,6 +58,7 @@ class MarketCoinsPage extends StatelessWidget {
                   ],
                   bottom: PreferredSize(
                     child: MarketPageRow(
+                      index: Text('#', style: AppStyles.normal14),
                       marketCap: Text(
                         context.localization.marketCap,
                         style: AppStyles.normal14,

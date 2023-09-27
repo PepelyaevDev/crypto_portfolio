@@ -81,6 +81,7 @@
     "languageSettings": "Language settings",
     "appLanguage": "App language",
     "newsLanguage": "News language",
+    "selectAppLanguageDescription": "All information in the application except news",
     "selectNewsLanguageDescription": "You will see news from different sources in selected languages",
     "additionalInformation": "Additional information",
     "email": "Email: ",

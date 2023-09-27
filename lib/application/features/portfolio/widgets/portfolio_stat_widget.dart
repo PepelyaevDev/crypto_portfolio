@@ -72,7 +72,7 @@ class _PortfolioStatWidgetState extends State<PortfolioStatWidget> {
                         backgroundColor: MaterialStateProperty.all<Color>(AppColors.white),
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
+                            borderRadius: BorderRadius.circular(5.0),
                             side: BorderSide(color: AppColors.primary),
                           ),
                         ),
@@ -82,9 +82,12 @@ class _PortfolioStatWidgetState extends State<PortfolioStatWidget> {
                           builder: (_) => PortfolioHistoryPage(),
                         ));
                       },
-                      child: Text(
-                        context.localization.transactionHistory,
-                        style: AppStyles.normal12.copyWith(color: AppColors.primary),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                        child: Text(
+                          context.localization.transactionHistory,
+                          style: AppStyles.normal12.copyWith(color: AppColors.primary),
+                        ),
                       ),
                     ),
                     TextButton(

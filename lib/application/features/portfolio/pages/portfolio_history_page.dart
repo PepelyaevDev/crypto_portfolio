@@ -25,6 +25,7 @@ class PortfolioHistoryPage extends StatelessWidget {
                   foregroundColor: AppColors.blackLight,
                   actions: [
                     AppBarIconButton(
+                      rightPadding: 10,
                       iconData: Icons.add,
                       onTap: () {
                         Navigator.of(context).push(

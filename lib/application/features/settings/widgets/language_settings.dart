@@ -67,6 +67,16 @@ class _SelectAppLocaleWidget extends StatelessWidget {
       builder: (context, state) {
         return Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 7),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  context.localization.selectAppLanguageDescription,
+                  style: AppStyles.normal14.copyWith(color: AppColors.gray),
+                ),
+              ),
+            ),
             ...state.appSupportedLocales.map(
               (e) {
                 final bool selectedLocale = state.appSelectedLocale == e;
@@ -76,18 +86,18 @@ class _SelectAppLocaleWidget extends StatelessWidget {
                     context.read<LocaleBloc>().add(LocaleEvent.changeAppLocale(e));
                   },
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                     child: Row(
                       children: [
                         Icon(
                           selectedLocale ? Icons.radio_button_checked : Icons.radio_button_off,
-                          size: 15,
+                          size: 18,
                           color: AppColors.primary,
                         ),
-                        SizedBox(width: 5),
+                        SizedBox(width: 7),
                         Text(
                           e.countryName,
-                          style: AppStyles.normal14.copyWith(
+                          style: AppStyles.normal15.copyWith(
                             color: selectedLocale ? AppColors.blackLight : AppColors.gray,
                           ),
                         ),
@@ -113,10 +123,13 @@ class _SelectNewsLocaleWidget extends StatelessWidget {
         return Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
-              child: Text(
-                context.localization.selectNewsLanguageDescription,
-                style: AppStyles.normal14.copyWith(color: AppColors.gray),
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 7),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  context.localization.selectNewsLanguageDescription,
+                  style: AppStyles.normal14.copyWith(color: AppColors.gray),
+                ),
               ),
             ),
             ...state.newsSupportedLocales.map(
@@ -137,18 +150,18 @@ class _SelectNewsLocaleWidget extends StatelessWidget {
                     context.read<LocaleBloc>().add(LocaleEvent.changeNewsLocales(newList));
                   },
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                     child: Row(
                       children: [
                         Icon(
                           selectedLocale ? Icons.check_box : Icons.check_box_outline_blank,
-                          size: 15,
+                          size: 18,
                           color: AppColors.primary,
                         ),
-                        SizedBox(width: 5),
+                        SizedBox(width: 7),
                         Text(
                           e.countryName,
-                          style: AppStyles.normal14.copyWith(
+                          style: AppStyles.normal15.copyWith(
                             color: selectedLocale ? AppColors.blackLight : AppColors.gray,
                           ),
                         ),

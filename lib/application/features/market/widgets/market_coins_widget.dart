@@ -115,14 +115,14 @@ class MarketCoinsWidget extends StatelessWidget {
 }
 
 class MarketPageRow extends StatelessWidget {
-  final Widget? index;
+  final Widget index;
   final Widget marketCap;
   final Widget price;
   final Widget changes;
   final double verticalPaddings;
 
   const MarketPageRow({
-    this.index,
+    required this.index,
     required this.marketCap,
     required this.price,
     required this.changes,
