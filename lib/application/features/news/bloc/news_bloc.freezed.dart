@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$NewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(NewsCategory category, String locale, String? symbol) init,
+    required TResult Function(NewsCategory category, String? symbol) init,
+    required TResult Function(Completer<void> completer) refresh,
     required TResult Function(NewsListEntity oldList) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(NewsCategory category, String locale, String? symbol)? init,
+    TResult? Function(NewsCategory category, String? symbol)? init,
+    TResult? Function(Completer<void> completer)? refresh,
     TResult? Function(NewsListEntity oldList)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NewsCategory category, String locale, String? symbol)? init,
+    TResult Function(NewsCategory category, String? symbol)? init,
+    TResult Function(Completer<void> completer)? refresh,
     TResult Function(NewsListEntity oldList)? update,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,21 @@ mixin _$NewsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
+    required TResult Function(_Refresh value) refresh,
     required TResult Function(_Update value) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
+    TResult? Function(_Refresh value)? refresh,
     TResult? Function(_Update value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
+    TResult Function(_Refresh value)? refresh,
     TResult Function(_Update value)? update,
     required TResult orElse(),
   }) =>
@@ -77,7 +83,7 @@ abstract class _$$_InitCopyWith<$Res> {
   factory _$$_InitCopyWith(_$_Init value, $Res Function(_$_Init) then) =
       __$$_InitCopyWithImpl<$Res>;
   @useResult
-  $Res call({NewsCategory category, String locale, String? symbol});
+  $Res call({NewsCategory category, String? symbol});
 }
 
 /// @nodoc
@@ -89,7 +95,6 @@ class __$$_InitCopyWithImpl<$Res> extends _$NewsEventCopyWithImpl<$Res, _$_Init>
   @override
   $Res call({
     Object? category = null,
-    Object? locale = null,
     Object? symbol = freezed,
   }) {
     return _then(_$_Init(
@@ -97,10 +102,6 @@ class __$$_InitCopyWithImpl<$Res> extends _$NewsEventCopyWithImpl<$Res, _$_Init>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as NewsCategory,
-      locale: null == locale
-          ? _value.locale
-          : locale // ignore: cast_nullable_to_non_nullable
-              as String,
       symbol: freezed == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
@@ -112,18 +113,16 @@ class __$$_InitCopyWithImpl<$Res> extends _$NewsEventCopyWithImpl<$Res, _$_Init>
 /// @nodoc
 
 class _$_Init implements _Init {
-  const _$_Init({required this.category, required this.locale, this.symbol});
+  const _$_Init({required this.category, this.symbol});
 
   @override
   final NewsCategory category;
-  @override
-  final String locale;
   @override
   final String? symbol;
 
   @override
   String toString() {
-    return 'NewsEvent.init(category: $category, locale: $locale, symbol: $symbol)';
+    return 'NewsEvent.init(category: $category, symbol: $symbol)';
   }
 
   @override
@@ -132,12 +131,11 @@ class _$_Init implements _Init {
         (other.runtimeType == runtimeType &&
             other is _$_Init &&
             (identical(other.category, category) || other.category == category) &&
-            (identical(other.locale, locale) || other.locale == locale) &&
             (identical(other.symbol, symbol) || other.symbol == symbol));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, category, locale, symbol);
+  int get hashCode => Object.hash(runtimeType, category, symbol);
 
   @JsonKey(ignore: true)
   @override
@@ -147,30 +145,33 @@ class _$_Init implements _Init {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(NewsCategory category, String locale, String? symbol) init,
+    required TResult Function(NewsCategory category, String? symbol) init,
+    required TResult Function(Completer<void> completer) refresh,
     required TResult Function(NewsListEntity oldList) update,
   }) {
-    return init(category, locale, symbol);
+    return init(category, symbol);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(NewsCategory category, String locale, String? symbol)? init,
+    TResult? Function(NewsCategory category, String? symbol)? init,
+    TResult? Function(Completer<void> completer)? refresh,
     TResult? Function(NewsListEntity oldList)? update,
   }) {
-    return init?.call(category, locale, symbol);
+    return init?.call(category, symbol);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NewsCategory category, String locale, String? symbol)? init,
+    TResult Function(NewsCategory category, String? symbol)? init,
+    TResult Function(Completer<void> completer)? refresh,
     TResult Function(NewsListEntity oldList)? update,
     required TResult orElse(),
   }) {
     if (init != null) {
-      return init(category, locale, symbol);
+      return init(category, symbol);
     }
     return orElse();
   }
@@ -179,6 +180,7 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
+    required TResult Function(_Refresh value) refresh,
     required TResult Function(_Update value) update,
   }) {
     return init(this);
@@ -188,6 +190,7 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
+    TResult? Function(_Refresh value)? refresh,
     TResult? Function(_Update value)? update,
   }) {
     return init?.call(this);
@@ -197,6 +200,7 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
+    TResult Function(_Refresh value)? refresh,
     TResult Function(_Update value)? update,
     required TResult orElse(),
   }) {
@@ -208,16 +212,147 @@ class _$_Init implements _Init {
 }
 
 abstract class _Init implements NewsEvent {
-  const factory _Init(
-      {required final NewsCategory category,
-      required final String locale,
-      final String? symbol}) = _$_Init;
+  const factory _Init({required final NewsCategory category, final String? symbol}) = _$_Init;
 
   NewsCategory get category;
-  String get locale;
   String? get symbol;
   @JsonKey(ignore: true)
   _$$_InitCopyWith<_$_Init> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RefreshCopyWith<$Res> {
+  factory _$$_RefreshCopyWith(_$_Refresh value, $Res Function(_$_Refresh) then) =
+      __$$_RefreshCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Completer<void> completer});
+}
+
+/// @nodoc
+class __$$_RefreshCopyWithImpl<$Res> extends _$NewsEventCopyWithImpl<$Res, _$_Refresh>
+    implements _$$_RefreshCopyWith<$Res> {
+  __$$_RefreshCopyWithImpl(_$_Refresh _value, $Res Function(_$_Refresh) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? completer = null,
+  }) {
+    return _then(_$_Refresh(
+      completer: null == completer
+          ? _value.completer
+          : completer // ignore: cast_nullable_to_non_nullable
+              as Completer<void>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Refresh implements _Refresh {
+  const _$_Refresh({required this.completer});
+
+  @override
+  final Completer<void> completer;
+
+  @override
+  String toString() {
+    return 'NewsEvent.refresh(completer: $completer)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Refresh &&
+            (identical(other.completer, completer) || other.completer == completer));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, completer);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RefreshCopyWith<_$_Refresh> get copyWith =>
+      __$$_RefreshCopyWithImpl<_$_Refresh>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(NewsCategory category, String? symbol) init,
+    required TResult Function(Completer<void> completer) refresh,
+    required TResult Function(NewsListEntity oldList) update,
+  }) {
+    return refresh(completer);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(NewsCategory category, String? symbol)? init,
+    TResult? Function(Completer<void> completer)? refresh,
+    TResult? Function(NewsListEntity oldList)? update,
+  }) {
+    return refresh?.call(completer);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(NewsCategory category, String? symbol)? init,
+    TResult Function(Completer<void> completer)? refresh,
+    TResult Function(NewsListEntity oldList)? update,
+    required TResult orElse(),
+  }) {
+    if (refresh != null) {
+      return refresh(completer);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_Refresh value) refresh,
+    required TResult Function(_Update value) update,
+  }) {
+    return refresh(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_Refresh value)? refresh,
+    TResult? Function(_Update value)? update,
+  }) {
+    return refresh?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_Refresh value)? refresh,
+    TResult Function(_Update value)? update,
+    required TResult orElse(),
+  }) {
+    if (refresh != null) {
+      return refresh(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Refresh implements NewsEvent {
+  const factory _Refresh({required final Completer<void> completer}) = _$_Refresh;
+
+  Completer<void> get completer;
+  @JsonKey(ignore: true)
+  _$$_RefreshCopyWith<_$_Refresh> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -290,7 +425,8 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(NewsCategory category, String locale, String? symbol) init,
+    required TResult Function(NewsCategory category, String? symbol) init,
+    required TResult Function(Completer<void> completer) refresh,
     required TResult Function(NewsListEntity oldList) update,
   }) {
     return update(oldList);
@@ -299,7 +435,8 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(NewsCategory category, String locale, String? symbol)? init,
+    TResult? Function(NewsCategory category, String? symbol)? init,
+    TResult? Function(Completer<void> completer)? refresh,
     TResult? Function(NewsListEntity oldList)? update,
   }) {
     return update?.call(oldList);
@@ -308,7 +445,8 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NewsCategory category, String locale, String? symbol)? init,
+    TResult Function(NewsCategory category, String? symbol)? init,
+    TResult Function(Completer<void> completer)? refresh,
     TResult Function(NewsListEntity oldList)? update,
     required TResult orElse(),
   }) {
@@ -322,6 +460,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
+    required TResult Function(_Refresh value) refresh,
     required TResult Function(_Update value) update,
   }) {
     return update(this);
@@ -331,6 +470,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
+    TResult? Function(_Refresh value)? refresh,
     TResult? Function(_Update value)? update,
   }) {
     return update?.call(this);
@@ -340,6 +480,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
+    TResult Function(_Refresh value)? refresh,
     TResult Function(_Update value)? update,
     required TResult orElse(),
   }) {
@@ -364,7 +505,7 @@ mixin _$NewsState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() noCoins,
-    required TResult Function(NewsListEntity news) success,
+    required TResult Function(NewsListEntity news, DateTime timeStamp) success,
     required TResult Function(NewsListEntity? news, Failure error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -372,7 +513,7 @@ mixin _$NewsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? noCoins,
-    TResult? Function(NewsListEntity news)? success,
+    TResult? Function(NewsListEntity news, DateTime timeStamp)? success,
     TResult? Function(NewsListEntity? news, Failure error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -380,7 +521,7 @@ mixin _$NewsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? noCoins,
-    TResult Function(NewsListEntity news)? success,
+    TResult Function(NewsListEntity news, DateTime timeStamp)? success,
     TResult Function(NewsListEntity? news, Failure error)? error,
     required TResult orElse(),
   }) =>
@@ -464,7 +605,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() noCoins,
-    required TResult Function(NewsListEntity news) success,
+    required TResult Function(NewsListEntity news, DateTime timeStamp) success,
     required TResult Function(NewsListEntity? news, Failure error) error,
   }) {
     return loading();
@@ -475,7 +616,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? noCoins,
-    TResult? Function(NewsListEntity news)? success,
+    TResult? Function(NewsListEntity news, DateTime timeStamp)? success,
     TResult? Function(NewsListEntity? news, Failure error)? error,
   }) {
     return loading?.call();
@@ -486,7 +627,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? noCoins,
-    TResult Function(NewsListEntity news)? success,
+    TResult Function(NewsListEntity news, DateTime timeStamp)? success,
     TResult Function(NewsListEntity? news, Failure error)? error,
     required TResult orElse(),
   }) {
@@ -574,7 +715,7 @@ class _$_NoCoins implements _NoCoins {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() noCoins,
-    required TResult Function(NewsListEntity news) success,
+    required TResult Function(NewsListEntity news, DateTime timeStamp) success,
     required TResult Function(NewsListEntity? news, Failure error) error,
   }) {
     return noCoins();
@@ -585,7 +726,7 @@ class _$_NoCoins implements _NoCoins {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? noCoins,
-    TResult? Function(NewsListEntity news)? success,
+    TResult? Function(NewsListEntity news, DateTime timeStamp)? success,
     TResult? Function(NewsListEntity? news, Failure error)? error,
   }) {
     return noCoins?.call();
@@ -596,7 +737,7 @@ class _$_NoCoins implements _NoCoins {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? noCoins,
-    TResult Function(NewsListEntity news)? success,
+    TResult Function(NewsListEntity news, DateTime timeStamp)? success,
     TResult Function(NewsListEntity? news, Failure error)? error,
     required TResult orElse(),
   }) {
@@ -653,7 +794,7 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(_$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({NewsListEntity news});
+  $Res call({NewsListEntity news, DateTime timeStamp});
 
   $NewsListEntityCopyWith<$Res> get news;
 }
@@ -668,12 +809,17 @@ class __$$_SuccessCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res, _$_Su
   @override
   $Res call({
     Object? news = null,
+    Object? timeStamp = null,
   }) {
     return _then(_$_Success(
       null == news
           ? _value.news
           : news // ignore: cast_nullable_to_non_nullable
               as NewsListEntity,
+      null == timeStamp
+          ? _value.timeStamp
+          : timeStamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 
@@ -689,14 +835,16 @@ class __$$_SuccessCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res, _$_Su
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success(this.news);
+  const _$_Success(this.news, this.timeStamp);
 
   @override
   final NewsListEntity news;
+  @override
+  final DateTime timeStamp;
 
   @override
   String toString() {
-    return 'NewsState.success(news: $news)';
+    return 'NewsState.success(news: $news, timeStamp: $timeStamp)';
   }
 
   @override
@@ -704,11 +852,12 @@ class _$_Success implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Success &&
-            (identical(other.news, news) || other.news == news));
+            (identical(other.news, news) || other.news == news) &&
+            (identical(other.timeStamp, timeStamp) || other.timeStamp == timeStamp));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, news);
+  int get hashCode => Object.hash(runtimeType, news, timeStamp);
 
   @JsonKey(ignore: true)
   @override
@@ -721,10 +870,10 @@ class _$_Success implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() noCoins,
-    required TResult Function(NewsListEntity news) success,
+    required TResult Function(NewsListEntity news, DateTime timeStamp) success,
     required TResult Function(NewsListEntity? news, Failure error) error,
   }) {
-    return success(news);
+    return success(news, timeStamp);
   }
 
   @override
@@ -732,10 +881,10 @@ class _$_Success implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? noCoins,
-    TResult? Function(NewsListEntity news)? success,
+    TResult? Function(NewsListEntity news, DateTime timeStamp)? success,
     TResult? Function(NewsListEntity? news, Failure error)? error,
   }) {
-    return success?.call(news);
+    return success?.call(news, timeStamp);
   }
 
   @override
@@ -743,12 +892,12 @@ class _$_Success implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? noCoins,
-    TResult Function(NewsListEntity news)? success,
+    TResult Function(NewsListEntity news, DateTime timeStamp)? success,
     TResult Function(NewsListEntity? news, Failure error)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(news);
+      return success(news, timeStamp);
     }
     return orElse();
   }
@@ -792,9 +941,10 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements NewsState {
-  const factory _Success(final NewsListEntity news) = _$_Success;
+  const factory _Success(final NewsListEntity news, final DateTime timeStamp) = _$_Success;
 
   NewsListEntity get news;
+  DateTime get timeStamp;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith => throw _privateConstructorUsedError;
 }
@@ -882,7 +1032,7 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() noCoins,
-    required TResult Function(NewsListEntity news) success,
+    required TResult Function(NewsListEntity news, DateTime timeStamp) success,
     required TResult Function(NewsListEntity? news, Failure error) error,
   }) {
     return error(news, this.error);
@@ -893,7 +1043,7 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? noCoins,
-    TResult? Function(NewsListEntity news)? success,
+    TResult? Function(NewsListEntity news, DateTime timeStamp)? success,
     TResult? Function(NewsListEntity? news, Failure error)? error,
   }) {
     return error?.call(news, this.error);
@@ -904,7 +1054,7 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? noCoins,
-    TResult Function(NewsListEntity news)? success,
+    TResult Function(NewsListEntity news, DateTime timeStamp)? success,
     TResult Function(NewsListEntity? news, Failure error)? error,
     required TResult orElse(),
   }) {

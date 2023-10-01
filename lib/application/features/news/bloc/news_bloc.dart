@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:crypto_portfolio/application/app/extension/completer_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:crypto_portfolio/domain/entity/news/news_entity.dart';
@@ -25,12 +28,38 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     this._watchlistRepo,
   ) : super(NewsState.loading()) {
     on<_Init>(_init);
+    on<_Refresh>(_refresh);
     on<_Update>(_update, transformer: droppable());
   }
+  late _Init _initData;
 
   void _init(_Init event, Emitter<NewsState> emit) async {
+    _initData = event;
     emit(NewsState.loading());
-    final List<String>? currencies = _getCurrencies(event.category, event.symbol);
+    await _getFirstData(emit);
+  }
+
+  void _refresh(_Refresh event, Emitter<NewsState> emit) async {
+    await _getFirstData(emit);
+    event.completer.close();
+  }
+
+  void _update(_Update event, Emitter<NewsState> emit) async {
+    if (event.oldList.nextPage == null) {
+      return;
+    }
+    final news = await _newsRepo.updateNews(event.oldList);
+    news.fold(
+      (l) => emit(NewsState.error(news: event.oldList, error: l)),
+      (r) => emit(NewsState.success(r, DateTime.now())),
+    );
+  }
+
+  Future<void> _getFirstData(Emitter<NewsState> emit) async {
+    final List<String>? currencies = _getCurrencies(
+      _initData.category,
+      _initData.symbol,
+    );
     if (currencies == null) {
       emit(NewsState.noCoins());
     } else {
@@ -45,20 +74,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       );
       news.fold(
         (l) => emit(NewsState.error(error: l)),
-        (r) => emit(NewsState.success(r)),
+        (r) => emit(NewsState.success(r, DateTime.now())),
       );
     }
-  }
-
-  void _update(_Update event, Emitter<NewsState> emit) async {
-    if (event.oldList.nextPage == null) {
-      return;
-    }
-    final news = await _newsRepo.updateNews(event.oldList);
-    news.fold(
-      (l) => emit(NewsState.error(error: l)),
-      (r) => emit(NewsState.success(r)),
-    );
   }
 
   List<String>? _getCurrencies(NewsCategory category, String? symbol) {

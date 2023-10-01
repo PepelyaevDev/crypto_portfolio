@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
@@ -94,8 +96,11 @@ class _WatchlistPageState extends State<WatchlistPage> {
           ),
           body: RefreshIndicator(
             onRefresh: () async {
-              context.read<WatchlistBloc>().add(WatchlistEvent.refresh());
-              return;
+              final completer = Completer<void>();
+              context.read<WatchlistBloc>().add(
+                    WatchlistEvent.refresh(completer: completer),
+                  );
+              await completer.future;
             },
             child: state.coins.list.isEmpty
                 ? EmptyWatchlistWidget()

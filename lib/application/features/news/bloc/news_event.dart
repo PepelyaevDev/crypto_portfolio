@@ -6,9 +6,11 @@ enum NewsCategory { all, watchlist, coin }
 class NewsEvent with _$NewsEvent {
   const factory NewsEvent.init({
     required NewsCategory category,
-    required String locale,
     String? symbol,
   }) = _Init;
+  const factory NewsEvent.refresh({
+    required Completer<void> completer,
+  }) = _Refresh;
   const factory NewsEvent.update({
     required NewsListEntity oldList,
   }) = _Update;

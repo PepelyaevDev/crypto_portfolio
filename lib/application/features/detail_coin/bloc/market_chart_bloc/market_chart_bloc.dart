@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:crypto_portfolio/application/app/extension/completer_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:crypto_portfolio/domain/entity/market_chart/market_chart_entity.dart';
@@ -20,27 +23,35 @@ class MarketChartBloc extends Bloc<MarketChartEvent, MarketChartState> {
   }
 
   void _setDistance(_SetDistance event, Emitter<MarketChartState> emit) async {
-    MarketChartEntity? marketChartEntity = _marketChartCache[event.distance];
+    await _changeData(event.distance, emit);
+  }
+
+  void _refresh(_Refresh event, Emitter<MarketChartState> emit) async {
+    _marketChartCache.clear();
+    await _changeData(event.distance, emit);
+    event.completer.close();
+  }
+
+  Future<void> _changeData(
+    MarketChartDistance distance,
+    Emitter<MarketChartState> emit,
+  ) async {
+    MarketChartEntity? marketChartEntity = _marketChartCache[distance];
     if (marketChartEntity == null) {
       emit(const MarketChartState.loading());
       final result = await _marketRepo.getMarketChart(
         id: _id,
-        distance: event.distance,
+        distance: distance,
       );
       result.fold(
         (l) => emit(MarketChartState.error(l)),
         (r) {
-          _marketChartCache[event.distance] = r;
+          _marketChartCache[distance] = r;
           emit(MarketChartState.success(r));
         },
       );
     } else {
       emit(MarketChartState.success(marketChartEntity));
     }
-  }
-
-  void _refresh(_Refresh event, Emitter<MarketChartState> emit) {
-    _marketChartCache.clear();
-    add(MarketChartEvent.setDistance(event.distance));
   }
 }

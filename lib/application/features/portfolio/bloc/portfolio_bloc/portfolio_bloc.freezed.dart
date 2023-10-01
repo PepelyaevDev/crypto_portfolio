@@ -19,19 +19,19 @@ mixin _$PortfolioEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Either<Failure, CoinsEntity> data) update,
-    required TResult Function() refreshData,
+    required TResult Function(Completer<void>? completer) refreshData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Either<Failure, CoinsEntity> data)? update,
-    TResult? Function()? refreshData,
+    TResult? Function(Completer<void>? completer)? refreshData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Either<Failure, CoinsEntity> data)? update,
-    TResult Function()? refreshData,
+    TResult Function(Completer<void>? completer)? refreshData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,7 +134,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Either<Failure, CoinsEntity> data) update,
-    required TResult Function() refreshData,
+    required TResult Function(Completer<void>? completer) refreshData,
   }) {
     return update(data);
   }
@@ -143,7 +143,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Either<Failure, CoinsEntity> data)? update,
-    TResult? Function()? refreshData,
+    TResult? Function(Completer<void>? completer)? refreshData,
   }) {
     return update?.call(data);
   }
@@ -152,7 +152,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Either<Failure, CoinsEntity> data)? update,
-    TResult Function()? refreshData,
+    TResult Function(Completer<void>? completer)? refreshData,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -205,6 +205,8 @@ abstract class _Update implements PortfolioEvent {
 abstract class _$$_RefreshDataCopyWith<$Res> {
   factory _$$_RefreshDataCopyWith(_$_RefreshData value, $Res Function(_$_RefreshData) then) =
       __$$_RefreshDataCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Completer<void>? completer});
 }
 
 /// @nodoc
@@ -212,53 +214,78 @@ class __$$_RefreshDataCopyWithImpl<$Res> extends _$PortfolioEventCopyWithImpl<$R
     implements _$$_RefreshDataCopyWith<$Res> {
   __$$_RefreshDataCopyWithImpl(_$_RefreshData _value, $Res Function(_$_RefreshData) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? completer = freezed,
+  }) {
+    return _then(_$_RefreshData(
+      completer: freezed == completer
+          ? _value.completer
+          : completer // ignore: cast_nullable_to_non_nullable
+              as Completer<void>?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_RefreshData implements _RefreshData {
-  const _$_RefreshData();
+  const _$_RefreshData({this.completer});
+
+  @override
+  final Completer<void>? completer;
 
   @override
   String toString() {
-    return 'PortfolioEvent.refreshData()';
+    return 'PortfolioEvent.refreshData(completer: $completer)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_RefreshData);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RefreshData &&
+            (identical(other.completer, completer) || other.completer == completer));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, completer);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RefreshDataCopyWith<_$_RefreshData> get copyWith =>
+      __$$_RefreshDataCopyWithImpl<_$_RefreshData>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Either<Failure, CoinsEntity> data) update,
-    required TResult Function() refreshData,
+    required TResult Function(Completer<void>? completer) refreshData,
   }) {
-    return refreshData();
+    return refreshData(completer);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Either<Failure, CoinsEntity> data)? update,
-    TResult? Function()? refreshData,
+    TResult? Function(Completer<void>? completer)? refreshData,
   }) {
-    return refreshData?.call();
+    return refreshData?.call(completer);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Either<Failure, CoinsEntity> data)? update,
-    TResult Function()? refreshData,
+    TResult Function(Completer<void>? completer)? refreshData,
     required TResult orElse(),
   }) {
     if (refreshData != null) {
-      return refreshData();
+      return refreshData(completer);
     }
     return orElse();
   }
@@ -296,7 +323,11 @@ class _$_RefreshData implements _RefreshData {
 }
 
 abstract class _RefreshData implements PortfolioEvent {
-  const factory _RefreshData() = _$_RefreshData;
+  const factory _RefreshData({final Completer<void>? completer}) = _$_RefreshData;
+
+  Completer<void>? get completer;
+  @JsonKey(ignore: true)
+  _$$_RefreshDataCopyWith<_$_RefreshData> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
@@ -7,6 +9,7 @@ import 'package:crypto_portfolio/application/features/news/bloc/news_bloc.dart';
 import 'package:crypto_portfolio/application/features/news/widgets/news_desc_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_portfolio/application/features/news/widgets/news_list_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage();
@@ -78,6 +81,7 @@ class _NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin
 
 class _NewsListContent extends StatefulWidget {
   final NewsCategory category;
+
   const _NewsListContent({
     required this.category,
   });
@@ -88,7 +92,6 @@ class _NewsListContent extends StatefulWidget {
 
 class _NewsListContentState extends State<_NewsListContent> {
   final ScrollController controller = ScrollController();
-  bool refreshState = false;
 
   @override
   void dispose() {
@@ -100,28 +103,34 @@ class _NewsListContentState extends State<_NewsListContent> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () async {
-        _refresh();
-        return;
+        final completer = Completer<void>();
+        context.read<NewsBloc>().add(NewsEvent.refresh(completer: completer));
+        await completer.future;
       },
       child: SingleChildScrollView(
         controller: controller,
-        child: refreshState
-            ? SizedBox()
-            : NewsListWidget(
+        child: BlocBuilder<NewsBloc, NewsState>(
+          builder: (context, state) {
+            final double bottomPadding = state.maybeMap(
+              noCoins: (_) => MediaQuery.sizeOf(context).height,
+              error: (state) {
+                if (state.news != null && state.news!.list.isNotEmpty) {
+                  return 0;
+                }
+                return MediaQuery.sizeOf(context).height;
+              },
+              orElse: () => 0,
+            );
+            return Padding(
+              padding: EdgeInsets.only(bottom: bottomPadding),
+              child: NewsListWidget(
                 controller: controller,
                 category: widget.category,
               ),
+            );
+          },
+        ),
       ),
     );
-  }
-
-  Future<void> _refresh() async {
-    setState(() {
-      refreshState = true;
-    });
-    await Future<void>.delayed(const Duration(milliseconds: 1));
-    setState(() {
-      refreshState = false;
-    });
   }
 }

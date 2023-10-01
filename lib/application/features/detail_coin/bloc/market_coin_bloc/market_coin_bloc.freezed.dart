@@ -17,19 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MarketCoinEvent {
   CoinId get id => throw _privateConstructorUsedError;
+  Completer<void>? get completer => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CoinId id) getCoin,
+    required TResult Function(CoinId id, Completer<void>? completer) getCoin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CoinId id)? getCoin,
+    TResult? Function(CoinId id, Completer<void>? completer)? getCoin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CoinId id)? getCoin,
+    TResult Function(CoinId id, Completer<void>? completer)? getCoin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,7 +60,7 @@ abstract class $MarketCoinEventCopyWith<$Res> {
   factory $MarketCoinEventCopyWith(MarketCoinEvent value, $Res Function(MarketCoinEvent) then) =
       _$MarketCoinEventCopyWithImpl<$Res, MarketCoinEvent>;
   @useResult
-  $Res call({CoinId id});
+  $Res call({CoinId id, Completer<void>? completer});
 
   $CoinIdCopyWith<$Res> get id;
 }
@@ -78,12 +79,17 @@ class _$MarketCoinEventCopyWithImpl<$Res, $Val extends MarketCoinEvent>
   @override
   $Res call({
     Object? id = null,
+    Object? completer = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as CoinId,
+      completer: freezed == completer
+          ? _value.completer
+          : completer // ignore: cast_nullable_to_non_nullable
+              as Completer<void>?,
     ) as $Val);
   }
 
@@ -102,7 +108,7 @@ abstract class _$$_GetCoinCopyWith<$Res> implements $MarketCoinEventCopyWith<$Re
       __$$_GetCoinCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({CoinId id});
+  $Res call({CoinId id, Completer<void>? completer});
 
   @override
   $CoinIdCopyWith<$Res> get id;
@@ -118,12 +124,17 @@ class __$$_GetCoinCopyWithImpl<$Res> extends _$MarketCoinEventCopyWithImpl<$Res,
   @override
   $Res call({
     Object? id = null,
+    Object? completer = freezed,
   }) {
     return _then(_$_GetCoin(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as CoinId,
+      completer: freezed == completer
+          ? _value.completer
+          : completer // ignore: cast_nullable_to_non_nullable
+              as Completer<void>?,
     ));
   }
 }
@@ -131,14 +142,16 @@ class __$$_GetCoinCopyWithImpl<$Res> extends _$MarketCoinEventCopyWithImpl<$Res,
 /// @nodoc
 
 class _$_GetCoin implements _GetCoin {
-  const _$_GetCoin({required this.id});
+  const _$_GetCoin({required this.id, this.completer});
 
   @override
   final CoinId id;
+  @override
+  final Completer<void>? completer;
 
   @override
   String toString() {
-    return 'MarketCoinEvent.getCoin(id: $id)';
+    return 'MarketCoinEvent.getCoin(id: $id, completer: $completer)';
   }
 
   @override
@@ -146,11 +159,12 @@ class _$_GetCoin implements _GetCoin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GetCoin &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.completer, completer) || other.completer == completer));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
+  int get hashCode => Object.hash(runtimeType, id, completer);
 
   @JsonKey(ignore: true)
   @override
@@ -161,27 +175,27 @@ class _$_GetCoin implements _GetCoin {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CoinId id) getCoin,
+    required TResult Function(CoinId id, Completer<void>? completer) getCoin,
   }) {
-    return getCoin(id);
+    return getCoin(id, completer);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CoinId id)? getCoin,
+    TResult? Function(CoinId id, Completer<void>? completer)? getCoin,
   }) {
-    return getCoin?.call(id);
+    return getCoin?.call(id, completer);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CoinId id)? getCoin,
+    TResult Function(CoinId id, Completer<void>? completer)? getCoin,
     required TResult orElse(),
   }) {
     if (getCoin != null) {
-      return getCoin(id);
+      return getCoin(id, completer);
     }
     return orElse();
   }
@@ -216,10 +230,12 @@ class _$_GetCoin implements _GetCoin {
 }
 
 abstract class _GetCoin implements MarketCoinEvent {
-  const factory _GetCoin({required final CoinId id}) = _$_GetCoin;
+  const factory _GetCoin({required final CoinId id, final Completer<void>? completer}) = _$_GetCoin;
 
   @override
   CoinId get id;
+  @override
+  Completer<void>? get completer;
   @override
   @JsonKey(ignore: true)
   _$$_GetCoinCopyWith<_$_GetCoin> get copyWith => throw _privateConstructorUsedError;

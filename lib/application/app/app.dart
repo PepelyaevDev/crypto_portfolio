@@ -1,6 +1,7 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/features/bottom_navigation/bloc/bottom_navigation_bloc.dart';
 import 'package:crypto_portfolio/application/features/bottom_navigation/page/bottom_navigation_page.dart';
+import 'package:crypto_portfolio/application/features/news/bloc/news_bloc.dart';
 import 'package:crypto_portfolio/application/features/settings/bloc/locale_bloc/locale_bloc.dart';
 import 'package:crypto_portfolio/application/features/stable_coins/bloc/stable_bloc.dart';
 import 'package:crypto_portfolio/application/features/watchlist/bloc/watchlist_bloc.dart';
@@ -56,6 +57,14 @@ class CryptoPortfolioApp extends StatelessWidget {
               BlocProvider(create: (context) => StableBloc(context.read<MarketRepo>())),
               BlocProvider(
                 create: (context) => WatchlistBloc(context.read<WatchlistRepo>()),
+              ),
+              BlocProvider(
+                create: (context) => NewsBloc(
+                  context.read<NewsRepo>(),
+                  context.read<LocaleRepo>(),
+                  context.read<PortfolioRepo>(),
+                  context.read<WatchlistRepo>(),
+                ),
               ),
               BlocProvider(
                 create: (context) => LocaleBloc(context.read<LocaleRepo>()),

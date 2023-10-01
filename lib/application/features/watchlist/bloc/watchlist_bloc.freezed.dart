@@ -19,19 +19,19 @@ mixin _$WatchlistEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CoinId id) update,
-    required TResult Function() refresh,
+    required TResult Function(Completer<void>? completer) refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CoinId id)? update,
-    TResult? Function()? refresh,
+    TResult? Function(Completer<void>? completer)? refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CoinId id)? update,
-    TResult Function()? refresh,
+    TResult Function(Completer<void>? completer)? refresh,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -144,7 +144,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CoinId id) update,
-    required TResult Function() refresh,
+    required TResult Function(Completer<void>? completer) refresh,
   }) {
     return update(id);
   }
@@ -153,7 +153,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CoinId id)? update,
-    TResult? Function()? refresh,
+    TResult? Function(Completer<void>? completer)? refresh,
   }) {
     return update?.call(id);
   }
@@ -162,7 +162,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CoinId id)? update,
-    TResult Function()? refresh,
+    TResult Function(Completer<void>? completer)? refresh,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -215,6 +215,8 @@ abstract class _Update implements WatchlistEvent {
 abstract class _$$_RefreshCopyWith<$Res> {
   factory _$$_RefreshCopyWith(_$_Refresh value, $Res Function(_$_Refresh) then) =
       __$$_RefreshCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Completer<void>? completer});
 }
 
 /// @nodoc
@@ -222,53 +224,78 @@ class __$$_RefreshCopyWithImpl<$Res> extends _$WatchlistEventCopyWithImpl<$Res, 
     implements _$$_RefreshCopyWith<$Res> {
   __$$_RefreshCopyWithImpl(_$_Refresh _value, $Res Function(_$_Refresh) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? completer = freezed,
+  }) {
+    return _then(_$_Refresh(
+      completer: freezed == completer
+          ? _value.completer
+          : completer // ignore: cast_nullable_to_non_nullable
+              as Completer<void>?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Refresh implements _Refresh {
-  const _$_Refresh();
+  const _$_Refresh({this.completer});
+
+  @override
+  final Completer<void>? completer;
 
   @override
   String toString() {
-    return 'WatchlistEvent.refresh()';
+    return 'WatchlistEvent.refresh(completer: $completer)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Refresh);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Refresh &&
+            (identical(other.completer, completer) || other.completer == completer));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, completer);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RefreshCopyWith<_$_Refresh> get copyWith =>
+      __$$_RefreshCopyWithImpl<_$_Refresh>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CoinId id) update,
-    required TResult Function() refresh,
+    required TResult Function(Completer<void>? completer) refresh,
   }) {
-    return refresh();
+    return refresh(completer);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CoinId id)? update,
-    TResult? Function()? refresh,
+    TResult? Function(Completer<void>? completer)? refresh,
   }) {
-    return refresh?.call();
+    return refresh?.call(completer);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CoinId id)? update,
-    TResult Function()? refresh,
+    TResult Function(Completer<void>? completer)? refresh,
     required TResult orElse(),
   }) {
     if (refresh != null) {
-      return refresh();
+      return refresh(completer);
     }
     return orElse();
   }
@@ -306,7 +333,11 @@ class _$_Refresh implements _Refresh {
 }
 
 abstract class _Refresh implements WatchlistEvent {
-  const factory _Refresh() = _$_Refresh;
+  const factory _Refresh({final Completer<void>? completer}) = _$_Refresh;
+
+  Completer<void>? get completer;
+  @JsonKey(ignore: true)
+  _$$_RefreshCopyWith<_$_Refresh> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

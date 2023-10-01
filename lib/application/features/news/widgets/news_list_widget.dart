@@ -8,10 +8,6 @@ import 'package:crypto_portfolio/application/features/news/bloc/news_bloc.dart';
 import 'package:crypto_portfolio/application/features/news/widgets/no_currencies_widget.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/entity/news/news_entity.dart';
-import 'package:crypto_portfolio/domain/repo/locale_repo.dart';
-import 'package:crypto_portfolio/domain/repo/news_repo.dart';
-import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
-import 'package:crypto_portfolio/domain/repo/watchlist_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -36,40 +32,29 @@ class _NewsListWidgetState extends State<NewsListWidget> {
   late final NewsBloc bloc;
   late final void Function() listener;
 
-  void _init() {
-    bloc.add(
-      NewsEvent.init(
-        category: widget.category,
-        locale: context.localization.localeName,
-        symbol: widget.symbol,
-      ),
-    );
-  }
-
   @override
   void initState() {
-    bloc = NewsBloc(
-      context.read<NewsRepo>(),
-      context.read<LocaleRepo>(),
-      context.read<PortfolioRepo>(),
-      context.read<WatchlistRepo>(),
-    );
+    bloc = context.read<NewsBloc>()
+      ..add(NewsEvent.init(category: widget.category, symbol: widget.symbol));
     listener = () {
       if (widget.controller.position.maxScrollExtent == widget.controller.position.pixels) {
-        bloc.state.whenOrNull(
-          success: (state) => bloc.add(NewsEvent.update(oldList: state)),
+        bloc.state.mapOrNull(
+          error: (state) {
+            if (state.news != null && state.news!.list.isNotEmpty) {
+              bloc.add(NewsEvent.update(oldList: state.news!));
+            }
+          },
+          success: (state) => bloc.add(NewsEvent.update(oldList: state.news)),
         );
       }
     };
     widget.controller.addListener(listener);
-    WidgetsBinding.instance.addPostFrameCallback((_) => _init());
     super.initState();
   }
 
   @override
   void dispose() {
     widget.controller.removeListener(listener);
-    bloc.close();
     super.dispose();
   }
 
@@ -78,15 +63,17 @@ class _NewsListWidgetState extends State<NewsListWidget> {
     return BlocConsumer<NewsBloc, NewsState>(
       bloc: bloc,
       listener: (_, state) {
-        state.mapOrNull(
-          error: (state) {
-            UpdateDataSnackBar.show(
-              context: context,
-              error: true,
-              errorInfo: state.error.getMessage(context),
-            );
-          },
+        final (bool, String?)? data = state.mapOrNull(
+          success: (_) => (false, null),
+          error: (state) => (true, state.error.getMessage(context)),
         );
+        if (data != null) {
+          UpdateDataSnackBar.show(
+            context: context,
+            error: data.$1,
+            errorInfo: data.$2,
+          );
+        }
       },
       builder: (context, state) {
         return state.when(
@@ -95,7 +82,7 @@ class _NewsListWidgetState extends State<NewsListWidget> {
             child: Center(child: CircularProgressIndicator()),
           ),
           noCoins: () => NoCurrenciesWidget(),
-          success: (news) => _NewsList(news: news),
+          success: (news, _) => _NewsList(news: news),
           error: (news, error) => _NewsList(news: news, error: error.getMessage(context)),
         );
       },

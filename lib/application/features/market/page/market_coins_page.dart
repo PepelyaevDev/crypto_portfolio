@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
@@ -78,8 +80,11 @@ class MarketCoinsPage extends StatelessWidget {
                 ),
                 body: RefreshIndicator(
                   onRefresh: () async {
-                    context.read<MarketBloc>().add(MarketEvent.refreshData());
-                    return;
+                    final completer = Completer<void>();
+                    context.read<MarketBloc>().add(
+                          MarketEvent.refreshData(completer: completer),
+                        );
+                    await completer.future;
                   },
                   child: MarketCoinsWidget(coins: state.coins),
                 ),

@@ -11,10 +11,12 @@ import 'package:rxdart/rxdart.dart';
 
 class DetailMarketDataPriceWidget extends StatelessWidget {
   final ValueStream<MarketChartPriceEntity?> stream;
+  final bool loading;
   final VoidCallback onTapRefresh;
 
   const DetailMarketDataPriceWidget({
     required this.stream,
+    required this.loading,
     required this.onTapRefresh,
   });
   @override
@@ -35,7 +37,7 @@ class DetailMarketDataPriceWidget extends StatelessWidget {
                   );
                 },
               );
-        final updateWidget = state.loading
+        final updateWidget = loading
             ? SizedBox(
                 height: 30,
                 width: 30,

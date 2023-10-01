@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/logo_widget.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
@@ -66,8 +68,11 @@ class PortfolioPage extends StatelessWidget {
                   ? EmptyPortfolioWidget()
                   : RefreshIndicator(
                       onRefresh: () async {
-                        context.read<PortfolioBloc>().add(PortfolioEvent.refreshData());
-                        return;
+                        final completer = Completer<void>();
+                        context.read<PortfolioBloc>().add(
+                              PortfolioEvent.refreshData(completer: completer),
+                            );
+                        await completer.future;
                       },
                       child: PortfolioCoinsWidget(coins: portfolioState.coins),
                     ),

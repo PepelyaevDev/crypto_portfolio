@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:crypto_portfolio/application/app/extension/completer_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:crypto_portfolio/domain/repo/watchlist_repo.dart';
@@ -56,5 +59,6 @@ class WatchlistBloc extends Bloc<WatchlistEvent, WatchlistState> {
         );
       },
     );
+    event.completer.close();
   }
 }

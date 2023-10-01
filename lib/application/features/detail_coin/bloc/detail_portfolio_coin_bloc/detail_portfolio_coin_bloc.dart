@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:crypto_portfolio/application/app/extension/completer_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/date_time_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/get_coin_by_id.dart';
@@ -53,12 +54,13 @@ class DetailPortfolioCoinBloc extends Bloc<DetailPortfolioCoinEvent, DetailPortf
     );
   }
 
-  Future<void> _refreshData(_, Emitter<DetailPortfolioCoinState> emit) async {
+  Future<void> _refreshData(_RefreshData event, Emitter<DetailPortfolioCoinState> emit) async {
     if (_portfolioRepo.getCoinsLocal.list.where((e) => e.id == _id).isEmpty) {
       return;
     }
     emit(DetailPortfolioCoinState(coin: state.coin, loading: true));
     await _portfolioRepo.updateCoinsMarketData();
+    event.completer.close();
   }
 
   @override

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
@@ -30,6 +32,13 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
   MarketChartDistance _selectedDistance = MarketChartDistance.d1;
   final BehaviorSubject<MarketChartPriceEntity?> _selectedPrice = BehaviorSubject();
   final ScrollController _controller = ScrollController();
+  final _initPageCompleter = (Completer<void>(), Completer<void>(), Completer<void>());
+  bool _loadingState = false;
+
+  bool get _initInProcess =>
+      !_initPageCompleter.$1.isCompleted ||
+      !_initPageCompleter.$2.isCompleted ||
+      !_initPageCompleter.$3.isCompleted;
 
   @override
   void dispose() {
@@ -63,18 +72,44 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                       error: state.error != null,
                       errorInfo: state.error?.getMessage(context),
                     );
+                    if (!_initPageCompleter.$1.isCompleted) {
+                      setState(() {
+                        _initPageCompleter.$1.complete();
+                      });
+                    }
                   }
                 },
               ),
               BlocListener<MarketChartBloc, MarketChartState>(
                 listener: (context, state) {
-                  state.mapOrNull(
-                    error: (state) {
-                      UpdateDataSnackBar.show(
-                        context: context,
-                        error: true,
-                        errorInfo: state.error.getMessage(context),
-                      );
+                  final (bool, String?)? data = state.mapOrNull(
+                    success: (_) => (false, null),
+                    error: (state) => (true, state.error.getMessage(context)),
+                  );
+                  if (data != null) {
+                    UpdateDataSnackBar.show(
+                      context: context,
+                      error: data.$1,
+                      errorInfo: data.$2,
+                    );
+                    if (!_initPageCompleter.$2.isCompleted) {
+                      setState(() {
+                        _initPageCompleter.$2.complete();
+                      });
+                    }
+                  }
+                },
+              ),
+              BlocListener<NewsBloc, NewsState>(
+                listener: (_, state) {
+                  state.maybeMap(
+                    loading: (_) {},
+                    orElse: () {
+                      if (!_initPageCompleter.$3.isCompleted) {
+                        setState(() {
+                          _initPageCompleter.$3.complete();
+                        });
+                      }
                     },
                   );
                 },
@@ -82,9 +117,7 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
             ],
             child: RefreshIndicator(
               onRefresh: () async {
-                context.read<MarketCoinBloc>().add(MarketCoinEvent.getCoin(id: widget.id));
-                context.read<MarketChartBloc>().add(MarketChartEvent.refresh(_selectedDistance));
-                return;
+                await _refreshPage(context);
               },
               child: ListView(
                 controller: _controller,
@@ -92,10 +125,9 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                   SizedBox(height: 15),
                   DetailMarketDataPriceWidget(
                     stream: _selectedPrice.stream,
-                    onTapRefresh: () {
-                      context.read<MarketCoinBloc>().add(
-                            MarketCoinEvent.getCoin(id: widget.id),
-                          );
+                    loading: _loadingState || _initInProcess,
+                    onTapRefresh: () async {
+                      await _refreshPage(context);
                     },
                   ),
                   SizedBox(height: 15),
@@ -139,7 +171,7 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                   ),
                   BlocBuilder<MarketCoinBloc, MarketCoinState>(
                     builder: (context, state) {
-                      if (state.loading) {
+                      if (state.coin == null) {
                         return Padding(
                           padding: const EdgeInsets.all(20),
                           child: Center(child: CircularProgressIndicator()),
@@ -159,5 +191,33 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
         },
       ),
     );
+  }
+
+  Future<void> _refreshPage(BuildContext context) async {
+    setState(() {
+      _loadingState = true;
+    });
+
+    final coinCompleter = Completer<void>();
+    final chartCompleter = Completer<void>();
+    final newsCompleter = Completer<void>();
+
+    context.read<MarketCoinBloc>().add(
+          MarketCoinEvent.getCoin(id: widget.id, completer: coinCompleter),
+        );
+    context.read<MarketChartBloc>().add(
+          MarketChartEvent.refresh(_selectedDistance, chartCompleter),
+        );
+    context.read<NewsBloc>().add(NewsEvent.refresh(completer: newsCompleter));
+
+    await (
+      coinCompleter.future,
+      chartCompleter.future,
+      newsCompleter.future,
+    ).wait;
+
+    setState(() {
+      _loadingState = false;
+    });
   }
 }

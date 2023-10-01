@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/bloc/detail_portfolio_coin_bloc'
     '/detail_portfolio_coin_bloc.dart';
@@ -24,8 +26,11 @@ class DetailPortfolioCoinWidget extends StatelessWidget {
       child: Builder(builder: (context) {
         return RefreshIndicator(
           onRefresh: () async {
-            context.read<DetailPortfolioCoinBloc>().add(DetailPortfolioCoinEvent.refreshData());
-            return;
+            final completer = Completer<void>();
+            context.read<DetailPortfolioCoinBloc>().add(
+                  DetailPortfolioCoinEvent.refreshData(completer: completer),
+                );
+            await completer.future;
           },
           child: BlocConsumer<DetailPortfolioCoinBloc, DetailPortfolioCoinState>(
             listener: (context, state) {

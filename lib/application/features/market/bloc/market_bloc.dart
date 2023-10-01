@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:crypto_portfolio/application/app/extension/completer_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
@@ -16,12 +17,13 @@ class MarketBloc extends Bloc<MarketEvent, MarketState> {
     on<_RefreshData>(_refreshData, transformer: droppable());
   }
 
-  Future<void> _refreshData(_, Emitter<MarketState> emit) async {
+  Future<void> _refreshData(_RefreshData event, Emitter<MarketState> emit) async {
     emit(MarketState(coins: state.coins, loading: true));
     final coins = await _marketRepo.getCoinsRemote();
     coins.fold(
       (l) => emit(MarketState(coins: state.coins, error: l)),
       (r) => emit(MarketState(coins: r)),
     );
+    event.completer.close();
   }
 }

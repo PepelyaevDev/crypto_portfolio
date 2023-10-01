@@ -20,19 +20,19 @@ mixin _$MarketChartEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(MarketChartDistance distance) setDistance,
-    required TResult Function(MarketChartDistance distance) refresh,
+    required TResult Function(MarketChartDistance distance, Completer<void> completer) refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MarketChartDistance distance)? setDistance,
-    TResult? Function(MarketChartDistance distance)? refresh,
+    TResult? Function(MarketChartDistance distance, Completer<void> completer)? refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MarketChartDistance distance)? setDistance,
-    TResult Function(MarketChartDistance distance)? refresh,
+    TResult Function(MarketChartDistance distance, Completer<void> completer)? refresh,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -156,7 +156,7 @@ class _$_SetDistance implements _SetDistance {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(MarketChartDistance distance) setDistance,
-    required TResult Function(MarketChartDistance distance) refresh,
+    required TResult Function(MarketChartDistance distance, Completer<void> completer) refresh,
   }) {
     return setDistance(distance);
   }
@@ -165,7 +165,7 @@ class _$_SetDistance implements _SetDistance {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MarketChartDistance distance)? setDistance,
-    TResult? Function(MarketChartDistance distance)? refresh,
+    TResult? Function(MarketChartDistance distance, Completer<void> completer)? refresh,
   }) {
     return setDistance?.call(distance);
   }
@@ -174,7 +174,7 @@ class _$_SetDistance implements _SetDistance {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MarketChartDistance distance)? setDistance,
-    TResult Function(MarketChartDistance distance)? refresh,
+    TResult Function(MarketChartDistance distance, Completer<void> completer)? refresh,
     required TResult orElse(),
   }) {
     if (setDistance != null) {
@@ -231,7 +231,7 @@ abstract class _$$_RefreshCopyWith<$Res> implements $MarketChartEventCopyWith<$R
       __$$_RefreshCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({MarketChartDistance distance});
+  $Res call({MarketChartDistance distance, Completer<void> completer});
 }
 
 /// @nodoc
@@ -244,12 +244,17 @@ class __$$_RefreshCopyWithImpl<$Res> extends _$MarketChartEventCopyWithImpl<$Res
   @override
   $Res call({
     Object? distance = null,
+    Object? completer = null,
   }) {
     return _then(_$_Refresh(
       null == distance
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as MarketChartDistance,
+      null == completer
+          ? _value.completer
+          : completer // ignore: cast_nullable_to_non_nullable
+              as Completer<void>,
     ));
   }
 }
@@ -257,14 +262,16 @@ class __$$_RefreshCopyWithImpl<$Res> extends _$MarketChartEventCopyWithImpl<$Res
 /// @nodoc
 
 class _$_Refresh implements _Refresh {
-  const _$_Refresh(this.distance);
+  const _$_Refresh(this.distance, this.completer);
 
   @override
   final MarketChartDistance distance;
+  @override
+  final Completer<void> completer;
 
   @override
   String toString() {
-    return 'MarketChartEvent.refresh(distance: $distance)';
+    return 'MarketChartEvent.refresh(distance: $distance, completer: $completer)';
   }
 
   @override
@@ -272,11 +279,12 @@ class _$_Refresh implements _Refresh {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Refresh &&
-            (identical(other.distance, distance) || other.distance == distance));
+            (identical(other.distance, distance) || other.distance == distance) &&
+            (identical(other.completer, completer) || other.completer == completer));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, distance);
+  int get hashCode => Object.hash(runtimeType, distance, completer);
 
   @JsonKey(ignore: true)
   @override
@@ -288,29 +296,29 @@ class _$_Refresh implements _Refresh {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(MarketChartDistance distance) setDistance,
-    required TResult Function(MarketChartDistance distance) refresh,
+    required TResult Function(MarketChartDistance distance, Completer<void> completer) refresh,
   }) {
-    return refresh(distance);
+    return refresh(distance, completer);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MarketChartDistance distance)? setDistance,
-    TResult? Function(MarketChartDistance distance)? refresh,
+    TResult? Function(MarketChartDistance distance, Completer<void> completer)? refresh,
   }) {
-    return refresh?.call(distance);
+    return refresh?.call(distance, completer);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MarketChartDistance distance)? setDistance,
-    TResult Function(MarketChartDistance distance)? refresh,
+    TResult Function(MarketChartDistance distance, Completer<void> completer)? refresh,
     required TResult orElse(),
   }) {
     if (refresh != null) {
-      return refresh(distance);
+      return refresh(distance, completer);
     }
     return orElse();
   }
@@ -348,10 +356,12 @@ class _$_Refresh implements _Refresh {
 }
 
 abstract class _Refresh implements MarketChartEvent {
-  const factory _Refresh(final MarketChartDistance distance) = _$_Refresh;
+  const factory _Refresh(final MarketChartDistance distance, final Completer<void> completer) =
+      _$_Refresh;
 
   @override
   MarketChartDistance get distance;
+  Completer<void> get completer;
   @override
   @JsonKey(ignore: true)
   _$$_RefreshCopyWith<_$_Refresh> get copyWith => throw _privateConstructorUsedError;
