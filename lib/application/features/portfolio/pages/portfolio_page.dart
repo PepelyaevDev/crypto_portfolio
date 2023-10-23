@@ -9,7 +9,6 @@ import 'package:crypto_portfolio/application/features/portfolio/bloc/portfolio_b
 import 'package:crypto_portfolio/application/features/portfolio/pages/add_payment_page.dart';
 import 'package:crypto_portfolio/application/features/portfolio/widgets/empty_portfolio_widget.dart';
 import 'package:crypto_portfolio/application/features/portfolio/widgets/portfolio_coins_widget.dart';
-import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,8 +31,7 @@ class PortfolioPage extends StatelessWidget {
             if (!state.loading) {
               UpdateDataSnackBar.show(
                 context: context,
-                error: state.error != null,
-                errorInfo: state.error?.getMessage(context),
+                error: state.error,
               );
             }
           },

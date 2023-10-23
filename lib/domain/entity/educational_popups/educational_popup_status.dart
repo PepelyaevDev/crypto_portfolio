@@ -1,0 +1,4 @@
+enum EducationalPopupStatus {
+  show,
+  blocked;
+}

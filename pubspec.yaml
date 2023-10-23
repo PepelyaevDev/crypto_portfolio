@@ -21,6 +21,7 @@ dependencies:
   #flutter.dev
   url_launcher: ^6.1.12
   path_provider: ^2.1.0
+  shared_preferences: ^2.2.2
 
   #fluttercommunity.dev
   rxdart: ^0.27.7

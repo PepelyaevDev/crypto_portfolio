@@ -131,11 +131,7 @@ class WatchlistPageRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        left: 15,
-        bottom: 10,
-        top: 10,
-      ),
+      padding: EdgeInsets.only(left: 15, bottom: 10, top: 10),
       child: Row(
         children: [
           SizedBox(width: 10),
@@ -148,17 +144,11 @@ class WatchlistPageRow extends StatelessWidget {
           ),
           Expanded(
             flex: 6,
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: price,
-            ),
+            child: Align(alignment: Alignment.centerRight, child: price),
           ),
           Expanded(
             flex: 6,
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: changes,
-            ),
+            child: Align(alignment: Alignment.centerRight, child: changes),
           ),
           Expanded(
             flex: 3,

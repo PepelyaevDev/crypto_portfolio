@@ -6,7 +6,6 @@ import 'package:crypto_portfolio/application/app/extension/context_extension.dar
 import 'package:crypto_portfolio/application/features/detail_coin/page/detail_coin_page.dart';
 import 'package:crypto_portfolio/application/features/search/bloc/search_bloc.dart';
 import 'package:crypto_portfolio/application/features/watchlist/widgets/watchlist_icon_widget.dart';
-import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/entity/search/search_entity.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:flutter/material.dart';
@@ -46,8 +45,7 @@ class SearchPage extends StatelessWidget {
                     error: (state) {
                       UpdateDataSnackBar.show(
                         context: context,
-                        error: true,
-                        errorInfo: state.error.getMessage(context),
+                        error: state.error,
                       );
                     },
                   );

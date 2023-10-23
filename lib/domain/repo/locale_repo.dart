@@ -4,7 +4,7 @@ import 'package:crypto_portfolio/domain/entity/locale/app_locale.dart';
 
 class LocaleRepo {
   final HiveApiClient _hiveApiClient;
-  LocaleRepo(this._hiveApiClient);
+  const LocaleRepo(this._hiveApiClient);
 
   ///App locales
 
@@ -19,9 +19,8 @@ class LocaleRepo {
       final AppLocale appLocale = AppLocale.fromString(appLanguageCode);
       changeAppLocale(appLocale);
       return appLocale;
-    } else {
-      return AppLocale.fromString(locale);
     }
+    return AppLocale.fromString(locale);
   }
 
   void changeAppLocale(AppLocale newLocale) => _hiveApiClient.appLocale.put(newLocale.name);

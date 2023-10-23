@@ -9,7 +9,6 @@ import 'package:crypto_portfolio/application/features/portfolio/bloc/add_payment
 import 'package:crypto_portfolio/application/features/portfolio/widgets/select_coin_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
-import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
 import 'package:flutter/cupertino.dart';
@@ -48,8 +47,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
               error: (e) {
                 UpdateDataSnackBar.show(
                   context: context,
-                  error: true,
-                  errorInfo: e.error.getMessage(context),
+                  error: e.error,
                 );
               },
             );

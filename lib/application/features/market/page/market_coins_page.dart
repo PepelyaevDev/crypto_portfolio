@@ -10,7 +10,6 @@ import 'package:crypto_portfolio/application/app/design_system/widgets/refresh_i
 import 'package:crypto_portfolio/application/features/market/bloc/market_bloc.dart';
 import 'package:crypto_portfolio/application/features/market/widgets/market_coins_widget.dart';
 import 'package:crypto_portfolio/application/features/search/page/search_page.dart';
-import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,8 +26,7 @@ class MarketCoinsPage extends StatelessWidget {
               if (!state.loading) {
                 UpdateDataSnackBar.show(
                   context: context,
-                  error: state.error != null,
-                  errorInfo: state.error?.getMessage(context),
+                  error: state.error,
                 );
               }
             },

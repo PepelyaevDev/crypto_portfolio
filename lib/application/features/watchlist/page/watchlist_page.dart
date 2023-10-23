@@ -11,7 +11,6 @@ import 'package:crypto_portfolio/application/features/search/page/search_page.da
 import 'package:crypto_portfolio/application/features/watchlist/bloc/watchlist_bloc.dart';
 import 'package:crypto_portfolio/application/features/watchlist/widgets/empty_watchlist_widget.dart';
 import 'package:crypto_portfolio/application/features/watchlist/widgets/watchlist_coins_widget.dart';
-import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,8 +39,7 @@ class _WatchlistPageState extends State<WatchlistPage> {
         if (!state.loading) {
           UpdateDataSnackBar.show(
             context: context,
-            error: state.error != null,
-            errorInfo: state.error?.getMessage(context),
+            error: state.error,
           );
         }
       },
@@ -58,9 +56,7 @@ class _WatchlistPageState extends State<WatchlistPage> {
                 iconData: Icons.search,
                 onTap: () async {
                   await Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => SearchPage(),
-                    ),
+                    MaterialPageRoute(builder: (_) => SearchPage()),
                   );
                   context.read<WatchlistBloc>().add(WatchlistEvent.refresh());
                 },

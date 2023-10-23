@@ -1,4 +1,5 @@
-import 'package:crypto_portfolio/data/hive_api/hive_box.dart';
+import 'package:crypto_portfolio/data/hive_api/hive_multi_box.dart';
+import 'package:crypto_portfolio/data/hive_api/hive_single_box.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';

@@ -11,7 +11,6 @@ import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 
 class DetailPortfolioCoinWidget extends StatelessWidget {
   final CoinId id;
@@ -37,8 +36,7 @@ class DetailPortfolioCoinWidget extends StatelessWidget {
               if (!state.loading) {
                 UpdateDataSnackBar.show(
                   context: context,
-                  error: state.error != null,
-                  errorInfo: state.error?.getMessage(context),
+                  error: state.error,
                 );
               }
             },

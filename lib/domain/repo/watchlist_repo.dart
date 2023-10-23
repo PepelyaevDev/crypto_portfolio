@@ -10,7 +10,7 @@ import 'package:dartz/dartz.dart';
 class WatchlistRepo {
   final HiveApiClient _hiveApiClient;
   final GeckoApiClient _geckoApiClient;
-  WatchlistRepo(this._hiveApiClient, this._geckoApiClient);
+  const WatchlistRepo(this._hiveApiClient, this._geckoApiClient);
 
   List<CoinId> get getIds => _hiveApiClient.watchlistIds.values ?? [];
 
@@ -45,9 +45,8 @@ class WatchlistRepo {
           return 1;
         } else if (b.marketCap == null) {
           return -1;
-        } else {
-          return b.marketCap!.compareTo(a.marketCap!);
         }
+        return b.marketCap!.compareTo(a.marketCap!);
       });
       final CoinsEntity coinsEntity = CoinsEntity(
         list: geckoCoins.map((e) => e.createEmptyCoin).toList(),

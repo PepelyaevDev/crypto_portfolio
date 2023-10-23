@@ -12,7 +12,6 @@ import 'package:crypto_portfolio/application/features/detail_coin/widget/market_
 import 'package:crypto_portfolio/application/features/news/bloc/news_bloc.dart';
 import 'package:crypto_portfolio/application/features/news/widgets/news_list_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
-import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/entity/market_chart/market_chart_entity.dart';
 import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:flutter/material.dart';
@@ -69,8 +68,7 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                   if (!state.loading) {
                     UpdateDataSnackBar.show(
                       context: context,
-                      error: state.error != null,
-                      errorInfo: state.error?.getMessage(context),
+                      error: state.error,
                     );
                     if (!_initPageCompleter.$1.isCompleted) {
                       setState(() {
@@ -82,16 +80,8 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
               ),
               BlocListener<MarketChartBloc, MarketChartState>(
                 listener: (context, state) {
-                  final (bool, String?)? data = state.mapOrNull(
-                    success: (_) => (false, null),
-                    error: (state) => (true, state.error.getMessage(context)),
-                  );
-                  if (data != null) {
-                    UpdateDataSnackBar.show(
-                      context: context,
-                      error: data.$1,
-                      errorInfo: data.$2,
-                    );
+                  if (state.loadedState) {
+                    UpdateDataSnackBar.show(context: context, error: state.error);
                     if (!_initPageCompleter.$2.isCompleted) {
                       setState(() {
                         _initPageCompleter.$2.complete();

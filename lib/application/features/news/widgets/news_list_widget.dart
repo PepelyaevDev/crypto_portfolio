@@ -63,15 +63,10 @@ class _NewsListWidgetState extends State<NewsListWidget> {
     return BlocConsumer<NewsBloc, NewsState>(
       bloc: bloc,
       listener: (_, state) {
-        final (bool, String?)? data = state.mapOrNull(
-          success: (_) => (false, null),
-          error: (state) => (true, state.error.getMessage(context)),
-        );
-        if (data != null) {
+        if (state.loadedState) {
           UpdateDataSnackBar.show(
             context: context,
-            error: data.$1,
-            errorInfo: data.$2,
+            error: state.error,
           );
         }
       },

@@ -43,7 +43,7 @@ class AddPaymentBloc extends Bloc<AddPaymentEvent, AddPaymentState> {
     _portfolioRepo.updateHistory(event.paymentEntity);
   }
 
-  Future<void> _clear(_, Emitter<AddPaymentState> emit) async {
+  void _clear(_, Emitter<AddPaymentState> emit) {
     emit(AddPaymentState.initial());
   }
 }
