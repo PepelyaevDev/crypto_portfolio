@@ -10,6 +10,5 @@ class Error429Popup {
     if (blocState.popupStatus(EducationalPopup.error429) == EducationalPopupStatus.blocked) {
       return;
     }
-
   }
 }
