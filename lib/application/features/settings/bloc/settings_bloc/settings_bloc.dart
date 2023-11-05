@@ -15,11 +15,11 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
             educationalPopups: _settingsRepo.getEducationalPopupsInfo,
           ),
         ) {
-    on<_BlocEducationalPopup>(_blocEducationalPopup);
+    on<_BlockEducationalPopup>(_blockEducationalPopup);
   }
 
-  Future<void> _blocEducationalPopup(
-    _BlocEducationalPopup event,
+  Future<void> _blockEducationalPopup(
+    _BlockEducationalPopup event,
     Emitter<SettingsState> emit,
   ) async {
     await _settingsRepo.blocPopup(event.popup);

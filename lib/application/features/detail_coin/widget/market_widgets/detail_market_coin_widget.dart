@@ -73,6 +73,9 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                     if (!_initPageCompleter.$1.isCompleted) {
                       setState(() {
                         _initPageCompleter.$1.complete();
+                        if (state.coin == null) {
+                          _initPageCompleter.$3.complete();
+                        }
                       });
                     }
                   }

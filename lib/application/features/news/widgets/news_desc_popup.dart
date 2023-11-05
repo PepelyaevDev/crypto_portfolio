@@ -53,7 +53,7 @@ class NewsDescPopup extends StatelessWidget {
                           context.localization.personalNewsDesc,
                           style: AppStyles.normal14,
                         ),
-                        Divider(height: 40, color: AppColors.blackLight),
+                        Divider(height: 40),
                         Text(
                           context.localization.viewInSource,
                           style: AppStyles.bold20,
@@ -66,7 +66,7 @@ class NewsDescPopup extends StatelessWidget {
                         SizedBox(height: 5),
                         ColorFiltered(
                             colorFilter: ColorFilter.mode(
-                              Colors.black.withOpacity(0.1),
+                              Colors.black.withOpacity(0.05),
                               BlendMode.srcOver,
                             ),
                             child: Image.asset(tapSourcePath)),

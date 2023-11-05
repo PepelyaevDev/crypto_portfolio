@@ -75,7 +75,10 @@
     "clickOnLink": "Click on the link",
     "clickOnTitle": "Click on title",
 
-    "response429": "Server is not available. Please wait 2 minutes and try again",
+    "dontShowAgain": "Don't show again",
+
+    "response429": "Server is not available. Please wait 1 minute and try again",
+    "error429desc": "This is a free, non-commercial application. To obtain data, a third-party API is used with a limit of 20 requests per minute",
     "unknownError": "Something went wrong. Try again later please",
 
     "languageSettings": "Language settings",

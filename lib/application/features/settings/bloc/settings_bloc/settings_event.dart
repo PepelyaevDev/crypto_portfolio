@@ -2,12 +2,12 @@ part of 'settings_bloc.dart';
 
 abstract class SettingsEvent {
   const SettingsEvent();
-  const factory SettingsEvent.blocEducationalPopup(
+  const factory SettingsEvent.blockEducationalPopup(
     EducationalPopup popup,
-  ) = _BlocEducationalPopup;
+  ) = _BlockEducationalPopup;
 }
 
-class _BlocEducationalPopup extends SettingsEvent {
+class _BlockEducationalPopup extends SettingsEvent {
   final EducationalPopup popup;
-  const _BlocEducationalPopup(this.popup);
+  const _BlockEducationalPopup(this.popup);
 }

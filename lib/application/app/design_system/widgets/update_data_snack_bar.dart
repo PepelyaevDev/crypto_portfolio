@@ -5,6 +5,8 @@ import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.da
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:flutter/material.dart';
 
+Failure? _lastError;
+
 class UpdateDataSnackBar {
   static void show({
     required BuildContext context,
@@ -12,6 +14,14 @@ class UpdateDataSnackBar {
   }) {
     if (ModalRoute.of(context) == null) return;
     if (ModalRoute.of(context)!.isCurrent == false) return;
+    if (error == null) {
+      if (_lastError != null && DateTime.now().difference(_lastError!.time).inSeconds < 1) {
+        return;
+      }
+    } else {
+      _lastError = error;
+    }
+
     ScaffoldMessenger.of(context).clearSnackBars();
     final String message;
     if (error != null) {
