@@ -3,9 +3,8 @@ import 'package:crypto_portfolio/application/app/app.dart';
 import 'package:crypto_portfolio/data/cryptopanic_api/api/cryptopanic_api_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/api/gecko_api_client.dart';
 import 'package:crypto_portfolio/data/hive_api/hive_api_client.dart';
+import 'package:crypto_portfolio/data/preferences_api/preferences_api_client.dart';
 import 'package:flutter/material.dart';
-
-import 'data/preferences_api/preferences_api_client.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
