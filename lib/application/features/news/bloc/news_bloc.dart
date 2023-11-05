@@ -87,7 +87,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         final List<CoinId> watchlistSymbols = _watchlistRepo.getIds;
         final List<CoinId> portfolioSymbols =
             _portfolioRepo.getCoinsLocal.list.map((e) => e.id).toList();
-        return _getCurrenciesFromSymbols([
+        return _getCurrenciesFromIds([
           ...watchlistSymbols,
           ...portfolioSymbols,
         ]);
@@ -96,7 +96,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     }
   }
 
-  List<String>? _getCurrenciesFromSymbols(List<CoinId> ids) {
+  List<String>? _getCurrenciesFromIds(List<CoinId> ids) {
     if (ids.isEmpty) {
       return null;
     } else {
