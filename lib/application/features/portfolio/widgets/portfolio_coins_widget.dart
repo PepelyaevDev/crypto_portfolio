@@ -84,10 +84,10 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
                     widget.coinEntity.id.symbol.toString(),
                     style: AppStyles.bold14,
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: 2),
                   Text(
                     widget.coinEntity.currentPrice.moneyFull,
-                    style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
+                    style: AppStyles.normal14.copyWith(color: AppColors.grayDark),
                   ),
                 ],
               ),
@@ -102,10 +102,14 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(widget.coinEntity.iconData, color: widget.coinEntity.color),
+                      Icon(
+                        widget.coinEntity.iconData,
+                        color: widget.coinEntity.color,
+                        size: 20,
+                      ),
                       Text(
                         widget.coinEntity.profit,
-                        style: AppStyles.bold12.copyWith(color: widget.coinEntity.color),
+                        style: AppStyles.normal14.copyWith(color: widget.coinEntity.color),
                       ),
                     ],
                   ),
@@ -154,7 +158,7 @@ class _PortfolioCoinWidgetDetails extends StatelessWidget {
               ),
               Text(
                 context.localization.averageNetCost,
-                style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
+                style: AppStyles.normal14.copyWith(color: AppColors.grayDark),
               ),
             ],
           ),
@@ -168,7 +172,7 @@ class _PortfolioCoinWidgetDetails extends StatelessWidget {
               ),
               Text(
                 context.localization.invested,
-                style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
+                style: AppStyles.normal14.copyWith(color: AppColors.grayDark),
               ),
             ],
           ),

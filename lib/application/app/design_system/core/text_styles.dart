@@ -4,12 +4,8 @@ import 'package:flutter/material.dart';
 abstract class AppStyles {
   static final Color _defaultColor = AppColors.blackLight;
 
-  static final TextStyle bold12 =
-      TextStyle(fontWeight: FontWeight.w500, fontSize: 12, color: _defaultColor);
   static final TextStyle bold14 =
       TextStyle(fontWeight: FontWeight.w500, fontSize: 14, color: _defaultColor);
-  static final TextStyle bold15 =
-      TextStyle(fontWeight: FontWeight.w500, fontSize: 15, color: _defaultColor);
   static final TextStyle bold16 =
       TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: _defaultColor);
   static final TextStyle bold18 =
@@ -21,10 +17,7 @@ abstract class AppStyles {
   static final TextStyle bold30 =
       TextStyle(fontWeight: FontWeight.w500, fontSize: 30, color: _defaultColor);
 
-  static final TextStyle normal10 = TextStyle(fontSize: 10, color: _defaultColor);
-  static final TextStyle normal12 = TextStyle(fontSize: 12, color: _defaultColor);
   static final TextStyle normal14 = TextStyle(fontSize: 14, color: _defaultColor);
-  static final TextStyle normal15 = TextStyle(fontSize: 15, color: _defaultColor);
   static final TextStyle normal16 = TextStyle(fontSize: 16, color: _defaultColor);
   static final TextStyle normal18 = TextStyle(fontSize: 18, color: _defaultColor);
   static final TextStyle normal20 = TextStyle(fontSize: 20, color: _defaultColor);

@@ -176,7 +176,7 @@ class _NewsWidgetState extends State<_NewsWidget> {
                   children: widget.news.currencies.map((e) {
                     return Text(
                       e,
-                      style: AppStyles.bold12.copyWith(color: AppColors.greenLight),
+                      style: AppStyles.bold14.copyWith(color: AppColors.greenLight),
                     );
                   }).toList(),
                 ),

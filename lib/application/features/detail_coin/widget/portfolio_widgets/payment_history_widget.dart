@@ -5,11 +5,33 @@ import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_i
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/date_time_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
+import 'package:crypto_portfolio/application/features/detail_coin/widget/portfolio_widgets/payment_detail_popup.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:flutter/material.dart';
 
 import 'delete_popup.dart';
+
+class PaymentWidgetArgs {
+  final String name;
+  final String coinLogo;
+  final PaymentEntity payment;
+  final ValueChanged<PaymentEntity>? onTapDelete;
+  const PaymentWidgetArgs({
+    required this.name,
+    required this.coinLogo,
+    required this.payment,
+    required this.onTapDelete,
+  });
+
+  bool get buy => payment.type == PaymentType.buy;
+
+  Color get color => buy ? AppColors.greenLight : AppColors.primary;
+  String paymentType(BuildContext context) =>
+      buy ? context.localization.buy : context.localization.sell;
+  String moneyText(BuildContext context) =>
+      buy ? context.localization.paid : context.localization.received;
+}
 
 class PaymentHistoryWidget extends StatelessWidget {
   final CoinEntity coin;
@@ -85,23 +107,19 @@ class PaymentHistoryWidget extends StatelessWidget {
           ),
           Ink(
             decoration: AppDecorations.blueBorderDecoration,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 15,
-                horizontal: 10,
-              ),
-              child: ListView.separated(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (_, i) => PaymentWidget(
+            child: ListView.separated(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (_, i) => PaymentWidget(
+                PaymentWidgetArgs(
                   name: coin.id.symbol,
                   coinLogo: coin.image,
                   payment: coin.history[i],
                   onTapDelete: coin.canDelete(i) ? onTapDelete : null,
                 ),
-                separatorBuilder: (_, __) => Divider(height: 25),
-                itemCount: coin.history.length,
               ),
+              separatorBuilder: (_, __) => Divider(height: 25),
+              itemCount: coin.history.length,
             ),
           ),
         ],
@@ -111,146 +129,56 @@ class PaymentHistoryWidget extends StatelessWidget {
 }
 
 class PaymentWidget extends StatelessWidget {
-  final String name;
-  final String coinLogo;
-  final PaymentEntity payment;
-  final ValueChanged<PaymentEntity>? onTapDelete;
-  const PaymentWidget({
-    required this.name,
-    required this.coinLogo,
-    required this.payment,
-    required this.onTapDelete,
-  });
+  final PaymentWidgetArgs args;
+  const PaymentWidget(this.args);
 
   @override
   Widget build(BuildContext context) {
-    final Color color;
-    final String paymentType;
-    final String moneyText;
-    if (payment.type == PaymentType.buy) {
-      color = AppColors.greenLight;
-      paymentType = context.localization.buy;
-      moneyText = context.localization.paid;
-    } else {
-      color = AppColors.primary;
-      paymentType = context.localization.sell;
-      moneyText = context.localization.received;
-    }
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
+    return InkWell(
+      borderRadius: BorderRadius.circular(3),
+      onTap: () {
+        PaymentDetailPopup.show(context: context, args: args);
+      },
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 15),
+        child: Column(
           children: [
-            Image.network(
-              coinLogo,
-              width: 20,
-              height: 20,
-              errorBuilder: (_, __, ___) => SizedBox(),
-            ),
-            SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
               children: [
-                RichText(
-                  text: TextSpan(
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Image.network(
+                    args.coinLogo,
+                    width: 20,
+                    height: 20,
+                    errorBuilder: (_, __, ___) => SizedBox(),
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextSpan(
-                        text: '$paymentType ',
-                        style: AppStyles.bold14.copyWith(color: color),
+                      PaymentRow(
+                        title: args.paymentType(context),
+                        text: '${args.payment.numberOfCoins} ${args.name}',
+                        color: args.color,
+                        style: AppStyles.normal16,
                       ),
-                      TextSpan(
-                        text: '${payment.numberOfCoins} $name',
-                        style: AppStyles.bold14.copyWith(color: AppColors.grayDark),
+                      SizedBox(height: 2),
+                      PaymentRow(
+                        title: args.payment.dateTime.dateLong(context),
+                        text: '${args.moneyText(context)}: ${args.payment.amount.moneyFull}',
+                        style: AppStyles.normal14,
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 5),
-                Text(
-                  '${context.localization.price}: '
-                  '${(payment.amount / payment.numberOfCoins).moneyFull}',
-                  style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
-                ),
+                SizedBox(width: 15),
               ],
             ),
           ],
         ),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: '$moneyText: ',
-                        style: AppStyles.bold14.copyWith(color: AppColors.grayDark),
-                      ),
-                      TextSpan(
-                        text: payment.amount.moneyFull,
-                        style: AppStyles.bold14.copyWith(color: color),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 5),
-                Text(
-                  '${payment.dateTime.dateLong(context)} ${payment.dateTime.time}',
-                  style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
-                ),
-              ],
-            ),
-            SizedBox(width: 5),
-            InkWell(
-              borderRadius: BorderRadius.circular(10),
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (_) => DeletePopup(
-                    title: onTapDelete == null
-                        ? context.localization.deletionNotPossible
-                        : context.localization.deleteTransaction,
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          onTapDelete == null
-                              ? context.localization.numberCoinsWillNegative
-                              : context.localization.statisticsWillRecalculated,
-                          style: AppStyles.normal16,
-                        ),
-                        if (onTapDelete != null)
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10.0),
-                            child: Text(
-                              context.localization.actionNotUndone,
-                              style: AppStyles.normal16,
-                            ),
-                          ),
-                      ],
-                    ),
-                    onTapDelete: onTapDelete == null
-                        ? null
-                        : () {
-                            onTapDelete!(payment);
-                            Navigator.of(context).pop();
-                          },
-                  ),
-                );
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Icon(Icons.clear, size: 20),
-              ),
-            ),
-          ],
-        ),
-      ],
+      ),
     );
   }
 }

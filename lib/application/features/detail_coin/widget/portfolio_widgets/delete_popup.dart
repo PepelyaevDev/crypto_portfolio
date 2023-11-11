@@ -41,7 +41,7 @@ class DeletePopup extends StatelessWidget {
                     bottomLeft: Radius.circular(radius),
                     bottomRight: Radius.circular(radius),
                   ),
-                  color: AppColors.grayLight,
+                  color: AppColors.white,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),

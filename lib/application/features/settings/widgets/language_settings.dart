@@ -97,7 +97,7 @@ class _SelectAppLocaleWidget extends StatelessWidget {
                         SizedBox(width: 7),
                         Text(
                           e.countryName,
-                          style: AppStyles.normal15.copyWith(
+                          style: AppStyles.normal14.copyWith(
                             color: selectedLocale ? AppColors.blackLight : AppColors.gray,
                           ),
                         ),
@@ -161,7 +161,7 @@ class _SelectNewsLocaleWidget extends StatelessWidget {
                         SizedBox(width: 7),
                         Text(
                           e.countryName,
-                          style: AppStyles.normal15.copyWith(
+                          style: AppStyles.normal14.copyWith(
                             color: selectedLocale ? AppColors.blackLight : AppColors.gray,
                           ),
                         ),

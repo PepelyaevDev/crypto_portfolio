@@ -40,7 +40,7 @@ extension CoinData on CoinEntity {
     if (value < 0) {
       return '0';
     } else {
-      return double.parse(value.toStringAsFixed(2)).moneyFull;
+      return value.moneyFull;
     }
   }
 

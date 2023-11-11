@@ -108,7 +108,6 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                         Expanded(
                           flex: 3,
                           child: _DatePickerItem(
-                            title: context.localization.date,
                             dateTime: dateTime.dateLong(context),
                             onTap: () => _showDialog(
                               CupertinoDatePicker(
@@ -126,7 +125,6 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                         Expanded(
                           flex: 3,
                           child: _DatePickerItem(
-                            title: context.localization.time,
                             dateTime: dateTime.time,
                             onTap: () => _showDialog(
                               CupertinoDatePicker(
@@ -212,7 +210,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
               padding: const EdgeInsets.all(10.0),
               child: Text(
                 title,
-                style: AppStyles.normal12.copyWith(
+                style: AppStyles.normal14.copyWith(
                   color: _paymentType == value ? AppColors.blackLight : AppColors.gray,
                 ),
               ),
@@ -273,12 +271,10 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
 }
 
 class _DatePickerItem extends StatelessWidget {
-  final String title;
   final String dateTime;
   final VoidCallback onTap;
 
   const _DatePickerItem({
-    required this.title,
     required this.dateTime,
     required this.onTap,
   });
@@ -297,15 +293,9 @@ class _DatePickerItem extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 13.0),
           child: Center(
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text('$title: ', style: AppStyles.normal12),
-                Text(
-                  dateTime,
-                  style: AppStyles.normal12.copyWith(color: AppColors.primary),
-                )
-              ],
+            child: Text(
+              dateTime,
+              style: AppStyles.normal14.copyWith(color: AppColors.primary),
             ),
           ),
         ),

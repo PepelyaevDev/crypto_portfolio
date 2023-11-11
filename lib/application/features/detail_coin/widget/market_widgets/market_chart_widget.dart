@@ -55,7 +55,7 @@ class MarketChartWidget extends StatelessWidget {
                       axisLabelRenderArgs.value.toInt(),
                     ),
                   );
-                  return ChartAxisLabel(text, AppStyles.normal12);
+                  return ChartAxisLabel(text, AppStyles.normal14);
                 },
               ),
               series: [

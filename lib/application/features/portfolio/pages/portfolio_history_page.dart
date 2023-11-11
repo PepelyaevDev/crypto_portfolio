@@ -39,15 +39,14 @@ class PortfolioHistoryPage extends StatelessWidget {
                 ),
                 body: ListView(
                   children: [
-                    SizedBox(height: 20),
+                    SizedBox(height: 5),
                     ListView.separated(
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (_, i) {
                         final CoinEntity coin = _coin(state.coins, _payments(state.coins)[i].id);
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: PaymentWidget(
+                        return PaymentWidget(
+                          PaymentWidgetArgs(
                             name: coin.id.symbol,
                             coinLogo: coin.image,
                             payment: _payments(state.coins)[i],
@@ -62,7 +61,7 @@ class PortfolioHistoryPage extends StatelessWidget {
                           ),
                         );
                       },
-                      separatorBuilder: (_, __) => Divider(height: 30),
+                      separatorBuilder: (_, __) => Divider(height: 1),
                       itemCount: _payments(state.coins).length,
                     ),
                     SizedBox(height: 20),

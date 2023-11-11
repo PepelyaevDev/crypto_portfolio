@@ -56,7 +56,7 @@ class MarketCoinsWidget extends StatelessWidget {
                           SizedBox(height: 2),
                           Text(
                             coins.list[i].marketCap.moneyCompact,
-                            style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
+                            style: AppStyles.normal14.copyWith(color: AppColors.grayDark),
                           ),
                         ],
                       ),

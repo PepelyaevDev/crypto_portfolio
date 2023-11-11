@@ -71,11 +71,11 @@ class _MarketStatRow extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppStyles.normal12.copyWith(color: AppColors.grayDark),
+          style: AppStyles.normal14.copyWith(color: AppColors.grayDark),
         ),
         Text(
           content,
-          style: AppStyles.normal12.copyWith(color: AppColors.blackLight),
+          style: AppStyles.normal14.copyWith(color: AppColors.blackLight),
         ),
       ],
     );

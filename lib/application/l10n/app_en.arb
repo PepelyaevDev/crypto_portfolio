@@ -28,7 +28,6 @@
 
     "portfolioStatistics": "Portfolio statistics",
     "coinChart": "Coin chart",
-    "totalProfitLoss": "Total profit / loss",
     "percentageStablecoins": "Percentage of stablecoins",
     "portfolioData": "Portfolio data",
     "marketData": "Market data",
@@ -68,6 +67,7 @@
     "source": "Source",
     "author": "Author",
     "ok": "OK",
+    "close": "Close",
     "personalNews": "Personal news",
     "personalNewsDesc": "The 'Watchlist' section contains news about coins from your portfolio and about coins added to watchlist",
     "newsNotFound": "News not found",

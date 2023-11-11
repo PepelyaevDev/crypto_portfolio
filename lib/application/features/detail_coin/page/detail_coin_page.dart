@@ -52,14 +52,14 @@ class _DetailCoinPageState extends State<DetailCoinPage> with SingleTickerProvid
             children: [
               Image.network(
                 widget.coinLogo,
-                width: 30,
-                height: 30,
+                width: 25,
+                height: 25,
                 errorBuilder: (_, __, ___) => SizedBox(),
               ),
               SizedBox(width: 10),
               Text(
                 widget.id.symbol,
-                style: AppStyles.normal14,
+                style: AppStyles.normal16,
               ),
             ],
           ),

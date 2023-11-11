@@ -52,7 +52,7 @@ class _PortfolioStatWidgetState extends State<PortfolioStatWidget> {
                 valueColor: AppColors.grayDark,
               ),
               _PortfolioStatRow(
-                title: context.localization.totalProfitLoss,
+                title: context.localization.profitLoss,
                 value: widget.coins.profit,
                 valueIcon: widget.coins.iconData,
                 valueColor: widget.coins.color,
@@ -86,7 +86,7 @@ class _PortfolioStatWidgetState extends State<PortfolioStatWidget> {
                         padding: const EdgeInsets.symmetric(horizontal: 5.0),
                         child: Text(
                           context.localization.transactionHistory,
-                          style: AppStyles.normal12.copyWith(color: AppColors.primary),
+                          style: AppStyles.normal14.copyWith(color: AppColors.primary),
                         ),
                       ),
                     ),
@@ -139,12 +139,12 @@ class _PortfolioStatRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title, style: AppStyles.normal12.copyWith(color: AppColors.grayDark)),
+        Text(title, style: AppStyles.normal14.copyWith(color: AppColors.grayDark)),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             if (valueIcon != null) Icon(valueIcon, color: valueColor),
-            Text(value, style: AppStyles.bold12.copyWith(color: valueColor)),
+            Text(value, style: AppStyles.bold14.copyWith(color: valueColor)),
           ],
         ),
       ],
