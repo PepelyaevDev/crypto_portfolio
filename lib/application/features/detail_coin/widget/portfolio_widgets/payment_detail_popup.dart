@@ -103,7 +103,7 @@ class PaymentDetailPopup {
                                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                         RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(5.0),
-                                          side: BorderSide(color: AppColors.redLight),
+                                          side: BorderSide(color: AppColors.grayDark),
                                         ),
                                       ),
                                     ),
@@ -147,7 +147,7 @@ class PaymentDetailPopup {
                                     },
                                     child: Text(
                                       context.localization.delete,
-                                      style: AppStyles.normal14.copyWith(color: AppColors.redLight),
+                                      style: AppStyles.normal14.copyWith(color: AppColors.grayDark),
                                     ),
                                   ),
                                 ),

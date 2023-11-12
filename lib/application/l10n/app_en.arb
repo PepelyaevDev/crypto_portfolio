@@ -78,7 +78,10 @@
     "dontShowAgain": "Don't show again",
 
     "response429": "Server is not available. Please wait 1 minute and try again",
-    "error429desc": "This is a free, non-commercial application. To obtain data, a third-party API is used with a limit of 20 requests per minute",
+    "freeApp": "This is a free, non-commercial application.",
+    "clickOnTitleDesc": "Click on the title in the window that opens to go to the source.",
+    "error429desc": "To obtain data, a third-party API is used with a limit of 20 requests per minute",
+    "newsSourceDesc": "A third-party service is used to receive news",
     "unknownError": "Something went wrong. Try again later please",
 
     "languageSettings": "Language settings",

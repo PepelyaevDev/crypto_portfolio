@@ -1,6 +1,7 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/decorations.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
+import 'package:crypto_portfolio/application/app/design_system/educational_popups/news_source_popup.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/date_time_extension.dart';
@@ -240,10 +241,7 @@ class _NewsWidgetState extends State<_NewsWidget> {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        launchUrl(
-                          Uri.parse(widget.news.url),
-                          mode: LaunchMode.externalApplication,
-                        );
+                        NewsSourcePopup.show(context, widget.news.url);
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(5.0),

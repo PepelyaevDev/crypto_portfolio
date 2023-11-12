@@ -3,6 +3,7 @@ import 'package:crypto_portfolio/application/app/design_system/core/text_styles.
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/features/settings/bloc/settings_bloc/settings_bloc.dart';
 import 'package:crypto_portfolio/domain/entity/educational_popups/educational_popup.dart';
+import 'package:crypto_portfolio/domain/entity/educational_popups/educational_popup_status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,7 +12,13 @@ class EducationalPopupWidget {
     BuildContext context,
     EducationalPopup popup,
     Widget content,
+    VoidCallback onTap,
   ) {
+    final blocState = context.read<SettingsBloc>().state;
+    if (blocState.popupStatus(popup) == EducationalPopupStatus.blocked) {
+      onTap.call();
+      return;
+    }
     final double radius = 5;
     showDialog(
       context: context,
@@ -62,6 +69,7 @@ class EducationalPopupWidget {
                                   ),
                                   onPressed: () {
                                     Navigator.of(context).pop();
+                                    onTap.call();
                                   },
                                   child: Text(
                                     context.localization.ok,
@@ -83,6 +91,7 @@ class EducationalPopupWidget {
                                           SettingsEvent.blockEducationalPopup(popup),
                                         );
                                     Navigator.of(context).pop();
+                                    onTap.call();
                                   },
                                   child: Text(
                                     context.localization.dontShowAgain,
