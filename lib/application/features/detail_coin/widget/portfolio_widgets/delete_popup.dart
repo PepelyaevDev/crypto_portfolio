@@ -26,7 +26,7 @@ class DeletePopup extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                height: 7,
+                height: 4,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(radius),

@@ -118,7 +118,7 @@ class PaymentHistoryWidget extends StatelessWidget {
                   onTapDelete: coin.canDelete(i) ? onTapDelete : null,
                 ),
               ),
-              separatorBuilder: (_, __) => Divider(height: 25),
+              separatorBuilder: (_, __) => Divider(height: 1),
               itemCount: coin.history.length,
             ),
           ),
