@@ -5,7 +5,7 @@ import 'package:crypto_portfolio/application/app/design_system/educational_popup
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/date_time_extension.dart';
-import 'package:crypto_portfolio/application/features/news/bloc/news_bloc.dart';
+import 'package:crypto_portfolio/application/features/news/bloc/news_bloc/news_bloc.dart';
 import 'package:crypto_portfolio/application/features/news/widgets/no_currencies_widget.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/entity/news/news_entity.dart';

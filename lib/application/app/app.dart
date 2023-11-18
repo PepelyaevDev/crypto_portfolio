@@ -1,7 +1,7 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/features/bottom_navigation/bloc/bottom_navigation_bloc.dart';
 import 'package:crypto_portfolio/application/features/bottom_navigation/page/bottom_navigation_page.dart';
-import 'package:crypto_portfolio/application/features/news/bloc/news_bloc.dart';
+import 'package:crypto_portfolio/application/features/news/bloc/news_bloc/news_bloc.dart';
 import 'package:crypto_portfolio/application/features/settings/bloc/locale_bloc/locale_bloc.dart';
 import 'package:crypto_portfolio/application/features/settings/bloc/settings_bloc/settings_bloc.dart';
 import 'package:crypto_portfolio/application/features/stable_coins/bloc/stable_bloc.dart';
@@ -61,7 +61,9 @@ class CryptoPortfolioApp extends StatelessWidget {
         builder: (context) {
           return MultiBlocProvider(
             providers: [
-              BlocProvider(create: (context) => BottomNavigationBloc()),
+              BlocProvider(
+                create: (context) => BottomNavigationBloc(context.read<PortfolioRepo>()),
+              ),
               BlocProvider(create: (context) => SettingsBloc(context.read<SettingsRepo>())),
               BlocProvider(create: (context) => StableBloc(context.read<MarketRepo>())),
               BlocProvider(
@@ -84,6 +86,7 @@ class CryptoPortfolioApp extends StatelessWidget {
                 return MaterialApp(
                   locale: Locale(state.appSelectedLocale.name),
                   theme: ThemeData(
+                    useMaterial3: false,
                     colorScheme: ColorScheme.fromSwatch().copyWith(
                       primary: AppColors.primary,
                     ),

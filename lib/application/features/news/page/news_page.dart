@@ -5,7 +5,8 @@ import 'package:crypto_portfolio/application/app/design_system/core/text_styles.
 import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/logo_widget.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
-import 'package:crypto_portfolio/application/features/news/bloc/news_bloc.dart';
+import 'package:crypto_portfolio/application/features/news/bloc/init_news_page_bloc/init_news_page_bloc.dart';
+import 'package:crypto_portfolio/application/features/news/bloc/news_bloc/news_bloc.dart';
 import 'package:crypto_portfolio/application/features/news/widgets/news_desc_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_portfolio/application/features/news/widgets/news_list_widget.dart';
@@ -23,7 +24,10 @@ class _NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin
 
   @override
   void initState() {
+    final initNewsPageBloc = InitNewsPageBloc(context.read(), context.read());
+    final hasFavorites = initNewsPageBloc.state.hasFavorites;
     tabController = TabController(
+      initialIndex: hasFavorites ? 1 : 0,
       vsync: this,
       length: 2,
     );

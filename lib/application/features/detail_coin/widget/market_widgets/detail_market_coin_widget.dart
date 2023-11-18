@@ -9,7 +9,7 @@ import 'package:crypto_portfolio/application/features/detail_coin/widget/market_
 import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/detail_market_stat_widget.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/distance_buttons.dart';
 import 'package:crypto_portfolio/application/features/detail_coin/widget/market_widgets/market_chart_widget.dart';
-import 'package:crypto_portfolio/application/features/news/bloc/news_bloc.dart';
+import 'package:crypto_portfolio/application/features/news/bloc/news_bloc/news_bloc.dart';
 import 'package:crypto_portfolio/application/features/news/widgets/news_list_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/market_chart/market_chart_entity.dart';
