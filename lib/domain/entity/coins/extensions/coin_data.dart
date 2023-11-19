@@ -20,6 +20,7 @@ extension CoinData on CoinEntity {
     return value;
   }
 
+  // number of coins
   double get holdings {
     double value = 0;
     for (final payment in history) {
@@ -44,6 +45,7 @@ extension CoinData on CoinEntity {
     }
   }
 
+  // cost of coins
   double get holdingsValue => holdings * currentPrice;
 
   Color get color => holdingsValue < invested ? AppColors.redLight : AppColors.greenLight;

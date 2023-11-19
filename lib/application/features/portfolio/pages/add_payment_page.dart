@@ -1,7 +1,10 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
+import 'package:crypto_portfolio/application/app/design_system/core/consts.dart';
+import 'package:crypto_portfolio/application/app/design_system/educational_popups/transaction_amount_popup.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/date_time_extension.dart';
+import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
 import 'package:crypto_portfolio/application/app/extension/nullable_string_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/custom_text_field.dart';
@@ -30,6 +33,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
   final TextEditingController moneyController = TextEditingController();
   final TextEditingController coinsController = TextEditingController();
   DateTime dateTime = DateTime.now();
+  bool _amountAfterPayment = false;
 
   @override
   Widget build(BuildContext context) {
@@ -74,24 +78,64 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                         _paymentTypeButton(PaymentType.sell, context.localization.sell),
                       ],
                     ),
-                    SizedBox(height: 20),
-                    CustomTextField(
-                      suffixText: 'USD',
-                      labelText: context.localization.amountOfMoney,
-                      keyboardType: TextInputType.numberWithOptions(decimal: true),
-                      controller: moneyController,
-                      validator: (value) => _validator(value, context),
+                    SizedBox(height: 10),
+                    InkWell(
+                      borderRadius: BorderRadius.circular(5),
+                      onTap: () {
+                        setState(() {
+                          _amountAfterPayment = !_amountAfterPayment;
+                        });
+                        if (_amountAfterPayment) {
+                          TransactionAmountPopup.show(context, true);
+                        }
+                      },
+                      child: Row(
+                        children: [
+                          Icon(
+                            _amountAfterPayment ? Icons.check_box : Icons.check_box_outline_blank,
+                            color: AppColors.primary,
+                          ),
+                          SizedBox(width: 5),
+                          Expanded(
+                            child: Text(
+                              context.localization.enterBalanceAfterTransaction,
+                              style: AppStyles.normal14,
+                            ),
+                          ),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Icon(
+                                Icons.question_mark,
+                                color: AppColors.grayDark,
+                                size: 20,
+                              ),
+                            ),
+                            onTap: () {
+                              TransactionAmountPopup.show(context, false);
+                            },
+                          )
+                        ],
+                      ),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     BlocBuilder<AddPaymentBloc, AddPaymentState>(
                       builder: (context, state) {
                         final String? suffix = state.maybeMap(
                           success: (state) => state.coin.id.symbol,
                           orElse: () => null,
                         );
+                        final String description = switch (_paymentType) {
+                          PaymentType.buy => context.localization.purchased,
+                          PaymentType.sell => context.localization.sold,
+                          _ => emptyString,
+                        };
                         return CustomTextField(
                           suffixText: suffix,
-                          labelText: context.localization.numberOfCoins,
+                          labelText: _amountAfterPayment
+                              ? context.localization.balanceAfterTransaction
+                              : '${context.localization.numberOfCoins} ($description)',
                           keyboardType: TextInputType.numberWithOptions(decimal: true),
                           controller: coinsController,
                           validator: (value) => _coinsValidator(
@@ -101,6 +145,14 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                           ),
                         );
                       },
+                    ),
+                    SizedBox(height: 20),
+                    CustomTextField(
+                      suffixText: 'USD',
+                      labelText: context.localization.amountOfMoney,
+                      keyboardType: TextInputType.numberWithOptions(decimal: true),
+                      controller: moneyController,
+                      validator: (value) => _baseValidator(value, context),
                     ),
                     SizedBox(height: 20),
                     Row(
@@ -148,6 +200,16 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                             success: (state) {
                               return () {
                                 if (_formKey.currentState!.validate()) {
+                                  final holdings = state.coin.holdings;
+                                  final enteredNumber = coinsController.text.toDouble;
+                                  final double numberOfCoins = switch (_amountAfterPayment) {
+                                    true => switch (_paymentType) {
+                                        PaymentType.buy => enteredNumber.subtractNumber(holdings),
+                                        PaymentType.sell => holdings.subtractNumber(enteredNumber),
+                                        _ => 0,
+                                      },
+                                    false => enteredNumber,
+                                  };
                                   context.read<AddPaymentBloc>().add(
                                         AddPaymentEvent.updateHistory(
                                           paymentEntity: PaymentEntity(
@@ -155,7 +217,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                                             dateTime: dateTime,
                                             type: _paymentType,
                                             amount: moneyController.text.toDouble,
-                                            numberOfCoins: coinsController.text.toDouble,
+                                            numberOfCoins: numberOfCoins,
                                           ),
                                           coin: state.coin,
                                         ),
@@ -222,10 +284,18 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
   }
 
   String? _coinsValidator(String? value, CoinEntity? coin, BuildContext context) {
-    final String? firstChek = _validator(value, context);
-    if (firstChek != null) return firstChek;
-    if (value.toDouble == 0) return context.localization.mustBeGreater0;
-    if (coin == null) return context.localization.notSelectedCoin;
+    if (coin == null) return emptyString;
+    final String? firstCheck = _baseValidator(value, context);
+    if (firstCheck != null) return firstCheck;
+    if (_amountAfterPayment) {
+      return _amountAfterTransactionValidator(value, coin, context);
+    } else {
+      return _amountInTransactionValidator(value, coin, context);
+    }
+  }
+
+  String? _amountInTransactionValidator(String? value, CoinEntity coin, BuildContext context) {
+    if (value.toDouble <= 0) return context.localization.mustBeGreater0;
     if (_paymentType == PaymentType.sell && value.toDouble > coin.holdings) {
       return '${context.localization.youHave} ${coin.holdings.toString()} ${coin.id.symbol}. '
           '${context.localization.cannotSell} $value ${coin.id.symbol}';
@@ -233,7 +303,28 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
     return null;
   }
 
-  String? _validator(String? value, BuildContext context) {
+  String? _amountAfterTransactionValidator(String? value, CoinEntity coin, BuildContext context) {
+    final double amount = value.toDouble;
+    if (_paymentType == PaymentType.buy) {
+      if (amount <= 0) {
+        return context.localization.mustBeGreater0;
+      }
+      if (amount <= coin.holdings) {
+        return context.localization.totalBalanceAfterBuyMustBeGreater;
+      }
+    }
+    if (_paymentType == PaymentType.sell) {
+      if (amount < 0) {
+        return context.localization.balanceLessZero;
+      }
+      if (amount >= coin.holdings) {
+        return context.localization.totalBalanceAfterSellMustBeLess;
+      }
+    }
+    return null;
+  }
+
+  String? _baseValidator(String? value, BuildContext context) {
     if (value == null) return context.localization.validatorEmptyField;
     if (value.isEmpty) return context.localization.validatorEmptyField;
     try {
