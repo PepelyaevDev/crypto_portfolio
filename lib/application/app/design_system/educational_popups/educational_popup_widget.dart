@@ -1,8 +1,8 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/base_popup.dart';
-import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
-import 'package:crypto_portfolio/application/features/settings/bloc/settings_bloc/settings_bloc.dart';
+import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
+import 'package:crypto_portfolio/presentation/settings/bloc/settings_bloc/settings_bloc.dart';
 import 'package:crypto_portfolio/domain/entity/educational_popups/educational_popup.dart';
 import 'package:crypto_portfolio/domain/entity/educational_popups/educational_popup_status.dart';
 import 'package:flutter/material.dart';

@@ -71,13 +71,13 @@ dev_dependencies:
 
 flutter_icons: 
   android: launcher_icon
-  image_path: assets/logo.png
+  image_path: assets/app/logo.png
   ios: true
   min_sdk_android: 21
 
 flutter: 
   assets: 
-    - assets/logo.png
+    - assets/app/logo.png
     - assets/news_instruction/tap_header.png
     - assets/news_instruction/tap_source.png
   fonts: 
@@ -85,6 +85,6 @@ flutter:
       family: AppIcons
       fonts: 
         - 
-          asset: lib/application/app/design_system/icons/AppIcons.ttf
+          asset: lib/common/assets/icons/AppIcons.ttf
   uses-material-design: true
   generate: true

@@ -1,7 +1,7 @@
-import 'package:crypto_portfolio/application/app/design_system/core/consts.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/educational_popups/educational_popup_widget.dart';
-import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
+import 'package:crypto_portfolio/common/assets/images/image_paths.dart';
+import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/domain/entity/educational_popups/educational_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -26,7 +26,7 @@ class NewsSourcePopup {
               Colors.white.withOpacity(0.1),
               BlendMode.srcOver,
             ),
-            child: Image.asset(tapHeaderPath),
+            child: Image.asset(ImagePaths.newsInstructionTapHeader.path),
           ),
           Divider(height: 30),
           Text(

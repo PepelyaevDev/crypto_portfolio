@@ -1,6 +1,7 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/consts.dart';
+import 'package:crypto_portfolio/common/utils/consts/app_consts.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
+import 'package:crypto_portfolio/common/assets/images/image_paths.dart';
 import 'package:flutter/material.dart';
 
 class LogoWidget extends StatelessWidget {
@@ -11,7 +12,7 @@ class LogoWidget extends StatelessWidget {
       children: [
         Container(
           height: 25,
-          child: Image.asset(logoPath),
+          child: Image.asset(ImagePaths.appLogo.path),
         ),
         SizedBox(width: 5),
         Text(

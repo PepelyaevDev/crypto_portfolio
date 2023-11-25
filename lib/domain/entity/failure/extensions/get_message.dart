@@ -1,4 +1,4 @@
-import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
+import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:flutter/cupertino.dart';
 

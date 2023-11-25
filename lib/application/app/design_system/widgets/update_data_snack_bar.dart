@@ -1,6 +1,6 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/educational_popups/error_429_popup.dart';
-import 'package:crypto_portfolio/application/app/extension/context_extension.dart';
+import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/domain/entity/failure/extensions/get_message.dart';
 import 'package:crypto_portfolio/domain/entity/failure/failure_entity.dart';
 import 'package:flutter/material.dart';

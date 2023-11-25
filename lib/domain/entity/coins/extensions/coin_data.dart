@@ -1,5 +1,5 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/extension/double_extension.dart';
+import 'package:crypto_portfolio/common/utils/extensions/double_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:money_formatter/money_formatter.dart';

@@ -1,4 +1,4 @@
-import 'package:crypto_portfolio/application/app/extension/int_extension.dart';
+import 'package:crypto_portfolio/common/utils/extensions/int_extension.dart';
 import 'package:crypto_portfolio/data/cryptopanic_api/sources/cryptopanic_news_source.dart';
 import 'package:dio/dio.dart';
 
@@ -12,10 +12,10 @@ class CryptopanicApiClient {
     final dio = Dio(
       BaseOptions(
         baseUrl: 'https://cryptopanic.com/api/v1',
-        connectTimeout: Duration(seconds: 5),
-        receiveTimeout: Duration(seconds: 5),
+        connectTimeout: Duration(seconds: 15),
+        receiveTimeout: Duration(seconds: 15),
         responseType: ResponseType.json,
-        validateStatus: (status) => status.validate,
+        validateStatus: (status) => status.validateHttpResponseStatus,
       ),
     );
     return CryptopanicApiClient(
