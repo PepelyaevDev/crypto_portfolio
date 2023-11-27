@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/logo_widget.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/refresh_icon_button.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/logo_widget.dart';
+import 'package:crypto_portfolio/common/design_system/buttons/refresh_icon_button.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/presentation/search/page/search_page.dart';
@@ -61,8 +61,9 @@ class _WatchlistPageState extends State<WatchlistPage> {
                   context.read<WatchlistBloc>().add(WatchlistEvent.refresh());
                 },
               ),
-              RefreshIconButton(
+              RefreshButton(
                 loading: state.loading,
+                backgroundColor: RefreshButtonBackground.surface,
                 onTapUpdate: () {
                   context.read<WatchlistBloc>().add(WatchlistEvent.refresh());
                 },

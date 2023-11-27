@@ -7,22 +7,22 @@ import 'package:crypto_portfolio/domain/repo/market_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'market_event.dart';
-part 'market_state.dart';
-part 'market_bloc.freezed.dart';
+part 'market_list_event.dart';
+part 'market_list_state.dart';
+part 'market_list_bloc.freezed.dart';
 
-class MarketBloc extends Bloc<MarketEvent, MarketState> {
+class MarketListBloc extends Bloc<MarketListEvent, MarketListState> {
   final MarketRepo _marketRepo;
-  MarketBloc(this._marketRepo) : super(MarketState(coins: _marketRepo.getCoinsLocal)) {
+  MarketListBloc(this._marketRepo) : super(MarketListState(coins: _marketRepo.getCoinsLocal)) {
     on<_RefreshData>(_refreshData, transformer: droppable());
   }
 
-  Future<void> _refreshData(_RefreshData event, Emitter<MarketState> emit) async {
-    emit(MarketState(coins: state.coins, loading: true));
+  Future<void> _refreshData(_RefreshData event, Emitter<MarketListState> emit) async {
+    emit(MarketListState(coins: state.coins, loading: true));
     final coins = await _marketRepo.getCoinsRemote();
     coins.fold(
-      (l) => emit(MarketState(coins: state.coins, error: l)),
-      (r) => emit(MarketState(coins: r)),
+      (l) => emit(MarketListState(coins: state.coins, error: l)),
+      (r) => emit(MarketListState(coins: r)),
     );
     event.completer.close();
   }

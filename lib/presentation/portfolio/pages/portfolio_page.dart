@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/logo_widget.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/logo_widget.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/refresh_icon_button.dart';
+import 'package:crypto_portfolio/common/design_system/buttons/refresh_icon_button.dart';
 import 'package:crypto_portfolio/presentation/portfolio/bloc/portfolio_bloc/portfolio_bloc.dart';
 import 'package:crypto_portfolio/presentation/portfolio/pages/add_payment_page.dart';
 import 'package:crypto_portfolio/presentation/portfolio/widgets/empty_portfolio_widget.dart';
@@ -54,8 +54,9 @@ class PortfolioPage extends StatelessWidget {
                       );
                     },
                   ),
-                  RefreshIconButton(
+                  RefreshButton(
                     loading: portfolioState.loading,
+                    backgroundColor: RefreshButtonBackground.surface,
                     onTapUpdate: () {
                       context.read<PortfolioBloc>().add(PortfolioEvent.refreshData());
                     },

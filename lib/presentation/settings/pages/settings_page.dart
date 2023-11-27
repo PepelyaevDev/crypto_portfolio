@@ -1,5 +1,5 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/logo_widget.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/logo_widget.dart';
 import 'package:crypto_portfolio/presentation/settings/widgets/contacts_widget.dart';
 import 'package:crypto_portfolio/presentation/settings/widgets/language_settings.dart';
 import 'package:flutter/material.dart';

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/logo_widget.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/logo_widget.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/presentation/news/bloc/init_news_page_bloc/init_news_page_bloc.dart';
 import 'package:crypto_portfolio/presentation/news/bloc/news_bloc/news_bloc.dart';

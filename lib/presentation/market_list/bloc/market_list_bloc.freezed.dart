@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'market_bloc.dart';
+part of 'market_list_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$MarketEvent {
+mixin _$MarketListEvent {
   Completer<void>? get completer => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -51,21 +51,21 @@ mixin _$MarketEvent {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MarketEventCopyWith<MarketEvent> get copyWith => throw _privateConstructorUsedError;
+  $MarketListEventCopyWith<MarketListEvent> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MarketEventCopyWith<$Res> {
-  factory $MarketEventCopyWith(MarketEvent value, $Res Function(MarketEvent) then) =
-      _$MarketEventCopyWithImpl<$Res, MarketEvent>;
+abstract class $MarketListEventCopyWith<$Res> {
+  factory $MarketListEventCopyWith(MarketListEvent value, $Res Function(MarketListEvent) then) =
+      _$MarketListEventCopyWithImpl<$Res, MarketListEvent>;
   @useResult
   $Res call({Completer<void>? completer});
 }
 
 /// @nodoc
-class _$MarketEventCopyWithImpl<$Res, $Val extends MarketEvent>
-    implements $MarketEventCopyWith<$Res> {
-  _$MarketEventCopyWithImpl(this._value, this._then);
+class _$MarketListEventCopyWithImpl<$Res, $Val extends MarketListEvent>
+    implements $MarketListEventCopyWith<$Res> {
+  _$MarketListEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -87,7 +87,7 @@ class _$MarketEventCopyWithImpl<$Res, $Val extends MarketEvent>
 }
 
 /// @nodoc
-abstract class _$$_RefreshDataCopyWith<$Res> implements $MarketEventCopyWith<$Res> {
+abstract class _$$_RefreshDataCopyWith<$Res> implements $MarketListEventCopyWith<$Res> {
   factory _$$_RefreshDataCopyWith(_$_RefreshData value, $Res Function(_$_RefreshData) then) =
       __$$_RefreshDataCopyWithImpl<$Res>;
   @override
@@ -96,7 +96,7 @@ abstract class _$$_RefreshDataCopyWith<$Res> implements $MarketEventCopyWith<$Re
 }
 
 /// @nodoc
-class __$$_RefreshDataCopyWithImpl<$Res> extends _$MarketEventCopyWithImpl<$Res, _$_RefreshData>
+class __$$_RefreshDataCopyWithImpl<$Res> extends _$MarketListEventCopyWithImpl<$Res, _$_RefreshData>
     implements _$$_RefreshDataCopyWith<$Res> {
   __$$_RefreshDataCopyWithImpl(_$_RefreshData _value, $Res Function(_$_RefreshData) _then)
       : super(_value, _then);
@@ -125,7 +125,7 @@ class _$_RefreshData implements _RefreshData {
 
   @override
   String toString() {
-    return 'MarketEvent.refreshData(completer: $completer)';
+    return 'MarketListEvent.refreshData(completer: $completer)';
   }
 
   @override
@@ -202,7 +202,7 @@ class _$_RefreshData implements _RefreshData {
   }
 }
 
-abstract class _RefreshData implements MarketEvent {
+abstract class _RefreshData implements MarketListEvent {
   const factory _RefreshData({final Completer<void>? completer}) = _$_RefreshData;
 
   @override
@@ -213,19 +213,19 @@ abstract class _RefreshData implements MarketEvent {
 }
 
 /// @nodoc
-mixin _$MarketState {
+mixin _$MarketListState {
   CoinsEntity get coins => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
   Failure? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MarketStateCopyWith<MarketState> get copyWith => throw _privateConstructorUsedError;
+  $MarketListStateCopyWith<MarketListState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MarketStateCopyWith<$Res> {
-  factory $MarketStateCopyWith(MarketState value, $Res Function(MarketState) then) =
-      _$MarketStateCopyWithImpl<$Res, MarketState>;
+abstract class $MarketListStateCopyWith<$Res> {
+  factory $MarketListStateCopyWith(MarketListState value, $Res Function(MarketListState) then) =
+      _$MarketListStateCopyWithImpl<$Res, MarketListState>;
   @useResult
   $Res call({CoinsEntity coins, bool loading, Failure? error});
 
@@ -233,9 +233,9 @@ abstract class $MarketStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MarketStateCopyWithImpl<$Res, $Val extends MarketState>
-    implements $MarketStateCopyWith<$Res> {
-  _$MarketStateCopyWithImpl(this._value, this._then);
+class _$MarketListStateCopyWithImpl<$Res, $Val extends MarketListState>
+    implements $MarketListStateCopyWith<$Res> {
+  _$MarketListStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -275,9 +275,10 @@ class _$MarketStateCopyWithImpl<$Res, $Val extends MarketState>
 }
 
 /// @nodoc
-abstract class _$$_MarketStateCopyWith<$Res> implements $MarketStateCopyWith<$Res> {
-  factory _$$_MarketStateCopyWith(_$_MarketState value, $Res Function(_$_MarketState) then) =
-      __$$_MarketStateCopyWithImpl<$Res>;
+abstract class _$$_MarketListStateCopyWith<$Res> implements $MarketListStateCopyWith<$Res> {
+  factory _$$_MarketListStateCopyWith(
+          _$_MarketListState value, $Res Function(_$_MarketListState) then) =
+      __$$_MarketListStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({CoinsEntity coins, bool loading, Failure? error});
@@ -287,9 +288,11 @@ abstract class _$$_MarketStateCopyWith<$Res> implements $MarketStateCopyWith<$Re
 }
 
 /// @nodoc
-class __$$_MarketStateCopyWithImpl<$Res> extends _$MarketStateCopyWithImpl<$Res, _$_MarketState>
-    implements _$$_MarketStateCopyWith<$Res> {
-  __$$_MarketStateCopyWithImpl(_$_MarketState _value, $Res Function(_$_MarketState) _then)
+class __$$_MarketListStateCopyWithImpl<$Res>
+    extends _$MarketListStateCopyWithImpl<$Res, _$_MarketListState>
+    implements _$$_MarketListStateCopyWith<$Res> {
+  __$$_MarketListStateCopyWithImpl(
+      _$_MarketListState _value, $Res Function(_$_MarketListState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -299,7 +302,7 @@ class __$$_MarketStateCopyWithImpl<$Res> extends _$MarketStateCopyWithImpl<$Res,
     Object? loading = null,
     Object? error = freezed,
   }) {
-    return _then(_$_MarketState(
+    return _then(_$_MarketListState(
       coins: null == coins
           ? _value.coins
           : coins // ignore: cast_nullable_to_non_nullable
@@ -318,8 +321,8 @@ class __$$_MarketStateCopyWithImpl<$Res> extends _$MarketStateCopyWithImpl<$Res,
 
 /// @nodoc
 
-class _$_MarketState implements _MarketState {
-  const _$_MarketState({required this.coins, this.loading = false, this.error});
+class _$_MarketListState implements _MarketListState {
+  const _$_MarketListState({required this.coins, this.loading = false, this.error});
 
   @override
   final CoinsEntity coins;
@@ -331,14 +334,14 @@ class _$_MarketState implements _MarketState {
 
   @override
   String toString() {
-    return 'MarketState(coins: $coins, loading: $loading, error: $error)';
+    return 'MarketListState(coins: $coins, loading: $loading, error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MarketState &&
+            other is _$_MarketListState &&
             (identical(other.coins, coins) || other.coins == coins) &&
             (identical(other.loading, loading) || other.loading == loading) &&
             (identical(other.error, error) || other.error == error));
@@ -350,15 +353,15 @@ class _$_MarketState implements _MarketState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MarketStateCopyWith<_$_MarketState> get copyWith =>
-      __$$_MarketStateCopyWithImpl<_$_MarketState>(this, _$identity);
+  _$$_MarketListStateCopyWith<_$_MarketListState> get copyWith =>
+      __$$_MarketListStateCopyWithImpl<_$_MarketListState>(this, _$identity);
 }
 
-abstract class _MarketState implements MarketState {
-  const factory _MarketState(
+abstract class _MarketListState implements MarketListState {
+  const factory _MarketListState(
       {required final CoinsEntity coins,
       final bool loading,
-      final Failure? error}) = _$_MarketState;
+      final Failure? error}) = _$_MarketListState;
 
   @override
   CoinsEntity get coins;
@@ -368,5 +371,6 @@ abstract class _MarketState implements MarketState {
   Failure? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_MarketStateCopyWith<_$_MarketState> get copyWith => throw _privateConstructorUsedError;
+  _$$_MarketListStateCopyWith<_$_MarketListState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

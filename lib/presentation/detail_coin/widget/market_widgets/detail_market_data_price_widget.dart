@@ -1,6 +1,6 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/coingecko_widget.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/coingecko_widget.dart';
 import 'package:crypto_portfolio/common/utils/extensions/date_time_extension.dart';
 import 'package:crypto_portfolio/common/utils/extensions/double_extension.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/bloc/market_coin_bloc/market_coin_bloc.dart';
@@ -82,7 +82,7 @@ class DetailMarketDataPriceWidget extends StatelessWidget {
                         '${date.dateLong(context)} ${date.time}',
                         style: AppStyles.normal16,
                       ),
-                      CoinGeckoWidget(rightPadding: 0),
+                      CoinGeckoWidget(),
                     ],
                   )
                 ],

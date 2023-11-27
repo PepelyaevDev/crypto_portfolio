@@ -1,7 +1,7 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/common/utils/extensions/double_extension.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/coingecko_widget.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/coingecko_widget.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/page/detail_coin_page.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:flutter/material.dart';

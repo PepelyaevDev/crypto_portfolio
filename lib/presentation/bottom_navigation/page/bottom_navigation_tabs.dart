@@ -1,5 +1,5 @@
 import 'package:crypto_portfolio/common/assets/icons/app_icons.dart';
-import 'package:crypto_portfolio/presentation/market/page/market_coins_page.dart';
+import 'package:crypto_portfolio/presentation/market_list/page/market_list_page.dart';
 import 'package:crypto_portfolio/presentation/news/page/news_page.dart';
 import 'package:crypto_portfolio/presentation/portfolio/pages/portfolio_page.dart';
 import 'package:crypto_portfolio/presentation/settings/pages/settings_page.dart';
@@ -10,46 +10,48 @@ class BottomNavigationTabs {
   static Map<BottomNavigationKey, BottomNavigationTab> data = {
     BottomNavigationKey.market: BottomNavigationTab(
       index: 0,
-      screen: MarketCoinsPage(),
-      icon: _bottomNavigationIcon(AppIcons.chart_line),
+      showGeckoWidget: true,
+      screen: MarketListPage(),
+      icon: AppIcons.chart_line,
     ),
     BottomNavigationKey.watchlist: BottomNavigationTab(
       index: 1,
+      showGeckoWidget: true,
       screen: WatchlistPage(),
-      icon: _bottomNavigationIcon(AppIcons.star_empty),
+      icon: AppIcons.star_empty,
     ),
     BottomNavigationKey.portfolio: BottomNavigationTab(
       index: 2,
+      showGeckoWidget: true,
       screen: PortfolioPage(),
-      icon: _bottomNavigationIcon(AppIcons.briefcase),
+      icon: AppIcons.briefcase,
     ),
     BottomNavigationKey.news: BottomNavigationTab(
       index: 3,
+      showGeckoWidget: false,
       screen: NewsPage(),
-      icon: _bottomNavigationIcon(AppIcons.newspaper),
+      icon: AppIcons.newspaper,
     ),
     BottomNavigationKey.settings: BottomNavigationTab(
       index: 4,
+      showGeckoWidget: false,
       screen: SettingsPage(),
-      icon: _bottomNavigationIcon(AppIcons.cog),
+      icon: AppIcons.cog,
     ),
   };
-
-  static Widget _bottomNavigationIcon(IconData iconData) => Padding(
-        padding: const EdgeInsets.only(bottom: 2.0),
-        child: Icon(iconData, size: 18),
-      );
 }
 
 enum BottomNavigationKey { market, watchlist, portfolio, news, settings }
 
 class BottomNavigationTab {
   final int index;
+  final bool showGeckoWidget;
   final Widget screen;
-  final Widget icon;
+  final IconData icon;
 
   BottomNavigationTab({
     required this.index,
+    required this.showGeckoWidget,
     required this.screen,
     required this.icon,
   });

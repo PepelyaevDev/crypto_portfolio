@@ -1,7 +1,7 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/decorations.dart';
 import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/refresh_icon_button.dart';
+import 'package:crypto_portfolio/common/design_system/buttons/refresh_icon_button.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/common/utils/extensions/double_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
@@ -35,10 +35,10 @@ class DetailPortfolioStatWidget extends StatelessWidget {
                 context.localization.statistics,
                 style: AppStyles.bold22,
               ),
-              RefreshIconButton(
+              RefreshButton(
                 loading: loading,
+                backgroundColor: RefreshButtonBackground.background,
                 onTapUpdate: onTapUpdate,
-                rightPadding: 0,
               )
             ],
           ),

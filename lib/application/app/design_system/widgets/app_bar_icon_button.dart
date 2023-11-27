@@ -1,6 +1,7 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:flutter/material.dart';
 
+///TODO: удалить файл
 class AppBarIconButton extends StatelessWidget {
   final IconData iconData;
   final VoidCallback onTap;
