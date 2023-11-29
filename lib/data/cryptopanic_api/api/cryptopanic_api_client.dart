@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 
 class CryptopanicApiClient {
   final CryptopanicNewsSource news;
-  static const String token = '103be014c698a0e0f0ef21e83ee047bb65731bcf';
 
   const CryptopanicApiClient({required this.news});
 
@@ -17,9 +16,19 @@ class CryptopanicApiClient {
         responseType: ResponseType.json,
         validateStatus: (status) => status.validateHttpResponseStatus,
       ),
-    );
+    )..interceptors.add(_TokenInterceptor());
     return CryptopanicApiClient(
       news: CryptopanicNewsSource(dio),
     );
+  }
+}
+
+class _TokenInterceptor extends Interceptor {
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    options.queryParameters.addAll({
+      'auth_token': '103be014c698a0e0f0ef21e83ee047bb65731bcf',
+    });
+    super.onRequest(options, handler);
   }
 }

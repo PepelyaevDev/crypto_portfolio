@@ -11,16 +11,16 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'detail_portfolio_coin_event.dart';
-part 'detail_portfolio_coin_state.dart';
-part 'detail_portfolio_coin_bloc.freezed.dart';
+part 'portfolio_coin_event.dart';
+part 'portfolio_coin_state.dart';
+part 'portfolio_coin_bloc.freezed.dart';
 
-class DetailPortfolioCoinBloc extends Bloc<DetailPortfolioCoinEvent, DetailPortfolioCoinState> {
+class PortfolioCoinBloc extends Bloc<PortfolioCoinEvent, PortfolioCoinState> {
   final PortfolioRepo _portfolioRepo;
   final CoinId _id;
   late StreamSubscription<Either<Failure, CoinsEntity>> _coinsListener;
-  DetailPortfolioCoinBloc(this._portfolioRepo, this._id)
-      : super(DetailPortfolioCoinState(
+  PortfolioCoinBloc(this._portfolioRepo, this._id)
+      : super(PortfolioCoinState(
           coin: CoinsExtension.getCoinById(_portfolioRepo.getCoinsLocal, _id),
         )) {
     on<_Update>(_update, transformer: droppable());
@@ -28,37 +28,37 @@ class DetailPortfolioCoinBloc extends Bloc<DetailPortfolioCoinEvent, DetailPortf
     on<_DeletePayment>(_deletePayment, transformer: droppable());
     on<_DeleteCoin>(_deleteCoin, transformer: droppable());
     _coinsListener = _portfolioRepo.coinsSubject.stream.listen((event) {
-      add(DetailPortfolioCoinEvent.update(event));
+      add(PortfolioCoinEvent.update(event));
     });
   }
 
-  void _deletePayment(_DeletePayment event, Emitter<DetailPortfolioCoinState> emit) =>
+  void _deletePayment(_DeletePayment event, Emitter<PortfolioCoinState> emit) =>
       _portfolioRepo.updateHistory(event.payment);
 
-  void _deleteCoin(_DeleteCoin event, Emitter<DetailPortfolioCoinState> emit) =>
+  void _deleteCoin(_DeleteCoin event, Emitter<PortfolioCoinState> emit) =>
       _portfolioRepo.deleteCoin(event.id);
 
-  Future<void> _update(_Update event, Emitter<DetailPortfolioCoinState> emit) async {
+  Future<void> _update(_Update event, Emitter<PortfolioCoinState> emit) async {
     event.data.fold(
       (l) {
         if (l.time.newValue) {
-          emit(DetailPortfolioCoinState(coin: state.coin, error: l));
+          emit(PortfolioCoinState(coin: state.coin, error: l));
         }
       },
       (r) {
         if (r.updateTime.newValue) {
           final coin = CoinsExtension.getCoinById(r, _id);
-          emit(DetailPortfolioCoinState(coin: coin));
+          emit(PortfolioCoinState(coin: coin));
         }
       },
     );
   }
 
-  Future<void> _refreshData(_RefreshData event, Emitter<DetailPortfolioCoinState> emit) async {
+  Future<void> _refreshData(_RefreshData event, Emitter<PortfolioCoinState> emit) async {
     if (_portfolioRepo.getCoinsLocal.list.where((e) => e.id == _id).isEmpty) {
       return;
     }
-    emit(DetailPortfolioCoinState(coin: state.coin, loading: true));
+    emit(PortfolioCoinState(coin: state.coin, loading: true));
     await _portfolioRepo.updateCoinsMarketData();
     event.completer.close();
   }

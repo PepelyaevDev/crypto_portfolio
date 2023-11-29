@@ -1,14 +1,13 @@
 import 'dart:async';
 
-import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/bloc/market_chart_bloc/market_chart_bloc.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/bloc/market_coin_bloc/market_coin_bloc.dart';
-import 'package:crypto_portfolio/presentation/detail_coin/widget/market_widgets/detail_market_data_price_widget.dart';
-import 'package:crypto_portfolio/presentation/detail_coin/widget/market_widgets/detail_market_stat_widget.dart';
+import 'package:crypto_portfolio/presentation/detail_coin/widget/market_widgets/market_coin_price_widget.dart';
+import 'package:crypto_portfolio/presentation/detail_coin/widget/market_widgets/market_coin_stat.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/widget/market_widgets/distance_buttons.dart';
-import 'package:crypto_portfolio/presentation/detail_coin/widget/market_widgets/market_chart_widget.dart';
+import 'package:crypto_portfolio/presentation/detail_coin/widget/market_widgets/market_coin_chart.dart';
 import 'package:crypto_portfolio/presentation/news/bloc/news_bloc/news_bloc.dart';
 import 'package:crypto_portfolio/presentation/news/widgets/news_list_widget.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
@@ -18,16 +17,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 
-class DetailMarketCoinWidget extends StatefulWidget {
+class MarketCoinContent extends StatefulWidget {
   final CoinId id;
 
-  const DetailMarketCoinWidget(this.id);
+  const MarketCoinContent(this.id);
 
   @override
-  State<DetailMarketCoinWidget> createState() => _DetailMarketCoinWidgetState();
+  State<MarketCoinContent> createState() => _MarketCoinContentState();
 }
 
-class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
+class _MarketCoinContentState extends State<MarketCoinContent> {
   MarketChartDistance _selectedDistance = MarketChartDistance.d1;
   final BehaviorSubject<MarketChartPriceEntity?> _selectedPrice = BehaviorSubject();
   final ScrollController _controller = ScrollController();
@@ -115,16 +114,16 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
               child: ListView(
                 controller: _controller,
                 children: [
-                  SizedBox(height: 15),
-                  DetailMarketDataPriceWidget(
+                  SizedBox(height: 10),
+                  MarketCoinPriceWidget(
                     stream: _selectedPrice.stream,
                     loading: _loadingState || _initInProcess,
                     onTapRefresh: () async {
                       await _refreshPage(context);
                     },
                   ),
-                  SizedBox(height: 15),
-                  MarketChartWidget(
+                  SizedBox(height: 10),
+                  MarketCoinChart(
                     onTrackballPositionChanging: (args, state) {
                       state.mapOrNull(
                         success: (state) {
@@ -153,13 +152,13 @@ class _DetailMarketCoinWidgetState extends State<DetailMarketCoinWidget> {
                     },
                   ),
                   SizedBox(height: 10),
-                  DetailMarketStatWidget(),
+                  MarketCoinStat(),
                   SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.only(left: 15.0),
                     child: Text(
                       context.localization.news,
-                      style: AppStyles.bold22,
+                      style: context.styles.titleMedium,
                     ),
                   ),
                   BlocBuilder<MarketCoinBloc, MarketCoinState>(

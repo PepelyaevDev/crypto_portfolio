@@ -1,13 +1,12 @@
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/base_popup.dart';
+import 'package:crypto_portfolio/common/design_system/buttons/custom_button.dart';
+import 'package:crypto_portfolio/common/design_system/popups/base_popup.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/common/utils/extensions/date_time_extension.dart';
 import 'package:crypto_portfolio/common/utils/extensions/double_extension.dart';
-import 'package:crypto_portfolio/presentation/detail_coin/widget/portfolio_widgets/delete_popup.dart';
+import 'package:crypto_portfolio/presentation/detail_coin/widget/portfolio_widgets/portfolio_coin_history/delete_popup.dart';
+import 'package:crypto_portfolio/presentation/detail_coin/widget/portfolio_widgets/portfolio_coin_history/payment_widget.dart';
+import 'package:crypto_portfolio/presentation/detail_coin/widget/portfolio_widgets/portfolio_coin_history/payment_widget_row.dart';
 import 'package:flutter/material.dart';
-
-import 'payment_history_widget.dart';
 
 class PaymentDetailPopup {
   static void show({
@@ -18,33 +17,31 @@ class PaymentDetailPopup {
       context: context,
       builder: (_) {
         return BasePopup(
+          color: context.colors.primary,
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
-                height: 30,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Image.network(
-                      args.coinLogo,
-                      width: 30,
-                      height: 30,
-                      errorBuilder: (_, __, ___) => SizedBox(),
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      args.payment.id.symbol,
-                      style: AppStyles.normal18,
-                    ),
-                  ],
-                ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.network(
+                    args.coinLogo,
+                    width: 30,
+                    height: 30,
+                    errorBuilder: (_, __, ___) => SizedBox(),
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    args.payment.id.symbol,
+                    style: context.styles.bodyLarge,
+                  ),
+                ],
               ),
-              Divider(height: 20),
+              SizedBox(height: 20),
               PaymentRow(
                 title: args.paymentType(context),
                 text: '${args.payment.numberOfCoins} ${args.name}',
-                color: args.color,
+                color: args.color(context),
               ),
               SizedBox(height: 6),
               PaymentRow(
@@ -61,20 +58,12 @@ class PaymentDetailPopup {
                 title: context.localization.date,
                 text: args.payment.dateTime.dateLong(context),
               ),
-              Divider(height: 20),
+              SizedBox(height: 20),
               Row(
                 children: [
                   Expanded(
-                    child: TextButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(AppColors.white),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                            side: BorderSide(color: AppColors.grayDark),
-                          ),
-                        ),
-                      ),
+                    child: CustomButton(
+                      type: ButtonType.error,
                       onPressed: () {
                         Navigator.of(context).pop();
                         showDialog(
@@ -91,14 +80,14 @@ class PaymentDetailPopup {
                                   args.onTapDelete == null
                                       ? context.localization.numberCoinsWillNegative
                                       : context.localization.statisticsWillRecalculated,
-                                  style: AppStyles.normal16,
+                                  style: context.styles.bodyMedium,
                                 ),
                                 if (args.onTapDelete != null)
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10.0),
                                     child: Text(
                                       context.localization.actionNotUndone,
-                                      style: AppStyles.normal16,
+                                      style: context.styles.bodyMedium,
                                     ),
                                   ),
                               ],
@@ -112,64 +101,25 @@ class PaymentDetailPopup {
                           ),
                         );
                       },
-                      child: Text(
-                        context.localization.delete,
-                        style: AppStyles.normal14.copyWith(color: AppColors.grayDark),
-                      ),
+                      text: context.localization.delete,
                     ),
                   ),
-                  SizedBox(width: 20),
+                  SizedBox(width: 10),
                   Expanded(
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(AppColors.primary),
-                      ),
+                    child: CustomButton(
+                      type: ButtonType.secondary,
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: Text(
-                        context.localization.close,
-                        style: AppStyles.normal14.copyWith(color: AppColors.white),
-                      ),
+                      text: context.localization.close,
                     ),
                   ),
                 ],
               ),
             ],
           ),
-          color: AppColors.primary,
         );
       },
-    );
-  }
-}
-
-class PaymentRow extends StatelessWidget {
-  final String title;
-  final String text;
-  final Color? color;
-  final TextStyle? style;
-  const PaymentRow({
-    required this.title,
-    required this.text,
-    this.color,
-    this.style,
-  });
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          title,
-          style: (style ?? AppStyles.normal16).copyWith(color: color ?? AppColors.grayDark),
-        ),
-        Text(
-          text,
-          style: (style ?? AppStyles.normal16).copyWith(color: color ?? AppColors.grayDark),
-        ),
-      ],
     );
   }
 }

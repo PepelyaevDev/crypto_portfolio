@@ -1,19 +1,17 @@
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/decorations.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/common/design_system/buttons/refresh_icon_button.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/primary_container.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/common/utils/extensions/double_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
 import 'package:flutter/material.dart';
 
-class DetailPortfolioStatWidget extends StatelessWidget {
+class PortfolioCoinStat extends StatelessWidget {
   final CoinEntity coin;
   final bool loading;
   final VoidCallback onTapUpdate;
 
-  const DetailPortfolioStatWidget({
+  const PortfolioCoinStat({
     required this.coin,
     required this.loading,
     required this.onTapUpdate,
@@ -21,6 +19,7 @@ class DetailPortfolioStatWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = coin.hasProfit ? context.colors.primary : context.colors.error;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
@@ -33,7 +32,7 @@ class DetailPortfolioStatWidget extends StatelessWidget {
             children: [
               Text(
                 context.localization.statistics,
-                style: AppStyles.bold22,
+                style: context.styles.titleMedium,
               ),
               RefreshButton(
                 loading: loading,
@@ -42,8 +41,7 @@ class DetailPortfolioStatWidget extends StatelessWidget {
               )
             ],
           ),
-          Container(
-            decoration: AppDecorations.blueBorderDecoration,
+          PrimaryContainer(
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: 15.0,
@@ -56,11 +54,11 @@ class DetailPortfolioStatWidget extends StatelessWidget {
                   _PortfolioDataRow(
                     firstWidget: Text(
                       context.localization.holdings,
-                      style: AppStyles.normal14,
+                      style: context.styles.bodySmall,
                     ),
                     secondWidget: Text(
                       coin.holdings.toString(),
-                      style: AppStyles.bold14.copyWith(color: AppColors.blackLight),
+                      style: context.styles.labelSmall,
                       textAlign: TextAlign.end,
                     ),
                   ),
@@ -68,15 +66,15 @@ class DetailPortfolioStatWidget extends StatelessWidget {
                   _PortfolioDataRow(
                     firstWidget: Text(
                       context.localization.profitLoss,
-                      style: AppStyles.normal14,
+                      style: context.styles.bodySmall,
                     ),
                     secondWidget: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Icon(coin.iconData, color: coin.color),
+                        Icon(coin.iconData, color: color),
                         Text(
                           coin.profit,
-                          style: AppStyles.bold14.copyWith(color: coin.color),
+                          style: context.styles.labelSmall!.copyWith(color: color),
                         ),
                       ],
                     ),
@@ -91,7 +89,7 @@ class DetailPortfolioStatWidget extends StatelessWidget {
                     secondWidget: _PortfolioDataColumn(
                       title: context.localization.holdingsValue,
                       value: coin.holdingsValue.moneyFull,
-                      valueColor: coin.color,
+                      valueColor: color,
                       crossAxisAlignment: CrossAxisAlignment.end,
                     ),
                   ),
@@ -105,7 +103,7 @@ class DetailPortfolioStatWidget extends StatelessWidget {
                     secondWidget: _PortfolioDataColumn(
                       title: context.localization.averageNetCost,
                       value: coin.averageNetCost,
-                      valueColor: coin.color,
+                      valueColor: color,
                       crossAxisAlignment: CrossAxisAlignment.end,
                     ),
                   ),
@@ -142,16 +140,14 @@ class _PortfolioDataColumn extends StatelessWidget {
   final String title;
   final String value;
   final CrossAxisAlignment crossAxisAlignment;
-  late final Color _valueColor;
+  final Color? valueColor;
 
   _PortfolioDataColumn({
     required this.title,
     required this.value,
     required this.crossAxisAlignment,
-    Color? valueColor,
-  }) {
-    _valueColor = valueColor ?? AppColors.blackLight;
-  }
+    this.valueColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -161,14 +157,14 @@ class _PortfolioDataColumn extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppStyles.normal14.copyWith(
-            color: AppColors.blackLight.withOpacity(0.7),
-          ),
+          style: context.styles.bodySmall,
         ),
         SizedBox(height: 5),
         Text(
           value,
-          style: AppStyles.bold14.copyWith(color: _valueColor),
+          style: context.styles.labelSmall!.copyWith(
+            color: valueColor ?? context.colors.onBackground,
+          ),
         ),
       ],
     );

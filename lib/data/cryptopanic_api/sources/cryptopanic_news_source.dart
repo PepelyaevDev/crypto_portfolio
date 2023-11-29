@@ -1,4 +1,3 @@
-import 'package:crypto_portfolio/data/cryptopanic_api/api/cryptopanic_api_client.dart';
 import 'package:crypto_portfolio/data/cryptopanic_api/dto/cryptopanic_news_dto.dart';
 import 'package:dio/dio.dart';
 
@@ -16,7 +15,6 @@ class CryptopanicNewsSource {
     final response = await _dio.get<Map<String, Object?>>(
       _path,
       queryParameters: {
-        'auth_token': CryptopanicApiClient.token,
         'currencies': currencies.map((e) => e.toUpperCase()).toList().join(','),
         'regions': locales.join(','),
         'kind': 'news',

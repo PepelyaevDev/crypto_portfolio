@@ -1,6 +1,6 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
-import 'package:crypto_portfolio/presentation/detail_coin/widget/portfolio_widgets/payment_history_widget.dart';
+import 'package:crypto_portfolio/presentation/detail_coin/widget/portfolio_widgets/portfolio_coin_history/payment_widget.dart';
 import 'package:crypto_portfolio/presentation/portfolio/bloc/payment_history_bloc/payment_history_bloc.dart';
 import 'package:crypto_portfolio/presentation/portfolio/pages/add_payment_page.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';

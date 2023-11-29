@@ -1,5 +1,3 @@
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/domain/entity/market_chart/market_chart_entity.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +16,7 @@ class DistanceButtons extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: MarketChartDistance.values.map((e) {
           return _DistanceButton(
               text: _getDistanceLabel(e, context),
@@ -69,19 +67,19 @@ class _DistanceButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(3),
+      borderRadius: BorderRadius.circular(2),
       onTap: onTap,
-      child: Container(
+      child: Ink(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(3),
-          color: thisDistanceChosen ? AppColors.primary : AppColors.transparent,
+          borderRadius: BorderRadius.circular(2),
+          color: thisDistanceChosen ? context.colors.primary : context.colors.background,
         ),
         child: Padding(
-          padding: const EdgeInsets.all(7.0),
+          padding: const EdgeInsets.all(5.0),
           child: Text(
             text,
-            style: AppStyles.bold14
-                .copyWith(color: thisDistanceChosen ? AppColors.white : AppColors.blackLight),
+            style: context.styles.labelSmall!.copyWith(
+                color: thisDistanceChosen ? context.colors.onPrimary : context.colors.onBackground),
           ),
         ),
       ),

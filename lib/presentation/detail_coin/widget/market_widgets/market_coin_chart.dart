@@ -1,5 +1,3 @@
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/bloc/market_chart_bloc/market_chart_bloc.dart';
 import 'package:crypto_portfolio/domain/entity/market_chart/extensions/get_chart_data.dart';
@@ -9,11 +7,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class MarketChartWidget extends StatelessWidget {
+class MarketCoinChart extends StatelessWidget {
   final void Function(TrackballArgs, MarketChartState) onTrackballPositionChanging;
   final VoidCallback onTrackballDispose;
 
-  const MarketChartWidget({
+  const MarketCoinChart({
     required this.onTrackballPositionChanging,
     required this.onTrackballDispose,
   });
@@ -55,12 +53,12 @@ class MarketChartWidget extends StatelessWidget {
                       axisLabelRenderArgs.value.toInt(),
                     ),
                   );
-                  return ChartAxisLabel(text, AppStyles.normal14);
+                  return ChartAxisLabel(text, context.styles.bodySmall);
                 },
               ),
               series: [
                 LineSeries(
-                  color: AppColors.primary,
+                  color: context.colors.primary,
                   dataSource: <MarketChartPriceEntity>[...state.marketChart.prices],
                   xValueMapper: (price, _) => price.time,
                   yValueMapper: (price, _) => price.price,

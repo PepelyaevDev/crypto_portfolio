@@ -1,8 +1,8 @@
 import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
+import 'package:crypto_portfolio/common/utils/consts/app_consts.dart';
 import 'package:flutter/material.dart';
 
 class BasePopup extends StatelessWidget {
-  static const double radius = 5;
   final Widget content;
   final Color color;
   const BasePopup({
@@ -13,7 +13,7 @@ class BasePopup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Material(
-        borderRadius: BorderRadius.circular(radius),
+        borderRadius: BorderRadius.circular(baseBorderRadius),
         child: ConstrainedBox(
           constraints: BoxConstraints(
             maxWidth: MediaQuery.sizeOf(context).width - 40,
@@ -23,11 +23,11 @@ class BasePopup extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  height: 4,
+                  height: 3,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(radius),
-                      topRight: Radius.circular(radius),
+                      topLeft: Radius.circular(baseBorderRadius),
+                      topRight: Radius.circular(baseBorderRadius),
                     ),
                     color: color,
                   ),
@@ -35,8 +35,8 @@ class BasePopup extends StatelessWidget {
                 Ink(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(radius),
-                      bottomRight: Radius.circular(radius),
+                      bottomLeft: Radius.circular(baseBorderRadius),
+                      bottomRight: Radius.circular(baseBorderRadius),
                     ),
                     color: AppColors.white,
                   ),

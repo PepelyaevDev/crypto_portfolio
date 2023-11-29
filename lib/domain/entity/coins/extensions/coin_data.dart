@@ -50,6 +50,8 @@ extension CoinData on CoinEntity {
 
   Color get color => holdingsValue < invested ? AppColors.redLight : AppColors.greenLight;
 
+  bool get hasProfit => holdingsValue > invested;
+
   IconData get iconData => holdingsValue < invested ? Icons.arrow_drop_down : Icons.arrow_drop_up;
 
   String get profit {
