@@ -4,7 +4,7 @@ import 'package:crypto_portfolio/application/app/design_system/widgets/update_da
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/bloc/market_chart_bloc/market_chart_bloc.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/bloc/market_coin_bloc/market_coin_bloc.dart';
-import 'package:crypto_portfolio/presentation/detail_coin/widget/market_widgets/market_coin_price_widget.dart';
+import 'package:crypto_portfolio/presentation/detail_coin/widget/market_widgets/market_coin_price.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/widget/market_widgets/market_coin_stat.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/widget/market_widgets/distance_buttons.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/widget/market_widgets/market_coin_chart.dart';
@@ -115,7 +115,7 @@ class _MarketCoinContentState extends State<MarketCoinContent> {
                 controller: _controller,
                 children: [
                   SizedBox(height: 10),
-                  MarketCoinPriceWidget(
+                  MarketCoinPrice(
                     stream: _selectedPrice.stream,
                     loading: _loadingState || _initInProcess,
                     onTapRefresh: () async {

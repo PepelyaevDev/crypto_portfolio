@@ -1,9 +1,7 @@
 import 'dart:async';
 
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/app_bar_icon_button.dart';
 import 'package:crypto_portfolio/common/design_system/custom_widgets/logo_widget.dart';
+import 'package:crypto_portfolio/common/utils/consts/app_consts.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/presentation/news/bloc/init_news_page_bloc/init_news_page_bloc.dart';
 import 'package:crypto_portfolio/presentation/news/bloc/news_bloc/news_bloc.dart';
@@ -44,27 +42,21 @@ class _NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shadowColor: AppColors.transparent,
-        backgroundColor: AppColors.white,
-        foregroundColor: AppColors.blackLight,
         title: LogoWidget(),
-        centerTitle: true,
         actions: [
-          AppBarIconButton(
-            rightPadding: 10,
-            iconData: Icons.question_mark_rounded,
-            onTap: () {
+          IconButton(
+            icon: Icon(Icons.question_mark_rounded),
+            onPressed: () {
               showDialog(
                 context: context,
                 builder: (_) => NewsDescPopup(),
               );
             },
           ),
+          SizedBox(width: marginFromEdgeOfScreen),
         ],
         bottom: TabBar(
-          labelColor: AppColors.blackLight,
-          labelStyle: AppStyles.normal14,
-          indicatorColor: AppColors.primary,
+          labelStyle: context.styles.bodySmall,
           controller: tabController,
           tabs: <Tab>[
             Tab(text: context.localization.allNews),

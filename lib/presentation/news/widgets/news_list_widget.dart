@@ -1,8 +1,6 @@
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/decorations.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/application/app/design_system/educational_popups/news_source_popup.dart';
 import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/primary_container.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/common/utils/extensions/date_time_extension.dart';
 import 'package:crypto_portfolio/presentation/news/bloc/news_bloc/news_bloc.dart';
@@ -96,7 +94,9 @@ class _ErrorMessage extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Text(
           message,
-          style: AppStyles.normal14.copyWith(color: AppColors.redLight),
+          style: context.styles.bodySmall!.copyWith(
+            color: context.colors.error,
+          ),
         ),
       ),
     );
@@ -130,7 +130,9 @@ class _NewsList extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: Text(
                   context.localization.newsNotFound,
-                  style: AppStyles.normal14.copyWith(color: AppColors.redLight),
+                  style: context.styles.bodySmall!.copyWith(
+                    color: context.colors.error,
+                  ),
                 ),
               ),
             )
@@ -154,8 +156,7 @@ class _NewsWidgetState extends State<_NewsWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: Container(
-        decoration: AppDecorations.blueBorderDecoration,
+      child: PrimaryContainer(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -177,7 +178,9 @@ class _NewsWidgetState extends State<_NewsWidget> {
                   children: widget.news.currencies.map((e) {
                     return Text(
                       e,
-                      style: AppStyles.bold14.copyWith(color: AppColors.greenLight),
+                      style: context.styles.labelSmall!.copyWith(
+                        color: context.colors.primary,
+                      ),
                     );
                   }).toList(),
                 ),
@@ -187,7 +190,7 @@ class _NewsWidgetState extends State<_NewsWidget> {
               padding: const EdgeInsets.symmetric(horizontal: 7.0),
               child: Text(
                 widget.news.title,
-                style: AppStyles.bold16,
+                style: context.styles.labelMedium,
               ),
             ),
             Html(data: widget.news.description),
@@ -196,35 +199,30 @@ class _NewsWidgetState extends State<_NewsWidget> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        '${context.localization.author}:',
-                        style: AppStyles.normal14.copyWith(color: AppColors.grayDark),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          launchUrl(
-                            Uri.parse(widget.news.sourceUrl),
-                            mode: LaunchMode.externalApplication,
-                          );
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Text(
-                            widget.news.sourceTitle,
-                            style: AppStyles.normal14.copyWith(color: AppColors.primary),
-                            softWrap: false,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Text(
+                          '${context.localization.author}:',
+                          style: context.styles.bodySmall,
                         ),
-                      ),
-                    ],
+                        SizedBox(width: 5),
+                        _NewsLinkButton(
+                          onPressed: () {
+                            launchUrl(
+                              Uri.parse(widget.news.sourceUrl),
+                              mode: LaunchMode.externalApplication,
+                            );
+                          },
+                          text: widget.news.sourceTitle,
+                        ),
+                      ],
+                    ),
                   ),
+                  SizedBox(width: 5),
                   Text(
                     widget.news.createdTime.dateLong(context),
-                    style: AppStyles.normal14.copyWith(color: AppColors.grayDark),
+                    style: context.styles.bodySmall,
                     textAlign: TextAlign.right,
                   )
                 ],
@@ -236,29 +234,54 @@ class _NewsWidgetState extends State<_NewsWidget> {
                 children: [
                   Text(
                     '${context.localization.source}:',
-                    style: AppStyles.normal14.copyWith(color: AppColors.grayDark),
+                    style: context.styles.bodySmall,
                   ),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        NewsSourcePopup.show(context, widget.news.url);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Text(
-                          widget.news.url,
-                          softWrap: false,
-                          overflow: TextOverflow.ellipsis,
-                          style: AppStyles.normal14.copyWith(color: AppColors.primary),
-                        ),
-                      ),
-                    ),
+                  SizedBox(width: 5),
+                  _NewsLinkButton(
+                    onPressed: () {
+                      NewsSourcePopup.show(context, widget.news.url);
+                    },
+                    text: widget.news.url,
                   ),
                 ],
               ),
             ),
             SizedBox(height: 10),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _NewsLinkButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final String text;
+
+  const _NewsLinkButton({
+    required this.onPressed,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: TextButton(
+          style: TextButton.styleFrom(
+              minimumSize: Size.zero,
+              padding: EdgeInsets.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              textStyle: context.styles.labelSmall!.copyWith(
+                color: context.colors.primary,
+              )),
+          onPressed: onPressed,
+          child: Text(
+            text,
+            softWrap: false,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ),
     );

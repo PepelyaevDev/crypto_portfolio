@@ -10,12 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 
-class MarketCoinPriceWidget extends StatelessWidget {
+class MarketCoinPrice extends StatelessWidget {
   final ValueStream<MarketChartPriceEntity?> stream;
   final bool loading;
   final VoidCallback onTapRefresh;
 
-  const MarketCoinPriceWidget({
+  const MarketCoinPrice({
     required this.stream,
     required this.loading,
     required this.onTapRefresh,

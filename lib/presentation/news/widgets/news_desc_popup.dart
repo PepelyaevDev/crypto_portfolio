@@ -1,5 +1,4 @@
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
+import 'package:crypto_portfolio/common/design_system/buttons/custom_button.dart';
 import 'package:crypto_portfolio/common/design_system/popups/base_popup.dart';
 import 'package:crypto_portfolio/common/assets/images/image_paths.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
@@ -15,23 +14,23 @@ class NewsDescPopup extends StatelessWidget {
         children: [
           Text(
             context.localization.personalNews,
-            style: AppStyles.bold20,
+            style: context.styles.titleSmall,
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 15),
           Text(
             context.localization.personalNewsDesc,
-            style: AppStyles.normal14,
+            style: context.styles.bodySmall,
           ),
-          Divider(height: 40),
+          Divider(height: 30),
           Text(
             context.localization.viewInSource,
-            style: AppStyles.bold20,
+            style: context.styles.titleSmall,
           ),
-          SizedBox(height: 15),
+          SizedBox(height: 10),
           Text(
             '1. ${context.localization.clickOnLink}',
-            style: AppStyles.normal14,
+            style: context.styles.bodySmall,
           ),
           SizedBox(height: 5),
           ColorFiltered(
@@ -40,10 +39,10 @@ class NewsDescPopup extends StatelessWidget {
                 BlendMode.srcOver,
               ),
               child: Image.asset(ImagePaths.newsInstructionTapSource.path)),
-          SizedBox(height: 15),
+          SizedBox(height: 10),
           Text(
             '2. ${context.localization.clickOnTitle}',
-            style: AppStyles.normal14,
+            style: context.styles.bodySmall,
           ),
           SizedBox(height: 5),
           ColorFiltered(
@@ -55,25 +54,17 @@ class NewsDescPopup extends StatelessWidget {
           ),
           SizedBox(height: 15),
           Center(
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(AppColors.primary),
-              ),
+            child: CustomButton(
+              type: ButtonType.primary,
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                child: Text(
-                  context.localization.ok,
-                  style: AppStyles.normal14.copyWith(color: AppColors.white),
-                ),
-              ),
+              text: context.localization.ok,
             ),
           ),
         ],
       ),
-      color: AppColors.primary,
+      color: context.colors.primary,
     );
   }
 }
