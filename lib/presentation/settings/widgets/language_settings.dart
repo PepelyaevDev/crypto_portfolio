@@ -1,7 +1,5 @@
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/decorations.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
 import 'package:crypto_portfolio/common/assets/icons/app_icons.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/primary_container.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/presentation/settings/bloc/locale_bloc/locale_bloc.dart';
 import 'package:flutter/material.dart';
@@ -26,18 +24,18 @@ class _LanguageSettingsState extends State<LanguageSettings> {
             Icon(
               AppIcons.language,
               size: 25,
-              color: AppColors.primary,
+              color: context.colors.primary,
             ),
             SizedBox(width: 10),
             Text(
               context.localization.languageSettings,
-              style: AppStyles.bold20.copyWith(color: AppColors.blackLight),
+              style: context.styles.titleSmall,
             ),
           ],
         ),
         SizedBox(height: 10),
-        Ink(
-          decoration: AppDecorations.blueBorderDecoration,
+        PrimaryContainer(
+          ink: true,
           child: Column(
             children: [
               SettingItem(
@@ -73,7 +71,7 @@ class _SelectAppLocaleWidget extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   context.localization.selectAppLanguageDescription,
-                  style: AppStyles.normal14.copyWith(color: AppColors.gray),
+                  style: context.styles.bodySmall,
                 ),
               ),
             ),
@@ -92,14 +90,12 @@ class _SelectAppLocaleWidget extends StatelessWidget {
                         Icon(
                           selectedLocale ? Icons.radio_button_checked : Icons.radio_button_off,
                           size: 18,
-                          color: AppColors.primary,
+                          color: context.colors.primary,
                         ),
                         SizedBox(width: 7),
                         Text(
                           e.countryName,
-                          style: AppStyles.normal14.copyWith(
-                            color: selectedLocale ? AppColors.blackLight : AppColors.gray,
-                          ),
+                          style: context.styles.bodySmall,
                         ),
                       ],
                     ),
@@ -128,7 +124,7 @@ class _SelectNewsLocaleWidget extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   context.localization.selectNewsLanguageDescription,
-                  style: AppStyles.normal14.copyWith(color: AppColors.gray),
+                  style: context.styles.bodySmall,
                 ),
               ),
             ),
@@ -156,14 +152,12 @@ class _SelectNewsLocaleWidget extends StatelessWidget {
                         Icon(
                           selectedLocale ? Icons.check_box : Icons.check_box_outline_blank,
                           size: 18,
-                          color: AppColors.primary,
+                          color: context.colors.primary,
                         ),
                         SizedBox(width: 7),
                         Text(
                           e.countryName,
-                          style: AppStyles.normal14.copyWith(
-                            color: selectedLocale ? AppColors.blackLight : AppColors.gray,
-                          ),
+                          style: context.styles.bodySmall,
                         ),
                       ],
                     ),

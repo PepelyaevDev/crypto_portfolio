@@ -1,5 +1,4 @@
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
+import 'package:crypto_portfolio/common/utils/consts/app_consts.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/common/utils/extensions/double_extension.dart';
 import 'package:crypto_portfolio/presentation/stable_coins/bloc/stable_bloc.dart';
@@ -62,19 +61,25 @@ class _SuccessStablePercentWidget extends StatelessWidget {
         if (stableAmount > 0)
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              child: LinearProgressIndicator(
-                value: stablePercent,
-                minHeight: 20,
-                color: AppColors.primary,
-                backgroundColor: AppColors.grayMedium,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                border: Border.all(color: context.colors.primary),
+                borderRadius: BorderRadius.circular(baseBorderRadius),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(baseBorderRadius)),
+                child: LinearProgressIndicator(
+                  value: stablePercent,
+                  minHeight: 20,
+                  color: context.colors.primary,
+                  backgroundColor: Colors.transparent,
+                ),
               ),
             ),
           ),
         Text(
           '${context.localization.percentageStablecoins}: ${(stablePercent * 100).toStringAsFixed(2)}%',
-          style: AppStyles.normal14,
+          style: context.styles.bodySmall,
         ),
       ],
     );

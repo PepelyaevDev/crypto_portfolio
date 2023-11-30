@@ -1,13 +1,11 @@
 import 'package:crypto_portfolio/common/design_system/buttons/custom_button.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
-import 'package:crypto_portfolio/presentation/portfolio_list/pages/add_payment_page.dart';
-import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
+import 'package:crypto_portfolio/presentation/search/page/search_page.dart';
+import 'package:crypto_portfolio/presentation/watchlist/bloc/watchlist_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class PortfolioCoinEmpty extends StatelessWidget {
-  final CoinId id;
-  const PortfolioCoinEmpty({required this.id});
-
+class EmptyWatchlistWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -21,7 +19,7 @@ class PortfolioCoinEmpty extends StatelessWidget {
             ),
             child: SizedBox(
               child: Text(
-                context.localization.portfolioCoinIsEmpty,
+                context.localization.watchlistIsEmpty,
                 style: context.styles.bodyMedium,
                 textAlign: TextAlign.center,
               ),
@@ -29,12 +27,15 @@ class PortfolioCoinEmpty extends StatelessWidget {
           ),
           CustomButton(
             type: ButtonType.primary,
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => AddPaymentPage(id: id)),
+            onPressed: () async {
+              await Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => SearchPage(),
+                ),
               );
+              context.read<WatchlistBloc>().add(WatchlistEvent.refresh());
             },
-            text: context.localization.addTransaction,
+            text: context.localization.addCoins,
           ),
         ],
       ),

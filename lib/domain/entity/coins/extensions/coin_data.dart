@@ -1,4 +1,3 @@
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/common/utils/extensions/double_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:flutter/material.dart';
@@ -48,9 +47,7 @@ extension CoinData on CoinEntity {
   // cost of coins
   double get holdingsValue => holdings * currentPrice;
 
-  Color get color => holdingsValue < invested ? AppColors.redLight : AppColors.greenLight;
-
-  bool get hasProfit => holdingsValue > invested;
+  bool get hasProfit => holdingsValue >= invested;
 
   IconData get iconData => holdingsValue < invested ? Icons.arrow_drop_down : Icons.arrow_drop_up;
 

@@ -1,4 +1,3 @@
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/common/design_system/custom_widgets/logo_widget.dart';
 import 'package:crypto_portfolio/presentation/settings/widgets/contacts_widget.dart';
 import 'package:crypto_portfolio/presentation/settings/widgets/language_settings.dart';
@@ -9,11 +8,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shadowColor: AppColors.primary,
-        backgroundColor: AppColors.white,
-        foregroundColor: AppColors.blackLight,
         title: LogoWidget(),
-        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/bloc/market_chart_bloc/market_chart_bloc.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/bloc/market_coin_bloc/market_coin_bloc.dart';

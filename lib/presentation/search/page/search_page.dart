@@ -1,7 +1,5 @@
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/custom_text_field.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/custom_text_field.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/page/detail_coin_page.dart';
 import 'package:crypto_portfolio/presentation/search/bloc/search_bloc.dart';
@@ -20,11 +18,7 @@ class SearchPage extends StatelessWidget {
       create: (context) => SearchBloc(context.read<MarketRepo>()),
       child: Builder(builder: (context) {
         return Scaffold(
-          appBar: AppBar(
-            shadowColor: AppColors.primary,
-            backgroundColor: AppColors.white,
-            foregroundColor: AppColors.blackLight,
-          ),
+          appBar: AppBar(),
           body: ListView(
             children: [
               SizedBox(height: 20),
@@ -114,13 +108,13 @@ class _SearchedCoinWidget extends StatelessWidget {
                 SizedBox(width: 10),
                 Text(
                   searchCoinEntity.id.symbol,
-                  style: AppStyles.bold16,
+                  style: context.styles.labelMedium,
                 ),
                 SizedBox(width: 10),
                 if (searchCoinEntity.marketCapRank != null)
                   Text(
                     '#${searchCoinEntity.marketCapRank.toString()}',
-                    style: AppStyles.normal14.copyWith(color: AppColors.grayDark),
+                    style: context.styles.bodySmall,
                   ),
               ],
             ),

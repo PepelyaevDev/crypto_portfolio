@@ -1,7 +1,7 @@
 import 'package:crypto_portfolio/common/assets/icons/app_icons.dart';
 import 'package:crypto_portfolio/presentation/market_list/page/market_list_page.dart';
 import 'package:crypto_portfolio/presentation/news/page/news_page.dart';
-import 'package:crypto_portfolio/presentation/portfolio/pages/portfolio_page.dart';
+import 'package:crypto_portfolio/presentation/portfolio_list/pages/portfolio_list_page.dart';
 import 'package:crypto_portfolio/presentation/settings/pages/settings_page.dart';
 import 'package:crypto_portfolio/presentation/watchlist/page/watchlist_page.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class BottomNavigationTabs {
     BottomNavigationKey.portfolio: BottomNavigationTab(
       index: 2,
       showGeckoWidget: true,
-      screen: PortfolioPage(),
+      screen: PortfolioListPage(),
       icon: AppIcons.briefcase,
     ),
     BottomNavigationKey.news: BottomNavigationTab(

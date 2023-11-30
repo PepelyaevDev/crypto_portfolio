@@ -41,7 +41,6 @@ class PaymentDetailPopup {
               PaymentRow(
                 title: args.paymentType(context),
                 text: '${args.payment.numberOfCoins} ${args.name}',
-                color: args.color(context),
               ),
               SizedBox(height: 6),
               PaymentRow(

@@ -1,5 +1,4 @@
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
+import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 
 class SettingItem extends StatefulWidget {
@@ -37,11 +36,11 @@ class _SettingItemState extends State<SettingItem> {
               children: [
                 Text(
                   widget.title,
-                  style: AppStyles.normal18.copyWith(color: AppColors.blackLight),
+                  style: context.styles.bodyLarge,
                 ),
                 Icon(
                   _widgetClose ? Icons.arrow_drop_down : Icons.arrow_drop_up,
-                  color: AppColors.primary,
+                  color: context.colors.primary,
                 ),
               ],
             ),

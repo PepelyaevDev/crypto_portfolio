@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/bloc/portfolio_coin_bloc/portfolio_coin_bloc.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/widget/portfolio_widgets/potrfolio_coin_empty.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/widget/portfolio_widgets/portfolio_coin_history/portfolio_coin_history.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/widget/portfolio_widgets/portfolio_coin_stat.dart';
-import 'package:crypto_portfolio/presentation/portfolio/pages/add_payment_page.dart';
+import 'package:crypto_portfolio/presentation/portfolio_list/pages/add_payment_page.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/repo/portfolio_repo.dart';
 import 'package:flutter/material.dart';

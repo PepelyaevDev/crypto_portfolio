@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:crypto_portfolio/common/design_system/cards/market_data_card.dart';
 import 'package:crypto_portfolio/common/design_system/custom_widgets/logo_widget.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/common/utils/consts/app_consts.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/common/design_system/buttons/refresh_icon_button.dart';

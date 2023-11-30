@@ -1,4 +1,3 @@
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
 import 'package:crypto_portfolio/common/utils/extensions/double_extension.dart';
 import 'package:crypto_portfolio/domain/entity/coins/coins_entity.dart';
 import 'package:crypto_portfolio/domain/entity/coins/extensions/coin_data.dart';
@@ -22,7 +21,7 @@ extension PortfolioData on CoinsEntity {
     return value;
   }
 
-  Color get color => holdingsValue < invested ? AppColors.redLight : AppColors.greenLight;
+  bool get hasProfit => holdingsValue >= invested;
 
   IconData get iconData => holdingsValue < invested ? Icons.arrow_drop_down : Icons.arrow_drop_up;
 

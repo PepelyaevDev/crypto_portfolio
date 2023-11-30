@@ -1,5 +1,5 @@
-import 'package:crypto_portfolio/application/app/design_system/educational_popups/news_source_popup.dart';
-import 'package:crypto_portfolio/application/app/design_system/widgets/update_data_snack_bar.dart';
+import 'package:crypto_portfolio/common/design_system/popups/news_source_popup.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/common/design_system/custom_widgets/primary_container.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/common/utils/extensions/date_time_extension.dart';

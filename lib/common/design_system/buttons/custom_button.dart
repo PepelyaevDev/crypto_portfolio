@@ -7,7 +7,7 @@ enum ButtonType { primary, secondary, error }
 class CustomButton extends StatelessWidget {
   final String text;
   final ButtonType type;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   const CustomButton({
     required this.text,

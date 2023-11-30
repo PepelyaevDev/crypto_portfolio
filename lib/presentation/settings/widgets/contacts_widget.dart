@@ -1,6 +1,4 @@
-import 'package:crypto_portfolio/application/app/design_system/core/colors.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/decorations.dart';
-import 'package:crypto_portfolio/application/app/design_system/core/text_styles.dart';
+import 'package:crypto_portfolio/common/design_system/custom_widgets/primary_container.dart';
 import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/presentation/settings/widgets/settings_item.dart';
 import 'package:flutter/material.dart';
@@ -19,18 +17,18 @@ class AppInfoWidget extends StatelessWidget {
             Icon(
               Icons.info_outline,
               size: 25,
-              color: AppColors.primary,
+              color: context.colors.primary,
             ),
             SizedBox(width: 10),
             Text(
               context.localization.additionalInformation,
-              style: AppStyles.bold20.copyWith(color: AppColors.blackLight),
+              style: context.styles.titleSmall,
             ),
           ],
         ),
         SizedBox(height: 10),
-        Ink(
-          decoration: AppDecorations.blueBorderDecoration,
+        PrimaryContainer(
+          ink: true,
           child: Column(
             children: [
               SettingItem(
@@ -43,12 +41,12 @@ class AppInfoWidget extends StatelessWidget {
                     children: [
                       Text(
                         context.localization.appDetailInfo1,
-                        style: AppStyles.normal14,
+                        style: context.styles.bodySmall,
                       ),
                       SizedBox(height: 5),
                       Text(
                         context.localization.appDetailInfo2,
-                        style: AppStyles.normal14,
+                        style: context.styles.bodySmall,
                       ),
                       SizedBox(height: 5),
                     ],
@@ -75,13 +73,14 @@ class AppInfoWidget extends StatelessWidget {
                         children: [
                           Text(
                             context.localization.email,
-                            style: AppStyles.normal18.copyWith(color: AppColors.blackLight),
+                            style: context.styles.bodyLarge,
                           ),
                           SizedBox(
                             width: MediaQuery.sizeOf(context).width / 2,
                             child: Text(
                               _email,
-                              style: AppStyles.normal18.copyWith(color: AppColors.primary),
+                              style: context.styles.labelLarge!
+                                  .copyWith(color: context.colors.primary),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                               softWrap: false,
@@ -97,14 +96,14 @@ class AppInfoWidget extends StatelessWidget {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(context.localization.emailAddressCopied),
-                                backgroundColor: AppColors.primary,
+                                backgroundColor: context.colors.primary,
                                 duration: Duration(seconds: 1),
                               ),
                             );
                           },
                           child: Icon(
                             Icons.copy,
-                            color: AppColors.primary,
+                            color: context.colors.primary,
                             size: 20,
                           ),
                         ),
