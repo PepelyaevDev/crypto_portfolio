@@ -50,7 +50,7 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final color = widget.coinEntity.hasProfit ? context.colors.primary : context.colors.error;
+    final color = widget.coinEntity.hasProfit ? context.colors.secondary : context.colors.error;
     return InkWell(
       onTap: () {
         Navigator.of(context).push(

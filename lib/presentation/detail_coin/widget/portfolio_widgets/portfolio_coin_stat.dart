@@ -19,7 +19,7 @@ class PortfolioCoinStat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = coin.hasProfit ? context.colors.primary : context.colors.error;
+    final color = coin.hasProfit ? context.colors.secondary : context.colors.error;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(

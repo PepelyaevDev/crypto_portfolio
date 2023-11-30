@@ -66,28 +66,28 @@ class AppInfoWidget extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            context.localization.email,
-                            style: context.styles.bodyLarge,
-                          ),
-                          SizedBox(
-                            width: MediaQuery.sizeOf(context).width / 2,
-                            child: Text(
-                              _email,
-                              style: context.styles.labelLarge!
-                                  .copyWith(color: context.colors.primary),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                              softWrap: false,
+                      Flexible(
+                        child: Row(
+                          children: [
+                            Text(
+                              context.localization.email,
+                              style: context.styles.bodyLarge,
                             ),
-                          ),
-                        ],
+                            Flexible(
+                              child: Text(
+                                _email,
+                                style: context.styles.bodyLarge!
+                                    .copyWith(color: context.colors.primary),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                softWrap: false,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
+                      SizedBox(width: 20),
                       Padding(
                         padding: const EdgeInsets.only(right: 2.0),
                         child: InkWell(

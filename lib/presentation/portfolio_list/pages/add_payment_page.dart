@@ -88,9 +88,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                         children: [
                           Icon(
                             _amountAfterPayment ? Icons.check_box : Icons.check_box_outline_blank,
-                            color: _amountAfterPayment
-                                ? context.colors.primary
-                                : context.colors.onBackground,
+                            color: context.colors.primary,
                           ),
                           SizedBox(width: 5),
                           Expanded(
@@ -361,7 +359,9 @@ class _DatePickerItem extends StatelessWidget {
           child: Center(
             child: Text(
               dateTime,
-              style: context.styles.bodySmall!,
+              style: context.styles.bodySmall!.copyWith(
+                color: context.colors.primary,
+              ),
             ),
           ),
         ),

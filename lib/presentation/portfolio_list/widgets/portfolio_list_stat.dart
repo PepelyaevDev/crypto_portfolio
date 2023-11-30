@@ -21,7 +21,7 @@ class _PortfolioListStatState extends State<PortfolioListStat> {
 
   @override
   Widget build(BuildContext context) {
-    final color = widget.coins.hasProfit ? context.colors.primary : context.colors.error;
+    final color = widget.coins.hasProfit ? context.colors.secondary : context.colors.error;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: PrimaryContainer(

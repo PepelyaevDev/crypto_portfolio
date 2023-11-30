@@ -65,7 +65,7 @@ class WatchlistContent extends StatelessWidget {
                   color = context.colors.error;
                   icon = Icons.arrow_drop_down;
                 } else {
-                  color = context.colors.primary;
+                  color = context.colors.secondary;
                   icon = Icons.arrow_drop_up;
                 }
                 return Row(

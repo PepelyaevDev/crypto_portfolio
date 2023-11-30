@@ -179,7 +179,7 @@ class _NewsWidgetState extends State<_NewsWidget> {
                     return Text(
                       e,
                       style: context.styles.labelSmall!.copyWith(
-                        color: context.colors.primary,
+                        color: context.colors.secondary,
                       ),
                     );
                   }).toList(),
@@ -273,7 +273,7 @@ class _NewsLinkButton extends StatelessWidget {
               minimumSize: Size.zero,
               padding: EdgeInsets.zero,
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              textStyle: context.styles.labelSmall!.copyWith(
+              textStyle: context.styles.bodySmall!.copyWith(
                 color: context.colors.primary,
               )),
           onPressed: onPressed,

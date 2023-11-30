@@ -34,7 +34,7 @@ class UpdateDataSnackBar {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        backgroundColor: error == null ? context.colors.primary : context.colors.error,
+        backgroundColor: error == null ? context.colors.secondary : context.colors.error,
         duration: Duration(seconds: error == null ? 1 : 4),
       ),
     );

@@ -22,7 +22,7 @@ class PaymentWidgetArgs {
 
   bool get buy => payment.type == PaymentType.buy;
 
-  Color color(BuildContext context) => buy ? context.colors.primary : context.colors.error;
+  Color color(BuildContext context) => buy ? context.colors.secondary : context.colors.primary;
   String paymentType(BuildContext context) =>
       buy ? context.localization.buy : context.localization.sell;
   String moneyText(BuildContext context) =>
