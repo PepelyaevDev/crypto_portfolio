@@ -28,11 +28,7 @@ class EmptyWatchlistWidget extends StatelessWidget {
           CustomButton(
             type: ButtonType.primary,
             onPressed: () async {
-              await Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => SearchPage(),
-                ),
-              );
+              await context.push(SearchPage());
               context.read<WatchlistBloc>().add(WatchlistEvent.refresh());
             },
             text: context.localization.addCoins,

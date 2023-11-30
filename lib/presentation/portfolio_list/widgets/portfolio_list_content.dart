@@ -53,13 +53,11 @@ class _PortfolioCoinWidgetState extends State<_PortfolioCoinWidget> {
     final color = widget.coinEntity.hasProfit ? context.colors.secondary : context.colors.error;
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => DetailCoinPage(
-              coinLogo: widget.coinEntity.image,
-              id: widget.coinEntity.id,
-              initialIndex: 1,
-            ),
+        context.push(
+          DetailCoinPage(
+            coinLogo: widget.coinEntity.image,
+            id: widget.coinEntity.id,
+            initialIndex: 1,
           ),
         );
       },
@@ -178,11 +176,7 @@ class _PortfolioCoinWidgetDetails extends StatelessWidget {
           button: InkWell(
             borderRadius: BorderRadius.circular(10),
             onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => AddPaymentPage(id: coinEntity.id),
-                ),
-              );
+              context.push(AddPaymentPage(id: coinEntity.id));
             },
             child: Padding(
               padding: const EdgeInsets.all(7.5),

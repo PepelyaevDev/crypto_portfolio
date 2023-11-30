@@ -14,12 +14,10 @@ class MarketListContent extends StatelessWidget {
     return ListView.separated(
       itemBuilder: (_, i) => InkWell(
         onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => DetailCoinPage(
-                coinLogo: coins.list[i].image,
-                id: coins.list[i].id,
-              ),
+          context.push(
+            DetailCoinPage(
+              coinLogo: coins.list[i].image,
+              id: coins.list[i].id,
             ),
           );
         },

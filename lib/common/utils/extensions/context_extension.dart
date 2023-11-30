@@ -7,4 +7,8 @@ extension BuildContextExtension on BuildContext {
   Brightness get brightness => theme.brightness;
   ColorScheme get colors => theme.colorScheme;
   TextTheme get styles => theme.textTheme;
+  Future<void> push(Widget widget) async => await Navigator.of(this).push(
+        MaterialPageRoute(builder: (_) => widget),
+      );
+  void pop() => Navigator.of(this).pop();
 }

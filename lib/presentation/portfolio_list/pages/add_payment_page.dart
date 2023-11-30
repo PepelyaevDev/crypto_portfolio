@@ -217,7 +217,7 @@ class _AddPaymentPageState extends State<AddPaymentPage> {
                                           coin: state.coin,
                                         ),
                                       );
-                                  Navigator.of(context).pop();
+                                  context.pop();
                                 }
                               };
                             },

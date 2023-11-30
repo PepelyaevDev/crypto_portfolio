@@ -68,7 +68,7 @@ class PortfolioCoinHistory extends StatelessWidget {
                             ),
                             onTapDelete: () {
                               onTapDeleteAll.call();
-                              Navigator.of(context).pop();
+                              context.pop();
                             },
                           ),
                         );

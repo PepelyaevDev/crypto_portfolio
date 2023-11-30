@@ -36,7 +36,7 @@ class EducationalPopupWidget {
                   child: CustomButton(
                     type: ButtonType.secondary,
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      context.pop();
                       onTap.call();
                     },
                     text: context.localization.ok,
@@ -53,7 +53,7 @@ class EducationalPopupWidget {
                       context.read<SettingsBloc>().add(
                             SettingsEvent.blockEducationalPopup(popup),
                           );
-                      Navigator.of(context).pop();
+                      context.pop();
                       onTap.call();
                     },
                     text: context.localization.dontShowAgain,

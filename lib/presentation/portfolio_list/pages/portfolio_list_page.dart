@@ -4,6 +4,7 @@ import 'package:crypto_portfolio/common/design_system/custom_widgets/logo_widget
 import 'package:crypto_portfolio/common/design_system/custom_widgets/update_data_snack_bar.dart';
 import 'package:crypto_portfolio/common/design_system/buttons/refresh_icon_button.dart';
 import 'package:crypto_portfolio/common/utils/consts/app_consts.dart';
+import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/presentation/portfolio_list/bloc/portfolio_list_bloc/portfolio_list_bloc.dart';
 import 'package:crypto_portfolio/presentation/portfolio_list/pages/add_payment_page.dart';
 import 'package:crypto_portfolio/presentation/portfolio_list/widgets/portfolio_list_empty.dart';
@@ -43,11 +44,7 @@ class PortfolioListPage extends StatelessWidget {
                     IconButton(
                       icon: Icon(Icons.add),
                       onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => AddPaymentPage(),
-                          ),
-                        );
+                        context.push(AddPaymentPage());
                       },
                     ),
                     RefreshButton(

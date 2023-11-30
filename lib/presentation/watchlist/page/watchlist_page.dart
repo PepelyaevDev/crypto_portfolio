@@ -50,9 +50,7 @@ class _WatchlistPageState extends State<WatchlistPage> {
               IconButton(
                 icon: Icon(Icons.search),
                 onPressed: () async {
-                  await Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => SearchPage()),
-                  );
+                  await context.push(SearchPage());
                   context.read<WatchlistBloc>().add(WatchlistEvent.refresh());
                 },
               ),

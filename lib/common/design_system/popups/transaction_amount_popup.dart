@@ -32,7 +32,7 @@ class TransactionAmountPopup {
                     child: CustomButton(
                       type: ButtonType.secondary,
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        context.pop();
                       },
                       text: context.localization.ok,
                     ),

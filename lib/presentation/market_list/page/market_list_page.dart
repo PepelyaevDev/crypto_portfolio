@@ -38,11 +38,7 @@ class MarketListPage extends StatelessWidget {
                     IconButton(
                       icon: Icon(Icons.search),
                       onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => SearchPage(),
-                          ),
-                        );
+                        context.push(SearchPage());
                       },
                     ),
                     RefreshButton(

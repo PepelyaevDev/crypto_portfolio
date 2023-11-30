@@ -64,7 +64,7 @@ class PaymentDetailPopup {
                     child: CustomButton(
                       type: ButtonType.error,
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        context.pop();
                         showDialog(
                           context: context,
                           builder: (_) => DeletePopup(
@@ -95,7 +95,7 @@ class PaymentDetailPopup {
                                 ? null
                                 : () {
                                     args.onTapDelete!(args.payment);
-                                    Navigator.of(context).pop();
+                                    context.pop();
                                   },
                           ),
                         );
@@ -108,7 +108,7 @@ class PaymentDetailPopup {
                     child: CustomButton(
                       type: ButtonType.secondary,
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        context.pop();
                       },
                       text: context.localization.close,
                     ),

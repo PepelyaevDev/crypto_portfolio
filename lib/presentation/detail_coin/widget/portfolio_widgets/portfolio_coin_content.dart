@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:crypto_portfolio/common/design_system/custom_widgets/update_data_snack_bar.dart';
+import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/bloc/portfolio_coin_bloc/portfolio_coin_bloc.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/widget/portfolio_widgets/potrfolio_coin_empty.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/widget/portfolio_widgets/portfolio_coin_history/portfolio_coin_history.dart';
@@ -56,13 +57,7 @@ class PortfolioCoinContent extends StatelessWidget {
                   PortfolioCoinHistory(
                     coin: state.coin!,
                     onTapAdd: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) => AddPaymentPage(
-                            id: id,
-                          ),
-                        ),
-                      );
+                      context.push(AddPaymentPage(id: id));
                     },
                     onTapDelete: (PaymentEntity payment) {
                       context

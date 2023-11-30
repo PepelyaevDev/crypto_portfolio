@@ -1,4 +1,5 @@
 import 'package:crypto_portfolio/common/utils/consts/app_consts.dart';
+import 'package:crypto_portfolio/common/utils/extensions/context_extension.dart';
 import 'package:crypto_portfolio/presentation/detail_coin/widget/portfolio_widgets/portfolio_coin_history/payment_widget.dart';
 import 'package:crypto_portfolio/presentation/portfolio_list/bloc/portfolio_list_history_bloc/portfolio_list_history_bloc.dart';
 import 'package:crypto_portfolio/presentation/portfolio_list/pages/add_payment_page.dart';
@@ -23,11 +24,7 @@ class PortfolioListHistoryPage extends StatelessWidget {
                     IconButton(
                       icon: Icon(Icons.add),
                       onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => AddPaymentPage(),
-                          ),
-                        );
+                        context.push(AddPaymentPage());
                       },
                     ),
                     SizedBox(width: marginFromEdgeOfScreen),

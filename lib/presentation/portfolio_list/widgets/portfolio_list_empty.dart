@@ -26,11 +26,7 @@ class PortfolioListEmpty extends StatelessWidget {
           CustomButton(
             type: ButtonType.primary,
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => AddPaymentPage(),
-                ),
-              );
+              context.push(AddPaymentPage());
             },
             text: context.localization.addTransaction,
           ),

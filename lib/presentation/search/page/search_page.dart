@@ -82,12 +82,10 @@ class _SearchedCoinWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => DetailCoinPage(
-              coinLogo: searchCoinEntity.icon,
-              id: searchCoinEntity.id,
-            ),
+        context.push(
+          DetailCoinPage(
+            coinLogo: searchCoinEntity.icon,
+            id: searchCoinEntity.id,
           ),
         );
       },

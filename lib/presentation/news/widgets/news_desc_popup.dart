@@ -57,7 +57,7 @@ class NewsDescPopup extends StatelessWidget {
             child: CustomButton(
               type: ButtonType.primary,
               onPressed: () {
-                Navigator.of(context).pop();
+                context.pop();
               },
               text: context.localization.ok,
             ),

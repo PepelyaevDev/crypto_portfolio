@@ -53,7 +53,7 @@ class DeletePopup extends StatelessWidget {
   Widget _cancelButton(BuildContext context) => CustomButton(
         type: ButtonType.secondary,
         onPressed: () {
-          Navigator.of(context).pop();
+          context.pop();
         },
         text: context.localization.cancel,
       );

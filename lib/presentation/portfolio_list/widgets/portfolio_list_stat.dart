@@ -67,9 +67,7 @@ class _PortfolioListStatState extends State<PortfolioListStat> {
                   children: [
                     CustomButton(
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => PortfolioListHistoryPage(),
-                        ));
+                        context.push(PortfolioListHistoryPage());
                       },
                       type: ButtonType.primary,
                       text: context.localization.transactionHistory,
