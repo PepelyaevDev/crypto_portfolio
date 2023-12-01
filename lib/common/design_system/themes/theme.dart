@@ -12,6 +12,7 @@ class AppTheme {
         cardTheme: cardTheme,
         navigationBarTheme: navigationBarTheme,
         dividerTheme: dividerTheme,
+        textButtonTheme: textButtonTheme,
         textTheme: textTheme,
       );
 

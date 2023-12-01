@@ -1,3 +1,4 @@
+import 'package:crypto_portfolio/common/utils/consts/app_consts.dart';
 import 'package:flutter/material.dart';
 
 const double _elevation = 1;
@@ -10,6 +11,16 @@ const appBarTheme = AppBarTheme(
 
 const cardTheme = CardTheme(
   elevation: _elevation,
+);
+
+final textButtonTheme = TextButtonThemeData(
+  style: ButtonStyle(
+    shape: MaterialStatePropertyAll(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(baseBorderRadius),
+      ),
+    ),
+  ),
 );
 
 const navigationBarTheme = NavigationBarThemeData(
