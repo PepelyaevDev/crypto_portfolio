@@ -10,10 +10,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RootRepositoryProvider extends StatelessWidget {
   const RootRepositoryProvider({
-    Key? key,
+    super.key,
     required this.appDataSource,
     required this.child,
-  }) : super(key: key);
+  });
 
   final AppDataSource appDataSource;
   final Widget child;

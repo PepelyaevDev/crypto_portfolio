@@ -100,7 +100,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     if (ids.isEmpty) {
       return null;
     } else {
-      final List<String> currencies = [...ids.map((e) => e.symbol).toList()];
+      final List<String> currencies = [...ids.map((e) => e.symbol)];
       return currencies.toSet().toList();
     }
   }

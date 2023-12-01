@@ -102,7 +102,7 @@ class _SelectAppLocaleWidget extends StatelessWidget {
                   ),
                 );
               },
-            ).toList(),
+            ),
             SizedBox(height: 5),
           ],
         );
@@ -164,7 +164,7 @@ class _SelectNewsLocaleWidget extends StatelessWidget {
                   ),
                 );
               },
-            ).toList(),
+            ),
             SizedBox(height: 5),
           ],
         );

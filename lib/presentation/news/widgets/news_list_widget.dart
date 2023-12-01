@@ -117,7 +117,7 @@ class _NewsList extends StatelessWidget {
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ...news!.list.map((e) => _NewsWidget(e)).toList(),
+          ...news!.list.map((e) => _NewsWidget(e)),
           if (error != null) _ErrorMessage(error!),
           if (news!.nextPage != null && error == null)
             Padding(

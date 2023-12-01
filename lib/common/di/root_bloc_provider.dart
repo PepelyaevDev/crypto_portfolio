@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RootBlocProvider extends StatelessWidget {
-  const RootBlocProvider({Key? key, required this.child}) : super(key: key);
+  const RootBlocProvider({super.key, required this.child});
 
   final Widget child;
 
