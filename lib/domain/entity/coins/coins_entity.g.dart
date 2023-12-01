@@ -26,6 +26,12 @@ _$_CoinEntity _$$_CoinEntityFromJson(Map<String, dynamic> json) => _$_CoinEntity
       circulatingSupply: (json['circulatingSupply'] as num?)?.toDouble(),
       totalSupply: (json['totalSupply'] as num?)?.toDouble(),
       maxSupply: (json['maxSupply'] as num?)?.toDouble(),
+      ath: (json['ath'] as num?)?.toDouble(),
+      athChangePercentage: (json['athChangePercentage'] as num?)?.toDouble(),
+      athDate: json['athDate'] as String?,
+      atl: (json['atl'] as num?)?.toDouble(),
+      atlChangePercentage: (json['atlChangePercentage'] as num?)?.toDouble(),
+      atlDate: json['atlDate'] as String?,
       history: (json['history'] as List<dynamic>).map(PaymentEntity.fromJson).toList(),
     );
 
@@ -39,6 +45,12 @@ Map<String, dynamic> _$$_CoinEntityToJson(_$_CoinEntity instance) => <String, dy
       'circulatingSupply': instance.circulatingSupply,
       'totalSupply': instance.totalSupply,
       'maxSupply': instance.maxSupply,
+      'ath': instance.ath,
+      'athChangePercentage': instance.athChangePercentage,
+      'athDate': instance.athDate,
+      'atl': instance.atl,
+      'atlChangePercentage': instance.atlChangePercentage,
+      'atlDate': instance.atlDate,
       'history': instance.history.map((e) => e.toJson()).toList(),
     };
 

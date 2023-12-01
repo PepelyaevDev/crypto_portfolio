@@ -25,6 +25,8 @@
     "totalInvested": "Total invested",
     "delete": "Delete",
     "cancel": "Cancel",
+    "ath": "All-Time High",
+    "atl": "All-Time Low",
 
     "portfolioStatistics": "Portfolio statistics",
     "coinChart": "Coin chart",

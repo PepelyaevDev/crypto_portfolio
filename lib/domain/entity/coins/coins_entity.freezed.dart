@@ -181,7 +181,13 @@ mixin _$CoinEntity {
   double? get marketCapRank => throw _privateConstructorUsedError;
   double? get circulatingSupply => throw _privateConstructorUsedError;
   double? get totalSupply => throw _privateConstructorUsedError;
-  double? get maxSupply => throw _privateConstructorUsedError; //user data
+  double? get maxSupply => throw _privateConstructorUsedError;
+  double? get ath => throw _privateConstructorUsedError;
+  double? get athChangePercentage => throw _privateConstructorUsedError;
+  String? get athDate => throw _privateConstructorUsedError;
+  double? get atl => throw _privateConstructorUsedError;
+  double? get atlChangePercentage => throw _privateConstructorUsedError;
+  String? get atlDate => throw _privateConstructorUsedError; //user data
   List<PaymentEntity> get history => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -204,6 +210,12 @@ abstract class $CoinEntityCopyWith<$Res> {
       double? circulatingSupply,
       double? totalSupply,
       double? maxSupply,
+      double? ath,
+      double? athChangePercentage,
+      String? athDate,
+      double? atl,
+      double? atlChangePercentage,
+      String? atlDate,
       List<PaymentEntity> history});
 
   $CoinIdCopyWith<$Res> get id;
@@ -230,6 +242,12 @@ class _$CoinEntityCopyWithImpl<$Res, $Val extends CoinEntity> implements $CoinEn
     Object? circulatingSupply = freezed,
     Object? totalSupply = freezed,
     Object? maxSupply = freezed,
+    Object? ath = freezed,
+    Object? athChangePercentage = freezed,
+    Object? athDate = freezed,
+    Object? atl = freezed,
+    Object? atlChangePercentage = freezed,
+    Object? atlDate = freezed,
     Object? history = null,
   }) {
     return _then(_value.copyWith(
@@ -269,6 +287,30 @@ class _$CoinEntityCopyWithImpl<$Res, $Val extends CoinEntity> implements $CoinEn
           ? _value.maxSupply
           : maxSupply // ignore: cast_nullable_to_non_nullable
               as double?,
+      ath: freezed == ath
+          ? _value.ath
+          : ath // ignore: cast_nullable_to_non_nullable
+              as double?,
+      athChangePercentage: freezed == athChangePercentage
+          ? _value.athChangePercentage
+          : athChangePercentage // ignore: cast_nullable_to_non_nullable
+              as double?,
+      athDate: freezed == athDate
+          ? _value.athDate
+          : athDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      atl: freezed == atl
+          ? _value.atl
+          : atl // ignore: cast_nullable_to_non_nullable
+              as double?,
+      atlChangePercentage: freezed == atlChangePercentage
+          ? _value.atlChangePercentage
+          : atlChangePercentage // ignore: cast_nullable_to_non_nullable
+              as double?,
+      atlDate: freezed == atlDate
+          ? _value.atlDate
+          : atlDate // ignore: cast_nullable_to_non_nullable
+              as String?,
       history: null == history
           ? _value.history
           : history // ignore: cast_nullable_to_non_nullable
@@ -301,6 +343,12 @@ abstract class _$$_CoinEntityCopyWith<$Res> implements $CoinEntityCopyWith<$Res>
       double? circulatingSupply,
       double? totalSupply,
       double? maxSupply,
+      double? ath,
+      double? athChangePercentage,
+      String? athDate,
+      double? atl,
+      double? atlChangePercentage,
+      String? atlDate,
       List<PaymentEntity> history});
 
   @override
@@ -325,6 +373,12 @@ class __$$_CoinEntityCopyWithImpl<$Res> extends _$CoinEntityCopyWithImpl<$Res, _
     Object? circulatingSupply = freezed,
     Object? totalSupply = freezed,
     Object? maxSupply = freezed,
+    Object? ath = freezed,
+    Object? athChangePercentage = freezed,
+    Object? athDate = freezed,
+    Object? atl = freezed,
+    Object? atlChangePercentage = freezed,
+    Object? atlDate = freezed,
     Object? history = null,
   }) {
     return _then(_$_CoinEntity(
@@ -364,6 +418,30 @@ class __$$_CoinEntityCopyWithImpl<$Res> extends _$CoinEntityCopyWithImpl<$Res, _
           ? _value.maxSupply
           : maxSupply // ignore: cast_nullable_to_non_nullable
               as double?,
+      ath: freezed == ath
+          ? _value.ath
+          : ath // ignore: cast_nullable_to_non_nullable
+              as double?,
+      athChangePercentage: freezed == athChangePercentage
+          ? _value.athChangePercentage
+          : athChangePercentage // ignore: cast_nullable_to_non_nullable
+              as double?,
+      athDate: freezed == athDate
+          ? _value.athDate
+          : athDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      atl: freezed == atl
+          ? _value.atl
+          : atl // ignore: cast_nullable_to_non_nullable
+              as double?,
+      atlChangePercentage: freezed == atlChangePercentage
+          ? _value.atlChangePercentage
+          : atlChangePercentage // ignore: cast_nullable_to_non_nullable
+              as double?,
+      atlDate: freezed == atlDate
+          ? _value.atlDate
+          : atlDate // ignore: cast_nullable_to_non_nullable
+              as String?,
       history: null == history
           ? _value._history
           : history // ignore: cast_nullable_to_non_nullable
@@ -385,6 +463,12 @@ class _$_CoinEntity implements _CoinEntity {
       required this.circulatingSupply,
       required this.totalSupply,
       required this.maxSupply,
+      required this.ath,
+      required this.athChangePercentage,
+      required this.athDate,
+      required this.atl,
+      required this.atlChangePercentage,
+      required this.atlDate,
       required final List<PaymentEntity> history})
       : _history = history;
 
@@ -409,6 +493,18 @@ class _$_CoinEntity implements _CoinEntity {
   final double? totalSupply;
   @override
   final double? maxSupply;
+  @override
+  final double? ath;
+  @override
+  final double? athChangePercentage;
+  @override
+  final String? athDate;
+  @override
+  final double? atl;
+  @override
+  final double? atlChangePercentage;
+  @override
+  final String? atlDate;
 //user data
   final List<PaymentEntity> _history;
 //user data
@@ -421,7 +517,7 @@ class _$_CoinEntity implements _CoinEntity {
 
   @override
   String toString() {
-    return 'CoinEntity(id: $id, image: $image, currentPrice: $currentPrice, marketCap: $marketCap, priceChangePercentage24H: $priceChangePercentage24H, marketCapRank: $marketCapRank, circulatingSupply: $circulatingSupply, totalSupply: $totalSupply, maxSupply: $maxSupply, history: $history)';
+    return 'CoinEntity(id: $id, image: $image, currentPrice: $currentPrice, marketCap: $marketCap, priceChangePercentage24H: $priceChangePercentage24H, marketCapRank: $marketCapRank, circulatingSupply: $circulatingSupply, totalSupply: $totalSupply, maxSupply: $maxSupply, ath: $ath, athChangePercentage: $athChangePercentage, athDate: $athDate, atl: $atl, atlChangePercentage: $atlChangePercentage, atlDate: $atlDate, history: $history)';
   }
 
   @override
@@ -441,6 +537,14 @@ class _$_CoinEntity implements _CoinEntity {
                 other.circulatingSupply == circulatingSupply) &&
             (identical(other.totalSupply, totalSupply) || other.totalSupply == totalSupply) &&
             (identical(other.maxSupply, maxSupply) || other.maxSupply == maxSupply) &&
+            (identical(other.ath, ath) || other.ath == ath) &&
+            (identical(other.athChangePercentage, athChangePercentage) ||
+                other.athChangePercentage == athChangePercentage) &&
+            (identical(other.athDate, athDate) || other.athDate == athDate) &&
+            (identical(other.atl, atl) || other.atl == atl) &&
+            (identical(other.atlChangePercentage, atlChangePercentage) ||
+                other.atlChangePercentage == atlChangePercentage) &&
+            (identical(other.atlDate, atlDate) || other.atlDate == atlDate) &&
             const DeepCollectionEquality().equals(other._history, _history));
   }
 
@@ -457,6 +561,12 @@ class _$_CoinEntity implements _CoinEntity {
       circulatingSupply,
       totalSupply,
       maxSupply,
+      ath,
+      athChangePercentage,
+      athDate,
+      atl,
+      atlChangePercentage,
+      atlDate,
       const DeepCollectionEquality().hash(_history));
 
   @JsonKey(ignore: true)
@@ -484,6 +594,12 @@ abstract class _CoinEntity implements CoinEntity {
       required final double? circulatingSupply,
       required final double? totalSupply,
       required final double? maxSupply,
+      required final double? ath,
+      required final double? athChangePercentage,
+      required final String? athDate,
+      required final double? atl,
+      required final double? atlChangePercentage,
+      required final String? atlDate,
       required final List<PaymentEntity> history}) = _$_CoinEntity;
 
   factory _CoinEntity.fromJson(Map<String, dynamic> json) = _$_CoinEntity.fromJson;
@@ -506,6 +622,18 @@ abstract class _CoinEntity implements CoinEntity {
   double? get totalSupply;
   @override
   double? get maxSupply;
+  @override
+  double? get ath;
+  @override
+  double? get athChangePercentage;
+  @override
+  String? get athDate;
+  @override
+  double? get atl;
+  @override
+  double? get atlChangePercentage;
+  @override
+  String? get atlDate;
   @override //user data
   List<PaymentEntity> get history;
   @override

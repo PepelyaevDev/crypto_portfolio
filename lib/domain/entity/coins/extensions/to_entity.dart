@@ -12,6 +12,12 @@ extension GeckoCoinDtoToEntity on GeckoCoinDTO {
         circulatingSupply: circulatingSupply,
         totalSupply: totalSupply,
         maxSupply: maxSupply,
+        ath: ath,
+        athChangePercentage: athChangePercentage,
+        athDate: athDate,
+        atl: atl,
+        atlChangePercentage: atlChangePercentage,
+        atlDate: atlDate,
         history: [],
       );
 }

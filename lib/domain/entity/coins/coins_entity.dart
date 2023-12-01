@@ -25,6 +25,13 @@ class CoinEntity with _$CoinEntity {
     required double? circulatingSupply,
     required double? totalSupply,
     required double? maxSupply,
+    required double? ath,
+    required double? athChangePercentage,
+    required String? athDate,
+    required double? atl,
+    required double? atlChangePercentage,
+    required String? atlDate,
+
     //user data
     required List<PaymentEntity> history,
   }) = _CoinEntity;
