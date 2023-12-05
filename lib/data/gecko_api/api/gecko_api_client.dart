@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:crypto_portfolio/common/utils/extensions/int_extension.dart';
+import 'package:crypto_portfolio/data/gecko_api/api/gecko_dio_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_coins_source.dart';
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_search_source.dart';
 import 'package:dio/dio.dart';
@@ -25,12 +26,15 @@ class GeckoApiClient {
         validateStatus: (status) => status.validateHttpResponseStatus,
       ),
     )..interceptors.add(_TokenInterceptor());
+
+    final geckoDioClient = GeckoDioClient(dio);
+
     (dio.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () => HttpClient()
       ..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
 
     return GeckoApiClient(
-      coins: GeckoCoinsSource(dio),
-      search: GeckoSearchSource(dio),
+      coins: GeckoCoinsSource(geckoDioClient),
+      search: GeckoSearchSource(geckoDioClient),
     );
   }
 }
