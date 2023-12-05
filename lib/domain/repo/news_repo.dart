@@ -8,10 +8,13 @@ import 'package:dartz/dartz.dart';
 class NewsRepo {
   final CryptopanicApiClient _cryptopanicApiClient;
   NewsRepo(this._cryptopanicApiClient);
+  DateTime? _lastCallTime;
 
   //Don't call method if nextPage is null
-  Future<Either<Failure, NewsListEntity>> updateNews(NewsListEntity oldList) async {
+  Future<Either<Failure, NewsListEntity>?> updateNews(NewsListEntity oldList) async {
+    _lastCallTime = DateTime.now();
     try {
+      final time = _lastCallTime;
       late CryptopanicNewsResponse newsResponse;
       bool updated = false;
       int? nextPage = oldList.nextPage;
@@ -27,11 +30,14 @@ class NewsRepo {
         } else if (newsResponse.results.where((e) => e.metadata != null).isNotEmpty) {
           nextPage = nextPage + 1;
           updated = true;
+        } else if (time != _lastCallTime) {
+          updated = true;
         } else {
           nextPage = nextPage + 1;
           await Future<void>.delayed(const Duration(milliseconds: 300));
         }
       }
+      if (time != _lastCallTime) return null;
       return right(newsResponse.toEntity(oldList: oldList, nextPage: nextPage));
     } catch (e) {
       return left(Failure.from(e));

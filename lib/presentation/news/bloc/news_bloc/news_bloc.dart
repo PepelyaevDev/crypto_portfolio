@@ -49,10 +49,12 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       return;
     }
     final news = await _newsRepo.updateNews(event.oldList);
-    news.fold(
-      (l) => emit(NewsState.error(news: event.oldList, error: l)),
-      (r) => emit(NewsState.success(r, DateTime.now())),
-    );
+    if (news != null) {
+      news.fold(
+        (l) => emit(NewsState.error(news: event.oldList, error: l)),
+        (r) => emit(NewsState.success(r, DateTime.now())),
+      );
+    }
   }
 
   Future<void> _getFirstData(Emitter<NewsState> emit) async {
@@ -72,10 +74,12 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           nextPage: 1,
         ),
       );
-      news.fold(
-        (l) => emit(NewsState.error(error: l)),
-        (r) => emit(NewsState.success(r, DateTime.now())),
-      );
+      if (news != null) {
+        news.fold(
+          (l) => emit(NewsState.error(error: l)),
+          (r) => emit(NewsState.success(r, DateTime.now())),
+        );
+      }
     }
   }
 
