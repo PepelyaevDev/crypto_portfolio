@@ -8,6 +8,8 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 
 class GeckoApiClient {
+  //Waiting time to resend the request (in seconds)
+  static const waitingForRequestRetry = 120;
   final GeckoCoinsSource coins;
   final GeckoSearchSource search;
 

@@ -1,22 +1,29 @@
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 
+import 'gecko_api_client.dart';
+
 class GeckoDioClient {
   GeckoDioClient(this._dio);
   final Dio _dio;
   final List<_GeckoCacheItem> _cache = [];
 
   Future<T> getData<T>(GeckoGetParams params) async {
+    _cache.removeWhere((e) {
+      return DateTime.now().difference(e.timeStamp).inSeconds >
+          GeckoApiClient.waitingForRequestRetry;
+    });
+    final _GeckoCacheItem? item = _cache.where((e) => e.params == params).firstOrNull;
+    if (item != null) return item.response;
     final response = await _dio.get<T>(params.path, queryParameters: params.queryParameters);
+    _cache.add(
+      _GeckoCacheItem(
+        params: params,
+        response: response.data,
+        timeStamp: DateTime.now(),
+      ),
+    );
     return response.data!;
-  }
-
-  void _updateCache({_GeckoCacheItem? item}) {
-    if (item == null) {
-      _cache.removeWhere((e) => false);
-    }else {
-      _cache.add(item);
-    }
   }
 }
 
