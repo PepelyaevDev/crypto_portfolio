@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:crypto_portfolio/common/utils/extensions/int_extension.dart';
+import 'package:crypto_portfolio/common/utils/interceptors/token_interceptor.dart';
+import 'package:crypto_portfolio/data/firebase_api/app_config.dart';
 import 'package:crypto_portfolio/data/gecko_api/api/gecko_dio_client.dart';
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_coins_source.dart';
 import 'package:crypto_portfolio/data/gecko_api/sources/gecko_search_source.dart';
@@ -18,16 +20,16 @@ class GeckoApiClient {
     required this.search,
   });
 
-  static GeckoApiClient get getClient {
+  static GeckoApiClient getClient(DataSourceConfig config) {
     final dio = Dio(
       BaseOptions(
-        baseUrl: 'https://api.coingecko.com',
+        baseUrl: config.baseUrl,
         connectTimeout: Duration(seconds: 5),
         receiveTimeout: Duration(seconds: 5),
         responseType: ResponseType.json,
         validateStatus: (status) => status.validateHttpResponseStatus,
       ),
-    )..interceptors.add(_TokenInterceptor());
+    )..interceptors.add(TokenInterceptor(config));
 
     final geckoDioClient = GeckoDioClient(dio);
 
@@ -38,15 +40,5 @@ class GeckoApiClient {
       coins: GeckoCoinsSource(geckoDioClient),
       search: GeckoSearchSource(geckoDioClient),
     );
-  }
-}
-
-class _TokenInterceptor extends Interceptor {
-  @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.queryParameters.addAll({
-      'x_cg_demo_api_key': 'CG-P2tNAqVzD3yUQHSwAmgfbSyE',
-    });
-    super.onRequest(options, handler);
   }
 }

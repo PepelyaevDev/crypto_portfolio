@@ -11,6 +11,10 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  #firebase.google.com
+  firebase_core: ^2.24.2
+  cloud_firestore: ^4.13.6
+
   #dart.dev
   intl: ^0.18.1
 

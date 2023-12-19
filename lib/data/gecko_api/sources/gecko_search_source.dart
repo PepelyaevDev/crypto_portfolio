@@ -5,7 +5,7 @@ class GeckoSearchSource {
   final GeckoDioClient _dio;
   GeckoSearchSource(this._dio);
 
-  static const String _path = '/api/v3/search/';
+  static const String _path = '/search/';
 
   Future<SearchDTO> search(String query) async {
     final response = await _dio.getData<Map<String, dynamic>>(

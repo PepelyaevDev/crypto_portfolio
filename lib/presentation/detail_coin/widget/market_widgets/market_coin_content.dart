@@ -30,13 +30,11 @@ class _MarketCoinContentState extends State<MarketCoinContent> {
   MarketChartDistance _selectedDistance = MarketChartDistance.d1;
   final BehaviorSubject<MarketChartPriceEntity?> _selectedPrice = BehaviorSubject();
   final ScrollController _controller = ScrollController();
-  final _initPageCompleter = (Completer<void>(), Completer<void>(), Completer<void>());
+  final _initPageCompleter = (Completer<void>(), Completer<void>());
   bool _loadingState = false;
 
   bool get _initInProcess =>
-      !_initPageCompleter.$1.isCompleted ||
-      !_initPageCompleter.$2.isCompleted ||
-      !_initPageCompleter.$3.isCompleted;
+      !_initPageCompleter.$1.isCompleted || !_initPageCompleter.$2.isCompleted;
 
   @override
   void dispose() {
@@ -65,16 +63,10 @@ class _MarketCoinContentState extends State<MarketCoinContent> {
               BlocListener<MarketCoinBloc, MarketCoinState>(
                 listener: (context, state) {
                   if (!state.loading) {
-                    UpdateDataSnackBar.show(
-                      context: context,
-                      error: state.error,
-                    );
+                    UpdateDataSnackBar.show(context: context, error: state.error);
                     if (!_initPageCompleter.$1.isCompleted) {
                       setState(() {
                         _initPageCompleter.$1.complete();
-                        if (state.coin == null) {
-                          _initPageCompleter.$3.complete();
-                        }
                       });
                     }
                   }
@@ -90,20 +82,6 @@ class _MarketCoinContentState extends State<MarketCoinContent> {
                       });
                     }
                   }
-                },
-              ),
-              BlocListener<NewsBloc, NewsState>(
-                listener: (_, state) {
-                  state.maybeMap(
-                    loading: (_) {},
-                    orElse: () {
-                      if (!_initPageCompleter.$3.isCompleted) {
-                        setState(() {
-                          _initPageCompleter.$3.complete();
-                        });
-                      }
-                    },
-                  );
                 },
               ),
             ],
@@ -192,7 +170,6 @@ class _MarketCoinContentState extends State<MarketCoinContent> {
 
     final coinCompleter = Completer<void>();
     final chartCompleter = Completer<void>();
-    final newsCompleter = Completer<void>();
 
     context.read<MarketCoinBloc>().add(
           MarketCoinEvent.getCoin(id: widget.id, completer: coinCompleter),
@@ -200,12 +177,10 @@ class _MarketCoinContentState extends State<MarketCoinContent> {
     context.read<MarketChartBloc>().add(
           MarketChartEvent.refresh(_selectedDistance, chartCompleter),
         );
-    context.read<NewsBloc>().add(NewsEvent.refresh(completer: newsCompleter));
 
     await (
       coinCompleter.future,
       chartCompleter.future,
-      newsCompleter.future,
     ).wait;
 
     setState(() {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "806931852325",
+    "project_id": "simplecrypto-b667d",
+    "storage_bucket": "simplecrypto-b667d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806931852325:android:52f46c71f50285956a63cc",
+        "android_client_info": {
+          "package_name": "com.github.pepelyaevdev.simplecrypto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8POboDEhuU8iEt-effX1unCE19yo90Rw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

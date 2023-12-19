@@ -10,7 +10,7 @@ class GeckoCoinsSource {
   final GeckoDioClient _dio;
   GeckoCoinsSource(this._dio);
 
-  static const String _path = '/api/v3/coins/';
+  static const String _path = '/coins/';
 
   AllCoinsListDto _coinsCache = AllCoinsListDto(coins: []);
   final _lock = Lock();
